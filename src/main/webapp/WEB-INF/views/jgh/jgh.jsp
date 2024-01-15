@@ -16,7 +16,7 @@
 
 <%@include file="inc/header.jsp" %>
 
-<div style="height: 900px; background: lightpink;">
+<div style="height: 1500px; background: lightBLUE;">
 
 <%@include file="duoSearch/duoMain.jsp" %>
 

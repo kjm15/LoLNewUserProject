@@ -5,15 +5,15 @@
 
 
 	<select id="main">
-	
-	select * from memberT where userId = #{userId}
-	
+
+		select * from memberT where userId = #{userId}
+
 	</select>
 
 	<select id="login">
 
 		select *
-		from  memberT 
+		from memberT
 		where userId = #{userId} and userPw = #{userPw}
 
 	</select>
@@ -21,23 +21,24 @@
 	<insert id="join">
 
 		insert into memberT(userId , userPw)
-		values(#{userId} , #{userPw})
+		values(#{userId}
+		, #{userPw})
 	</insert>
 
 	<select id="find">
 
-		select count(*) 
+		select count(*)
 		from memberT
-		 where userId = #{userId}
+		where userId = #{userId}
 
 	</select>
-	
+
 	<select id="info">
 
 		select * from memberT
 
 	</select>
-	
+
 	<insert id="payDbSave">
 
 		insert into paymentT(userId, userCash,userPoint)
@@ -47,25 +48,37 @@
 	<update id="updatePoint">
 
 		update memberT
-		set userPoint = 
+		set userPoint =
 		(select userPoint from memberT where userId = #{userId})+#{userPoint}
-		where userId = #{userId}
+		where
+		userId = #{userId}
 
 	</update>
-	
+
 	<select id="saveDbDuo">
-	
+
 		insert into duoT(userId,myPosition,tier,duoPosition,gameType,memo)
-		 values(#{userId},#{myPosition},#{tier},#{duoPosition},#{gameType},#{memo});
-		
+		values(#{userId},#{myPosition},#{tier},#{duoPosition},#{gameType},#{memo});
+
 		select * from duoT order by dcnt desc limit 1;
-		
+
 	</select>
-	
-		<select id="duoInfo">
-	
+
+	<select id="duoInfo">
+
 		select * from duoT order by dcnt desc limit 10;
-	
+
 	</select>
-	
+
+	<select id="deleteById">
+
+		select * from duoT where dcnt = #{dcnt};
+
+	</select>
+		<delete id="deleteDuo">
+
+		delete from duoT where dcnt = #{dcnt};
+
+	</delete >
+
 </mapper>

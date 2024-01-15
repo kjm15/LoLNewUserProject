@@ -94,4 +94,13 @@ public class MemberService {
 		return memberDao.duoInfo();
 	}
 
+	public DuoSearchDto deleteById(DuoSearchDto duoSearchDto) {
+	 return memberDao.deleteById(duoSearchDto);
+	}
+
+	public void deleteDuo(DuoSearchDto duoSearchDto) {
+		memberDao.deleteDuo(duoSearchDto);
+		
+	}
+
 }

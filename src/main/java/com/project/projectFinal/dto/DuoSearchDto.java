@@ -1,7 +1,5 @@
 package com.project.projectFinal.dto;
 
-import java.util.Date;
-
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
@@ -11,7 +9,7 @@ import lombok.NoArgsConstructor;
 @AllArgsConstructor
 public class DuoSearchDto {
 	
-	
+	private int dcnt;
 	private String winLose;
 	private String userId;
 	private String myPosition;
@@ -20,7 +18,7 @@ public class DuoSearchDto {
 	
 	private String gameType;
 	private String memo;
-	private Date date;
+	private String date;
 	
 
 }

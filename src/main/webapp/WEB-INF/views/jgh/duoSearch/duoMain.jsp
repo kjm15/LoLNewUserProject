@@ -15,30 +15,33 @@
 				data-bs-target="#exampleModal">글쓰기</button>
 			<p></p>
 		</div>
-		<table class="table table-hover">
+		<table class="table table-dark table-hover">
 			<thead>
-				<tr class="table-secondary">
-					<th scope="col">연승/연패</th>
-					<th scope="col">이름</th>
-					<th scope="col">주포지션</th>
-					<th scope="col">게임타입</th>
-					<th scope="col">티어</th>
-					<th scope="col">찾는포지션</th>
-					<th scope="col">최근 챔피언</th>
-					<th scope="col">메모</th>
-					<th scope="col">등록일시</th>
-					<th scope="col"></th>
+				<tr >
+					<th>연승/연패</th>
+					<th>이름</th>
+					<th>주포지션</th>
+					<th>티어</th>
+					<th>게임타입</th>
+					<th>찾는포지션</th>
+					<th>최근 챔피언</th>
+					<th>메모</th>
+					<th>등록일시</th>
+					<th></th>
+				</tr>
+					<tr>
+					<th colspan = 10 >=========================================================================================================================</th>
+					
 				</tr>
 			</thead>
-			<tbody class="table-dark" id="cnt">
+			<tbody id="preflag">
 
+				<c:forEach var="ditem" items="${dList}">
 
-
-					<c:forEach var="ditem" items="${dList}">
-				
 					<tr >
+					
 						<td>개발중</td>
-						<td> ${ditem.userId}</td>
+						<td>${ditem.userId}</td>
 						<td>${ditem.myPosition}</td>
 						<td>${ditem.tier}</td>
 						<td>${ditem.gameType}</td>
@@ -52,10 +55,11 @@
 									data-bs-toggle="dropdown" aria-expanded="false">...</button>
 								<ul class="dropdown-menu">
 									<li><a class="dropdown-item" href="#">수정</a></li>
-									<li><a class="dropdown-item" href="#">삭제</a></li>
+									<li><a class="dropdown-item" href="javascript:deleteDuo(${ditem.dcnt})">삭제</a></li>
 								</ul>
 							</div>
 						</td>
+						
 					</tr>
 				 
 				</c:forEach>

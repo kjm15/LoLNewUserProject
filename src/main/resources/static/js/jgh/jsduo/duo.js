@@ -37,43 +37,69 @@ $('#duoSearchBtn').on("click", function() {
 		type: 'post',
 		url: '/saveDb',
 		data: data,
-		success: function(res) {	
-			alert("등록중입니다.")
-			console.log(res)
-			//res 받으면 append 로 위로 가게 해서 뿌리기
-			
-			
-			trs = "<tr>"
+		success: function(res) {
+
+			trs = "<tr  id = " + res.dcnt + ">"
 			tdwin = "<td>개발중</td>"
-			tduserId = "<td>"+res.userId+"</td>"
-			tdmyPosition = "<td>"+res.myPosition+"</td>"
-			tdgameType=	"<td>"+res.gameType+"</td>"
-			tdtier=	"<td>"+res.tier+"</td>"
-			tdduoPosition = "<td>"+res.duoPosition+"</td>"
-			tdchamp = "<td>개발중</td>"
-			tdlately = "<td>최근챔프 개발중</td>"			
-			tdmemo = "<td>"+res.memo+"</td>"
-			tddate = "<td>"+res.date+"</td>"
-			
-			tddiv = "<td><div class='dropdown'>"+
-							"<button class='btn btn-secondary dropdown-toggle' type='button' data-bs-toggle='dropdown' aria-expanded='false'>"+
-							"..."+"</button>"+
-							"<ul class='dropdown-menu'>"+
-								"<li><a class='dropdown-item' href='#'>수정</a></li>"+
-								"<li><a class='dropdown-item' href='#'>삭제</a></li>"+
-							"</ul>"+
-						"</div></td>"
-			
+			tduserId = "<td>" + res.userId + "</td>"
+			tdmyPosition = "<td>" + res.myPosition + "</td>"
+			tdtier = "<td>" + res.tier + "</td>"
+			tdgameType = "<td>" + res.gameType + "</td>"
+			tdduoPosition = "<td>" + res.duoPosition + "</td>"
+			tdlately = "<td>개발중</td>"
+			tdmemo = "<td>" + res.memo + "</td>"
+			tddate = "<td>" + res.date + "</td>"
+
+			tddiv = "<td><div class='dropdown'>" +
+				"<button class='btn btn-secondary dropdown-toggle' type='button' data-bs-toggle='dropdown' aria-expanded='false'>" +
+				"..." + "</button>" +
+				"<ul class='dropdown-menu'>" +
+				"<li><a class='dropdown-item' href='#'>수정</a></li>" +
+				"<li><a class='dropdown-item' href='javascript:deleteDuo(" + res.dcnt + ")'>삭제</a></li>" +
+				"</ul>" +
+				"</div></td>"
+
 			tre = "</tr>"
-			
-			
-			makeHtml =  trs+tdwin+tduserId+tdmyPosition+tdgameType+tdduoPosition+tdchamp+tdlately+tdmemo+tddate+tddiv+tre
-			
-			$('.table-dark').append(makeHtml)
-			
+
+
+			makeHtml = trs + tdwin + tduserId + tdmyPosition + tdtier + tdgameType + tdduoPosition + tdlately + tdmemo + tddate + tddiv + tre
+			$('#preflag').prepend(makeHtml)
+			$('#' + res.dcnt).hide()
+			$('#exampleModal').modal("hide");
+
+			$('#' + res.dcnt).show(4200)
+
+
+
 		},
 	})
 
-	$('#exampleModal').modal("hide");
-
 })
+
+
+function deleteDuo(dcnt) {
+
+	console.log(dcnt)
+
+	if (confirm("정말 삭제하시게습니까?")) {
+
+		data = { "dcnt": dcnt }
+		$.ajax({
+			type: 'post',
+			url: '/deleteById',
+			data: data,
+			success: function(res) {
+
+				if (res) {
+					location.reload()
+					alert("삭제 성공 !!")
+
+				} else {
+					alert("작성자만 삭제 가능합니다. 다시 확인해주세요")
+				}
+
+			}
+		})
+	}
+
+}

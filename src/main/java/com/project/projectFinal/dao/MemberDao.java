@@ -30,5 +30,9 @@ public interface MemberDao {
 
 	ArrayList<HashMap<String, DuoSearchDto>> duoInfo();
 
+	DuoSearchDto deleteById(DuoSearchDto duoSearchDto);
+
+	void deleteDuo(DuoSearchDto duoSearchDto);
+
 
 }
