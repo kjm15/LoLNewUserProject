@@ -25,5 +25,7 @@ public interface MemberDao {
 
 	DuoSearchDto saveDbDuo(DuoSearchDto duoSearchDto);
 
+	void duoInfo();
+
 
 }

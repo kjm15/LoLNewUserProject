@@ -27,6 +27,6 @@ public class RestDuoController {
 		return memberService.saveDbDuo(duoSearchDto);
 	}
 	
-	
+
 	
 }

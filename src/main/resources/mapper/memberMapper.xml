@@ -62,6 +62,10 @@
 		
 	</select>
 	
+		<select id="duoInfo">
 	
+	select * from duoT order by dcnt desc;
+	
+	</select>
 	
 </mapper>

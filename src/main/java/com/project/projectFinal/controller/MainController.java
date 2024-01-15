@@ -67,11 +67,7 @@ public class MainController {
 //			
 //		return "info";
 //	}
-	@GetMapping("/jgh")
-	public String go1() {
 
-		return "jgh/jgh";
-	}
 
 	@GetMapping("/kdg")
 	public String go2() {

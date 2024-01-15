@@ -83,12 +83,14 @@ public class MemberService {
 		}else {
 			
 			throw new CustomException("duo등록 실패");
-
 		}
+	
 		
-		//return 
-				
-		
+	}
+
+	public void duoInfo() {
+
+		memberDao.duoInfo();
 	}
 
 }
