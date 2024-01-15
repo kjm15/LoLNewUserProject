@@ -2,6 +2,7 @@ package com.project.projectFinal.jghController;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 
 import com.project.projectFinal.service.MemberService;
@@ -13,10 +14,10 @@ public class DuoController {
 	MemberService memberService;
 	
 	@GetMapping("/jgh")
-	public String duoInfo() {
+	public String duoInfo(Model model) {
 
-		memberService.duoInfo();
-		
+		model.addAttribute("dList", memberService.duoInfo());
+	
 		return "jgh/jgh";
 	}
 	

@@ -1,5 +1,6 @@
 package com.project.projectFinal.service;
 
+import java.util.ArrayList;
 import java.util.HashMap;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -88,9 +89,9 @@ public class MemberService {
 		
 	}
 
-	public void duoInfo() {
+	public ArrayList<HashMap<String, DuoSearchDto>> duoInfo() {
 
-		memberDao.duoInfo();
+		return memberDao.duoInfo();
 	}
 
 }

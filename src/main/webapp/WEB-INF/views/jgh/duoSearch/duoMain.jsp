@@ -7,22 +7,21 @@
 </head>
 <body>
 
-	
-	
-	<div id=duoTable class = searchDuoT>
-	<h1 align="center">롤 듀오DUO 구하기</h1>
+	<div id=duoTable class=searchDuoT>
+		<h1 align="center">롤 듀오DUO 구하기</h1>
 		<div align="right">
 			<button type="button" class="btn btn-success" type="button"
 				class="btn btn-primary" data-bs-toggle="modal"
 				data-bs-target="#exampleModal">글쓰기</button>
 			<p></p>
 		</div>
-		<table  class="table table-hover">
+		<table class="table table-hover">
 			<thead>
 				<tr class="table-secondary">
 					<th scope="col">연승/연패</th>
 					<th scope="col">이름</th>
 					<th scope="col">주포지션</th>
+					<th scope="col">게임타입</th>
 					<th scope="col">티어</th>
 					<th scope="col">찾는포지션</th>
 					<th scope="col">최근 챔피언</th>
@@ -31,29 +30,37 @@
 					<th scope="col"></th>
 				</tr>
 			</thead>
-			<tbody class="table-dark" id = "cnt">
-				<tr id="duoContents">
-					<td>2연승</td>
-					<td>소환사아이디</td>
-					<td>탑</td>
-					<td>플레티넘</td>
-					<td>원딜</td>
-					<td>자야</td>
-					<td>내용</td>
-					<td>2024-01-14</td>
-					<td>
-						<div class="dropdown">
-							<button class="btn btn-secondary dropdown-toggle" type="button"
-								data-bs-toggle="dropdown" aria-expanded="false">...</button>
-							<ul class="dropdown-menu">
-								<li><a class="dropdown-item" href="#">수정</a></li>
-								<li><a class="dropdown-item" href="#">삭제</a></li>
-							</ul>
-						</div>
-					</td>
+			<tbody class="table-dark" id="cnt">
 
 
-				</tr>
+
+					<c:forEach var="ditem" items="${dList}">
+				
+					<tr >
+						<td>개발중</td>
+						<td> ${ditem.userId}</td>
+						<td>${ditem.myPosition}</td>
+						<td>${ditem.tier}</td>
+						<td>${ditem.gameType}</td>
+						<td>${ditem.duoPosition}</td>
+						<td>개발중</td>
+						<td>${ditem.memo}</td>
+						<td> ${ditem.date}</td>
+						<td>
+							<div class="dropdown">
+								<button class="btn btn-secondary dropdown-toggle" type="button"
+									data-bs-toggle="dropdown" aria-expanded="false">...</button>
+								<ul class="dropdown-menu">
+									<li><a class="dropdown-item" href="#">수정</a></li>
+									<li><a class="dropdown-item" href="#">삭제</a></li>
+								</ul>
+							</div>
+						</td>
+					</tr>
+				 
+				</c:forEach>
+
+
 
 			</tbody>
 
@@ -76,13 +83,14 @@
 
 
 					<div class="mb-3">
-						<label class="form-label">${userId}님의 듀오를 찾아드립니다.</label> <input type="hidden" id="uesrId" value="${userId}">
+						<label class="form-label">${userId}님의 듀오를 찾아드립니다.</label> <input
+							type="hidden" id="uesrId" value="${userId}">
 					</div>
 					<hr>
 					<p>본인 포지션</p>
 
 					<select class="form-select form-select-sm"
-						aria-label="Small select example" id = "position">
+						aria-label="Small select example" id="position">
 						<option selected>포지션</option>
 						<option value="top">탑</option>
 						<option value="jungle">정글</option>
@@ -123,10 +131,10 @@
 					<hr>
 
 					<div class="input-group mb-3">
-						<label class="input-group-text" for="tier">현재티어</label>
-						<select class="form-select" id="tier">
+						<label class="input-group-text" for="tier">현재티어</label> <select
+							class="form-select" id="tier">
 							<option selected>필수선택</option>
-							
+
 							<option value="아이언">아이언</option>
 							<option value="브론즈">브론즈</option>
 							<option value="실버">실버</option>
@@ -134,8 +142,8 @@
 							<option value="플레티넘">플레티넘</option>
 							<option value="에메랄드">에메랄드</option>
 							<option value="다이야몬드">다이야몬드</option>
-						</select> <label class="input-group-text" for="gameType">원하는
-							게임종류</label> <select class="form-select" id="gameType">
+						</select> <label class="input-group-text" for="gameType">원하는 게임종류</label> <select
+							class="form-select" id="gameType">
 							<option selected>필수선택</option>
 							<option value="칼바람나락">칼바람나락</option>
 							<option value="솔로랭크">솔로랭크</option>
@@ -154,15 +162,15 @@
 					<div class="mb-3">
 						<label for="exampleFormControlTextarea1" class="form-label">남길
 							메모(맨트가 좋을수록 승률이 올라갑니다.)</label>
-						<textarea class="form-control" id="textArea"
-							rows="1" placeholder="멘탈 좋으신분 찾습니다."></textarea>
+						<textarea class="form-control" id="textArea" rows="1"
+							placeholder="멘탈 좋으신분 찾습니다."></textarea>
 					</div>
 
 
 
 				</div>
 				<div class="modal-footer">
-					<button type="button" class="btn btn-primary"  id = "duoSearchBtn">듀오찾기등록</button>
+					<button type="button" class="btn btn-primary" id="duoSearchBtn">듀오찾기등록</button>
 					<button type="button" class="btn btn-secondary"
 						data-bs-dismiss="modal">닫기</button>
 

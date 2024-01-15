@@ -64,7 +64,7 @@
 	
 		<select id="duoInfo">
 	
-	select * from duoT order by dcnt desc;
+		select * from duoT order by dcnt desc limit 10;
 	
 	</select>
 	

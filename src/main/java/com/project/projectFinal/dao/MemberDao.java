@@ -1,5 +1,8 @@
 package com.project.projectFinal.dao;
 
+import java.util.ArrayList;
+import java.util.HashMap;
+
 import org.apache.ibatis.annotations.Mapper;
 
 import com.project.projectFinal.dto.DuoSearchDto;
@@ -25,7 +28,7 @@ public interface MemberDao {
 
 	DuoSearchDto saveDbDuo(DuoSearchDto duoSearchDto);
 
-	void duoInfo();
+	ArrayList<HashMap<String, DuoSearchDto>> duoInfo();
 
 
 }

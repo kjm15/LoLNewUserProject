@@ -44,11 +44,13 @@ $('#duoSearchBtn').on("click", function() {
 			
 			
 			trs = "<tr>"
-			tdwin = "<td>연승 개발중</td>"
+			tdwin = "<td>개발중</td>"
 			tduserId = "<td>"+res.userId+"</td>"
 			tdmyPosition = "<td>"+res.myPosition+"</td>"
+			tdgameType=	"<td>"+res.gameType+"</td>"
+			tdtier=	"<td>"+res.tier+"</td>"
 			tdduoPosition = "<td>"+res.duoPosition+"</td>"
-			tdchamp = "<td>포지션 개발중</td>"
+			tdchamp = "<td>개발중</td>"
 			tdlately = "<td>최근챔프 개발중</td>"			
 			tdmemo = "<td>"+res.memo+"</td>"
 			tddate = "<td>"+res.date+"</td>"
@@ -65,7 +67,7 @@ $('#duoSearchBtn').on("click", function() {
 			tre = "</tr>"
 			
 			
-			makeHtml =  trs+tdwin+tduserId+tdmyPosition+tdduoPosition+tdchamp+tdlately+tdmemo+tddate+tddiv+tre
+			makeHtml =  trs+tdwin+tduserId+tdmyPosition+tdgameType+tdduoPosition+tdchamp+tdlately+tdmemo+tddate+tddiv+tre
 			
 			$('.table-dark').append(makeHtml)
 			
