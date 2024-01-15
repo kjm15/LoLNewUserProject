@@ -81,7 +81,7 @@ function deleteDuo(dcnt) {
 
 	console.log(dcnt)
 
-	if (confirm("정말 삭제하시게습니까?")) {
+	if (confirm("정말 삭제하시겠습니까?")) {
 
 		data = { "dcnt": dcnt }
 		$.ajax({
