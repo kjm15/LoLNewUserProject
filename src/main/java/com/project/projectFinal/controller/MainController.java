@@ -69,11 +69,7 @@ public class MainController {
 //	}
 
 
-	@GetMapping("/kdg")
-	public String go2() {
 
-		return "kdg/kdg";
-	}
 
 	@GetMapping("/kyt")
 	public String go3() {
