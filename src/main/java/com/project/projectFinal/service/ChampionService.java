@@ -1,0 +1,30 @@
+package com.project.projectFinal.service;
+
+import java.util.HashMap;
+import java.util.List;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
+
+import com.project.projectFinal.dao.ChampionDao;
+import com.project.projectFinal.dto.ChampionDto;
+
+@Service
+public class ChampionService {
+
+	@Autowired
+	ChampionDao cd;
+
+	public List<HashMap<String,String>> champList() {
+		
+		List<HashMap<String,String>> list = cd.champList();
+		return list;
+	}
+
+	public List<HashMap<String, String>> searchChamp(ChampionDto cDto) {
+		
+		return cd.searchChamp(cDto);
+		
+	}
+	
+}
