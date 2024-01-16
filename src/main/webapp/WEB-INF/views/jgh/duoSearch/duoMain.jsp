@@ -15,6 +15,8 @@
 				data-bs-target="#exampleModal">글쓰기</button>
 			<p></p>
 		</div>
+		
+		<input type = "hidden"  value ="${dList[0].dcnt}" id = "dcnt"/>
 		<table class="table table-dark table-hover">
 			<thead>
 				<tr >

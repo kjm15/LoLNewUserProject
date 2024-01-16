@@ -26,6 +26,7 @@
 <!-- js들어갈자리  -->
 <script defer src="/js/jgh/jsduo/duo.js"></script>
 <script defer src="/js/aCommon/common.js"></script>
+<script defer src="/js/jgh/jsduo/duoUpdateBoard.js"></script>
 
 </body>
 
