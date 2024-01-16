@@ -1,13 +1,13 @@
 /**
  * 
  */
+let interval = setInterval(update, 4000)
 
-$(document).ready(function() {
+function stop() {
 
+	clearInterval(interval)
+}
 
-	setInterval(update, 4000)
-
-})
 
 function update() {
 	let dcnt = $('#dcnt').val()
