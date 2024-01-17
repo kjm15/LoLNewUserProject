@@ -70,7 +70,7 @@
 
 	</select>
 
-	<select id="deleteById">
+	<select id="infoDuoT">
 
 		select * from duoT where dcnt = #{dcnt};
 
@@ -80,5 +80,21 @@
 		delete from duoT where dcnt = #{dcnt};
 
 	</delete >
+		<select id="comparedcnt">
+
+		select * from duoT where dcnt = #{dcnt};
+
+	</select>
+
+	<select id="ajaxtest">
+
+		select count(*)
+		from memberT
+		where userId = #{userId}
+
+	</select>
+
+
+
 
 </mapper>

@@ -14,15 +14,18 @@
 
 <body>
 
-<%@include file="inc/header.jsp" %>
+<%@include file="../inc/header.jsp" %>
 <div style="height: 700px; background: lightpink;">
 <h1>김진문 페이지 입니다.</h1>
 </div>
-<%@include file="inc/footer.jsp" %>
+<%@include file="../inc/footer.jsp" %>
 
 <!-- js들어갈자리  -->
-<script src="js/main.js"/>
+
+<script defer src="/js/aCommon/common.js"></script>
+<script defer src="/js/kjm/searchId.js"></script>
 
 </body>
+
 
 </html>

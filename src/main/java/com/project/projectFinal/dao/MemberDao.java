@@ -30,9 +30,13 @@ public interface MemberDao {
 
 	ArrayList<HashMap<String, DuoSearchDto>> duoInfo();
 
-	DuoSearchDto deleteById(DuoSearchDto duoSearchDto);
+	DuoSearchDto infoDuoT(DuoSearchDto duoSearchDto);
 
 	void deleteDuo(DuoSearchDto duoSearchDto);
+
+	DuoSearchDto comparedcnt(DuoSearchDto duoSearchDto);
+
+	int ajaxtest(MemberDto memberDto);
 
 
 }

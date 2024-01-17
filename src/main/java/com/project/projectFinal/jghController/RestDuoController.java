@@ -29,15 +29,24 @@ public class RestDuoController {
 	}
 
 	@PostMapping("/deleteById")
-	public boolean deleteById(DuoSearchDto duoSearchDto,HttpSession session) {
+	public boolean deleteById(DuoSearchDto duoSearchDto, HttpSession session) {
 
-		if(memberService.deleteById(duoSearchDto).getUserId().equals(session.getAttribute("userId"))) {	
-			
+		if (memberService.infoDuoT(duoSearchDto).getUserId().equals(session.getAttribute("userId"))) {
+
 			memberService.deleteDuo(duoSearchDto);
-			return true;	
-		}else {
+			return true;
+		} else {
 			return false;
-			
+
 		}
+	}
+
+	@PostMapping("/comparedcnt")
+	public DuoSearchDto comparedcnt(DuoSearchDto duoSearchDto) {
+
+		log.info("=={}", duoSearchDto);
+
+		return memberService.comparedcnt(duoSearchDto);
+
 	}
 }
