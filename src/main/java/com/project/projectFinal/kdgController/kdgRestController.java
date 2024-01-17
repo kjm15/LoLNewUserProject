@@ -8,6 +8,7 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.project.projectFinal.dto.ChampionDto;
+import com.project.projectFinal.dto.ItemDto;
 import com.project.projectFinal.service.ChampionService;
 
 import lombok.extern.slf4j.Slf4j;
@@ -26,6 +27,11 @@ public class kdgRestController {
 		
 	}
 	
+	@PostMapping("/kdg/item")
+	public List<HashMap<String, ItemDto>> item(ItemDto IDto) {
 	
+		return cs.item(IDto);
+		
+	}
 	
 }
