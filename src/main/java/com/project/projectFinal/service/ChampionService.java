@@ -8,6 +8,7 @@ import org.springframework.stereotype.Service;
 
 import com.project.projectFinal.dao.ChampionDao;
 import com.project.projectFinal.dto.ChampionDto;
+import com.project.projectFinal.dto.ItemDto;
 
 @Service
 public class ChampionService {
@@ -24,6 +25,14 @@ public class ChampionService {
 	public List<HashMap<String, String>> searchChamp(ChampionDto cDto) {
 		
 		return cd.searchChamp(cDto);
+		
+	}
+
+	public List<HashMap<String, ItemDto>> item(ItemDto iDto) {
+		
+		List<HashMap<String,ItemDto>> iList = cd.item(iDto);
+		
+		return iList;
 		
 	}
 	

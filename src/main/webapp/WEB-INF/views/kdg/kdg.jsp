@@ -8,9 +8,10 @@
 	function champ(a) {
 		var idName = a;
 		
-		$('#anBtn').css("visibility", "hidden");
-		$('#champList').css("visibility", "visible");
-		$('#searchChamp').css("visibility", "visible");
+		$('#anBtn').hide();
+		$('#champList').show();
+		$('#searchChamp').show();
+		$('#itemList').hide();
 		$('#searchChamp').val('');
 		
 		$('#name').html(a);	
@@ -29,12 +30,12 @@
 
 		$('#' + c).html(str);
 		$('#' + d).html(b);
-		$('#champList').css("visibility", "hidden");
-		$('#searchChamp').css("visibility", "hidden");
+		$('#champList').hide();
+		$('#searchChamp').hide();
 		
 		if($('#myChampName').text() != ''){
 			if($('#enemyChampName').text() != ''){
-				$('#anBtn').css("visibility", "visible");
+				$('#anBtn').show();
 			}
 		}
 	}
@@ -96,16 +97,16 @@
 	font-size: 100px;
 }
 
-#champList::-webkit-scrollbar, body::-webkit-scrollbar {
+#champList::-webkit-scrollbar, body::-webkit-scrollbar, #itemList::-webkit-scrollbar {
 	width: 8px;
 }
-#champList::-webkit-scrollbar-thumb, body::-webkit-scrollbar-thumb {
+#champList::-webkit-scrollbar-thumb, body::-webkit-scrollbar-thumb, #itemList::-webkit-scrollbar-thumb {
 	height: 3px;
 	background: #785A28;
 	
 	border-radius: 15px;
 }
-#champList::-webkit-scrollbar-track, body::-webkit-scrollbar-track {
+#champList::-webkit-scrollbar-track, body::-webkit-scrollbar-track, #itemList::-webkit-scrollbar-track {
 	background: rgba(33, 122, 244, .1);
 }
 
@@ -122,7 +123,30 @@
 	
 	width: 78%;
 	height: 800px;
-	visibility: hidden;
+	
+	display: none;
+	
+	overflow: scroll;
+	float: left;
+	
+	margin-left: 200px;
+}
+
+#itemList {
+	padding: 20px;
+
+	background-color: #091428;
+	color: #C8AA6E;
+	
+	position: relative;
+	top: 60px;
+	
+	
+	width: 78%;
+	height: 800px;
+	
+	display: none;
+	
 	overflow: scroll;
 	float: left;
 	
@@ -164,7 +188,7 @@ span {
 	margin-bottom: 10px;
 	margin-left: 217px;
 	
-	visibility: hidden;
+	display: none;
 	
 	background-color: #FFFFFF;
 	
@@ -207,7 +231,7 @@ img:hover {
 	border-radius: 15px;
 	
 	cursor: auto;
-	visibility: hidden;
+	display: none;
 	
 	position: absolute;
 	
@@ -258,6 +282,9 @@ img:hover {
 				</c:forEach>
 			</ul>
 		</div>
+		<div id="itemList">
+			
+		</div>
 		
 	</div>
 	
@@ -292,6 +319,41 @@ img:hover {
 			})
 		});
 	});
+
+	$(document).ready(function() {
+		$("#anBtn").click(function() {
+			
+			var a = $('#myChampName').text();
+			var b = $('#enemyChampName').text();
+			
+			console.log(a);
+			console.log(b);
+			
+			$.ajax({
+				type : "POST",
+				url : "/kdg/item",
+				success : function(res) {							
+					console.log(res);
+					console.log(res[0].item_num);
+					console.log(res[0].item_name);
+					
+					str1 = "<ul>"
+					str2 = ''
+							for (let i = 0; i < res.length; i++){
+								str2 += "<li><img id='"+res[i].item_num+"' src='https://ddragon.leagueoflegends.com/cdn/14.1.1/img/item/"+res[i].item_num+".png'"
+								str2 += "width='72' height='72'>"
+								str2 +=	"<span>"+res[i].item_name+"</span></li>"
+								}
+					str3="</ul>"
+						
+					$('#itemList').html(str1 + str2 +str3);
+					$('#itemList').show();
+					$('#anBtn').hide();
+				}
+			})
+			
+		});
+	});	
 	
 </script>
 </body>
