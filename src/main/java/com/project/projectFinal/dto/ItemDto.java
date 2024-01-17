@@ -9,6 +9,8 @@ import lombok.NoArgsConstructor;
 @NoArgsConstructor
 public class ItemDto {
 
-	private String a;
+	private int item_num;
+	private String item_name;
+>>>>>>> origin/devkdg
 	
 }

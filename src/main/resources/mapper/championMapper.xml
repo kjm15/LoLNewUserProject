@@ -11,4 +11,8 @@
 		select champion_name_kr,champion_name from champName
 		where champion_name_kr like concat('%',#{searchChamp},'%') or champion_name like concat('%',#{searchChamp},'%') or champion_name_cons like concat('%',#{searchChamp},'%')
 	</select>
+	
+	<select id="item">
+		select * from test;
+	</select>
 </mapper>
