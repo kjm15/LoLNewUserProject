@@ -1,4 +1,4 @@
-<<<<<<< HEAD
+
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
@@ -221,7 +221,7 @@ img:hover {
 
 </head>
 <body>
-	<%@include file="inc/header.jsp"%>
+	<%@include file="../inc/header.jsp"%>
 	<div style="height: 2000px; background: #3C3C41;">
 		<p id="name" style="visibility: hidden; position: absolute;"></p>
 		<div class = "champs">
@@ -262,7 +262,7 @@ img:hover {
 		
 	</div>
 	
-	<%@include file="inc/footer.jsp"%>
+	<%@include file="../inc/footer.jsp"%>
 <script type="text/javascript">
 	$(document).ready(function() {
 		$("#searchChamp").keyup(function() {

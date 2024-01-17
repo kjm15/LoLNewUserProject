@@ -14,14 +14,14 @@
 
 <body>
 
-<%@include file="inc/header.jsp" %>
+<%@include file="../inc/header.jsp" %>
 
 <div style="height: 1500px; background: lightBLUE;">
 
 <%@include file="duoSearch/duoMain.jsp" %>
 
 </div>
-<%@include file="inc/footer.jsp" %>
+<%@include file="../inc/footer.jsp" %>
 
 <!-- js들어갈자리  -->
 

@@ -14,11 +14,11 @@
 
 <body>
 
-<%@include file="inc/header.jsp" %>
+<%@include file="../inc/header.jsp" %>
 <div style="height: 700px; background: lightpink;">
 <h1>김윤태 페이지입니다.</h1>
 </div>
-<%@include file="inc/footer.jsp" %>
+<%@include file="../inc/footer.jsp" %>
 
 <!-- js들어갈자리  -->
 <script src="js/main.js"/>
