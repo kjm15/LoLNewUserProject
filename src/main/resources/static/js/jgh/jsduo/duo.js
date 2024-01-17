@@ -1,12 +1,7 @@
 /**
  * 
  */
-function duoSearch() {
 
-
-	console.log("누름")
-
-}
 
 $('#duoSearchBtn').on("click", function() {
 
@@ -23,6 +18,7 @@ $('#duoSearchBtn').on("click", function() {
 
 		return false;
 	}
+	stop();
 	data = {
 		'userId': userId,
 		'myPosition': myPosition,
@@ -68,13 +64,23 @@ $('#duoSearchBtn').on("click", function() {
 			$('#exampleModal').modal("hide");
 
 			$('#' + res.dcnt).show(4200)
+			let dcntvalue = $('#dcnt').val();
+
+			document.getElementById('dcnt').value = parseInt(dcntvalue) + 1
+
+			interval = setInterval(update, 4000)
 
 
+		}, error: function(request, status, error) {
+			
+		
+			interval = setInterval(update, 4000)
 
-		},
+		}
 	})
 
 })
+
 
 
 function deleteDuo(dcnt) {

@@ -1,3 +1,4 @@
+
 package com.project.projectFinal.controller;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -77,12 +78,6 @@ public class MainController {
 		return "kyt/kyt";
 	}
 
-	@GetMapping("/kjm")
-	public String go4() {
-
-		return "kjm/kjm";
-	}
-
 	@GetMapping("/stm")
 	public String go5() {
 
@@ -95,3 +90,4 @@ public class MainController {
 		return "jhl/jhl";
 	}
 }
+
