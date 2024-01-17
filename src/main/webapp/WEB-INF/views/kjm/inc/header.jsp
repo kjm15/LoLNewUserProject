@@ -82,12 +82,12 @@
 
 				<h3>빈곳을 입력해 가입해주세요</h3>
 				<form action="/join" method="post">
-					아이디 : <input type="text" name="userId" id = "userId"> (ajax 비동기처리요망)</br> 
+					아이디 : <input type="text" name="userId" id = "userId1"> <span id = "tflag">(ajax 비동기처리요망)</span></br> 
 					패스워드 :<input type="text" name="userPw"> (추후에 ***로 변경)</br>
 					<hr>
 					이름 : <input type="text" name="userName"> (db만들기) </br> e-mail :
 					<input type="text" name="userEmail"> (db만들기) </br>
-
+					
 					<div class="modal-footer">
 						<button type="button" class="btn btn-secondary"
 							data-bs-dismiss="modal">닫기</button>
@@ -95,6 +95,8 @@
 					</div>
 
 				</form>
+
+
 
 			</div>
 
@@ -118,7 +120,7 @@
 				<h3>로그인창</h3>
 
 				<form action="/login" method="post">
-					아이디 : <input type="text" id='userId' name="userId"> </br> 패스워드 :
+					아이디 : <input type="text" id='userId2' name="userId"> </br> 패스워드 :
 					<input type="text" id="userPw" name="userPw"> </br>
 					<div class="modal-footer">
 						<button type="button" class="btn btn-secondary"

@@ -86,4 +86,15 @@
 
 	</select>
 
+	<select id="ajaxtest">
+
+		select count(*)
+		from memberT
+		where userId = #{userId}
+
+	</select>
+
+
+
+
 </mapper>

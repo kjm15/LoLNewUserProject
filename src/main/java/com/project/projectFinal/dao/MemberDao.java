@@ -36,5 +36,7 @@ public interface MemberDao {
 
 	DuoSearchDto comparedcnt(DuoSearchDto duoSearchDto);
 
+	int ajaxtest(MemberDto memberDto);
+
 
 }
