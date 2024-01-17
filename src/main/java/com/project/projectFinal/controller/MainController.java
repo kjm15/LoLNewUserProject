@@ -78,12 +78,6 @@ public class MainController {
 		return "kyt/kyt";
 	}
 
-	@GetMapping("/kjm")
-	public String go4() {
-
-		return "kjm/kjm";
-	}
-
 	@GetMapping("/stm")
 	public String go5() {
 

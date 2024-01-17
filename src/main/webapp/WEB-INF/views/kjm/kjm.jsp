@@ -21,8 +21,11 @@
 <%@include file="inc/footer.jsp" %>
 
 <!-- js들어갈자리  -->
-<script src="js/main.js"/>
+
+<script defer src="/js/aCommon/common.js"></script>
+<script defer src="/js/kjm/searchId.js"></script>
 
 </body>
+
 
 </html>
