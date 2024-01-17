@@ -21,11 +21,7 @@ public class kdgRestController {
 	
 	@PostMapping("/kdg/search")
 	public List<HashMap<String, String>> search(ChampionDto cDto) {
-		
-		
-		log.info("======================== cDto : {}",cDto);
-		log.info("======================== mybatis 다녀온 cDto : {}",cs.searchChamp(cDto));
-		
+	
 		return cs.searchChamp(cDto);
 		
 	}

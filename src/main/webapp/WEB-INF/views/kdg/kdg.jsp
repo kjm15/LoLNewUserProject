@@ -7,26 +7,36 @@
 <script type="text/javascript">
 	function champ(a) {
 		var idName = a;
-
+		
+		$('#anBtn').css("visibility", "hidden");
 		$('#champList').css("visibility", "visible");
 		$('#searchChamp').css("visibility", "visible");
 		$('#searchChamp').val('');
 		
-		$('#name').html(a);
+		$('#name').html(a);	
 	}
 
 	function submit(b) {
 		var a = $('#name').text();
-		var c = a + 'ion';
 		var champName = b;
+		var c = a + 'ion';
+		var d = a + 'Name';
+		
 		let str1 = '<img onclick="javascript:champ(this.id)" id=';
 		let str2 = ' src="https://ddragon.leagueoflegends.com/cdn/14.1.1/img/champion/';
 		let str3 = '.png">';
 		let str = str1 + a + str2 + b + str3;
 
 		$('#' + c).html(str);
-		$('#champList').css("visibility", "hidden")
+		$('#' + d).html(b);
+		$('#champList').css("visibility", "hidden");
 		$('#searchChamp').css("visibility", "hidden");
+		
+		if($('#myChampName').text() != ''){
+			if($('#enemyChampName').text() != ''){
+				$('#anBtn').css("visibility", "visible");
+			}
+		}
 	}
 </script>
 <script
@@ -106,6 +116,9 @@
 	background-color: #091428;
 	color: #C8AA6E;
 	
+	position: relative;
+	top: 60px;
+	
 	
 	width: 78%;
 	height: 800px;
@@ -158,7 +171,16 @@ span {
 	padding-left: 30px;
 }
 
-input[type=text] {
+.searchBox{
+	width: 300px;
+	height: 40px;
+	
+	position: relative;
+	
+	cursor: auto;
+}
+
+.searchBox input[type=text] {
 	width: 300px;
 	height: 40px;
 	font-size: 16px;
@@ -167,15 +189,32 @@ input[type=text] {
 	border-radius: 15px;
 	
 	cursor: auto;
-	
-	background-image: url(../img/search.png);
+
 }
 
 img:hover {
 	-webkit-transform: scale(1.4);
 	transform: scale(1.4);
-
 }
+
+
+.champs #anBtn {
+	width: 300px;
+	height: 40px;
+	font-size: 16px;
+	
+	outline: none;
+	border-radius: 15px;
+	
+	cursor: auto;
+	visibility: hidden;
+	
+	position: absolute;
+	
+	left: 41%;
+	top: 650px;
+}
+
 
 </style>
 
@@ -184,27 +223,42 @@ img:hover {
 	<%@include file="inc/header.jsp"%>
 	<div style="height: 2000px; background: #3C3C41;">
 		<p id="name" style="visibility: hidden; position: absolute;"></p>
+		<div class = "champs">
+				<p id="myChampName" style="visibility: hidden; position: absolute;"></p>
+				<p id="enemyChampName" style="visibility: hidden; position: absolute;"></p>
+				<button id = "anBtn">분석하기</button>
+		</div>
 		<!-- <h1>김동근 페이지 입니다.</h1> -->
 		<div id="myChampion">
 			<img onclick="javascript:champ(this.id)" src="../img/champ.jpg"
 				id="myChamp"></img>
 		</div>
+		
 		<div id="enemyChampion">
 			<img onclick="javascript:champ(this.id)" src="../img/champ.jpg"
 				id="enemyChamp"></img>
 		</div>
+		
 		<h1 id="versus">vs</h1>
-		<input type="text" id="searchChamp" name="searchChamp" placeholder="ex) 가렌, garen, ㄱㄹ...">
+		
+		<div class = "searchBox">
+			<input type="text" id="searchChamp" name="searchChamp" placeholder="ex) 가렌, garen, ㄱㄹ...">		
+			<div class = "btnBox">
+			</div>
+		</div>
+		
+		<div id="champList">
 			<ul>
-			<div id="champList">
 				<c:forEach var="cham" items="${list}">
-					<li><img id="${cham.champion_name}"
-						src="https://ddragon.leagueoflegends.com/cdn/14.1.1/img/champion/${cham.champion_name}.png"
-						width="77" height="77" alt="${cham.champion_name}"
-						class="bg-image" onclick="javascript:submit(this.id)"> <span>${cham.champion_name_kr}</span></li>
+					<li>
+						<img id="${cham.champion_name}" src="https://ddragon.leagueoflegends.com/cdn/14.1.1/img/champion/${cham.champion_name}.png"
+							width="77" height="77" alt="${cham.champion_name}" class="bg-image" onclick="javascript:submit(this.id)">
+						<span>${cham.champion_name_kr}</span>
+					</li>
 				</c:forEach>
 			</ul>
 		</div>
+		
 	</div>
 	
 	<%@include file="inc/footer.jsp"%>
@@ -238,7 +292,7 @@ img:hover {
 			})
 		});
 	});
-		
+	
 </script>
 </body>
 
