@@ -14,14 +14,13 @@
 
 <body>
 
-<%@include file="inc/header.jsp" %>
+<%@include file="../inc/header.jsp" %>
 <div style="height: 700px; background: lightpink;">
-<h1>정혜린 페이지 입니다.</h1>
+<h1>정혜린 페이지 입니다.내용 미정</h1>
 </div>
-<%@include file="inc/footer.jsp" %>
+<%@include file="../inc/footer.jsp" %>
 
 <!-- js들어갈자리  -->
-<script src="js/main.js"/>
 
 </body>
 

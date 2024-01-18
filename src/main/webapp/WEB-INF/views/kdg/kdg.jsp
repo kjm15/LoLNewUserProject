@@ -1,3 +1,4 @@
+
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
@@ -254,7 +255,8 @@ img:hover {
 
 </head>
 <body>
-	<%@include file="inc/header.jsp"%>
+<h1>한번 날잡아서 js 파일이랑 css파일 정리해서 모듈화 시키기 :by 장기훈</h1>
+	<%@include file="../inc/header.jsp"%>
 	<div style="height: 2000px; background: #3C3C41;">
 		<p id="name" style="visibility: hidden; position: absolute;"></p>
 		<div class = "champs">
@@ -299,7 +301,7 @@ img:hover {
 		
 	</div>
 	
-	<%@include file="inc/footer.jsp"%>
+	<%@include file="../inc/footer.jsp"%>
 <script type="text/javascript">
 	$(document).ready(function() {
 		$("#searchChamp").keyup(function() {
@@ -359,6 +361,7 @@ img:hover {
 				$('#champList').html(str1 + str2 + str3)
 			}
 		})
+	}
 	} 
 	
 	$(document).ready(function() {
@@ -398,5 +401,7 @@ img:hover {
 	
 </script>
 </body>
+
+
 
 </html>

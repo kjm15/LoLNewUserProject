@@ -13,4 +13,8 @@ public class MemberDto {
 	private String userPw;
 	private int userPoint;
 	
+	private	String friendId;
+	private int friendPoint;
+	
+	
 }
