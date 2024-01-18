@@ -34,4 +34,11 @@ public class kdgRestController {
 		
 	}
 	
+	@PostMapping("/kdg/position")
+	public void line(ChampionDto cDto) {
+	
+		
+		
+	}
+	
 }

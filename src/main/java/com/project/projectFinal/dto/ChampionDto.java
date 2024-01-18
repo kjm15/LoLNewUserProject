@@ -15,4 +15,6 @@ public class ChampionDto {
 	
 	private String searchChamp;
 	
+	private String line;
+	
 }
