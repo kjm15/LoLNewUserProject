@@ -14,4 +14,9 @@
 	<select id="item">
 		select * from test;
 	</select>
+	
+	<select id="champLine">
+		select champion_name_kr,champion_name from champName
+		where line like concat('%',#{line},'%');
+	</select>
 </mapper>
