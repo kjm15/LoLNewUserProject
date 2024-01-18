@@ -10,6 +10,7 @@ import com.project.projectFinal.dao.ChampionDao;
 import com.project.projectFinal.dto.ChampionDto;
 import com.project.projectFinal.dto.ItemDto;
 
+
 @Service
 public class ChampionService {
 
@@ -18,8 +19,8 @@ public class ChampionService {
 
 	public List<HashMap<String,String>> champList() {
 		
-		List<HashMap<String,String>> list = cd.champList();
-		return list;
+		return cd.champList();
+	
 	}
 
 	public List<HashMap<String, String>> searchChamp(ChampionDto cDto) {
@@ -33,6 +34,12 @@ public class ChampionService {
 		List<HashMap<String,ItemDto>> iList = cd.item(iDto);
 		
 		return iList;
+		
+	}
+
+	public List<HashMap<String, String>> champLine(ChampionDto cDto) {
+		
+		return cd.champLine(cDto);
 		
 	}
 	

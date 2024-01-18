@@ -9,4 +9,87 @@
     margin-top: 30px;
     background-color: wihte;
 }
+#div1{
+	text-align : center;
+}
 
+#header-profile-info{
+	width : 1000px;
+	height : 200px;
+	margin : 0 auto;
+	background-color : white;
+	
+}
+#profile-icon{
+	width : 100px;
+	height : 100px;
+	float : left;
+	background-color : black;
+}
+#profile-name{
+	float : left;
+	margin-left: 10px;
+}
+
+#tierbox{
+	width : 500px;
+	height : 200px;
+	margin-left: 520px;
+	background-color : white;
+	border: 1px solid black;
+}
+#tierimage{
+	width : 100px;
+	height : 100px;
+	float : left;
+	margin : 0 auto;
+	background-color : lightblue;
+	border: 1px solid black;	
+}
+
+/* #tier-info{ */
+/* 	width : 0px; */
+/* 	height : 0px; */
+/* 	margin-left : 120px; */
+/* 	margin : 0 auto; */
+/* 	background-color : lightblue; */
+/* 	border: 1px solid black;	 */
+/* } */
+#tiername{
+	width : 150px;
+	height : 80px;
+	margin : 0 auto;
+	text-align : center;
+	background-color : lightblue;
+	border: 1px solid black;	
+}
+#lp{
+	width : 150px;
+	height : 40px;
+	margin :  0 auto;
+	text-align : center;
+	background-color : lightblue;
+	border: 1px solid black;
+}
+
+#win-lose-box{
+	width : 130px;
+	height : 120px;
+	float : right;
+/* 	margin : 0 auto; */
+	background-color : lightblue;
+	border: 1px solid black;	
+}
+#win-lose{
+	width : 130px;
+	height : 60px;
+	text-align : center;
+	border: 1px solid black;
+}
+#winning-percentage{
+	width : 130px;
+	height : 60px;
+	text-align : center;
+	border: 1px solid black;
+	
+}
