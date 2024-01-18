@@ -69,7 +69,11 @@ public class MainController {
 //		return "info";
 //	}
 
+	@GetMapping("/shop")
+	public String shop() {
 
+		return "shop";
+	}
 
 
 	@GetMapping("/kyt")
