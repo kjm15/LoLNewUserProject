@@ -30,7 +30,7 @@
 			href="/kdg">김동근</a> <a class="navbar-brand" href="/kyt">김윤태</a> <a
 			class="navbar-brand" href="/kjm">김진문</a> <a class="navbar-brand"
 			href="/stm">송태민</a> <a class="navbar-brand" href="/jhl">정혜린</a>
-
+ <a class="navbar-brand" href="/shop">상점(Transaction 연습)</a>
 
 		<c:choose>
 			<c:when test="${userId != null}">
@@ -82,7 +82,7 @@
 
 				<h3>빈곳을 입력해 가입해주세요</h3>
 				<form action="/join" method="post">
-					아이디 : <input type="text" name="userId"> (ajax 비동기처리요망)</br> 패스워드
+					아이디 : <input type="text" name="userId"> (ajax 비동기처리요망, 송태민 작업예정 태민이 작업후 삭제바람)</br> 패스워드
 					:<input type="text" name="userPw"> (추후에 ***로 변경)</br>
 					<hr>
 					이름 : <input type="text" name="userName"> (db만들기) </br> e-mail :
