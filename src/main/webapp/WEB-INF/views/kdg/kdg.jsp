@@ -361,6 +361,7 @@ img:hover {
 			}
 		})
 	}
+	} 
 	
 	$(document).ready(function() {
 		$("#anBtn").click(function() {

@@ -14,11 +14,11 @@
 
 <body>
 
-<%@include file="inc/header1.jsp" %>
+<%@include file="../inc/header2.jsp" %>
 <div style="height: 700px; background: whitesmoke;">
 
 </div>
-<%@include file="inc/footer.jsp" %>
+<%@include file="../inc/footer.jsp" %>
 
 <!-- js들어갈자리  -->
 
