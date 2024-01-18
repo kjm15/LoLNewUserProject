@@ -23,6 +23,8 @@ public class kdgRestController {
 	@PostMapping("/kdg/search")
 	public List<HashMap<String, String>> search(ChampionDto cDto) {
 	
+		log.info("================== cdto : {}",cDto);
+		
 		return cs.searchChamp(cDto);
 		
 	}

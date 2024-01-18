@@ -11,6 +11,7 @@
 		$('#anBtn').hide();
 		$('#champList').show();
 		$('#searchChamp').show();
+		$('.positionICN').show();
 		$('#itemList').hide();
 		$('#searchChamp').val('');
 		
@@ -32,6 +33,7 @@
 		$('#' + d).html(b);
 		$('#champList').hide();
 		$('#searchChamp').hide();
+		$('.positionICN').hide();
 		
 		if($('#myChampName').text() != ''){
 			if($('#enemyChampName').text() != ''){
@@ -75,6 +77,8 @@
 	transform: translate(-50%, -50%);
 	
 	cursor: url(../img/unavailable.png) 2 2, auto;
+	
+	z-index: 1;
 }
 
 #enemyChampion #enemyChamp {
@@ -117,9 +121,7 @@
 	background-color: #091428;
 	color: #C8AA6E;
 	
-	position: relative;
 	top: 60px;
-	
 	
 	width: 78%;
 	height: 800px;
@@ -137,8 +139,7 @@
 
 	background-color: #091428;
 	color: #C8AA6E;
-	
-	position: relative;
+
 	top: 60px;
 	
 	
@@ -183,20 +184,23 @@ span {
 	text-align: center;
 }
 
-#searchChamp {
-	margin: 10px 10px 10px 0px;
+.searchBox #searchChamp {
 	display: none;
-	background-color: #FFFFFF;
+	
+	color: #C8AA6E;
+	margin: 10px 10px 10px 0px;
+	background-color: #091428;
 	padding-left: 30px;
+	outline: none;
 }
 
 .searchBox{
 	width: 650px;
-	height: 40px;
-	
-	position: relative;
+	height: 60px;
 	
 	cursor: url(../img/normal.png) 2 2, auto;
+	
+	margin-left: 217px;
 }
 
 .searchBox input[type=text] {
@@ -233,8 +237,16 @@ img:hover {
 	top: 650px;
 }
 
-.positionICN {
+.searchBox .positionICN {
+	display: none;
 	margin: 5px;
+	
+	cursor: url(../img/unavailable.png) 2 2, auto;
+}
+
+#champs {
+	width: 100%;
+	height: 500px;
 }
 
 
@@ -251,29 +263,25 @@ img:hover {
 				<button id = "anBtn">분석하기</button>
 		</div>
 		<!-- <h1>김동근 페이지 입니다.</h1> -->
-		<div id="myChampion">
-			<img onclick="javascript:champ(this.id)" src="../img/champ.jpg"
-				id="myChamp"></img>
+		<div id="champs">
+			<div id="myChampion">
+				<img onclick="javascript:champ(this.id)" src="../img/champ.jpg" id="myChamp"></img>
+			</div>
+		
+			<div id="enemyChampion">
+				<img onclick="javascript:champ(this.id)" src="../img/champ.jpg" id="enemyChamp"></img>
+			</div>
+			<h1 id="versus">vs</h1>
 		</div>
 		
-		<div id="enemyChampion">
-			<img onclick="javascript:champ(this.id)" src="../img/champ.jpg"
-				id="enemyChamp"></img>
-		</div>
-		
-		<h1 id="versus">vs</h1>
-		
-
 		<div class = "searchBox">
 			<input type="text" id="searchChamp" name="searchChamp" placeholder="ex) 가렌, garen, ㄱㄹ...">
-			<img id="top" class="positionICN" src="../img/top.png">
-			<img id="jug" class="positionICN" src="../img/jug.png">
-			<img id="mid" class="positionICN" src="../img/mid.png">
-			<img id="adc" class="positionICN" src="../img/adc.png">
-			<img id="sup" class="positionICN" src="../img/sup.png">		
-			<div class = "btnBox"></div>
+			<img id="top" class="positionICN" src="../img/top.png" name="top" onclick="line(this.id)">
+			<img id="jug" class="positionICN" src="../img/jug.png" name="jug" onclick="line(this.id)">
+			<img id="mid" class="positionICN" src="../img/mid.png" name="mid" onclick="line(this.id)">
+			<img id="adc" class="positionICN" src="../img/adc.png" name="adc" onclick="line(this.id)">
+			<img id="sup" class="positionICN" src="../img/sup.png" name="sup" onclick="line(this.id)">		
 		</div>
-		<div style="margin-top: 40px;"></div>
 		<div id="champList">
 			<ul>
 				<c:forEach var="cham" items="${list}">
@@ -283,7 +291,6 @@ img:hover {
 						<span>${cham.champion_name_kr}</span>
 					</li>
 				</c:forEach>
-				
 			</ul>
 		</div>
 		<div id="itemList">
@@ -302,11 +309,13 @@ img:hover {
 			data = {
 				"searchChamp" : cn
 			}
+			
 			$.ajax({
 				type : "POST",
 				url : "/kdg/search",
 				data : data,
-				success : function(res) {							
+				success : function(res) {
+					
 					str1 = "<ul>"
 					str2 = ''
 							for (let i = 0; i < res.length; i++){
@@ -322,145 +331,29 @@ img:hover {
 		});
 	});
 	
-	// top click
-	$(document).ready(function() {
-		$("#top").click(function() {
+	function line(a){
 			
-			$('#champList').empty();
-			data = {
-				"line" : top
-			}
-			$.ajax({
-				type : "POST",
-				url : "/kdg/position",
-				data : data,
-				success : function(res) {							
-					str1 = "<ul>"
-					str2 = ''
-							for (let i = 0; i < res.length; i++){
+		console.log(a);
+			
+	}
+
+/* 		$.ajax({
+			type : "POST",
+			url : "/kdg/position",
+			data : data,
+			success : function(res) {							
+				str1 = "<ul>"
+				str2 = ''
+						for (let i = 0; i < res.length; i++){
 								str2 += "<li><img id='"+res[i].champion_name+"' src='https://ddragon.leagueoflegends.com/cdn/14.1.1/img/champion/"+res[i].champion_name+".png'"
 								str2 += "width='72' height='72' alt='"+res[i].champion_name+"' class='bg-image' onclick='javascript:submit(this.id)'>"
 								str2 +=	"<span>"+res[i].champion_name_kr+"</span></li>"
-								}
-					str3="</ul>"
+							}
+				str3="</ul>"
 					
-					$('#champList').html(str1 + str2 + str3)
-				}
-			})
-		});
-	});
-	
-	// jug click
-	$(document).ready(function() {
-		$("#jug").click(function() {
-			
-			$('#champList').empty();
-			data = {
-				"line" : jug
+				$('#champList').html(str1 + str2 + str3)
 			}
-			$.ajax({
-				type : "POST",
-				url : "/kdg/position",
-				data : data,
-				success : function(res) {							
-					str1 = "<ul>"
-					str2 = ''
-							for (let i = 0; i < res.length; i++){
-								str2 += "<li><img id='"+res[i].champion_name+"' src='https://ddragon.leagueoflegends.com/cdn/14.1.1/img/champion/"+res[i].champion_name+".png'"
-								str2 += "width='72' height='72' alt='"+res[i].champion_name+"' class='bg-image' onclick='javascript:submit(this.id)'>"
-								str2 +=	"<span>"+res[i].champion_name_kr+"</span></li>"
-								}
-					str3="</ul>"
-					
-					$('#champList').html(str1 + str2 + str3)
-				}
-			})
-		});
-	});
-	
-	// mid click
-	$(document).ready(function() {
-		$("#mid").click(function() {
-			
-			$('#champList').empty();
-			data = {
-				"line" : mid
-			}
-			$.ajax({
-				type : "POST",
-				url : "/kdg/position",
-				data : data,
-				success : function(res) {							
-					str1 = "<ul>"
-					str2 = ''
-							for (let i = 0; i < res.length; i++){
-								str2 += "<li><img id='"+res[i].champion_name+"' src='https://ddragon.leagueoflegends.com/cdn/14.1.1/img/champion/"+res[i].champion_name+".png'"
-								str2 += "width='72' height='72' alt='"+res[i].champion_name+"' class='bg-image' onclick='javascript:submit(this.id)'>"
-								str2 +=	"<span>"+res[i].champion_name_kr+"</span></li>"
-								}
-					str3="</ul>"
-					
-					$('#champList').html(str1 + str2 + str3)
-				}
-			})
-		});
-	});
-	
-	//adc click
-	$(document).ready(function() {
-		$("#adc").click(function() {
-			
-			$('#champList').empty();
-			data = {
-				"line" : adc
-			}
-			$.ajax({
-				type : "POST",
-				url : "/kdg/position",
-				data : data,
-				success : function(res) {							
-					str1 = "<ul>"
-					str2 = ''
-							for (let i = 0; i < res.length; i++){
-								str2 += "<li><img id='"+res[i].champion_name+"' src='https://ddragon.leagueoflegends.com/cdn/14.1.1/img/champion/"+res[i].champion_name+".png'"
-								str2 += "width='72' height='72' alt='"+res[i].champion_name+"' class='bg-image' onclick='javascript:submit(this.id)'>"
-								str2 +=	"<span>"+res[i].champion_name_kr+"</span></li>"
-								}
-					str3="</ul>"
-					
-					$('#champList').html(str1 + str2 + str3)
-				}
-			})
-		});
-	});
-	
-	// sup click
-	$(document).ready(function() {
-		$("#sup").click(function() {
-			
-			$('#champList').empty();
-			data = {
-				"line" : sup
-			}
-			$.ajax({
-				type : "POST",
-				url : "/kdg/position",
-				data : data,
-				success : function(res) {							
-					str1 = "<ul>"
-					str2 = ''
-							for (let i = 0; i < res.length; i++){
-								str2 += "<li><img id='"+res[i].champion_name+"' src='https://ddragon.leagueoflegends.com/cdn/14.1.1/img/champion/"+res[i].champion_name+".png'"
-								str2 += "width='72' height='72' alt='"+res[i].champion_name+"' class='bg-image' onclick='javascript:submit(this.id)'>"
-								str2 +=	"<span>"+res[i].champion_name_kr+"</span></li>"
-								}
-					str3="</ul>"
-					
-					$('#champList').html(str1 + str2 + str3)
-				}
-			})
-		});
-	});
+		}) */
 	
 	$(document).ready(function() {
 		$("#anBtn").click(function() {
