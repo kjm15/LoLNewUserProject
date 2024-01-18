@@ -75,6 +75,7 @@ public class MainController {
 		return "shop";
 	}
 
+
 	@GetMapping("/kyt")
 	public String go3() {
 
