@@ -16,7 +16,8 @@
 	integrity="sha384-Rx+T1VzGupg4BHQYs2gCW9It+akI2MM/mndMCy36UVfodzcJcF0GGLxZIzObiEfa"
 	crossorigin="anonymous"></script>
 
-   <script type="text/javascript" src="https://code.jquery.com/jquery-1.12.4.min.js" ></script>
+<script type="text/javascript"
+	src="https://code.jquery.com/jquery-1.12.4.min.js"></script>
 
 <input id="userId" type="hidden" value="${userId}">
 
@@ -37,7 +38,9 @@
 				<span class="navbar-brand">${userId}님 접속중</span>
 				<button type="button" class="btn btn-primary" data-bs-toggle="modal"
 					data-bs-target="#exampleModal3">결제하기</button>
-				<button  ><a class="btn btn-secondary" href="/logout">로그아웃</a></button>
+				<button>
+					<a class="btn btn-secondary" href="/logout">로그아웃</a>
+				</button>
 
 
 
@@ -63,7 +66,14 @@
 	</div>
 </nav>
 <div class="idsearch" align="center"
-	style="height: 100px; background: lightblue;"></div>
+	style="height: 100px; background: whitesmoke;">
+<ul class="nav justify-content-center">
+	<li class="nav-item"><a class="nav-link" href="/kjm">main</a></li>
+	<li class="nav-item"><a class="nav-link" href="/kjm1">아이템</a></li>
+	<li class="nav-item"><a class="nav-link" href="/kjm2">스킬</a></li>
+	<li class="nav-item"><a class="nav-link" href="/kjm3">Link</a></li>
+	<li class="nav-item"><a class="nav-link" href="/kjm4">최근전적</a></li>
+</ul>
 </div>
 
 
@@ -105,7 +115,7 @@
 
 <!-- Modal -->
 <div class="modal fade" id="exampleModal2" tabindex="-1"
-	aria-labelledby="exampleModalLabel"  aria-hidden="true">
+	aria-labelledby="exampleModalLabel" aria-hidden="true">
 	<div class="modal-dialog">
 		<div class="modal-content">
 			<div class="modal-header">
@@ -151,7 +161,10 @@
 
 
 				<div>
-					<h3 class="amount">결제 금액 :<span id = "tMoney"></span> 원<input type = "hidden" id = "totalMoney" value ="0" ></h3>
+					<h3 class="amount">
+						결제 금액 :<span id="tMoney"></span> 원<input type="hidden"
+							id="totalMoney" value="0">
+					</h3>
 					<p>원하는 금액을 선택 해 주세요</p>
 					<select onchange="monthSelect(this)">
 						<option value="0">선택하기</option>
@@ -159,19 +172,21 @@
 						<option value="5500">5,500원 : 5,500 포인트 충전</option>
 						<option value="11000">11,000원 : 11,000 포인트 충전</option>
 						<option value="55000">55,000원 : 55,000 포인트 충전</option>
-					
+
 					</select>
 				</div>
 
 			</div>
-			<div align = "center">
-			
-			<input type="button" class="btn btn-primary btn-sm" onclick="kakaopay()" value = "결제하기">
-			<input type="button" class="btn btn-secondary btn-sm"data-bs-dismiss="modal"  value = "취소하기">
-			
+			<div align="center">
+
+				<input type="button" class="btn btn-primary btn-sm"
+					onclick="kakaopay()" value="결제하기"> <input type="button"
+					class="btn btn-secondary btn-sm" data-bs-dismiss="modal"
+					value="취소하기">
+
 			</div>
-			
-			
+
+
 			<p></p>
 		</div>
 	</div>

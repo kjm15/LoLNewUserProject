@@ -36,9 +36,8 @@ public class MemberService {
 	}
 
 	@Transactional
-	public MemberDto join(MemberDto memberDto){
-		
-	
+	public MemberDto join(MemberDto memberDto) {
+
 		if (memberDao.find(memberDto) == 1) {
 			throw new CustomException("아이디가 중복되었습니다.");
 		}
@@ -53,40 +52,41 @@ public class MemberService {
 
 		return memberDto;
 	}
+
 	@Transactional
 	public void payDbSave(PaymentDto paymentDto) {
-		
-		int result1 =memberDao.payDbSave(paymentDto);
-		
+
+		int result1 = memberDao.payDbSave(paymentDto);
+
 		int result2 = memberDao.updatePoint(paymentDto);
-		
-		if(result1 ==0) {
+
+		if (result1 == 0) {
 			throw new CustomException("paymentT 결제 db에러");
-		}else if(result2 == 0) {		
+		} else if (result2 == 0) {
 			throw new CustomException("memberT 포인트 db에러");
 		}
-		
+
 	}
 
 	public MemberDto main(MemberDto memberDto) {
-		
+
 		return memberDao.main(memberDto);
-		
+
 	}
+
 	@Transactional
 	public DuoSearchDto saveDbDuo(DuoSearchDto duoSearchDto) {
-		
+
 		DuoSearchDto dDto = memberDao.saveDbDuo(duoSearchDto);
-		
-		if(dDto != null) {
+
+		if (dDto != null) {
 			return dDto;
-			
-		}else {
-			
+
+		} else {
+
 			throw new CustomException("duo등록 실패");
 		}
-	
-		
+
 	}
 
 	public ArrayList<HashMap<String, DuoSearchDto>> duoInfo() {
@@ -94,13 +94,19 @@ public class MemberService {
 		return memberDao.duoInfo();
 	}
 
-	public DuoSearchDto deleteById(DuoSearchDto duoSearchDto) {
-	 return memberDao.deleteById(duoSearchDto);
+	public DuoSearchDto infoDuoT(DuoSearchDto duoSearchDto) {
+		return memberDao.infoDuoT(duoSearchDto);
 	}
 
 	public void deleteDuo(DuoSearchDto duoSearchDto) {
 		memberDao.deleteDuo(duoSearchDto);
-		
+
+	}
+
+	public DuoSearchDto comparedcnt(DuoSearchDto duoSearchDto) {
+
+		return memberDao.comparedcnt(duoSearchDto);
+
 	}
 
 }
