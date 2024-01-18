@@ -359,7 +359,7 @@ img:hover {
 				$('#champList').html(str1 + str2 + str3)
 			}
 		})
-	}
+	} 
 	
 	$(document).ready(function() {
 		$("#anBtn").click(function() {
