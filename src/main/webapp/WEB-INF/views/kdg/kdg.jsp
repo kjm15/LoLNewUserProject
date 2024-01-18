@@ -255,6 +255,7 @@ img:hover {
 
 </head>
 <body>
+<h1>한번 날잡아서 js 파일이랑 css파일 정리해서 모듈화 시키기 :by 장기훈</h1>
 	<%@include file="../inc/header.jsp"%>
 	<div style="height: 2000px; background: #3C3C41;">
 		<p id="name" style="visibility: hidden; position: absolute;"></p>
