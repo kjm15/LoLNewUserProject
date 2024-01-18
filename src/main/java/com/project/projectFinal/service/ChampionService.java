@@ -36,5 +36,11 @@ public class ChampionService {
 		return iList;
 		
 	}
+
+	public List<HashMap<String, String>> champLine(ChampionDto cDto) {
+		
+		return cd.champLine(cDto);
+		
+	}
 	
 }

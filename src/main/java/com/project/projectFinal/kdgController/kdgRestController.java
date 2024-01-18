@@ -37,9 +37,9 @@ public class kdgRestController {
 	}
 	
 	@PostMapping("/kdg/position")
-	public void line(ChampionDto cDto) {
+	public List<HashMap<String, String>> line(ChampionDto cDto) {
 	
-		
+		return cs.champLine(cDto);
 		
 	}
 	

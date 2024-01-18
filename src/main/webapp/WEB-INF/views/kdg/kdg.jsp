@@ -333,16 +333,21 @@ img:hover {
 	});
 	
 	function line(a){
-			
+		
 		console.log(a);
-			
-	}
-
-/* 		$.ajax({
+		
+		$('#champList').empty();
+		data = {
+			"line" : a
+		}
+	 	$.ajax({
 			type : "POST",
 			url : "/kdg/position",
 			data : data,
-			success : function(res) {							
+			success : function(res) {	
+				
+				console.log(res);
+				
 				str1 = "<ul>"
 				str2 = ''
 						for (let i = 0; i < res.length; i++){
@@ -351,10 +356,11 @@ img:hover {
 								str2 +=	"<span>"+res[i].champion_name_kr+"</span></li>"
 							}
 				str3="</ul>"
-					
+						
 				$('#champList').html(str1 + str2 + str3)
 			}
-		}) */
+		})
+	}
 	
 	$(document).ready(function() {
 		$("#anBtn").click(function() {
