@@ -15,8 +15,8 @@ public interface ChampionDao {
 
 	public List<HashMap<String,String>> searchChamp(ChampionDto cDto);
 
-	public List<HashMap<String,ItemDto>> item(ItemDto iDto);
-
 	public List<HashMap<String, String>> champLine(ChampionDto cDto);
+
+	public List<HashMap<String,ItemDto>> itemTest(ItemDto iDto);
 
 }

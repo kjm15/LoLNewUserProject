@@ -22,17 +22,15 @@ public class kdgRestController {
 	
 	@PostMapping("/kdg/search")
 	public List<HashMap<String, String>> search(ChampionDto cDto) {
-	
-		log.info("================== cdto : {}",cDto);
 		
 		return cs.searchChamp(cDto);
 		
 	}
 	
-	@PostMapping("/kdg/item")
-	public List<HashMap<String, ItemDto>> item(ItemDto IDto) {
-	
-		return cs.item(IDto);
+	@PostMapping("/kdg/itemTest")
+	public List<HashMap<String, ItemDto>> itemTest(ItemDto IDto) {
+		
+		return cs.itemTest(IDto);
 		
 	}
 	
