@@ -1,4 +1,3 @@
-
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
@@ -102,16 +101,16 @@
 	font-size: 100px;
 }
 
-#champList::-webkit-scrollbar, body::-webkit-scrollbar, #itemList::-webkit-scrollbar {
+#champList::-webkit-scrollbar, body::-webkit-scrollbar {
 	width: 8px;
 }
-#champList::-webkit-scrollbar-thumb, body::-webkit-scrollbar-thumb, #itemList::-webkit-scrollbar-thumb {
+#champList::-webkit-scrollbar-thumb, body::-webkit-scrollbar-thumb {
 	height: 3px;
 	background: #785A28;
 	
 	border-radius: 15px;
 }
-#champList::-webkit-scrollbar-track, body::-webkit-scrollbar-track, #itemList::-webkit-scrollbar-track {
+#champList::-webkit-scrollbar-track, body::-webkit-scrollbar-track {
 	background: rgba(33, 122, 244, .1);
 }
 
@@ -136,21 +135,16 @@
 }
 
 #itemList {
-	padding: 0px 20px 20px 20px;
 
 	background-color: #091428;
 	color: #C8AA6E;
-
-	top: 60px;
-	
 	
 	width: 78%;
 	height: 800px;
 	
-	display: none;
+ 	display: none;
 	
-	overflow: scroll;
-	float: left;
+	position: relative;
 	
 	margin-left: 200px;
 }
@@ -215,7 +209,7 @@ span {
 	cursor: auto;
 }
 
-img:hover {
+#champList img:hover, .searchBox .positionICN:hover {
 	-webkit-transform: scale(1.4);
 	transform: scale(1.4);
 }
@@ -236,6 +230,8 @@ img:hover {
 	
 	left: 41%;
 	top: 650px;
+	
+	cursor: url(../img/unavailable.png) 2 2, auto;
 }
 
 .searchBox .positionICN {
@@ -250,6 +246,50 @@ img:hover {
 	height: 500px;
 }
 
+#itemList #champs #item0 img {
+	border-radius: 50%;
+	border: 1px solid black;
+	width: 200px;
+	height: 200px;
+	position: absolute;
+	
+	top: 50px;
+	left: 43%;
+	
+	cursor: url(../img/unavailable.png) 2 2, auto;
+	
+	z-index: 1;
+}
+
+#itemList #champs #item1 img {
+	border-radius: 50%;
+	border: 1px solid black;
+	width: 200px;
+	height: 200px;
+	position: absolute;
+	
+	top: 50%;
+	left: 27%;
+	
+	cursor: url(../img/unavailable.png) 2 2, auto;
+	
+	z-index: 1;
+}
+
+#itemList #champs #item2 img {
+	border-radius: 50%;
+	border: 1px solid black;
+	width: 200px;
+	height: 200px;
+	position: absolute;
+	
+	top: 50%;
+	left: 58%;
+	
+	cursor: url(../img/unavailable.png) 2 2, auto;
+	
+	z-index: 1;
+}
 
 </style>
 
@@ -275,6 +315,8 @@ img:hover {
 			<h1 id="versus">vs</h1>
 		</div>
 		
+<!-- 		<div style="width: 300px; height: 1000px; display: flex; background-color: #ffffff;"></div> -->
+		
 		<div class = "searchBox">
 			<input type="text" id="searchChamp" name="searchChamp" placeholder="ex) 가렌, garen, ㄱㄹ...">
 			<img id="top" class="positionICN" src="../img/top.png" name="top" onclick="line(this.id)">
@@ -295,7 +337,19 @@ img:hover {
 			</ul>
 		</div>
 		<div id="itemList">
+			<div id="champs">
+				<div id="item0">
+					
+				</div>
 			
+				<div id="item1">
+					
+				</div>
+			
+				<div id="item2">
+					
+				</div>
+			</div>
 		</div>
 		
 	</div>
@@ -360,46 +414,47 @@ img:hover {
 				$('#champList').html(str1 + str2 + str3)
 			}
 		})
-	}
+	} 
 	
 	$(document).ready(function() {
 		$("#anBtn").click(function() {
 			
-			var a = $('#myChampName').text();
-			var b = $('#enemyChampName').text();
 			
-			console.log(a);
-			console.log(b);
+			var myChampName = $('#myChampName').text();
+			console.log(myChampName);
 			
+			data = {
+				
+				"champName" : myChampName
+				
+			}
 			$.ajax({
 				type : "POST",
-				url : "/kdg/item",
-				success : function(res) {							
-					console.log(res);
-					console.log(res[0].item_num);
-					console.log(res[0].item_name);
+				url : "/kdg/itemTest",
+				data : data,
+				success : function(res) {			
 					
-					str1 = "<ul>"
+					console.log(res);
+					
+					str1 = "<div id=champs>"
 					str2 = ''
 							for (let i = 0; i < res.length; i++){
-								str2 += "<li><img id='"+res[i].item_num+"' src='https://ddragon.leagueoflegends.com/cdn/14.1.1/img/item/"+res[i].item_num+".png'"
-								str2 += "width='72' height='72'>"
-								str2 +=	"<span>"+res[i].item_name+"</span></li>"
+									str2 += "<div id=item"+i+">"
+									str2 += "<img src='https://ddragon.leagueoflegends.com/cdn/14.1.1/img/item/"+res[i].item_id+".png'></img>"
+									str2 += "</div>"
 								}
-					str3="</ul>"
-						
-					$('#itemList').html(str1 + str2 + str3);
+					str3 = "</div>"
+								
+					$('#itemList').html(str1 + str2 + str3)				
 					$('#itemList').show();
-					$('#anBtn').hide();
+
 				}
 			})
+
 			
 		});
 	});	
 	
 </script>
 </body>
-
-
-
 </html>

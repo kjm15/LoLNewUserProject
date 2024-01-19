@@ -11,12 +11,15 @@
 		where champion_name_kr like concat('%',#{searchChamp},'%') or champion_name like concat('%',#{searchChamp},'%') or champion_name_cons like concat('%',#{searchChamp},'%');
 	</select>
 	
-	<select id="item">
-		select * from test;
-	</select>
-	
 	<select id="champLine">
 		select champion_name_kr,champion_name from champName
 		where line like concat('%',#{line},'%');
 	</select>
-</mapper>
+
+	<select id="itemTest">
+		SELECT item_id, COUNT(item_id) AS cnt 
+		FROM itemTest where champName = #{champName} 
+		GROUP BY item_id 
+		order by cnt desc 
+		limit 3;
+	</select>

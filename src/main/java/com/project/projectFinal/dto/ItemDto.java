@@ -9,7 +9,12 @@ import lombok.NoArgsConstructor;
 @NoArgsConstructor
 public class ItemDto {
 
-	private int item_num;
-	private String item_name;
-
+	private int match_id;
+	private int participant_id;
+	private String champName;
+	private String line;
+	private String team;
+	private String win;
+	private int item_id;
+	private int cnt;
 }

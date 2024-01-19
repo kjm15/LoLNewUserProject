@@ -29,17 +29,16 @@ public class ChampionService {
 		
 	}
 
-	public List<HashMap<String, ItemDto>> item(ItemDto iDto) {
-		
-		List<HashMap<String,ItemDto>> iList = cd.item(iDto);
-		
-		return iList;
-		
-	}
 
 	public List<HashMap<String, String>> champLine(ChampionDto cDto) {
 		
 		return cd.champLine(cDto);
+		
+	}
+
+	public List<HashMap<String, ItemDto>> itemTest(ItemDto iDto) {
+		
+		return cd.itemTest(iDto);
 		
 	}
 	

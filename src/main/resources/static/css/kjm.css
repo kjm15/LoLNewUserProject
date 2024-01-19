@@ -1,3 +1,4 @@
+
 @charset "UTF-8";
 #Sform {
           display: inline-block;
@@ -93,6 +94,7 @@
 	border: 1px solid black;
 	
 }
+
 #chartandmsg{
 	width : 1000px;
 	height : 150px;
