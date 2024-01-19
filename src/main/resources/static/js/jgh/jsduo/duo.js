@@ -18,7 +18,6 @@ $('#duoSearchBtn').on("click", function() {
 
 		return false;
 	}
-	stop();
 	data = {
 		'userId': userId,
 		'myPosition': myPosition,
@@ -68,13 +67,13 @@ $('#duoSearchBtn').on("click", function() {
 
 			document.getElementById('dcnt').value = parseInt(dcntvalue) + 1
 
-			interval = setInterval(update, 4000)
+
 
 
 		}, error: function(request, status, error) {
-			
-		
-			interval = setInterval(update, 4000)
+
+
+
 
 		}
 	})

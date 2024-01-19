@@ -24,19 +24,7 @@
 <!-- <script src="js/main.js"/> -->
 
 <script src="js/aLol/loldata1.js"></script>
-<script type="text/javascript">
 
-
-$(document).ready(function() {
-	//메세지 형태의 값은 다 찾기
-	if ('${msg}' != '') {
-		alert('${msg}');
-	}
-	else if ('${error}' != '') {
-		alert('${error}');
-	}
-})
-</script>
 </body>
 
 </html>
