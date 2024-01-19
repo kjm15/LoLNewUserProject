@@ -29,7 +29,7 @@
 <body>
 
 	<%@include file="../inc/header2.jsp"%>
-	<div id="div1" style="height: 700px; background: whitesmoke;">
+	<div id="div1" style="height: 1500px; background: whitesmoke;">
 		<nav class="navbar bg-body-tertiary,nav c">
 			<div class="container-fluid" id=Sform>
 				<form class="d-flex" role="search">
@@ -45,7 +45,7 @@
 				<div class="profile-icon" id="profile-icon"></div>
 				<div class="profile-name" id="profile-name">
 					<p class="h1" id="lolusername">
-						김창섭 <small class="text-body-secondary">#창렬하고섭섭하다</small>
+						김창섭 <small class="text-body-secondary">#창렬섭섭</small>
 					</p>
 				</div>
 				<div class="content" id="tierbox">
@@ -59,6 +59,22 @@
 						<div class="winning-percentage" id="winning-percentage">10.597%</div>
 					</div>
 
+				</div>
+			</div>
+			<div class="container" id="chartandmsg">
+				<div id="chart">차트</div>
+				<div id="img">img</div>
+				<div id="msg">너 개못하잖아</div>
+			</div>
+			<div class="container" id="win-lose-result">
+				<div class="container text-center">
+					<div class="row row-cols-1 row-cols-sm-2 row-cols-md-5">
+						<div class="col">B</div>
+						<div class="col">O</div>
+						<div class="col">A</div>
+						<div class="col">R</div>
+						<div class="col">D</div>
+					</div>
 				</div>
 			</div>
 		</div>

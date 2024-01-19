@@ -6,7 +6,7 @@
         }
 #container1 {
     width: 1080px;
-    height: 1000px;
+    height: 2000px;
     margin: 0 auto;
     margin-top: 30px;
     background-color: wihte;
@@ -93,4 +93,39 @@
 	text-align : center;
 	border: 1px solid black;
 	
+}
+
+#chartandmsg{
+	width : 1000px;
+	height : 150px;
+	margin-top : 50px;
+	background-color : white;
+}
+#chart{
+	width : 29%;
+	height : 100px;
+	float : left;
+	margin : 10px;
+	border : 1px solid black;
+}
+#img{
+	width : 29%;
+	height : 100px;
+	float : left;
+	margin : 10px;
+	border : 1px solid black;
+}
+#msg{
+	width : 29%;
+	height : 100px;
+	float : left;
+	margin : 10px;
+	text-align : center;
+	border : 1px solid black;
+}
+#win-lose-result{
+	width : 1000px;
+	height :1000px;
+	margin : 0auto;
+	background-color : whitesmoke;
 }
