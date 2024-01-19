@@ -5,6 +5,7 @@ import org.springframework.web.bind.annotation.ExceptionHandler;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import com.project.projectFinal.customEx.CustomException;
+import com.project.projectFinal.customEx.JangShopException;
 
 import lombok.extern.slf4j.Slf4j;
 
@@ -16,7 +17,7 @@ public class DbErrorController{
 	public String error(RedirectAttributes redirectAttributes, Exception ex) {
 		
 		redirectAttributes.addFlashAttribute("error",ex.getMessage());
-//		log.info("====err : {}",ex.getMessage());
+//		log.info("====err : {}",ex.getMesOsage());
 		return "redirect:/";
 	}
 	@ExceptionHandler(JangShopException.class)
