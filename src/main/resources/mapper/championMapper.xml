@@ -23,4 +23,3 @@
 		order by cnt desc 
 		limit 3;
 	</select>
-</mapper>
