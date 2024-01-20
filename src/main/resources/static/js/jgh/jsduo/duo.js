@@ -69,9 +69,8 @@ $('#duoSearchBtn').on("click", function() {
 
 
 
-
 		}, error: function(request, status, error) {
-
+			
 
 
 

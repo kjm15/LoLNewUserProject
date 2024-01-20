@@ -47,4 +47,5 @@ public class RestDuoController {
 		return memberService.comparedcnt(duoSearchDto);
 
 	}
+	
 }

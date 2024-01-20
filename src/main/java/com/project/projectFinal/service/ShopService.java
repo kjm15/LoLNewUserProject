@@ -1,3 +1,4 @@
+
 package com.project.projectFinal.service;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -63,7 +64,7 @@ public class ShopService {
 				|| mDto.getUserPoint() < 0 || memberDto.getFriendPoint() < 0
 				|| memberDto.getFriendId().equals(memberDto.getUserId())) {
 			throw new JangShopException("보내기 중 오류발생, 트랜잭션발동");
- 
+
 		}
 
 		return mDto;
