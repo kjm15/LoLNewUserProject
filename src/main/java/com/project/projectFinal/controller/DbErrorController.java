@@ -27,7 +27,7 @@ public class DbErrorController {
 	public String shopError( Exception ex) {
 
 //		redirectAttributes.addFlashAttribute("error", );
-
+		                            
 		return ex.getMessage();
 	}
 }

@@ -23,7 +23,7 @@ public class RestDuoController {
 
 			duoSearchDto.setUserId("비회원");
 		}
-//		log.info("==========={}",duoSearchDto);
+
 
 		return memberService.saveDbDuo(duoSearchDto);
 	}
@@ -43,8 +43,6 @@ public class RestDuoController {
 
 	@PostMapping("/comparedcnt")
 	public DuoSearchDto comparedcnt(DuoSearchDto duoSearchDto) {
-
-		log.info("=={}", duoSearchDto);
 
 		return memberService.comparedcnt(duoSearchDto);
 
