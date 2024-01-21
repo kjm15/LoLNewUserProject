@@ -20,9 +20,5 @@ public class DuoController {
 	
 		return "jgh/jgh";
 	}
-	@GetMapping("/jgh/jghex1")
-	public String jghex1(Model model) {
-	
-		return "jgh/jghex1";
-	}
+
 }

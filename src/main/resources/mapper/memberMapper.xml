@@ -82,7 +82,7 @@
 	</delete >
 		<select id="comparedcnt">
 
-		select * from duoT where dcnt = #{dcnt};
+		select * from duoT order by dcnt desc limit 1;
 
 	</select>
 

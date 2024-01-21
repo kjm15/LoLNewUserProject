@@ -2,36 +2,46 @@
  * 
  */
 
+const sse = new EventSource("http://localhost:8080/jgh");
+sse.addEventListener('connect', (e) => {
 
-$('#duoSearchBtn').on("click", function() {
+});
 
-	let userId = $('#userId').val()
-	let myPosition = $('#position').val()
-	let duoPosition = $('input[name=inlineRadioOptions]:checked').val()
-	let tier = $('#tier').val()
-	let gameType = $('#gameType').val()
-	let memo = $('#textArea').val()
+sse.addEventListener('count', (e) => {
+showNewDuo()
+	//	update()
 
-	if (myPosition == '' || duoPosition == '' || tier == '' || gameType == '' || textArea == '') {
+});
+//sse.onerror = () => {
+//
+//	sse.close();
+//}
 
-		alert("빠진부분이 있습니다 확인해주세요")
 
-		return false;
-	}
-	data = {
-		'userId': userId,
-		'myPosition': myPosition,
-		'duoPosition': duoPosition,
-		'tier': tier,
-		'gameType': gameType,
-		'memo': memo
-	}
 
+$('#msgbtn').on("click", function() {
+	
+	update()
+
+	$.ajax({
+		type: 'post',
+		url: '/jgh',
+
+		success: function(res) {
+
+		}, error: function(error) {
+			console.log("에러")
+			//			update()
+		}
+	})
+
+})
+//보여주기
+function showNewDuo() {
 	$.ajax({
 
 		type: 'post',
-		url: '/saveDb',
-		data: data,
+		url: '/comparedcnt',
 		success: function(res) {
 
 			trs = "<tr  id = " + res.dcnt + ">"
@@ -63,23 +73,54 @@ $('#duoSearchBtn').on("click", function() {
 			$('#exampleModal').modal("hide");
 
 			$('#' + res.dcnt).show(4200)
-			let dcntvalue = $('#dcnt').val();
 
-			document.getElementById('dcnt').value = parseInt(dcntvalue) + 1
-
-
-
-		}, error: function(request, status, error) {
-			
-
-
-
+		}, error: function(error) {
+			console.log("에러")
 		}
 	})
 
-})
+}
 
 
+//저장
+
+function update() {
+
+	let userId = $('#userId').val()
+	let myPosition = $('#position').val()
+	let duoPosition = $('input[name=inlineRadioOptions]:checked').val()
+	let tier = $('#tier').val()
+	let gameType = $('#gameType').val()
+	let memo = $('#textArea').val()
+
+	if (myPosition == '' || duoPosition == '' || tier == '' || gameType == '' || textArea == '') {
+
+		alert("빠진부분이 있습니다 확인해주세요")
+
+		return false;
+	}
+	data = {
+		'userId': userId,
+		'myPosition': myPosition,
+		'duoPosition': duoPosition,
+		'tier': tier,
+		'gameType': gameType,
+		'memo': memo
+	}
+
+	$.ajax({
+
+		type: 'post',
+		url: '/saveDb',
+		data: data,
+		success: function(res) {
+		
+		}, error: function(error) {
+			console.log("에러")
+		}
+	})
+
+}
 
 function deleteDuo(dcnt) {
 

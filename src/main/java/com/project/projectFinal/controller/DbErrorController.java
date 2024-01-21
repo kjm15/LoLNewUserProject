@@ -18,16 +18,14 @@ public class DbErrorController {
 
 
 		redirectAttributes.addFlashAttribute("error", ex.getMessage());
-//		log.info("====err : {}",ex.getMessage());
 
 		return "redirect:/";
 	}
 
 	@ExceptionHandler(JangShopException.class)
 	public String shopError( Exception ex) {
-
-//		redirectAttributes.addFlashAttribute("error", );
-		                            
+                    
 		return ex.getMessage();
 	}
+	
 }
