@@ -2,9 +2,9 @@
 
 
 
-$('#userId1').keyup(function() {
+$('#joinId').keyup(function() {
 
-	let userId = $('#userId1').val()
+	let userId = $('#joinId').val()
 
 	data = { 'userId': userId }
 
