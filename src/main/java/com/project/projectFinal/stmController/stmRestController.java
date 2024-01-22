@@ -19,7 +19,6 @@ public class stmRestController {
 	@PostMapping("/join/idCheck")
 	public MemberDto joinIdCheck(MemberDto memberDto,Model model) {
 		MemberDto mSer = memberService.joinIdCheck(memberDto);
-		
 		return mSer;
 	}
 	
