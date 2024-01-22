@@ -82,8 +82,9 @@
 
 				<h3>빈곳을 입력해 가입해주세요</h3>
 				<form action="/join" method="post">
-					아이디 : <input type="text" name="userId"> (ajax 비동기처리요망, 송태민 작업예정 태민이 작업후 삭제바람)</br> 패스워드
-					:<input type="text" name="userPw"> (추후에 ***로 변경)</br>
+					
+					아이디 : <input type="text" name="userId" id = "joinId"> <span id = "checkId"></span></br> 패스워드
+					:<input type="text" name="userPw" id = "joinPw"> (추후에 ***로 변경)</br>
 					<hr>
 					이름 : <input type="text" name="userName"> (db만들기) </br> e-mail :
 					<input type="text" name="userEmail"> (db만들기) </br>
@@ -91,7 +92,7 @@
 					<div class="modal-footer">
 						<button type="button" class="btn btn-secondary"
 							data-bs-dismiss="modal">닫기</button>
-						<button type="submit" class="btn btn-primary">회원가입하기</button>
+						<button type="submit" class="btn btn-primary" id = "joinbnt">회원가입하기</button>
 					</div>
 
 				</form>
@@ -176,7 +177,7 @@
 		</div>
 	</div>
 </div>
-
+<script defer src ="/js/stm/joinId.js"></script>
 
 
 
