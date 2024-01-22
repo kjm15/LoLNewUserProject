@@ -1,18 +1,12 @@
 package com.project.projectFinal.dao;
 
-import java.util.ArrayList;
-import java.util.HashMap;
-
 import org.apache.ibatis.annotations.Mapper;
 
-import com.project.projectFinal.dto.DuoSearchDto;
 import com.project.projectFinal.dto.MemberDto;
 import com.project.projectFinal.dto.PaymentDto;
 
 @Mapper
 public interface MemberDao {
-
-
 
 	MemberDto login(MemberDto memberDto);
 
@@ -26,19 +20,8 @@ public interface MemberDao {
 
 	int updatePoint(PaymentDto paymentDto);
 
-	DuoSearchDto saveDbDuo(DuoSearchDto duoSearchDto);
-
-	ArrayList<HashMap<String, DuoSearchDto>> duoInfo();
-
-	DuoSearchDto infoDuoT(DuoSearchDto duoSearchDto);
-
-	void deleteDuo(DuoSearchDto duoSearchDto);
-
-	DuoSearchDto comparedcnt(DuoSearchDto duoSearchDto);
-
 	int ajaxtest(MemberDto memberDto);
 
 	MemberDto joinIdCheck(MemberDto memberDto);
-
 
 }

@@ -14,7 +14,8 @@
 
 		select *
 		from memberT
-		where userId = #{userId} and userPw = #{userPw}
+		where userId = #{userId} and
+		userPw = #{userPw}
 
 	</select>
 
@@ -49,42 +50,12 @@
 
 		update memberT
 		set userPoint =
-		(select userPoint from memberT where userId = #{userId})+#{userPoint}
+		(select userPoint from
+		memberT where userId = #{userId})+#{userPoint}
 		where
 		userId = #{userId}
 
 	</update>
-
-	<select id="saveDbDuo">
-
-		insert into duoT(userId,myPosition,tier,duoPosition,gameType,memo)
-		values(#{userId},#{myPosition},#{tier},#{duoPosition},#{gameType},#{memo});
-
-		select * from duoT order by dcnt desc limit 1;
-
-	</select>
-
-	<select id="duoInfo">
-
-		select * from duoT order by dcnt desc limit 10;
-
-	</select>
-
-	<select id="infoDuoT">
-
-		select * from duoT where dcnt = #{dcnt};
-
-	</select>
-		<delete id="deleteDuo">
-
-		delete from duoT where dcnt = #{dcnt};
-
-	</delete >
-		<select id="comparedcnt">
-
-		select * from duoT order by dcnt desc limit 1;
-
-	</select>
 
 	<select id="ajaxtest">
 
@@ -94,9 +65,9 @@
 
 	</select>
 
-<select id="joinIdCheck">
-	select userId from memberT where userId=#{userId};
-</select>
+	<select id="joinIdCheck">
+		select userId from memberT where userId=#{userId};
+	</select>
 
 
 </mapper>

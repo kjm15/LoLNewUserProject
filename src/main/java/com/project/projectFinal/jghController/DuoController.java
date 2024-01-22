@@ -5,18 +5,19 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 
+import com.project.projectFinal.service.DuoService;
 import com.project.projectFinal.service.MemberService;
 
 @Controller
 public class DuoController {
 
 	@Autowired
-	MemberService memberService;
+	DuoService duoService;
 	
 	@GetMapping("/jgh")
 	public String duoInfo(Model model) {
 
-		model.addAttribute("dList", memberService.duoInfo());
+		model.addAttribute("dList", duoService.duoInfo());
 	
 		return "jgh/jgh";
 	}
