@@ -20,5 +20,5 @@ public class DuoController {
 	
 		return "jgh/jgh";
 	}
-	
+
 }
