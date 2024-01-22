@@ -295,6 +295,7 @@ span {
 
 </head>
 <body>
+<h1>이번주 안에 모듈화 해둬야됨 1월 26일까지 , 더 커지면 힘들다 //  해야됨 css, js by장기훈</h1>
 	<%@include file="../inc/header.jsp"%>
 	<div style="height: 2000px; background: #3C3C41;">
 		<p id="name" style="visibility: hidden; position: absolute;"></p>

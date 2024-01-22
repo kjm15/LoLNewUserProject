@@ -15,11 +15,11 @@
 				data-bs-target="#exampleModal">글쓰기</button>
 			<p></p>
 		</div>
-		
-		<input type = "hidden"  value ="${dList[0].dcnt}" id = "dcnt"/>
-		<table class="table table-dark table-hover">
+
+		<input type="hidden" value="${dList[0].dcnt}" id="dcnt" />
+		<table class="table table-dark table-hover" id="modal_wrap">
 			<thead>
-				<tr >
+				<tr>
 					<th>연승/연패</th>
 					<th>이름</th>
 					<th>주포지션</th>
@@ -29,26 +29,27 @@
 					<th>최근 챔피언</th>
 					<th>메모</th>
 					<th>등록일시</th>
-					<th></th>
+
 				</tr>
-					<tr>
-					<th colspan = 10 >=========================================================================================================================</th>
-					
+				<tr>
+					<th colspan=10>===============================================================================================================================</th>
+
 				</tr>
 			</thead>
 			<tbody id="preflag">
 
 				<c:forEach var="ditem" items="${dList}">
 
-					<tr><a></a>
-					
-						<td>개발중</td>
+					<tr>
+
+						<td>연승/페 개발중</td>
+
 						<td>${ditem.userId}</td>
 						<td>${ditem.myPosition}</td>
 						<td>${ditem.tier}</td>
 						<td>${ditem.gameType}</td>
 						<td>${ditem.duoPosition}</td>
-						<td>개발중</td>
+						<td>최근챔피언개발중</td>
 						<td>${ditem.memo}</td>
 						<td> ${ditem.date}</td>
 						<td>
@@ -57,11 +58,12 @@
 									data-bs-toggle="dropdown" aria-expanded="false">...</button>
 								<ul class="dropdown-menu">
 									<li><a class="dropdown-item" href="#">수정</a></li>
-									<li><a class="dropdown-item" href="javascript:deleteDuo(${ditem.dcnt})">삭제</a></li>
+									<li><a class="dropdown-item"
+										href="javascript:deleteDuo(${ditem.dcnt})">삭제</a></li>
 								</ul>
 							</div>
 						</td>
-						
+						<td><input type="hidden" value="${ditem.dcnt}"></td>
 					</tr>
 				 
 				</c:forEach>
@@ -186,7 +188,16 @@
 	</div>
 
 
-
+	<!-- Modal 클릭시 세부내용 -->
+	<div class="modal_background"></div>
+	<div class="modal_wrap">
+		<div class="modal_close">
+			<a href="#"><h2>x</h2></a>
+		</div>
+		<div align="center">내용들어갈예정</div>
+		</br>
+		<div class="text" id="modalText"></div>
+	</div>
 
 
 

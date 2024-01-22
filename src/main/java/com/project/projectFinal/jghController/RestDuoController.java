@@ -5,6 +5,7 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.project.projectFinal.dto.DuoSearchDto;
+import com.project.projectFinal.service.DuoService;
 import com.project.projectFinal.service.MemberService;
 
 import jakarta.servlet.http.HttpSession;
@@ -15,7 +16,7 @@ import lombok.extern.slf4j.Slf4j;
 public class RestDuoController {
 
 	@Autowired
-	MemberService memberService;
+	DuoService duoService;
 
 	@PostMapping("/saveDb")
 	public DuoSearchDto saveDb(DuoSearchDto duoSearchDto) {
@@ -25,15 +26,15 @@ public class RestDuoController {
 		}
 
 
-		return memberService.saveDbDuo(duoSearchDto);
+		return duoService.saveDbDuo(duoSearchDto);
 	}
 
 	@PostMapping("/deleteById")
 	public boolean deleteById(DuoSearchDto duoSearchDto, HttpSession session) {
 
-		if (memberService.infoDuoT(duoSearchDto).getUserId().equals(session.getAttribute("userId"))) {
+		if (duoService.infoDuoT(duoSearchDto).getUserId().equals(session.getAttribute("userId"))) {
 
-			memberService.deleteDuo(duoSearchDto);
+			duoService.deleteDuo(duoSearchDto);
 			return true;
 		} else {
 			return false;
@@ -44,8 +45,15 @@ public class RestDuoController {
 	@PostMapping("/comparedcnt")
 	public DuoSearchDto comparedcnt(DuoSearchDto duoSearchDto) {
 
-		return memberService.comparedcnt(duoSearchDto);
+		return duoService.comparedcnt(duoSearchDto);
 
 	}
+	@PostMapping("/duoInfo")
+	public DuoSearchDto duoInfo(DuoSearchDto duoSearchDto) {
+
+		return duoService.duoInfo(duoSearchDto);
+
+	}
+	
 	
 }

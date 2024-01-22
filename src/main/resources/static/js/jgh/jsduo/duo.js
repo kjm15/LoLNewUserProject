@@ -1,26 +1,48 @@
 /**
  * 
  */
-
+////////////////////////////포트접속////////////////////////////////////
 const sse = new EventSource("http://localhost:8080/jgh");
 sse.addEventListener('connect', (e) => {
 
 });
 
 sse.addEventListener('count', (e) => {
-showNewDuo()
-	//	update()
+	showNewDuo()
 
 });
-//sse.onerror = () => {
-//
-//	sse.close();
-//}
+
+///////////////////////////////모달/////////////////////////////////////
+const modal_wrap = document.querySelector('.modal_wrap')
+const modal_background = document.querySelector('.modal_background')
+
+function close() {
+
+	modal_wrap.classList.remove('show-modal');
+	modal_background.classList.remove('show-modal');
+}
+function open() {
+
+	modal_wrap.classList.add('show-modal')
+	modal_background.classList.add('show-modal')
+}
+
+window.addEventListener('click', (e) => {
+
+	e.target === modal_background ? close() : false
+})
+document.querySelector('#modal_wrap').addEventListener('click', () => {
+	open()
+})
+$('.modal_close').on("click", function() {
+	close()
+
+})
 
 
+/////////////////////////////////////////////////////////////////////
+$('#duoSearchBtn').on("click", function() {
 
-$('#msgbtn').on("click", function() {
-	
 	update()
 
 	$.ajax({
@@ -44,14 +66,14 @@ function showNewDuo() {
 		url: '/comparedcnt',
 		success: function(res) {
 
-			trs = "<tr  id = " + res.dcnt + ">"
-			tdwin = "<td>개발중</td>"
+			trs = "<tr>"
+			tdwin = "<td>연승/페 개발중</td>"
 			tduserId = "<td>" + res.userId + "</td>"
 			tdmyPosition = "<td>" + res.myPosition + "</td>"
 			tdtier = "<td>" + res.tier + "</td>"
 			tdgameType = "<td>" + res.gameType + "</td>"
 			tdduoPosition = "<td>" + res.duoPosition + "</td>"
-			tdlately = "<td>개발중</td>"
+			tdlately = "<td>최근챔피언개발중</td>"
 			tdmemo = "<td>" + res.memo + "</td>"
 			tddate = "<td>" + res.date + "</td>"
 
@@ -114,14 +136,14 @@ function update() {
 		url: '/saveDb',
 		data: data,
 		success: function(res) {
-		
+
 		}, error: function(error) {
 			console.log("에러")
 		}
 	})
 
 }
-
+////////////////////////////////////////삭제//////////////////////////////
 function deleteDuo(dcnt) {
 
 	console.log(dcnt)
@@ -146,5 +168,47 @@ function deleteDuo(dcnt) {
 			}
 		})
 	}
+
+}
+
+
+$('#modal_wrap tbody').on('click', 'tr', function() {
+	 	let info = table.api().row($(event.currentTarget)).data();
+
+});
+
+
+function test(dcnt) {
+
+	data = { 'dcnt': dcnt }
+	//	console.log(a)
+	$.ajax({
+
+		type: 'post',
+		url: '/duoInfo',
+		data: data,
+		success: function(res) {
+
+			let date = res.date
+			//			let dcnt = res.date
+			let duoPosition = res.duoPosition
+			let myPosition = res.myPosition
+			let memo = res.memo
+			let userId = res.userId
+			let winLose = res.winLose
+			let tier = res.tier
+
+			$('#duoPositionM').html(duoPosition)
+			$('#myPositionM').html(myPosition)
+			$('#userIdM').html(userId)
+			$('#memoM').html(memo)
+			$('#date').html(date)
+			$('#tierM').html(tier)
+			//			$('#duoModalBody').html(res)
+		}, error: function(error) {
+			console.log("에러")
+		}
+	})
+
 
 }

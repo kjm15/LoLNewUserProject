@@ -9,11 +9,11 @@
 <title>롤 영혼의 Duo 찾기</title>
 <!-- css들어갈자리  -->
 <link href="/css/style.css" rel="stylesheet" type="text/css">
-
+<link href="/css/modal.css" rel="stylesheet" type="text/css">
 </head>
 
 <body>
-	<button id="msgbtn">메세지보내기</button>
+
 	<%@include file="../inc/header.jsp"%>
 
 	<div style="height: 1500px; background: lightBLUE;">
