@@ -109,4 +109,9 @@ public class MemberService {
 
 	}
 
+	public MemberDto joinIdCheck(MemberDto memberDto) { // 회원가입 시 아이디 중복채크
+		return  memberDao.joinIdCheck(memberDto);
+		
+	}
+
 }
