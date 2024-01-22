@@ -14,12 +14,12 @@ public class RestMatchListController {
 	@Autowired
 	MatchListService matchListService;
 	
-	@PostMapping("/matchList/find")
-	public String matchListFind(PostDto postDto) {
-		log.info("==========:{}",postDto);
-		matchListService.puuId(postDto.getGameName(),postDto.getTagLine());
-		return "";
-	}
-	
+//	@PostMapping("/matchList/find")
+//	public String matchListFind(PostDto postDto) {
+//		log.info("==========:{}",postDto);
+//		matchListService.puuId(postDto.getGameName(),postDto.getTagLine());
+//		return "";
+//	}
+//	
 	
 }
