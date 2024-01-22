@@ -129,3 +129,32 @@
 	margin : 0auto;
 	background-color : whitesmoke;
 }
+#itemImage{
+	border : 1px solid black;
+}
+#itemTitle1{
+	border : 1px solid black;
+	width : 50%;
+	height : 100px;
+	float : left;
+	text-align : center;
+}
+#itemTitle2{
+	border : 1px solid black;
+	width : 50%;
+	height : 100px;
+	float : left;
+	text-align : center;
+}
+#itemImage1{
+	border : 1px solid black;
+	width : 50%;
+	height : 100px;
+	float : left;
+}
+#itemImage2{
+	width : 50%;
+	height : 100px;
+	float : left;
+	border : 1px solid black;
+}	

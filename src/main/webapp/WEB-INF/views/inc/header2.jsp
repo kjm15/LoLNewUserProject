@@ -92,7 +92,7 @@
 
 				<h3>빈곳을 입력해 가입해주세요</h3>
 				<form action="/join" method="post">
-					아이디 : <input type="text" name="userId"> (ajax 비동기처리요망)</br> 패스워드
+					아이디 : <input type="text" name="userId" id = "joinId"> <span id = "tflag"></span></br> 패스워드
 					:<input type="text" name="userPw"> (추후에 ***로 변경)</br>
 					<hr>
 					이름 : <input type="text" name="userName"> (db만들기) </br> e-mail :

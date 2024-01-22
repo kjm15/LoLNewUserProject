@@ -2,9 +2,10 @@ package com.project.projectFinal.kjmcontroller;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 
-import com.project.projectFinal.service.ItemService;
+import com.project.projectFinal.service.KjmItemService;
 
 import lombok.extern.slf4j.Slf4j;
 
@@ -13,7 +14,7 @@ import lombok.extern.slf4j.Slf4j;
 
 public class kjmController {
 	@Autowired
-	ItemService itemService;
+	KjmItemService kjmItemService;
 	
 	@GetMapping("/kjm")
 	public String kjm(){
@@ -21,7 +22,8 @@ public class kjmController {
 	}
 	
 	@GetMapping("/kjm1")
-	public String kjm1(){
+	public String iteminfo(Model model){
+		model.addAttribute("itemlist",kjmItemService.iteminfo());
 		return "kjm/kjm1";
 	}
 	
