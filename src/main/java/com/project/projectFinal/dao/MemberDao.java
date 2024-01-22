@@ -38,5 +38,7 @@ public interface MemberDao {
 
 	int ajaxtest(MemberDto memberDto);
 
+	MemberDto joinIdCheck(MemberDto memberDto);
+
 
 }
