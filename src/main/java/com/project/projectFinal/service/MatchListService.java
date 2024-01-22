@@ -10,8 +10,8 @@ public class MatchListService {
 	@Autowired
 	WebMatchListService matchListService;
 
-	public String puuId(String gameName, String tagLine) {
-		  WebMatchListService.getpuuId(gameName , tagLine);
-		    
-	}
+//	public String puuId(String gameName, String tagLine) {
+//		  WebMatchListService.getpuuId(gameName , tagLine);
+//		    
+//	}
 }
