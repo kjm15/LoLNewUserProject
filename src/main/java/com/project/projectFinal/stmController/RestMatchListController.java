@@ -1,5 +1,10 @@
 package com.project.projectFinal.stmController;
 
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -17,12 +22,15 @@ public class RestMatchListController {
 	MatchListService matchListService;
 	
 	@PostMapping("/matchList/find")
-	public String matchListFind(PostDto postDto,Model model) {
-		log.info("==========:{}",postDto);
+	public List<Map> matchListFind(PostDto postDto,Model model) {
+		//log.info("==========postDto:{}",postDto);
 		String puuid = matchListService.puuId(postDto.getGameName(),postDto.getTagLine());
-		log.info("==========:{}",puuid);
+		//log.info("==========puuid:{}",puuid);
+		List<String> matchList = matchListService.MatchList(puuid);
+		//log.info("==========puuid:{}",matchList);
 		
-		return puuid;
+		List<Map> MList = matchListService.gamedate(matchList);
+		return MList;
 	}
 	
 	
