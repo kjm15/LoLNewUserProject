@@ -6,7 +6,6 @@ import org.springframework.web.bind.annotation.RestController;
 
 import com.project.projectFinal.dto.DuoSearchDto;
 import com.project.projectFinal.service.DuoService;
-import com.project.projectFinal.service.MemberService;
 
 import jakarta.servlet.http.HttpSession;
 import lombok.extern.slf4j.Slf4j;
