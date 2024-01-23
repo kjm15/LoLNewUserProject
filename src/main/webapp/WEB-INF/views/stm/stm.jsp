@@ -38,8 +38,19 @@ $("#getpuuid").on("click", function () {
 		data : data,
 		
 		success : function(res){
-			
-			$('#puuid').html(res)		
+// 			console.log(res[0]["info"]['participants'].length)
+			str += "<table border = '3' align = 'center' ><thead><th>챔피언</th></thead><tbody>"			
+			for(let i = 0; i<res[0]["info"]['participants'].length; i ++){
+				
+				str += "<tr>"
+				a = res[0]["info"]['participants'][i]['championName']
+				str += "<td>"+a+"</td>"
+				str += "</tr>"
+			}
+			str += "</tbody></table>"
+ 				
+			$('#puuid').append(str)		
+				
 			
 		}
 	})
