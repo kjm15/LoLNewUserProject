@@ -1,3 +1,4 @@
+
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
@@ -6,19 +7,44 @@
 <head>
 <script type="text/javascript">
 	function champ(a) {
+		
+		$('.info').hide();
+		
+		if($('#lineCheck').text() == '') {
+
+			
+			$('#champList').empty();
+			$.ajax({
+				type : "POST",
+				url : "/kdg/re",
+				success : function(res) {			
+					
+					str1 = "<ul>"
+					str2 = ''
+							for (let i = 0; i < res.length; i++){
+								str2 += "<li><img id='"+res[i].champion_name+"' src='https://ddragon.leagueoflegends.com/cdn/14.1.1/img/champion/"+res[i].champion_name+".png'"
+								str2 += "width='72' height='72' alt='"+res[i].champion_name+"' class='bg-image' onclick='javascript:submit(this.id)'>"
+								str2 +=	"<span>"+res[i].champion_name_kr+"</span></li>"
+								}
+					str3 = "</ul>"
+						
+					$('#champList').html(str1 + str2 + str3)
+				}
+			})
+		} 
 		var idName = a;
 		
 		$('#anBtn').hide();
 		$('#champList').show();
 		$('#searchChamp').show();
 		$('.positionICN').show();
-		$('#itemList').hide();
 		$('#searchChamp').val('');
 		
-		$('#name').html(a);	
+		$('#name').html(a);
 	}
 
 	function submit(b) {
+		
 		var a = $('#name').text();
 		var champName = b;
 		var c = a + 'ion';
@@ -134,20 +160,20 @@
 	margin-left: 200px;
 }
 
-#itemList {
+/* #itemList { */
 
-	background-color: #091428;
-	color: #C8AA6E;
+/* 	background-color: #091428; */
+/* 	color: #C8AA6E; */
 	
-	width: 78%;
-	height: 800px;
+/* 	width: 78%; */
+/* 	height: 800px; */
 	
- 	display: none;
+/*  	display: none; */
 	
-	position: relative;
+/* 	position: relative; */
 	
-	margin-left: 200px;
-}
+/* 	margin-left: 200px; */
+/* } */
 
 li {
 	position: relative;
@@ -246,62 +272,122 @@ span {
 	height: 500px;
 }
 
-#itemList #champs #item0 img {
-	border-radius: 50%;
-	border: 1px solid black;
-	width: 200px;
-	height: 200px;
-	position: absolute;
+.info {
+	width: 100%;
+	height: 1500px;
 	
-	top: 50px;
-	left: 43%;
+	display: none;
 	
-	cursor: url(../img/unavailable.png) 2 2, auto;
-	
-	z-index: 1;
+	background-color: white;
+
 }
 
-#itemList #champs #item1 img {
-	border-radius: 50%;
-	border: 1px solid black;
-	width: 200px;
-	height: 200px;
-	position: absolute;
+.info #pickInfo {
+	width: 50%;
+	height: 1300px;
+
+	float: left;
+	text-align: center;
 	
-	top: 50%;
-	left: 27%;
-	
-	cursor: url(../img/unavailable.png) 2 2, auto;
-	
-	z-index: 1;
+	background-color: white;
+
 }
 
-#itemList #champs #item2 img {
-	border-radius: 50%;
-	border: 1px solid black;
-	width: 200px;
-	height: 200px;
-	position: absolute;
+.info #winInfo {
+	width: 50%;
+	height: 1300px;
+
+	float: right;
+	text-align: center;
 	
-	top: 50%;
-	left: 58%;
-	
-	cursor: url(../img/unavailable.png) 2 2, auto;
-	
-	z-index: 1;
+	background-color: white;
+
 }
+
+.info #rateInfo {
+	width: 100%;
+	height: 50px;
+
+	text-align: center;
+	
+	background-color: white;
+}
+
+.info #rateInfo #myChampInfo {
+	width: 50%;
+	height: 300px;
+
+	float: left;
+	text-align: center;
+	
+	background-color: white;
+}
+
+.info #rateInfo #enemyChampInfo {
+	width: 50%;
+	height: 300px;
+
+	float: right;
+	text-align: center;
+	
+	background-color: white;
+}
+/* #itemList #champs #item0 img { */
+/* 	border-radius: 50%; */
+/* 	border: 1px solid black; */
+/* 	width: 200px; */
+/* 	height: 200px; */
+/* 	position: absolute; */
+	
+/* 	top: 50px; */
+/* 	left: 43%; */
+	
+/* 	cursor: url(../img/unavailable.png) 2 2, auto; */
+	
+/* 	z-index: 1; */
+/* } */
+
+/* #itemList #champs #item1 img { */
+/* 	border-radius: 50%; */
+/* 	border: 1px solid black; */
+/* 	width: 200px; */
+/* 	height: 200px; */
+/* 	position: absolute; */
+	
+/* 	top: 50%; */
+/* 	left: 27%; */
+	
+/* 	cursor: url(../img/unavailable.png) 2 2, auto; */
+	
+/* 	z-index: 1; */
+/* } */
+
+/* #itemList #champs #item2 img { */
+/* 	border-radius: 50%; */
+/* 	border: 1px solid black; */
+/* 	width: 200px; */
+/* 	height: 200px; */
+/* 	position: absolute; */
+	
+/* 	top: 50%; */
+/* 	left: 58%; */
+	
+/* 	cursor: url(../img/unavailable.png) 2 2, auto; */
+	
+/* 	z-index: 1; */
+/* } */
 
 </style>
 
 </head>
 <body>
-<h1>이번주 안에 모듈화 해둬야됨 1월 26일까지 , 더 커지면 힘들다 //  해야됨 css, js by장기훈</h1>
 	<%@include file="../inc/header.jsp"%>
 	<div style="height: 2000px; background: #3C3C41;">
 		<p id="name" style="visibility: hidden; position: absolute;"></p>
 		<div class = "champs">
 				<p id="myChampName" style="visibility: hidden; position: absolute;"></p>
 				<p id="enemyChampName" style="visibility: hidden; position: absolute;"></p>
+				<p id="lineCheck" style="visibility: hidden; position: absolute;"></p>
 				<button id = "anBtn">분석하기</button>
 		</div>
 		<!-- <h1>김동근 페이지 입니다.</h1> -->
@@ -337,20 +423,9 @@ span {
 				</c:forEach>
 			</ul>
 		</div>
-		<div id="itemList">
-			<div id="champs">
-				<div id="item0">
-					
-				</div>
+		
+		<div class = "info">
 			
-				<div id="item1">
-					
-				</div>
-			
-				<div id="item2">
-					
-				</div>
-			</div>
 		</div>
 		
 	</div>
@@ -359,6 +434,8 @@ span {
 <script type="text/javascript">
 	$(document).ready(function() {
 		$("#searchChamp").keyup(function() {
+			
+			$('#lineCheck').empty();
 			
 			$('#champList').empty();
 			let cn = $('#searchChamp').val()
@@ -379,7 +456,7 @@ span {
 								str2 += "width='72' height='72' alt='"+res[i].champion_name+"' class='bg-image' onclick='javascript:submit(this.id)'>"
 								str2 +=	"<span>"+res[i].champion_name_kr+"</span></li>"
 								}
-					str3="</ul>"
+					str3 = "</ul>"
 					
 					$('#champList').html(str1 + str2 + str3)
 				}
@@ -388,8 +465,8 @@ span {
 	});
 	
 	function line(a){
-		
-		console.log(a);
+
+		$('#lineCheck').html(a);
 		
 		$('#champList').empty();
 		data = {
@@ -400,8 +477,6 @@ span {
 			url : "/kdg/position",
 			data : data,
 			success : function(res) {	
-				
-				console.log(res);
 				
 				str1 = "<ul>"
 				str2 = ''
@@ -420,35 +495,84 @@ span {
 	$(document).ready(function() {
 		$("#anBtn").click(function() {
 			
+			$('#lineCheck').empty();
 			
 			var myChampName = $('#myChampName').text();
+			var enemyChampName = $('#enemyChampName').text();
 			console.log(myChampName);
+			console.log(enemyChampName);
 			
 			data = {
 				
-				"champName" : myChampName
+				"myChampName" : myChampName,
+				"enemyChampName" : enemyChampName
 				
 			}
 			$.ajax({
 				type : "POST",
-				url : "/kdg/itemTest",
+				url : "/kdg/test",
 				data : data,
 				success : function(res) {			
 					
 					console.log(res);
 					
-					str1 = "<div id=champs>"
+					str1 = "<div id = 'pickInfo'><br><h3>제일 많이 선택한 아이템 top3</h3>"
 					str2 = ''
-							for (let i = 0; i < res.length; i++){
-									str2 += "<div id=item"+i+">"
-									str2 += "<img src='https://ddragon.leagueoflegends.com/cdn/14.1.1/img/item/"+res[i].item_id+".png'></img>"
-									str2 += "</div>"
-								}
-					str3 = "</div>"
-								
-					$('#itemList').html(str1 + str2 + str3)				
-					$('#itemList').show();
+									
+					for (let i = 0; i < res.iList.length; i++){
 
+							str2 += "<img src='https://ddragon.leagueoflegends.com/cdn/14.1.1/img/item/"+res.iList[i].itemId+".png'></img><br>"
+							str2 += "<p><h1>아이템 이름 : "+res.iList[i].itemName+"</h1></p>"
+							str2 += "<p><h1>전체 픽 수 : "+res.cntList[i]+"게임</h1></p>"
+							str2 += "<p><h1>픽 수 : "+res.iList[i].itemPickCount+"게임</h1></p>"
+							str2 += "<p><h1>픽률 : "+((res.iList[i].itemPickCount/res.cntList[i])*100).toFixed(2)+"%</h1></p><br>"
+							
+						}
+					
+					str3 = '</div>'
+					
+					str4 = "<div id = 'winInfo'><br><h3>제일 많이 승리한 아이템 top3</h3>"
+					str5 = ''
+											
+					for (let j = 0; j < res.wList.length; j++){
+							str5 += "<img src='https://ddragon.leagueoflegends.com/cdn/14.1.1/img/item/"+res.wList[j].itemId+".png'></img><br>"
+							str5 += "<p><h1>아이템 이름 : "+res.wList[j].itemName+"</h1></p>"
+							str5 += "<p><h1>픽 수 : "+res.wList[j].itemPickCount+"게임</h1></p>"
+							str5 += "<p><h1>승리 수 : "+res.wList[j].myItemWinCount+"승</h1></p>"
+							str5 += "<p><h1>승률 : "+res.wList[j].myItemWinRate+"%</h1></p><br>"
+									
+						}
+					
+					str6 = '</div>'
+					
+					str7 = "<div id = 'rateInfo'><br><h3>승률</h3>"
+					str8 = ''
+													
+					for (let k = 0; k < res.cList.length; k++){
+						
+							str8 += "<div id = 'myChampInfo'>"
+							str8 += "<img res='"+res.cList[k].myChampName+"' src='https://ddragon.leagueoflegends.com/cdn/14.1.1/img/champion/"+res.cList[k].myChampName+".png' width='72' height='72' alt='"+res.cList[k].myChampName+"' class='bg-image'></img><br>"
+							str8 += "<p><h1>"+res.cList[k].myChampName+"</h1></p>"
+							str8 += "<p><h1>"+res.cList[k].myWinRate+"%</h1></p>"
+							str8 += "<p><h1>"+res.cList[k].myChampWinCount+"승</h1></p></div>"
+											
+						}
+					
+					str9 = ''
+					
+					for (let m = 0; m < res.cList.length; m++){
+							str9 += "<div id = 'enemyChampInfo'>"
+							str9 += "<img res='"+res.cList[m].enemyChampName+"' src='https://ddragon.leagueoflegends.com/cdn/14.1.1/img/champion/"+res.cList[m].enemyChampName+".png' width='72' height='72' alt='"+res.cList[m].enemyChampName+"' class='bg-image'></img><br>"
+							str9 += "<p><h1>"+res.cList[m].enemyChampName+"</h1></p>"
+							str9 += "<p><h1>"+(100-res.cList[m].myWinRate).toFixed(2)+"%</h1></p>"
+							str9 += "<p><h1>"+res.cList[m].enemyChampWinCount+"승</h1></p></div>"
+					}
+									
+					str10 = '</div>'
+										
+					$('.info').html(str1 + str2 + str3 + str4 + str5 + str6 + str7 + str8 + str9 + str10)				
+					$('.info').show();
+					$('#anBtn').hide();
 				}
 			})
 
@@ -458,4 +582,7 @@ span {
 	
 </script>
 </body>
+
+
+
 </html>
