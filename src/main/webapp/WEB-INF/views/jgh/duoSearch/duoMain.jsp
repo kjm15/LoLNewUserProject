@@ -1,5 +1,5 @@
-<%@ page language="java" contentType="text/html; charset=UTF-8"
-	pageEncoding="UTF-8"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
+
 <!DOCTYPE html>
 <html>
 <head>
@@ -43,26 +43,8 @@
 	<!-- Modal -->
 	<!-- 	듀오등록 -->
 	<%@include file="modal1.jsp"%>
-
 	<!-- Modal 클릭시 세부내용 -->
-	<div class="modal_background"></div>
-	<div class="modal_wrap">
-		<div class="modal_close">
-			<a href="#"><h2>x</h2></a>
-		</div>
-		<div align="center">내용들어갈예정</div>
-		</br>
-		<div class="text" id="modalText">
-			회원이름 : <span id="userIdM"></span></br> 회원이름 : <span id="userIdM"></span></br> 내
-			포지션 : <span id="myPositionM"></span></br> 원하는 티어 : <span id="tierM"></span></br>
-			원하는 포지션 : <span id="duoPositionM"></span></br> 한줄메모 : <span id="memoM"></span></br>
-
-<!-- 			<input type = "button" value = "친구추가"> -->
-
-
-
-		</div>
-	</div>
+	<%@include file="modal2.jsp"%>
 
 
 

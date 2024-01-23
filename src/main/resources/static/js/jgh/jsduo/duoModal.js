@@ -20,21 +20,21 @@ window.addEventListener('click', (e) => {
 
 })
 document.querySelector('#modal_wrap').addEventListener('click', (e) => {
-	const rowIndex = e.target.closest("tr").rowIndex;
-//	var index = select.rowIndex;
 
-	open()
+	//테이블의 tr행이 몇번째 행인지 알게 해주는 구문
+	const rowIndex = e.target.closest("tr").rowIndex;
 	var table = document.getElementById("modal_wrap")
 	var tr = table.getElementsByTagName("tr");
-	let cnt  = tr[rowIndex].getElementsByTagName("td")[0].innerHTML
-	console.log(cnt)
-
+	//dcnt 는 해당 행의 번호
+	let dcnt = tr[rowIndex].getElementsByTagName("td")[0].innerHTML
+	//dcnt를 통해서 정보를 가지고옴
+	duoinfo(dcnt)
+	open()
 
 })
 
 $('.modal_close').on("click", function() {
 	close()
-
 })
 
 /////////////////////////모달 값 넣기///////////////
@@ -59,13 +59,28 @@ function duoinfo(dcnt) {
 			let userId = res.userId
 			let winLose = res.winLose
 			let tier = res.tier
+
 			$('#dcntM').html(dcnt)
-			$('#duoPositionM').html(duoPosition)
-			$('#myPositionM').html(myPosition)
 			$('#userIdM').html(userId)
+			$('#myPositionM').html(myPosition)
+			$('#tierM').html(tier)
+			$('#duoPositionM').html(duoPosition)
 			$('#memoM').html(memo)
 			$('#date').html(date)
-			$('#tierM').html(tier)
+			
+
+
+			let memberSub = "< button disabled = 'disabled' >" + "회원전용입니다." + "</button >"
+			let notMember = "< button >" + " 부검하기(-10point차감)" + "</button >"
+			if (userId == '비회원') {
+
+				$('#memberSub').html(memberSub)
+			} else {
+
+				$('#memberSub').html(notMember)
+			}
+
+
 			//			$('#duoModalBody').html(res)
 		}, error: function(error) {
 			console.log("에러")

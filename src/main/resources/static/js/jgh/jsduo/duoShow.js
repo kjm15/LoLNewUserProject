@@ -84,12 +84,3 @@ function showNewDuo() {
 	})
 
 }
-
-$("#modal_wrap tr").click(function() {
-
-
-
-	//	duoinfo(dcnt)
-
-
-});
