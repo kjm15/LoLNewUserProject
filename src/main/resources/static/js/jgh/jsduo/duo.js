@@ -8,7 +8,9 @@ sse.addEventListener('connect', (e) => {
 });
 
 sse.addEventListener('count', (e) => {
+
 	showNewDuo()
+
 
 });
 
@@ -31,8 +33,10 @@ window.addEventListener('click', (e) => {
 
 	e.target === modal_background ? close() : false
 })
-document.querySelector('#modal_wrap').addEventListener('click', () => {
+document.querySelector('.modal_wrap1').addEventListener('click', () => {
+
 	open()
+
 })
 $('.modal_close').on("click", function() {
 	close()
@@ -41,21 +45,11 @@ $('.modal_close').on("click", function() {
 
 
 /////////////////////////////////////////////////////////////////////
-$('#duoSearchBtn').on("click", function() {
+$('#duoSaveBtn').on("click", function() {
+
 
 	update()
 
-	$.ajax({
-		type: 'post',
-		url: '/jgh',
-
-		success: function(res) {
-
-		}, error: function(error) {
-			console.log("에러")
-			//			update()
-		}
-	})
 
 })
 //보여주기
@@ -66,8 +60,9 @@ function showNewDuo() {
 		url: '/comparedcnt',
 		success: function(res) {
 
+			document.getElementById("dntDuo").value = res.dcnt
 			trs = "<tr>"
-			tdwin = "<td>연승/페 개발중</td>"
+			tdwin = "<td>" + res.dcnt + "</td>"
 			tduserId = "<td>" + res.userId + "</td>"
 			tdmyPosition = "<td>" + res.myPosition + "</td>"
 			tdtier = "<td>" + res.tier + "</td>"
@@ -95,6 +90,7 @@ function showNewDuo() {
 			$('#exampleModal').modal("hide");
 
 			$('#' + res.dcnt).show(4200)
+
 
 		}, error: function(error) {
 			console.log("에러")
@@ -137,6 +133,21 @@ function update() {
 		data: data,
 		success: function(res) {
 
+
+			$.ajax({
+				type: 'post',
+				url: '/jgh',
+
+				success: function(res) {
+
+				}, error: function(error) {
+					console.log("에러")
+					//			update()
+				}
+			})
+
+
+
 		}, error: function(error) {
 			console.log("에러")
 		}
@@ -171,15 +182,13 @@ function deleteDuo(dcnt) {
 
 }
 
+/////////////////////////모달 값 넣기///////////////
 
-$('#modal_wrap tbody').on('click', 'tr', function() {
-	 	let info = table.api().row($(event.currentTarget)).data();
-
-});
+function duoinfo(dcnt) {
 
 
-function test(dcnt) {
 
+	console.log(dcnt)
 	data = { 'dcnt': dcnt }
 	//	console.log(a)
 	$.ajax({
@@ -188,7 +197,8 @@ function test(dcnt) {
 		url: '/duoInfo',
 		data: data,
 		success: function(res) {
-
+			console.log(res)
+			let dcnt = res.dcnt
 			let date = res.date
 			//			let dcnt = res.date
 			let duoPosition = res.duoPosition
@@ -197,7 +207,7 @@ function test(dcnt) {
 			let userId = res.userId
 			let winLose = res.winLose
 			let tier = res.tier
-
+			$('#dcntM').html(dcnt)
 			$('#duoPositionM').html(duoPosition)
 			$('#myPositionM').html(myPosition)
 			$('#userIdM').html(userId)
@@ -210,5 +220,28 @@ function test(dcnt) {
 		}
 	})
 
-
 }
+
+$(".modal_wrap tr").click(function() {
+
+	var str = ""
+	var tr = $(this);
+	var td = tr.children();
+	var dcnt = td.eq(0).text();
+
+
+	console.log(dcnt)
+
+	//	duoinfo(dcnt)
+
+
+});
+
+const button = document.querySelector('tr');
+ 
+const buttonClickHandler = () =>{
+  alert('Button clicked!');
+};
+ 
+button.onclick = buttonClickHandler;
+

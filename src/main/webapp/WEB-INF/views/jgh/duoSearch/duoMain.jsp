@@ -6,7 +6,7 @@
 <meta charset="UTF-8">
 </head>
 <body>
-
+	<input type = "hidden" value = "" id = "dntDuo"/> 
 	<div id=duoTable class=searchDuoT>
 		<h1 align="center">롤 듀오DUO 구하기</h1>
 		<div align="right">
@@ -16,11 +16,10 @@
 			<p></p>
 		</div>
 
-		<input type="hidden" value="${dList[0].dcnt}" id="dcnt" />
-		<table class="table table-dark table-hover" id="modal_wrap">
+		<table class="table table-dark table-hover" class="modal_wrap1">
 			<thead>
 				<tr>
-					<th>연승/연패</th>
+					<th>번호</th>
 					<th>이름</th>
 					<th>주포지션</th>
 					<th>티어</th>
@@ -42,7 +41,7 @@
 
 					<tr>
 
-						<td>연승/페 개발중</td>
+						<td>${ditem.dcnt}</td>
 
 						<td>${ditem.userId}</td>
 						<td>${ditem.myPosition}</td>
@@ -63,7 +62,7 @@
 								</ul>
 							</div>
 						</td>
-						<td><input type="hidden" value="${ditem.dcnt}"></td>
+
 					</tr>
 				 
 				</c:forEach>
@@ -178,7 +177,7 @@
 
 				</div>
 				<div class="modal-footer">
-					<button type="button" class="btn btn-primary" id="duoSearchBtn">듀오찾기등록</button>
+					<button type="button" class="btn btn-primary" id="duoSaveBtn">듀오찾기등록</button>
 					<button type="button" class="btn btn-secondary"
 						data-bs-dismiss="modal">닫기</button>
 
@@ -196,7 +195,19 @@
 		</div>
 		<div align="center">내용들어갈예정</div>
 		</br>
-		<div class="text" id="modalText"></div>
+		<div class="text" id="modalText">
+회원이름 : <span id="userIdM"></span></br> 
+			회원이름 : <span id="userIdM"></span></br> 
+			내 포지션 : <span id="myPositionM"></span></br>
+			원하는 티어 : <span id="tierM"></span></br> 
+			원하는 포지션 : <span id="duoPositionM"></span></br>
+			한줄메모 : <span id="memoM"></span></br>
+
+
+
+
+
+		</div>
 	</div>
 
 
