@@ -11,7 +11,7 @@ sse.addEventListener('count', (e) => {
 
 	showNewDuo()
 
-
+	//부분 리로드
 });
 
 ///////////////////////////////모달/////////////////////////////////////
@@ -32,9 +32,10 @@ function open() {
 window.addEventListener('click', (e) => {
 
 	e.target === modal_background ? close() : false
+
 })
 document.querySelector('#modal_wrap').addEventListener('click', () => {
-
+	
 	open()
 
 })
@@ -158,7 +159,7 @@ function update() {
 ////////////////////////////////////////삭제//////////////////////////////
 function deleteDuo(dcnt) {
 
-	console.log(dcnt)
+	//	console.log(dcnt)
 
 	if (confirm("정말 삭제하시겠습니까?")) {
 
@@ -189,7 +190,7 @@ function duoinfo(dcnt) {
 
 
 
-	console.log(dcnt)
+
 	data = { 'dcnt': dcnt }
 	//	console.log(a)
 	$.ajax({
@@ -198,7 +199,7 @@ function duoinfo(dcnt) {
 		url: '/duoInfo',
 		data: data,
 		success: function(res) {
-			console.log(res)
+			//			console.log(res)
 			let dcnt = res.dcnt
 			let date = res.date
 			//			let dcnt = res.date
@@ -229,20 +230,23 @@ $("#modal_wrap tr").click(function() {
 	var tr = $(this);
 	var td = tr.children();
 	var dcnt = td.eq(0).text();
-
+	
+	
+	var table = document.getElementById("modal_wrap");
+	var rows = table.getElementsByTagName("tr");
+	//	var rows = table.getElementsByTagName("tr");
+	//	var row = table.rows[0];
+	//	  var cell = row.getElementsByTagName("td")[0];
+	// var id = cell.innerHTML;
+	rows[i].getElementsByTagName("td")[0].innerHTML
+	console.log(rows[3].getElementsByTagName("td")[0].innerHTML)
 
 	console.log(dcnt)
 
-		duoinfo(dcnt)
+	//	duoinfo(dcnt)
 
 
 });
 
-const button = document.querySelector('tr');
- 
-const buttonClickHandler = () =>{
-  alert('Button clicked!');
-};
- 
-button.onclick = buttonClickHandler;
+
 
