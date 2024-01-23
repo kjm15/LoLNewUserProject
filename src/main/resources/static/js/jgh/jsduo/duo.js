@@ -33,11 +33,12 @@ window.addEventListener('click', (e) => {
 
 	e.target === modal_background ? close() : false
 })
-document.querySelector('.modal_wrap1').addEventListener('click', () => {
+document.querySelector('#modal_wrap').addEventListener('click', () => {
 
 	open()
 
 })
+
 $('.modal_close').on("click", function() {
 	close()
 
@@ -222,7 +223,7 @@ function duoinfo(dcnt) {
 
 }
 
-$(".modal_wrap tr").click(function() {
+$("#modal_wrap tr").click(function() {
 
 	var str = ""
 	var tr = $(this);
@@ -232,7 +233,7 @@ $(".modal_wrap tr").click(function() {
 
 	console.log(dcnt)
 
-	//	duoinfo(dcnt)
+		duoinfo(dcnt)
 
 
 });
