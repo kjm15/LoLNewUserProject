@@ -6,6 +6,8 @@ $("#joinId").on('keyup',function() {
 	 let userId = $('#joinId').val();
 	 data = {'userId' : userId}
 	 let str = ''
+	 let str2 = ''
+	 let userPw = $('#joinPw').val();
 	 if(userId.length < 3){
 		str ="아이디는 3자 이상."
 		$('#joinbnt').prop('disabled', true);
@@ -25,10 +27,16 @@ $("#joinId").on('keyup',function() {
 		 	 }else{
 				str = "사용가능한 아이디 입니다."
 				$("#checkId").css('color','green')
-				$('#joinbnt').prop('disabled', false);	  
-			 }
-			 
-			 $("#checkId").html(str);
+				$('#joinbnt').prop('disabled', false);
+				if(userPw.length<3){
+					str2 ="비밀번호는 3자이상"
+					$("#checkPw").css('color','red')
+					$('#joinbnt').prop('disabled', true);
+					$("#checkPw").html(str2);  
+					
+			}
+		}
+			$("#checkId").html(str);
 		 }
 	 })
 	  	
