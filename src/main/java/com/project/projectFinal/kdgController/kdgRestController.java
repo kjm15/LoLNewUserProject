@@ -1,5 +1,6 @@
 package com.project.projectFinal.kdgController;
 
+import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 
@@ -27,18 +28,46 @@ public class kdgRestController {
 		
 	}
 	
-	@PostMapping("/kdg/itemTest")
-	public List<HashMap<String, ItemDto>> itemTest(ItemDto IDto) {
-		
-		return cs.itemTest(IDto);
-		
-	}
-	
 	@PostMapping("/kdg/position")
 	public List<HashMap<String, String>> line(ChampionDto cDto) {
 	
 		return cs.champLine(cDto);
 		
+	}
+	
+	@PostMapping("/kdg/test")
+	public HashMap<String, Object> itemTest(ItemDto IDto) {
+		
+		log.info("=============== IDto : {}", IDto);
+
+		HashMap<String, Object> DMap = new HashMap<>();
+
+		List<HashMap<String, ItemDto>> iList = cs.test2(IDto);
+		DMap.put("iList", iList);
+		
+		List<Integer> cntList = new ArrayList<>();
+		for (int j = 0; j < iList.size(); j++) {
+			String a = String.valueOf(iList.get(j).get("itemId")) ;
+			int itemId = Integer.parseInt(a);
+			int itemPickAllCount = cs.cntPickItem(itemId,IDto.getMyChampName());
+			cntList.add(itemPickAllCount);
+		}
+		DMap.put("cntList", cntList);
+		
+		List<HashMap<String, ItemDto>> cList = cs.test(IDto);
+		DMap.put("cList", cList);
+
+		List<HashMap<String, ItemDto>> wList = cs.test3(IDto);
+		DMap.put("wList", wList);
+
+		return DMap;
+	}
+	
+	@PostMapping("/kdg/re")
+	public List<HashMap<String, String>> reList() {
+
+		return cs.reChampList();
+
 	}
 	
 }
