@@ -1,5 +1,8 @@
 package com.project.projectFinal.jghController;
 
+import java.util.ArrayList;
+import java.util.HashMap;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RestController;
@@ -17,13 +20,18 @@ public class RestDuoController {
 	@Autowired
 	DuoService duoService;
 
+	@PostMapping("/duostartinfo")
+	public ArrayList<HashMap<String, DuoSearchDto>> duostartinfo() {
+
+		return duoService.duostartinfo();
+	}
+
 	@PostMapping("/saveDb")
 	public DuoSearchDto saveDb(DuoSearchDto duoSearchDto) {
 		if (duoSearchDto.getUserId() == "") {
 
 			duoSearchDto.setUserId("비회원");
 		}
-
 
 		return duoService.saveDbDuo(duoSearchDto);
 	}
@@ -47,12 +55,12 @@ public class RestDuoController {
 		return duoService.comparedcnt();
 
 	}
+
 	@PostMapping("/duoInfo")
 	public DuoSearchDto duoInfo(DuoSearchDto duoSearchDto) {
 
 		return duoService.duoInfo(duoSearchDto);
 
 	}
-	
-	
+
 }

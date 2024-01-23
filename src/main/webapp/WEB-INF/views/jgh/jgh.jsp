@@ -27,8 +27,10 @@
 	<!-- js들어갈자리  -->
 
 
-	<script defer src="/js/jgh/jsduo/duo.js"></script>
-
+	<script defer src="/js/jgh/jsduo/duoDeleteSave.js"></script>
+	<script defer src="/js/jgh/jsduo/duoModal.js"></script>
+	<script defer src="/js/jgh/jsduo/duoPort.js"></script>
+	<script defer src="/js/jgh/jsduo/duoShow.js"></script>
 </body>
 
 </html>

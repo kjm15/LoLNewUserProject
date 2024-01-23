@@ -20,4 +20,6 @@ public interface DuoDao {
 
 	DuoSearchDto comparedcnt();
 
+	
+
 }
