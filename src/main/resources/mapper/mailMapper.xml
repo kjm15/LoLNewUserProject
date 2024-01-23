@@ -1,0 +1,23 @@
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.project.projectFinal.dao.NoteDao">
+
+	<insert id="sendNote">
+		insert into NoteTable(userId,sendId,n_title,n_message)
+		values(#{userId},#{sendId},#{n_title},#{n_message})
+	</insert>
+	
+	<select id="NoteInfo">
+		select * from NoteTable where #{userId} = #{sendId}
+	</select>
+	
+	<select id="detailNote">
+		select * from NoteTable where n_num = #{n_num}
+	</select>
+	
+	<delete id="DeleteNote">
+		delete * from NoteTable where n_num = #{n_num}
+	</delete>
+	
+	
+</mapper>
