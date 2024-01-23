@@ -8,10 +8,10 @@ import org.springframework.stereotype.Service;
 @Service
 public class MatchListService {
 	@Autowired
-	WebMatchListService matchListService;
+	WebMatchListService webmatchListService;
 
-//	public String puuId(String gameName, String tagLine) {
-//		  WebMatchListService.getpuuId(gameName , tagLine);
-//		    
-//	}
+	public String puuId(String gameName, String tagLine) {
+		String puuid = webmatchListService.getpuuId(gameName , tagLine);
+		  return puuid;
+	}
 }
