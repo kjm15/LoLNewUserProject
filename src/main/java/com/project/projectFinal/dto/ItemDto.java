@@ -21,7 +21,7 @@ public class ItemDto {
 	private String tier;
 	
 	private int item_id;
-	private String name;
+	private String itemName;
 	private int cnt;
 	
 //	===================================== (아이템 픽률)
