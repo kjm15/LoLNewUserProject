@@ -18,6 +18,6 @@ public interface DuoDao {
 
 	void deleteDuo(DuoSearchDto duoSearchDto);
 
-	DuoSearchDto comparedcnt(DuoSearchDto duoSearchDto);
+	DuoSearchDto comparedcnt();
 
 }

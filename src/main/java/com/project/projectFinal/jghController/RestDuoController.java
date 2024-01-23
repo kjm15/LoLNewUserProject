@@ -42,9 +42,9 @@ public class RestDuoController {
 	}
 
 	@PostMapping("/comparedcnt")
-	public DuoSearchDto comparedcnt(DuoSearchDto duoSearchDto) {
+	public DuoSearchDto comparedcnt() {
 
-		return duoService.comparedcnt(duoSearchDto);
+		return duoService.comparedcnt();
 
 	}
 	@PostMapping("/duoInfo")

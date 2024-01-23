@@ -51,9 +51,9 @@ public class DuoService {
 
 	}
 
-	public DuoSearchDto comparedcnt(DuoSearchDto duoSearchDto) {
+	public DuoSearchDto comparedcnt() {
 
-		return duoDao.comparedcnt(duoSearchDto);
+		return duoDao.comparedcnt();
 
 	}
 
