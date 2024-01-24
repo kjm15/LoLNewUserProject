@@ -32,10 +32,6 @@ public class kjmController {
 		return "kjm/kjm2";
 	}
 	
-	@GetMapping("/kjm3")
-	public String kjm3(){
-		return "kjm/kjm3";
-	}
 	
 	@GetMapping("/kjm4")
 	public String kjm4(){

@@ -24,13 +24,9 @@
 ${userId }님<br>
 ${sendId }님<br>
 ${maillist}님<br>
-
-<div class="modal_background"></div>
-<div class="modal_wrap">
-	<div class="modal_close"></div>
-	<div class="modal2"></div>
-
-</div>
+			<button type="button" class="btn btn-success" type="button"
+				class="btn btn-primary" data-bs-toggle="modal"
+				data-bs-target="#exampleModal">메일쓰기</button>
 	<table border=3>
 
 		<thead>
@@ -65,6 +61,7 @@ ${maillist}님<br>
 
 
 
+	<script defer src="/js/kjm/Note/Note.js"></script>
 
 
 

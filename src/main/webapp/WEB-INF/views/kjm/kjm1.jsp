@@ -8,7 +8,7 @@
 <meta charset="UTF-8">
 <title>김진문</title>
 <!-- css들어갈자리  -->
-<link href="/css/kjm.css" rel="stylesheet" type="text/css">
+<link href="/css/kjm/kjm.css" rel="stylesheet" type="text/css">
 <link rel="stylesheet"
 	href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
 

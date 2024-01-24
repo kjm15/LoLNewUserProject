@@ -8,7 +8,7 @@
 <meta charset="UTF-8">
 <title>김진문</title>
 <!-- css들어갈자리  -->
-<link href="/css/kjm.css" rel="stylesheet" type="text/css">
+<link href="/css/kjm/kjm.css" rel="stylesheet" type="text/css">
 <link rel="stylesheet"
 	href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
 
@@ -45,7 +45,7 @@
 				<div class="profile-icon" id="profile-icon"></div>
 				<div class="profile-name" id="profile-name">
 					<p class="h1" id="lolusername">
-						고길동 <small class="text-body-secondary">#10597</small>
+						고길동 <small class="text-body-secondary">#검성</small>
 					</p>
 				</div>
 				<div class="content" id="tierbox">
@@ -56,7 +56,7 @@
 					</div>
 					<div class="win-lose-box" id="win-lose-box">
 						<div class="win-lose" id="win-lose">109승57패</div>
-						<div class="winning-percentage" id="winning-percentage">10.597%</div>
+						<div class="winning-percentage" id="winning-percentage">65.66%</div>
 					</div>
 
 				</div>
@@ -68,12 +68,11 @@
 			</div>
 			<div class="container" id="matches">
 				<div class="container text-center">
-					<div class="row row-cols-1 row-cols-sm-2 row-cols-md-5" >
-						<div class="col">B</div>
-						<div class="col">O</div>
-						<div class="col">A</div>
-						<div class="col">R</div>
-						<div class="col">D</div>
+					<div class="row row-cols-1 row-cols-sm-2 row-cols-md-4" >
+						<div class="col">승패</div>
+						<div class="col">챔피언</div>
+						<div class="col">KDA</div>
+						<div class="col">자세히보기</div>
 					</div>
 				</div>
 			</div>

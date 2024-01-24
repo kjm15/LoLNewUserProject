@@ -10,7 +10,7 @@
 <!-- css들어갈자리  -->
 <link rel="stylesheet"
 	href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
-<link href="/css/kjm.css" rel="stylesheet" type="text/css">
+<link href="/css/kjm/kjm.css" rel="stylesheet" type="text/css">
 
 <script
 	src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.8/dist/umd/popper.min.js"

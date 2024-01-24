@@ -1,5 +1,5 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
-    pageEncoding="UTF-8"%>
+	pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html>
 <head>
@@ -7,13 +7,30 @@
 <title>Insert title here</title>
 </head>
 <body>
-<h1>**메일**</h1>
-<form action="/send" method="post">
-보내는사람${userId }<br>
-받는사람<input type ="text" name ="sendId" id="sendId"><br>
-제목<input type ="text" name ="n_title"><br>
-내용<textarea rows="6" cols="35" name="n_message"></textarea><br>
-<input type="submit" value ="보내기">
-</form>
+	<div class="modal fade" id="exampleModal" tabindex="-1"
+		aria-labelledby="exampleModalLabel" aria-hidden="true">
+		<div class="modal-dialog">
+			<div class="modal-content">
+				<div class="modal-header">
+					<h1 class="modal-title fs-5" id="exampleModalLabel">메일쓰기</h1>
+					<button type="button" class="btn-close" data-bs-dismiss="modal"
+						aria-label="Close"></button>
+				</div>
+				<div class="modal-body">
+						<input type ="hidden" name = "userId" id ="userId" value = "${userId}">
+						받는사람<input type="text" name="sendId" id="sendId"><br>
+						제목<input type="text" name="n_title" id = "n_title"><br>
+						<textarea rows="6" cols="35" name="n_message" id ="n_message"></textarea>
+						<br> 
+				</div>
+				<div class="modal-footer">
+					<button type="button" class="btn btn-primary" id="mailsend">메일보내기</button>
+					<button type="button" class="btn btn-secondary"
+						data-bs-dismiss="modal">닫기</button>
+
+				</div>
+			</div>
+		</div>
+	</div>
 </body>
 </html>

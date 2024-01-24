@@ -72,7 +72,6 @@
 	<li class="nav-item"><a class="nav-link" href="/kjm">main</a></li>
 	<li class="nav-item"><a class="nav-link" href="/kjm1">아이템</a></li>
 	<li class="nav-item"><a class="nav-link" href="/kjm2">스킬</a></li>
-	<li class="nav-item"><a class="nav-link" href="/kjm3">Link</a></li>
 	<li class="nav-item"><a class="nav-link" href="/kjm4">최근전적</a></li>
 </ul>
 </div>
