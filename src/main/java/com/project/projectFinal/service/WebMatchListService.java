@@ -29,7 +29,7 @@ public class WebMatchListService {
 		return response.getPuuid();
 	}
 	public List<String> MatchList(String puuid) {
-		String count = "3"; //인트쓰면 인식 못 함 (문자열로 써야함)
+		String count = "5"; //인트쓰면 인식 못 함 (문자열로 써야함)
 		
 		String url = "https://asia.api.riotgames.com/lol/match/v5/matches/by-puuid/" + puuid + "/ids?start=0&count="
 				+ count + "&api_key=" + api_key;
@@ -45,10 +45,10 @@ public class WebMatchListService {
 		
 			String url = "https://asia.api.riotgames.com/lol/match/v5/matches/"+matchList+"?api_key="+api_key;
 			WebClient webClient = WebClient.builder().baseUrl(url).build();			
-			log.info("==========webClient:{}",webClient);
+			
 			Map response =  webClient.get().uri(uriBuilder -> uriBuilder.build()).retrieve().bodyToMono(Map.class)
 					.block();
-			log.info("==========response:{}",response);
+			
 			return response;
 		
 		
