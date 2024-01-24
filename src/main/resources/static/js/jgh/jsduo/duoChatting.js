@@ -14,7 +14,6 @@ $('#duoParty').on("click", function() {
 	}else if(friendId == '비회원'){
 		
 		alert("비회원이 올린 게시물은 쪽지로만 대화가 가능합니다.")
-		friendId
 	}
 
 	data = { "friendId": friendId }
@@ -26,7 +25,7 @@ $('#duoParty').on("click", function() {
 		data: data,
 		success: function(res) {
 
-
+		console.log(res)
 			if (res != 1) {
 				alert("접속중이 아닙니다.")
 			} else {
