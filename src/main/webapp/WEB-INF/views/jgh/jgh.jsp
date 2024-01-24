@@ -23,8 +23,7 @@
 
 
 	</div>
-	<h2 align="left">수정삭제와 같이 눌리는 모달 수정요망</h2>
-	<h2 align="left">모달 내용 완료// 승낙 및 채팅구현시작</h2>
+
 	<%@include file="../inc/footer.jsp"%>
 
 	<!-- js들어갈자리  -->
