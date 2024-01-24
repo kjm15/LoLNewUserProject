@@ -46,7 +46,8 @@ margin : 20px;
 box-sizing: border-box;
 }
 
-#champImg{
+#champListImg{
+display : flex;
 width:517px;
 height: 500px;
 box-sizing: border-box;
@@ -54,11 +55,27 @@ background-color: white;
 
 }
 
+#champImg{
+display: flex;
+flex-direction: row;
+}
+.champImgItems{
+object-fit: cover;
+
+}
+.champImgItem{
+display: inline-grid
+width: 80px;
+}
+
+
 #lineRank{
 height: 500px;
 
 background-color: white;
 }
+
+
 </style>
 
 </head>
@@ -70,9 +87,21 @@ background-color: white;
 <h1>정혜린 페이지 입니다.내용 미정</h1>
 <div class ="contents" >
 <div class ="contentsItem search">
-<input type="text" id = "searchC" placeholder="검색">
+<input type="text" id = "searchChampList" placeholder="검색">
 <div>라인 아이콘</div>
-<div id="champImg">챔피언 이미지</div>
+<div id="champListImg">
+<div class = "champImgItems">
+<c:forEach var="champImg" items="${champListImg}">
+<div class="champImgItem">
+<img width="48" height="48" alt="${champImg.champion_name_kr}" src="https://ddragon.leagueoflegends.com/cdn/14.2.1/img/champion/${champImg.champion_name}.png"
+class="cpImg" border="0">
+<span>${champImg.champion_name_kr}</span>
+</div>
+</c:forEach>
+</div>
+
+
+</div>
 </div>
 <div class="contentsItem Line">
 <div class="lineListB">
@@ -94,6 +123,11 @@ background-color: white;
 <%@include file="../inc/footer.jsp" %>
 
 <!-- js들어갈자리  -->
+
+<script type="text/javascript">
+
+
+</script>
 
 </body>
 
