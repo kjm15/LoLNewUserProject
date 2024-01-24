@@ -8,7 +8,7 @@
 	</insert>
 	
 	<select id="NoteInfo">
-		select * from NoteTable where #{userId} = #{sendId}
+		select * from NoteTable where userId = sendId; 
 	</select>
 	
 	<select id="detailNote">
@@ -18,6 +18,10 @@
 	<delete id="DeleteNote">
 		delete * from NoteTable where n_num = #{n_num}
 	</delete>
+	
+	<select id="selectNoteById">
+		select * from NoteTable where userId = sendId;  	
+	</select>
 	
 	
 </mapper>

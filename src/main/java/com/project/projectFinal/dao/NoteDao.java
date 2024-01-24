@@ -9,6 +9,7 @@ import com.project.projectFinal.dto.NoteDto;
 @Mapper
 public interface NoteDao {
 
+
 	ArrayList<NoteDto> NoteInfo();
 
 	int sendNote(NoteDto noteDto);
@@ -16,5 +17,7 @@ public interface NoteDao {
 	void DeleteNote(int num);
 
 	NoteDto detailNote(NoteDto noteDto);
+
+	ArrayList<NoteDto> selectNoteById(String sendId);
 
 }

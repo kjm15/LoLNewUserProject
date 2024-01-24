@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>    
 <!DOCTYPE html>
 <html>
 <head>
@@ -20,6 +21,16 @@
 <title>Insert title here</title>
 </head>
 <body>
+${userId }님<br>
+${sendId }님<br>
+${maillist}님<br>
+
+<div class="modal_background"></div>
+<div class="modal_wrap">
+	<div class="modal_close"></div>
+	<div class="modal2"></div>
+
+</div>
 	<table border=3>
 
 		<thead>
@@ -28,22 +39,29 @@
 			<th>제목</th>
 			<th>내용</th>
 			<th>날짜</th>
+			<th>받는사람</th>
 		</thead>
 		<tbody>
 
-			<c:forEach var="item" items="${blist}">
+			<c:forEach var="item" items="${maillist}">
 
 				<tr>
 					<td>${item.n_num}</td>
 					<td>${item.userId}</td>
-					<td><a href="/detail?BNum=${item.n_num}">${item.n_title}</a></td>
+					<td><a href="/detail?n_num=${item.n_num}">${item.n_title}</a></td>
 					<td>${item.n_message}</td>
 					<td>${item.n_date}</td>
+					<td style="display: none;">${item.sendId}</td>
 				</tr>
 
 			</c:forEach>
 		</tbody>
 	</table>
+	
+<!-- 메일쓰기 -->
+<%@include file="kjmmodal.jsp"%>
+<!-- 메일 보기 -->
+<%@include file="kjmmodal2.jsp"%>
 
 
 
@@ -51,13 +69,5 @@
 
 
 
-<h1>**메일**</h1>
-<form action="/send" method="post">
-보내는사람${userId }<br>
-받는사람<input type ="text" name ="sendId" id="sendId"><br>
-제목<input type ="text" name ="n_title"><br>
-내용<textarea rows="6" cols="35" name="n_message"></textarea><br>
-<input type="submit" value ="보내기">
-</form>
 </body>
 </html>

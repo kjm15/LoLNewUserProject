@@ -45,14 +45,14 @@
 				<div class="profile-icon" id="profile-icon"></div>
 				<div class="profile-name" id="profile-name">
 					<p class="h1" id="lolusername">
-						김창섭 <small class="text-body-secondary">#창렬섭섭</small>
+						고길동 <small class="text-body-secondary">#10597</small>
 					</p>
 				</div>
 				<div class="content" id="tierbox">
-					<div class="tierimage" id="tierimage">티어이미지넣는곳</div>
+					<div class="tierimage" id="tierimage">티어이미지</div>
 					<div class="tier-info-box" id="tier-info">
 						<div class="tiername" id="tiername">티어이름</div>
-						<div class="lp" id="lp">lp 적는곳고민중</div>
+						<div class="lp" id="lp">lP</div>
 					</div>
 					<div class="win-lose-box" id="win-lose-box">
 						<div class="win-lose" id="win-lose">109승57패</div>
@@ -64,11 +64,11 @@
 			<div class="container" id="chartandmsg">
 				<div id="chart">차트</div>
 				<div id="img">img</div>
-				<div id="msg">너 개못하잖아</div>
+				<div id="msg">msg</div>
 			</div>
-			<div class="container" id="win-lose-result">
+			<div class="container" id="matches">
 				<div class="container text-center">
-					<div class="row row-cols-1 row-cols-sm-2 row-cols-md-5">
+					<div class="row row-cols-1 row-cols-sm-2 row-cols-md-5" >
 						<div class="col">B</div>
 						<div class="col">O</div>
 						<div class="col">A</div>
