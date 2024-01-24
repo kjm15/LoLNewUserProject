@@ -32,6 +32,15 @@ public class RestMatchListController {
 		List<Map> MList = matchListService.gamedate(matchList);
 		return MList;
 	}
+	@PostMapping("/match/list")
+	public List<Map> matchList(PostDto postDto) {
+		String puuid = matchListService.puuId(postDto.getGameName(),postDto.getTagLine());
+		
+		List<String> matchList = matchListService.MatchList(puuid);
+		
+		List<Map> MList = matchListService.gamedate(matchList);
+		return MList;
+	}
 	
 	
 }
