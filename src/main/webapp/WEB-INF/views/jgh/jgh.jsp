@@ -34,6 +34,7 @@
 	<script defer src="/js/jgh/jsduo/duoModal.js"></script>
 	<script defer src="/js/jgh/jsduo/duoPort.js"></script>
 	<script defer src="/js/jgh/jsduo/duoShow.js"></script>
+	<script defer src="/js/jgh/jsduo/duoChatting.js"></script>
 </body>
 
 </html>
