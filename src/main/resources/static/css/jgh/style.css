@@ -122,3 +122,37 @@
   font-size: 12px;
   padding: 20px;
 }
+/* /////// */
+.main{
+  width: 90vw;
+  margin: 0 auto;
+  text-align: center;
+  
+}
+
+.animation span{
+  position: relative;
+  font-size: 30px;
+  font-weight: 600;
+  color: white;
+}
+  
+.animation .two_text {
+  display: inline-block;
+  transform-origin: center;
+  padding: 0 0.5rem;
+  color: #2aff29;
+  animation: animate 2s infinite;
+}
+
+@keyframes animate {
+  0% {
+    transform: scale(1);
+  }
+  50% {
+    transform: scale(1.15);
+  }
+  100% {
+    transform: scale(1);
+  }
+}

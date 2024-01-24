@@ -40,6 +40,10 @@ $('#duoParty').on("click", function() {
 
 
 })
+
+window.addEventListener('click', () => {
+	 clearTimeout(timer)
+})
 $('#duoPartyCancel').on("click", function() {
 
 
@@ -66,10 +70,25 @@ function openTab(evt, tabName) {
 
 
 function searchLol() {
-
+	$('#aaa').empty()
 	$('.startSearch').fadeOut(700, 'linear');
-	console.log("ggg")
+
+
+	setTimeout(() => $('#aaa').append("kda : "), 1000);
+	setTimeout(() => $('#aaa').append("3.22</br>"), 1500);
+	setTimeout(() => $('#aaa').append("라인 :"), 2500);
+	setTimeout(() => $('#aaa').append("정글</br>"), 3000);
+	setTimeout(() => $('#aaa').append("캐릭터 :"), 4000);
+	setTimeout(() => $('#aaa').append("비에고</br>"), 4500);
+	setTimeout(() => $('#aaa').append("딜량 :"), 5500);
+	setTimeout(() => $('#aaa').append("11,511</br>"), 6000);
+	setTimeout(() => $('#aaa').append("종합평가 :"), 7000);
+	setTimeout(() => $('#aaa').append("A"), 7500);
 
 }
 
+function maketable() {
 
+
+
+}

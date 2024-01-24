@@ -41,7 +41,9 @@ $('.modal_close').on("click", function() {
 /////////////////////////모달 값 넣기///////////////
 
 function duoinfo(dcnt) {
+	
 $('.startSearch').show();
+$('#aaa').empty()
 	data = { 'dcnt': dcnt }
 	//	console.log(a)
 	$.ajax({
