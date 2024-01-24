@@ -16,7 +16,7 @@
 
 <%@include file="../inc/header2.jsp" %>
 <div style="height: 700px; background: whitesmoke;">
-
+<h1>미구현</h1>
 </div>
 <%@include file="../inc/footer.jsp" %>
 

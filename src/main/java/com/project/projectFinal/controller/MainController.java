@@ -94,10 +94,6 @@ public class MainController {
 		return "stm/stm";
 	}
 
-	@GetMapping("/jhl")
-	public String go6() {
 
-		return "jhl/jhl";
-	}
 }
 

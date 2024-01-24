@@ -17,4 +17,10 @@ public interface NoteDao {
 
 	NoteDto detailNote(NoteDto noteDto);
 
+	ArrayList<NoteDto> selectNoteById(String sendId);
+
+	int mailsend(NoteDto noteDto);
+
+	int findId(NoteDto noteDto);
+
 }
