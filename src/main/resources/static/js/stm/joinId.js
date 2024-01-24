@@ -29,7 +29,7 @@ $("#joinId").on('keyup',function() {
 				$("#checkId").css('color','green')
 				$('#joinbnt').prop('disabled', false);
 				if(userPw.length<3){
-					str2 ="비밀번호는 3자이상"
+					str2 = "비밀번호 기입은 필수입니다."
 					$("#checkPw").css('color','red')
 					$('#joinbnt').prop('disabled', true);
 					$("#checkPw").html(str2);  
