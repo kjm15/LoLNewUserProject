@@ -8,17 +8,17 @@ import lombok.NoArgsConstructor;
 @NoArgsConstructor
 @AllArgsConstructor
 public class DuoSearchDto {
-	
+
 	private int dcnt;
 	private String winLose;
 	private String userId;
 	private String myPosition;
 	private String tier;
 	private String duoPosition;
-	
+
 	private String gameType;
 	private String memo;
 	private String date;
-	
 
+	private String friendId;
 }
