@@ -5,6 +5,7 @@ import java.io.IOException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RestController;
@@ -18,7 +19,6 @@ import lombok.extern.slf4j.Slf4j;
 
 @Slf4j
 @RestController
-
 public class SseController {
 	@Autowired
 	SseEmitters sseEmitters;
@@ -27,11 +27,12 @@ public class SseController {
 		this.sseEmitters = sseEmitters;
 	}
 
+	@CrossOrigin
 	@SuppressWarnings("finally")
 	@GetMapping(value = "/jgh", produces = MediaType.TEXT_EVENT_STREAM_VALUE)
 	public ResponseEntity<SseEmitter> connect(HttpSession session) {
-		SseEmitter emitter = new SseEmitter(300_000L);
-
+		SseEmitter emitter = new SseEmitter(5 * 60 * 1000L); //5분
+	
 		sseEmitters.add(emitter);
 		try {
 			emitter.send(SseEmitter.event().name("connect").data("connected!").reconnectTime(3000L));
@@ -43,7 +44,7 @@ public class SseController {
 
 			return ResponseEntity.ok(emitter);
 		}
-	}	
+	}
 
 	@PostMapping("/jgh")
 	public ResponseEntity<Void> count() {

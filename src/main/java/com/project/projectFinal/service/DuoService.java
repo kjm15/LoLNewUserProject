@@ -58,9 +58,14 @@ public class DuoService {
 	}
 
 	public ArrayList<HashMap<String, DuoSearchDto>> duostartinfo() {
-		
+
 		return duoDao.duoInfo();
 
+	}
+
+	public int nowlogin(DuoSearchDto duoSearchDto) {
+		// TODO Auto-generated method stub
+		return duoDao.nowlogin(duoSearchDto);
 	}
 
 }

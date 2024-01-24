@@ -1,7 +1,11 @@
+
+
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 
-
+<input type="hidden" value="${userId}" id="userIdcheck" />
+<!-- //작성자 -->
+<input type="hidden" value="" id="writter" />
 <div class="modal_background"></div>
 <div class="modal_wrap">
 	<div class="modal_close">
@@ -35,9 +39,9 @@
 		</div>
 
 	</div>
-	<div id = "memberSub">
-		           
-		<button>메세지보내기</button>
+	<div class="wrap">
+		<a href="#" class="duoP" id="duoParty">듀오 신청하기!</a>
 	</div>
-	<div class='inner-div'>부검하기로 좀더 자세한 전적을 확인할수 있습니다.</div>
+
 </div>
+
