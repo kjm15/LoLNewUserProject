@@ -32,11 +32,11 @@ public class SseEmitters {
 	}
 
 	public void count() {
-		log.info("모든인원전달");
+		
 		String count = "전달받음";
 		emitters.forEach(emitter -> {
 			try {
-				emitter.send(SseEmitter.event().name("count").data(count));
+				emitter.send(SseEmitter.event().name("makeroom").data(count));
 			} catch (IOException e) {
 				// 새로고침을 해도 오류가 나지 않으며 재실행 처리를 해줌
 				this.emitters.remove(emitter); // 만료되면 리스트에서 삭제
@@ -45,12 +45,12 @@ public class SseEmitters {
 			}
 		});
 	}
-	public void infoAll() {
-		log.info("sse만들러옴");
-		String count = "전달받음";
+	public void infoAll(String infoMember) {
+		
 		emitters.forEach(emitter -> {
 			try {
-				emitter.send(SseEmitter.event().name("infoAll").data(count));
+				emitter.send(SseEmitter.event().name("infoAll").data(infoMember));
+				
 			} catch (IOException e) {
 				// 새로고침을 해도 오류가 나지 않으며 재실행 처리를 해줌
 				this.emitters.remove(emitter); // 만료되면 리스트에서 삭제

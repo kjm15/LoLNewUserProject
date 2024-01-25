@@ -24,7 +24,7 @@
 <!-- <script src="js/main.js"/> -->
 
 <script src="js/aLol/loldata1.js"></script>
-
+<script src="js/aCommon/common.js"></script>
 </body>
 
 </html>

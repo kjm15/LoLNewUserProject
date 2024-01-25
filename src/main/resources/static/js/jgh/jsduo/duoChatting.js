@@ -84,8 +84,3 @@ function searchLol() {
 
 }
 
-function maketable() {
-
-
-
-}

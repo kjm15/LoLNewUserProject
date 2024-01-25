@@ -3,14 +3,13 @@
 $('#sendMember').on("click", function() {
 
 	console.log("회원")
-	let userId = $('#userId').val()
+	let infoMember = $('#infoMember').val()
+	data = { 'infoMember': infoMember }
 
-	data = { 'userId': userId }
-	
 	$.ajax({
 		type: 'post',
 		url: '/infoAll',
-
+		data : data,
 		success: function(res) {
 
 		}, error: function(error) {
@@ -21,6 +20,15 @@ $('#sendMember').on("click", function() {
 
 })
 
+
+
+function memberInfo() {
+	console.log("통과")
+
+
+	alert(infoMember)
+
+}
 
 
 
