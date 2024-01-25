@@ -23,4 +23,6 @@ public interface NoteDao {
 
 	int findId(NoteDto noteDto);
 
+//	int findMsg(NoteDto noteDto);
+
 }

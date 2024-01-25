@@ -81,6 +81,8 @@
 	<select id="joinIdCheck">
 		select userId from memberT where userId=#{userId};
 	</select>
+	
+
 
 
 </mapper>
