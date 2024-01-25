@@ -56,9 +56,11 @@ public class kdgRestController {
 		
 		List<HashMap<String, ItemDto>> cList = cs.test(IDto);
 		DMap.put("cList", cList);
+		log.info("=============== cList : {}", cList);
 
 		List<HashMap<String, ItemDto>> wList = cs.test3(IDto);
 		DMap.put("wList", wList);
+		log.info("=============== wList : {}", wList);
 
 		return DMap;
 	}
