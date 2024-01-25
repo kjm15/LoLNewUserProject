@@ -13,48 +13,28 @@
 <%@include file="../inc/header.jsp" %>
 <div style="height: 700px; background: lightpink;">
 <div align="center">
-<!-- <form action="/matchList/find" method="post"> -->
+
 <input type="text" id="gameName" name="gameName" placeholder="아이디" value="깡통차기국내1위">
 <input type="text" id="tagLine" name ="tagLine" placeholder="태그" value="KR1">
 <button id="getpuuid">검색</button>
-<!-- </form> -->
+
 </div>
 <div id="puuid"></div>
+<!-- 전적리스트 나옴 -->
+
 </div>
+
+
+
+
+
+
+
+
 <%@include file="../inc/footer.jsp" %>
 
 <!-- js들어갈자리  -->
 <script defer src ="/js/stm/joinId.js"></script>
+<script defer src ="/js/stm/loldata.js"></script>
 </body>
-<script type="text/javascript">
-$("#getpuuid").on("click", function () {
-	let gameName = $('#gameName').val();
-	let tagLine = $('#tagLine').val();
-	data  = {'gameName':gameName,'tagLine':tagLine}	
-	let str = ''
-	$.ajax({
-		type : 'post',
-		url : '/matchList/find',
-		data : data,
-		
-		success : function(res){
-// 			console.log(res[0]["info"]['participants'].length)
-			str += "<table border = '3' align = 'center' ><thead><th>챔피언</th></thead><tbody>"			
-			for(let i = 0; i<res[0]["info"]['participants'].length; i ++){
-				
-				str += "<tr>"
-				a = res[0]["info"]['participants'][i]['championName']
-				str += "<td>"+a+"</td>"
-				str += "</tr>"
-			}
-			str += "</tbody></table>"
- 				
-			$('#puuid').append(str)		
-				
-			
-		}
-	})
-})
-
-</script>
 </html>

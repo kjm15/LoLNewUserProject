@@ -20,6 +20,8 @@ public interface DuoDao {
 
 	DuoSearchDto comparedcnt();
 
+	int nowlogin(DuoSearchDto duoSearchDto);
+
 	
 
 }

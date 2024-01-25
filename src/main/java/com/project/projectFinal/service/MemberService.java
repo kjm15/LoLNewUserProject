@@ -27,6 +27,7 @@ public class MemberService {
 		MemberDto mDto = memberDao.login(memberDto);
 		HashMap<String, String> mMap = new HashMap<>();
 		if (mDto != null) {
+			memberDao.loginNow(mDto);
 			return mDto;
 		} else {
 
@@ -81,6 +82,11 @@ public class MemberService {
 	public MemberDto joinIdCheck(MemberDto memberDto) { // 회원가입 시 아이디 중복채크
 		return memberDao.joinIdCheck(memberDto);
 
+	}
+
+	public void logoutNow(String userId) {
+		 memberDao.logoutNow(userId);
+		
 	}
 
 	

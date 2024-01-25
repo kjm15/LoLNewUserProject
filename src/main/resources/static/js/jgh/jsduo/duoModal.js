@@ -67,20 +67,8 @@ function duoinfo(dcnt) {
 			$('#duoPositionM').html(duoPosition)
 			$('#memoM').html(memo)
 			$('#date').html(date)
-			
 
-
-			let memberSub = "< button disabled = 'disabled' >" + "회원전용입니다." + "</button >"
-			let notMember = "< button >" + " 부검하기(-10point차감)" + "</button >"
-			if (userId == '비회원') {
-
-				$('#memberSub').html(memberSub)
-			} else {
-
-				$('#memberSub').html(notMember)
-			}
-
-
+			document.getElementById('writter').value = userId;
 			//			$('#duoModalBody').html(res)
 		}, error: function(error) {
 			console.log("에러")

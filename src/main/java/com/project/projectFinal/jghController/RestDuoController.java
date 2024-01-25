@@ -63,4 +63,11 @@ public class RestDuoController {
 
 	}
 
+	@PostMapping("/nowlogin")
+	public int nowlogin(DuoSearchDto duoSearchDto) {
+		log.info("========={}", duoSearchDto);
+		return duoService.nowlogin(duoSearchDto);
+
+	}
+
 }

@@ -46,8 +46,13 @@ public class MainController {
 
 	@GetMapping("/logout")
 	public String logout(HttpSession session, RedirectAttributes redirectAttributes) {
+		
+		String userId =  (String) session.getAttribute("userId");
+		memberService.logoutNow(userId);
 		session.invalidate();
 		redirectAttributes.addFlashAttribute("msg", "로그아웃되었습니다.");
+		
+		
 		return "redirect:/";
 	}
 
@@ -89,10 +94,6 @@ public class MainController {
 		return "stm/stm";
 	}
 
-	@GetMapping("/jhl")
-	public String go6() {
 
-		return "jhl/jhl";
-	}
 }
 

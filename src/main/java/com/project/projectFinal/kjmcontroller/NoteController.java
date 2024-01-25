@@ -23,11 +23,10 @@ public class NoteController {
 	//쪽지함
 	@GetMapping("/Note")
 	public String Noteinfo(Model model) {
-		
 		ArrayList<NoteDto> maillist= noteService.NoteInfo();
 		model.addAttribute("maillist", maillist);
 		
-		return "Note";	
+		return "kjm/Note";	
 	}
 	
 	//쪽찌 자세히보기
@@ -35,7 +34,7 @@ public class NoteController {
 	public String detailNote(Model model,NoteDto noteDto) {
 		NoteDto dlist = noteService.detailNote(noteDto);
 		model.addAttribute("dlist", dlist);
-		return "detail";
+		return "kjm/detail";
 	}
 	
 	@PostMapping("/send")
