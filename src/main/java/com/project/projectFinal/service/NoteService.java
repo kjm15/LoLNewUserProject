@@ -50,6 +50,7 @@ public class NoteService {
 
 		int result1 = noteDao.findId(noteDto);
 		
+//		int result2 = noteDao.findMsg(noteDto);
 
 		
 		if (result == 0 || result1 == 0) {

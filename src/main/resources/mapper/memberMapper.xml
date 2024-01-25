@@ -18,7 +18,20 @@
 		userPw = #{userPw}
 
 	</select>
+	<update id="loginNow">
 
+		update memberT
+		set loginNow = 1
+		where userId = #{userId} ;
+
+	</update >
+	<update id="logoutNow">
+
+		update memberT
+		set loginNow = 0
+		where userId = #{userId} ;
+
+	</update >
 	<insert id="join">
 
 		insert into memberT(userId , userPw)
@@ -68,6 +81,8 @@
 	<select id="joinIdCheck">
 		select userId from memberT where userId=#{userId};
 	</select>
+	
+
 
 
 </mapper>

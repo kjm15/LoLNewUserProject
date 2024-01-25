@@ -4,17 +4,16 @@ $('#mailsend').on("click", function() {
 })
 
 function send() {
-	let userId = $('#userId').val()
-	let sendId = $('#sendId').val()
+	let recv_userId = $('#recv_userId').val()
+	let send_userId = $('#send_userId').val()
 	let n_title = $('#n_title').val()
 	let n_message = $('#n_message').val()
-	console.log(n_message);
 
 	data = {
-		'userId': userId,
-		'sendId': sendId,
+		'recv_userId': recv_userId,
+		'send_userId': send_userId,
 		'n_title': n_title,
-		'n_message' : n_message
+		'n_message': n_message
 	}
 
 	$.ajax({
@@ -25,7 +24,12 @@ function send() {
 		success: function(res) {
 			console.log(res)
 
-			alert("메일을 성공적으로 보냈습니다.")
+			if (res == 1) {
+				alert("메일을 성공적으로 보냈습니다.")
+			} else {
+				alert("메일 전송 실패")
+			}
+
 		}
 	})
 

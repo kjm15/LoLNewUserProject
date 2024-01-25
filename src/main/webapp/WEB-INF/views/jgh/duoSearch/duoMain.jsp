@@ -43,7 +43,7 @@
 	<!-- Modal -->
 	<!-- 	듀오등록 -->
 	<%@include file="modal1.jsp"%>
-	<!-- Modal 클릭시 세부내용 -->
+	<!--   세부내용 -->
 	<%@include file="modal2.jsp"%>
 
 

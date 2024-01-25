@@ -34,4 +34,14 @@
 		select * from duoT order by dcnt desc limit 1;
 
 	</select>
+
+	<select id="nowlogin">
+
+		select loginNow from memberT where userId =
+		#{friendId};
+
+	</select>
+
+
+
 </mapper>
