@@ -14,9 +14,9 @@ public class SseEmitters {
 
 	private final List<SseEmitter> emitters = new CopyOnWriteArrayList<>();
 	
-
 	public SseEmitter add(SseEmitter emitter) {
 		log.info("sse만들러옴");
+
 		this.emitters.add(emitter);
 
 		emitter.onCompletion(() -> {
@@ -32,7 +32,7 @@ public class SseEmitters {
 	}
 
 	public void count() {
-		
+
 		String count = "전달받음";
 		emitters.forEach(emitter -> {
 			try {
@@ -45,12 +45,13 @@ public class SseEmitters {
 			}
 		});
 	}
+
 	public void infoAll(String infoMember) {
-		
+
 		emitters.forEach(emitter -> {
 			try {
 				emitter.send(SseEmitter.event().name("infoAll").data(infoMember));
-				
+
 			} catch (IOException e) {
 				// 새로고침을 해도 오류가 나지 않으며 재실행 처리를 해줌
 				this.emitters.remove(emitter); // 만료되면 리스트에서 삭제

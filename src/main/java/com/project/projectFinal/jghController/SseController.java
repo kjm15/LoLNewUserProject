@@ -45,8 +45,6 @@ public class SseController {
 
 	}
 
-	
-	
 	@PostMapping("/makeroom")
 	public ResponseEntity<Void> makeroom() {
 		sseEmitters.count();
