@@ -51,4 +51,9 @@ public class SseController {
 		sseEmitters.count();
 		return ResponseEntity.ok().build();
 	}
+	@PostMapping("/infoAll")
+	public ResponseEntity<Void> infoAll() {
+		sseEmitters.infoAll();
+		return ResponseEntity.ok().build();
+	}
 }

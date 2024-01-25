@@ -29,7 +29,7 @@
 				듀오를 구하고 있습니다. </br> ==================================== </br> 원하는 티어 : <span
 					id="tierM"></span> </br> ==================================== </br> 한줄메모 : <span
 					id="memoM"></span></br> </br>
-
+		
 				<!--tabA end-->
 				<!--tabB start-->
 			</div>
@@ -43,10 +43,9 @@
 			</div>
 			<!--tabB end-->
 
-
-
-			<button id="duoParty">듀오신청하기</button>
+			<button id="duoParty" class="learn-more">듀오신청하기</button>
 			<button id="duoPartyCancel" style="display: none;">취소하기</button>
+			</br>
 			</br> <span id="flagcollapse"></span>
 
 

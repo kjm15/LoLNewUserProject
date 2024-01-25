@@ -8,6 +8,7 @@
 <meta charset="UTF-8">
 <title>롤 영혼의 Duo 찾기</title>
 <!-- css들어갈자리  -->
+<link href="/css/jgh/button.css" rel="stylesheet" type="text/css">
 <link href="/css/style.css" rel="stylesheet" type="text/css">
 <link href="/css/jgh/modal.css" rel="stylesheet" type="text/css">
 <link href="/css/jgh/style.css" rel="stylesheet" type="text/css">
@@ -17,10 +18,9 @@
 
 	<%@include file="../inc/header.jsp"%>
 
-	<div style="height: 1200px; background: lightBLUE;" >
+	<div style="height: 1200px; background: lightBLUE;">
 
-		<%@include file="duoSearch/duoMain.jsp"%>
-
+	<%@include file="duoSearch/duoMain.jsp"%>
 
 	</div>
 
@@ -28,7 +28,7 @@
 
 	<!-- js들어갈자리  -->
 
-
+	<script defer src="/js/jgh/jsduo/duoMember.js"></script>
 	<script defer src="/js/jgh/jsduo/duoDeleteSave.js"></script>
 	<script defer src="/js/jgh/jsduo/duoModal.js"></script>
 	<script defer src="/js/jgh/jsduo/duoPort.js"></script>

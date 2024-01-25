@@ -60,18 +60,23 @@ function save() {
 		url: '/saveDb',
 		data: data,
 		success: function(res) {
-
+				alert("연결이 안되었을시 2시간 이후의 글들은 삭제 됩니다.")
 			$.ajax({
 				type: 'post',
 				url: '/jgh',
 
 				success: function(res) {
 
+
+
 				}, error: function(error) {
 					console.log("에러")
-					//			update()
+				
 				}
 			})
+
+
+
 
 		}, error: function(error) {
 			console.log("에러")

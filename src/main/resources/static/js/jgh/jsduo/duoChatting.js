@@ -31,7 +31,7 @@ $('#duoParty').on("click", function() {
 
 			} else {
 				$('#flagcollapse').html("<font color='blue'><marquee scrollamount=5>상대방에게 듀오 요청중입니다. 잠시만 기다려주세요</marquee></font>")
-				$('#duoParty').hide();
+				$('#duoParty').hide();	
 				$('#duoPartyCancel').show();
 			}
 
@@ -41,9 +41,6 @@ $('#duoParty').on("click", function() {
 
 })
 
-window.addEventListener('click', () => {
-	 clearTimeout(timer)
-})
 $('#duoPartyCancel').on("click", function() {
 
 
