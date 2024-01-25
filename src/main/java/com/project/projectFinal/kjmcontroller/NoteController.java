@@ -9,6 +9,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
+import com.project.projectFinal.dto.MemberDto;
 import com.project.projectFinal.dto.NoteDto;
 import com.project.projectFinal.service.NoteService;
 
@@ -38,9 +39,9 @@ public class NoteController {
 	}
 	
 	@PostMapping("/send")
-	public String sendNote(NoteDto noteDto,HttpSession session) {
+	public String sendNote(NoteDto noteDto,HttpSession session,MemberDto memberDto) {
 		String userId = (String) session.getAttribute("userId");
-		noteDto.setUserId(userId);
+		memberDto.setUserId(userId);
 		noteService.sendNote(noteDto);
 		return "redirect:/Note";
 	}

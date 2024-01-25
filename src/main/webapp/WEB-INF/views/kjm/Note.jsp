@@ -9,23 +9,19 @@
 </head>
 <body>
 
+${userId }님<br>
+<a href="/">돌아가기</a>
+			<button type="button" class="btn btn-success" type="button"
+				class="btn btn-primary" data-bs-toggle="modal"
+				data-bs-target="#exampleModal">쪽지쓰기</button>
+				
 
-	${userId }님
-	<br> ${sendId }님
-	<br> ${maillist}님
-	<br>
-	<button type="button" class="btn btn-success" type="button"
-		class="btn btn-primary" data-bs-toggle="modal"
-		data-bs-target="#exampleModal">메일쓰기</button>
 	<table border=3>
 
 		<thead>
 			<th>번호</th>
-			<th>작성자</th>
 			<th>제목</th>
-			<th>내용</th>
 			<th>날짜</th>
-			<th>받는사람</th>
 		</thead>
 		<tbody>
 
@@ -33,13 +29,11 @@
 
 				<tr>
 					<td>${item.n_num}</td>
-					<td>${item.userId}</td>
 					<td><a href="/detail?n_num=${item.n_num}">${item.n_title}</a></td>
-					<td>${item.n_message}</td>
 					<td>${item.n_date}</td>
-					<td style="display: none;">${item.sendId}</td>
 				</tr>
-
+				<input type ="hidden" name = "${item.recv_userId}" id = "${item.recv_userId}">
+				<input type ="hidden" name = "${item.send_userId}" id = "${item.send_userId}">
 			</c:forEach>
 		</tbody>
 	</table>
