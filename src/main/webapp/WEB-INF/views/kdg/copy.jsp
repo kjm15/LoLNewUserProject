@@ -29,6 +29,7 @@
 		<p id="name" style="visibility: hidden; position: absolute;"></p>
 		<div class = "champs">
 				<p id="myChampName" style="visibility: hidden; position: absolute;"></p>
+				<h1 id="versus">vs</h1>
 				<p id="enemyChampName" style="visibility: hidden; position: absolute;"></p>
 				<p id="lineCheck" style="visibility: hidden; position: absolute;"></p>
 				<button id = "anBtn">분석하기</button>
@@ -38,9 +39,7 @@
 			<div id="myChampion">
 				<img onclick="javascript:champ(this.id)" src="../img/champ.jpg" id="myChamp"></img>
 			</div>
-			<div>
-				<h1 id="versus">vs</h1>
-			</div>	
+		
 			<div id="enemyChampion">
 				<img onclick="javascript:champ(this.id)" src="../img/champ.jpg" id="enemyChamp"></img>
 			</div>
