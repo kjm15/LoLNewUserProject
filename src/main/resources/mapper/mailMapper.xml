@@ -4,12 +4,12 @@
 
 	<insert id="mailsend">
 		insert into
-		NoteTable(userId,sendId,n_title,n_message)
-		values(#{userId},#{sendId},#{n_title},#{n_message})
+		NoteTable(recv_userId,send_userId,n_title,n_message)
+		values(#{recv_userId},#{send_userId},#{n_title},#{n_message})
 	</insert>
 
 	<select id="NoteInfo">
-		select * from NoteTable where userId = #{sendId};
+		select * from NoteTable FULL join memberT where send_userId = memberT.userId and recv_userId != memberT.userId order by n_num DESC;
 	</select>
 
 	<select id="detailNote">
@@ -22,7 +22,7 @@
 
 	<select id="findId">
 		select count(*) from NoteTable 
-		FULL join memberT where memberT.userId = #{sendId};
+		FULL join memberT where memberT.userId = #{send_userId};
 	</select>
 	
 

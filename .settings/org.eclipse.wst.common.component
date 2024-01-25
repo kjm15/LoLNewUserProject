@@ -94,6 +94,7 @@
 
 
 
+
         <wb-resource deploy-path="/WEB-INF/classes" source-path="/target/generated-test-sources/test-annotations"/>
 
                                                                                 
@@ -124,12 +125,16 @@
         
         <property name="context-root" value="project"/>
 
+
                                                                                     
 
 
                     
 
     
+
+
+
     
     
     
@@ -140,6 +145,7 @@
     
     </wb-module>
 
+
                                         
 
 
@@ -149,6 +155,8 @@
 
 
         
+
+
 
 
                                                                             
