@@ -54,9 +54,9 @@ public class SseController {
 	}
 
 	@PostMapping("/infoAll")
-	public ResponseEntity<Void> infoAll(String infoMember) {
+	public ResponseEntity<Void> infoAll(String infoAll) {
 
-		sseEmitters.infoAll(infoMember);
+		sseEmitters.infoAll(infoAll);
 		return ResponseEntity.ok().build();
 	}
 }

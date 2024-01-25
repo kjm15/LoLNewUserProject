@@ -1,10 +1,10 @@
 
 
-$('#sendMember').on("click", function() {
+$('#sendAll').on("click", function() {
 
 	console.log("회원")
-	let infoMember = $('#infoMember').val()
-	data = { 'infoMember': infoMember }
+	let infoAll = $('#infoAll').val()
+	data = { 'infoAll': infoAll }
 
 	$.ajax({
 		type: 'post',
