@@ -38,6 +38,11 @@ public class kjmController {
 		return "kjm/kjm4";
 	}
 	
+	@GetMapping("/kjm5")
+	public String kjm5(){
+		return "kjm/kjm5";
+	}
+	
 //	@PostMapping("/")
 	
 }
