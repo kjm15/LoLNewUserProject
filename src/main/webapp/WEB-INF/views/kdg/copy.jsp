@@ -5,8 +5,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-<script
-	src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
 <!-- champ choice js 들어갈곳 -->
 <script defer src="../js/kdg/champion/champChoice.js" /></script>
 <meta charset="UTF-8">
@@ -21,21 +20,23 @@
 </head>
 <body>
 	<%@include file="../inc/kdgheader.jsp"%>
-	<div>
-		<div>
-			<h1>챔피언 분석</h1>
-		</div>
-	</div>
 	<!-- #3C3C41 -->
+	<p id="name" style="visibility: hidden; position: absolute;"></p>
+	<div class = "champs">
+		<p id="myChampName" style="visibility: hidden; position: absolute;"></p>
+		<p id="enemyChampName" style="visibility: hidden; position: absolute;"></p>
+		<p id="lineCheck" style="visibility: hidden; position: absolute;"></p>
+		<p id="tierCheck" style="visibility: hidden; position: absolute;"></p>
+	</div>
+	
+	
 	<div style="height: 2000px; background: white;">
 		<p id="name" style="visibility: hidden; position: absolute;"></p>
 		<div class="champs">
 			<p id="myChampName" style="visibility: hidden; position: absolute;"></p>
-			<h1 id="versus">vs</h1>
 			<p id="enemyChampName"
 				style="visibility: hidden; position: absolute;"></p>
 			<p id="lineCheck" style="visibility: hidden; position: absolute;"></p>
-			<button id="anBtn">분석하기</button>
 		</div>
 		<!-- <h1>김동근 페이지 입니다.</h1> -->
 
@@ -44,22 +45,35 @@
 				<div id="ex">
 					<div id="champbox">
 						<div id="champimgbox">
-							<div id="champimg1"></div>
-							<div id="vs">vs</div>
-							<div id="champimg2"></div>
+							<div id="myChampion" class = "champimg1">
+								<img id = "myChamp" onclick="javascript:champ(this.id)" src = "../img/champ.jpg"></img>
+							</div>
+							<div id="vs">
+								<img src="../img/versus.png"></img>
+							</div>
+							<div id = "enemyChampion" class="champimg2">
+								<img id = "enemyChamp" onclick="javascript:champ(this.id)" src = "../img/champ.jpg"></img>
+							</div>
 						</div>
 						<div id="champnamebox">
-							<div id="champname1"></div>
+							<div id="champname1">
+								내 챔피언
+							</div>
 							<div id="gongback"></div>
-							<div id="champname2"></div>
+							<div id="champname2">
+								내가 상대할 챔피언
+							</div>
 						</div>
 					</div>
 					<div id="box">
-						<div id="ex1">설명</div>
+						<div id="ex1">
+							<h4>챔피언 분석 페이지 입니다.</h4>
+							<p id = "info22">아이템 버전 : 14.01, 설정 티어 : platinum <img src="../img/tier/platinum.png" style = "width: 30px; height: 30px;"></img>라인 : all</p>
+							내가 상대할 챔피언과의 매치에서 가장 승률이 높은 아이템 빌드를 확인해보세요!
+						</div>
 						<div id="searchbox">
 							<div class="searchbox" id="search">
-								<input type="text" id="searchChamp" name="searchChamp"
-									placeholder="ex) 가렌, garen, ㄱㄹ...">
+								<input type="text" id="searchChamp" name="searchChamp" placeholder="ex) 가렌, garen, ㄱㄹ...">
 							</div>
 							<div id=line>
 								<div class="img" id="topimg">
@@ -91,6 +105,42 @@
 						</div>
 					</div>
 				</div>
+				
+					<div class = "mid-header">
+						<button id="anBtn">분석하기</button>
+						<button class = "tier" id = "iron" onclick="tier(this.id)">
+							<img src="../img/tier/iron.png" style = "width: 30px; height: 30px;"> 아이언
+						</button>					
+						<button class = "tier" id = "bronze" onclick="tier(this.id)">
+							<img src="../img/tier/bronze.png" style = "width: 30px; height: 30px;"> 브론즈
+						</button>					
+						<button class = "tier" id = "silver" onclick="tier(this.id)">
+							<img src="../img/tier/silver.png" style = "width: 30px; height: 30px;"> 실버
+						</button>					
+						<button class = "tier" id = "gold" onclick="tier(this.id)">
+							<img src="../img/tier/gold.png" style = "width: 30px; height: 30px;"> 골드
+						</button>					
+						<button class = "tier" id = "platinum" onclick="tier(this.id)">
+							<img src="../img/tier/platinum.png" style = "width: 30px; height: 30px;"> 플래티넘
+						</button>					
+						<button class = "tier" id = "emerald" onclick="tier(this.id)">
+							<img src="../img/tier/emerald.png" style = "width: 30px; height: 30px;"> 에메랄드
+						</button>					
+						<button class = "tier" id = "diamond" onclick="tier(this.id)">
+							<img src="../img/tier/diamond.png" style = "width: 30px; height: 30px;"> 다이아몬드
+						</button>					
+						<button class = "tier" id = "master" onclick="tier(this.id)">
+							<img src="../img/tier/master.png" style = "width: 30px; height: 30px;"> 마스터
+						</button>					
+						<button class = "tier" id = "grandmaster" onclick="tier(this.id)">
+							<img src="../img/tier/grandmaster.png" style = "width: 30px; height: 30px;"> 그랜드마스터
+						</button>					
+						<button class = "tier" id = "challenger" onclick="tier(this.id)">
+							<img src="../img/tier/challenger.png" style = "width: 30px; height: 30px;"> 챌린저
+						</button>					
+					</div>
+				
+				
 				<div class="box" id="champListbox">
 					<div id="champList">
 						<ul>
@@ -106,7 +156,7 @@
 				</div>
 
 
-
+				</div>
 
 			</div>
 
