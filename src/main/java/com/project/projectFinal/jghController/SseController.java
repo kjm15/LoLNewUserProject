@@ -27,13 +27,15 @@ public class SseController {
 		this.sseEmitters = sseEmitters;
 	}
 
-	@GetMapping(value = "/main", produces = MediaType.TEXT_EVENT_STREAM_VALUE)
-	public ResponseEntity<SseEmitter> connect() {
-		SseEmitter emitter = new SseEmitter(5 * 60 * 1000L); // 5분
-
+	@CrossOrigin
+	@SuppressWarnings("finally")
+	@GetMapping(value = "/jgh", produces = MediaType.TEXT_EVENT_STREAM_VALUE)
+	public ResponseEntity<SseEmitter> connect(HttpSession session) {
+		SseEmitter emitter = new SseEmitter(5 * 60 * 1000L); //5분
+	
 		sseEmitters.add(emitter);
 		try {
-			emitter.send(SseEmitter.event().name("connect").data("연결완료").reconnectTime(3000L));
+			emitter.send(SseEmitter.event().name("connect").data("connected!").reconnectTime(3000L));
 
 		} catch (IOException e) {
 
@@ -42,19 +44,11 @@ public class SseController {
 
 			return ResponseEntity.ok(emitter);
 		}
-
 	}
 
-	@PostMapping("/makeroom")
-	public ResponseEntity<Void> makeroom() {
+	@PostMapping("/jgh")
+	public ResponseEntity<Void> count() {
 		sseEmitters.count();
-		return ResponseEntity.ok().build();
-	}
-
-	@PostMapping("/infoAll")
-	public ResponseEntity<Void> infoAll(String infoAll) {
-
-		sseEmitters.infoAll(infoAll);
 		return ResponseEntity.ok().build();
 	}
 }
