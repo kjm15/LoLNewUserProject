@@ -28,8 +28,6 @@ public interface DuoDao {
 
 	MsgDto msgRead(MsgDto msgDto);
 
-
-
-	
+	ArrayList<HashMap<String, MsgDto>> msgAll(MsgDto msgDto);
 
 }

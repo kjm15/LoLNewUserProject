@@ -12,7 +12,7 @@
 
 	<div id='talk'></div>
 	<div id='sendZone'>
-		<textarea id='msg' value='hi...'></textarea>
+		<textarea id='msg' value='안녕하세요...'></textarea>
 
 		<input type='button' value='전송' id='btnSend'>
 	</div>

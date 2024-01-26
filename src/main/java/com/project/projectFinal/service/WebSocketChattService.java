@@ -28,7 +28,7 @@ public class WebSocketChattService {
 	public void onMessage(String msg, Session session) throws Exception {
 
 	
-		log.info("chattingMsg : {}", msg);
+//		log.info("chattingMsg : {}", msg);
 
 
 		for (Session s : clients) {
@@ -45,15 +45,15 @@ public class WebSocketChattService {
 		log.info("open session : " + s.toString());
 		if (!clients.contains(s)) {
 			clients.add(s);
-			log.info("session open : " + s);
+//			log.info("session open : " + s);
 		} else {
-			log.info("이미 연결된 session 임!!!");
+//			log.info("이미 연결된 session 임!!!");
 		}
 	}
 
 	@OnClose // 클라이언트 접속해제
 	public void onClose(Session s) {
-		log.info("session close : " + s);
+//		log.info("session close : " + s);
 		clients.remove(s);
 	}
 

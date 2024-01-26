@@ -19,48 +19,81 @@ var logout = getId("logout");
 
 
 function webstart() {
+	$('#talk').empty();
+	let rcnt = getId('dcntflag').value;
+	let userId = getId('userId').value;
+	msgdata = { "rcnt": rcnt }
+	if (ws == null || ws == '') {
+		console.log("웹소켓 연결")
+		ws = new WebSocket("ws://" + location.host + "/jgh");
 
-	ws = new WebSocket("ws://" + location.host + "/jgh");
+	}
+
+
+	$.ajax({
+
+		type: 'post',
+		url: '/msgAll',
+		data: msgdata,
+		success: function(res) {
+			console.log(res)
+			for (let data of res) {
+
+				let rcnt = getId('dcntflag').value;
+				let userId = getId('userId').value;
+				var css;
+				if (data.userId == userId) { //작성자와 로그인한 사람이 같음
+					css = 'class=me';
+					userIdcheck = userId
+				} else {
+					css = 'class=other';
+					userIdcheck = data.userId
+				}
+
+				var item = "<div " + css + "><span><b> " + userIdcheck + "</b></span>" + data.date + "<br/>"
+					+ "<span>" + data.msg + "</span>	</div>"
+				$('#talk').append(item);
+				talk.scrollTop = talk.scrollHeight;//스크롤바 하단으로 이동
+
+			}
+
+			data = res;
+		}
+	})
 
 	ws.onmessage = function(msg) {
-		let rcnt = getId('dcntflag').value;
-		let userId = getId('userId').value;
-		msgdata = { "rcnt": rcnt }
-		let = ''
+
 		$.ajax({
 
 			type: 'post',
 			url: '/msgRead',
 			data: msgdata,
 			success: function(res) {
-
-				data = res;
-
+				chattcontents(res)
 			}
 		})
-		console.log(data)
-
-		//		var data = JSON.parse(msg.data);
-		console.log("여기는통신")
-		console.log(data)
-		var css;
-
-		if (data.userId == userId) { //작성자와 로그인한 사람이 같음
-			css = 'class=me';
-		} else {
-			css = 'class=other';
-		}
-
-		var item = `<div ${css} >
-		                <span><b>${data.userId}</b></span> [ ${data.date} ]<br/>
-                      <span>${data.msg}</span>
-						</div>`;
-
-		talk.innerHTML += item;
-		talk.scrollTop = talk.scrollHeight;//스크롤바 하단으로 이동
 	}
 }
 
+
+function chattcontents(data) {
+	let rcnt = getId('dcntflag').value;
+	let userId = getId('userId').value;
+	var css;
+	if (data.userId == userId) { //작성자와 로그인한 사람이 같음
+		css = 'class=me';
+		userIdcheck = userId
+	} else {
+		css = 'class=other';
+		userIdcheck = data.userId
+	}
+
+	var item = "<div " + css + "><span><b> " + userIdcheck + "</b></span>" + data.date + "<br/>"
+		+ "<span>" + data.msg + "</span>	</div>"
+	$('#talk').append(item);
+	talk.scrollTop = talk.scrollHeight;//스크롤바 하단으로 이동
+
+}
 
 
 

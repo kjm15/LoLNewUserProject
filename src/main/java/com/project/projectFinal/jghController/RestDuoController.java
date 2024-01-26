@@ -69,7 +69,7 @@ public class RestDuoController {
 
 	@PostMapping("/nowlogin")
 	public int nowlogin(DuoSearchDto duoSearchDto) {
-		log.info("========={}", duoSearchDto);
+//		log.info("========={}", duoSearchDto);
 		return duoService.nowlogin(duoSearchDto);
 
 	}
@@ -88,5 +88,12 @@ public class RestDuoController {
 		return duoService.msgRead(msgDto);
 
 	}
+	@PostMapping("/msgAll")
+	public ArrayList<HashMap<String, MsgDto>> msgAll(MsgDto msgDto) {
+		
+		return duoService.msgAll(msgDto);
+
+	}
+
 
 }

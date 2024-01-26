@@ -77,4 +77,9 @@ public class DuoService {
 		return duoDao.msgRead(msgDto);
 	}
 
+	public ArrayList<HashMap<String, MsgDto>> msgAll(MsgDto msgDto) {
+	
+		return duoDao.msgAll(msgDto);
+	}
+
 }
