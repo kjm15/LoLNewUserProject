@@ -113,7 +113,13 @@
 			<version>2.6.2</version>
 		</dependency>
 
-
+		
+<!--		string문자열을 json으로-->
+		<dependency>
+			<groupId>org.json</groupId>
+			<artifactId>json</artifactId>
+			<version>20180813</version>
+		</dependency>
 	</dependencies>
 
 
