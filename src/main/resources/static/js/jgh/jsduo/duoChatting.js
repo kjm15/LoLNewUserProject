@@ -20,11 +20,12 @@ var logout = getId("logout");
 
 function webstart() {
 	$('#talk').empty();
+	$('#flagcollapse').hide();
 	let rcnt = getId('dcntflag').value;
 	let userId = getId('userId').value;
 	msgdata = { "rcnt": rcnt }
 	if (ws == null || ws == '') {
-		console.log("웹소켓 연결")
+		console.log("js-spring websocket connected")
 		ws = new WebSocket("ws://" + location.host + "/jgh");
 
 	}
@@ -36,7 +37,7 @@ function webstart() {
 		url: '/msgAll',
 		data: msgdata,
 		success: function(res) {
-			console.log(res)
+//			console.log(res)
 			for (let data of res) {
 
 				let rcnt = getId('dcntflag').value;
@@ -147,8 +148,10 @@ function send() {
 /////////////////////////////////////////////////////////////////
 
 $('#duoParty').on("click", function() {
+
 	let userId = $('#userId').val() //로그인한사람
 	let friendId = $('#writter').val() //작성자
+
 	//	let cnt = $()
 	document.getElementById('mid').value = userId;
 	if (userId == '') {
@@ -172,17 +175,23 @@ $('#duoParty').on("click", function() {
 			//			console.log(res)
 			if (res != 1) {
 				$('#flagcollapse').html("<font color='red'>접속중이 아닙니다.</font>")
-
+				$('#flagcollapse').show();
 			} else {
+				//요청완료
 				$('#flagcollapse').html("<font color='blue'><marquee scrollamount=5>상대방에게 듀오 요청중입니다. 잠시만 기다려주세요</marquee></font>")
 				$('#duoParty').hide();
 				$('#duoPartyCancel').show();
 				$('.flagA').hide();
 
+				//상대방에게 허락구문
+
+
+				getAgreejoinRoom()
 				//채팅 실행 구문
-				webstart()
+				webstart()//웹소켓 연결
 				$('#chatt').show();
 			}
+
 
 		}
 	})
@@ -190,16 +199,34 @@ $('#duoParty').on("click", function() {
 
 })
 
-$('#duoPartyCancel').on("click", function() {
 
+function getAgreejoinRoom() {
+	//	let rcnt = getId('dcntflag').value;
+	//	let userId = getId('userId').value;
+	//	let friendId = $('#writter').val() //작성자
+	//	msgdata = { "rcnt": rcnt }
+	alert("상대방 승낙 구문 만들기")
+
+}
+
+
+
+
+
+
+
+
+
+
+$('#duoPartyCancel').on("click", function() {
 
 	$('#duoParty').show();
 	$('#duoPartyCancel').hide();
 	$('#flagcollapse').html('=================')
 
-
-
 })
+
+
 function openTab(evt, tabName) {
 	var i, tabcontent, tablink;
 	tabcontent = document.getElementsByClassName("tabcontent");

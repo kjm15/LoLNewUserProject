@@ -9,7 +9,7 @@ function close() {
 	modal_background.classList.remove('show-modal');
 }
 function open() {
-
+$('#flagcollapse').show();
 	modal_wrap.classList.add('show-modal')
 	modal_background.classList.add('show-modal')
 }
