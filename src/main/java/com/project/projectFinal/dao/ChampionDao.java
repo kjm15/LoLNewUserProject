@@ -27,4 +27,8 @@ public interface ChampionDao {
 
 	public int cntPickItem(int itemId, String myChampName);
 
+	public List<HashMap<String, ItemDto>> itemBuild(ItemDto iDto);
+
+	public List<HashMap<String, ItemDto>> itemBuildperTier(ItemDto iDto);
+
 }
