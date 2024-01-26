@@ -13,10 +13,11 @@ import lombok.extern.slf4j.Slf4j;
 public class SseEmitters {
 
 	private final List<SseEmitter> emitters = new CopyOnWriteArrayList<>();
-	
+
 	public SseEmitter add(SseEmitter emitter) {
 		log.info("sse만들러옴");
-
+	
+	
 		this.emitters.add(emitter);
 
 		emitter.onCompletion(() -> {
@@ -59,6 +60,11 @@ public class SseEmitters {
 				this.emitters.add(emitter1);
 			}
 		});
+	}
+
+	public void add1() {
+		// TODO Auto-generated method stub
+
 	}
 
 }

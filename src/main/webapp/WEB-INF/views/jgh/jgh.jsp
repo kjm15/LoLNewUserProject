@@ -20,7 +20,7 @@
 
 	<div style="height: 1200px; background: lightBLUE;">
 
-	<%@include file="duoSearch/duoMain.jsp"%>
+		<%@include file="duoSearch/duoMain.jsp"%>
 
 	</div>
 
@@ -28,12 +28,12 @@
 
 	<!-- js들어갈자리  -->
 
-
+	<script defer src="js/jgh/jsduo/duoPort.js"></script>
+	<script defer src="/js/jgh/jsduo/duoChatting.js"></script>
 	<script defer src="/js/jgh/jsduo/duoDeleteSave.js"></script>
 	<script defer src="/js/jgh/jsduo/duoModal.js"></script>
-	<script defer src="/js/jgh/jsduo/duoPort.js"></script>
 	<script defer src="/js/jgh/jsduo/duoShow.js"></script>
-	<script defer src="/js/jgh/jsduo/duoChatting.js"></script>
+
 </body>
 
 </html>
