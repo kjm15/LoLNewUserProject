@@ -10,6 +10,7 @@ import org.springframework.transaction.annotation.Transactional;
 import com.project.projectFinal.customEx.CustomException;
 import com.project.projectFinal.dao.DuoDao;
 import com.project.projectFinal.dto.DuoSearchDto;
+import com.project.projectFinal.dto.MsgDto;
 
 @Service
 public class DuoService {
@@ -64,8 +65,16 @@ public class DuoService {
 	}
 
 	public int nowlogin(DuoSearchDto duoSearchDto) {
-		// TODO Auto-generated method stub
 		return duoDao.nowlogin(duoSearchDto);
+	}
+
+	public int msgSave(MsgDto msgDto) {
+		return duoDao.msgSave(msgDto);
+	}
+
+	public MsgDto msgRead(MsgDto msgDto) {
+		
+		return duoDao.msgRead(msgDto);
 	}
 
 }

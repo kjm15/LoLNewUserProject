@@ -3,7 +3,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 
-
+<input type = "hidden" value = "" id = "dcntflag">
 
 <div id=	'chatt'>
 	<h1 id="hello">듀오 채팅</h1>

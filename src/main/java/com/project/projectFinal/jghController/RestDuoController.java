@@ -7,7 +7,11 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+import com.fasterxml.jackson.core.JsonProcessingException;
+import com.fasterxml.jackson.databind.JsonNode;
+import com.fasterxml.jackson.databind.ObjectMapper;
 import com.project.projectFinal.dto.DuoSearchDto;
+import com.project.projectFinal.dto.MsgDto;
 import com.project.projectFinal.service.DuoService;
 
 import jakarta.servlet.http.HttpSession;
@@ -69,8 +73,20 @@ public class RestDuoController {
 		return duoService.nowlogin(duoSearchDto);
 
 	}
-	
-	
-	
+
+	@PostMapping("/msgSave")
+	public int msgSave(MsgDto msgDto) {
+//		log.info("====="+msgDto);
+		duoService.msgSave(msgDto);
+		
+		return 0;
+
+	}
+	@PostMapping("/msgRead")
+	public MsgDto msgRead(MsgDto msgDto) {
+		
+		return duoService.msgRead(msgDto);
+
+	}
 
 }

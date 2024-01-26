@@ -42,6 +42,13 @@
 
 	</select>
 
+	<insert id="msgSave">
+		insert into msgT(rcnt,userId,msg) values(#{rcnt},#{userId},#{msg})
+	</insert>
 
+
+	<select id="msgRead">
+		select * from msgT where rcnt = #{rcnt} order by autocnt desc limit 1;
+	</select>
 
 </mapper>

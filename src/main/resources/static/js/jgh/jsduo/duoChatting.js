@@ -23,17 +23,36 @@ function webstart() {
 	ws = new WebSocket("ws://" + location.host + "/jgh");
 
 	ws.onmessage = function(msg) {
-		var data = JSON.parse(msg.data);
+		let rcnt = getId('dcntflag').value;
+		let userId = getId('userId').value;
+		msgdata = { "rcnt": rcnt }
+		let = ''
+		$.ajax({
+
+			type: 'post',
+			url: '/msgRead',
+			data: msgdata,
+			success: function(res) {
+
+				data = res;
+
+			}
+		})
+		console.log(data)
+
+		//		var data = JSON.parse(msg.data);
+		console.log("여기는통신")
+		console.log(data)
 		var css;
 
-		if (data.mid == mid.value) {
+		if (data.userId == userId) { //작성자와 로그인한 사람이 같음
 			css = 'class=me';
 		} else {
 			css = 'class=other';
 		}
 
 		var item = `<div ${css} >
-		                <span><b>${data.mid}</b></span> [ ${data.date} ]<br/>
+		                <span><b>${data.userId}</b></span> [ ${data.date} ]<br/>
                       <span>${data.msg}</span>
 						</div>`;
 
@@ -63,11 +82,29 @@ btnSend.onclick = function() {
 function send() {
 
 	if (msg.value.trim() != '') {
-		data.mid = getId('mid').value;
+		data.rcnt = getId('dcntflag').value;
+		data.userId = getId('userId').value;
 		data.msg = msg.value;
 		data.date = new Date().toLocaleString();
-		var temp = JSON.stringify(data);
-		ws.send(temp);
+		//		console.log(data);
+
+		msgdata = {
+			"rcnt": data.rcnt,
+			"userId": data.userId,
+			"msg": data.msg
+		}
+		$.ajax({
+
+			type: 'post',
+			url: '/msgSave',
+			data: msgdata,
+			success: function(res) {
+
+				var temp = JSON.stringify(data);
+				ws.send(temp);
+			}
+		})
+
 	}
 	msg.value = '';
 
@@ -79,7 +116,7 @@ function send() {
 $('#duoParty').on("click", function() {
 	let userId = $('#userId').val() //로그인한사람
 	let friendId = $('#writter').val() //작성자
-//	let cnt = $()
+	//	let cnt = $()
 	document.getElementById('mid').value = userId;
 	if (userId == '') {
 
@@ -99,7 +136,7 @@ $('#duoParty').on("click", function() {
 		data: data,
 		success: function(res) {
 
-//			console.log(res)
+			//			console.log(res)
 			if (res != 1) {
 				$('#flagcollapse').html("<font color='red'>접속중이 아닙니다.</font>")
 
