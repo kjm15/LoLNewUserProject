@@ -86,9 +86,14 @@ public class MainController {
 	@GetMapping("/stm")
 	public String go5() {
 
-		return "stm/stm";
+		return "stm/stmmain";
 	}
+	
+	@GetMapping("/teststm")
+	public String gostmtest() {
 
+		return "stm/stmmain";
+	}
 
 }
 

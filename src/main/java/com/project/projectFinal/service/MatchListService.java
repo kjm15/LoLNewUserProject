@@ -27,6 +27,8 @@ public class MatchListService {
 
 	public List<Map> gamedate(List<String> matchList) {
 		List<Map> MList = new ArrayList<>();
+		
+		
 		for(int i=0; i<matchList.size(); i++) {
 			Map gMap = webmatchListService.gamedate(matchList.get(i));
 			MList.add(gMap);
