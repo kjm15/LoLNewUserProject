@@ -9,7 +9,7 @@ function close() {
 	modal_background.classList.remove('show-modal');
 }
 function open() {
-
+$('#flagcollapse').show();
 	modal_wrap.classList.add('show-modal')
 	modal_background.classList.add('show-modal')
 }
@@ -28,6 +28,8 @@ document.querySelector('#modal_wrap').addEventListener('click', (e) => {
 	//dcnt 는 해당 행의 번호
 	let dcnt = tr[rowIndex].getElementsByTagName("td")[0].innerHTML
 	//dcnt를 통해서 정보를 가지고옴
+	
+	document.getElementById('dcntflag').value = dcnt;
 	duoinfo(dcnt)
 
 	open()
