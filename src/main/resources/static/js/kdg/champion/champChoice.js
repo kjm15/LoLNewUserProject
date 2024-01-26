@@ -4,6 +4,20 @@
 
 function champ(a) {
 	
+	str = "아이템 버전 : 14.01, 설정 티어 : platinum <img src='../img/tier/platinum.png' style = 'width: 30px; height: 30px;'></img>, 라인 : all"	
+	$('#info22').html(str);
+	
+	$('#iron').hide();
+	$('#bronze').hide();
+	$('#silver').hide();
+	$('#gold').hide();
+	$('#platinum').hide();
+	$('#emerald').hide();
+	$('#diamond').hide();
+	$('#master').hide();
+	$('#grandmaster').hide();
+	$('#challenger').hide();
+	
 	console.log(a);
 	$('.info').hide();
 		
@@ -40,6 +54,19 @@ function champ(a) {
 }
 
 function submit(b) {
+	str123 = "아이템 버전 : 14.01, 설정 티어 : platinum <img src='../img/tier/platinum.png' style = 'width: 30px; height: 30px;'></img>, 라인 : all"	
+	$('#info22').html(str123);
+	
+	$('#iron').hide();
+	$('#bronze').hide();
+	$('#silver').hide();
+	$('#gold').hide();
+	$('#platinum').hide();
+	$('#emerald').hide();
+	$('#diamond').hide();
+	$('#master').hide();
+	$('#grandmaster').hide();
+	$('#challenger').hide();
 	
 	var a = $('#name').text();
 	var champName = b;

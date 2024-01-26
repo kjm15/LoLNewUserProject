@@ -209,6 +209,18 @@
 	display: none;
 }
 
+#champListbox #champList .itemBuild {
+	
+	text-align: center;
+	background-color: #091428;
+/* 	color: #C8AA6E; */
+	
+	
+	
+	width: 1008px;
+	height: 628px;
+}
+
 li {
 	position: relative;
 	width: 84px;
@@ -254,13 +266,7 @@ span {
 	height: 60px;
 	
 }
-/*.mid-header{*/
-/*	width : 2500px;*/
-/*	height : 40px;*/
-/*	position: relative;*/
-/*	top : 300px;*/
-/*	border: 1px solid white;*/
-/*}*/
+
 .mid-header #anBtn {
 	width: 300px;
 	height: 40px;
