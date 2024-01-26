@@ -34,7 +34,6 @@
 <%@include file="../inc/footer.jsp" %>
 
 <!-- js들어갈자리  -->
-<script defer src ="/js/stm/duoPort.js"></script>
 <script defer src ="/js/stm/joinId.js"></script>
 <script defer src ="/js/stm/loldata.js"></script>
 </body>

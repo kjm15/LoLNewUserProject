@@ -23,7 +23,6 @@
 <!-- js들어갈자리  -->
 
 
-	<script defer src="/js/kyt/duoPort.js"></script>
 </body>
 
 </html>
