@@ -27,10 +27,9 @@ public class SseController {
 		this.sseEmitters = sseEmitters;
 	}
 
-	@GetMapping(value = "/main", produces = MediaType.TEXT_EVENT_STREAM_VALUE)
+	@GetMapping(value = "/jgh", produces = MediaType.TEXT_EVENT_STREAM_VALUE)
 	public ResponseEntity<SseEmitter> connect() {
-		SseEmitter emitter = new SseEmitter(5 * 60 * 1000L); // 5분
-
+		SseEmitter emitter = new SseEmitter(5 * 60 * 1000L);
 		sseEmitters.add(emitter);
 		try {
 			emitter.send(SseEmitter.event().name("connect").data("연결완료").reconnectTime(3000L));
@@ -42,7 +41,7 @@ public class SseController {
 
 			return ResponseEntity.ok(emitter);
 		}
-
+//
 	}
 
 	@PostMapping("/makeroom")
