@@ -7,7 +7,7 @@ if (ws == null || ws == '') {
 ws.onopen = function(event) {
 
 	//보낼때
-//	ws.send("방업데이트")
+	//	ws.send("방업데이트")
 };
 
 
@@ -17,11 +17,20 @@ ws.onmessage = function(msg) {
 }
 
 ws.addEventListener("message", (event) => {
+	let rcnt = getId('dcntflag').value;
 	console.log(event.data)
 	if (event.data == 'roomUpdate') {
 		showNewDuo()
+	} else if (event.data == rcnt) {
+	console.log(rcnt)
+	console.log(event.data)
+	chattcontents()
+
+
 	}
-	
+
+
+
 });
 
 

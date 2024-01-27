@@ -14,6 +14,8 @@ var msg = getId('msg');
 var toJoin = getId("join");
 var logout = getId("logout");
 
+
+
 function webstart() {
 
 	$('#talk').empty();
@@ -55,41 +57,15 @@ function webstart() {
 			data = res;
 		}
 	})
-	
-	ws.onmessage = function(msg) {
-
-		$.ajax({
-
-			type: 'post',
-			url: '/msgRead',
-			data: msgdata,
-			success: function(res) {
-				chattcontents(res)
-			}
-		})
-	}
-}
 
 
-function chattcontents(data) {
-	let rcnt = getId('dcntflag').value;
-	let userId = getId('userId').value;
-	var css;
-	if (data.userId == userId) { //작성자와 로그인한 사람이 같음
-		css = ' class=me';
-		userIdcheck = userId
-	} else {
-		css = ' class=other';
-		userIdcheck = data.userId
-	}
 
-	var item = "<div " + css + "><span><b> " + userIdcheck + "</b></span>" + data.date + "<br/>"
-		+ "<span>" + data.msg + "</span>	</div>"
-	$('#talk').append(item);
-	talk.scrollTop = talk.scrollHeight;//스크롤바 하단으로 이동
+
 
 }
 
+
+///////////////////채팅 내용 보내기///////////////////////
 msg.onkeyup = function(ev) {
 	if (ev.keyCode == 13) {//엔터 눌렀을때
 		if (msg.value != '') {
@@ -99,7 +75,7 @@ msg.onkeyup = function(ev) {
 		}
 	}
 }
-
+// 전송된 채팅 db에 저장시키기
 function send() {
 
 	if (msg.value.trim() != '') {
@@ -120,9 +96,8 @@ function send() {
 			url: '/msgSave',
 			data: msgdata,
 			success: function(res) {
+				ws.send(data.rcnt);
 
-				var temp = JSON.stringify(data);
-				ws.send("데이터전송");
 			}
 		})
 
@@ -130,10 +105,37 @@ function send() {
 	msg.value = '';
 
 }
+//채팅 작성 시 
+function chattcontents() { //저장한 채팅과 같은방에서 실행
 
+	$.ajax({
 
-/////////////////////////////////////////////////////////////////
+		type: 'post',
+		url: '/msgRead',
+		data: msgdata,
+		success: function(data) {
 
+			let rcnt = getId('dcntflag').value;
+			let userId = getId('userId').value;
+			var css;
+			if (data.userId == userId) { //작성자와 로그인한 사람이 같음
+				css = ' class=me';
+				userIdcheck = userId
+			} else {
+				css = ' class=other';
+				userIdcheck = data.userId
+			}
+
+			var item = "<div " + css + "><span><b> " + userIdcheck + "</b></span>" + data.date + "<br/>"
+				+ "<span>" + data.msg + "</span>	</div>"
+			$('#talk').append(item);
+			talk.scrollTop = talk.scrollHeight;//스크롤바 하단으로 이동
+		}
+	})
+
+}
+
+// 듀오 채팅 신청구문 //
 $('#duoParty').on("click", function() {
 	let rcnt = getId('dcntflag').value;
 	let userId = $('#userId').val() //로그인한사람
@@ -185,14 +187,14 @@ $('#duoParty').on("click", function() {
 
 
 })
-
+// 듀오채팅 요청 승낙/거절 구문
 function createQuestion(rcnt) {
 	console.log("연결중")
 	let str = ''
 	str += '<div class="question" class="duoPartyChatt">'
 
 	str += '<div class="speech-bubble" class="a1">'
-	str += '[' + rcnt + '방 - 듀오채팅 신청 요청]'
+	str += '[' + rcnt + '방 - 듀오채팅 요청]'
 	str += '<p>채팅방에 입장하시겠습니까?</p>'
 	str += '<p>(승낙시 해당글은 삭제되어집니다.)</p>'
 
@@ -208,24 +210,14 @@ function createQuestion(rcnt) {
 	$('.accordion-box').prepend(str)
 
 }
-
+//승낙시
 $('#duoPartyChatY').on("click", function() {
 
 	webstart()//웹소켓 연결
 	$('#chatt').show();
 	$('#duoPartyChatY').hide();
 })
-
-
-function getAgreejoinRoom() {
-	//	let rcnt = getId('dcntflag').value;
-	//	let userId = getId('userId').value;
-	//	let friendId = $('#writter').val() //작성자
-	//	msgdata = { "rcnt": rcnt }
-	alert("상대방 승낙 구문 만들기")
-
-}
-
+//거절시
 $('#duoPartyCancel').on("click", function() {
 
 	$('#duoParty').show();
@@ -234,7 +226,7 @@ $('#duoPartyCancel').on("click", function() {
 
 })
 
-
+//탭 이동// 듀오찾기,전적검색
 function openTab(evt, tabName) {
 	var i, tabcontent, tablink;
 	tabcontent = document.getElementsByClassName("tabcontent");
@@ -249,7 +241,7 @@ function openTab(evt, tabName) {
 	evt.currentTarget.className += " active";
 }
 
-
+//전적검색 시 실행할 구문
 function searchLol() {
 	$('#aaa').empty()
 	$('.startSearch').fadeOut(700, 'linear');
