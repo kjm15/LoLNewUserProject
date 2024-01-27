@@ -27,27 +27,21 @@ public class WebSocketChattService {
 	@OnMessage // 메세지 수신시
 	public void onMessage(String msg, Session session) throws Exception {
 
-	
-//		log.info("chattingMsg : {}", msg);
-
-
 		for (Session s : clients) {
-			log.info("send data : " + msg);
+//			log.info("send data : " + msg);
 			s.getBasicRemote().sendText(msg);
 
 		}
 	}
 
-
-
 	@OnOpen // 클라이언트 접속시
 	public void onOpen(Session s) {
-		log.info("open session : " + s.toString());
+//		log.info("open session : " + s.toString());
 		if (!clients.contains(s)) {
 			clients.add(s);
 //			log.info("session open : " + s);
 		} else {
-//			log.info("이미 연결된 session 임!!!");
+			log.info("이미 연결된 session 임!!!");
 		}
 	}
 

@@ -1,19 +1,19 @@
-
-
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 
 <input type="hidden" value="" id="dcntflag">
-
-<div id='chatt'>
-	<h1 id="hello">듀오 채팅</h1>
-	<input class="loginform" type='hidden' id='mid' disabled="disabled">
+<input class="loginform" type='hidden' id='mid' disabled="disabled">
 
 
-	<div id='talk'></div>
+<h1 id="hello" class="chatthead">듀오 채팅</h1>
+<div class='scroll'>
+	<div id='chatt'>
 
-		<textarea id='msg' value='안녕하세요...'></textarea>
+		<div id='talk' class="box"></div>
+		<div class="input-div">
+			<textarea id='msg' class="msg"
+				placeholder="Press Enter for send Message"></textarea>
 
-		<input type='button' value='전송' id='btnSend'>
-	
+		</div>
+	</div>
 </div>

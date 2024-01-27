@@ -21,6 +21,7 @@ var logout = getId("logout");
 function webstart() {
 	$('#talk').empty();
 	$('#flagcollapse').hide();
+	$('.wrap').hide();
 	let rcnt = getId('dcntflag').value;
 	let userId = getId('userId').value;
 	msgdata = { "rcnt": rcnt }
@@ -37,7 +38,7 @@ function webstart() {
 		url: '/msgAll',
 		data: msgdata,
 		success: function(res) {
-//			console.log(res)
+			//			console.log(res)
 			for (let data of res) {
 
 				let rcnt = getId('dcntflag').value;
@@ -54,10 +55,11 @@ function webstart() {
 				var item = "<div " + css + "><span><b> " + userIdcheck + "</b></span>" + data.date + "<br/>"
 					+ "<span>" + data.msg + "</span>	</div>"
 				$('#talk').append(item);
+
 				talk.scrollTop = talk.scrollHeight;//스크롤바 하단으로 이동
 
 			}
-
+			$('#talk').append("</br>----------------------  과거 메세지  ----------------------");
 			data = res;
 		}
 	})
@@ -82,10 +84,10 @@ function chattcontents(data) {
 	let userId = getId('userId').value;
 	var css;
 	if (data.userId == userId) { //작성자와 로그인한 사람이 같음
-		css = 'class=me';
+		css = ' class=me';
 		userIdcheck = userId
 	} else {
-		css = 'class=other';
+		css = ' class=other';
 		userIdcheck = data.userId
 	}
 
@@ -99,19 +101,19 @@ function chattcontents(data) {
 
 
 msg.onkeyup = function(ev) {
-	if (ev.keyCode == 13) {
-		send();
+	if (ev.keyCode == 13) {//엔터 눌렀을때
+		if (msg.value != '') {
+			send();
+		} else {
+			alert("내용을 입력해주세요")
+		}
 	}
 }
 
-btnSend.onclick = function() {
-	if (msg.value != '') {
-		send();
-	} else {
-		alert("내용을 입력해주세요")
-	}
-
-}
+//btnSend.onclick = function() {
+//
+//
+//}
 
 function send() {
 
