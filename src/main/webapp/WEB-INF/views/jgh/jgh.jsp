@@ -16,7 +16,7 @@
 </head>
 
 <body>
-
+	<h1>해야할것 : 채팅승낙이 성사되면 게시글을 삭제하기, 1:1대화를 지향</h1>
 	<%@include file="../inc/header.jsp"%>
 
 	<div style="height: 1200px; background: lightBLUE;">
