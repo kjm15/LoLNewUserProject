@@ -26,11 +26,8 @@ function deleteDuo(dcnt) {
 
 }
 //////////////////저장/////////////////////////////
-$('#duoSaveBtn').on("click", function() {
-	save()
-})
 
-function save() {
+$('#duoSaveBtn').on("click", function() {
 
 	let userId = $('#userId').val()
 	let myPosition = $('#position').val()
@@ -38,8 +35,8 @@ function save() {
 	let tier = $('#tier').val()
 	let gameType = $('#gameType').val()
 	let memo = $('#textArea').val()
-
-	if (myPosition == '' || duoPosition == '' || tier == '' || gameType == '' || textArea == '') {
+	console.log(myPosition) 	
+	if (myPosition == '포지션' || duoPosition == 'undefined' || tier == '필수선택' || gameType == '필수선택' || textArea == '') {
 
 		alert("빠진부분이 있습니다 확인해주세요")
 
@@ -60,22 +57,28 @@ function save() {
 		url: '/saveDb',
 		data: data,
 		success: function(res) {
-				alert("연결이 안되었을시 2시간 이후의 글들은 삭제 됩니다.")
+
 			$.ajax({
 				type: 'post',
 				url: '/makeroom',
 
 				success: function(res) {
 
+					
+					document.getElementById('position').value = '포지션'
+					document.getElementById('tier').value = '필수선택'
+					document.getElementById('gameType').value = '필수선택'
+					document.getElementById('textArea').value = ''
+
 				}, error: function(error) {
-					console.log("에러")
-				
+					console.log("방만들기 ajax에러")
+
 				}
 			})
 
 		}, error: function(error) {
-			console.log("에러")
+			console.log("저장 ajax에러")
 		}
 	})
 
-}
+})
