@@ -16,7 +16,7 @@
 </head>
 
 <body>
-	<h1>해야할것 : 채팅승낙이 성사되면 게시글을 삭제하기, 1:1대화를 지향</h1>
+	<h1>해야할것 : 채팅승낙이 성사되면 게시글을 삭제하기, 1:1대화를 지향,내가 참가한 채팅방보는곳</h1>
 	<%@include file="../inc/header.jsp"%>
 
 	<div style="height: 1200px; background: lightBLUE;">
@@ -28,7 +28,6 @@
 	<%@include file="../inc/footer.jsp"%>
 
 	<!-- js들어갈자리  -->
-
 	<script defer src="js/jgh/jsduo/duoPort.js"></script>
 	<script defer src="/js/jgh/jsduo/duoChatting.js"></script>
 	<script defer src="/js/jgh/jsduo/duoDeleteSave.js"></script>

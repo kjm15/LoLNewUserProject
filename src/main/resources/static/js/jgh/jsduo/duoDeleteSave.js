@@ -1,6 +1,8 @@
 //////////////////삭제/////////////////////////////
 function deleteDuo(dcnt) {
 
+	$('.accordion-box').empty()
+
 	//	console.log(dcnt)
 
 	if (confirm("정말 삭제하시겠습니까?")) {
@@ -35,7 +37,7 @@ $('#duoSaveBtn').on("click", function() {
 	let tier = $('#tier').val()
 	let gameType = $('#gameType').val()
 	let memo = $('#textArea').val()
-	console.log(myPosition) 	
+
 	if (myPosition == '포지션' || duoPosition == 'undefined' || tier == '필수선택' || gameType == '필수선택' || textArea == '') {
 
 		alert("빠진부분이 있습니다 확인해주세요")
@@ -51,30 +53,23 @@ $('#duoSaveBtn').on("click", function() {
 		'memo': memo
 	}
 
+	//보낼때
+
 	$.ajax({
 
 		type: 'post',
 		url: '/saveDb',
 		data: data,
 		success: function(res) {
+			console.log("저장완료")
 
-			$.ajax({
-				type: 'post',
-				url: '/makeroom',
+			ws.send("roomUpdate") //전체에게 무언가 시킬떄
 
-				success: function(res) {
 
-					
-					document.getElementById('position').value = '포지션'
-					document.getElementById('tier').value = '필수선택'
-					document.getElementById('gameType').value = '필수선택'
-					document.getElementById('textArea').value = ''
-
-				}, error: function(error) {
-					console.log("방만들기 ajax에러")
-
-				}
-			})
+			document.getElementById('position').value = '포지션'
+			document.getElementById('tier').value = '필수선택'
+			document.getElementById('gameType').value = '필수선택'
+			document.getElementById('textArea').value = ''
 
 		}, error: function(error) {
 			console.log("저장 ajax에러")

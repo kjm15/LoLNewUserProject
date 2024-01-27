@@ -5,7 +5,6 @@ function getId(id) {
 
 var data = {};//전송 데이터(JSON)
 
-var ws;
 var mid = getId('mid');
 var mpw = getId('mpw');
 var btnLogin = getId('btnLogin');
@@ -15,21 +14,14 @@ var msg = getId('msg');
 var toJoin = getId("join");
 var logout = getId("logout");
 
-
-
-
 function webstart() {
+
 	$('#talk').empty();
 	$('#flagcollapse').hide();
 	$('.wrap').hide();
 	let rcnt = getId('dcntflag').value;
 	let userId = getId('userId').value;
 	msgdata = { "rcnt": rcnt }
-	if (ws == null || ws == '') {
-		console.log("js-spring websocket connected")
-		ws = new WebSocket("ws://" + location.host + "/jgh");
-
-	}
 
 
 	$.ajax({
@@ -63,7 +55,7 @@ function webstart() {
 			data = res;
 		}
 	})
-
+	
 	ws.onmessage = function(msg) {
 
 		$.ajax({
@@ -98,8 +90,6 @@ function chattcontents(data) {
 
 }
 
-
-
 msg.onkeyup = function(ev) {
 	if (ev.keyCode == 13) {//엔터 눌렀을때
 		if (msg.value != '') {
@@ -109,11 +99,6 @@ msg.onkeyup = function(ev) {
 		}
 	}
 }
-
-//btnSend.onclick = function() {
-//
-//
-//}
 
 function send() {
 
@@ -137,7 +122,7 @@ function send() {
 			success: function(res) {
 
 				var temp = JSON.stringify(data);
-				ws.send(temp);
+				ws.send("데이터전송");
 			}
 		})
 
@@ -150,7 +135,7 @@ function send() {
 /////////////////////////////////////////////////////////////////
 
 $('#duoParty').on("click", function() {
-
+	let rcnt = getId('dcntflag').value;
 	let userId = $('#userId').val() //로그인한사람
 	let friendId = $('#writter').val() //작성자
 
@@ -187,8 +172,8 @@ $('#duoParty').on("click", function() {
 
 				//상대방에게 허락구문
 
+				createQuestion(rcnt)
 
-				getAgreejoinRoom()
 				//채팅 실행 구문
 				webstart()//웹소켓 연결
 				$('#chatt').show();
@@ -201,6 +186,36 @@ $('#duoParty').on("click", function() {
 
 })
 
+function createQuestion(rcnt) {
+	console.log("연결중")
+	let str = ''
+	str += '<div class="question" class="duoPartyChatt">'
+
+	str += '<div class="speech-bubble" class="a1">'
+	str += '[' + rcnt + '방 - 듀오채팅 신청 요청]'
+	str += '<p>채팅방에 입장하시겠습니까?</p>'
+	str += '<p>(승낙시 해당글은 삭제되어집니다.)</p>'
+
+	str += '</div>'
+	str += '<button id="duoPartyChatY">'
+	str += '<h3>승낙</h3>'
+	str += '</button>'
+	str += '<button id="duoPartyChattN">'
+	str += '<h3>거절</h3>'
+	str += '</button>'
+	str += '</div>'
+
+	$('.accordion-box').prepend(str)
+
+}
+
+$('#duoPartyChatY').on("click", function() {
+
+	webstart()//웹소켓 연결
+	$('#chatt').show();
+	$('#duoPartyChatY').hide();
+})
+
 
 function getAgreejoinRoom() {
 	//	let rcnt = getId('dcntflag').value;
@@ -210,15 +225,6 @@ function getAgreejoinRoom() {
 	alert("상대방 승낙 구문 만들기")
 
 }
-
-
-
-
-
-
-
-
-
 
 $('#duoPartyCancel').on("click", function() {
 
@@ -249,7 +255,6 @@ function searchLol() {
 	$('.startSearch').fadeOut(700, 'linear');
 
 }
-
-
+//////////////승낙구문////////////////////////
 
 

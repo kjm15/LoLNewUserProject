@@ -39,7 +39,11 @@ function duoMainInfo() {
 }
 
 ////////////중간에 넣기////////////////
+
 function showNewDuo() {
+	console.log("방 업데이트 시작")
+	//받을때
+
 	$.ajax({
 
 		type: 'post',
@@ -76,7 +80,7 @@ function showNewDuo() {
 			$('#exampleModal').modal("hide");
 
 			$('#' + res.dcnt).show(4200)
-
+			console.log("방 업데이트 완료")
 
 		}, error: function(error) {
 			console.log("에러")

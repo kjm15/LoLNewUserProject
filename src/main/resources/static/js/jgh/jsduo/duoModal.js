@@ -5,10 +5,13 @@ const modal_background = document.querySelector('.modal_background')
 
 function close() {
 
+	$('.accordion-box').empty()
 	modal_wrap.classList.remove('show-modal');
 	modal_background.classList.remove('show-modal');
 }
 function open() {
+
+
 	$('.wrap').show();
 	$('#flagcollapse').show();
 	modal_wrap.classList.add('show-modal')
@@ -16,8 +19,14 @@ function open() {
 }
 
 window.addEventListener('click', (e) => {
+//	console.log(e.target)
 
 	e.target === modal_background ? close() : false
+	if (e.target.className === 'btn btn-secondary dropdown-toggle show') {
+
+		//			console.log("Aaa")
+		close()
+	}
 
 })
 document.querySelector('#modal_wrap').addEventListener('click', (e) => {

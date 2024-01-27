@@ -10,7 +10,12 @@
 	<input type="hidden" value="" id="dntDuo" />
 	<div id=duoTable class=searchDuoT>
 		<h1 align="center">롤 듀오DUO 구하기</h1>
+		<div align="left"></div>
 		<div align="right">
+
+
+
+
 			<button type="button" class="btn btn-success" type="button"
 				class="btn btn-primary" data-bs-toggle="modal"
 				data-bs-target="#exampleModal">글쓰기</button>
@@ -22,7 +27,7 @@
 				<tr>
 					<th>번호</th>
 					<th>이름</th>
-					<th>주포지션</th>
+					<th>나의 포지션</th>
 					<th>티어</th>
 					<th>게임타입</th>
 					<th>찾는포지션</th>
@@ -46,8 +51,16 @@
 	<%@include file="modal1.jsp"%>
 	<!--   세부내용 -->
 	<%@include file="modal2.jsp"%>
-	<!--   채팅내용 -->
-	
+	<!--   아코디언 메세지 -->
+	<div class="accordion-box"></div>
+<%-- 	<%@include file="accordionMsg.jsp"%> --%>
+
+
+
+
+
+
+
 
 </body>
 </html>

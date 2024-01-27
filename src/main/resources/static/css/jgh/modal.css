@@ -1,7 +1,4 @@
 .modal_wrap {
-	
-
-	position: absolute;
 	border: 2px solid black;
 	background: #eee;
 	z-index: 2;
@@ -55,3 +52,79 @@
 	height: 100%;
 }
 
+.duoPartyChatt {
+	border: 2px solid black;
+	background: #eee;
+	z-index: 2;
+	text-align: center;
+	font-family: arial;
+	outline: dashed 2px black;
+	position: fixed;
+	top: 90%;
+	left: 90%;
+	background-color: skyblue;
+	border: none;
+	padding: 10px 30px;
+	width: 100%;
+	line-height: 60px;
+	box-sizing: border-box;
+	padding: 0 10px;
+}
+
+/* //오른쪽아래 승낙버튼// */
+* {
+	margin: 0;
+	padding: 0;
+}
+
+/* 승낙전체장소조절 */
+.accordion-box {
+	
+	position: fixed;
+	top: 80%;
+	left: 80%;
+	width: 300px;
+	margin: 0 auto;
+}
+
+@keyframes fadeInUp { 0% {
+	opacity: 0;
+	transform: translate3d(0, 100%, 0);
+}
+
+to {
+	opacity: 1;
+	transform: translateZ(0);
+}
+
+}
+.question {
+	position: relative;
+	animation: fadeInUp 2s;
+}
+.a1 {
+	
+	color : gray;
+}
+
+
+/* 말풍선 */
+.speech-bubble {
+  position: relative;
+  background: #ffffff;
+  border-radius: .4em;
+}
+ 
+.speech-bubble:after {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 50%;
+  width: 0;
+  height: 0;
+  border: 20px solid transparent;
+  border-top-color: #ffffff;
+  border-bottom: 0;
+  border-left: 0;
+  margin-left: -10px;
+  margin-bottom: -20px;
