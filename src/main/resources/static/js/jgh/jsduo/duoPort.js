@@ -18,13 +18,12 @@ ws.onmessage = function(msg) {
 
 ws.addEventListener("message", (event) => {
 	let rcnt = getId('dcntflag').value;
-	console.log(event.data)
+
 	if (event.data == 'roomUpdate') {
 		showNewDuo()
 	} else if (event.data == rcnt) {
-	console.log(rcnt)
-	console.log(event.data)
-	chattcontents()
+
+	chattcontents(event.data)
 
 
 	}

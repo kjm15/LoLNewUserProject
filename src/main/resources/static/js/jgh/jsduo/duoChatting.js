@@ -106,15 +106,18 @@ function send() {
 
 }
 //채팅 작성 시 
-function chattcontents() { //저장한 채팅과 같은방에서 실행
+function chattcontents(rcnt) { //저장한 채팅과 같은방에서 실행
 
+	data = {
+		"rcnt": rcnt,
+	}
 	$.ajax({
 
 		type: 'post',
 		url: '/msgRead',
-		data: msgdata,
+		data: data,
 		success: function(data) {
-
+//			console.log(data)
 			let rcnt = getId('dcntflag').value;
 			let userId = getId('userId').value;
 			var css;
