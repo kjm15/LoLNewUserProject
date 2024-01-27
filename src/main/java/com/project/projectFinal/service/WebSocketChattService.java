@@ -34,8 +34,6 @@ public class WebSocketChattService {
 		}
 	}
 
-
-
 	@OnOpen // 클라이언트 접속시
 	public void onOpen(Session s) {
 //		log.info("open session : " + s.toString());
