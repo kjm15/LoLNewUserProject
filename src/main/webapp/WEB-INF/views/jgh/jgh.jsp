@@ -8,6 +8,8 @@
 <meta charset="UTF-8">
 <title>롤 영혼의 Duo 찾기</title>
 <!-- css들어갈자리  -->
+<script src="https://cdn.jsdelivr.net/npm/sockjs-client@1/dist/sockjs.min.js"></script>
+<link href="/css/jgh/button.css" rel="stylesheet" type="text/css">
 <link href="/css/style.css" rel="stylesheet" type="text/css">
 <link href="/css/jgh/modal.css" rel="stylesheet" type="text/css">
 <link href="/css/jgh/style.css" rel="stylesheet" type="text/css">
@@ -16,24 +18,21 @@
 <body>
 
 	<%@include file="../inc/header.jsp"%>
-
-	<div style="height: 1200px; background: lightBLUE;" >
+	<div style="height: 1000px; background: rgba(0, 0, 0, 0.61);">
 
 		<%@include file="duoSearch/duoMain.jsp"%>
 
-
 	</div>
-	<h2 align="left">수정삭제와 같이 눌리는 모달 수정요망</h2>
-	<h2 align="left">모달 내용 완료// 승낙 및 채팅구현시작</h2>
+
 	<%@include file="../inc/footer.jsp"%>
 
 	<!-- js들어갈자리  -->
-
-
+	<script defer src="js/jgh/jsduo/duoPort.js"></script>
+	<script defer src="/js/jgh/jsduo/duoChatting.js"></script>
 	<script defer src="/js/jgh/jsduo/duoDeleteSave.js"></script>
 	<script defer src="/js/jgh/jsduo/duoModal.js"></script>
-	<script defer src="/js/jgh/jsduo/duoPort.js"></script>
 	<script defer src="/js/jgh/jsduo/duoShow.js"></script>
+
 </body>
 
 </html>

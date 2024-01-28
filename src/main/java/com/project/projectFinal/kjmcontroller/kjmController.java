@@ -32,14 +32,15 @@ public class kjmController {
 		return "kjm/kjm2";
 	}
 	
-	@GetMapping("/kjm3")
-	public String kjm3(){
-		return "kjm/kjm3";
-	}
 	
 	@GetMapping("/kjm4")
 	public String kjm4(){
 		return "kjm/kjm4";
+	}
+	
+	@GetMapping("/kjm5")
+	public String kjm5(){
+		return "kjm/kjm5";
 	}
 	
 //	@PostMapping("/")

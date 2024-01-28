@@ -8,36 +8,40 @@ import lombok.NoArgsConstructor;
 @AllArgsConstructor
 @NoArgsConstructor
 public class ItemDto {
-
-	private int match_id;
-	private int participant_id;
 	
-	private String myChampName;
-	private String enemyChampName;
+	//tier, matchId, team, win, line, myChampName, enemyChampName, itemId1, itemId2, itemId3
 	
-	private String line;
+	private String tier;
+	private int matchId;
 	private String team;
 	private String win;
-	private String tier;
+	private String line;
+	private String myChampName;
+	private String enemyChampName;
+
+	private int itemId1;
+	private int itemId2;
+	private int itemId3;
 	
-	private int item_id;
-	private String itemName;
-	private int cnt;
+//	===================================== (아이템 픽률) 구
 	
-//	===================================== (아이템 픽률)
+//	private int myItemWinCount;
+//	private int itemPickCount;
+//	private int itemPickAllCount;
+//	private double myItemPickRate;
 	
-	private int myItemWinCount;
-	private int itemPickCount;
-	private int itemPickAllCount;
-	private double myItemPickRate;
+//	===================================== (아이템 픽률) 신
+	
+	private int myBuildPickCount;
+	private int myBuildwinCount;
 	
 	
 //	===================================== (챔피언 승률)
 	
-	private double myChampWinRate;
-	private int myChampWinCount;
-	private int enemyChampWinCount;
-	private int myChampPickCount;
+//	private double myChampWinRate;
+//	private int myChampWinCount;
+//	private int enemyChampWinCount;
+//	private int myChampPickCount;
 	
 	
 }

@@ -24,4 +24,8 @@ public interface MemberDao {
 
 	MemberDto joinIdCheck(MemberDto memberDto);
 
+	void loginNow(MemberDto mDto);
+
+	void logoutNow(String userId);
+
 }

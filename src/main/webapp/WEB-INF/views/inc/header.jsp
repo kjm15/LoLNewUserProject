@@ -16,7 +16,8 @@
 	integrity="sha384-Rx+T1VzGupg4BHQYs2gCW9It+akI2MM/mndMCy36UVfodzcJcF0GGLxZIzObiEfa"
 	crossorigin="anonymous"></script>
 
-   <script type="text/javascript" src="https://code.jquery.com/jquery-1.12.4.min.js" ></script>
+<script type="text/javascript"
+	src="https://code.jquery.com/jquery-1.12.4.min.js"></script>
 
 <input id="userId" type="hidden" value="${userId}">
 
@@ -29,15 +30,18 @@
 			class="navbar-brand" href="/jgh">장기훈</a> <a class="navbar-brand"
 			href="/kdg">김동근</a> <a class="navbar-brand" href="/kyt">김윤태</a> <a
 			class="navbar-brand" href="/kjm">김진문</a> <a class="navbar-brand"
-			href="/stm">송태민</a> <a class="navbar-brand" href="/jhl">정혜린</a>
- <a class="navbar-brand" href="/shop">상점(Transaction 연습)</a>
+			href="/stm">송태민</a> <a class="navbar-brand" href="/jhl">정혜린</a> <a
+			class="navbar-brand" href="/shop">상점(Transaction 연습)</a>
 
 		<c:choose>
 			<c:when test="${userId != null}">
 				<span class="navbar-brand">${userId}님 접속중</span>
+				<a class="navbar-brand" href="/Note">메일함</a>
 				<button type="button" class="btn btn-primary" data-bs-toggle="modal"
 					data-bs-target="#exampleModal3">결제하기</button>
-				<button  ><a class="btn btn-secondary" href="/logout">로그아웃</a></button>
+				<button>
+					<a class="btn btn-secondary" href="/logout">로그아웃</a>
+				</button>
 
 
 
@@ -53,17 +57,9 @@
 
 
 
-
-
-
-
-
-
-
 	</div>
 </nav>
-<div class="idsearch" align="center"
-	style="height: 100px; background: lightblue;"></div>
+<div class="idsearch" align="center"></div>
 </div>
 
 
@@ -82,9 +78,10 @@
 
 				<h3>빈곳을 입력해 가입해주세요</h3>
 				<form action="/join" method="post">
-					
-					아이디 : <input type="text" name="userId" id = "joinId"><span id = "checkId">아이디</span></br> 패스워드
-					:<input type="password" name="userPw" id = "joinPw"><span id="checkPw">비밀번호</span></br>
+
+					아이디 : <input type="text" name="userId" id="joinId"><span
+						id="checkId">아이디</span></br> 패스워드 :<input type="password" name="userPw"
+						id="joinPw"><span id="checkPw">비밀번호</span></br>
 					<hr>
 					이름 : <input type="text" name="userName"> (db만들기) </br> e-mail :
 					<input type="text" name="userEmail"> (db만들기) </br>
@@ -92,7 +89,7 @@
 					<div class="modal-footer">
 						<button type="button" class="btn btn-secondary"
 							data-bs-dismiss="modal">닫기</button>
-						<button type="submit" class="btn btn-primary" id = "joinbnt">회원가입하기</button>
+						<button type="submit" class="btn btn-primary" id="joinbnt">회원가입하기</button>
 					</div>
 
 				</form>
@@ -106,7 +103,7 @@
 
 <!-- Modal -->
 <div class="modal fade" id="exampleModal2" tabindex="-1"
-	aria-labelledby="exampleModalLabel"  aria-hidden="true">
+	aria-labelledby="exampleModalLabel" aria-hidden="true">
 	<div class="modal-dialog">
 		<div class="modal-content">
 			<div class="modal-header">
@@ -152,7 +149,10 @@
 
 
 				<div>
-					<h3 class="amount">결제 금액 :<span id = "tMoney"></span> 원<input type = "hidden" id = "totalMoney" value ="0" ></h3>
+					<h3 class="amount">
+						결제 금액 :<span id="tMoney"></span> 원<input type="hidden"
+							id="totalMoney" value="0">
+					</h3>
 					<p>원하는 금액을 선택 해 주세요</p>
 					<select onchange="monthSelect(this)">
 						<option value="0">선택하기</option>
@@ -160,24 +160,26 @@
 						<option value="5500">5,500원 : 5,500 포인트 충전</option>
 						<option value="11000">11,000원 : 11,000 포인트 충전</option>
 						<option value="55000">55,000원 : 55,000 포인트 충전</option>
-					
+
 					</select>
 				</div>
 
 			</div>
-			<div align = "center">
-			
-			<input type="button" class="btn btn-primary btn-sm" onclick="kakaopay()" value = "결제하기">
-			<input type="button" class="btn btn-secondary btn-sm"data-bs-dismiss="modal"  value = "취소하기">
-			
+			<div align="center">
+
+				<input type="button" class="btn btn-primary btn-sm"
+					onclick="kakaopay()" value="결제하기"> <input type="button"
+					class="btn btn-secondary btn-sm" data-bs-dismiss="modal"
+					value="취소하기">
+
 			</div>
-			
-			
+
+
 			<p></p>
 		</div>
 	</div>
 </div>
-<script defer src ="/js/stm/joinId.js"></script>
+<script defer src="/js/stm/joinId.js"></script>
 
 
 

@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>    
 <!DOCTYPE html>
 <html>
 <head>
@@ -20,44 +21,45 @@
 <title>Insert title here</title>
 </head>
 <body>
+${userId }님<br>
+<a href="/">돌아가기</a>
+			<button type="button" class="btn btn-success" type="button"
+				class="btn btn-primary" data-bs-toggle="modal"
+				data-bs-target="#exampleModal">쪽지쓰기</button>
+				
 	<table border=3>
 
 		<thead>
 			<th>번호</th>
-			<th>작성자</th>
 			<th>제목</th>
-			<th>내용</th>
 			<th>날짜</th>
 		</thead>
 		<tbody>
 
-			<c:forEach var="item" items="${blist}">
+			<c:forEach var="item" items="${maillist}">
 
 				<tr>
 					<td>${item.n_num}</td>
-					<td>${item.userId}</td>
-					<td><a href="/detail?BNum=${item.n_num}">${item.n_title}</a></td>
-					<td>${item.n_message}</td>
+					<td><a href="/detail?n_num=${item.n_num}">${item.n_title}</a></td>
 					<td>${item.n_date}</td>
 				</tr>
-
+				<input type ="hidden" name = "${item.recv_userId}" id = "${item.recv_userId}">
+				<input type ="hidden" name = "${item.send_userId}" id = "${item.send_userId}">
 			</c:forEach>
 		</tbody>
 	</table>
+	
+<!-- 메일쓰기 -->
+<%@include file="kjmmodal.jsp"%>
+<!-- 메일 보기 -->
+<%@include file="kjmmodal2.jsp"%>
+
+
+
+	<script defer src="/js/kjm/Note/Note.js"></script>
 
 
 
 
-
-
-
-<h1>**메일**</h1>
-<form action="/send" method="post">
-보내는사람${userId }<br>
-받는사람<input type ="text" name ="sendId" id="sendId"><br>
-제목<input type ="text" name ="n_title"><br>
-내용<textarea rows="6" cols="35" name="n_message"></textarea><br>
-<input type="submit" value ="보내기">
-</form>
 </body>
 </html>

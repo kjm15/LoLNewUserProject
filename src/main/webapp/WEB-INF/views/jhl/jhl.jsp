@@ -6,129 +6,55 @@
 <head>
 <meta charset="UTF-8">
 <title>정혜린</title>
+<script type="text/javascript" src="https://code.jquery.com/jquery-1.12.4.min.js" ></script>
 <!-- css들어갈자리  -->
-<style type="text/css">
-
-.contents{
-display : flex;
-flex-direction: row;
-justify-content: center;
-
-}
-
-#searchC{
-	border: none;
-	width : 300px;
-	height: 30px;
-	margin-right: 10px;
-	margin-bottom: 5px;
-}
-
-.seletB{
-	border: none;
-	background-color: white;
-	width:100px;
-	margin-bottom: 5px;
-}
-.seletB:hover{
-	background-color: lightblue;
-}
-.seletB:active{
-border: none;
-	outline: none;
-}
-.contentsItem{
-display : flex;
-flex-direction:column;
-text-align: center;
-justify-content:center;
-margin : 20px;
-box-sizing: border-box;
-}
-
-#champListImg{
-display : flex;
-width:517px;
-height: 500px;
-box-sizing: border-box;
-background-color: white;
-
-}
-
-#champImg{
-display: flex;
-flex-direction: row;
-}
-.champImgItems{
-object-fit: cover;
-
-}
-.champImgItem{
-display: inline-grid
-width: 80px;
-}
-
-
-#lineRank{
-height: 500px;
-
-background-color: white;
-}
-
-
-</style>
+<link href="/css/jhl/champRank.css" rel="stylesheet">
 
 </head>
 
 <body>
-
-<%@include file="../inc/header.jsp" %>
-<div style="height: 700px; background: lightpink;">
-<h1>정혜린 페이지 입니다.내용 미정</h1>
-<div class ="contents" >
-<div class ="contentsItem search">
-<input type="text" id = "searchChampList" placeholder="검색">
-<div>라인 아이콘</div>
-<div id="champListImg">
-<div class = "champImgItems">
-<c:forEach var="champImg" items="${champListImg}">
-<div class="champImgItem">
-<img width="48" height="48" alt="${champImg.champion_name_kr}" src="https://ddragon.leagueoflegends.com/cdn/14.2.1/img/champion/${champImg.champion_name}.png"
-class="cpImg" border="0">
-<span>${champImg.champion_name_kr}</span>
-</div>
-</c:forEach>
-</div>
+	<%@include file="champRank.jsp"%>
 
 
-</div>
-</div>
-<div class="contentsItem Line">
-<div class="lineListB">
-<button class="seletB Top">탑</button>
-<button class="seletB Jug">정글</button>
-<button class="seletB Mid">미들</button> 
-<button class="seletB Bot">바텀</button>
-<button class="seletB Sup">서폿</button>
-</div>
-<div>랭킹 / 챔피언 / 승률 / 픽률 </div>
-<div id="lineRank">  라인별 (승률/픽률 등)랭크 테이블</div>
-</div>
-</div>
+	<!-- js들어갈자리  -->
 
 
-
-
-</div>
-<%@include file="../inc/footer.jsp" %>
-
-<!-- js들어갈자리  -->
-
-<script type="text/javascript">
-
-
-</script>
 
 </body>
+<script type="text/javascript">
+$('#champSearch').on('keyup', function () {
+    let searchChamp = $('#champSearch').val();
+	$('.champs').empty();
+    $.ajax({
+        type: "post",
+        url: "/champSearch",
+        data: { "champSearch": searchChamp},
+        success: function (res) {
+            let str1 = "<div class ='champImgItems'>";
+            let str2 = "<div class ='se'>";
+            let str3 = "<div class ='se_'> ";
+            let str4 = "<span>s</span>";
+            let str5 = "</div>";
+            let str6 = "<div class ='champs'> ";
+            let str7 = '';
+			
+           
+            for (let i = 0; i < res.length; i++) {
+                str7 += "<div class='champImgItem'><div class='cimgs'>";
+                str7 += "<img width='48' height='48' src='https://ddragon.leagueoflegends.com/cdn/14.2.1/img/champion/" + res[i].champion_name + ".png' class='championImg'></div>";
+            	
+                str7 += "<span class ='champName'>" + res[i].champion_name_kr + "</span></div>";
+            }
+            
+            let str8 = "</div>"
+            let str9 = "</div>";
+            let str10 = "</div>";
 
+            $('.se').html(str2+str3+str4+str5+str6+str7+str8+str9)
+           
+        }
+    });
+});
+
+</script>
 </html>

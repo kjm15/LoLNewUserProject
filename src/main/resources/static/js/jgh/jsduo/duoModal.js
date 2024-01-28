@@ -5,18 +5,26 @@ const modal_background = document.querySelector('.modal_background')
 
 function close() {
 
+	$('.accordion-box').empty()
 	modal_wrap.classList.remove('show-modal');
 	modal_background.classList.remove('show-modal');
 }
 function open() {
 
+	$('.wrap').show();
+	$('#flagcollapse').show();
 	modal_wrap.classList.add('show-modal')
 	modal_background.classList.add('show-modal')
 }
 
 window.addEventListener('click', (e) => {
+	//	console.log(e.target)
 
 	e.target === modal_background ? close() : false
+	if (e.target.className === 'btn btn-secondary dropdown-toggle show') {
+
+		close()
+	}
 
 })
 document.querySelector('#modal_wrap').addEventListener('click', (e) => {
@@ -27,8 +35,15 @@ document.querySelector('#modal_wrap').addEventListener('click', (e) => {
 	var tr = table.getElementsByTagName("tr");
 	//dcnt 는 해당 행의 번호
 	let dcnt = tr[rowIndex].getElementsByTagName("td")[0].innerHTML
+	let friendId = tr[rowIndex].getElementsByTagName("td")[1].innerHTML
+	document.getElementById('friendId').value = friendId;
+	let userId1 = $('#userId').val()
 	//dcnt를 통해서 정보를 가지고옴
+
+	document.getElementById('dcntflag').value = dcnt;
+	document.getElementById('rcnt').value = dcnt;
 	duoinfo(dcnt)
+
 	open()
 
 })
@@ -41,6 +56,11 @@ $('.modal_close').on("click", function() {
 
 function duoinfo(dcnt) {
 
+	$('.startSearch').show();
+	$('#aaa').empty()
+
+	$('.flagA').show();
+	$('#chatt').hide();
 	data = { 'dcnt': dcnt }
 	//	console.log(a)
 	$.ajax({
@@ -49,17 +69,40 @@ function duoinfo(dcnt) {
 		url: '/duoInfo',
 		data: data,
 		success: function(res) {
+
+			$('#duoParty').show();
+			$('#duoPartyCancel').hide();
+			$('#flagcollapse').html('=================')
+			document.getElementById('writter').value = res.userId;
 			//			console.log(res)
 			let dcnt = res.dcnt
 			let date = res.date
+			let duoPosition = ''
 			//			let dcnt = res.date
-			let duoPosition = res.duoPosition
-			let myPosition = res.myPosition
-			let memo = res.memo
-			let userId = res.userId
-			let winLose = res.winLose
-			let tier = res.tier
+			if (res.duoPosition == '' || res.duoPosition == null) {
 
+				duoPosition = "<font color= green> 전 라인 </font>"
+			} else {
+				duoPosition = "<font color= blue>" + res.duoPosition + "</font>"
+			}
+
+
+			let myPosition = res.myPosition
+
+			let memo = "<font color= blue>" + res.memo + "</font>"
+
+			let userId = res.userId
+			if (userId == '비회원') {
+
+				userId = "<font color= red>" + '비회원' + "</font>"
+
+			} else {
+				userId = "<font color= blue>" + res.userId + "</font>"
+			}
+
+			let winLose = res.winLose
+
+			let tier = "<font color= #a014a0>" + res.tier + "</font>"
 			$('#dcntM').html(dcnt)
 			$('#userIdM').html(userId)
 			$('#myPositionM').html(myPosition)
@@ -67,21 +110,19 @@ function duoinfo(dcnt) {
 			$('#duoPositionM').html(duoPosition)
 			$('#memoM').html(memo)
 			$('#date').html(date)
-			
+			let friendId = getId('friendId').value
+			userId = getId('userId').value
 
+			if (friendId == userId) {
 
-			let memberSub = "< button disabled = 'disabled' >" + "회원전용입니다." + "</button >"
-			let notMember = "< button >" + " 부검하기(-10point차감)" + "</button >"
-			if (userId == '비회원') {
-
-				$('#memberSub').html(memberSub)
+				$("#duoParty").hide();
 			} else {
-
-				$('#memberSub').html(notMember)
+				$("#duoParty").show();
 			}
 
 
-			//			$('#duoModalBody').html(res)
+
+
 		}, error: function(error) {
 			console.log("에러")
 		}

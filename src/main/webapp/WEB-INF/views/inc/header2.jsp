@@ -36,6 +36,7 @@
 		<c:choose>
 			<c:when test="${userId != null}">
 				<span class="navbar-brand">${userId}님 접속중</span>
+				<a class="navbar-brand" href="/Note">메일함</a>
 				<button type="button" class="btn btn-primary" data-bs-toggle="modal"
 					data-bs-target="#exampleModal3">결제하기</button>
 				<button>
@@ -71,8 +72,8 @@
 	<li class="nav-item"><a class="nav-link" href="/kjm">main</a></li>
 	<li class="nav-item"><a class="nav-link" href="/kjm1">아이템</a></li>
 	<li class="nav-item"><a class="nav-link" href="/kjm2">스킬</a></li>
-	<li class="nav-item"><a class="nav-link" href="/kjm3">Link</a></li>
 	<li class="nav-item"><a class="nav-link" href="/kjm4">최근전적</a></li>
+	<li class="nav-item"><a class="nav-link" href="/kjm5">배너</a></li>
 </ul>
 </div>
 

@@ -34,4 +34,57 @@
 		select * from duoT order by dcnt desc limit 1;
 
 	</select>
+
+	<select id="nowlogin">
+
+		select loginNow from memberT where userId =
+		#{friendId};
+
+	</select>
+
+	<select id="roomCreate">
+
+		insert into duoChattRoomT
+		values(null,#{dcnt},#{friendId},#{userId});
+		select * from duoChattRoomT
+		order by cnt desc limit 1;
+	</select>
+	<select id="searchSameRoom">
+		select count(*)
+		from duoChattRoomT
+		where roomNum =
+		#{dcnt};
+	</select>
+	<select id="deleteSendGuest">
+		select * from duoChattRoomT where roomNum =
+		#{roomNum};
+	</select>
+	<delete id="deleteChatRoom">
+		delete from duoChattRoomT where roomNum = #{roomNum};
+	</delete>
+
+
+	<select id="msgSave">
+		insert into msgT(rcnt,userId,msg)
+		values(#{rcnt},#{userId},#{msg});
+
+		select * from msgT where rcnt = #{rcnt} order by rcnt desc limit 1;
+	</select>
+
+
+	<select id="msgRead">
+		select * from msgT where rcnt = #{rcnt} order by
+		autocnt desc limit 1;
+	</select>
+
+	<select id="msgAll">
+		select * from msgT where rcnt = #{rcnt} order by
+		autocnt
+	</select>
+	<select id="myRoomCheck">
+		select * from duoChattRoomT where roomNum = #{roomNum}
+	</select>
+	<select id="chattRoomInfo">
+		select * from duoChattRoomT where hostId = #{userId} || guestId = #{userId}
+	</select>
 </mapper>

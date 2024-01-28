@@ -18,60 +18,41 @@
 		where line like concat('%',#{line},'%');
 	</select>
 	
-	<select id="test">
-		select
-		M.champName as myChampName,
-		E.champName as enemyChampName ,
-		round(count(case when M.win = 'True' then 1 end)/count(M.win)*100,2) as myWinRate,
-		count(case when M.win = 'True' then 1 end) as myChampWinCount,
-		count(M.win)-count(case when M.win = 'True' then 1 end) as enemyChampWinCount,
-		M.itemName
-		from (select matchId, participantId, champName, line, team, win, itemId, tier, itemName from lol_datas) M
-		join (select matchId, participantId, champName, line, team, win, itemId, tier, itemName from lol_datas) E
-		on M.matchId = E.matchId and M.line = E.line and M.participantId != E.participantId
-		where M.champName=#{myChampName} and E.champName = #{enemyChampName};
-	</select>
-	
-	<select id="test2">
-		select
-		M.champName as myChampName,
-		M.itemId,
-		count(M.itemId) as itemPickCount,
-		M.itemName
-		from (select matchId, participantId, champName, line, team, win, itemId, tier, itemName from lol_datas) M
-		join (select matchId, participantId, champName, line, team, win, itemId, tier, itemName from lol_datas) E
-		on M.matchId = E.matchId and M.line = E.line and M.participantId != E.participantId
-		where M.champName = #{myChampName} and E.champName = #{enemyChampName}
-		group by itemId
-		order by itemPickCount desc
-		limit 0,3;
-	</select>
-	
 	<select id="reChampList">
 		select champion_name,champion_name_kr from champName;
 	</select>
-	
-	<select id="test3">
+
+	<select id="itemBuild">
 		select
-		M.champName as myChampName,
-		E.champName as enemyChampName,
-		M.itemId,
-		count(if(M.win = 'True', M.itemId, null)) as myItemWinCount,
-		count(M.itemId) as itemPickCount,
-		round(count(case when M.win = 'True' then 1 end)/count(M.win)*100,2) as myItemWinRate,
-		M.itemName
-		from (select matchId, participantId, champName, line, team, win, itemId, tier, itemName from lol_datas) M
-		join (select matchId, participantId, champName, line, team, win, itemId, tier, itemName from lol_datas) E
-		on M.matchId = E.matchId and M.line = E.line and M.participantId != E.participantId
-		where M.champName = #{myChampName} and E.champName = #{enemyChampName}
-		group by itemId
-		order by myItemWinCount desc, myItemWinRate desc
-		limit 0, 3;
+		tier,
+		myChampName,
+		enemyChampName,
+		itemId1,
+		itemId2,
+		itemId3,
+		count(itemId1) as myBuildPickCount,
+		count(if(win = 'True', itemId1, null)) as myBuildwinCount
+		from emerald_lol_datas
+		where myChampName = #{myChampName} and enemyChampName = #{enemyChampName}
+		group by itemId1,itemId2,itemId3
+		order by myBuildwinCount desc
+		limit 0,3;
 	</select>
 	
-	<select id="cntPickItem">
-		select count(itemId) as itemPickAllCount
-		from lol_datas
-		where champName = #{myChampName} and itemId = #{itemId};
+	<select id="itemBuildperTier">
+		select
+		tier,
+		myChampName,
+		enemyChampName,
+		itemId1,
+		itemId2,
+		itemId3,
+		count(itemId1) as myBuildPickCount,
+		count(if(win = 'True', itemId1, null)) as myBuildwinCount
+		from ${tier}_lol_datas
+		where myChampName = #{myChampName} and enemyChampName = #{enemyChampName}
+		group by itemId1,itemId2,itemId3
+		order by myBuildwinCount desc
+		limit 0,3;
 	</select>
 </mapper>

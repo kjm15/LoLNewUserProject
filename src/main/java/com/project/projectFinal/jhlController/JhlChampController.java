@@ -13,16 +13,15 @@ import com.project.projectFinal.service.JhlChampService;
 //import com.project.projectFinal.service.JhlChampService;
 
 @Controller
-public class jhlRankController {
-	
+public class JhlChampController {
+
 	@Autowired
 	JhlChampService champService;
-	
+
 	@GetMapping("/jhl")
 	public String jhl(Model model) {
-		List<HashMap<String, String>> champListImg = champService.champListImg();
-
-		model.addAttribute("champListImg",champListImg);
+		List<HashMap<String, String>> champListImg1 = champService.champListImg1();
+		model.addAttribute("champListImg1", champListImg1);
 		return "jhl/jhl";
 	}
 }

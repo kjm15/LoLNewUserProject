@@ -9,6 +9,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
+import com.project.projectFinal.dto.MemberDto;
 import com.project.projectFinal.dto.NoteDto;
 import com.project.projectFinal.service.NoteService;
 
@@ -23,11 +24,10 @@ public class NoteController {
 	//쪽지함
 	@GetMapping("/Note")
 	public String Noteinfo(Model model) {
-		
 		ArrayList<NoteDto> maillist= noteService.NoteInfo();
 		model.addAttribute("maillist", maillist);
 		
-		return "Note";	
+		return "kjm/Note";	
 	}
 	
 	//쪽찌 자세히보기
@@ -35,13 +35,13 @@ public class NoteController {
 	public String detailNote(Model model,NoteDto noteDto) {
 		NoteDto dlist = noteService.detailNote(noteDto);
 		model.addAttribute("dlist", dlist);
-		return "detail";
+		return "kjm/detail";
 	}
 	
 	@PostMapping("/send")
-	public String sendNote(NoteDto noteDto,HttpSession session) {
+	public String sendNote(NoteDto noteDto,HttpSession session,MemberDto memberDto) {
 		String userId = (String) session.getAttribute("userId");
-		noteDto.setUserId(userId);
+		memberDto.setUserId(userId);
 		noteService.sendNote(noteDto);
 		return "redirect:/Note";
 	}
