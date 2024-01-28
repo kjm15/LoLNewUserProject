@@ -61,9 +61,11 @@ $('#duoSaveBtn').on("click", function() {
 		url: '/saveDb',
 		data: data,
 		success: function(res) {
-			console.log("저장완료")
 
-			ws.send("roomUpdate") //전체에게 무언가 시킬떄
+			res.work = "roomUpdate" // 방 업데이트
+//			console.log(res)
+			let temp = JSON.stringify(res)
+			ws.send(temp) //전체에게 무언가 시킬떄
 
 
 			document.getElementById('position').value = '포지션'

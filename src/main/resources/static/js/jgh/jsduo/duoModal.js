@@ -4,7 +4,7 @@ const modal_wrap = document.querySelector('.modal_wrap')
 const modal_background = document.querySelector('.modal_background')
 
 function close() {
-
+	
 	$('.accordion-box').empty()
 	modal_wrap.classList.remove('show-modal');
 	modal_background.classList.remove('show-modal');
@@ -38,7 +38,7 @@ document.querySelector('#modal_wrap').addEventListener('click', (e) => {
 	//dcnt 는 해당 행의 번호
 	let dcnt = tr[rowIndex].getElementsByTagName("td")[0].innerHTML
 	//dcnt를 통해서 정보를 가지고옴
-
+	console.log(dcnt)
 	document.getElementById('dcntflag').value = dcnt;
 	duoinfo(dcnt)
 
@@ -53,7 +53,7 @@ $('.modal_close').on("click", function() {
 /////////////////////////모달 값 넣기///////////////
 
 function duoinfo(dcnt) {
-
+	
 	$('.startSearch').show();
 	$('#aaa').empty()
 

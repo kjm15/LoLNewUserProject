@@ -10,12 +10,17 @@
 			<p>(승낙시 해당글은 삭제되어집니다.)</p>
 
 		</div>
-		<button id="duoPartyChatY">
-			<h3>승낙</h3>
-		</button>
-		<button id="duoPartyChattN">
-			<h3>거절</h3>
-		</button>
+
+
+		<h3>
+			<input type="button" id="duoPartyChatY" value="승낙" />
+		</h3>
+
+
+		<h3>
+			<input type="button" id="duoPartyChattN" value="거절" />
+		</h3>
+
 
 	</div>
 </div>

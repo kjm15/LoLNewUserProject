@@ -10,12 +10,14 @@ import org.springframework.web.bind.annotation.RestController;
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.JsonNode;
 import com.fasterxml.jackson.databind.ObjectMapper;
+import com.project.projectFinal.dto.DuoChattRoomDto;
 import com.project.projectFinal.dto.DuoSearchDto;
 import com.project.projectFinal.dto.MsgDto;
 import com.project.projectFinal.service.DuoService;
 
 import jakarta.servlet.http.HttpSession;
 import lombok.extern.slf4j.Slf4j;
+import retrofit2.http.HTTP;
 
 @RestController
 @Slf4j
@@ -68,8 +70,11 @@ public class RestDuoController {
 	}
 
 	@PostMapping("/nowlogin")
-	public int nowlogin(DuoSearchDto duoSearchDto) {
-//		log.info("========={}", duoSearchDto);
+	public DuoChattRoomDto nowlogin(DuoSearchDto duoSearchDto, HttpSession session) {
+
+		String userId = (String) session.getAttribute("userId");
+		duoSearchDto.setUserId(userId);
+		log.info("========={}", duoSearchDto);
 		return duoService.nowlogin(duoSearchDto);
 
 	}
@@ -78,22 +83,23 @@ public class RestDuoController {
 	public int msgSave(MsgDto msgDto) {
 //		log.info("====="+msgDto);
 		duoService.msgSave(msgDto);
-		
+
 		return 0;
 
 	}
+
 	@PostMapping("/msgRead")
 	public MsgDto msgRead(MsgDto msgDto) {
-		
+
 		return duoService.msgRead(msgDto);
 
 	}
+
 	@PostMapping("/msgAll")
 	public ArrayList<HashMap<String, MsgDto>> msgAll(MsgDto msgDto) {
-		
+
 		return duoService.msgAll(msgDto);
 
 	}
-
 
 }

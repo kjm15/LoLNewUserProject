@@ -6,6 +6,7 @@ import java.util.HashMap;
 import org.apache.ibatis.annotations.Mapper;
 
 import com.fasterxml.jackson.databind.JsonNode;
+import com.project.projectFinal.dto.DuoChattRoomDto;
 import com.project.projectFinal.dto.DuoSearchDto;
 import com.project.projectFinal.dto.MsgDto;
 
@@ -29,5 +30,7 @@ public interface DuoDao {
 	MsgDto msgRead(MsgDto msgDto);
 
 	ArrayList<HashMap<String, MsgDto>> msgAll(MsgDto msgDto);
+
+	DuoChattRoomDto roomCreate(DuoSearchDto duoSearchDto);
 
 }

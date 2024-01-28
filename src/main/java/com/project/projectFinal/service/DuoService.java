@@ -9,10 +9,14 @@ import org.springframework.transaction.annotation.Transactional;
 
 import com.project.projectFinal.customEx.CustomException;
 import com.project.projectFinal.dao.DuoDao;
+import com.project.projectFinal.dto.DuoChattRoomDto;
 import com.project.projectFinal.dto.DuoSearchDto;
 import com.project.projectFinal.dto.MsgDto;
 
+import lombok.extern.slf4j.Slf4j;
+
 @Service
+@Slf4j
 public class DuoService {
 
 	@Autowired
@@ -64,8 +68,19 @@ public class DuoService {
 
 	}
 
-	public int nowlogin(DuoSearchDto duoSearchDto) {
-		return duoDao.nowlogin(duoSearchDto);
+	@Transactional
+	public DuoChattRoomDto nowlogin(DuoSearchDto duoSearchDto) {
+
+		int result = duoDao.nowlogin(duoSearchDto);
+
+		if (result == 1) {
+			DuoChattRoomDto rDto = duoDao.roomCreate(duoSearchDto);
+			log.info("===={}",rDto);
+			return rDto;
+
+		}
+
+		return null;
 	}
 
 	public int msgSave(MsgDto msgDto) {
@@ -73,12 +88,12 @@ public class DuoService {
 	}
 
 	public MsgDto msgRead(MsgDto msgDto) {
-		
+
 		return duoDao.msgRead(msgDto);
 	}
 
 	public ArrayList<HashMap<String, MsgDto>> msgAll(MsgDto msgDto) {
-	
+
 		return duoDao.msgAll(msgDto);
 	}
 

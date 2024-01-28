@@ -42,6 +42,13 @@
 
 	</select>
 
+	<select id="roomCreate">
+
+		insert into duoChattRoomT values(null,#{dcnt},#{friendId},#{userId});
+		select * from duoChattRoomT order by cnt desc limit 1;
+	</select>
+
+
 	<insert id="msgSave">
 		insert into msgT(rcnt,userId,msg)
 		values(#{rcnt},#{userId},#{msg})

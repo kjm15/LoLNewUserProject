@@ -24,7 +24,7 @@ function webstart() {
 	let rcnt = getId('dcntflag').value;
 	let userId = getId('userId').value;
 	msgdata = { "rcnt": rcnt }
-
+	console.log(rcnt)
 
 	$.ajax({
 
@@ -35,8 +35,8 @@ function webstart() {
 			//			console.log(res)
 			for (let data of res) {
 
-				let rcnt = getId('dcntflag').value;
-				let userId = getId('userId').value;
+				rcnt = getId('dcntflag').value;
+				userId = getId('userId').value;
 				var css;
 				if (data.userId == userId) { //작성자와 로그인한 사람이 같음
 					css = 'class=me';
@@ -54,7 +54,7 @@ function webstart() {
 
 			}
 			$('#talk').append("</br>----------------------  과거 메세지  ----------------------");
-			data = res;
+
 		}
 	})
 
@@ -96,7 +96,8 @@ function send() {
 			url: '/msgSave',
 			data: msgdata,
 			success: function(res) {
-				ws.send(data.rcnt);
+				console.log(res)
+				ws.send(res.rcnt);
 
 			}
 		})
@@ -117,7 +118,7 @@ function chattcontents(rcnt) { //저장한 채팅과 같은방에서 실행
 		url: '/msgRead',
 		data: data,
 		success: function(data) {
-//			console.log(data)
+			//			console.log(data)
 			let rcnt = getId('dcntflag').value;
 			let userId = getId('userId').value;
 			var css;
@@ -141,6 +142,7 @@ function chattcontents(rcnt) { //저장한 채팅과 같은방에서 실행
 // 듀오 채팅 신청구문 //
 $('#duoParty').on("click", function() {
 	let rcnt = getId('dcntflag').value;
+
 	let userId = $('#userId').val() //로그인한사람
 	let friendId = $('#writter').val() //작성자
 
@@ -155,7 +157,10 @@ $('#duoParty').on("click", function() {
 		return false
 	}
 
-	data = { "friendId": friendId }
+	data = {
+		"friendId": friendId,
+		"dcnt": rcnt
+	}
 
 	$.ajax({
 
@@ -165,7 +170,7 @@ $('#duoParty').on("click", function() {
 		success: function(res) {
 
 			//			console.log(res)
-			if (res != 1) {
+			if (res == null || res == '') {
 				$('#flagcollapse').html("<font color='red'>접속중이 아닙니다.</font>")
 				$('#flagcollapse').show();
 			} else {
@@ -176,58 +181,55 @@ $('#duoParty').on("click", function() {
 				$('.flagA').hide();
 
 				//상대방에게 허락구문
+				
+				res.work = "createQuestion"
+//				console.log(res)
+				let temp = JSON.stringify(res)
 
-				createQuestion(rcnt)
-
-				//채팅 실행 구문
-				webstart()//웹소켓 연결
-				$('#chatt').show();
+				ws.send(temp)
 			}
-
-
 		}
 	})
 
 
 })
 // 듀오채팅 요청 승낙/거절 구문
-function createQuestion(rcnt) {
+function createQuestion(eventjson) {
+
+
 	console.log("연결중")
 	let str = ''
 	str += '<div class="question" class="duoPartyChatt">'
 
 	str += '<div class="speech-bubble" class="a1">'
-	str += '[' + rcnt + '방 - 듀오채팅 요청]'
+	str += '[' + eventjson.roomNum + '방 - '+eventjson.guestId+'님의 듀오채팅 요청]'
 	str += '<p>채팅방에 입장하시겠습니까?</p>'
 	str += '<p>(승낙시 해당글은 삭제되어집니다.)</p>'
 
 	str += '</div>'
-	str += '<button id="duoPartyChatY">'
-	str += '<h3>승낙</h3>'
-	str += '</button>'
-	str += '<button id="duoPartyChattN">'
-	str += '<h3>거절</h3>'
-	str += '</button>'
+	str += '<h3><input type="button" onclick="javascript:connect()" value="승낙" /></h3>'
+	str += '<h3><input type="button" onclick="javascript:disconnect()" value="거절" /></h3>'
+
 	str += '</div>'
 
 	$('.accordion-box').prepend(str)
 
 }
 //승낙시
-$('#duoPartyChatY').on("click", function() {
+function connect() {
 
+	open()
 	webstart()//웹소켓 연결
 	$('#chatt').show();
-	$('#duoPartyChatY').hide();
-})
+	$('.accordion-box').empty()
+}
 //거절시
-$('#duoPartyCancel').on("click", function() {
-
+function disconnect() {
+	$('.accordion-box').empty()
 	$('#duoParty').show();
 	$('#duoPartyCancel').hide();
 	$('#flagcollapse').html('=================')
-
-})
+}
 
 //탭 이동// 듀오찾기,전적검색
 function openTab(evt, tabName) {
@@ -251,5 +253,11 @@ function searchLol() {
 
 }
 //////////////승낙구문////////////////////////
+//$('#duoPartyChatY').on("click", function() {
+//
+//	console.log("aaa")
+//
+//
+//})
 
 

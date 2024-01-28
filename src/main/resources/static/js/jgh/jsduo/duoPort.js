@@ -17,20 +17,32 @@ ws.onmessage = function(msg) {
 }
 
 ws.addEventListener("message", (event) => {
-	let rcnt = getId('dcntflag').value;
+	rcnt = getId('dcntflag').value;
+	userId = $('#userId').val()
+	//	event
+	let eventjson = JSON.parse(event.data)
+	console.log(eventjson.work)
 
-	if (event.data == 'roomUpdate') {
+	if (eventjson.work == 'roomUpdate') { // 방만들고 업데이트하기
 		showNewDuo()
-	} else if (event.data == rcnt) {
+	} else if (eventjson.work == rcnt) { //대화창 안에서 보내기
 
-	chattcontents(event.data)
+		chattcontents(event.data)
 
+
+	} else if (eventjson.work == 'createQuestion') {
+		eventjson.work.dcnt = getId('dcntflag').value
+		console.log(eventjson)
+		if (eventjson.hostId == userId) {
+
+
+			createQuestion(eventjson)
+		}
 
 	}
-
-
-
 });
+
+
 
 
 //const sse = new EventSource("http://192.168.0.27:8080/jgh"); // ipconfig를 통해 본인 아이피를 넣어줘야함

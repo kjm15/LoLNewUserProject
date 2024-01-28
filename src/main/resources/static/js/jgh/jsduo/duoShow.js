@@ -48,7 +48,6 @@ function showNewDuo() {
 		url: '/comparedcnt',
 		success: function(res) {
 
-			document.getElementById("dntDuo").value = res.dcnt
 			trs = "<tr>"
 			tdwin = "<td>" + res.dcnt + "</td>"
 			tduserId = "<td>" + res.userId + "</td>"
