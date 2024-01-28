@@ -11,9 +11,9 @@
 <div class="modal_wrap">
 	<div class="modal2">
 
-<%@include file="chatmodal.jsp"%>
+		<%@include file="chatmodal.jsp"%>
 		<div class="wrap">
-					
+
 			<div class="flagA">
 				<div class="tab">
 					<ul class="tabitems">
@@ -49,12 +49,7 @@
 				<button id="duoPartyCancel" style="display: none;">취소하기</button>
 
 			</div>
-			</br>
-		
-	
-<span id="flagcollapse"></span>
-	
-		 </br> 
+			</br> <span id="flagcollapse"></span> </br>
 
 
 			<!--tabB end-->

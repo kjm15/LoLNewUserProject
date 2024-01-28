@@ -5,10 +5,12 @@ const modal_background = document.querySelector('.modal_background')
 
 function close() {
 
+	$('.accordion-box').empty()
 	modal_wrap.classList.remove('show-modal');
 	modal_background.classList.remove('show-modal');
 }
 function open() {
+
 	$('.wrap').show();
 	$('#flagcollapse').show();
 	modal_wrap.classList.add('show-modal')
@@ -16,8 +18,13 @@ function open() {
 }
 
 window.addEventListener('click', (e) => {
+	//	console.log(e.target)
 
 	e.target === modal_background ? close() : false
+	if (e.target.className === 'btn btn-secondary dropdown-toggle show') {
+
+		close()
+	}
 
 })
 document.querySelector('#modal_wrap').addEventListener('click', (e) => {
@@ -28,9 +35,13 @@ document.querySelector('#modal_wrap').addEventListener('click', (e) => {
 	var tr = table.getElementsByTagName("tr");
 	//dcnt 는 해당 행의 번호
 	let dcnt = tr[rowIndex].getElementsByTagName("td")[0].innerHTML
+	let friendId = tr[rowIndex].getElementsByTagName("td")[1].innerHTML
+	document.getElementById('friendId').value = friendId;
+	let userId1 = $('#userId').val()
 	//dcnt를 통해서 정보를 가지고옴
 
 	document.getElementById('dcntflag').value = dcnt;
+	document.getElementById('rcnt').value = dcnt;
 	duoinfo(dcnt)
 
 	open()
@@ -99,6 +110,18 @@ function duoinfo(dcnt) {
 			$('#duoPositionM').html(duoPosition)
 			$('#memoM').html(memo)
 			$('#date').html(date)
+			let friendId = getId('friendId').value
+			userId = getId('userId').value
+
+			if (friendId == userId) {
+
+				$("#duoParty").hide();
+			} else {
+				$("#duoParty").show();
+			}
+
+
+
 
 		}, error: function(error) {
 			console.log("에러")

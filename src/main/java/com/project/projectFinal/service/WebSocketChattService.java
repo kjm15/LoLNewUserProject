@@ -5,10 +5,9 @@ import java.util.HashSet;
 import java.util.Set;
 
 import org.springframework.stereotype.Service;
-
-import com.fasterxml.jackson.databind.JsonNode;
-import com.fasterxml.jackson.databind.ObjectMapper;
-import com.project.projectFinal.dto.MsgDto;
+import org.springframework.util.LinkedMultiValueMap;
+import org.springframework.util.MultiValueMap;
+import org.springframework.web.socket.WebSocketSession;
 
 import jakarta.websocket.OnClose;
 import jakarta.websocket.OnMessage;
@@ -23,7 +22,9 @@ import lombok.extern.slf4j.Slf4j;
 public class WebSocketChattService {
 
 	private static Set<Session> clients = Collections.synchronizedSet(new HashSet<Session>());
+	MultiValueMap<String, String> roomMap = new LinkedMultiValueMap<>();
 
+//	WebSocketSession
 	@OnMessage // 메세지 수신시
 	public void onMessage(String msg, Session session) throws Exception {
 
@@ -36,10 +37,10 @@ public class WebSocketChattService {
 
 	@OnOpen // 클라이언트 접속시
 	public void onOpen(Session s) {
-//		log.info("open session : " + s.toString());
+
 		if (!clients.contains(s)) {
 			clients.add(s);
-//			log.info("session open : " + s);
+			log.info("session open : " + s);
 		} else {
 			log.info("이미 연결된 session 임!!!");
 		}
@@ -47,7 +48,7 @@ public class WebSocketChattService {
 
 	@OnClose // 클라이언트 접속해제
 	public void onClose(Session s) {
-//		log.info("session close : " + s);
+		log.info("session close : " + s);
 		clients.remove(s);
 	}
 

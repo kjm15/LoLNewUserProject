@@ -62,9 +62,6 @@ public class SseEmitters {
 		});
 	}
 
-	public void add1() {
-		// TODO Auto-generated method stub
-
-	}
+	
 
 }

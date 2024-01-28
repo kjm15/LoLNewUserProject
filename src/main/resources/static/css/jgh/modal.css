@@ -1,7 +1,4 @@
 .modal_wrap {
-	
-
-	position: absolute;
 	border: 2px solid black;
 	background: #eee;
 	z-index: 2;
@@ -55,3 +52,146 @@
 	height: 100%;
 }
 
+.duoPartyChatt {
+	border: 2px solid black;
+	background: #eee;
+	z-index: 2;
+	text-align: center;
+	font-family: arial;
+	outline: dashed 2px black;
+	position: fixed;
+	top: 90%;
+	left: 90%;
+	background-color: skyblue;
+	border: none;
+	padding: 10px 30px;
+	width: 100%;
+	line-height: 60px;
+	box-sizing: border-box;
+	padding: 0 10px;
+}
+
+/* //오른쪽아래 승낙버튼// */
+* {
+	margin: 0;
+	padding: 0;
+}
+
+/* 승낙전체장소조절 */
+.accordion-box {
+	
+	position: fixed;
+	top: 80%;
+	left: 80%;
+	width: 300px;
+	margin: 0 auto;
+}
+
+@keyframes fadeInUp { 0% {
+	opacity: 0;
+	transform: translate3d(0, 100%, 0);
+}
+
+to {
+	opacity: 1;
+	transform: translateZ(0);
+}
+
+}
+.question {
+	position: relative;
+	animation: fadeInUp 2s;
+}
+.a1 {
+	
+	color : gray;
+}
+
+
+/* 말풍선 */
+.speech-bubble {
+  position: relative;
+  background: #ffffff;
+  border-radius: .4em;
+}
+ 
+.speech-bubble:after {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 50%;
+  width: 0;
+  height: 0;
+  border: 20px solid transparent;
+  border-top-color: #ffffff;
+  border-bottom: 0;
+  border-left: 0;
+  margin-left: -10px;
+  margin-bottom: -20px;
+}
+
+/* 사이드바 */
+.side-bar{                              
+    background-color: lightgray;
+    position: absolute;
+    top:0;
+    left:-260px;
+    width: 300px;
+    height: 100%;
+    z-index: 3;
+}
+
+.side-bar:hover{                      
+    left:0%;
+    background-color:gray	;
+}
+.side-bar>.icon>div{                   
+    text-align:right;
+    padding: 10px;
+    color: black;
+}
+.side-bar:hover>.icon>div:last-child{  
+    display:block;
+    color: white;
+}
+
+.side-bar:hover>.icon>div:first-child{  
+    display:none;
+}
+.side-bar>.icon>div:last-child{        
+    display:none;
+}
+.side-bar>.menu ul>li{
+    position:relative;
+}
+.side-bar>.menu ul>li>a{
+    display:block;
+    font-weight:bold;
+    padding:10px;
+    white-space:nowrap;
+}
+.side-bar>.menu ul>li:hover>a{
+    background-color:white;
+    color:black;
+}
+
+.side-bar>.menu ul>li>a:not(:only-child)::after{   
+                               
+    content:"[+]";               
+}
+
+.side-bar>.menu  ul>li:hover>a:not(:only-child)::after{
+    content:"[-]";            
+}
+.side-bar>.menu ul ul{
+    display:none;
+    position:absolute;
+    top:0;
+    left : 100%;
+    border: 2px solid red;
+    background-color : black;
+    width:100%;
+}
+.side-bar>.menu ul>li:hover>ul{
+    display:block;
+}

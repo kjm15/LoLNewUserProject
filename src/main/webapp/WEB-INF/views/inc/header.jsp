@@ -57,17 +57,9 @@
 
 
 
-
-
-
-
-
-
-
 	</div>
 </nav>
-<div class="idsearch" align="center"
-	style="height: 100px; background: lightblue;"></div>
+<div class="idsearch" align="center"></div>
 </div>
 
 

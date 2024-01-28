@@ -5,7 +5,6 @@ function getId(id) {
 
 var data = {};//전송 데이터(JSON)
 
-var ws;
 var mid = getId('mid');
 var mpw = getId('mpw');
 var btnLogin = getId('btnLogin');
@@ -16,21 +15,83 @@ var toJoin = getId("join");
 var logout = getId("logout");
 
 
-
-
-function webstart() {
+//본인이 본인방 들어가는 경우
+function myRoom(rcnt) {
 	$('#talk').empty();
 	$('#flagcollapse').hide();
 	$('.wrap').hide();
-	let rcnt = getId('dcntflag').value;
+	let userId = getId('userId').value;
+	let temp = {};
+	msgdata = { "roomNum": rcnt }
+	$.ajax({
+
+		type: 'post',
+		url: '/myRoomCheck',
+		data: msgdata,
+		success: function(res1) {
+
+			$.ajax({
+
+				type: 'post',
+				url: '/msgAll',
+				data: msgdata,
+				success: function(res) {
+					console.log(res)
+					for (let data of res) {
+
+						rcnt = getId('dcntflag').value;
+						userId = getId('userId').value;
+						var css;
+						if (data.userId == userId) { //작성자와 로그인한 사람이 같음
+							css = 'class=me';
+							userIdcheck = userId
+						} else {
+							css = 'class=other';
+							userIdcheck = data.userId
+						}
+
+						var item = "<div " + css + "><span><b> " + userIdcheck + "</b></span>" + data.date + "<br/>"
+							+ "<span>" + data.msg + "</span>	</div>"
+						$('#talk').append(item);
+
+						talk.scrollTop = talk.scrollHeight;//스크롤바 하단으로 이동
+
+					}
+					$('#talk').append("</br>----------------------  과거 메세지  ----------------------");
+
+					temp.work = 'myRoom'
+					temp.rcnt = rcnt
+
+					temp.hostId = res1.hostId
+					temp.guestId = res1.guestId
+					console.log(temp)
+					//			temp.writter = data.userId
+					temp1 = JSON.stringify(temp)
+					//			console.log(temp1)
+					ws.send(temp1)
+
+				}
+			})
+
+		}
+	})
+
+
+}
+
+
+//승낙시 실행구문
+function webstart(rcnt) {
+
+
+	document.getElementById('rcnt').value = rcnt
+	$('#talk').empty();
+	$('#flagcollapse').hide();
+	$('.wrap').hide();
+	let guestId = $('#guestId').val()
 	let userId = getId('userId').value;
 	msgdata = { "rcnt": rcnt }
-	if (ws == null || ws == '') {
-		console.log("js-spring websocket connected")
-		ws = new WebSocket("ws://" + location.host + "/jgh");
-
-	}
-
+//	console.log(guestId)
 
 	$.ajax({
 
@@ -38,11 +99,10 @@ function webstart() {
 		url: '/msgAll',
 		data: msgdata,
 		success: function(res) {
-			//			console.log(res)
 			for (let data of res) {
 
-				let rcnt = getId('dcntflag').value;
-				let userId = getId('userId').value;
+				rcnt = getId('dcntflag').value;
+				userId = getId('userId').value;
 				var css;
 				if (data.userId == userId) { //작성자와 로그인한 사람이 같음
 					css = 'class=me';
@@ -60,46 +120,32 @@ function webstart() {
 
 			}
 			$('#talk').append("</br>----------------------  과거 메세지  ----------------------");
-			data = res;
+
+			$('.wrap').hide();
+
+			let temp1 = {}
+			temp1.contents = res
+			temp1.work = 'connectRoom';
+			temp1.hostId = userId
+			temp1.guestId = guestId
+
+			//			console.log(temp1)
+
+
+			temp = JSON.stringify(temp1)
+
+			ws.send(temp)
+
+
 		}
 	})
-
-	ws.onmessage = function(msg) {
-
-		$.ajax({
-
-			type: 'post',
-			url: '/msgRead',
-			data: msgdata,
-			success: function(res) {
-				chattcontents(res)
-			}
-		})
-	}
-}
-
-
-function chattcontents(data) {
-	let rcnt = getId('dcntflag').value;
-	let userId = getId('userId').value;
-	var css;
-	if (data.userId == userId) { //작성자와 로그인한 사람이 같음
-		css = ' class=me';
-		userIdcheck = userId
-	} else {
-		css = ' class=other';
-		userIdcheck = data.userId
-	}
-
-	var item = "<div " + css + "><span><b> " + userIdcheck + "</b></span>" + data.date + "<br/>"
-		+ "<span>" + data.msg + "</span>	</div>"
-	$('#talk').append(item);
-	talk.scrollTop = talk.scrollHeight;//스크롤바 하단으로 이동
+//		console.log(rcnt)
+	deleteDuo(rcnt)
 
 }
 
 
-
+///////////////////채팅 내용 보내기///////////////////////
 msg.onkeyup = function(ev) {
 	if (ev.keyCode == 13) {//엔터 눌렀을때
 		if (msg.value != '') {
@@ -109,47 +155,85 @@ msg.onkeyup = function(ev) {
 		}
 	}
 }
-
-//btnSend.onclick = function() {
-//
-//
-//}
-
+// 전송된 채팅 db에 저장시키기
 function send() {
+	rcnt = getId('rcnt').value;
+	let userId = getId('userId').value;
+	let msg = document.getElementById('msg').value;
+	let date = new Date().toLocaleString();
 
-	if (msg.value.trim() != '') {
-		data.rcnt = getId('dcntflag').value;
-		data.userId = getId('userId').value;
-		data.msg = msg.value;
-		data.date = new Date().toLocaleString();
-		//		console.log(data);
+//	console.log(msg.length)
+	if (msg.trim() != '') {
 
-		msgdata = {
-			"rcnt": data.rcnt,
-			"userId": data.userId,
-			"msg": data.msg
+		data = {
+			'rcnt': rcnt,
+			'userId': userId,
+			'msg': msg,
+			'date': date
 		}
+
 		$.ajax({
 
 			type: 'post',
 			url: '/msgSave',
-			data: msgdata,
+			data: data,
 			success: function(res) {
+				console.log(res)
 
-				var temp = JSON.stringify(data);
-				ws.send(temp);
+				res.work = "sendMsg"
+				//				console.log(res)
+				let temp = JSON.stringify(res)
+
+				ws.send(temp)
+
+
 			}
 		})
 
+	} else {
+
+		alert("내용이 없습니다.")
 	}
-	msg.value = '';
+
+
+}
+//채팅 작성 시 
+function chattcontents(rcnt) { //저장한 채팅과 같은방에서 실행
+
+	data = {
+		"rcnt": rcnt,
+	}
+	$.ajax({
+
+		type: 'post',
+		url: '/msgRead',
+		data: data,
+		success: function(data) {
+			//			console.log(data)
+			let rcnt = getId('dcntflag').value;
+			let userId = getId('userId').value;
+			var css;
+			if (data.userId == userId) { //작성자와 로그인한 사람이 같음
+				css = ' class=me';
+				userIdcheck = userId
+			} else {
+				css = ' class=other';
+				userIdcheck = data.userId
+			}
+
+			var item = "<div " + css + "><span><b> " + userIdcheck + "</b></span>" + data.date + "<br/>"
+				+ "<span>" + data.msg + "</span>	</div>"
+			$('#talk').append(item);
+			document.getElementById('msg').value = '';
+			talk.scrollTop = talk.scrollHeight;//스크롤바 하단으로 이동
+		}
+	})
 
 }
 
-
-/////////////////////////////////////////////////////////////////
-
+// 듀오 채팅 신청구문 //
 $('#duoParty').on("click", function() {
+	let rcnt = $('#rcnt').val()
 
 	let userId = $('#userId').val() //로그인한사람
 	let friendId = $('#writter').val() //작성자
@@ -165,7 +249,10 @@ $('#duoParty').on("click", function() {
 		return false
 	}
 
-	data = { "friendId": friendId }
+	data = {
+		"friendId": friendId,
+		"dcnt": rcnt
+	}
 
 	$.ajax({
 
@@ -175,8 +262,8 @@ $('#duoParty').on("click", function() {
 		success: function(res) {
 
 			//			console.log(res)
-			if (res != 1) {
-				$('#flagcollapse').html("<font color='red'>접속중이 아닙니다.</font>")
+			if (res == null || res == '') {
+				$('#flagcollapse').html("<font color='red'>접속중이 아니거나 다른사람과 채팅중입니다.</font>")
 				$('#flagcollapse').show();
 			} else {
 				//요청완료
@@ -187,48 +274,70 @@ $('#duoParty').on("click", function() {
 
 				//상대방에게 허락구문
 
+				res.work = "createQuestion"
+				//				console.log(res)
+				let temp = JSON.stringify(res)
 
-				getAgreejoinRoom()
-				//채팅 실행 구문
-				webstart()//웹소켓 연결
-				$('#chatt').show();
+				ws.send(temp)
 			}
-
-
 		}
 	})
 
 
 })
+// 듀오채팅 요청 승낙/거절 구문
+function createQuestion(eventjson) {
 
 
-function getAgreejoinRoom() {
-	//	let rcnt = getId('dcntflag').value;
-	//	let userId = getId('userId').value;
-	//	let friendId = $('#writter').val() //작성자
-	//	msgdata = { "rcnt": rcnt }
-	alert("상대방 승낙 구문 만들기")
+	document.getElementById('guestId').value = eventjson.guestId
+
+	let str = ''
+	str += '<div class="question" class="duoPartyChatt" id="' + eventjson.roomNum + '">'
+
+	str += '<div class="speech-bubble" class="a1">'
+	str += '[' + eventjson.roomNum + '방 - ' + eventjson.guestId + '님의 듀오채팅 요청]'
+	str += '<p>채팅방에 입장하시겠습니까?</p>'
+	str += '<p>(승낙시 해당글은 삭제되어집니다.)</p>'
+
+	str += '</div>'
+	str += "<h3><input type='button' onclick='javascript:connect(" + eventjson.roomNum + ")' value='승낙' /></h3>"
+	str += '<h3><input type="button" onclick="javascript:disconnect(' + eventjson.roomNum + ')" value="거절" /></h3>'
+
+	str += '</div>'
+
+	$('.accordion-box').prepend(str)
+
+}
+//승낙시
+function connect(roomNum) {
+
+	webstart(roomNum)//웹소켓 연결
+
+
+}
+//거절시
+function disconnect(roomNum) {
+
+	data = { 'roomNum': roomNum }
+	$.ajax({
+
+		type: 'post',
+		url: '/deleteChatRoom',
+		data: data,
+		success: function(res) {
+
+			res.work = "reject"
+			//				console.log(res)
+			let temp = JSON.stringify(res)
+
+			ws.send(temp)
+
+		}
+	})
 
 }
 
-
-
-
-
-
-
-
-
-
-$('#duoPartyCancel').on("click", function() {
-
-	$('#duoParty').show();
-	$('#duoPartyCancel').hide();
-	$('#flagcollapse').html('=================')
-
-})
-
-
+//탭 이동// 듀오찾기,전적검색
 function openTab(evt, tabName) {
 	var i, tabcontent, tablink;
 	tabcontent = document.getElementsByClassName("tabcontent");
@@ -243,13 +352,18 @@ function openTab(evt, tabName) {
 	evt.currentTarget.className += " active";
 }
 
-
+//전적검색 시 실행할 구문
 function searchLol() {
 	$('#aaa').empty()
 	$('.startSearch').fadeOut(700, 'linear');
 
 }
-
-
+//////////////승낙구문////////////////////////
+//$('#duoPartyChatY').on("click", function() {
+//
+//	console.log("aaa")
+//
+//
+//})
 
 

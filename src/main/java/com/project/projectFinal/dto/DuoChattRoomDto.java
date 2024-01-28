@@ -7,12 +7,11 @@ import lombok.NoArgsConstructor;
 @Data
 @NoArgsConstructor
 @AllArgsConstructor
-public class MsgDto {
+public class DuoChattRoomDto {
 
 	
+	private String roomNum;
+	private String hostId;
+	private String guestId;
 	
-	private String rcnt; //방번호
-	private String userId; //로그인 아이디
-	private String msg;//메세지
-	private String date;
 }
