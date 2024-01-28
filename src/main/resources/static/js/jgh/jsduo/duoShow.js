@@ -2,6 +2,7 @@
 ////////////시작하자마자 보여주기/////////////////
 $(document).ready(function() {
 	duoMainInfo()
+	showChattInfo()
 })
 
 function duoMainInfo() {
@@ -39,14 +40,15 @@ function duoMainInfo() {
 }
 
 ////////////중간에 넣기////////////////
+
 function showNewDuo() {
+
 	$.ajax({
 
 		type: 'post',
 		url: '/comparedcnt',
 		success: function(res) {
 
-			document.getElementById("dntDuo").value = res.dcnt
 			trs = "<tr>"
 			tdwin = "<td>" + res.dcnt + "</td>"
 			tduserId = "<td>" + res.userId + "</td>"
@@ -76,7 +78,7 @@ function showNewDuo() {
 			$('#exampleModal').modal("hide");
 
 			$('#' + res.dcnt).show(4200)
-
+			console.log("방 업데이트 완료")
 
 		}, error: function(error) {
 			console.log("에러")
@@ -84,3 +86,33 @@ function showNewDuo() {
 	})
 
 }
+
+//접속한 채팅방 보여주기
+
+function showChattInfo() {
+
+
+	$.ajax({
+		//
+		type: 'post',
+		url: '/chattRoomInfo',
+		success: function(res) {
+
+			if (res != '') {
+				str = ''
+				str += '<ul>'
+				for (let i of res) {
+
+					str += '<li ><span>채팅방 번호:' + i.roomNum + '</br></span>들어가기 // 방나가기</li></br>'
+
+				}
+				str += '</ul>'
+			
+			$('.menu').append(str)
+			}
+
+		}
+	})
+
+}
+
