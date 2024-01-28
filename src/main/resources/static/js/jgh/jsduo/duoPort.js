@@ -4,17 +4,6 @@ if (ws == null || ws == '') {
 	ws = new WebSocket("ws://" + location.host + "/jgh");
 
 }
-ws.onopen = function(event) {
-
-	//보낼때
-	//	ws.send("방업데이트")
-};
-
-
-ws.onmessage = function(msg) {
-
-	//받을때
-}
 
 ws.addEventListener("message", (event) => {
 	rcnt = getId('dcntflag').value;
@@ -25,20 +14,50 @@ ws.addEventListener("message", (event) => {
 
 	if (eventjson.work == 'roomUpdate') { // 방만들고 업데이트하기
 		showNewDuo()
-	} else if (eventjson.work == rcnt) { //대화창 안에서 보내기
-
-		chattcontents(event.data)
 
 
-	} else if (eventjson.work == 'createQuestion') {
-		eventjson.work.dcnt = getId('dcntflag').value
-		console.log(eventjson)
+	} else if (eventjson.work == 'createQuestion') {//다른사람으로부터 승낙요청
+		getId('dcntflag').value = eventjson.work.dcnt
+
 		if (eventjson.hostId == userId) {
-
 
 			createQuestion(eventjson)
 		}
 
+	} else if (eventjson.work == 'connectRoom') { //서로 대화창에 들어옴
+
+		if (userId == eventjson.hostId || userId == guestId) {
+
+			open()
+			$('#chatt').show();
+			$('.accordion-box').empty()
+
+		}
+
+
+	} else if (eventjson.work == 'reject') { //대화거절시 상대방에게 거절알림
+		if (userId == eventjson.guestId) { //오청쪽
+			close()		
+			$('.accordion-box').empty()
+			$('#duoParty').show();
+			$('#duoPartyCancel').hide();
+			$('#flagcollapse').html('=================')
+			alert('상대방이 거절하였습니다.')
+
+		}
+		if (userId == eventjson.hostId) { //게시글쓴쪽
+			$('#'+eventjson.roomNum).remove()
+//			$('.accordion-box').empty()
+//			$('#duoParty').show();
+//			$('#duoPartyCancel').hide();
+//			$('#flagcollapse').html('=================')
+
+
+		}
+
+	} else if (eventjson.work == rcnt) { //대화창 안에서 보내기
+
+		chattcontents(rcnt)
 	}
 });
 

@@ -71,11 +71,14 @@ public class DuoService {
 	@Transactional
 	public DuoChattRoomDto nowlogin(DuoSearchDto duoSearchDto) {
 
-		int result = duoDao.nowlogin(duoSearchDto);
+		int result = duoDao.nowlogin(duoSearchDto); // 로그인 했는지 확인
 
-		if (result == 1) {
-			DuoChattRoomDto rDto = duoDao.roomCreate(duoSearchDto);
-			log.info("===={}",rDto);
+		int result1 = duoDao.searchSameRoom(duoSearchDto); // 현재 채팅방이 있는지 확인
+
+		if (result == 1 && result1 != 1) { // 로그인 중이고 만든채팅방이 없는경우
+			DuoChattRoomDto rDto = duoDao.roomCreate(duoSearchDto); // 방만들기
+
+//			log.info("===={}", rDto);
 			return rDto;
 
 		}
@@ -95,6 +98,13 @@ public class DuoService {
 	public ArrayList<HashMap<String, MsgDto>> msgAll(MsgDto msgDto) {
 
 		return duoDao.msgAll(msgDto);
+	}
+
+	public DuoChattRoomDto deleteChatRoom(DuoChattRoomDto duoChattRoomDto) {
+
+		DuoChattRoomDto dDto = duoDao.deleteSendGuest(duoChattRoomDto);
+		duoDao.deleteChatRoom(duoChattRoomDto);
+		return dDto;
 	}
 
 }

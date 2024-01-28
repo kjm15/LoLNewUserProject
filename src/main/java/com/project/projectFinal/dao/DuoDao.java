@@ -33,4 +33,10 @@ public interface DuoDao {
 
 	DuoChattRoomDto roomCreate(DuoSearchDto duoSearchDto);
 
+	int searchSameRoom(DuoSearchDto duoSearchDto);
+
+	void deleteChatRoom(DuoChattRoomDto duoChattRoomDto);
+
+	DuoChattRoomDto deleteSendGuest(DuoChattRoomDto duoChattRoomDto);
+
 }

@@ -74,7 +74,7 @@ public class RestDuoController {
 
 		String userId = (String) session.getAttribute("userId");
 		duoSearchDto.setUserId(userId);
-		log.info("========={}", duoSearchDto);
+//		log.info("========={}", duoSearchDto);
 		return duoService.nowlogin(duoSearchDto);
 
 	}
@@ -100,6 +100,12 @@ public class RestDuoController {
 
 		return duoService.msgAll(msgDto);
 
+	}
+
+	@PostMapping("/deleteChatRoom")
+	public DuoChattRoomDto deleteChatRoom(DuoChattRoomDto duoChattRoomDto) {
+
+		return duoService.deleteChatRoom(duoChattRoomDto);
 	}
 
 }

@@ -44,9 +44,22 @@
 
 	<select id="roomCreate">
 
-		insert into duoChattRoomT values(null,#{dcnt},#{friendId},#{userId});
-		select * from duoChattRoomT order by cnt desc limit 1;
+		insert into duoChattRoomT
+		values(null,#{dcnt},#{friendId},#{userId});
+		select * from duoChattRoomT
+		order by cnt desc limit 1;
 	</select>
+	<select id="searchSameRoom">
+		select count(*)
+		from duoChattRoomT
+		where roomNum = #{dcnt};
+	</select>
+	<select id="deleteSendGuest">
+		select * from duoChattRoomT where roomNum = #{roomNum};
+	</select>
+	<delete id="deleteChatRoom">
+		delete from duoChattRoomT where roomNum = #{roomNum};
+	</delete>
 
 
 	<insert id="msgSave">

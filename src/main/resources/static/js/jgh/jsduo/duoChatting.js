@@ -16,12 +16,12 @@ var logout = getId("logout");
 
 
 
-function webstart() {
+function webstart(rcnt) {
 
 	$('#talk').empty();
 	$('#flagcollapse').hide();
 	$('.wrap').hide();
-	let rcnt = getId('dcntflag').value;
+
 	let userId = getId('userId').value;
 	msgdata = { "rcnt": rcnt }
 	console.log(rcnt)
@@ -54,7 +54,12 @@ function webstart() {
 
 			}
 			$('#talk').append("</br>----------------------  과거 메세지  ----------------------");
+			let temp = '';
+			temp.work = 'connectRoom';
 
+			temp = JSON.stringify(res)
+
+			ws.send(temp)
 		}
 	})
 
@@ -171,7 +176,7 @@ $('#duoParty').on("click", function() {
 
 			//			console.log(res)
 			if (res == null || res == '') {
-				$('#flagcollapse').html("<font color='red'>접속중이 아닙니다.</font>")
+				$('#flagcollapse').html("<font color='red'>접속중이 아니거나 다른사람과 채팅중입니다.</font>")
 				$('#flagcollapse').show();
 			} else {
 				//요청완료
@@ -181,9 +186,9 @@ $('#duoParty').on("click", function() {
 				$('.flagA').hide();
 
 				//상대방에게 허락구문
-				
+
 				res.work = "createQuestion"
-//				console.log(res)
+				//				console.log(res)
 				let temp = JSON.stringify(res)
 
 				ws.send(temp)
@@ -199,16 +204,16 @@ function createQuestion(eventjson) {
 
 	console.log("연결중")
 	let str = ''
-	str += '<div class="question" class="duoPartyChatt">'
+	str += '<div class="question" class="duoPartyChatt" id="'+ eventjson.roomNum+'">'
 
 	str += '<div class="speech-bubble" class="a1">'
-	str += '[' + eventjson.roomNum + '방 - '+eventjson.guestId+'님의 듀오채팅 요청]'
+	str += '[' + eventjson.roomNum + '방 - ' + eventjson.guestId + '님의 듀오채팅 요청]'
 	str += '<p>채팅방에 입장하시겠습니까?</p>'
 	str += '<p>(승낙시 해당글은 삭제되어집니다.)</p>'
 
 	str += '</div>'
-	str += '<h3><input type="button" onclick="javascript:connect()" value="승낙" /></h3>'
-	str += '<h3><input type="button" onclick="javascript:disconnect()" value="거절" /></h3>'
+	str += '<h3><input type="button" onclick="javascript:connect(' + eventjson.roomNum + ')" value="승낙" /></h3>'
+	str += '<h3><input type="button" onclick="javascript:disconnect(' + eventjson.roomNum + ')" value="거절" /></h3>'
 
 	str += '</div>'
 
@@ -216,19 +221,32 @@ function createQuestion(eventjson) {
 
 }
 //승낙시
-function connect() {
+function connect(roomNum) {
 
-	open()
-	webstart()//웹소켓 연결
-	$('#chatt').show();
-	$('.accordion-box').empty()
+
+	webstart(roomNum)//웹소켓 연결
+
 }
 //거절시
-function disconnect() {
-	$('.accordion-box').empty()
-	$('#duoParty').show();
-	$('#duoPartyCancel').hide();
-	$('#flagcollapse').html('=================')
+function disconnect(roomNum) {
+
+	data = { 'roomNum': roomNum }
+	$.ajax({
+
+		type: 'post',
+		url: '/deleteChatRoom',
+		data: data,
+		success: function(res) {
+
+			res.work = "reject"
+			//				console.log(res)
+			let temp = JSON.stringify(res)
+
+			ws.send(temp)
+
+		}
+	})
+
 }
 
 //탭 이동// 듀오찾기,전적검색
