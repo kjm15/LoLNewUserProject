@@ -26,7 +26,7 @@ ws.addEventListener("message", (event) => {
 		}
 
 	} else if (eventjson.work == 'connectRoom') { //서로 대화창에 들어옴
-		console.log(eventjson)
+		//		console.log(eventjson)
 		let rcnt = $('#rcnt').val()
 		if (userId == eventjson.hostId || userId == eventjson.guestId) {
 
@@ -34,18 +34,16 @@ ws.addEventListener("message", (event) => {
 			$('#chatt').show();
 			$('.wrap').hide();
 			$('#' + rcnt).remove()
+			$('.menu').empty()
+			showChattInfo()
+			
+			let res = {};
+			res.work = "reload"
+			//				console.log(res)
+			let temp = JSON.stringify(res)
 
+			ws.send(temp)
 		}
-
-
-	} else if (eventjson.work == 'myRoom' && userId == eventjson.friendId) {
-		//본인 대화방 접속
-
-		open()
-		$('#chatt').show();
-		$('.wrap').hide();
-
-
 
 
 	} else if (eventjson.work == 'reject') { //대화거절시 상대방에게 거절알림
@@ -68,10 +66,40 @@ ws.addEventListener("message", (event) => {
 
 		}
 
-	} else if (eventjson.work == rcnt) { //대화창 안에서 보내기
+	} else if (eventjson.work == "sendMsg") { //메세지 보내기
 
-		chattcontents(rcnt)
+		let rcnt = $('#rcnt').val()
+		//대화창 안에서 보내기
+		if (rcnt = eventjson.rcnt) {
+
+			chattcontents(rcnt)
+
+		}
+
+
 	}
+	else if (eventjson.work == "reload") { //누군가 방접속시 리로드
+
+		$('#preflag').empty()
+		duoMainInfo()
+
+
+	}
+	//	else if (eventjson.work == 'myRoom') {
+	//		//본인 대화방 접속
+	//		userId = $('#userId').val()
+	//		document.getElementById('rcnt').value = eventjson.rcnt
+	//		if (userId == eventjson.hostId || userId == eventjson.guestId) {
+	//
+	//			console.log("내방 접속")
+	//			open()
+	//			$('#chatt').show();
+	//			$('.wrap').hide();
+	//
+	//		}
+	//
+	//
+	//	}
 });
 
 

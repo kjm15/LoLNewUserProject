@@ -2,6 +2,7 @@ package com.project.projectFinal.service;
 
 import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.Map;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -86,7 +87,7 @@ public class DuoService {
 		return null;
 	}
 
-	public int msgSave(MsgDto msgDto) {
+	public MsgDto msgSave(MsgDto msgDto) {
 		return duoDao.msgSave(msgDto);
 	}
 
@@ -105,6 +106,17 @@ public class DuoService {
 		DuoChattRoomDto dDto = duoDao.deleteSendGuest(duoChattRoomDto);
 		duoDao.deleteChatRoom(duoChattRoomDto);
 		return dDto;
+	}
+
+	public DuoChattRoomDto myRoomCheck(DuoChattRoomDto duoChattRoomDto) {
+		DuoChattRoomDto dDto = duoDao.myRoomCheck(duoChattRoomDto); // 방생성이 되었는지 확인
+
+		return dDto;
+	}
+
+	public ArrayList<HashMap<String, DuoChattRoomDto>> chattRoomInfo(String userId) {
+		// TODO Auto-generated method stub
+		return duoDao.chattRoomInfo(userId);
 	}
 
 }

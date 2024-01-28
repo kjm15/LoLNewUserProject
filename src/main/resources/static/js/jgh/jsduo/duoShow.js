@@ -2,6 +2,7 @@
 ////////////시작하자마자 보여주기/////////////////
 $(document).ready(function() {
 	duoMainInfo()
+	showChattInfo()
 })
 
 function duoMainInfo() {
@@ -85,3 +86,33 @@ function showNewDuo() {
 	})
 
 }
+
+//접속한 채팅방 보여주기
+
+function showChattInfo() {
+
+
+	$.ajax({
+		//
+		type: 'post',
+		url: '/chattRoomInfo',
+		success: function(res) {
+
+			if (res != '') {
+				str = ''
+				str += '<ul>'
+				for (let i of res) {
+
+					str += '<li ><span>채팅방 번호:' + i.roomNum + '</br></span>들어가기 // 방나가기</li></br>'
+
+				}
+				str += '</ul>'
+			
+			$('.menu').append(str)
+			}
+
+		}
+	})
+
+}
+

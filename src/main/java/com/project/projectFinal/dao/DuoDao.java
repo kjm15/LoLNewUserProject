@@ -2,6 +2,7 @@ package com.project.projectFinal.dao;
 
 import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.Map;
 
 import org.apache.ibatis.annotations.Mapper;
 
@@ -25,7 +26,7 @@ public interface DuoDao {
 
 	int nowlogin(DuoSearchDto duoSearchDto);
 
-	int msgSave(MsgDto msgDto);
+	MsgDto msgSave(MsgDto msgDto);
 
 	MsgDto msgRead(MsgDto msgDto);
 
@@ -38,5 +39,9 @@ public interface DuoDao {
 	void deleteChatRoom(DuoChattRoomDto duoChattRoomDto);
 
 	DuoChattRoomDto deleteSendGuest(DuoChattRoomDto duoChattRoomDto);
+
+	DuoChattRoomDto myRoomCheck(DuoChattRoomDto duoChattRoomDto);
+
+	ArrayList<HashMap<String, DuoChattRoomDto>> chattRoomInfo(String userId);
 
 }

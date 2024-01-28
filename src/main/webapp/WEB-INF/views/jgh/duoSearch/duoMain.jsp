@@ -7,9 +7,24 @@
 <meta charset="UTF-8">
 </head>
 <body>
+	<input type="hidden" value="" id="dcntflag" />
+	<input type="hidden" value="" id="friendId" />
 	<input type="hidden" value="" id="rcnt" />
 	<input type="hidden" value="" id="guestId" />
 	<input type="hidden" value="" id="dntDuo" />
+	
+	
+	<div class="side-bar">
+		<div class="icon">
+			<div>▼</div>
+			<div>현재 접속한 채팅방▶</div>
+		</div>
+		<nav class="menu">
+			
+		</nav>
+	</div>
+	
+	
 	<div id=duoTable class=searchDuoT>
 		<h1 align="center">롤 듀오DUO 구하기</h1>
 		<div align="left"></div>

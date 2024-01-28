@@ -2,6 +2,7 @@ package com.project.projectFinal.jghController;
 
 import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.Map;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -80,11 +81,10 @@ public class RestDuoController {
 	}
 
 	@PostMapping("/msgSave")
-	public int msgSave(MsgDto msgDto) {
+	public MsgDto msgSave(MsgDto msgDto) {
 //		log.info("====="+msgDto);
-		duoService.msgSave(msgDto);
 
-		return 0;
+		return duoService.msgSave(msgDto);
 
 	}
 
@@ -106,6 +106,20 @@ public class RestDuoController {
 	public DuoChattRoomDto deleteChatRoom(DuoChattRoomDto duoChattRoomDto) {
 
 		return duoService.deleteChatRoom(duoChattRoomDto);
+	}
+
+	@PostMapping("/myRoomCheck")
+	public DuoChattRoomDto myRoomCheck(DuoChattRoomDto duoChattRoomDto) {
+
+		return duoService.myRoomCheck(duoChattRoomDto);
+	}
+
+	@PostMapping("/chattRoomInfo")
+	public ArrayList<HashMap<String, DuoChattRoomDto>> chattRoomInfo(HttpSession session) {
+		String userId = (String) session.getAttribute("userId");
+		ArrayList<HashMap<String, DuoChattRoomDto>> cDto = duoService.chattRoomInfo(userId);
+		log.info("=={}",cDto);
+		return cDto;
 	}
 
 }
