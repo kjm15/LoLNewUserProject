@@ -15,16 +15,14 @@ var toJoin = getId("join");
 var logout = getId("logout");
 
 
-
-function webstart(rcnt) {
-
+//본인이 본인방 들어가는 경우
+function myRoom(rcnt) {
 	$('#talk').empty();
 	$('#flagcollapse').hide();
 	$('.wrap').hide();
-
 	let userId = getId('userId').value;
 	msgdata = { "rcnt": rcnt }
-	console.log(rcnt)
+
 
 	$.ajax({
 
@@ -32,7 +30,7 @@ function webstart(rcnt) {
 		url: '/msgAll',
 		data: msgdata,
 		success: function(res) {
-			//			console.log(res)
+			console.log(res)
 			for (let data of res) {
 
 				rcnt = getId('dcntflag').value;
@@ -54,10 +52,78 @@ function webstart(rcnt) {
 
 			}
 			$('#talk').append("</br>----------------------  과거 메세지  ----------------------");
-			let temp = '';
-			temp.work = 'connectRoom';
+			let temp = {};
+			temp.work = 'myRoom'
 
-			temp = JSON.stringify(res)
+
+			//			temp.writter = data.userId
+			temp1 = JSON.stringify(temp)
+			//			console.log(temp1)
+			ws.send(temp1)
+
+		}
+	})
+
+
+
+
+
+}
+
+
+//승낙시 실행구문
+function webstart(rcnt) {
+
+	console.log(rcnt)
+	document.getElementById('rcnt').value = rcnt
+	$('#talk').empty();
+	$('#flagcollapse').hide();
+	$('.wrap').hide();
+	let guestId = $('#guestId').val()
+	let userId = getId('userId').value;
+	msgdata = { "rcnt": rcnt }
+	console.log(guestId)
+
+	$.ajax({
+
+		type: 'post',
+		url: '/msgAll',
+		data: msgdata,
+		success: function(res) {
+			for (let data of res) {
+
+				rcnt = getId('dcntflag').value;
+				userId = getId('userId').value;
+				var css;
+				if (data.userId == userId) { //작성자와 로그인한 사람이 같음
+					css = 'class=me';
+					userIdcheck = userId
+				} else {
+					css = 'class=other';
+					userIdcheck = data.userId
+				}
+
+				var item = "<div " + css + "><span><b> " + userIdcheck + "</b></span>" + data.date + "<br/>"
+					+ "<span>" + data.msg + "</span>	</div>"
+				$('#talk').append(item);
+
+				talk.scrollTop = talk.scrollHeight;//스크롤바 하단으로 이동
+
+			}
+			$('#talk').append("</br>----------------------  과거 메세지  ----------------------");
+
+			$('.wrap').hide();
+
+			let temp1 = {}
+			temp1.contents = res
+			temp1.work = 'connectRoom';
+			temp1.hostId = userId
+			temp1.guestId = guestId
+			
+			//			console.log(temp1)
+
+
+			temp = JSON.stringify(temp1)
 
 			ws.send(temp)
 		}
@@ -202,9 +268,10 @@ $('#duoParty').on("click", function() {
 function createQuestion(eventjson) {
 
 
-	console.log("연결중")
+	document.getElementById('guestId').value = eventjson.guestId
+
 	let str = ''
-	str += '<div class="question" class="duoPartyChatt" id="'+ eventjson.roomNum+'">'
+	str += '<div class="question" class="duoPartyChatt" id="' + eventjson.roomNum + '">'
 
 	str += '<div class="speech-bubble" class="a1">'
 	str += '[' + eventjson.roomNum + '방 - ' + eventjson.guestId + '님의 듀오채팅 요청]'
@@ -212,7 +279,7 @@ function createQuestion(eventjson) {
 	str += '<p>(승낙시 해당글은 삭제되어집니다.)</p>'
 
 	str += '</div>'
-	str += '<h3><input type="button" onclick="javascript:connect(' + eventjson.roomNum + ')" value="승낙" /></h3>'
+	str += "<h3><input type='button' onclick='javascript:connect(" + eventjson.roomNum + ")' value='승낙' /></h3>"
 	str += '<h3><input type="button" onclick="javascript:disconnect(' + eventjson.roomNum + ')" value="거절" /></h3>'
 
 	str += '</div>'
@@ -222,7 +289,6 @@ function createQuestion(eventjson) {
 }
 //승낙시
 function connect(roomNum) {
-
 
 	webstart(roomNum)//웹소켓 연결
 

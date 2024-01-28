@@ -7,6 +7,8 @@
 <meta charset="UTF-8">
 </head>
 <body>
+	<input type="hidden" value="" id="rcnt" />
+	<input type="hidden" value="" id="guestId" />
 	<input type="hidden" value="" id="dntDuo" />
 	<div id=duoTable class=searchDuoT>
 		<h1 align="center">롤 듀오DUO 구하기</h1>
@@ -53,7 +55,7 @@
 	<%@include file="modal2.jsp"%>
 	<!--   아코디언 메세지 -->
 	<div class="accordion-box"></div>
-<%-- 	<%@include file="accordionMsg.jsp"%> --%>
+	<%-- 	<%@include file="accordionMsg.jsp"%> --%>
 
 
 

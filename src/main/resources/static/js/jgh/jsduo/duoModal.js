@@ -4,7 +4,7 @@ const modal_wrap = document.querySelector('.modal_wrap')
 const modal_background = document.querySelector('.modal_background')
 
 function close() {
-	
+
 	$('.accordion-box').empty()
 	modal_wrap.classList.remove('show-modal');
 	modal_background.classList.remove('show-modal');
@@ -19,7 +19,7 @@ function open() {
 }
 
 window.addEventListener('click', (e) => {
-//	console.log(e.target)
+	//	console.log(e.target)
 
 	e.target === modal_background ? close() : false
 	if (e.target.className === 'btn btn-secondary dropdown-toggle show') {
@@ -37,13 +37,25 @@ document.querySelector('#modal_wrap').addEventListener('click', (e) => {
 	var tr = table.getElementsByTagName("tr");
 	//dcnt 는 해당 행의 번호
 	let dcnt = tr[rowIndex].getElementsByTagName("td")[0].innerHTML
+	let friendId = tr[rowIndex].getElementsByTagName("td")[1].innerHTML
+	let userId1 = $('#userId').val()
 	//dcnt를 통해서 정보를 가지고옴
-	console.log(dcnt)
+//	console.log(dcnt)
 	document.getElementById('dcntflag').value = dcnt;
-	duoinfo(dcnt)
 
-	open()
+	//작성자 본인인경우에는 바로 채팅방으로 이동
+	//	console.log()
+	if (friendId == userId1) {
 
+		myRoom(dcnt, friendId)
+
+
+	} else {
+
+		duoinfo(dcnt)
+
+		open()
+	}
 })
 
 $('.modal_close').on("click", function() {
@@ -53,7 +65,7 @@ $('.modal_close').on("click", function() {
 /////////////////////////모달 값 넣기///////////////
 
 function duoinfo(dcnt) {
-	
+
 	$('.startSearch').show();
 	$('#aaa').empty()
 
