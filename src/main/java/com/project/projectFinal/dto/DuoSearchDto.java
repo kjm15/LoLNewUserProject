@@ -21,4 +21,6 @@ public class DuoSearchDto {
 	private String date;
 
 	private String friendId;
+	private int loginNow;
+	
 }

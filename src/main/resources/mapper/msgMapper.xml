@@ -1,0 +1,31 @@
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+
+<mapper namespace="com.project.projectFinal.dao.MsgDao">
+
+	<insert id="roomUpdate">
+
+		insert IGNORE into
+		duoT(userId,myPosition,tier,duoPosition,gameType,memo)
+		values(#{userId},#{myPosition},#{tier},#{duoPosition},#{gameType},#{memo});
+
+	</insert>
+
+	<insert id="insertMsg">
+		insert IGNORE into msgT(rcnt,userId,msg)
+		values(#{rcnt},#{userId},#{msg});
+	</insert>
+
+
+	<delete id="connectRoom">
+
+		insert IGNORE into  duoChattRoomT(roomNum,
+		hostId,guestId)
+		values(#{roomNum},#{hostId},#{guestId});
+
+		delete from
+		duoT where dcnt =
+		#{roomNum};
+	</delete>
+
+</mapper>

@@ -2,10 +2,7 @@
 	pageEncoding="UTF-8"%>
 
 
-<input class="loginform" type='hidden' id='mid' disabled="disabled">
-
-
-<h1 id="hello" class="chatthead">듀오 채팅</h1>
+<h1 id="hello" class="chatthead"></h1>
 <div class='scroll'>
 	<div id='chatt'>
 

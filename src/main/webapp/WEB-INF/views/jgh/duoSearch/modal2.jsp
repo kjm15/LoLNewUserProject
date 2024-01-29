@@ -4,8 +4,6 @@
 	pageEncoding="UTF-8"%>
 
 
-<input type="hidden" value="" id="writter" />
-<!-- //작성자 -->
 
 <div class="modal_background"></div>
 <div class="modal_wrap">
