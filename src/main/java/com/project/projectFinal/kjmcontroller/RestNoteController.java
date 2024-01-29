@@ -1,9 +1,11 @@
 package com.project.projectFinal.kjmcontroller;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+import com.project.projectFinal.dao.NoteDao;
 import com.project.projectFinal.dto.MemberDto;
 import com.project.projectFinal.dto.NoteDto;
 import com.project.projectFinal.service.NoteService;
@@ -26,5 +28,10 @@ public class RestNoteController {
 		   log.info("========noteDto입니다.={}",noteDto);
 		   return noteService.mailsend(noteDto);
 	   }
-	   	
+	   
+		//쪽찌 자세히보기
+		@PostMapping("/detail")
+		public NoteDto detailNote(NoteDto noteDto) {
+			return noteService.detailNote(noteDto);
+		}
 }

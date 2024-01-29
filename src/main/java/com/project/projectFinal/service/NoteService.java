@@ -34,8 +34,8 @@ public class NoteService {
 	}
 
 	public NoteDto detailNote(NoteDto noteDto) {
-		NoteDto dlist = noteDao.detailNote(noteDto);
-		return dlist;
+		
+		return noteDao.detailNote(noteDto);
 	}
 
 	public ArrayList<NoteDto> selectNoteById(String sendId) {
