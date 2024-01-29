@@ -17,8 +17,7 @@ function champ(a) {
 	$('#master').hide();
 	$('#grandmaster').hide();
 	$('#challenger').hide();
-	
-	console.log(a);
+
 	$('.info').hide();
 		
 	if($('#lineCheck').text() == '') {
