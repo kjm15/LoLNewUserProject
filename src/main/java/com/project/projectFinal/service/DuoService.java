@@ -38,9 +38,9 @@ public class DuoService {
 
 	}
 
-	public DuoSearchDto infoDuoT(DuoSearchDto duoSearchDto) {
-		return duoDao.infoDuoT(duoSearchDto);
-	}
+//	public DuoSearchDto infoDuoT(DuoSearchDto duoSearchDto) {
+//		return duoDao.infoDuoT(duoSearchDto);
+//	}
 
 	public ArrayList<HashMap<String, DuoSearchDto>> duoInfo() {
 
@@ -52,10 +52,7 @@ public class DuoService {
 		return duoDao.infoDuoT(duoSearchDto);
 	}
 
-	public void deleteDuo(DuoSearchDto duoSearchDto) {
-		duoDao.deleteDuo(duoSearchDto);
 
-	}
 
 	public DuoSearchDto comparedcnt() {
 
@@ -70,21 +67,11 @@ public class DuoService {
 	}
 
 	@Transactional
-	public DuoChattRoomDto nowlogin(DuoSearchDto duoSearchDto) {
+	public DuoSearchDto nowlogin(DuoSearchDto duoSearchDto) {
 
-		int result = duoDao.nowlogin(duoSearchDto); // 로그인 했는지 확인
+		DuoSearchDto result = duoDao.nowlogin(duoSearchDto); // 로그인 했는지 확인
 
-		int result1 = duoDao.searchSameRoom(duoSearchDto); // 현재 채팅방이 있는지 확인
-
-		if (result == 1 && result1 != 1) { // 로그인 중이고 만든채팅방이 없는경우
-			DuoChattRoomDto rDto = duoDao.roomCreate(duoSearchDto); // 방만들기
-
-//			log.info("===={}", rDto);
-			return rDto;
-
-		}
-
-		return null;
+		return result;
 	}
 
 	public MsgDto msgSave(MsgDto msgDto) {
@@ -101,13 +88,6 @@ public class DuoService {
 		return duoDao.msgAll(msgDto);
 	}
 
-	public DuoChattRoomDto deleteChatRoom(DuoChattRoomDto duoChattRoomDto) {
-
-		DuoChattRoomDto dDto = duoDao.deleteSendGuest(duoChattRoomDto);
-		duoDao.deleteChatRoom(duoChattRoomDto);
-		return dDto;
-	}
-
 	public DuoChattRoomDto myRoomCheck(DuoChattRoomDto duoChattRoomDto) {
 		DuoChattRoomDto dDto = duoDao.myRoomCheck(duoChattRoomDto); // 방생성이 되었는지 확인
 
@@ -115,8 +95,37 @@ public class DuoService {
 	}
 
 	public ArrayList<HashMap<String, DuoChattRoomDto>> chattRoomInfo(String userId) {
-		// TODO Auto-generated method stub
+
 		return duoDao.chattRoomInfo(userId);
+	}
+
+	public DuoChattRoomDto createChattRoom(DuoChattRoomDto duoChattRoomDto) {
+
+		return duoDao.createChattRoom(duoChattRoomDto);
+	}
+
+	public DuoChattRoomDto goOutRoom(DuoChattRoomDto duoChattRoomDto, String userId) {
+
+		DuoChattRoomDto dDto = duoDao.myRoomCheck(duoChattRoomDto);
+
+		if (dDto.getGuestId().equals(userId)) {
+			
+			dDto.setGuestId(userId);
+			duoDao.goOutRoomGuest(dDto);
+		} else {
+			dDto.setHostId(userId);
+			duoDao.goOutRoomHost(dDto);
+		}
+		DuoChattRoomDto dDtoResult = duoDao.myRoomCheck(duoChattRoomDto); 
+		// 방에서 나오고 둘다 없는게 확인되면 방자체를 삭제시키기
+		if(dDtoResult.getGuestId().equals("") && dDtoResult.getHostId().equals("")) {
+			
+			duoDao.deleteChattRoom(duoChattRoomDto);
+			
+		}
+		
+		log.info("==={}",dDto);
+		return dDto;
 	}
 
 }

@@ -13,11 +13,6 @@
 		select * from duoT where dcnt = #{dcnt};
 
 	</select>
-	<delete id="deleteDuo">
-
-		delete from duoT where dcnt = #{dcnt};
-
-	</delete>
 
 	<select id="comparedcnt">
 
@@ -37,38 +32,33 @@
 
 	<select id="nowlogin">
 
-		select loginNow from memberT where userId =
+		select userId , loginNow from memberT where userId =
 		#{friendId};
 
 	</select>
 
-	<select id="roomCreate">
+	<select id="createChattRoom">
 
 		insert into duoChattRoomT
-		values(null,#{dcnt},#{friendId},#{userId});
+		values(null,#{roomNum},#{hostId},#{guestId});
+
+
+		delete from duoT where
+		dcnt = #{roomNum};
+
+
 		select * from duoChattRoomT
-		order by cnt desc limit 1;
+		order by cnt desc limit
+		1;
 	</select>
-	<select id="searchSameRoom">
-		select count(*)
-		from duoChattRoomT
-		where roomNum =
-		#{dcnt};
-	</select>
-	<select id="deleteSendGuest">
-		select * from duoChattRoomT where roomNum =
-		#{roomNum};
-	</select>
-	<delete id="deleteChatRoom">
-		delete from duoChattRoomT where roomNum = #{roomNum};
-	</delete>
 
 
 	<select id="msgSave">
 		insert into msgT(rcnt,userId,msg)
 		values(#{rcnt},#{userId},#{msg});
 
-		select * from msgT where rcnt = #{rcnt} order by rcnt desc limit 1;
+		select * from msgT where rcnt =
+		#{rcnt} order by rcnt desc limit 1;
 	</select>
 
 
@@ -82,9 +72,30 @@
 		autocnt
 	</select>
 	<select id="myRoomCheck">
-		select * from duoChattRoomT where roomNum = #{roomNum}
+		select * from duoChattRoomT where roomNum =
+		#{roomNum}
 	</select>
 	<select id="chattRoomInfo">
-		select * from duoChattRoomT where hostId = #{userId} || guestId = #{userId}
+		select * from duoChattRoomT where (hostId = #{userId}
+		|| guestId = #{userId}) order by cnt desc
 	</select>
+
+	<update id="goOutRoomGuest">
+
+		update duoChattRoomT set guestId = '' where roomNum =
+		#{roomNum}
+
+	</update>
+
+	<update id="goOutRoomHost">
+
+		update duoChattRoomT set hostId = '' where roomNum =
+		#{roomNum}
+
+	</update>
+	<delete id="deleteChattRoom">
+
+		delete from duoChattRoomT where roomNum=#{roomNum}
+
+	</delete>
 </mapper>

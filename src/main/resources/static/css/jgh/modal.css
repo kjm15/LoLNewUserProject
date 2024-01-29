@@ -175,14 +175,6 @@ to {
     color:black;
 }
 
-.side-bar>.menu ul>li>a:not(:only-child)::after{   
-                               
-    content:"[+]";               
-}
-
-.side-bar>.menu  ul>li:hover>a:not(:only-child)::after{
-    content:"[-]";            
-}
 .side-bar>.menu ul ul{
     display:none;
     position:absolute;

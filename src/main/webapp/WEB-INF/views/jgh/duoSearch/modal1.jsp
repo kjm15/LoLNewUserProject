@@ -14,8 +14,7 @@
 
 
 					<div class="mb-3">
-						<label class="form-label">${userId}님의 듀오를 찾아드립니다.</label> <input
-							type="hidden" id="userId" value="${userId}">
+						<label class="form-label">${userId}님의 듀오를 찾아드립니다.</label> 
 					</div>
 					<hr>
 					<p>본인 포지션</p>

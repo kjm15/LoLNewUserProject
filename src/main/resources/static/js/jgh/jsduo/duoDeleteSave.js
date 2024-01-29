@@ -1,22 +1,3 @@
-//////////////////삭제/////////////////////////////
-function deleteDuo(dcnt) {
-
-	$('.accordion-box').empty()
-
-//	console.log(dcnt)
-
-	data = { "dcnt": dcnt }
-	$.ajax({
-		type: 'post',
-		url: '/deleteById',
-		data: data,
-		success: function(res) {
-			
-		}
-	})
-
-
-}
 //////////////////저장/////////////////////////////
 
 $('#duoSaveBtn').on("click", function() {

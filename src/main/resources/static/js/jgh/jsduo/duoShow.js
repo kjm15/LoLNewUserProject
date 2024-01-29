@@ -1,5 +1,5 @@
 
-////////////시작하자마자 보여주기/////////////////
+////////////시작하자마자 방 보여주기/////////////////
 $(document).ready(function() {
 	duoMainInfo()
 	showChattInfo()
@@ -39,7 +39,7 @@ function duoMainInfo() {
 	})
 }
 
-////////////중간에 넣기////////////////
+////////////중간에 방 넣기////////////////
 
 function showNewDuo() {
 
@@ -87,15 +87,17 @@ function showNewDuo() {
 
 }
 
-//접속한 채팅방 보여주기
+//접속한 채팅방 사이바에 보여주기
 
 function showChattInfo() {
 
+	$('.menu').empty()
 
 	$.ajax({
 		//
 		type: 'post',
 		url: '/chattRoomInfo',
+		data: data,
 		success: function(res) {
 
 			if (res != '') {
@@ -103,12 +105,13 @@ function showChattInfo() {
 				str += '<ul>'
 				for (let i of res) {
 
-					str += '<li ><span>채팅방 번호:' + i.roomNum + '</br></span>들어가기 // 방나가기</li></br>'
+					str += '<li ><span>채팅방 번호:' + i.roomNum + '</br></span><a href = "javascript:myRoom(' + i.roomNum + ')">들어가기<a>'
+						+ '</br> <a href = "javascript:goOutRoom(' + i.roomNum + ')">방나오기<a></li></br>'
 
 				}
 				str += '</ul>'
-			
-			$('.menu').append(str)
+
+				$('.menu').append(str)
 			}
 
 		}
