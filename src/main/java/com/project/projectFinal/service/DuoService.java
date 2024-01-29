@@ -123,8 +123,7 @@ public class DuoService {
 			duoDao.deleteChattRoom(duoChattRoomDto);
 			
 		}
-		
-		log.info("==={}",dDto);
+
 		return dDto;
 	}
 

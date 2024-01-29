@@ -20,9 +20,9 @@
 	<delete id="connectRoom">
 
 		insert into duoChattRoomT(roomNum, hostId,guestId)
-		values(#{roomNum},#{hostId},#{guestId})
+		values(#{roomNum},#{hostId},#{guestId});
 
-		delete from duoT where dcnt = #{roomNum}
+		delete from duoT where dcnt = #{roomNum};
 	</delete>
 
 </mapper>

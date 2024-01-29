@@ -21,9 +21,11 @@ public class ChattRepository {
 	public void insertMsg(HashMap<String, String> map) {
 
 		MsgDto msgDto = new MsgDto();
-		msgDto.setRcnt(map.get("rcnt"));
+		
+		
+		msgDto.setRcnt(String.valueOf(map.get("rcnt")));
 		msgDto.setUserId(map.get("userId"));
-		msgDto.setMsg(map.get("msg"));
+		msgDto.setMsg(String.valueOf(map.get("msg")));
 		msgDao.insertMsg(msgDto);
 
 	}
@@ -31,10 +33,6 @@ public class ChattRepository {
 	public void roomUpdate(HashMap<String, String> map) {
 		DuoSearchDto duoSearchDto = new DuoSearchDto();
 		duoSearchDto.setUserId(map.get("userId"));
-		if (map.get("userId").equals("비회원")) {
-			duoSearchDto.setUserId("비회원");
-		}
-
 		duoSearchDto.setDuoPosition(map.get("duoPosition"));
 		duoSearchDto.setMyPosition(map.get("myPosition"));
 		duoSearchDto.setTier(map.get("tier"));
@@ -46,14 +44,14 @@ public class ChattRepository {
 	}
 
 	public void connectRoom(HashMap<String, String> map) {
-		
-		DuoChattRoomDto duoChattRoomDto  = new DuoChattRoomDto();
+		log.info("map : {}", map);
+		DuoChattRoomDto duoChattRoomDto = new DuoChattRoomDto();
 		duoChattRoomDto.setRoomNum(map.get("roomNum"));
 		duoChattRoomDto.setHostId(map.get("hostId"));
 		duoChattRoomDto.setGuestId(map.get("guestId"));
-		
+		log.info("==={}", duoChattRoomDto);
 		msgDao.connectRoom(duoChattRoomDto);
-		
+
 	}
 
 }

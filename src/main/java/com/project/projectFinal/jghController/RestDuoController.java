@@ -77,7 +77,7 @@ public class RestDuoController {
 
 	@PostMapping("/msgAll")
 	public ArrayList<HashMap<String, MsgDto>> msgAll(MsgDto msgDto) {
-
+	
 		return duoService.msgAll(msgDto);
 
 	}

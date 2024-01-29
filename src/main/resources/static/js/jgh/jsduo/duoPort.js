@@ -9,22 +9,23 @@ if (ws == null || ws == '') {
 ws.addEventListener("message", (event) => {
 
 	let eventjson = JSON.parse(event.data)
-	console.log(eventjson)
+	//	console.log(eventjson)
 
 	if (eventjson.work == 'roomUpdate') { // 방만들고 업데이트하기
 		duoMainInfo()
-//		showNewDuo(eventjson)
-
 
 	} else if (eventjson.work == 'createQuestion') {//다른사람으로부터 승낙요청
-	
+		console.log(eventjson)
 		let userId = $('#userId').val()
-		
-		if (eventjson.hostId == userId) {
-			if (eventjson.hostId == userId) {
 
-				createQuestion(eventjson)
-			}
+		if (eventjson.hostId == userId) {
+
+			document.getElementById("hostId").value = eventjson.hostId;
+			document.getElementById("guestId").value = eventjson.guestId;
+			document.getElementById("roomNum").value = eventjson.roomNum;
+
+			createQuestion(eventjson)
+
 		}
 
 
@@ -34,7 +35,6 @@ ws.addEventListener("message", (event) => {
 
 		if (userId == eventjson.hostId || userId == eventjson.guestId) {
 
-			webstart(eventjson.roomNum)
 			open()
 			$('.chatthead').empty()
 			$('.chatthead').append("듀오채팅     [" + eventjson.roomNum + "번방]")
@@ -42,12 +42,12 @@ ws.addEventListener("message", (event) => {
 			$('.wrap').hide();
 			$('#' + eventjson.roomNum).remove()
 			$('.menu').empty()
+			$("#msg").attr("disabled", false);
+			$('#talck').empty()
 			showChattInfo() //왼쪽 사이드바 최신화 업데이트
 
-			$("#msg").attr("disabled", false);
 			let res = {}
-			res.work = "roomUpdate"
-
+			res.work = "roomInfo"
 			let temp = JSON.stringify(res)
 			ws.send(temp)
 
@@ -56,41 +56,34 @@ ws.addEventListener("message", (event) => {
 
 	} else if (eventjson.work == 'reject') { //대화거절시 상대방에게 거절알림
 
-		let guestId = $('#guestId').val()
-		let hostId = $('#hostId').val()
-		let userId = $('#userId').val()
-		let dcntflag = $('#dcntflag').val()
-		if (userId == guestId) { //요청쪽
-			close()
-			$('.accordion-box').empty()
-			$('#duoParty').show();
-			$('#duoPartyCancel').hide();
-			$('#flagcollapse').html('=================')
-			alert('상대방이 거절하였습니다.')
+		close()
+		$('.accordion-box').empty()
+		$('#duoParty').show();
+		$('#duoPartyCancel').hide();
+		$('#flagcollapse').html('=================')
+		alert('거절하였습니다.')
+		$('#' + dcntflag).remove()
 
-		}
-		if (userId == hostId) { //게시글쓴쪽
-			$('#' + dcntflag).remove()
-
-		}
 
 	} else if (eventjson.work == "sendMsg") { //메세지 보내기 //완료
 
-		let rcnt = $('#rcnt').val()
+		let roomNum = $('#roomNum').val()
 		//대화창 안에서 보내기
-		if (rcnt = eventjson.rcnt) {
+		if (roomNum = eventjson.rcnt) {
 
 			chattcontents(eventjson)
 
 		}
 
 
-	}
-	else if (eventjson.work == "reload") { //누군가 방접속시 기존화면 초기화
-
+	} else if (eventjson.work == "reload") { //누군가 방접속시 기존화면 초기화
 		$('#preflag').empty()
 		duoMainInfo()
 
+
+	} else if (eventjson.work == "roomInfo") { //누군가 방접속시 기존화면 초기화
+
+		duoMainInfo()
 
 	}
 

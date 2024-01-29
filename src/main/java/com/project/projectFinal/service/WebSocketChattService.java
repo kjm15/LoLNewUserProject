@@ -40,7 +40,7 @@ public class WebSocketChattService {
 		HashMap<String, String> map = new HashMap<String, String>();
 		MsgDto msgDto = new MsgDto();
 		map = mapper.readValue(msg, new TypeReference<HashMap<String, String>>() {});	
-		
+		String msg1 = msg;
 		//변환완료후 서비스로 이동
 		cServ.moveService(map);
 		
@@ -49,7 +49,7 @@ public class WebSocketChattService {
 		//전체한테 보내기
 		synchronized (clients) { //강제 동기화시킴
 			for (Session s : clients) {
-				s.getBasicRemote().sendText(msg);
+				s.getBasicRemote().sendText(msg1);
 
 			}
 		}
