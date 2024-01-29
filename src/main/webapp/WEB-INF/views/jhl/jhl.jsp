@@ -24,37 +24,54 @@
 <script type="text/javascript">
 $('#champSearch').on('keyup', function () {
     let searchChamp = $('#champSearch').val();
-	$('.champs').empty();
+    
     $.ajax({
         type: "post",
         url: "/champSearch",
         data: { "champSearch": searchChamp},
         success: function (res) {
-            let str1 = "<div class ='champImgItems'>";
-            let str2 = "<div class ='se'>";
-            let str3 = "<div class ='se_'> ";
-            let str4 = "<span>s</span>";
-            let str5 = "</div>";
-            let str6 = "<div class ='champs'> ";
-            let str7 = '';
-			
-           
-            for (let i = 0; i < res.length; i++) {
-                str7 += "<div class='champImgItem'><div class='cimgs'>";
-                str7 += "<img width='48' height='48' src='https://ddragon.leagueoflegends.com/cdn/14.2.1/img/champion/" + res[i].champion_name + ".png' class='championImg'></div>";
-            	
-                str7 += "<span class ='champName'>" + res[i].champion_name_kr + "</span></div>";
-            }
-            
-            let str8 = "</div>"
-            let str9 = "</div>";
-            let str10 = "</div>";
 
-            $('.se').html(str2+str3+str4+str5+str6+str7+str8+str9)
-           
+        	let str1 = "<div class='se'>"
+            let str2 = "<div class ='champs'> ";
+            let str3 = '';
+            for (let i = 0; i < res.length; i++) {
+                    str3 += "<div class='champImgItem'><div class='cimgs'>";
+                    str3 += "<img width='48' height='48' src='https://ddragon.leagueoflegends.com/cdn/14.2.1/img/champion/" + res[i].champion_name + ".png' class='championImg'></div>";
+                    str3 += "<span class ='champName'>" + res[i].champion_name_kr + "</span>";
+                    str3 += "</div>";
+                
+            }
+            let str4 = "</div>"
+            let str5 = "</div>"
+           	$('.champImgItems').html(str1+str2+str3+str4+str5)
         }
     });
 });
+function champLine(lineSelect){
+	 $.ajax({
+	        type: "post",
+	        url: "/topChampSelect",
+	        data: {"line" : lineSelect},
+	        success: function (res) {
+
+	        	let str1 = "<div class='se'>"
+	            let str2 = "<div class ='champs'> ";
+	            let str3 = '';
+	            for (let i = 0; i < res.length; i++) {
+	                    str3 += "<div class='champImgItem'><div class='cimgs'>";
+	                    str3 += "<img width='48' height='48' src='https://ddragon.leagueoflegends.com/cdn/14.2.1/img/champion/" + res[i].champion_name + ".png' class='championImg'></div>";
+	                    str3 += "<span class ='champName'>" + res[i].champion_name_kr + "</span>";
+	                    str3 += "</div>";
+	                
+	            }
+	            let str4 = "</div>"
+	            let str5 = "</div>"
+	           	$('.champImgItems').html(str1+str2+str3+str4+str5)
+	           	
+	        }
+	    });
+	console.log(lineSelect)
+}
 
 </script>
 </html>
