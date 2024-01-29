@@ -22,9 +22,6 @@ $(document).ready(function(){
 		var myChampName = $('#myChampName').text();
 		var enemyChampName = $('#enemyChampName').text();
 		var tier = 'platinum';
-		console.log(tier);
-		console.log(myChampName);
-		console.log(enemyChampName);
 		
 		data = {
 			
@@ -39,26 +36,27 @@ $(document).ready(function(){
 		success : function(res) {	
 			
 			$('#champList').empty();
-			console.log(res);
 			
-			str1 = "<table class = 'itemBuild'><td>추천 순위</td><td>티어</td><td colspan = '3'>빌드</td><td>빌드 승률</td><td>게임 수</td><td>승리 수</td>"
 			str2 = ""
 			
 			for (let i = 0; i < res.length; i++){
-				str2 += "<tr><td>"+(i+1)+"</td>"
-				str2 += "<td><img src='../img/tier/"+tier+".png' style='width: 70px; height: 70px;'></img></td>"
-				str2 += "<td><img src='https://ddragon.leagueoflegends.com/cdn/14.1.1/img/item/"+res[i].itemId1+".png'></img></td>"
-				str2 += "<td><img src='https://ddragon.leagueoflegends.com/cdn/14.1.1/img/item/"+res[i].itemId2+".png'></img></td>"
-				str2 += "<td><img src='https://ddragon.leagueoflegends.com/cdn/14.1.1/img/item/"+res[i].itemId3+".png'></img></td>"
-				str2 += "<td>"+(res[i].myBuildwinCount/res[i].myBuildPickCount*100).toFixed(2)+"%</td>"
-				str2 += "<td>"+res[i].myBuildPickCount+" 게임</td>"
-				str2 += "<td>"+res[i].myBuildwinCount+" 게임</td></tr>"
+				str2 += (i+1)
+				str2 += "<img src='../img/tier/"+tier+".png' style='width: 70px; height: 70px;'></img></td>"
+				str2 += "<img id = '"+res[i].itemId1+"' class='jb-title' src='https://ddragon.leagueoflegends.com/cdn/14.1.1/img/item/"+res[i].itemId1+".png' onmouseover='javascript:test(this.id)'></img>"
+				str2 += "<div class = 'jb-text'></div>"
+				str2 += "<img id = '"+res[i].itemId2+"' class='jb-title' src='https://ddragon.leagueoflegends.com/cdn/14.1.1/img/item/"+res[i].itemId2+".png' onmouseover='javascript:test(this.id)'></img>"
+				str2 += "<div class = 'jb-text'></div>"
+				str2 += "<img id = '"+res[i].itemId3+"' class='jb-title' src='https://ddragon.leagueoflegends.com/cdn/14.1.1/img/item/"+res[i].itemId3+".png' onmouseover='javascript:test(this.id)'></img>"
+				str2 += "<div class = 'jb-text'></div>"
+				str2 += (res[i].myBuildwinCount/res[i].myBuildPickCount*100).toFixed(2)+"%"
+				str2 += res[i].myBuildPickCount+" 게임"
+				str2 += res[i].myBuildwinCount+" 게임<br>"
 				 
 			}
 			
-			str3 = "</table>"
+
 			
-			$('#champList').html(str1 + str2 + str3);
+			$('#champList').html(str2);
 			$('#champList').show();
 			
 		}
@@ -97,28 +95,28 @@ function tier(c){
 		type : "POST",
 		url : "/kdg/itemBuildperTier",
 		data : data,
-		success : function(res) {	
+		success : function(res) {
 			
-			console.log(res);
+			$('#champList').css("text-align","left").css("font-size","medium");
 			
-			str1 = "<table class = 'itemBuild'><td>추천 순위</td><td>티어</td><td colspan = '3'>빌드</td><td>빌드 승률</td><td>게임 수</td><td>승리 수</td>"
 			str2 = ""
 			
 			for (let i = 0; i < res.length; i++){
-				str2 += "<tr><td>"+(i+1)+"</td>"
-				str2 += "<td><img src='../img/tier/"+tier+".png' style='width: 70px; height: 70px;'></img></td>"
-				str2 += "<td><img src='https://ddragon.leagueoflegends.com/cdn/14.1.1/img/item/"+res[i].itemId1+".png'></img></td>"
-				str2 += "<td><img src='https://ddragon.leagueoflegends.com/cdn/14.1.1/img/item/"+res[i].itemId2+".png'></img></td>"
-				str2 += "<td><img src='https://ddragon.leagueoflegends.com/cdn/14.1.1/img/item/"+res[i].itemId3+".png'></img></td>"
-				str2 += "<td>"+(res[i].myBuildwinCount/res[i].myBuildPickCount*100).toFixed(2)+"%</td>"
-				str2 += "<td>"+res[i].myBuildPickCount+" 게임</td>"
-				str2 += "<td>"+res[i].myBuildwinCount+" 게임</td></tr>"
+				str2 += (i+1)
+				str2 += "<img src='../img/tier/"+tier+".png' style='width: 70px; height: 70px;'></img></td>"
+				str2 += "<img id = '"+res[i].itemId1+"' class='jb-title' src='https://ddragon.leagueoflegends.com/cdn/14.1.1/img/item/"+res[i].itemId1+".png' onmouseover='javascript:test(this.id)'></img>"
+				str2 += "<div class = 'jb-text'></div>"
+				str2 += "<img id = '"+res[i].itemId2+"' class='jb-title' src='https://ddragon.leagueoflegends.com/cdn/14.1.1/img/item/"+res[i].itemId2+".png' onmouseover='javascript:test(this.id)'></img>"
+				str2 += "<div class = 'jb-text'></div>"
+				str2 += "<img id = '"+res[i].itemId3+"' class='jb-title' src='https://ddragon.leagueoflegends.com/cdn/14.1.1/img/item/"+res[i].itemId3+".png' onmouseover='javascript:test(this.id)'></img>"
+				str2 += "<div class = 'jb-text'></div>"
+				str2 += (res[i].myBuildwinCount/res[i].myBuildPickCount*100).toFixed(2)+"%"
+				str2 += res[i].myBuildPickCount+" 게임"
+				str2 += res[i].myBuildwinCount+" 게임<br>"
 				 
 			}
 			
-			str3 = "</table>"
-			
-			$('#champList').html(str1 + str2 + str3);
+			$('#champList').html(str2);
 			$('#champList').show();
 			
 		}
