@@ -8,6 +8,7 @@ import org.springframework.stereotype.Service;
 import org.springframework.web.reactive.function.client.WebClient;
 
 import com.project.projectFinal.dto.PostDto;
+import com.project.projectFinal.dto.itemInfoDto;
 
 import lombok.extern.slf4j.Slf4j;
 

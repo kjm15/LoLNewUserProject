@@ -9,7 +9,7 @@
 	</insert>
 
 	<select id="NoteInfo">
-		select * from NoteTable FULL join memberT where send_userId = memberT.userId and recv_userId != memberT.userId order by n_num DESC;
+		select * from NoteTable FULL join memberT where send_userId = memberT.userId and recv_userId != memberT.userId order by n_num DESC limit 10;
 	</select>
 
 	<select id="detailNote">

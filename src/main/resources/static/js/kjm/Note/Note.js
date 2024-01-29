@@ -35,4 +35,27 @@ function send() {
 
 
 }
+//메일 보기
+function detailNote(){
+	
+	$.ajax({
+
+		type: 'post',
+		url: '/detail',
+		success: function(res) {
+//			console.log(res)
+		let str = ''
+		str += "<tr class = 'dlist'>"
+		str +- "<td>" + res.n_title+"</td>"
+		str +- "<td>" + res.send_userId+"</td>"
+		str +- "<td>" + res.recv_userId+"</td>"
+		str +- "<td>" + res.n_date+"</td>"
+		str +- "<td>" + res.n_message+"</td>"
+		
+		str += "</tr>"
+		$('#detailflag').html(str)
+		}
+		
+	})
+}
 

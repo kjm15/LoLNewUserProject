@@ -8,18 +8,18 @@
 	
 	<select id="searchChamp">
 		select champion_name_kr,champion_name 
-		from champName
+		from champList
 		where champion_name_kr like concat('%',#{searchChamp},'%') or champion_name like concat('%',#{searchChamp},'%') or champion_name_cons like concat('%',#{searchChamp},'%');
 	</select>
 	
 	<select id="champLine">
 		select champion_name_kr,champion_name
-		from champName
+		from champList
 		where line like concat('%',#{line},'%');
 	</select>
 	
 	<select id="reChampList">
-		select champion_name,champion_name_kr from champName;
+		select champion_name,champion_name_kr from champList;
 	</select>
 
 	<select id="itemBuild">
@@ -54,5 +54,9 @@
 		group by itemId1,itemId2,itemId3
 		order by myBuildwinCount desc
 		limit 0,3;
+	</select>
+	
+	<select id="itemInfo">
+		select * from itemInfo where itemId = ${itemId}
 	</select>
 </mapper>

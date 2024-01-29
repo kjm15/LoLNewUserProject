@@ -30,13 +30,6 @@ public class NoteController {
 		return "kjm/Note";	
 	}
 	
-	//쪽찌 자세히보기
-	@GetMapping("/detail")
-	public String detailNote(Model model,NoteDto noteDto) {
-		NoteDto dlist = noteService.detailNote(noteDto);
-		model.addAttribute("dlist", dlist);
-		return "kjm/detail";
-	}
 	
 	@PostMapping("/send")
 	public String sendNote(NoteDto noteDto,HttpSession session,MemberDto memberDto) {

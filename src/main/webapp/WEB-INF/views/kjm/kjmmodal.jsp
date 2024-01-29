@@ -17,7 +17,7 @@
 						aria-label="Close"></button>
 				</div>
 				<div class="modal-body">
-						보내는사람<input type="text" name="recv_userId" id="recv_userId"><br>
+						보내는사람<input type="text" name="recv_userId" id="recv_userId" value ="${userId }"><br>
 						받는사람<input type="text" name="send_userId" id="send_userId"><br>
 						제목<input type="text" name="n_title" id = "n_title"><br>
 						<textarea rows="6" cols="35" name="n_message" id ="n_message"></textarea>
