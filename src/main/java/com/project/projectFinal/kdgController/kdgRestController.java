@@ -61,8 +61,6 @@ public class kdgRestController {
 	public List<itemInfoDto> itemInfo(itemInfoDto iIDto) {
 		
 		int itemId = iIDto.getItemId();
-		log.info("==== iIDto : {}",iIDto);
-		log.info("itemId : {}",itemId);
 		return cs.itemInfo(itemId);
 
 	}
