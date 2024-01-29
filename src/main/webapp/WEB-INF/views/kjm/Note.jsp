@@ -18,6 +18,8 @@
 	crossorigin="anonymous"></script>
 
    <script type="text/javascript" src="https://code.jquery.com/jquery-1.12.4.min.js" ></script>
+   <link href="/css/kjm/modal2.css" rel="stylesheet" type="text/css">
+<!--    css -->
 <title>Insert title here</title>
 </head>
 <body>
@@ -26,22 +28,25 @@ ${userId }님<br>
 			<button type="button" class="btn btn-success" type="button"
 				class="btn btn-primary" data-bs-toggle="modal"
 				data-bs-target="#exampleModal">쪽지쓰기</button>
+			
 				
-	<table border=3>
+	<table class="table table-green table-hover" id="modal_wrap">
 
 		<thead>
 			<th>번호</th>
+			<th>보낸사람</th>
 			<th>제목</th>
 			<th>날짜</th>
 		</thead>
 		<tbody>
-
+<%-- <a href="/detail?n_num=${item.n_num}"></a> --%>
 			<c:forEach var="item" items="${maillist}">
-
-				<tr>
+				<tr class = "maillist" id = "maillist">
 					<td>${item.n_num}</td>
-					<td><a href="/detail?n_num=${item.n_num}">${item.n_title}</a></td>
+					<td>${item.send_userId}</td>
+					<td>${item.n_title}</td>
 					<td>${item.n_date}</td>
+					<td style="display: none;">${item.recv_userId}</td>
 				</tr>
 				<input type ="hidden" name = "${item.recv_userId}" id = "${item.recv_userId}">
 				<input type ="hidden" name = "${item.send_userId}" id = "${item.send_userId}">
@@ -57,6 +62,7 @@ ${userId }님<br>
 
 
 	<script defer src="/js/kjm/Note/Note.js"></script>
+	<script defer src="/js/kjm/Note/NoteModal.js"></script>
 
 
 
