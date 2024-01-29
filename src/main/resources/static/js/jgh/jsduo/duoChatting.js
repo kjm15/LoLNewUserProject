@@ -18,6 +18,11 @@ $('#duoParty').on("click", function() {
 	} else if (hostId == '비회원') {
 		$('#flagcollapse').html("<font color='red'>비회원이 올린 게시물은 쪽지로만 대화가 가능합니다.</font>")
 		return false
+	} else if (hostId == userId) {
+
+		$('#flagcollapse').html("<font color='red'>본인 게시글 입니다.</font>")
+		return false
+
 	}
 
 	$('#flagcollapse').html("<font color='blue'><marquee scrollamount=5>상대방에게 듀오 요청중입니다. 잠시만 기다려주세요</marquee></font>")
@@ -183,8 +188,8 @@ function myRoom(rcnt) {
 
 
 			if (res1.hostId == '' || res1.guestId == '') {
-								console.log(res1.hostId)
-								console.log(res1.guestId)
+				console.log(res1.hostId)
+				console.log(res1.guestId)
 
 				$("#msg").attr("disabled", true);
 				$("#msg").css("background-color", "gray");
