@@ -7,16 +7,15 @@
 <meta charset="UTF-8">
 </head>
 <body>
-
-	<input type="hidden" value="" id="writter" />
-	<input class="loginform" type='hidden' id='mid' disabled="disabled">
+<!-- 본인아이디 -->
 	<input type="hidden" value="${userId}" id="userId" />
-	<input type="hidden" value="" id="dcntflag" />
-	<input type="hidden" value="" id="friendId" />
-	<input type="hidden" value="" id="rcnt" />
+<!-- 	채팅번호,방번호, 현재 테이블에서 누른 방번호 알수있음-->
+	<input type="hidden" value="" id="roomNum" /> 
+<!-- 	//요청자 -->
 	<input type="hidden" value="" id="guestId" />
-	<input type="hidden" value="" id="hostId" />
-	<input type="hidden" value="" id="dntDuo" />
+<!-- 	//글작성자 -->
+	<input type="hidden" value="" id="hostId" /> 
+
 
 	<%@include file="sideBar.jsp"%>
 

@@ -1,6 +1,7 @@
 
-var ws;
+
 if (ws == null || ws == '') {
+	var ws;
 	ws = new WebSocket("ws://" + location.host + "/jgh");
 
 }
@@ -8,24 +9,18 @@ if (ws == null || ws == '') {
 ws.addEventListener("message", (event) => {
 
 	let eventjson = JSON.parse(event.data)
-//			console.log(eventjson)
+	console.log(eventjson)
 
 	if (eventjson.work == 'roomUpdate') { // 방만들고 업데이트하기
-		showNewDuo()
+		duoMainInfo()
+//		showNewDuo(eventjson)
 
 
 	} else if (eventjson.work == 'createQuestion') {//다른사람으로부터 승낙요청
-		getId('dcntflag').value = eventjson.roomNum
-		getId('rcnt').value = eventjson.roomNum
-		getId('guestId').value = eventjson.guestId
-		getId('friendId').value = eventjson.guestId
-		getId('hostId').value = eventjson.hostId
+	
 		let userId = $('#userId').val()
-		let guestId = $('#guestId').val()
-		let hostId = $('#hostId').val()
-		if (userId == guestId || userId == hostId) {
-			//			console.log(eventjson)
-			///////////////////////////////
+		
+		if (eventjson.hostId == userId) {
 			if (eventjson.hostId == userId) {
 
 				createQuestion(eventjson)
@@ -36,24 +31,19 @@ ws.addEventListener("message", (event) => {
 	} else if (eventjson.work == 'connectRoom') { //서로 대화창에 들어옴
 		//		console.log(eventjson)
 		let userId = $('#userId').val()
-		//		console.log(userId)
-
 
 		if (userId == eventjson.hostId || userId == eventjson.guestId) {
 
 			webstart(eventjson.roomNum)
 			open()
 			$('.chatthead').empty()
-
 			$('.chatthead').append("듀오채팅     [" + eventjson.roomNum + "번방]")
 			$('#chatt').show();
 			$('.wrap').hide();
 			$('#' + eventjson.roomNum).remove()
 			$('.menu').empty()
 			showChattInfo() //왼쪽 사이드바 최신화 업데이트
-			if (userId == eventjson.hostId) {
-				deleteDuo(eventjson.roomNum)
-			}
+
 			$("#msg").attr("disabled", false);
 			let res = {}
 			res.work = "roomUpdate"
@@ -84,13 +74,13 @@ ws.addEventListener("message", (event) => {
 
 		}
 
-	} else if (eventjson.work == "sendMsg") { //메세지 보내기
+	} else if (eventjson.work == "sendMsg") { //메세지 보내기 //완료
 
 		let rcnt = $('#rcnt').val()
 		//대화창 안에서 보내기
 		if (rcnt = eventjson.rcnt) {
 
-			chattcontents(rcnt)
+			chattcontents(eventjson)
 
 		}
 
@@ -103,24 +93,8 @@ ws.addEventListener("message", (event) => {
 
 
 	}
-	//	else if (eventjson.work == 'myRoom') {
-	//		//본인 대화방 접속
-	//		userId = $('#userId').val()
-	//		document.getElementById('rcnt').value = eventjson.rcnt
-	//		if (userId == eventjson.hostId || userId == eventjson.guestId) {
-	//
-	//			console.log("내방 접속")
-	//			open()
-	//			$('#chatt').show();
-	//			$('.wrap').hide();
-	//
-	//		}
-	//
-	//
-	//	}
+
 });
-
-
 
 
 //const sse = new EventSource("http://192.168.0.27:8080/jgh"); // ipconfig를 통해 본인 아이피를 넣어줘야함

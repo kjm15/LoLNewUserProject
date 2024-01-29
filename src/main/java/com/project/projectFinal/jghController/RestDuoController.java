@@ -33,16 +33,6 @@ public class RestDuoController {
 		return duoService.duostartinfo();
 	}
 
-	@PostMapping("/saveDb")
-	public DuoSearchDto saveDb(DuoSearchDto duoSearchDto) {
-		if (duoSearchDto.getUserId() == "") {
-
-			duoSearchDto.setUserId("비회원");
-		}
-
-		return duoService.saveDbDuo(duoSearchDto);
-	}
-
 	@PostMapping("/comparedcnt")
 	public DuoSearchDto comparedcnt() {
 

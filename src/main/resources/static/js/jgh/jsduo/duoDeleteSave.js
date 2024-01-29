@@ -21,32 +21,14 @@ $('#duoSaveBtn').on("click", function() {
 		'duoPosition': duoPosition,
 		'tier': tier,
 		'gameType': gameType,
-		'memo': memo
+		'memo': memo,
+		'work': "roomUpdate"
 	}
-
+	
+	let temp = JSON.stringify(data)
+	ws.send(temp) //전체에게 무언가 시킬떄
 	//보낼때
 
-	$.ajax({
 
-		type: 'post',
-		url: '/saveDb',
-		data: data,
-		success: function(res) {
-
-			res.work = "roomUpdate" // 방 업데이트
-			//			console.log(res)
-			let temp = JSON.stringify(res)
-			ws.send(temp) //전체에게 무언가 시킬떄
-
-
-			document.getElementById('position').value = '포지션'
-			document.getElementById('tier').value = '필수선택'
-			document.getElementById('gameType').value = '필수선택'
-			document.getElementById('textArea').value = ''
-
-		}, error: function(error) {
-			console.log("저장 ajax에러")
-		}
-	})
 
 })

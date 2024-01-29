@@ -21,13 +21,17 @@ public interface DuoDao {
 	ArrayList<HashMap<String, DuoSearchDto>> duoInfo();
 
 
-
+	
 	DuoSearchDto comparedcnt();
 
 	DuoSearchDto nowlogin(DuoSearchDto duoSearchDto);
 
 	MsgDto msgSave(MsgDto msgDto);
 
+	
+	
+	
+	
 	MsgDto msgRead(MsgDto msgDto);
 
 	ArrayList<HashMap<String, MsgDto>> msgAll(MsgDto msgDto);
@@ -45,5 +49,7 @@ public interface DuoDao {
 	void goOutRoomHost(DuoChattRoomDto dDto);
 
 	void deleteChattRoom(DuoChattRoomDto duoChattRoomDto);
+
+	
 
 }

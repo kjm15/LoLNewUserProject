@@ -61,7 +61,6 @@
 		#{rcnt} order by rcnt desc limit 1;
 	</select>
 
-
 	<select id="msgRead">
 		select * from msgT where rcnt = #{rcnt} order by
 		autocnt desc limit 1;

@@ -33,16 +33,14 @@ document.querySelector('#modal_wrap').addEventListener('click', (e) => {
 	const rowIndex = e.target.closest("tr").rowIndex;
 	var table = document.getElementById("modal_wrap")
 	var tr = table.getElementsByTagName("tr");
-	//dcnt 는 해당 행의 번호
-	let dcnt = tr[rowIndex].getElementsByTagName("td")[0].innerHTML
-	let friendId = tr[rowIndex].getElementsByTagName("td")[1].innerHTML
-	document.getElementById('friendId').value = friendId;
-	let userId1 = $('#userId').val()
+	let roomNum = tr[rowIndex].getElementsByTagName("td")[0].innerHTML
+	let hostId = tr[rowIndex].getElementsByTagName("td")[1].innerHTML
+	document.getElementById('hostId').value = hostId;
 	//dcnt를 통해서 정보를 가지고옴
 
-	document.getElementById('dcntflag').value = dcnt;
-	document.getElementById('rcnt').value = dcnt;
-	duoinfo(dcnt)
+	document.getElementById('roomNum').value = roomNum;
+
+	duoinfo(roomNum)
 
 	open()
 
@@ -54,15 +52,15 @@ $('.modal_close').on("click", function() {
 
 /////////////////////////모달 값 넣기///////////////
 
-function duoinfo(dcnt) {
+function duoinfo(roomNum) {
 
 	$('.startSearch').show();
 	$('#aaa').empty()
-
 	$('.flagA').show();
 	$('#chatt').hide();
-	data = { 'dcnt': dcnt }
-	//	console.log(a)
+
+	data = { 'dcnt': roomNum }
+
 	$.ajax({
 
 		type: 'post',
@@ -73,24 +71,13 @@ function duoinfo(dcnt) {
 			$('#duoParty').show();
 			$('#duoPartyCancel').hide();
 			$('#flagcollapse').html('=================')
-			document.getElementById('writter').value = res.userId;
-			//			console.log(res)
+
 			let dcnt = res.dcnt
 			let date = res.date
-			let duoPosition = ''
-			//			let dcnt = res.date
-			if (res.duoPosition == '' || res.duoPosition == null) {
 
-				duoPosition = "<font color= green> 전 라인 </font>"
-			} else {
-				duoPosition = "<font color= blue>" + res.duoPosition + "</font>"
-			}
-
-
+			let duoPosition = "<font color= blue>" + res.duoPosition + "</font>"
 			let myPosition = res.myPosition
-
 			let memo = "<font color= blue>" + res.memo + "</font>"
-
 			let userId = res.userId
 			if (userId == '비회원') {
 
@@ -100,9 +87,8 @@ function duoinfo(dcnt) {
 				userId = "<font color= blue>" + res.userId + "</font>"
 			}
 
-			let winLose = res.winLose
-
 			let tier = "<font color= #a014a0>" + res.tier + "</font>"
+
 			$('#dcntM').html(dcnt)
 			$('#userIdM').html(userId)
 			$('#myPositionM').html(myPosition)
@@ -110,23 +96,17 @@ function duoinfo(dcnt) {
 			$('#duoPositionM').html(duoPosition)
 			$('#memoM').html(memo)
 			$('#date').html(date)
-			let friendId = getId('friendId').value
-			userId = getId('userId').value
 
-			if (friendId == userId) {
-
+			let hostId = $('#hostId').val()
+			if (hostId == userId) {
 				$("#duoParty").hide();
 			} else {
 				$("#duoParty").show();
 			}
 
-
-
-
 		}, error: function(error) {
-			console.log("에러")
+			console.log("모달 값넣기 에러")
 		}
 	})
 
 }
-

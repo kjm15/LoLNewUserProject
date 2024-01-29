@@ -41,49 +41,42 @@ function duoMainInfo() {
 
 ////////////중간에 방 넣기////////////////
 
-function showNewDuo() {
+function showNewDuo(res) {
+	console.log(res);
+	const date = new Date();
+	let rcnt = $('#rcnt').val()
+	rcnt = rcnt + 1
+	document.getElementById('rcnt').value = rcnt
+	let str = ''
+	str += "<tr>"
+	str += "<td>" + res.dcnt + "</td>"
+	str += "<td>" + res.userId + "</td>"
+	str += "<td>" + res.myPosition + "</td>"
+	str += "<td>" + res.tier + "</td>"
+	str += "<td>" + res.gameType + "</td>"
+	str += "<td>" + res.duoPosition + "</td>"
+	str += "<td>최근챔피언개발중</td>"
+	str += "<td>" + res.memo + "</td>"
+	str += "<td>" + date + "</td>"
 
-	$.ajax({
+	str += "<td><div class='dropdown'>" +
+		"<button class='btn btn-secondary dropdown-toggle' type='button' data-bs-toggle='dropdown' aria-expanded='false'>" +
+		"..." + "</button>" +
+		"<ul class='dropdown-menu'>" +
+		"<li><a class='dropdown-item' href='#'>수정</a></li>" +
+		"<li><a class='dropdown-item' href='javascript:deleteDuo(" + res.dcnt + ")'>삭제</a></li>" +
+		"</ul>" +
+		"</div></td>"
 
-		type: 'post',
-		url: '/comparedcnt',
-		success: function(res) {
+	str += "</tr>"
 
-			trs = "<tr>"
-			tdwin = "<td>" + res.dcnt + "</td>"
-			tduserId = "<td>" + res.userId + "</td>"
-			tdmyPosition = "<td>" + res.myPosition + "</td>"
-			tdtier = "<td>" + res.tier + "</td>"
-			tdgameType = "<td>" + res.gameType + "</td>"
-			tdduoPosition = "<td>" + res.duoPosition + "</td>"
-			tdlately = "<td>최근챔피언개발중</td>"
-			tdmemo = "<td>" + res.memo + "</td>"
-			tddate = "<td>" + res.date + "</td>"
+	$('#preflag').prepend(str)
+	$('#' + res.dcnt).hide()
+	$('#exampleModal').modal("hide");
 
-			tddiv = "<td><div class='dropdown'>" +
-				"<button class='btn btn-secondary dropdown-toggle' type='button' data-bs-toggle='dropdown' aria-expanded='false'>" +
-				"..." + "</button>" +
-				"<ul class='dropdown-menu'>" +
-				"<li><a class='dropdown-item' href='#'>수정</a></li>" +
-				"<li><a class='dropdown-item' href='javascript:deleteDuo(" + res.dcnt + ")'>삭제</a></li>" +
-				"</ul>" +
-				"</div></td>"
+	$('#' + res.dcnt).show(4200)
+	console.log("방 업데이트 완료")
 
-			tre = "</tr>"
-
-
-			makeHtml = trs + tdwin + tduserId + tdmyPosition + tdtier + tdgameType + tdduoPosition + tdlately + tdmemo + tddate + tddiv + tre
-			$('#preflag').prepend(makeHtml)
-			$('#' + res.dcnt).hide()
-			$('#exampleModal').modal("hide");
-
-			$('#' + res.dcnt).show(4200)
-			console.log("방 업데이트 완료")
-
-		}, error: function(error) {
-			console.log("에러")
-		}
-	})
 
 }
 
@@ -97,7 +90,6 @@ function showChattInfo() {
 		//
 		type: 'post',
 		url: '/chattRoomInfo',
-		data: data,
 		success: function(res) {
 
 			if (res != '') {
