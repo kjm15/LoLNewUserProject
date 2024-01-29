@@ -1,37 +1,57 @@
 package com.project.projectFinal.service;
 
 import java.util.Collections;
+import java.util.HashMap;
 import java.util.HashSet;
 import java.util.Set;
 
-import org.springframework.stereotype.Service;
+import org.springframework.stereotype.Controller;
 import org.springframework.util.LinkedMultiValueMap;
 import org.springframework.util.MultiValueMap;
-import org.springframework.web.socket.WebSocketSession;
+
+import com.fasterxml.jackson.core.type.TypeReference;
+import com.fasterxml.jackson.databind.ObjectMapper;
+import com.project.projectFinal.config.CTXProvider;
+import com.project.projectFinal.dto.MsgDto;
 
 import jakarta.websocket.OnClose;
 import jakarta.websocket.OnMessage;
 import jakarta.websocket.OnOpen;
 import jakarta.websocket.Session;
 import jakarta.websocket.server.ServerEndpoint;
+import lombok.NoArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 
 @Slf4j
 @ServerEndpoint(value = "/jgh")
-@Service
+@Controller
+@NoArgsConstructor
 public class WebSocketChattService {
 
-	private static Set<Session> clients = Collections.synchronizedSet(new HashSet<Session>());
-	MultiValueMap<String, String> roomMap = new LinkedMultiValueMap<>();
+	private ChatService cServ = CTXProvider.ctx.getBean(ChatService.class);
 
-//	WebSocketSession
+	private static Set<Session> clients = Collections.synchronizedSet(new HashSet<Session>());
+
 	@OnMessage // 메세지 수신시
 	public void onMessage(String msg, Session session) throws Exception {
+		
+		//msg >> hashmap으로 변환시켜주는 구문
+		ObjectMapper mapper = new ObjectMapper();
+		HashMap<String, String> map = new HashMap<String, String>();
+		MsgDto msgDto = new MsgDto();
+		map = mapper.readValue(msg, new TypeReference<HashMap<String, String>>() {});	
+		String msg1 = msg;
+		//변환완료후 서비스로 이동
+		cServ.moveService(map);
+		
+		log.info("======work : {}",map.get("work"));
+		
+		//전체한테 보내기
+		synchronized (clients) { //강제 동기화시킴
+			for (Session s : clients) {
+				s.getBasicRemote().sendText(msg1);
 
-		for (Session s : clients) {
-//			log.info("send data : " + msg);
-			s.getBasicRemote().sendText(msg);
-
+			}
 		}
 	}
 

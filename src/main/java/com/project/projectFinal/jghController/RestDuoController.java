@@ -33,29 +33,6 @@ public class RestDuoController {
 		return duoService.duostartinfo();
 	}
 
-	@PostMapping("/saveDb")
-	public DuoSearchDto saveDb(DuoSearchDto duoSearchDto) {
-		if (duoSearchDto.getUserId() == "") {
-
-			duoSearchDto.setUserId("비회원");
-		}
-
-		return duoService.saveDbDuo(duoSearchDto);
-	}
-
-	@PostMapping("/deleteById")
-	public boolean deleteById(DuoSearchDto duoSearchDto, HttpSession session) {
-
-		if (duoService.infoDuoT(duoSearchDto).getUserId().equals(session.getAttribute("userId"))) {
-
-			duoService.deleteDuo(duoSearchDto);
-			return true;
-		} else {
-			return false;
-
-		}
-	}
-
 	@PostMapping("/comparedcnt")
 	public DuoSearchDto comparedcnt() {
 
@@ -71,12 +48,15 @@ public class RestDuoController {
 	}
 
 	@PostMapping("/nowlogin")
-	public DuoChattRoomDto nowlogin(DuoSearchDto duoSearchDto, HttpSession session) {
+	public DuoSearchDto nowlogin(DuoSearchDto duoSearchDto, HttpSession session) {
 
 		String userId = (String) session.getAttribute("userId");
-		duoSearchDto.setUserId(userId);
+		DuoSearchDto dDto = duoService.nowlogin(duoSearchDto); // userId = hostId
+
+		dDto.setFriendId(userId);
+
 //		log.info("========={}", duoSearchDto);
-		return duoService.nowlogin(duoSearchDto);
+		return dDto;
 
 	}
 
@@ -97,16 +77,12 @@ public class RestDuoController {
 
 	@PostMapping("/msgAll")
 	public ArrayList<HashMap<String, MsgDto>> msgAll(MsgDto msgDto) {
-
+	
 		return duoService.msgAll(msgDto);
 
 	}
 
-	@PostMapping("/deleteChatRoom")
-	public DuoChattRoomDto deleteChatRoom(DuoChattRoomDto duoChattRoomDto) {
 
-		return duoService.deleteChatRoom(duoChattRoomDto);
-	}
 
 	@PostMapping("/myRoomCheck")
 	public DuoChattRoomDto myRoomCheck(DuoChattRoomDto duoChattRoomDto) {
@@ -115,11 +91,25 @@ public class RestDuoController {
 	}
 
 	@PostMapping("/chattRoomInfo")
-	public ArrayList<HashMap<String, DuoChattRoomDto>> chattRoomInfo(HttpSession session) {
+	public ArrayList<HashMap<String, DuoChattRoomDto>> chattRoomInfo(DuoChattRoomDto duoChattRoomDto,
+			HttpSession session) {
 		String userId = (String) session.getAttribute("userId");
+
 		ArrayList<HashMap<String, DuoChattRoomDto>> cDto = duoService.chattRoomInfo(userId);
-		log.info("=={}",cDto);
+//		log.info("=={}",cDto);
 		return cDto;
+	}
+
+	@PostMapping("/createChattRoom")
+	public DuoChattRoomDto createChattRoom(DuoChattRoomDto duoChattRoomDto) {
+
+		return duoService.createChattRoom(duoChattRoomDto);
+	}
+	@PostMapping("/goOutRoom")
+	public DuoChattRoomDto goOutRoom(DuoChattRoomDto duoChattRoomDto, HttpSession session) {
+		String userId = (String) session.getAttribute("userId");
+		
+		return duoService.goOutRoom(duoChattRoomDto, userId);
 	}
 
 }
