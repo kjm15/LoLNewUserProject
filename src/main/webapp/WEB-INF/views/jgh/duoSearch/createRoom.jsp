@@ -1,18 +1,18 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
-	
-	
-	
+
+
+
 <div id=duoTable class=searchDuoT>
+
 	<h1 align="center">롤 듀오DUO 구하기</h1>
 	<div align="left"></div>
 	<div align="right">
+		<button id="btn-modal">Duo찾기작성</button>
 
-		<button type="button" class="btn btn-success" type="button"
-			class="btn btn-primary" data-bs-toggle="modal"
-			data-bs-target="#exampleModal">글쓰기</button>
 		<p></p>
 	</div>
+
 
 	<table class="table table-dark table-hover" id="modal_wrap">
 		<thead>

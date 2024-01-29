@@ -2,7 +2,7 @@
 
 if (ws == null || ws == '') {
 	var ws;
-  ws = new WebSocket("ws://" + location.host + "/jgh");
+	ws = new WebSocket("ws://" + location.host + "/jgh");
 
 }
 
@@ -34,7 +34,9 @@ ws.addEventListener("message", (event) => {
 		let userId = $('#userId').val()
 
 		if (userId == eventjson.hostId || userId == eventjson.guestId) {
-
+			$("#msg").css("background-color", "white");
+			$("#msg").attr("disabled", false);
+			$('#talk').html("");
 			open()
 			$('.chatthead').empty()
 			$('.chatthead').append("듀오채팅     [" + eventjson.roomNum + "번방]")

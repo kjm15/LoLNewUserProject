@@ -185,19 +185,9 @@ function myRoom(rcnt) {
 		url: '/myRoomCheck',
 		data: msgdata,
 		success: function(res1) {
+			//			console.log(res1)
 
 
-			if (res1.hostId == '' || res1.guestId == '') {
-				console.log(res1.hostId)
-				console.log(res1.guestId)
-
-				$("#msg").attr("disabled", true);
-				$("#msg").css("background-color", "gray");
-				$('#talk').append("</br>상대방이 나갔습니다.");
-			} else {
-				$("#msg").css("background-color", "white");
-				$("#msg").attr("disabled", false);
-			}
 
 			$('.chatthead').empty()
 
@@ -212,7 +202,7 @@ function myRoom(rcnt) {
 				url: '/msgAll',
 				data: msgdata1,
 				success: function(res) {
-					console.log(res)
+					//					console.log(res)
 					$('#talk').html('');
 					for (let data of res) {
 
@@ -229,18 +219,25 @@ function myRoom(rcnt) {
 							+ "<span>" + data.msg + "</span>	</div>"
 						$('#talk').append(item);
 
+
 						talk.scrollTop = talk.scrollHeight;//스크롤바 하단으로 이동
+					}
+					if (res1.hostId == '' || res1.guestId == '') {
+						//						console.log(res1.hostId)
+						//						console.log(res1.guestId)
+
+						$("#msg").attr("disabled", true);
+						$("#msg").css("background-color", "gray");
+						$('#talk').append("=============      상대방이 나갔습니다.     ================");
+					} else {
+						$("#msg").css("background-color", "white");
+						$("#msg").attr("disabled", false);
 					}
 				}
 			})
 
-
-
-
 		}
 	})
-
-
 }
 function goOutRoom(roomNum) {
 

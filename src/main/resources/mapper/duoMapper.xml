@@ -76,7 +76,7 @@
 	</select>
 	<select id="chattRoomInfo">
 		select * from duoChattRoomT where (hostId = #{userId}
-		|| guestId = #{userId}) order by cnt desc
+		|| guestId = #{userId}) order by roomNum desc
 	</select>
 
 	<update id="goOutRoomGuest">

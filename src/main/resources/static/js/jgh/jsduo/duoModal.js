@@ -5,7 +5,7 @@ const modal_background = document.querySelector('.modal_background')
 
 function close() {
 
-	$('.accordion-box').empty()
+	//	$('.accordion-box').empty()
 	modal_wrap.classList.remove('show-modal');
 	modal_background.classList.remove('show-modal');
 }
@@ -110,3 +110,40 @@ function duoinfo(roomNum) {
 	})
 
 }
+
+
+
+///모달3 컨트롤러//
+
+const loremIpsum = document.getElementById("lorem-ipsum")
+
+const modal = document.getElementById("modal")
+function modalOn() {
+	modal.style.display = "flex"
+}
+function isModalOn() {
+	return modal.style.display === "flex"
+}
+function modalOff() {
+	modal.style.display = "none"
+}
+const btnModal = document.getElementById("btn-modal")
+btnModal.addEventListener("click", e => {
+	modalOn()
+})
+const closeBtn = modal.querySelector(".close-area")
+closeBtn.addEventListener("click", e => {
+	modalOff()
+})
+modal.addEventListener("click", e => {
+	const evTarget = e.target
+	if (evTarget.classList.contains("modal-overlay")) {
+		modalOff()
+	}
+})
+window.addEventListener("keyup", e => {
+	if (isModalOn() && e.key === "Escape") {
+		modalOff()
+	}
+})
+//////////////////

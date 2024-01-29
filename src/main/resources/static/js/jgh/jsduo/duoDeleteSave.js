@@ -1,20 +1,22 @@
 //////////////////저장/////////////////////////////
 
 $('#duoSaveBtn').on("click", function() {
-
+	 
 	let userId = $('#userId').val()
-	let myPosition = $('#position').val()
-	let duoPosition = $('input[name=inlineRadioOptions]:checked').val()
+	let myPosition = $('#myPosition').val()
+	let duoPosition = $('#duoPosition').val()
 	let tier = $('#tier').val()
 	let gameType = $('#gameType').val()
-	let memo = $('#textArea').val()
+	let memo = $('#memo').val()
 
-	if (myPosition == '포지션' || duoPosition == 'undefined' || tier == '필수선택' || gameType == '필수선택' || textArea == '') {
+	if (myPosition == '포지션' || duoPosition == 'undefined' || tier == '필수선택' || gameType == '필수선택' || memo == '') {
 
 		alert("빠진부분이 있습니다 확인해주세요")
 
 		return false;
 	}
+	modalOff()
+	alert("방생성 성공")
 	data = {
 		'userId': userId,
 		'myPosition': myPosition,
