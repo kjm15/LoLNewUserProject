@@ -8,23 +8,79 @@
 	border: 2px solid rgb(201, 252, 169);
 }
 
+.search_line_champ {
+
+	width: 455px;
+}
+
+.selectChampline {
+	display: flex;
+	justify-content: center;
+	width: 455px;
+	margin-top: 10px;
+	margin-bottom: 10px;
+	border-radius: 5px;
+}
+
+.lines {
+	align-items: center;
+	display: flex;
+	justify-content: center;
+	width: 100%;
+	background-image: linear-gradient(315deg, #D6E5FC 0%, #9DC4FD 74%);
+	height: 51px;
+	line-height: 50px;
+	padding: 0;
+	border: none;
+	cursor: pointer;
+
+}
+
+
+.lines span {
+	position: relative;
+	display: block;
+	color: white;
+	text-align: center;
+	width: 100%;
+
+}
+
+
+.lines:hover {
+	background: transparent;
+	border: 1px solid #8CB9FC;
+	width: 100%;
+}
+
+.lines span:hover {
+	color: #8CB9FC;
+	width: 100%;
+}
+
+.lines img {
+	filter: invert(54%) sepia(6%) saturate(4603%) hue-rotate(211deg) brightness(127%) contrast(106%);
+	width: 25px;
+	height: 25px
+}
+
 .contentsItems {
 	display: flex;
-	/*	width: 2100px;*/
+	height: 2400px;
 	border: 1px solid lightpink;
 }
 
-.contentsItem {
-	width: 50%
-}
+/*.contentsItem {*/
+/*	width: 50%;*/
+/*}*/
 
 .search_c {
 	width: 455px;
 	display: flex;
-	border: 1px solid rgb(159, 168, 218);
+	border: 1px solid #8CB9FC;
 }
 
-#searchChamp {
+#champSearch {
 	border: none;
 	width: 95%
 }
@@ -34,8 +90,13 @@ input:focus {
 }
 
 .champImgItems {
+	display: flex;
 	width: 455px;
-	border: 1px solid rgb(159, 168, 218);
+	border: 1px solid #8CB9FC;
+	justify-content: center;
+	margin-right: 8px;
+
+
 }
 
 .se {
@@ -55,11 +116,13 @@ input:focus {
 	width: 55px;
 	align-items: center;
 	margin: 5px;
+	filter: drop-shadow(2px 2px 2px gray)
 }
 
 .champImgItem:hover {
 	transform: scale(1.2);
 	transition: transform .5s;
+	cursor: pointer;
 }
 
 
@@ -105,6 +168,7 @@ input:focus {
 	border: none;
 	outline: none;
 }
+
 
 
 .LineB {

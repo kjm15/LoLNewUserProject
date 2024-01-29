@@ -14,16 +14,23 @@ public class JhlChampService {
 
 	@Autowired
 	JhlChampDao champDao;
+	
+	public List<HashMap<String, String>> champListImg() {
 
-	public List<HashMap<String, String>> champListImg1() {
-
-		return champDao.champListImg1();
+		return champDao.champListImg();
 	}
 
 	public List<HashMap<String, String>> champSearch(JhlChampDto champDto) {
-	
+
 		return champDao.champSearch(champDto);
 	}
+
+	public List<HashMap<String, String>> topChampSelect(JhlChampDto champDto) {
+
+		return champDao.topChampSelect(champDto);
+	}
+
+
 
 
 
