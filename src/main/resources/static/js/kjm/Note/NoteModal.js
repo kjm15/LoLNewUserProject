@@ -1,24 +1,15 @@
-///모달//
-const modal_wrap = document.querySelector('.modal_wrap')
-const modal_background = document.querySelector('.modal_background')
+//모달 열기
 
-function close() {
-
-	modal_wrap.classList.remove('show-modal');
-	modal_background.classList.remove('show-modal');
-}
-function open() {
-
-	modal_wrap.classList.add('show-modal')
-	modal_background.classList.add('show-modal')
-}
-
-window.addEventListener('click', (e) => {
-
-	e.target === modal_background ? close() : false
-
+const modal = document.getElementById("modal")
+const modal_wrap = document.getElementById("modal_wrap")
+modal_wrap.addEventListener("click", e => {
+	console.log(e);
+    modal.style.display = "flex"
 })
 
-$('.modal_close').on("click", function() {
-	close()
+//모달 닫기
+
+const closeBtn = modal.querySelector(".close-area")
+closeBtn.addEventListener("click", e => {
+    modal.style.display = "none"
 })
