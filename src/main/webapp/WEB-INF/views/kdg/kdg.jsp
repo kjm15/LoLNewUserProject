@@ -5,11 +5,14 @@
 <head>
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
 <!-- champ choice js 들어갈곳 -->
-<script defer src="../js/kdg/champion/champChoice.js" /></script>
+<script defer src="../js/kdg/champion/champChoice.js"></script>
+<!-- item info js 들어갈곳 -->
+<script defer src="../js/kdg/item/itemInfo.js"></script>
 <meta charset="UTF-8">
 <title>챔피언 분석</title>
 <!-- kdg css 들어갈곳 -->
 <link rel="stylesheet" href="../css/kdg/copy.css" />
+
 </head>
 <body>
 	<!-- header -->
