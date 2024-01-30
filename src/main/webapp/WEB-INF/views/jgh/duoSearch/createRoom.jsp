@@ -5,7 +5,7 @@
 
 <div id=duoTable class=searchDuoT>
 
-	<h1 align="center">롤 듀오DUO 구하기</h1>
+	<h1 align="center" style = "color : white;">롤 듀오DUO 구하기</h1>
 	<div align="left"></div>
 	<div align="right">
 		<button id="btn-modal">Duo찾기작성</button>

@@ -2,7 +2,6 @@ package com.project.projectFinal.service;
 
 import java.util.ArrayList;
 import java.util.HashMap;
-import java.util.Map;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -10,9 +9,8 @@ import org.springframework.transaction.annotation.Transactional;
 
 import com.project.projectFinal.customEx.CustomException;
 import com.project.projectFinal.dao.DuoDao;
-import com.project.projectFinal.dto.DuoChattRoomDto;
+import com.project.projectFinal.dto.DuoMsgDto;
 import com.project.projectFinal.dto.DuoSearchDto;
-import com.project.projectFinal.dto.MsgDto;
 
 import lombok.extern.slf4j.Slf4j;
 
@@ -53,12 +51,12 @@ public class DuoService {
 	}
 
 
-
-	public DuoSearchDto comparedcnt() {
-
-		return duoDao.comparedcnt();
-
-	}
+//
+//	public DuoSearchDto comparerCnt() {
+//
+//		return duoDao.comparerCnt();
+//
+//	}
 
 	public ArrayList<HashMap<String, DuoSearchDto>> duostartinfo() {
 
@@ -74,39 +72,39 @@ public class DuoService {
 		return result;
 	}
 
-	public MsgDto msgSave(MsgDto msgDto) {
+	public DuoMsgDto msgSave(DuoMsgDto msgDto) {
 		return duoDao.msgSave(msgDto);
 	}
 
-	public MsgDto msgRead(MsgDto msgDto) {
+	public DuoMsgDto msgRead(DuoMsgDto msgDto) {
 
 		return duoDao.msgRead(msgDto);
 	}
 
-	public ArrayList<HashMap<String, MsgDto>> msgAll(MsgDto msgDto) {
+	public ArrayList<HashMap<String, DuoMsgDto>> msgAll(DuoMsgDto msgDto) {
 
 		return duoDao.msgAll(msgDto);
 	}
 
-	public DuoChattRoomDto myRoomCheck(DuoChattRoomDto duoChattRoomDto) {
-		DuoChattRoomDto dDto = duoDao.myRoomCheck(duoChattRoomDto); // 방생성이 되었는지 확인
+	public DuoMsgDto myRoomCheck(DuoMsgDto duoChattRoomDto) {
+		DuoMsgDto dDto = duoDao.myRoomCheck(duoChattRoomDto); // 방생성이 되었는지 확인
 
 		return dDto;
 	}
 
-	public ArrayList<HashMap<String, DuoChattRoomDto>> chattRoomInfo(String userId) {
+	public ArrayList<HashMap<String, DuoMsgDto>> chattRoomInfo(String userId) {
 
 		return duoDao.chattRoomInfo(userId);
 	}
 
-	public DuoChattRoomDto createChattRoom(DuoChattRoomDto duoChattRoomDto) {
+	public DuoMsgDto createChattRoom(DuoMsgDto duoChattRoomDto) {
 
 		return duoDao.createChattRoom(duoChattRoomDto);
 	}
 
-	public DuoChattRoomDto goOutRoom(DuoChattRoomDto duoChattRoomDto, String userId) {
+	public DuoMsgDto goOutRoom(DuoMsgDto duoChattRoomDto, String userId) {
 
-		DuoChattRoomDto dDto = duoDao.myRoomCheck(duoChattRoomDto);
+		DuoMsgDto dDto = duoDao.myRoomCheck(duoChattRoomDto);
 
 		if (dDto.getGuestId().equals(userId)) {
 			
@@ -116,7 +114,7 @@ public class DuoService {
 			dDto.setHostId(userId);
 			duoDao.goOutRoomHost(dDto);
 		}
-		DuoChattRoomDto dDtoResult = duoDao.myRoomCheck(duoChattRoomDto); 
+		DuoMsgDto dDtoResult = duoDao.myRoomCheck(duoChattRoomDto); 
 		// 방에서 나오고 둘다 없는게 확인되면 방자체를 삭제시키기
 		if(dDtoResult.getGuestId().equals("") && dDtoResult.getHostId().equals("")) {
 			

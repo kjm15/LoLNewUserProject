@@ -26,7 +26,7 @@
 
 <nav class="navbar navbar-dark bg-primary">
 	<div class="container-fluid">
-		<a class="navbar-brand" href="/main">파이널 프로젝트</a> <a
+		<a class="navbar-brand" href="/new">파이널 프로젝트</a> <a
 			class="navbar-brand" href="/jgh">장기훈</a> <a class="navbar-brand"
 			href="/kdg">김동근</a> <a class="navbar-brand" href="/kyt">김윤태</a> <a
 			class="navbar-brand" href="/kjm">김진문</a> <a class="navbar-brand"

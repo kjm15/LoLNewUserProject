@@ -11,12 +11,13 @@ function duoMainInfo() {
 		type: 'post',
 		url: '/duostartinfo',
 		success: function(res) {
+//			console.log(res)
 			let str = ''
 			for (let i in res) {
 
 				let strbtn = ''
 				str += "<tr class='select'>"
-				str += "<td>" + res[i].dcnt + "</td>"
+				str += "<td>" + res[i].rCnt + "</td>"
 				str += "<td>" + res[i].userId + "</td>"
 				str += "<td>" + res[i].myPosition + "</td>"
 				str += "<td>" + res[i].tier + "</td>"
@@ -29,7 +30,7 @@ function duoMainInfo() {
 				strbtn += "<div class='dropdown'><button class='btn btn-secondary dropdown-toggle'type='button'"
 				strbtn += "data-bs-toggle='dropdown' aria-expanded='false'>...</button>"
 				strbtn += "<ul class='dropdown-menu'><li><a class='dropdown-item' href='#'>수정</a></li>"
-				strbtn += "<li><a class='dropdown-item' href='javascript:deleteDuo(" + res[i].dcnt + ")'>삭제</a></li></ul></div>"
+				strbtn += "<li><a class='dropdown-item' href='javascript:deleteDuo(" + res[i].rCnt + ")'>삭제</a></li></ul></div>"
 
 				str += "<td>" + strbtn + "</td>"
 				str += "</tr>"
@@ -44,12 +45,12 @@ function duoMainInfo() {
 function showNewDuo(res) {
 	console.log(res);
 	const date = new Date();
-	let rcnt = $('#rcnt').val()
-	rcnt = rcnt + 1
-	document.getElementById('rcnt').value = rcnt
+	let rCnt = $('#rCnt').val()
+	rCnt = rCnt + 1
+	document.getElementById('rCnt').value = rCnt
 	let str = ''
 	str += "<tr>"
-	str += "<td>" + res.dcnt + "</td>"
+	str += "<td>" + res.rCnt + "</td>"
 	str += "<td>" + res.userId + "</td>"
 	str += "<td>" + res.myPosition + "</td>"
 	str += "<td>" + res.tier + "</td>"
@@ -64,17 +65,17 @@ function showNewDuo(res) {
 		"..." + "</button>" +
 		"<ul class='dropdown-menu'>" +
 		"<li><a class='dropdown-item' href='#'>수정</a></li>" +
-		"<li><a class='dropdown-item' href='javascript:deleteDuo(" + res.dcnt + ")'>삭제</a></li>" +
+		"<li><a class='dropdown-item' href='javascript:deleteDuo(" + res.rCnt + ")'>삭제</a></li>" +
 		"</ul>" +
 		"</div></td>"
 
 	str += "</tr>"
 
 	$('#preflag').prepend(str)
-	$('#' + res.dcnt).hide()
+	$('#' + res.rCnt).hide()
 	$('#exampleModal').modal("hide");
 
-	$('#' + res.dcnt).show(4200)
+	$('#' + res.rCnt).show(4200)
 	console.log("방 업데이트 완료")
 
 
@@ -91,14 +92,14 @@ function showChattInfo() {
 		type: 'post',
 		url: '/chattRoomInfo',
 		success: function(res) {
-
+			
 			if (res != '') {
 				str = ''
 				str += '<ul>'
 				for (let i of res) {
 
-					str += '<li ><span>채팅방 번호:' + i.roomNum + '</br></span><a href = "javascript:myRoom(' + i.roomNum + ')">들어가기<a>'
-						+ '</br> <a href = "javascript:goOutRoom(' + i.roomNum + ')">방나오기<a></li></br>'
+					str += '<li ><span>채팅방 번호:' + i.rCnt + '</br></span><a href = "javascript:myRoom(' + i.rCnt + ')">들어가기<a>'
+						+ '</br> <a href = "javascript:goOutRoom(' + i.rCnt + ')">방나오기<a></li></br>'
 
 				}
 				str += '</ul>'
@@ -110,4 +111,8 @@ function showChattInfo() {
 	})
 
 }
+
+
+
+
 
