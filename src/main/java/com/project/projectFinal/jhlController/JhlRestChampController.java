@@ -23,8 +23,8 @@ public class JhlRestChampController {
 	}
 	
 	
-	@PostMapping("/topChampSelect")
-	public List<HashMap<String, String>> topChampSelect(JhlChampDto champDto){
-		return champService.topChampSelect(champDto);
+	@PostMapping("/champLineSelect")
+	public List<HashMap<String, String>> champLineSelect(JhlChampDto champDto){
+		return champService.champLineSelect(champDto);
 	}
 }
