@@ -2,14 +2,14 @@
 // 듀오 채팅 신청구문 //
 $('#duoParty').on("click", function() {
 
-	let roomNum = $('#roomNum').val()
+	let rCnt = $('#rCnt').val()
 	let userId = $('#userId').val() //로그인한사람
 	let hostId = $('#hostId').val() //작성자
 	let temp1 = {}
 	temp1.work = "createQuestion"
 	temp1.hostId = hostId
 	temp1.guestId = userId
-	temp1.roomNum = roomNum
+	temp1.rCnt = rCnt
 
 	if (userId == '') {
 
@@ -41,12 +41,12 @@ $('#duoParty').on("click", function() {
 //승낙시
 function connect() { //승낙 >> 방만들기
 
-	let roomNum = $('#roomNum').val()
+	let rCnt = $('#rCnt').val()
 	let hostId = $('#hostId').val()
 	let guestId = $('#guestId').val()
 
 	let data = {
-		'roomNum': roomNum,
+		'rCnt': rCnt,
 		'hostId': hostId,
 		'guestId': guestId,
 		'work': 'connectRoom'
@@ -81,7 +81,7 @@ msg.onkeyup = function(ev) {
 // 전송된 채팅 db에 저장시키기
 function send() {
 
-	let rcnt = $('#roomNum').val()
+	let rCnt = $('#rCnt').val()
 	let userId = $('#userId').val()
 	let msg = $('#msg').val()
 	let date = new Date().toLocaleString();
@@ -89,7 +89,7 @@ function send() {
 	if (msg.trim() != '') {
 
 		res = {
-			'rcnt': rcnt,
+			'rCnt': rCnt,
 			'userId': userId,
 			'msg': msg,
 			'date': date,
@@ -136,16 +136,16 @@ function chattcontents(data) { //저장한 채팅과 같은방에서 실행
 function createQuestion(eventjson) {
 
 	let str = ''
-	str += '<div class="question" class="duoPartyChatt" id="' + eventjson.roomNum + '">'
+	str += '<div class="question" class="duoPartyChatt" id="' + eventjson.rCnt + '">'
 
 	str += '<div class="speech-bubble" class="a1">'
-	str += '[' + eventjson.roomNum + '방 - ' + eventjson.guestId + '님의 듀오채팅 요청]'
+	str += '[' + eventjson.rCnt + '방 - ' + eventjson.guestId + '님의 듀오채팅 요청]'
 	str += '<p>채팅방에 입장하시겠습니까?</p>'
 	str += '<p>(승낙시 해당글은 삭제되어집니다.)</p>'
 
 	str += '</div>'
 	str += "<h3><input type='button' onclick='javascript:connect()' value='승낙' /></h3>"
-	str += '<h3><input type="button" onclick="javascript:disconnect(' + eventjson.roomNum + ')" value="거절" /></h3>'
+	str += '<h3><input type="button" onclick="javascript:disconnect(' + eventjson.rCnt + ')" value="거절" /></h3>'
 
 	str += '</div>'
 
@@ -177,15 +177,15 @@ function searchLol() {
 }
 
 //본인이 본인방 들어가는 경우
-function myRoom(rcnt) {
+function myRoom(rCnt) {
 
 	open()
 	$('#chatt').show();
 	$('.wrap').hide();
-	document.getElementById("roomNum").value = rcnt;
+	document.getElementById("rCnt").value = rCnt;
 	let userId = $('#userId').val()
 
-	msgdata = { "roomNum": rcnt }
+	msgdata = { "rCnt": rCnt }
 	$.ajax({
 
 		type: 'post',
@@ -198,10 +198,10 @@ function myRoom(rcnt) {
 
 			$('.chatthead').empty()
 
-			$('.chatthead').append("듀오채팅     [" + rcnt + "번방]")
+			$('.chatthead').append("듀오채팅     [" + rCnt + "번방]")
 
 			msgdata1 = {
-				"rcnt": rcnt
+				"rCnt": rCnt
 			}
 			$.ajax({
 
@@ -246,11 +246,11 @@ function myRoom(rcnt) {
 		}
 	})
 }
-function goOutRoom(roomNum) {
+function goOutRoom(rCnt) {
 
-	data = { 'roomNum': roomNum }
+	data = { 'rCnt': rCnt }
 
-	if (confirm(roomNum + '번방에서 떠난 후에는 재입장이 불가능합니다. 정말 나가시겠습니까?')) {
+	if (confirm(rCnt + '번방에서 떠난 후에는 재입장이 불가능합니다. 정말 나가시겠습니까?')) {
 		$.ajax({
 
 			type: 'post',

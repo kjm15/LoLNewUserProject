@@ -2,14 +2,11 @@ package com.project.projectFinal.dao;
 
 import java.util.ArrayList;
 import java.util.HashMap;
-import java.util.Map;
 
 import org.apache.ibatis.annotations.Mapper;
 
-import com.fasterxml.jackson.databind.JsonNode;
-import com.project.projectFinal.dto.DuoChattRoomDto;
-import com.project.projectFinal.dto.DuoSearchDto;
 import com.project.projectFinal.dto.DuoMsgDto;
+import com.project.projectFinal.dto.DuoSearchDto;
 
 @Mapper
 public interface DuoDao {
@@ -21,8 +18,8 @@ public interface DuoDao {
 	ArrayList<HashMap<String, DuoSearchDto>> duoInfo();
 
 
-	
-	DuoSearchDto comparedcnt();
+//	
+//	DuoSearchDto comparerCnt();
 
 	DuoSearchDto nowlogin(DuoSearchDto duoSearchDto);
 
@@ -36,19 +33,19 @@ public interface DuoDao {
 
 	ArrayList<HashMap<String, DuoMsgDto>> msgAll(DuoMsgDto msgDto);
 
-	DuoChattRoomDto searchSameRoom(DuoSearchDto duoSearchDto);
+	DuoMsgDto searchSameRoom(DuoSearchDto duoSearchDto);
 
-	DuoChattRoomDto myRoomCheck(DuoChattRoomDto duoChattRoomDto);
+	DuoMsgDto myRoomCheck(DuoMsgDto duoChattRoomDto);
 
-	ArrayList<HashMap<String, DuoChattRoomDto>> chattRoomInfo(String userId);
+	ArrayList<HashMap<String, DuoMsgDto>> chattRoomInfo(String userId);
 
-	DuoChattRoomDto createChattRoom(DuoChattRoomDto duoChattRoomDto);
+	DuoMsgDto createChattRoom(DuoMsgDto duoChattRoomDto);
 
-	void goOutRoomGuest(DuoChattRoomDto duoChattRoomDto);
+	void goOutRoomGuest(DuoMsgDto duoChattRoomDto);
 
-	void goOutRoomHost(DuoChattRoomDto dDto);
+	void goOutRoomHost(DuoMsgDto dDto);
 
-	void deleteChattRoom(DuoChattRoomDto duoChattRoomDto);
+	void deleteChattRoom(DuoMsgDto duoChattRoomDto);
 
 	
 

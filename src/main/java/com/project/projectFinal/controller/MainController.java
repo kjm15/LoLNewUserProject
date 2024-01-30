@@ -1,5 +1,4 @@
 
-
 package com.project.projectFinal.controller;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -24,9 +23,18 @@ public class MainController {
 	@GetMapping("/")
 	public String index() {
 
-		return "main";
+		return "new/new";
 	}
+	@GetMapping("/admin")
+	public String admin() {
 
+		return "admin/mainAdmin";
+	}
+	@GetMapping("/new")
+	public String new1() {
+
+		return "new/new";
+	}
 	@GetMapping("/main")
 	public String main(HttpSession session, MemberDto memberDto, Model model) {
 		if (session.getAttribute("userId") != null) {
@@ -101,4 +109,3 @@ public class MainController {
 	}
 
 }
-

@@ -33,14 +33,14 @@ document.querySelector('#modal_wrap').addEventListener('click', (e) => {
 	const rowIndex = e.target.closest("tr").rowIndex;
 	var table = document.getElementById("modal_wrap")
 	var tr = table.getElementsByTagName("tr");
-	let roomNum = tr[rowIndex].getElementsByTagName("td")[0].innerHTML
+	let rCnt = tr[rowIndex].getElementsByTagName("td")[0].innerHTML
 	let hostId = tr[rowIndex].getElementsByTagName("td")[1].innerHTML
 	document.getElementById('hostId').value = hostId;
-	//dcnt를 통해서 정보를 가지고옴
+	//rCnt를 통해서 정보를 가지고옴
 
-	document.getElementById('roomNum').value = roomNum;
+	document.getElementById('rCnt').value = rCnt;
 
-	duoinfo(roomNum)
+	duoinfo(rCnt)
 
 	open()
 
@@ -52,14 +52,14 @@ $('.modal_close').on("click", function() {
 
 /////////////////////////모달 값 넣기///////////////
 
-function duoinfo(roomNum) {
+function duoinfo(rCnt) {
 
 	$('.startSearch').show();
 	$('#aaa').empty()
 	$('.flagA').show();
 	$('#chatt').hide();
 
-	data = { 'dcnt': roomNum }
+	data = { 'rCnt': rCnt }
 
 	$.ajax({
 
@@ -72,7 +72,7 @@ function duoinfo(roomNum) {
 			$('#duoPartyCancel').hide();
 			$('#flagcollapse').html('=================')
 
-			let dcnt = res.dcnt
+			let rCnt = res.rCnt
 			let date = res.date
 
 			let duoPosition = "<font color= blue>" + res.duoPosition + "</font>"
@@ -89,7 +89,7 @@ function duoinfo(roomNum) {
 
 			let tier = "<font color= #a014a0>" + res.tier + "</font>"
 
-			$('#dcntM').html(dcnt)
+			$('#rCntM').html(rCnt)
 			$('#userIdM').html(userId)
 			$('#myPositionM').html(myPosition)
 			$('#tierM').html(tier)
@@ -147,3 +147,24 @@ window.addEventListener("keyup", e => {
 	}
 })
 //////////////////
+
+
+const useCustomSelectBox = ({ targetRef }) => {
+  const [isSelectBoxOpened, setIsSelectBoxOpened] = useState(false);
+
+  useEffect(() => {
+    const onCloseOptionList = (event) => {
+      if (!targetRef.current?.contains(event.target)) {
+        setIsSelectBoxOpened(false);
+      }
+    };
+
+    document.addEventListener('click', onCloseOptionList);
+
+    return () => {
+      document.removeEventListener('click', onCloseOptionList);
+    };
+  }, [isSelectBoxOpened, targetRef]);
+
+  return [isSelectBoxOpened, setIsSelectBoxOpened];
+};

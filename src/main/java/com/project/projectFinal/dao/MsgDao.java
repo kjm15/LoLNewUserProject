@@ -2,9 +2,8 @@ package com.project.projectFinal.dao;
 
 import org.apache.ibatis.annotations.Mapper;
 
-import com.project.projectFinal.dto.DuoChattRoomDto;
-import com.project.projectFinal.dto.DuoSearchDto;
 import com.project.projectFinal.dto.DuoMsgDto;
+import com.project.projectFinal.dto.DuoSearchDto;
 
 @Mapper
 public interface MsgDao {
@@ -13,7 +12,7 @@ public interface MsgDao {
 
 	void roomUpdate(DuoSearchDto duoSearchDto);
 
-	void connectRoom(DuoChattRoomDto duoChattRoomDto);
+	void connectRoom(DuoMsgDto duoChattRoomDto);
 
 	
 }

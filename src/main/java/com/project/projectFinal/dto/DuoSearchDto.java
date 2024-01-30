@@ -10,7 +10,7 @@ import lombok.NoArgsConstructor;
 public class DuoSearchDto {
 	
 	private String userId;
-	private int dcnt;
+	private int rCnt;
 	private String myPosition;
 	private String duoPosition;
 	private String tier;

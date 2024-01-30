@@ -8,9 +8,8 @@ import org.springframework.transaction.annotation.Transactional;
 
 import com.project.projectFinal.customEx.CustomException;
 import com.project.projectFinal.dao.MsgDao;
-import com.project.projectFinal.dto.DuoChattRoomDto;
-import com.project.projectFinal.dto.DuoSearchDto;
 import com.project.projectFinal.dto.DuoMsgDto;
+import com.project.projectFinal.dto.DuoSearchDto;
 
 import lombok.extern.slf4j.Slf4j;
 
@@ -24,7 +23,7 @@ public class ChattRepository {
 
 		DuoMsgDto msgDto = new DuoMsgDto();
 
-		msgDto.setRcnt(String.valueOf(map.get("rcnt")));
+		msgDto.setRCnt(String.valueOf(map.get("rCnt")));
 		msgDto.setUserId(map.get("userId"));
 		msgDto.setMsg(String.valueOf(map.get("msg")));
 		msgDao.insertMsg(msgDto);
@@ -55,8 +54,8 @@ public class ChattRepository {
 	public void connectRoom(HashMap<String, String> map) {
 		log.info("map : {}", map);
 		try {
-			DuoChattRoomDto duoChattRoomDto = new DuoChattRoomDto();
-			duoChattRoomDto.setRoomNum(map.get("roomNum"));
+			DuoMsgDto duoChattRoomDto = new DuoMsgDto();
+			duoChattRoomDto.setRCnt(map.get("rCnt"));
 			duoChattRoomDto.setHostId(map.get("hostId"));
 			duoChattRoomDto.setGuestId(map.get("guestId"));
 			log.info("==={}", duoChattRoomDto);
