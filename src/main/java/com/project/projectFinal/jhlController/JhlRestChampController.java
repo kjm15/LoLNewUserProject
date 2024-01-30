@@ -21,5 +21,10 @@ public class JhlRestChampController {
 	public List<HashMap<String, String>> champSearch(JhlChampDto champDto) {
 		return champService.champSearch(champDto);
 	}
-		
+	
+	
+	@PostMapping("/topChampSelect")
+	public List<HashMap<String, String>> topChampSelect(JhlChampDto champDto){
+		return champService.topChampSelect(champDto);
+	}
 }

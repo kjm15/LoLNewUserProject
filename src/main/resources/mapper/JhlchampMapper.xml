@@ -3,10 +3,9 @@
 
 <mapper namespace="com.project.projectFinal.dao.JhlChampDao">
 
-<select id="champListImg1">
+<select id="champListImg">
 select * from champName;
 </select>
-
 
 
 <select id="champSearch">
@@ -15,5 +14,8 @@ or champion_name_cons like concat(#{champSearch}, '%');
 </select>
 
 
+<select id="topChampSelect">
+select champion_name_kr, champion_name, line from champName where line like concat('%',#{line}, '%');
+</select>
 
 </mapper>

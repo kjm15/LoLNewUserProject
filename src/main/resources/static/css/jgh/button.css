@@ -59,7 +59,6 @@ button.learn-more:active::before {
 	transform: translate3d(0, 0, -1em);
 }
 
-
 .preserve-3d {
 	transform-style: preserve-3d;
 	-webkit-transform-style: preserve-3d;
@@ -84,3 +83,8 @@ button.learn-more:active::before {
 	cursor: pointer;
 }
 
+/* #duoSaveBtn { */
+/* 	left : 0px; */
+
+/* 	top : 0px;  */
+/* } */

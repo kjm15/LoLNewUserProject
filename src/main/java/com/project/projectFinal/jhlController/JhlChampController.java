@@ -20,8 +20,9 @@ public class JhlChampController {
 
 	@GetMapping("/jhl")
 	public String jhl(Model model) {
-		List<HashMap<String, String>> champListImg1 = champService.champListImg1();
-		model.addAttribute("champListImg1", champListImg1);
+		List<HashMap<String, String>> champListImg = champService.champListImg();
+		model.addAttribute("champListImg", champListImg);
+		
 		return "jhl/jhl";
 	}
 }

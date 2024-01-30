@@ -21,7 +21,35 @@
 </div>
 <!-- <h1>김동근 페이지 입니다.</h1> -->
 
+<img class = "bronzecrown" src="../img/crown/bronzecrown.png">
+<img class = "silvercrown" src="../img/crown/silvercrown.png">
+<img class = "goldcrown" src="../img/crown/goldcrown.png">
+
+
 <div class="container" id="container">
+	<div style = "width: 1100px; height: 70px; text-align: center;">
+		<h3 style= " margin: 0 auto; padding: 20px;">라인별 핫한 챔피언 TOP3</h3>
+	</div>
+	<div class = "sliding-box">
+		<div class = "secondChampBox">
+			<div id = "secondChamp" class = "secondChamp">
+				<img id = "myChamp" src = "https://ddragon.leagueoflegends.com/cdn/14.1.1/img/champion/Aatrox.png"></img>
+				<p id = "secondChampName">아트록스</p>
+			</div>
+		</div>
+		<div class = "firstChampBox">
+			<div id = "firstChamp" class = "firstChamp">
+				<img id = "myChamp" src = "https://ddragon.leagueoflegends.com/cdn/14.1.1/img/champion/Trundle.png"></img>
+				<p id = "firstChampName">트런들</p>
+			</div>
+		</div>
+		<div class = "thirdChampBox">
+			<div id = "thirdChamp" class = "thirdChamp">
+				<img id = "myChamp" src = "https://ddragon.leagueoflegends.com/cdn/14.1.1/img/champion/Malphite.png"></img>
+				<p id = "thirdChampName">말파이트</p>
+			</div>
+		</div>
+	</div>
 	<div class="header" id="header">
 		<div id="ex">
 			<div id="champbox">

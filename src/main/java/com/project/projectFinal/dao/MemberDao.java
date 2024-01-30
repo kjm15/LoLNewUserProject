@@ -28,4 +28,5 @@ public interface MemberDao {
 
 	void logoutNow(String userId);
 
+
 }

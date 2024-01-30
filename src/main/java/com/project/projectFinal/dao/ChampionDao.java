@@ -7,6 +7,7 @@ import org.apache.ibatis.annotations.Mapper;
 
 import com.project.projectFinal.dto.ChampionDto;
 import com.project.projectFinal.dto.ItemDto;
+import com.project.projectFinal.dto.itemInfoDto;
 
 @Mapper
 public interface ChampionDao {
@@ -30,5 +31,7 @@ public interface ChampionDao {
 	public List<HashMap<String, ItemDto>> itemBuild(ItemDto iDto);
 
 	public List<HashMap<String, ItemDto>> itemBuildperTier(ItemDto iDto);
+
+	public List<itemInfoDto> itemInfo(int itemId);
 
 }
