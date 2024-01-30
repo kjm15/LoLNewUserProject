@@ -14,9 +14,16 @@ $('#duoSaveBtn').on("click", function() {
 		alert("빠진부분이 있습니다 확인해주세요")
 
 		return false;
+	}else if(myPosition == duoPosition){
+		
+		alert("찾는 포지션이 중복되었습니다. 포지션을 변경해주세요")
+		return false;
+		
 	}
+	
+	
 	modalOff()
-	alert("방생성 성공")
+	
 	data = {
 		'userId': userId,
 		'myPosition': myPosition,

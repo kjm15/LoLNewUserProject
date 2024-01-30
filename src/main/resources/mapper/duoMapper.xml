@@ -4,21 +4,21 @@
 <mapper namespace="com.project.projectFinal.dao.DuoDao">
 	<select id="duoInfo">
 
-		select * from duoT order by dcnt desc limit 10;
+		select * from duoT order by rCnt desc limit 10;
 
 	</select>
 
 	<select id="infoDuoT">
 
-		select * from duoT where dcnt = #{dcnt};
+		select * from duoT where rCnt = #{rCnt};
 
 	</select>
 
-	<select id="comparedcnt">
+<!-- 	<select id="comparerCnt"> -->
 
-		select * from duoT order by dcnt desc limit 1;
+<!-- 		select * from duoT order by rCnt desc limit 1; -->
 
-	</select>
+<!-- 	</select> -->
 
 	<select id="saveDbDuo">
 
@@ -26,7 +26,7 @@
 		duoT(userId,myPosition,tier,duoPosition,gameType,memo)
 		values(#{userId},#{myPosition},#{tier},#{duoPosition},#{gameType},#{memo});
 
-		select * from duoT order by dcnt desc limit 1;
+		select * from duoT order by rCnt desc limit 1;
 
 	</select>
 
@@ -40,11 +40,11 @@
 	<select id="createChattRoom">
 
 		insert into duoChattRoomT
-		values(null,#{roomNum},#{hostId},#{guestId});
+		values(null,#{rCnt},#{hostId},#{guestId});
 
 
 		delete from duoT where
-		dcnt = #{roomNum};
+		rCnt = #{rCnt};
 
 
 		select * from duoChattRoomT
@@ -54,47 +54,47 @@
 
 
 	<select id="msgSave">
-		insert into msgT(rcnt,userId,msg)
-		values(#{rcnt},#{userId},#{msg});
+		insert into msgT(rCnt,userId,msg)
+		values(#{rCnt},#{userId},#{msg});
 
-		select * from msgT where rcnt =
-		#{rcnt} order by rcnt desc limit 1;
+		select * from msgT where rCnt =
+		#{rCnt} order by rCnt desc limit 1;
 	</select>
 
 	<select id="msgRead">
-		select * from msgT where rcnt = #{rcnt} order by
+		select * from msgT where rCnt = #{rCnt} order by
 		autocnt desc limit 1;
 	</select>
 
 	<select id="msgAll">
-		select * from msgT where rcnt = #{rcnt} order by
+		select * from msgT where rCnt = #{rCnt} order by
 		autocnt
 	</select>
 	<select id="myRoomCheck">
-		select * from duoChattRoomT where roomNum =
-		#{roomNum}
+		select * from duoChattRoomT where rCnt =
+		#{rCnt}
 	</select>
 	<select id="chattRoomInfo">
 		select * from duoChattRoomT where (hostId = #{userId}
-		|| guestId = #{userId}) order by roomNum desc
+		|| guestId = #{userId}) order by rCnt desc
 	</select>
 
 	<update id="goOutRoomGuest">
 
-		update duoChattRoomT set guestId = '' where roomNum =
-		#{roomNum}
+		update duoChattRoomT set guestId = '' where rCnt =
+		#{rCnt}
 
 	</update>
 
 	<update id="goOutRoomHost">
 
-		update duoChattRoomT set hostId = '' where roomNum =
-		#{roomNum}
+		update duoChattRoomT set hostId = '' where rCnt =
+		#{rCnt}
 
 	</update>
 	<delete id="deleteChattRoom">
 
-		delete from duoChattRoomT where roomNum=#{roomNum}
+		delete from duoChattRoomT where rCnt=#{rCnt}
 
 	</delete>
 </mapper>
