@@ -6,13 +6,11 @@ function gamebtn(i) {
 	var gametable = document.getElementById("gametable" + i + "");
 	gametable.style.display = ((gametable.style.display != 'none') ? 'none' : 'block');
 
-	var e = document.getElementById("datalist" + i + "");
-	e.style.display = ((e.style.display != 'none') ? 'none' : 'block');
+//	var e = document.getElementById("datalist" + i + "");
+//	e.style.display = ((e.style.display != 'none') ? 'none' : 'block');
 }
 
 $("#getpuuid").on("click", function() {
-				 var timeStamp = Date.now();
-				 console.log(timeStamp-1706155516059)
 	let gameName = $('#gameName').val();
 	let tagLine = $('#tagLine').val();
 	data = { 'gameName': gameName, 'tagLine': tagLine }
@@ -24,34 +22,56 @@ $("#getpuuid").on("click", function() {
 		data: data,
 		success: function(res) {
 			console.log(res)
+				str += "<input type='text' id='gameName' name='gameName' placeholder='아이디' value='게임모드 검색 들어갈 예정'>"
+				str += "<input type='text' id='gameName' name='gameName' placeholder='아이디' value='챔피언 검색 들어갈 예정'>"
 			for (let i = 0; i < res.length; i++) {
 				str += "<div id='matchlist" + i + "' class='list'>"
-				str += "<table align='center' border='1' width = '800' >"
+				str += "<table align='center' border='1' width = '800'>"
 				str += "<tr>"
 
 				str += "<th width = '150' rowspan='2' id='gameMode" + i + "'></th>"
-
-				str += "<th rowspan='3' colspan='2'> 챔피언 사진</th>"
+				
+				for(let j in res[i]["info"]['participants']){
+					if(gameName == res[i]['info']['participants'][j]['riotIdGameName']){
+						str += "<th rowspan='3' colspan='2' width='114	'><img width='40' height='40'  alt='못 불러옴' src='https://ddragon.leagueoflegends.com/cdn/14.1.1/img/champion/" + res[i]['info']['participants'][j]['championName']+ ".png'></th>"	
+					}
+				}
 				str += "<th rowspan='2' id = 'KDA" + i + "' width = '100'></th>" // k/d/a
 				let mykill = ''
 				for (let j in res[i]["info"]['participants']) {
-					if(res[i]["info"]['participants'][j]['teamId']==res[i]["info"]['teams'][0]['teamId']){	
-						
-								mykill ="킬 관여: "+ res[i]["info"]['teams'][0]['objectives']['champion']['kills']
-						
-							}else if(res[i]["info"]['participants'][j]['teamId']==res[i]["info"]['teams'][1]['teamId']){
-						
-								let totalkill =res[i]["info"]['teams'][1]['objectives']['champion']['kills']
-								mykill=(((res[i]["info"]['participants'][j]['kills']+res[i]["info"]['participants'][j]['assists'])/totalkill)*100).toFixed(0)+"%"
-							}
+					if (res[i]["info"]['participants'][j]['teamId'] == res[i]["info"]['teams'][0]['teamId']) {
+
+						mykill = "킬 관여: " + res[i]["info"]['teams'][0]['objectives']['champion']['kills']
+
+					} else if (res[i]["info"]['participants'][j]['teamId'] == res[i]["info"]['teams'][1]['teamId']) {
+
+						let totalkill = res[i]["info"]['teams'][1]['objectives']['champion']['kills']
+						mykill = (((res[i]["info"]['participants'][j]['kills'] + res[i]["info"]['participants'][j]['assists']) / totalkill) * 100).toFixed(0) + "%"
+					}
 				}
 				str += "<th>킬 관여율</th>"
-				
-				
-				str += "<th rowspan='3'>19분전</th>"
+				var timeStamp = Date.now(); // 현재시간
+				//				var date = new Date(timeStamp);
+				gameEndTimestamp = res[i]["info"]['gameEndTimestamp']; //게임 끝난 시간	
+
+				loltime = (timeStamp - gameEndTimestamp) // 롤 시간
+
+				let day = Math.floor(loltime / 1000 / 60 / 60 / 24);
+				let hour = Math.floor(loltime / 1000 / 60 / 60);
+				let min = Math.floor(loltime / 1000 / 60);
+
+				var spentTime;
+				if (day == 0 && hour == 0) {
+					spentTime = min + "분 전";
+				} else if (day == 0) {
+					spentTime = hour + "시간 전";
+				} else {
+					spentTime = day + "일 전";
+				}
+				str += "<th rowspan='2' width = '150'>" + spentTime + "</th>"
 				str += "<td rowspan='3'><button id='gamebtn" + i + "' onclick='gamebtn(" + i + ")'>더보기</button></td>"
 				str += "</tr>"
-				str += "<tr> <th>"+mykill+"</th></tr>"
+				str += "<tr> <th>" + mykill + "</th></tr>"
 				str += "<tr>"
 				let team = ''
 				let dragon = ''
@@ -61,30 +81,41 @@ $("#getpuuid").on("click", function() {
 							team = '승리'
 						} else {
 							team = '패배'
+							
 						}
-						if(res[i]["info"]['queueId'] != 450){
-							if(res[i]["info"]['participants'][j]['teamId']==res[i]["info"]['teams'][0]['teamId']){	
-								dragon ="드래곤 킬:"+ res[i]["info"]['teams'][0]['objectives']['dragon']['kills']
-							}else if(res[i]["info"]['participants'][j]['teamId']==res[i]["info"]['teams'][1]['teamId']){
-								dragon ="드래곤 킬:"+ res[i]["info"]['teams'][1]['objectives']['dragon']['kills']
+						if (res[i]["info"]['queueId'] != 450) {
+							if (res[i]["info"]['participants'][j]['teamId'] == res[i]["info"]['teams'][0]['teamId']) {
+								dragon = "드래곤 킬:" + res[i]["info"]['teams'][0]['objectives']['dragon']['kills']
+							} else if (res[i]["info"]['participants'][j]['teamId'] == res[i]["info"]['teams'][1]['teamId']) {
+								dragon = "드래곤 킬:" + res[i]["info"]['teams'][1]['objectives']['dragon']['kills']
 							}
 						}
 					}
-					
-				}
-				str += "<th>"+team+"</th>"
-				str += "<th id='KdaAverage" + i + "'>평균</th>"
-				
-				str += "<th width = '100'>"+dragon+"</th>"
-				str += "</tr>"
-				str += "<table border = '3'  id = 'gametable" + i + "' style='display: none'><thead>"
-				str += "</thead><tbody>"
-				str += "<th>승패</th><th>소환사 아이디</th><th>팀</th><th>챔피언</th><th>라인</th><th>킬</th><th>데스</th><th>어시스트</th><tr></tr>"
-				
-				
 
-				str += "<td id = 'team1'>" +  + "</td><tr></tr>"
-				str += "<div class='list' id = 'datalist" + i + "'  style='display: none'>"
+				}
+				str += "<td>" + team + "</th>"
+				str += "<th id='KdaAverage" + i + "'>평균</th>"
+				str += "<th width = '100'>" + dragon + "</th>"
+				gameCreation = res[i]["info"]['gameCreation'];
+				gameEndTimestamp = res[i]["info"]['gameEndTimestamp']; //게임 끝난 시간
+				ingametime = (gameEndTimestamp - gameCreation) // 롤 시간
+
+				let ingamemin = Math.floor(ingametime / 1000 / 60);
+				var ingamespentTime;
+
+				ingamespentTime = ingamemin + "분 게임";
+
+				str += "<th width = '100'>" + ingamespentTime + "</th>"
+				str += "</tr>"
+				
+				str += "<table align='center' border = '1'  id = 'gametable" + i + "' style='display: none'  width = '800'>"
+				
+				str += "<th width = '150'>승리(팀컬러)</th><th width='95'>소환자 명</th><th width='92'>챔피언 명</th><th width='101'>k/d/a(kda)</th><th width='100'>입힌 피해량</th><th width='90'>받은 피해량</th><th width='60'>cs</th><tr></tr>"
+
+
+
+				
+//				str += "<div class='list' id = 'datalist" + i + "'  style='display: none'>"
 
 
 				for (let j = 0; j < res[i]["info"]['participants'].length; j++) {
@@ -143,6 +174,7 @@ $("#getpuuid").on("click", function() {
 					assists = res[i]["info"]['participants'][j]['assists']
 					str += "<td>" + assists + "</td>"
 					str += "</tr>"
+					
 				}
 				str += "</div>"
 				str += "</table>"
@@ -177,20 +209,20 @@ function findUserGameMode(res) {
 		userGameMode.innerHTML = gameMode
 	}
 }
-function findUserKda(gameName,res){
-//	console.log(res)
-	for(let i=0; i<res.length; i++){
-		var userKda = document.getElementById("KDA"+i); // k/d/a
-		var userKdaAverage = document.getElementById("KdaAverage"+i); // k/d/a 
-			for(let j=0; j<res[i]["info"]['participants'].length; j++){
-				if(gameName==res[i]["info"]['participants'][j]['riotIdGameName']){
-				Kda	= res[i]["info"]['participants'][j]['kills']+"/" +res[i]["info"]['participants'][j]['deaths']+"/"+res[i]["info"]['participants'][j]['assists']
-				KdaAverage = ((res[i]["info"]['participants'][j]['kills']+res[i]["info"]['participants'][j]['assists'])/res[i]["info"]['participants'][j]['deaths']).toFixed(2)
+function findUserKda(gameName, res) {
+	//	console.log(res)
+	for (let i = 0; i < res.length; i++) {
+		var userKda = document.getElementById("KDA" + i); // k/d/a
+		var userKdaAverage = document.getElementById("KdaAverage" + i); // k/d/a 
+		for (let j = 0; j < res[i]["info"]['participants'].length; j++) {
+			if (gameName == res[i]["info"]['participants'][j]['riotIdGameName']) {
+				Kda = res[i]["info"]['participants'][j]['kills'] + "/" + res[i]["info"]['participants'][j]['deaths'] + "/" + res[i]["info"]['participants'][j]['assists']
+				KdaAverage = ((res[i]["info"]['participants'][j]['kills'] + res[i]["info"]['participants'][j]['assists']) / res[i]["info"]['participants'][j]['deaths']).toFixed(2)
 
-				} // 평균 kda								
-			}			
-			userKda.innerHTML=Kda
-			userKdaAverage.innerHTML = KdaAverage
+			} // 평균 kda								
+		}
+		userKda.innerHTML = Kda
+		userKdaAverage.innerHTML = KdaAverage
 
 	}
 }

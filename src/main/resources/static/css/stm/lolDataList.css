@@ -3,7 +3,8 @@
 #puuid{
  background-color: lightblue;
  text-align: center;
- position: absolute;
+ 
+/* position: absolute;*/
 /*  bottom: 10; */
 /* right:2%;*/
  margin: 300px;
@@ -11,4 +12,28 @@
  height: 500px;
  width: 1000px;
  display: none;
+}
+
+#userData{
+display: flex;
+text-align: center; 
+position: absolute;
+  left: 17%;
+
+}
+#div1{
+/* background-color: red; */
+text-align: center; 
+ 
+ height: 300px;
+ width: 500px;
+ 
+}
+#div2{
+/* background-color: blue; */
+text-align: center;
+ 
+ height: 300px;
+ width: 500px;
+  
 }
