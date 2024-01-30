@@ -9,7 +9,7 @@ select * from champName;
 
 
 <select id="champSearch">
-select champion_name_kr, champion_name from champName where champion_name_kr like concat(#{champSearch}, '%') or champion_name like concat(#{champSearch}, '%') 
+select champion_name_kr, champion_name, line from champName where champion_name_kr like concat(#{champSearch}, '%') or champion_name like concat(#{champSearch}, '%') 
 or champion_name_cons like concat(#{champSearch}, '%');
 </select>
 

@@ -22,27 +22,47 @@
 		<div class="aside left"></div>
 		<div class="contentsItems">
 			<div class="contentsItem Search">
-			<div class=search_line_champ>
-				<div class="search_c">
-					<input type="text" id="champSearch" placeholder="search"> <img
-						alt="제작자: Ayub Irawan - Flaticon "
-						src="/img/jhl/free-icon-magnifier-2319177.png" width="30px"
-						height="30px">
+				<div class=search_line_champ>
+					<div class="search_c">
+						<input type="text" id="champSearch" placeholder="search">
+						<img alt="제작자: Ayub Irawan - Flaticon "
+							src="/img/jhl/free-icon-magnifier-2319177.png" width="30px"
+							height="30px">
+					</div>
+					<div class="selectChampline">
+						<!-- 				<div class="lines All" onclick="/champListImg"><span><img src="/img/jhl/positionImg/Position_Plat-All.png">전체</span></div> -->
+						<div class="lines Top" id="top" name="top"
+							onclick="champLine(this.id)">
+							<span><img
+								src="/img/jhl/positionImg/Position_Plat-Top.png">탑</span>
+						</div>
+						<!--  this 사용하면 div에 모든 게 반환됨-->
+						<div class="lines Jug" id="jug" name="jug"
+							onclick="champLine(this.id)">
+							<span><img
+								src="/img/jhl/positionImg/Position_Plat-Jungle.png">정글</span>
+						</div>
+						<div class="lines Mid" id="mid" name="mid"
+							onclick="champLine(this.id)">
+							<span><img
+								src="/img/jhl/positionImg/Position_Plat-Mid.png">미들</span>
+						</div>
+						<div class="lines Bot" id="adc" name="bot"
+							onclick="champLine(this.id)">
+							<span><img
+								src="/img/jhl/positionImg/Position_Plat-Bot.png">바텀</span>
+						</div>
+						<div class="lines Sup" id="sup" name="sup"
+							onclick="champLine(this.id)">
+							<span><img
+								src="/img/jhl/positionImg/Position_Plat-Support.png">서폿</span>
+						</div>
+					</div>
 				</div>
-				<div class="selectChampline">
-<!-- 				<div class="lines All" id="all" onclick="champLine(this.id)"><span>All</span></div> -->
-				<div class="lines Top" id="top" name="top" onclick="champLine(this.id)"><span><img src="/img/jhl/positionImg/Position_Plat-Top.png">탑</span></div>
-				<!--  this 사용하면 div에 모든 게 반환됨-->
-				<div class="lines Jug" id="jug" name="jug" onclick="champLine(this.id)"><span><img src="/img/jhl/positionImg/Position_Plat-Jungle.png">정글</span></div>
-				<div class="lines Mid" id="mid" name ="mid" onclick="champLine(this.id)"><span><img src="/img/jhl/positionImg/Position_Plat-Mid.png">미들</span></div>
-				<div class="lines Bot" id="adc" name="bot" onclick="champLine(this.id)"><span><img src="/img/jhl/positionImg/Position_Plat-Bot.png">바텀</span></div>
-				<div class="lines Sup" id="sup" name="sup" onclick="champLine(this.id)"><span><img src="/img/jhl/positionImg/Position_Plat-Support.png">서폿</span></div>
-				</div>
-			</div>				
 				<div class="champImgItems">
 					<div class="se">
 						<div class="champs">
-							<c:forEach var="champImg" items="${champListImg}" >
+							<c:forEach var="champImg" items="${champListImg}">
 								<div class="champImgItem">
 									<div class="cimgs">
 										<img width="48" height="48" alt="${champImg.champion_name_kr}"
@@ -55,31 +75,47 @@
 						</div>
 					</div>
 
-			
+
 
 				</div>
 			</div>
 			<div class="contentsItem LineRank">
-
-<!-- 				<div class="LineB"> -->
-
-<!-- 					<div class="rankSearch top"><span><img src="/img/jhl/positionImg/Position_Plat-Top.png">탑</span></div> -->
-<!-- 					<div class="rankSearch jug"><span><img src="/img/jhl/positionImg/Position_Plat-Jungle.png">정글</span></div> -->
-<!-- 					<div class="rankSearch mid"><span><img src="/img/jhl/positionImg/Position_Plat-Mid.png">미들</span></div> -->
-<!-- 					<div class="rankSearch bot"><span><img src="/img/jhl/positionImg/Position_Plat-Bot.png">바텀</span></div> -->
-<!-- 					<div class="rankSearch sup"><span><img src="/img/jhl/positionImg/Position_Plat-Support.png">서폿</span></div> -->
-<!-- 				</div> -->
-				<div style="text-align: center; height: 60px; border: 1px solid #8CB9FC; display: flex; align-items: center; margin-bottom: 10px;
-				justify-content: center">챔피언 랭킹</div>
-				<div class="RankTable" style="border: 1px solid #8CB9FC;">
-				<div style="text-align: center; border-bottom: 1px solid #8CB9FC; height: 50px; display: flex; align-items: center; ">
-				<div class="rankSearch">탑</div>
-				<div class="rankSearch">정글</div>
-				<div class = "rankSearch">미들</div>
-				<div class="rankSearch">바텀</div>
-				<div class="rankSearch">서폿</div>
+				<div
+					style="text-align: center; height: 60px; border: 1px solid #8CB9FC; display: flex; align-items: center; margin-bottom: 10px; justify-content: center">
+					챔피언 랭킹 <select>
+						<option value="Emerald+">Emerald+
+						<option value="Diamond+">Diamond+
+						<option value="Master+">Master+
+						<option value="Challenger+">Challenger+
+					</select>
 				</div>
-				<div class="lineRankTable" style="text-align: center; height: 2300px;">라인별 (승률/픽률 등)랭크 테이블</div>
+
+				<div class="RankTable" style="border: 1px solid #8CB9FC;">
+					<div
+						style="text-align: center; border-bottom: 1px solid #8CB9FC; height: 50px; display: flex; align-items: center;">
+						<div class="rankSearch">
+							<span><img
+								src="/img/jhl/positionImg/Position_Plat-Top.png">탑</span>
+						</div>
+						<div class="rankSearch">
+							<span><img
+								src="/img/jhl/positionImg/Position_Plat-Jungle.png">정글</span>
+						</div>
+						<div class="rankSearch">
+							<span><img
+								src="/img/jhl/positionImg/Position_Plat-Mid.png">미들</span>
+						</div>
+						<div class="rankSearch">
+							<span><img
+								src="/img/jhl/positionImg/Position_Plat-Bot.png">바텀</span>
+						</div>
+						<div class="rankSearch">
+							<span><img
+								src="/img/jhl/positionImg/Position_Plat-Support.png">서폿</span>
+						</div>
+					</div>
+					<div class="lineRankTable">라인별 (승률/픽률 등)랭킹 테이블</div>
+					
 				</div>
 			</div>
 		</div>
