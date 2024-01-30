@@ -9,7 +9,7 @@ if (ws == null || ws == '') {
 ws.addEventListener("message", (event) => {
 
 	let eventjson = JSON.parse(event.data)
-	//	console.log(eventjson)
+	console.log(eventjson)
 
 	if (eventjson.work == 'roomUpdate') { // 방만들고 업데이트하기
 		duoMainInfo()
@@ -68,10 +68,12 @@ ws.addEventListener("message", (event) => {
 
 
 	} else if (eventjson.work == "sendMsg") { //메세지 보내기 //완료
-
+		let userId = $('#userId').val()
 		let roomNum = $('#roomNum').val()
+
 		//대화창 안에서 보내기
-		if (roomNum = eventjson.rcnt) {
+
+		if (roomNum == eventjson.rcnt) {
 
 			chattcontents(eventjson)
 

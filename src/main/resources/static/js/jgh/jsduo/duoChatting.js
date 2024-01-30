@@ -106,8 +106,15 @@ function send() {
 
 //채팅 작성 시 
 function chattcontents(data) { //저장한 채팅과 같은방에서 실행
+	console.log(data)
+	
+	
+	
+	
+	
 	let userId = $('#userId').val()
 	var css;
+	
 	if (data.userId == userId) { //작성자와 로그인한 사람이 같음
 		css = ' class=me';
 		userIdcheck = userId

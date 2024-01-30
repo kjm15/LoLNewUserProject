@@ -9,7 +9,7 @@ import org.apache.ibatis.annotations.Mapper;
 import com.fasterxml.jackson.databind.JsonNode;
 import com.project.projectFinal.dto.DuoChattRoomDto;
 import com.project.projectFinal.dto.DuoSearchDto;
-import com.project.projectFinal.dto.MsgDto;
+import com.project.projectFinal.dto.DuoMsgDto;
 
 @Mapper
 public interface DuoDao {
@@ -26,15 +26,15 @@ public interface DuoDao {
 
 	DuoSearchDto nowlogin(DuoSearchDto duoSearchDto);
 
-	MsgDto msgSave(MsgDto msgDto);
+	DuoMsgDto msgSave(DuoMsgDto msgDto);
 
 	
 	
 	
 	
-	MsgDto msgRead(MsgDto msgDto);
+	DuoMsgDto msgRead(DuoMsgDto msgDto);
 
-	ArrayList<HashMap<String, MsgDto>> msgAll(MsgDto msgDto);
+	ArrayList<HashMap<String, DuoMsgDto>> msgAll(DuoMsgDto msgDto);
 
 	DuoChattRoomDto searchSameRoom(DuoSearchDto duoSearchDto);
 

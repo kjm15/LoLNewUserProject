@@ -13,7 +13,7 @@ import com.fasterxml.jackson.databind.JsonNode;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.project.projectFinal.dto.DuoChattRoomDto;
 import com.project.projectFinal.dto.DuoSearchDto;
-import com.project.projectFinal.dto.MsgDto;
+import com.project.projectFinal.dto.DuoMsgDto;
 import com.project.projectFinal.service.DuoService;
 
 import jakarta.servlet.http.HttpSession;
@@ -49,11 +49,11 @@ public class RestDuoController {
 
 	@PostMapping("/nowlogin")
 	public DuoSearchDto nowlogin(DuoSearchDto duoSearchDto, HttpSession session) {
-
+		log.info("==={}",duoSearchDto);
 		String userId = (String) session.getAttribute("userId");
 		DuoSearchDto dDto = duoService.nowlogin(duoSearchDto); // userId = hostId
 
-		dDto.setFriendId(userId);
+		dDto.setUserId(userId);
 
 //		log.info("========={}", duoSearchDto);
 		return dDto;
@@ -61,7 +61,7 @@ public class RestDuoController {
 	}
 
 	@PostMapping("/msgSave")
-	public MsgDto msgSave(MsgDto msgDto) {
+	public DuoMsgDto msgSave(DuoMsgDto msgDto) {
 //		log.info("====="+msgDto);
 
 		return duoService.msgSave(msgDto);
@@ -69,14 +69,14 @@ public class RestDuoController {
 	}
 
 	@PostMapping("/msgRead")
-	public MsgDto msgRead(MsgDto msgDto) {
+	public DuoMsgDto msgRead(DuoMsgDto msgDto) {
 
 		return duoService.msgRead(msgDto);
 
 	}
 
 	@PostMapping("/msgAll")
-	public ArrayList<HashMap<String, MsgDto>> msgAll(MsgDto msgDto) {
+	public ArrayList<HashMap<String, DuoMsgDto>> msgAll(DuoMsgDto msgDto) {
 	
 		return duoService.msgAll(msgDto);
 

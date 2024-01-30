@@ -12,7 +12,7 @@ import com.project.projectFinal.customEx.CustomException;
 import com.project.projectFinal.dao.DuoDao;
 import com.project.projectFinal.dto.DuoChattRoomDto;
 import com.project.projectFinal.dto.DuoSearchDto;
-import com.project.projectFinal.dto.MsgDto;
+import com.project.projectFinal.dto.DuoMsgDto;
 
 import lombok.extern.slf4j.Slf4j;
 
@@ -74,16 +74,16 @@ public class DuoService {
 		return result;
 	}
 
-	public MsgDto msgSave(MsgDto msgDto) {
+	public DuoMsgDto msgSave(DuoMsgDto msgDto) {
 		return duoDao.msgSave(msgDto);
 	}
 
-	public MsgDto msgRead(MsgDto msgDto) {
+	public DuoMsgDto msgRead(DuoMsgDto msgDto) {
 
 		return duoDao.msgRead(msgDto);
 	}
 
-	public ArrayList<HashMap<String, MsgDto>> msgAll(MsgDto msgDto) {
+	public ArrayList<HashMap<String, DuoMsgDto>> msgAll(DuoMsgDto msgDto) {
 
 		return duoDao.msgAll(msgDto);
 	}

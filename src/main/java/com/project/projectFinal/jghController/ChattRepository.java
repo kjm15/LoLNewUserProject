@@ -10,7 +10,7 @@ import com.project.projectFinal.customEx.CustomException;
 import com.project.projectFinal.dao.MsgDao;
 import com.project.projectFinal.dto.DuoChattRoomDto;
 import com.project.projectFinal.dto.DuoSearchDto;
-import com.project.projectFinal.dto.MsgDto;
+import com.project.projectFinal.dto.DuoMsgDto;
 
 import lombok.extern.slf4j.Slf4j;
 
@@ -22,7 +22,7 @@ public class ChattRepository {
 
 	public void insertMsg(HashMap<String, String> map) {
 
-		MsgDto msgDto = new MsgDto();
+		DuoMsgDto msgDto = new DuoMsgDto();
 
 		msgDto.setRcnt(String.valueOf(map.get("rcnt")));
 		msgDto.setUserId(map.get("userId"));
