@@ -5,11 +5,10 @@
 
 .aside {
 	width: 700px;
-/* 	border: 2px solid rgb(201, 252, 169); */
+	/* 	border: 2px solid rgb(201, 252, 169); */
 }
 
 .search_line_champ {
-
 	width: 455px;
 }
 
@@ -33,9 +32,7 @@
 	padding: 0;
 	border: none;
 	cursor: pointer;
-
 }
-
 
 .lines span {
 	position: relative;
@@ -43,9 +40,7 @@
 	color: white;
 	text-align: center;
 	width: 100%;
-
 }
-
 
 .lines:hover {
 	background: transparent;
@@ -59,7 +54,8 @@
 }
 
 .lines img {
-	filter: invert(54%) sepia(6%) saturate(4603%) hue-rotate(211deg) brightness(127%) contrast(106%);
+	filter: invert(54%) sepia(6%) saturate(4603%) hue-rotate(211deg)
+		brightness(127%) contrast(106%);
 	width: 25px;
 	height: 25px
 }
@@ -67,12 +63,7 @@
 .contentsItems {
 	display: flex;
 	height: 2400px;
-/* 	border: 1px solid lightpink; */
 }
-
-/*.contentsItem {*/
-/*	width: 50%;*/
-/*}*/
 
 .search_c {
 	width: 455px;
@@ -95,8 +86,6 @@ input:focus {
 	border: 1px solid #8CB9FC;
 	justify-content: center;
 	margin-right: 8px;
-
-
 }
 
 .se {
@@ -125,8 +114,6 @@ input:focus {
 	cursor: pointer;
 }
 
-
-
 .cimgs {
 	overflow: hidden;
 	border-radius: 5px;
@@ -145,38 +132,41 @@ input:focus {
 	text-align: center;
 }
 
-#searchC {
-	border: none;
-	width: 300px;
-	height: 30px;
-	margin-right: 10px;
-	margin-bottom: 5px;
-}
-
 .rankSearch {
+	align-items: center;
+	display: flex;
+	justify-content: center;
+	background-image: linear-gradient(315deg, #D6E5FC 0%, #9DC4FD 74%);
+	line-height: 50px;
+	padding: 0;
 	border: none;
-	background-color: white;
+	cursor: pointer;
+	border: none;
 	width: 100px;
-	margin-bottom: 5px;
 }
 
 .rankSearch:hover {
-	background-color: lightblue;
+	background: transparent;
+	border: 1px solid #8CB9FC;
 }
 
-.rankSearch:active {
-	border: none;
-	outline: none;
+.rankSearch img {
+	filter: invert(54%) sepia(6%) saturate(4603%) hue-rotate(211deg)
+		brightness(127%) contrast(106%);
+	width: 25px;
+	height: 25px
 }
 
-
-/* .LineB { */
-/* 	display: flex; */
-/* 	align-items: center; */
-/* 	border: 1px solid rgb(159, 168, 218); */
-/* } */
-
-.lineRankTable{
-	
-	
+.rankSearch span {
+	position: relative;
+	display: block;
+	color: white;
+	text-align: center;
+	width: 100%;
 }
+
+.rankSearch span:hover {
+	color: #8CB9FC;
+	width: 100%;
+}
+
