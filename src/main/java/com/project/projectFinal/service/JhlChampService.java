@@ -25,9 +25,9 @@ public class JhlChampService {
 		return champDao.champSearch(champDto);
 	}
 
-	public List<HashMap<String, String>> topChampSelect(JhlChampDto champDto) {
 
-		return champDao.topChampSelect(champDto);
+	public List<HashMap<String, String>> champLineSelect(JhlChampDto champDto) {
+		return champDao.champLineSelect(champDto);
 	}
 
 
