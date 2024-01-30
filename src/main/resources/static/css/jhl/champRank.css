@@ -1,11 +1,11 @@
 .contents {
-	/*	height: 2100px;*/
 	display: flex;
+	background-color: white;
 }
 
 .aside {
 	width: 700px;
-	border: 2px solid rgb(201, 252, 169);
+/* 	border: 2px solid rgb(201, 252, 169); */
 }
 
 .search_line_champ {
@@ -67,7 +67,7 @@
 .contentsItems {
 	display: flex;
 	height: 2400px;
-	border: 1px solid lightpink;
+/* 	border: 1px solid lightpink; */
 }
 
 /*.contentsItem {*/
@@ -153,26 +153,30 @@ input:focus {
 	margin-bottom: 5px;
 }
 
-.seletB {
+.rankSearch {
 	border: none;
 	background-color: white;
 	width: 100px;
 	margin-bottom: 5px;
 }
 
-.seletB:hover {
+.rankSearch:hover {
 	background-color: lightblue;
 }
 
-.seletB:active {
+.rankSearch:active {
 	border: none;
 	outline: none;
 }
 
 
+/* .LineB { */
+/* 	display: flex; */
+/* 	align-items: center; */
+/* 	border: 1px solid rgb(159, 168, 218); */
+/* } */
 
-.LineB {
-	display: flex;
-	align-items: center;
-	border: 1px solid rgb(159, 168, 218);
+.lineRankTable{
+	
+	
 }

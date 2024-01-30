@@ -11,13 +11,12 @@ import com.project.projectFinal.dto.JhlChampDto;
 @Mapper
 public interface JhlChampDao {
 
-	List<HashMap<String, String>> topChampSelect = null;
 
 	public List<HashMap<String, String>> champListImg();
 
 	public List<HashMap<String, String>> champSearch(JhlChampDto champDto);
 
-	public List<HashMap<String, String>> topChampSelect(JhlChampDto champDto);
+	public List<HashMap<String, String>> champLineSelect(JhlChampDto champDto);
 
 
 
