@@ -1,6 +1,10 @@
 /**
  * 
  */
+
+
+
+
 $('#champSearch').on('keyup', function() {
 	let searchChamp = $('#champSearch').val();
 
@@ -22,18 +26,19 @@ $('#champSearch').on('keyup', function() {
 			}
 			let str4 = "</div>"
 			let str5 = "</div>"
-			$('.champImgItems').html(str1 + str2 + str3 + str4 + str5)
+			$('.champImgItems').html(str1 + str2 + str3 + str4 + str5);
+			console.log(res)
+			
 		}
 	});
 });
 function champLine(lineSelect) {
-	
 	$.ajax({
 		type: "post",
 		url: "/champLineSelect",
-		data: { "line": lineSelect },
+		data: { "line": lineSelect},
 		success: function(res) {
-
+		
 			let str1 = "<div class='se'>"
 			let str2 = "<div class ='champs'> ";
 			let str3 = '';
@@ -47,12 +52,15 @@ function champLine(lineSelect) {
 			let str4 = "</div>"
 			let str5 = "</div>"
 			$('.champImgItems').html(str1 + str2 + str3 + str4 + str5)
-
 			console.log(lineSelect)
+			console.log(res)
+			
 		}
-	});
+	})
 	
-	
-	
-	
+
+
+
+
+
 }
