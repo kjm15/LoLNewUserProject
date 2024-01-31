@@ -19,25 +19,25 @@ public class MemberController {
 	@Autowired
 	MemberService memberService;
 
-	////POST매핑
+	//// POST매핑
 
 	@PostMapping("/login") // 로그인 구현
-	public String login(MemberDto memberDto, HttpSession session, Model model,RedirectAttributes redirectAttributes) {
-		
-		memberService.login(memberDto); //성공 or 실패시 에러
-		
-		//로그인 아이디 세션에 저장
-		session.setAttribute("userId", memberDto.getUserId());
-		
-		redirectAttributes.addFlashAttribute("msg","로그인성공");
+	public String login(MemberDto memberDto, HttpSession session, Model model, RedirectAttributes redirectAttributes) {
+
+		MemberDto a = memberService.login(memberDto); // 성공 or 실패시 에러
+
+		// 로그인 아이디 세션에 저장
+		session.setAttribute("userId", a.getUserId());
+
+		redirectAttributes.addFlashAttribute("msg", "로그인성공");
 		return "redirect:/main";
 
 	}
 
 	@PostMapping("/join") // 회원가입구현
-	public String join(MemberDto memberDto, Model model,RedirectAttributes redirectAttributes) {
-		memberService.join(memberDto);//성공 or 실패시 에러
-		redirectAttributes.addFlashAttribute("msg","로그인성공");	
+	public String join(MemberDto memberDto, Model model, RedirectAttributes redirectAttributes) {
+		memberService.join(memberDto);// 성공 or 실패시 에러
+		redirectAttributes.addFlashAttribute("msg", "로그인성공");
 		return "redirect:/main";
 	}
 

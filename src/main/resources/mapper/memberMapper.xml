@@ -85,8 +85,7 @@
 	</select>
 
 	<select id="checkAdmin">
-		select adiminLevel from memberT where
-		userId=#{userId};
+		select adminLevel from memberT where userId=#{userId};
 	</select>
 
 

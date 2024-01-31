@@ -11,9 +11,14 @@ import lombok.extern.slf4j.Slf4j;
 @RequestMapping("/admin")
 public class AdminController {
 	
-	@GetMapping
+	@GetMapping("/middle")
 	public String admin() {
 
 		return "admin/mainAdmin";
+	}
+	@GetMapping("/super")
+	public String superAdmin() {
+
+		return "admin/superAdmin";
 	}
 }

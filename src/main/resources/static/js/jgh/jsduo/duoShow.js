@@ -11,7 +11,7 @@ function duoMainInfo() {
 		type: 'post',
 		url: '/jgh/duostartinfo',
 		success: function(res) {
-			console.log(res)
+//			console.log(res)
 			let str = ''
 			for (let i in res) {
 
