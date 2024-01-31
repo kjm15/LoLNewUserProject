@@ -152,10 +152,10 @@
 											<c:forEach var="champImg" items="${champListImg}">
 												<div class="champImgItem">
 													<div class="cimgs">
-														<img width="48" height="48"
-															alt="${champImg.champion_name_kr}"
-															src="https://ddragon.leagueoflegends.com/cdn/14.2.1/img/champion/${champImg.champion_name}.png"
-															class="championImg">
+<!-- 														<img width="48" height="48" -->
+<%-- 															alt="${champImg.champion_name_kr}" --%>
+<%-- 															src="https://ddragon.leagueoflegends.com/cdn/14.2.1/img/champion/${champImg.champion_name}.png" --%>
+<!-- 															class="championImg"> -->
 													</div>
 													<span class="champName">${champImg.champion_name_kr}</span>
 												</div>
