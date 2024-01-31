@@ -8,14 +8,14 @@ import lombok.NoArgsConstructor;
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
-public class JhlChampDto {
+public class ChampionImageDto {
 	// 새로운 db 만들 예정
 	private int championid;
-	private String champion_name_kr;
-	private String champion_name;
-	private String champion_name_cons;
+	private String champion_name_kr; // 한국이름
+	private String champion_name; // 영어이름
+	private String champion_name_cons; //알리아스
 	
 	private String champSearch;
-	
 	private String line;
+	
 }

@@ -11,13 +11,20 @@ import lombok.NoArgsConstructor;
 @Data
 @NoArgsConstructor
 @AllArgsConstructor
-public class PostDto {
+public class RiotApiDto {
+
 	private String puuid;
-	private String gameName;
-	private String tagLine;
-	private String matchId;
+	private String gameName; // 라이엇 아이디
+	private String tagLine; // 라이엇 패그
 	private JSONObject matches;
 	private JSONObject timeline;
-	private List<PostDto> gameId;
 
+	private List<RiotApiDto> gameId;
+	private List<String> matchId; // 매치 아이디
+	
+	//송태민 추가
+	private String riotIdGameName;
+	private String gameMode;
+	
+	
 }
