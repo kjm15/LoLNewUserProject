@@ -43,34 +43,9 @@
 		0,3;
 	</select>
 
-	<select id="itemInfo">
-		select * from itemInfo where itemId = ${itemId}
+	<select id="itemToolTip">
+		select * from itemToolTipT where itemId = ${itemId}
 	</select>
 
-	<!-- 1코어 -->
 	
-	
-	
-	<!-- 1코어 리스트 만들기 (30개) -->
-	<select id="itemIdList">
-		select
-		itemId1 as itemId,
-		count(itemId1) as xx
-		from
-		${tier}_lol_datas
-		group by itemId
-		order by xx desc
-		limit 0,30;
-	</select>
-
-	<!-- 1코어 아이템 정보 받아오기 -->
-	<select id="coreItemInfo1">
-		select
-		count(itemId1) as itemCnt, <!-- itemCnt = lineAllCnt -->
-		count(if(win = 'True', itemId1 , null)) as itemWinCnt
-		from ${tier}_lol_datas
-		where itemId1 = #{itemId};
-	</select>
-
-
 </mapper>
