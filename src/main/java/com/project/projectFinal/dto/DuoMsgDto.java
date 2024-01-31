@@ -12,7 +12,19 @@ public class DuoMsgDto {
 	private String rCnt; //방번호
 	private String msg;//메세지
 	private String date;
+	
+	
 	private String hostId;
 	private String guestId;
 		
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
 }

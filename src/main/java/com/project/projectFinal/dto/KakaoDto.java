@@ -9,7 +9,7 @@ import lombok.NoArgsConstructor;
 @Data
 @NoArgsConstructor
 @AllArgsConstructor
-public class PaymentDto {
+public class KakaoDto {
 
 	private int pCnt;
 	private String userId;

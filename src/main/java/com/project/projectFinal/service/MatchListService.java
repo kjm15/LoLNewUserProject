@@ -1,7 +1,6 @@
 package com.project.projectFinal.service;
 
 import java.util.ArrayList;
-import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
@@ -9,8 +8,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.project.projectFinal.dao.StmUserListDao;
-
-import com.project.projectFinal.dto.StmUserListDto;
+import com.project.projectFinal.dto.RiotApiDto;
 
 @Service
 public class MatchListService {
@@ -19,7 +17,7 @@ public class MatchListService {
 	@Autowired
 	StmUserListDao stmChampListDao;
 	
-	public String puuId(StmUserListDto userListDto) {
+	public String puuId(RiotApiDto userListDto) {
 		String puuid = webmatchListService.getpuuId(userListDto.getGameName(), userListDto.getTagLine());
 		  return puuid;
 	}

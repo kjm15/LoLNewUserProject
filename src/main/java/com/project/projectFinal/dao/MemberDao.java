@@ -3,7 +3,7 @@ package com.project.projectFinal.dao;
 import org.apache.ibatis.annotations.Mapper;
 
 import com.project.projectFinal.dto.MemberDto;
-import com.project.projectFinal.dto.PaymentDto;
+import com.project.projectFinal.dto.KakaoDto;
 
 @Mapper
 public interface MemberDao {
@@ -14,11 +14,11 @@ public interface MemberDao {
 
 	int find(MemberDto memberDto);
 
-	int payDbSave(PaymentDto paymentDto);
+	int payDbSave(KakaoDto paymentDto);
 
 	MemberDto main(MemberDto memberDto);
 
-	int updatePoint(PaymentDto paymentDto);
+	int updatePoint(KakaoDto paymentDto);
 
 	int ajaxtest(MemberDto memberDto);
 

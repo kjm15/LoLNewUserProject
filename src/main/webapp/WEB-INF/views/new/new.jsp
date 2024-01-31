@@ -2,12 +2,7 @@
 <!DOCTYPE HTML>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
-<!--
-	Stellar by HTML5 UP
-	html5up.net | @ajlkn
-	Free for personal and commercial use under the CCA 3.0 license (html5up.net/license)
--->
-<html>
+
 <head>
 <title>데이터붐</title>
 <meta charset="utf-8" />
@@ -16,6 +11,7 @@
 <link rel="stylesheet" href="new/assets/css/main.css" />
 <noscript>
 	<link rel="stylesheet" href="new/assets/css/noscript.css" />
+	<link rel="stylesheet" href="new/assets/css/div.css" />
 </noscript>
 </head>
 <body class="is-preload">
@@ -29,7 +25,7 @@
 			<h1>태민이 검색바</h1><p></p>
 			<p>검색바 길게 나오는곳=========================자리 넣어둠</p>
 		</header>
-
+	
 		<!-- Nav -->
 		<nav id="nav">
 			<ul>
@@ -48,18 +44,15 @@
 
 			<!-- Introduction -->
 			<section id="intro" class="main">
-				<div class="spotlight">
-					<div class="content">
-						<header class="major">
-							<h2>동근이 검색동그라미</h2>
-						</header>
-					
-						<ul class="actions">
-							<li><a href="generic.html" class="button">Learn More</a></li>
-						</ul>
-					</div>
-					
+				
+				<div class = "firstSection">
+				
+				ggg
+				
+				
 				</div>
+				
+				
 			</section>
 
 			<!-- First Section -->
