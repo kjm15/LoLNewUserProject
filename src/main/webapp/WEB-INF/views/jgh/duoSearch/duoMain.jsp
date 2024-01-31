@@ -10,7 +10,7 @@
 	<!-- 본인아이디 -->
 	<input type="hidden" value="${userId}" id="userId" />
 	<!-- 	채팅번호,방번호, 현재 테이블에서 누른 방번호 알수있음-->
-	<input type="hidden" value="" id="roomNum" />
+	<input type="hidden" value="" id="rCnt" />
 	<!-- 	//요청자 -->
 	<input type="hidden" value="" id="guestId" />
 	<!-- 	//글작성자 -->

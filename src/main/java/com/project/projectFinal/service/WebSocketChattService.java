@@ -12,7 +12,7 @@ import org.springframework.util.MultiValueMap;
 import com.fasterxml.jackson.core.type.TypeReference;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.project.projectFinal.config.CTXProvider;
-import com.project.projectFinal.dto.MsgDto;
+import com.project.projectFinal.dto.DuoMsgDto;
 
 import jakarta.websocket.OnClose;
 import jakarta.websocket.OnMessage;
@@ -29,7 +29,7 @@ import lombok.extern.slf4j.Slf4j;
 public class WebSocketChattService {
 
 	private ChatService cServ = CTXProvider.ctx.getBean(ChatService.class);
-
+	
 	private static Set<Session> clients = Collections.synchronizedSet(new HashSet<Session>());
 
 	@OnMessage // 메세지 수신시
@@ -38,7 +38,7 @@ public class WebSocketChattService {
 		//msg >> hashmap으로 변환시켜주는 구문
 		ObjectMapper mapper = new ObjectMapper();
 		HashMap<String, String> map = new HashMap<String, String>();
-		MsgDto msgDto = new MsgDto();
+		DuoMsgDto msgDto = new DuoMsgDto();
 		map = mapper.readValue(msg, new TypeReference<HashMap<String, String>>() {});	
 		String msg1 = msg;
 		//변환완료후 서비스로 이동

@@ -9,7 +9,7 @@ if (ws == null || ws == '') {
 ws.addEventListener("message", (event) => {
 
 	let eventjson = JSON.parse(event.data)
-	//	console.log(eventjson)
+	console.log(eventjson)
 
 	if (eventjson.work == 'roomUpdate') { // 방만들고 업데이트하기
 		duoMainInfo()
@@ -22,7 +22,7 @@ ws.addEventListener("message", (event) => {
 
 			document.getElementById("hostId").value = eventjson.hostId;
 			document.getElementById("guestId").value = eventjson.guestId;
-			document.getElementById("roomNum").value = eventjson.roomNum;
+			document.getElementById("rCnt").value = eventjson.rCnt;
 
 			createQuestion(eventjson)
 
@@ -39,10 +39,10 @@ ws.addEventListener("message", (event) => {
 			$('#talk').html("");
 			open()
 			$('.chatthead').empty()
-			$('.chatthead').append("듀오채팅     [" + eventjson.roomNum + "번방]")
+			$('.chatthead').append("듀오채팅     [" + eventjson.rCnt + "번방]")
 			$('#chatt').show();
 			$('.wrap').hide();
-			$('#' + eventjson.roomNum).remove()
+			$('#' + eventjson.rCnt).remove()
 			$('.menu').empty()
 			$("#msg").attr("disabled", false);
 			$('#talck').empty()
@@ -64,14 +64,16 @@ ws.addEventListener("message", (event) => {
 		$('#duoPartyCancel').hide();
 		$('#flagcollapse').html('=================')
 		alert('거절하였습니다.')
-		$('#' + dcntflag).remove()
+		$('#' + rCntflag).remove()
 
 
 	} else if (eventjson.work == "sendMsg") { //메세지 보내기 //완료
+		let userId = $('#userId').val()
+		let rCnt = $('#rCnt').val()
 
-		let roomNum = $('#roomNum').val()
 		//대화창 안에서 보내기
-		if (roomNum = eventjson.rcnt) {
+
+		if (rCnt == eventjson.rCnt) {
 
 			chattcontents(eventjson)
 

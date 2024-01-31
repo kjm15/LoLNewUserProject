@@ -12,20 +12,20 @@
 	</insert>
 
 	<insert id="insertMsg">
-		insert IGNORE into msgT(rcnt,userId,msg)
-		values(#{rcnt},#{userId},#{msg});
+		insert IGNORE into msgT(rCnt,userId,msg)
+		values(#{rCnt},#{userId},#{msg});
 	</insert>
 
 
 	<delete id="connectRoom">
 
-		insert IGNORE into  duoChattRoomT(roomNum,
+		insert IGNORE into  duoChattRoomT(rCnt,
 		hostId,guestId)
-		values(#{roomNum},#{hostId},#{guestId});
+		values(#{rCnt},#{hostId},#{guestId});
 
 		delete from
-		duoT where dcnt =
-		#{roomNum};
+		duoT where rCnt =
+		#{rCnt};
 	</delete>
 
 </mapper>

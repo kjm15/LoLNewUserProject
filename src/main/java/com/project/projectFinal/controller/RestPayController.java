@@ -7,7 +7,7 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.project.projectFinal.dto.PaymentDto;
+import com.project.projectFinal.dto.KakaoDto;
 import com.project.projectFinal.service.MemberService;
 import com.siot.IamportRestClient.IamportClient;
 import com.siot.IamportRestClient.exception.IamportResponseException;
@@ -42,7 +42,7 @@ public class RestPayController {
 	}
 
 	@PostMapping("/payDbSave")
-	public String payDbSave(PaymentDto paymentDto) {
+	public String payDbSave(KakaoDto paymentDto) {
 		
 		memberService.payDbSave(paymentDto);
 		

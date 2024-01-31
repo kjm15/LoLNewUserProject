@@ -7,7 +7,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.project.projectFinal.dto.JhlChampDto;
+import com.project.projectFinal.dto.ChampionImageDto;
 import com.project.projectFinal.service.JhlChampService;
 
 
@@ -18,13 +18,13 @@ public class JhlRestChampController {
 	JhlChampService champService;
 	
 	@PostMapping("/champSearch")
-	public List<HashMap<String, String>> champSearch(JhlChampDto champDto) {
+	public List<HashMap<String, String>> champSearch(ChampionImageDto champDto) {
 		return champService.champSearch(champDto);
 	}
 	
 	
 	@PostMapping("/champLineSelect")
-	public List<HashMap<String, String>> champLineSelect(JhlChampDto champDto){
+	public List<HashMap<String, String>> champLineSelect(ChampionImageDto champDto){
 		return champService.champLineSelect(champDto);
 	}
 }

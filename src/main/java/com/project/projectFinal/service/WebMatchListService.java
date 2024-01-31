@@ -1,16 +1,12 @@
 package com.project.projectFinal.service;
 
-import java.util.ArrayList;
-import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
 import org.springframework.stereotype.Service;
 import org.springframework.web.reactive.function.client.WebClient;
 
-import com.project.projectFinal.dto.PostDto;
-
-import com.project.projectFinal.dto.StmUserListDto;
+import com.project.projectFinal.dto.RiotApiDto;
 
 import lombok.extern.slf4j.Slf4j;
 
@@ -25,14 +21,14 @@ public class WebMatchListService {
 
 		WebClient webClient = WebClient.builder().baseUrl(url).build();
 
-		StmUserListDto response = webClient.get().uri(uriBuilder -> uriBuilder.build()).retrieve()
-				.bodyToMono(StmUserListDto.class).block();
+		RiotApiDto response = webClient.get().uri(uriBuilder -> uriBuilder.build()).retrieve()
+				.bodyToMono(RiotApiDto.class).block();
 
 		return response.getPuuid();
 	}
 
 	public List<String> MatchList(String puuid) {
-		String count = "10"; // 인트쓰면 인식 못 함 (문자열로 써야함)
+		String count = "3"; // 인트쓰면 인식 못 함 (문자열로 써야함)
 
 		String url = "https://asia.api.riotgames.com/lol/match/v5/matches/by-puuid/" + puuid
 				+ "/ids?start=0&count=" + count + "&api_key=" + api_key;

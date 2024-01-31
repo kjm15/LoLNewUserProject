@@ -8,7 +8,7 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import com.project.projectFinal.dto.PostDto;
+import com.project.projectFinal.dto.RiotApiDto;
 import com.project.projectFinal.dto.itemInfoDto;
 
 import lombok.extern.slf4j.Slf4j;
@@ -22,7 +22,7 @@ public class MainService {
 
 	public List<String> puuId(String gameName, String tagLine) {
 		
-		List<PostDto> iList = new LinkedList<>();
+		List<RiotApiDto> iList = new LinkedList<>();
 
 		String puuid = webClientServiceImpl.getPuuId(gameName, tagLine);
 		List<String> gList = webClientServiceImpl.getgameid(puuid);
