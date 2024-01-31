@@ -10,10 +10,15 @@
 	content="width=device-width, initial-scale=1, user-scalable=no" />
 <script type="text/javascript" src="https://code.jquery.com/jquery-1.12.4.min.js" ></script>	
 <link rel="stylesheet" href="new/assets/css/main.css" />
-<noscript>
-	<link rel="stylesheet" href="new/assets/css/noscript.css" />
-	<link rel="stylesheet" href="new/assets/css/div.css" />
-</noscript>
+<link rel="stylesheet" href="new/assets/css/div.css" />
+<link rel="stylesheet" href="new/assets/css/kdg.css" />
+<link rel="stylesheet" href="new/assets/css/jhl.css" />
+
+
+
+
+
+
 </head>
 <body class="is-preload">
 
@@ -22,11 +27,40 @@
 
 		<!-- Header -->
 		<header id="header" class="alt">
-			<span class="logo"><img src="images/logo.svg" alt="" /></span>
-			<h1>태민이 검색바</h1>
-			<p></p>
-			<p>검색바 길게 나오는곳=========================자리 넣어둠</p>
+
+
+			<h1>데이터 붐입니다.</h1>
 		</header>
+		<span class="logo"><img src="images/logo.svg" alt="" /></span>
+		<h1 align="center">태민이 검색바</h1>
+
+
+
+		<!-- 			송태민시작 -->
+
+		<div class="tcontainer">
+			<div class="tleft">
+				<input type="text" id="gameName" name="gameName" placeholder="아이디"
+					value="깡통차기국내1위">
+			</div>
+			<div class="tcenter">
+				<input type="text" id="tagLine" name="tagLine" placeholder="태그"
+					value="KR1">
+			</div>
+			<div class="tright">
+				<input type="button" id="getpuuid" value="검색">
+
+			</div>
+		</div>
+
+		<p></p>
+
+
+
+		<!-- 			송태민끝 -->
+
+
+
 
 		<!-- Nav -->
 		<nav id="nav">
@@ -46,6 +80,7 @@
 <!-- 						 Introduction -->
 		
 <!-- 						<section id="intro" class="main"> -->
+
 
 <!-- 							<div class = "firstSection"> -->
 
@@ -140,5 +175,14 @@
 	<!-- item build (ajax) js 들어갈곳 -->
 	<script defer src="../js/kdg/item/itemBuild.js" /></script>
 
+<!-- Scripts -->
+<script src="new/assets/js/jquery.min.js"></script>
+<script src="new/assets/js/jquery.scrollex.min.js"></script>
+<script src="new/assets/js/jquery.scrolly.min.js"></script>
+<script src="new/assets/js/browser.min.js"></script>
+<script src="new/assets/js/breakpoints.min.js"></script>
+<script src="new/assets/js/util.js"></script>
+<script src="new/assets/js/main.js"></script>
+<script src="new/assets/js/jhl.js"></script>
 </body>
 </html>

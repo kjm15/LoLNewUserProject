@@ -1,11 +1,60 @@
-div .firstSection  {
-	height: 300px;
-	width : 100%;
-	border: 1px solid #000;
+#container {
+	display: flex;
 }
 
-div .firstSection .left{
-	
-	
-	
-}   
+#box-left {
+/* 	background: red; */
+	flex-basis: 35%;
+}
+
+#box-center {
+/* 	background: orange; */
+	flex: 1;
+	flex-basis: 2%;
+	text-align: center;
+}
+
+#box-right {
+	background: yellow;
+	flex-basis: 63%;
+	text-align: right;
+}
+
+#bleft {
+	flex-basis: 40%;
+}
+
+#bcenter {
+	flex-basis: 20%;
+	text-align: center;
+}
+
+#bright {
+	flex-basis: 40%;
+}
+
+#container1 {
+	display: flex;
+}
+
+.tcontainer {
+	display: flex;
+}
+
+.tleft {
+	flex-basis: 70%;
+}
+
+.tcenter {
+	flex-basis: 20%;
+	/*   text-align: center; */
+}
+
+.tright {
+	flex-basis: 10%;
+}
+
+/* .jhl1{ */
+
+/* 	height : 200%; */
+/* } */

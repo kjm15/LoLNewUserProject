@@ -1,0 +1,24 @@
+/* new */
+
+#myChamp {
+	width: 100%;
+	height: 100%;
+	position: relative;
+	border-radius: 50%;
+	cursor: url(../../img/unavailable.png) 2 2, auto;
+}
+#enemyChamp {
+	width: 100%;
+	height: 100%;
+	position: relative;
+	border-radius: 50%;
+	cursor: url(../../img/unavailable.png) 2 2, auto;
+}
+#vs {
+	top : 25%;
+	width: 100%;
+	height: 50%;
+	
+	position: relative;
+
+}
