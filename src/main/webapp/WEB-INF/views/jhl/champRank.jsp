@@ -8,6 +8,7 @@
 <title>Insert title here</title>
 <script type="text/javascript"
 	src="https://code.jquery.com/jquery-1.12.4.min.js"></script>
+
 </head>
 <body>
 	<%@include file="../inc/header.jsp"%>
@@ -16,10 +17,11 @@
 	<!-- <div> -->
 	<h1>챔피언 랭크</h1>
 	<div class="contents">
-
+<input type="hidden" value="">
 
 
 		<div class="aside left"></div>
+		${champListImg}
 		<div class="contentsItems">
 			<div class="contentsItem Search">
 				<div class=search_line_champ>
@@ -30,29 +32,32 @@
 							height="30px">
 					</div>
 					<div class="selectChampline">
-						<!-- 				<div class="lines All" onclick="/champListImg"><span><img src="/img/jhl/positionImg/Position_Plat-All.png">전체</span></div> -->
-						<div class="lines Top" id="top" name="top"
+						<div class="lines All" id="champAll">
+							<span><img
+								src="/img/jhl/positionImg/Position_Plat-All.png">전체</span>
+						</div>
+						<div class="lines Top" id="top" 
 							onclick="champLine(this.id)">
 							<span><img
 								src="/img/jhl/positionImg/Position_Plat-Top.png">탑</span>
 						</div>
 						<!--  this 사용하면 div에 모든 게 반환됨-->
-						<div class="lines Jug" id="jug" name="jug"
+						<div class="lines Jug" id="jug"
 							onclick="champLine(this.id)">
 							<span><img
 								src="/img/jhl/positionImg/Position_Plat-Jungle.png">정글</span>
 						</div>
-						<div class="lines Mid" id="mid" name="mid"
+						<div class="lines Mid" id="mid" 
 							onclick="champLine(this.id)">
 							<span><img
 								src="/img/jhl/positionImg/Position_Plat-Mid.png">미들</span>
 						</div>
-						<div class="lines Bot" id="adc" name="bot"
+						<div class="lines Bot" id="adc" 
 							onclick="champLine(this.id)">
 							<span><img
 								src="/img/jhl/positionImg/Position_Plat-Bot.png">바텀</span>
 						</div>
-						<div class="lines Sup" id="sup" name="sup"
+						<div class="lines Sup" id="sup"
 							onclick="champLine(this.id)">
 							<span><img
 								src="/img/jhl/positionImg/Position_Plat-Support.png">서폿</span>
@@ -62,21 +67,9 @@
 				<div class="champImgItems">
 					<div class="se">
 						<div class="champs">
-							<c:forEach var="champImg" items="${champListImg}">
-								<div class="champImgItem">
-									<div class="cimgs">
-										<img width="48" height="48" alt="${champImg.champion_name_kr}"
-											src="https://ddragon.leagueoflegends.com/cdn/14.2.1/img/champion/${champImg.champion_name}.png"
-											class="championImg">
-									</div>
-									<span class="champName">${champImg.champion_name_kr}</span>
-								</div>
-							</c:forEach>
+							
 						</div>
 					</div>
-
-
-
 				</div>
 			</div>
 			<div class="contentsItem LineRank">
@@ -115,7 +108,7 @@
 						</div>
 					</div>
 					<div class="lineRankTable">라인별 (승률/픽률 등)랭킹 테이블</div>
-					
+
 				</div>
 			</div>
 		</div>
