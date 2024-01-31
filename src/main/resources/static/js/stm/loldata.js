@@ -6,34 +6,123 @@ function gamebtn(i) {
 	var gametable = document.getElementById("gametable" + i + "");
 	gametable.style.display = ((gametable.style.display != 'none') ? 'none' : 'block');
 
-//	var e = document.getElementById("datalist" + i + "");
-//	e.style.display = ((e.style.display != 'none') ? 'none' : 'block');
+	//	var e = document.getElementById("datalist" + i + "");
+	//	e.style.display = ((e.style.display != 'none') ? 'none' : 'block');
 }
-
 $("#getpuuid").on("click", function() {
+	$('#newList').remove()
 	let gameName = $('#gameName').val();
 	let tagLine = $('#tagLine').val();
 	data = { 'gameName': gameName, 'tagLine': tagLine }
-	let str = ''
-	let team1 = ''
 	$.ajax({
 		type: 'post',
 		url: '/match/list',
 		data: data,
 		success: function(res) {
 			console.log(res)
-				str += "<input type='text' id='gameName' name='gameName' placeholder='아이디' value='게임모드 검색 들어갈 예정'>"
-				str += "<input type='text' id='gameName' name='gameName' placeholder='아이디' value='챔피언 검색 들어갈 예정'>"
+			MList = [];
+			for (let i = 0; i < res.length; i++) {
+				Gamedata = {}; // 한게임당 데이터
+				ingamedata = [];
+				for (let j = 0; j < res[i]["info"]['participants'].length; j++) {
+					mm = {}
+					mm.riotIdGameName = res[i]["info"]['participants'][j]['riotIdGameName']//닉네임
+					mm.riotIdTagline = res[i]["info"]['participants'][j]['riotIdTagline'] // 태그
+					mm.championName = res[i]["info"]['participants'][j]['championName']//챔피언 아이디
+					mm.teamId = res[i]["info"]['participants'][j]['teamId']
+					mm.win = res[i]["info"]['participants'][j]['win']
+					mm.matchId = res[i]['metadata']['matchId'] // 매치 아이디
+					mm.queueId = res[i]["info"]['queueId'] // 게임 모드
+					mm.firstBloodKill = res[i]["info"]['participants'][j]['firstBloodKill']
+					mm.kills = res[i]["info"]['participants'][j]['kills']
+					mm.deaths = res[i]["info"]['participants'][j]['deaths']
+					mm.assists = res[i]["info"]['participants'][j]['assists']
+					mm.kda = (res[i]["info"]['participants'][j]['challenges']['kda']).toFixed(2)
+					mm.lane = res[i]["info"]['participants'][j]['lane']
+					mm.totalDamageDealtToChampions = res[i]["info"]['participants'][j]['totalDamageDealtToChampions']
+					mm.totalDamageTaken = res[i]["info"]['participants'][j]['totalDamageTaken']
+					mm.totalMinionsKilled = res[i]["info"]['participants'][j]['totalMinionsKilled'] // 미니언 킬
+					mm.totalAllyJungleMinionsKilled = res[i]["info"]['participants'][j]['totalAllyJungleMinionsKilled'] // 토탈 정글몹 킬
+					mm.totalEnemyJungleMinionsKilled = res[i]["info"]['participants'][j]['totalEnemyJungleMinionsKilled'] //상대 정글몹 킬
+					mm.wardsKilled = res[i]["info"]['participants'][j]['wardsKilled'] // 와드 킬
+					mm.wardsPlaced = res[i]["info"]['participants'][j]['wardsPlaced'] // 시야점수
+					mm.legendaryItemUsed = res[i]["info"]['participants'][j]['challenges']['legendaryItemUsed'] // 시야점수
+					mm.gameStartTimestamp = res[i]["info"]['gameStartTimestamp']
+					mm.gameEndTimestamp = res[i]["info"]['gameEndTimestamp']
+
+					//champLevel damagePerMinute   totalMinionsKilled
+
+					ingamedata.push(mm)
+					Gamedata.info = ingamedata
+				}
+				ingameteam = [];
+				bans = [];
+				for (j = 0; j < 2; j++) {
+					mm = {}
+					mm.teamId = res[i]["info"]['teams'][j]['teamId']
+					mm.dragon = res[i]["info"]['teams'][j]['objectives']['dragon']['kills']
+					mm.kills = res[i]["info"]['teams'][j]['objectives']['champion']['kills']
+					for (k = 0; k < res[i]["info"]['teams'][j]['bans'].length; k++) {
+						ss = {}
+						ss.teamId = res[i]["info"]['teams'][j]['teamId']
+						ss.championId = res[i]["info"]['teams'][j]['bans'][k]['championId']
+						bans.push(ss)
+						Gamedata.bans = bans
+					}
+					if (Gamedata.bans == undefined) {
+						Gamedata.bans = [null]
+					}
+//					console.log(Gamedata.bans)
+					ingameteam.push(mm)
+					Gamedata.teams = ingameteam
+				}
+				MList.push(Gamedata)
+			}
+			console.log(MList)
+			
+
+			let temp = JSON.stringify(MList)
+
+			data2 = { 'Mlist': temp }
+
+			$.ajax({
+				type: 'post',
+				url: '/riot/game',
+				data: data2,
+				 dataType : 'json',
+				success: function(res) {
+			
+
+				}
+			})
+
+
+
+
+
+
+
+
+
+
+
+
+
+			let str = ''
+			let team1 = ''
+			str += "<div id = 'newList'>"
+			str += "<input type='text' id='gameName' name='gameName' placeholder='아이디' value='게임모드 검색 들어갈 예정'>"
+			str += "<input type='text' id='gameName' name='gameName' placeholder='아이디' value='챔피언 검색 들어갈 예정'>"
 			for (let i = 0; i < res.length; i++) {
 				str += "<div id='matchlist" + i + "' class='list'>"
 				str += "<table align='center' border='1' width = '800'>"
 				str += "<tr>"
 
 				str += "<th width = '150' rowspan='2' id='gameMode" + i + "'></th>"
-				
-				for(let j in res[i]["info"]['participants']){
-					if(gameName == res[i]['info']['participants'][j]['riotIdGameName']){
-						str += "<th rowspan='3' colspan='2' width='114	'><img width='40' height='40'  alt='못 불러옴' src='https://ddragon.leagueoflegends.com/cdn/14.1.1/img/champion/" + res[i]['info']['participants'][j]['championName']+ ".png'></th>"	
+
+				for (let j in res[i]["info"]['participants']) {
+					if (gameName == res[i]['info']['participants'][j]['riotIdGameName']) {
+						str += "<th rowspan='3' colspan='2' width='114	'><img width='40' height='40'  alt='못 불러옴' src='https://ddragon.leagueoflegends.com/cdn/14.1.1/img/champion/" + res[i]['info']['participants'][j]['championName'] + ".png'></th>"
 					}
 				}
 				str += "<th rowspan='2' id = 'KDA" + i + "' width = '100'></th>" // k/d/a
@@ -81,7 +170,7 @@ $("#getpuuid").on("click", function() {
 							team = '승리'
 						} else {
 							team = '패배'
-							
+
 						}
 						if (res[i]["info"]['queueId'] != 450) {
 							if (res[i]["info"]['participants'][j]['teamId'] == res[i]["info"]['teams'][0]['teamId']) {
@@ -107,15 +196,17 @@ $("#getpuuid").on("click", function() {
 
 				str += "<th width = '100'>" + ingamespentTime + "</th>"
 				str += "</tr>"
-				
+
 				str += "<table align='center' border = '1'  id = 'gametable" + i + "' style='display: none'  width = '800'>"
-				
+
 				str += "<th width = '150'>승리(팀컬러)</th><th width='95'>소환자 명</th><th width='92'>챔피언 명</th><th width='101'>k/d/a(kda)</th><th width='100'>입힌 피해량</th><th width='90'>받은 피해량</th><th width='60'>cs</th><tr></tr>"
 
 
 
-				
-//				str += "<div class='list' id = 'datalist" + i + "'  style='display: none'>"
+
+
+
+
 
 
 				for (let j = 0; j < res[i]["info"]['participants'].length; j++) {
@@ -174,7 +265,7 @@ $("#getpuuid").on("click", function() {
 					assists = res[i]["info"]['participants'][j]['assists']
 					str += "<td>" + assists + "</td>"
 					str += "</tr>"
-					
+
 				}
 				str += "</div>"
 				str += "</table>"
@@ -183,6 +274,7 @@ $("#getpuuid").on("click", function() {
 				str += "</div>"
 			}
 			str += "<br>"
+			str += "</div>"
 			$('#puuid').append(str)
 			findUserGameMode(res)
 			findUserKda(gameName, res)
