@@ -8,7 +8,8 @@
 <meta charset="utf-8" />
 <meta name="viewport"
 	content="width=device-width, initial-scale=1, user-scalable=no" />
-<script type="text/javascript" src="https://code.jquery.com/jquery-1.12.4.min.js" ></script>	
+<script type="text/javascript"
+	src="https://code.jquery.com/jquery-1.12.4.min.js"></script>
 <link rel="stylesheet" href="new/assets/css/main.css" />
 <link rel="stylesheet" href="new/assets/css/div.css" />
 <link rel="stylesheet" href="new/assets/css/kdg.css" />
@@ -77,51 +78,54 @@
 
 		<!-- Main -->
 		<div id="main">
-<!-- 						 Introduction -->
-		
-<!-- 						<section id="intro" class="main"> -->
+			<!-- 						 Introduction -->
+
+			<!-- 						<section id="intro" class="main"> -->
 
 
-<!-- 							<div class = "firstSection"> -->
+			<!-- 							<div class = "firstSection"> -->
 
-<!-- 								ggg -->
-
-
-<!-- 							</div> -->
+			<!-- 								ggg -->
 
 
-<!-- 						</section>  -->
+			<!-- 							</div> -->
 
-<!-- 						First Section -->
-		
-						<section id="first" class="main special">
-							<header class="major">
-							
+
+			<!-- 						</section>  -->
+
+			<!-- 						First Section -->
+
+			<section id="first" class="main special">
+				<header class="major">
+
 					<%@include file="layout.jsp"%>
 				</header>
-							<ul class="features">
+				<ul class="features">
 
-							</ul>
+				</ul>
 
-						</section>
+			</section>
 
-						Get Started
-	
-						<section id="cta" class="main special">
-							<header class="major">
-								<h2>추가내용</h2>
+			Get Started
 
-							</header>
+			<section id="cta" class="main special">
+				<header class="major">
+					<h2>추가내용</h2>
 
-						</section>
+				</header>
 
-
-		
+			</section>
 
 
+			<button type="button" onclick="alert('변경바람')">
+				<img class = "buttonimg" src="../img/kjm/buttonimg.jpg" />
+			</button>
 
 
-			
+
+
+
+
 		</div>
 		<footer id="footer">
 			<section>
@@ -170,19 +174,19 @@
 	<script src="new/assets/js/util.js"></script>
 	<script src="new/assets/js/main.js"></script>
 	<script defer src="../js/jhl/champ/champSearch.js"></script>
-		<!-- champ list (ajax) js 들어갈곳 -->
+	<!-- champ list (ajax) js 들어갈곳 -->
 	<script defer src="../js/kdg/champion/champList.js" /></script>
 	<!-- item build (ajax) js 들어갈곳 -->
 	<script defer src="../js/kdg/item/itemBuild.js" /></script>
 
-<!-- Scripts -->
-<script src="new/assets/js/jquery.min.js"></script>
-<script src="new/assets/js/jquery.scrollex.min.js"></script>
-<script src="new/assets/js/jquery.scrolly.min.js"></script>
-<script src="new/assets/js/browser.min.js"></script>
-<script src="new/assets/js/breakpoints.min.js"></script>
-<script src="new/assets/js/util.js"></script>
-<script src="new/assets/js/main.js"></script>
-<script src="new/assets/js/jhl.js"></script>
+	<!-- Scripts -->
+	<script src="new/assets/js/jquery.min.js"></script>
+	<script src="new/assets/js/jquery.scrollex.min.js"></script>
+	<script src="new/assets/js/jquery.scrolly.min.js"></script>
+	<script src="new/assets/js/browser.min.js"></script>
+	<script src="new/assets/js/breakpoints.min.js"></script>
+	<script src="new/assets/js/util.js"></script>
+	<script src="new/assets/js/main.js"></script>
+	<script src="new/assets/js/jhl.js"></script>
 </body>
 </html>

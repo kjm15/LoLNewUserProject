@@ -3569,3 +3569,19 @@ body.is-preload #header.alt .logo {
 	-webkit-transform: scale(1.4);
 	transform: scale(1.4);
 }
+
+/* input.makebutton { */
+/*   background-image: url("../img/kjm/buttonimg.jpg"); */
+/*   width: 50px; */
+/*   height: 80px; */
+/*   position: fixed; */
+/*   top : 800px; */
+/*   left : 1300px; */
+/* } */
+.buttonimg{
+	width : 60px;
+	height : 60px;
+	position : fixed;
+	top : 800px;
+	left : 1500px;
+}
