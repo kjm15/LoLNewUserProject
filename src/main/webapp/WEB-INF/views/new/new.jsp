@@ -1,13 +1,14 @@
 
-<!DOCTYPE HTML>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
-
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
+<!DOCTYPE HTML>
 <head>
 <title>데이터붐</title>
 <meta charset="utf-8" />
 <meta name="viewport"
 	content="width=device-width, initial-scale=1, user-scalable=no" />
+<script type="text/javascript" src="https://code.jquery.com/jquery-1.12.4.min.js" ></script>	
 <link rel="stylesheet" href="new/assets/css/main.css" />
 <noscript>
 	<link rel="stylesheet" href="new/assets/css/noscript.css" />
@@ -22,10 +23,11 @@
 		<!-- Header -->
 		<header id="header" class="alt">
 			<span class="logo"><img src="images/logo.svg" alt="" /></span>
-			<h1>태민이 검색바</h1><p></p>
+			<h1>태민이 검색바</h1>
+			<p></p>
 			<p>검색바 길게 나오는곳=========================자리 넣어둠</p>
 		</header>
-	
+
 		<!-- Nav -->
 		<nav id="nav">
 			<ul>
@@ -41,47 +43,55 @@
 
 		<!-- Main -->
 		<div id="main">
+<!-- 						 Introduction -->
+		
+<!-- 						<section id="intro" class="main"> -->
 
-			<!-- Introduction -->
-			<section id="intro" class="main">
-				
-				<div class = "firstSection">
-				
-				ggg
-				
-				
-				</div>
-				
-				
-			</section>
+<!-- 							<div class = "firstSection"> -->
 
-			<!-- First Section -->
-			<section id="first" class="main special">
-				<header class="major">
-					<h2>왼쪽 혜린이 / 오른쪽 동근이 <hr>내용들어갈예정</h2>
+<!-- 								ggg -->
+
+
+<!-- 							</div> -->
+
+
+<!-- 						</section>  -->
+
+<!-- 						First Section -->
+		
+						<section id="first" class="main special">
+							<header class="major">
+							
+					<%@include file="layout.jsp"%>
 				</header>
-				<ul class="features">
-				
-				</ul>
-				
-			</section>
+							<ul class="features">
 
-			<!-- Get Started -->
-			<section id="cta" class="main special">
-				<header class="major">
-					<h2>추가내용</h2>
-				
-				</header>
-				
-			</section>
+							</ul>
 
+						</section>
+
+						Get Started
+	
+						<section id="cta" class="main special">
+							<header class="major">
+								<h2>추가내용</h2>
+
+							</header>
+
+						</section>
+
+
+		
+
+
+
+
+			
 		</div>
-
-		<!-- Footer -->
 		<footer id="footer">
 			<section>
 				<h2>데이터붐</h2>
-				<p>장기훈 김동근 김진문  김윤태 송태민 정혜린</p>
+				<p>장기훈 김동근 김진문 김윤태 송태민 정혜린</p>
 				<ul class="actions">
 					<li><a href="generic.html" class="button">Learn More</a></li>
 				</ul>
@@ -111,9 +121,7 @@
 							class="label">Dribbble</span></a></li>
 				</ul>
 			</section>
-			<p class="copyright">
-				&copy; databoom
-			</p>
+			<p class="copyright">&copy; databoom</p>
 		</footer>
 
 	</div>
@@ -126,6 +134,11 @@
 	<script src="new/assets/js/breakpoints.min.js"></script>
 	<script src="new/assets/js/util.js"></script>
 	<script src="new/assets/js/main.js"></script>
+	<script defer src="../js/jhl/champ/champSearch.js"></script>
+		<!-- champ list (ajax) js 들어갈곳 -->
+	<script defer src="../js/kdg/champion/champList.js" /></script>
+	<!-- item build (ajax) js 들어갈곳 -->
+	<script defer src="../js/kdg/item/itemBuild.js" /></script>
 
 </body>
 </html>
