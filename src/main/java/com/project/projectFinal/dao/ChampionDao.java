@@ -7,7 +7,7 @@ import org.apache.ibatis.annotations.Mapper;
 
 import com.project.projectFinal.dto.ChampionDto;
 import com.project.projectFinal.dto.ItemDto;
-import com.project.projectFinal.dto.itemInfoDto;
+import com.project.projectFinal.dto.itemToolTipDto;
 
 @Mapper
 public interface ChampionDao {

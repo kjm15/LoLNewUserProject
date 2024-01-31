@@ -9,8 +9,8 @@ import org.springframework.web.bind.annotation.RestController;
 
 import com.project.projectFinal.dto.ChampionDto;
 import com.project.projectFinal.dto.ItemDto;
-import com.project.projectFinal.dto.coreItemDto;
 import com.project.projectFinal.dto.itemInfoDto;
+import com.project.projectFinal.dto.itemToolTipDto;
 import com.project.projectFinal.service.ChampionService;
 import com.project.projectFinal.service.MainService;
 import com.project.projectFinal.service.itemService;
@@ -64,18 +64,20 @@ public class kdgRestController {
 	}
 
 	@PostMapping("/kdg/itemInfo")
-	public List<itemInfoDto> itemInfo(itemInfoDto iIDto) {
+	public List<itemToolTipDto> itemToolTip(itemToolTipDto iTTDto) {
 		
-		int itemId = iIDto.getItemId();
-		return is.itemInfo(itemId);
+		int itemId = iTTDto.getItemId();
+		return is.itemToolTip(itemId);
 
 	}
 	
 	@PostMapping("/kdg/test")
-	public void test(coreItemDto cIDto) {
+	public void info() {
 		
-		log.info("========================== tier : {}",cIDto.getTier());
-		is.test(cIDto);
+		
+		
 	}
+	
+
 
 }

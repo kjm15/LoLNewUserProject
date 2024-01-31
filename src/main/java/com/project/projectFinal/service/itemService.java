@@ -10,8 +10,8 @@ import org.springframework.stereotype.Service;
 
 import com.project.projectFinal.dao.itemDao;
 import com.project.projectFinal.dto.ItemDto;
-import com.project.projectFinal.dto.coreItemDto;
 import com.project.projectFinal.dto.itemInfoDto;
+import com.project.projectFinal.dto.itemToolTipDto;
 
 import lombok.extern.slf4j.Slf4j;
 
@@ -34,32 +34,11 @@ public class itemService {
 		
 	}
 
-	public List<itemInfoDto> itemInfo(int itemId) {
+	public List<itemToolTipDto> itemToolTip(int itemId) {
 		
-		return id.itemInfo(itemId);
+		return id.itemToolTip(itemId);
 		
 	}
 
-	public void test(coreItemDto cIDto) {
-		
-		String tier = cIDto.getTier();
-		List<Integer> ciList = id.itemIdList(tier);
-		
-		List<HashMap<Integer, HashMap<String, coreItemDto>>> teli = new ArrayList<>();
-		
-		for(int i = 0; i < ciList.size(); i++) {
-			
-			int itemId = ciList.get(i);
-			HashMap<Integer, HashMap<String, coreItemDto>> iMap = new HashMap<>(); 
-			HashMap<String, coreItemDto> info1 = id.coreItemInfo1(tier, itemId);
-			iMap.put(itemId, info1);
-			
-			teli.add(iMap);
-				
-		}
-		
-		log.info("=================== teli : {}", teli);
-		
-	}
 	
 }

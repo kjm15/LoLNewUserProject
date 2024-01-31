@@ -9,7 +9,7 @@ import org.springframework.stereotype.Service;
 import com.project.projectFinal.dao.ChampionDao;
 import com.project.projectFinal.dto.ChampionDto;
 import com.project.projectFinal.dto.ItemDto;
-import com.project.projectFinal.dto.itemInfoDto;
+import com.project.projectFinal.dto.itemToolTipDto;
 
 
 @Service
