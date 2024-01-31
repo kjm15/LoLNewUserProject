@@ -106,12 +106,8 @@ function send() {
 
 //채팅 작성 시 
 function chattcontents(data) { //저장한 채팅과 같은방에서 실행
-	console.log(data)
-	
-	
-	
-	
-	
+//	console.log(data)
+
 	let userId = $('#userId').val()
 	var css;
 	
@@ -189,7 +185,7 @@ function myRoom(rCnt) {
 	$.ajax({
 
 		type: 'post',
-		url: '/myRoomCheck',
+		url: '/jgh/myRoomCheck',
 		data: msgdata,
 		success: function(res1) {
 			//			console.log(res1)
@@ -206,7 +202,7 @@ function myRoom(rCnt) {
 			$.ajax({
 
 				type: 'post',
-				url: '/msgAll',
+				url: '/jgh/msgAll',
 				data: msgdata1,
 				success: function(res) {
 					//					console.log(res)
@@ -254,7 +250,7 @@ function goOutRoom(rCnt) {
 		$.ajax({
 
 			type: 'post',
-			url: '/goOutRoom',
+			url: '/jgh/goOutRoom',
 			data: data,
 			success: function(res) {
 				showChattInfo()

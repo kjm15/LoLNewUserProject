@@ -64,7 +64,7 @@ function duoinfo(rCnt) {
 	$.ajax({
 
 		type: 'post',
-		url: '/duoInfo',
+		url: '/jgh/duoInfo',
 		data: data,
 		success: function(res) {
 
