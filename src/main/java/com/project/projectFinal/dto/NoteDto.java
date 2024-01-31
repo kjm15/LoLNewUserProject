@@ -11,6 +11,7 @@ import lombok.NoArgsConstructor;
 @NoArgsConstructor
 public class NoteDto {
 	private int n_num;
+	private String userId;
 	private String recv_userId;
 	private String send_userId;
 	private String n_title;

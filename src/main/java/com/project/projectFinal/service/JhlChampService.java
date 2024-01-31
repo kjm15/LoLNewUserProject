@@ -7,7 +7,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.project.projectFinal.dao.JhlChampDao;
-import com.project.projectFinal.dto.JhlChampDto;
+import com.project.projectFinal.dto.ChampionImageDto;
 
 @Service
 public class JhlChampService {
@@ -20,13 +20,13 @@ public class JhlChampService {
 		return champDao.champListImg();
 	}
 
-	public List<HashMap<String, String>> champSearch(JhlChampDto champDto) {
+	public List<HashMap<String, String>> champSearch(ChampionImageDto champDto) {
 
 		return champDao.champSearch(champDto);
 	}
 
 
-	public List<HashMap<String, String>> champLineSelect(JhlChampDto champDto) {
+	public List<HashMap<String, String>> champLineSelect(ChampionImageDto champDto) {
 		return champDao.champLineSelect(champDto);
 	}
 
