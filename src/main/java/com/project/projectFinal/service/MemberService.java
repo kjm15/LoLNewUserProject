@@ -1,6 +1,5 @@
 package com.project.projectFinal.service;
 
-import java.util.ArrayList;
 import java.util.HashMap;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -9,9 +8,8 @@ import org.springframework.transaction.annotation.Transactional;
 
 import com.project.projectFinal.customEx.CustomException;
 import com.project.projectFinal.dao.MemberDao;
-import com.project.projectFinal.dto.DuoSearchDto;
+import com.project.projectFinal.dto.KakaoDto;
 import com.project.projectFinal.dto.MemberDto;
-import com.project.projectFinal.dto.PaymentDto;
 
 import lombok.extern.slf4j.Slf4j;
 
@@ -55,7 +53,7 @@ public class MemberService {
 	}
 
 	@Transactional
-	public void payDbSave(PaymentDto paymentDto) {
+	public void payDbSave(KakaoDto paymentDto) {
 
 		int result1 = memberDao.payDbSave(paymentDto);
 

@@ -1,16 +1,12 @@
 package com.project.projectFinal.service;
 
-import java.util.ArrayList;
-import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
 import org.springframework.stereotype.Service;
 import org.springframework.web.reactive.function.client.WebClient;
 
-import com.project.projectFinal.dto.PostDto;
-
-import com.project.projectFinal.dto.StmUserListDto;
+import com.project.projectFinal.dto.RiotApiDto;
 
 import lombok.extern.slf4j.Slf4j;
 
@@ -25,8 +21,8 @@ public class WebMatchListService {
 
 		WebClient webClient = WebClient.builder().baseUrl(url).build();
 
-		StmUserListDto response = webClient.get().uri(uriBuilder -> uriBuilder.build()).retrieve()
-				.bodyToMono(StmUserListDto.class).block();
+		RiotApiDto response = webClient.get().uri(uriBuilder -> uriBuilder.build()).retrieve()
+				.bodyToMono(RiotApiDto.class).block();
 
 		return response.getPuuid();
 	}

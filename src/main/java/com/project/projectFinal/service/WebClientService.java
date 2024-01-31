@@ -7,7 +7,7 @@ import java.util.Map;
 import org.springframework.stereotype.Service;
 import org.springframework.web.reactive.function.client.WebClient;
 
-import com.project.projectFinal.dto.PostDto;
+import com.project.projectFinal.dto.RiotApiDto;
 import com.project.projectFinal.dto.itemInfoDto;
 
 import lombok.extern.slf4j.Slf4j;
@@ -32,7 +32,7 @@ public class WebClientService {
 //				.retrieve()
 //				.bodyToMono(Map.class)
 //				.block();
-		PostDto response = webClient.get().uri(uriBuilder -> uriBuilder.build()).retrieve().bodyToMono(PostDto.class)
+		RiotApiDto response = webClient.get().uri(uriBuilder -> uriBuilder.build()).retrieve().bodyToMono(RiotApiDto.class)
 				.block();
 		// 결과 확인
 //		log.info(response.toString());

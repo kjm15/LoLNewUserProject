@@ -14,10 +14,6 @@ public class MemberDto {
 	private String userId;
 	private String userPw;
 	private int userPoint;
-	
-	private	String friendId;
-	private int friendPoint;
-	
 	private int loginNow; //현재 로그인 확인용
 	                                               
 	

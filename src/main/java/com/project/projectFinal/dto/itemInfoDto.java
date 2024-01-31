@@ -1,5 +1,9 @@
 package com.project.projectFinal.dto;
 
+import java.util.List;
+
+import org.json.simple.JSONObject;
+
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
@@ -25,3 +29,4 @@ public class itemInfoDto {
 	private String info9;
 
 }
+

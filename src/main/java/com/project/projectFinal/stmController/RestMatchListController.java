@@ -7,8 +7,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-
-import com.project.projectFinal.dto.StmUserListDto;
+import com.project.projectFinal.dto.RiotApiDto;
 import com.project.projectFinal.service.MatchListService;
 
 import lombok.extern.slf4j.Slf4j;
@@ -21,7 +20,7 @@ public class RestMatchListController {
 	
 
 	@PostMapping("/match/list")
-	public List<Map> matchList(StmUserListDto userListDto) {
+	public List<Map> matchList(RiotApiDto userListDto) {
 		String puuid = matchListService.puuId(userListDto);
 		
 		userListDto.setPuuid(puuid);

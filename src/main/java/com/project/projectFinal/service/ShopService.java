@@ -60,12 +60,6 @@ public class ShopService {
 		// 소지 금액 : 보낼금액 차이
 		//나 자신한테 보내는경우
 		// 보내는금액이 마이너스인지 확인
-		if (plusRerult == 0 || minusRerult == 0 || nowLogin == 0 || findFriendId == 0 
-				|| mDto.getUserPoint() < 0 || memberDto.getFriendPoint() < 0
-				|| memberDto.getFriendId().equals(memberDto.getUserId())) {
-			throw new JangShopException("보내기 중 오류발생, 트랜잭션발동");
-
-		}
 
 		return mDto;
 	}
