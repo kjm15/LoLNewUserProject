@@ -1,11 +1,13 @@
 package com.project.projectFinal.config;
 
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Component;
-import org.springframework.web.servlet.AsyncHandlerInterceptor;
-import org.springframework.web.servlet.ModelAndView;
+import java.io.IOException;
 
-import com.project.projectFinal.dao.MemberDao;
+import org.springframework.stereotype.Component;
+import org.springframework.web.method.HandlerMethod;
+import org.springframework.web.servlet.AsyncHandlerInterceptor;
+
+import com.project.projectFinal.CustomAnnotation.MySecured;
+import com.project.projectFinal.CustomAnnotation.Role;
 import com.project.projectFinal.dto.MemberDto;
 
 import jakarta.servlet.http.HttpServletRequest;
@@ -15,39 +17,31 @@ import lombok.extern.slf4j.Slf4j;
 
 @Component
 @Slf4j
-public class SessionInterceptor implements AsyncHandlerInterceptor {
-	@Autowired
-	MemberDao memberDao;
+public class CustomInterceptor implements AsyncHandlerInterceptor {
 
 	@Override
 	public boolean preHandle(HttpServletRequest request, HttpServletResponse response, Object handler)
-			throws Exception {
-		// http://localhost/member/login?id=aaa&pw=1111
+			throws IOException {
 		HttpSession session = request.getSession();
 
-		if (session.getAttribute("userId") != null) {
+		if (session == null) {// 로그인을 하지 않은 상태
 
-			String userId = (String) session.getAttribute("userId");
-
-			MemberDto adiminLevel = memberDao.checkAdmin(userId);
-				
-			if (adiminLevel.getAdiminLevel() == 999) {
-				log.info("총괄관리자 로그인");
-
-				response.sendRedirect("/admin"); // login.jsp
-				return false; // 컨트롤러 핸들러 진행 중단
-
-			}
-		} else {
-			return true; // 핸들러 진행(컨트롤러 진입)
+			response.sendRedirect("/new");
+			return false;
 		}
-		return true; // 핸들러 진행(컨트롤러 진입)
+
+		String userId = (String) session.getAttribute("userId");
+		if (userId == null) { // 로그인 했는지 확인
+
+			response.sendRedirect("/new");
+			return false;
+		} else if ("jgh".equals(userId)) {
+			log.info("관리자 입장");
+			return true;
+
+		}
+		response.sendRedirect("/new");
+		return true;
 	}
 
-//	@Override
-//	public void postHandle(HttpServletRequest request, HttpServletResponse response, Object handler,
-//			ModelAndView modelAndView) throws Exception {
-//		// TODO Auto-generated method stub
-//		System.out.println("view직전 호출");
-//	}
 }

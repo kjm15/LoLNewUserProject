@@ -25,11 +25,7 @@ public class MainController {
 
 		return "new/new";
 	}
-	@GetMapping("/admin")
-	public String admin() {
 
-		return "admin/mainAdmin";
-	}
 	@GetMapping("/new")
 	public String new1() {
 
