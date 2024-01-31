@@ -99,6 +99,12 @@ public class MainController {
 
 		return "stm/stmmain";
 	}
+	
+	@GetMapping("/test")
+	public String gotest() {
+
+		return "kdg/kdgTest";
+	}
 
 }
 
