@@ -72,9 +72,9 @@ public class kdgRestController {
 	}
 	
 	@PostMapping("/kdg/test")
-	public void info() {
+	public List<HashMap<String, itemInfoDto>> itemInfo(itemInfoDto iIDto) {
 		
-		
+		return is.itemInfo(iIDto);
 		
 	}
 	
