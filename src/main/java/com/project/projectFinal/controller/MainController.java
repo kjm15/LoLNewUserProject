@@ -35,7 +35,9 @@ public class MainController {
 	public String main(HttpSession session, MemberDto memberDto, Model model) {
 		if (session.getAttribute("userId") != null) {
 			String userId = (String) session.getAttribute("userId");
+			
 			memberDto.setUserId(userId) ;
+			
 			MemberDto mDto = memberService.main(memberDto);
 			model.addAttribute("mDto", mDto);
 		}
