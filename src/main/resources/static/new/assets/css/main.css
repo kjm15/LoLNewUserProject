@@ -3585,3 +3585,7 @@ body.is-preload #header.alt .logo {
 	top : 800px;
 	left : 1500px;
 }
+#mainlogo{
+	width : 100%;
+	height : 100%;
+}
