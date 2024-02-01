@@ -47,7 +47,8 @@ public class SpringSecurityConfig {
 
     @Bean
     public WebSecurityCustomizer webSecurityCustomizer() {
-        return (web) -> web.ignoring().requestMatchers("/new", "/jgh");
+        return (web) -> web.ignoring().requestMatchers("/new", "/jgh/**")
+        		.requestMatchers("resoures/**");
     }
 
  
