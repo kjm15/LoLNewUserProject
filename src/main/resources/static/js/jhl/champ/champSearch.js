@@ -30,7 +30,7 @@ $('#champSearch').on('keyup', function() {
 			let str4 = "</div>"
 			let str5 = "</div>"
 			$('.champImgItems').html(str1 + str2 + str3 + str4 + str5);
-			console.log(res)
+//			console.log(res)
 
 		}
 	});
@@ -56,7 +56,7 @@ function champImgAll() {
 			let str4 = "</div>"
 			let str5 = "</div>"
 			$('.champImgItems').html(str1 + str2 + str3 + str4 + str5);
-			console.log(res)
+//			console.log(res)
 
 		}
 	});
@@ -91,8 +91,8 @@ function champLine(lineSelect) {
 			let str4 = "</div>"
 			let str5 = "</div>"
 			$('.champImgItems').html(str1 + str2 + str3 + str4 + str5)
-			console.log(lineSelect)
-			console.log(res)
+//			console.log(lineSelect)
+//			console.log(res)
 
 		}
 	})

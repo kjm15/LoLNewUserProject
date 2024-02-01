@@ -6,6 +6,47 @@
 <head>
 <meta charset="UTF-8">
 <title>Insert title here</title>
+<style type="text/css">
+.w {
+	position: relative;
+	display: block;
+}
+
+.w .tooltiptext {
+	visibility: hidden;
+	width: 180px;
+	background-color: #8CB9FC;
+	color: #fff;
+	text-align: center;
+	border-radius: 6px;
+	padding: 5px 0;
+	position: absolute;
+	z-index: 1;
+}
+
+.w:hover .tooltiptext {
+	visibility: visible;
+}
+
+.w .tooltip-right {
+	top: -5px;
+	left: 25%;
+}
+
+.w .tooltiptext::after {
+	content: " "; /* 정사각형 영역 사용 */
+	position: absolute; /* 절대 위치 사용 */
+	border-style: solid;
+	border-width: 6px; /* 테두리 넓이를 5px 로 설정 */
+}
+
+.w .tooltip-right::after {
+	top: 50%;
+	right: 100%;
+	margin-top: -5px;
+	border-color: transparent #8CB9FC transparent transparent;
+}
+</style>
 <script type="text/javascript"
 	src="https://code.jquery.com/jquery-1.12.4.min.js"></script>
 
@@ -16,12 +57,9 @@
 	<!-- <h1>정혜린 페이지 입니다.내용 미정</h1> -->
 	<!-- <div> -->
 	<h1>챔피언 랭크</h1>
+
 	<div class="contents">
-<input type="hidden" value="">
-
-
 		<div class="aside left"></div>
-		${champListImg}
 		<div class="contentsItems">
 			<div class="contentsItem Search">
 				<div class=search_line_champ>
@@ -34,41 +72,35 @@
 					<div class="selectChampline">
 						<div class="lines All" id="champAll">
 							<span><img
-								src="/img/jhl/positionImg/Position_Plat-All.png">전체</span>
+								src="/img/jhl/positionImg/Position_Plat-All.png"></span>
 						</div>
-						<div class="lines Top" id="top" 
-							onclick="champLine(this.id)">
+						<div class="lines Top" id="top" onclick="champLine(this.id)">
 							<span><img
-								src="/img/jhl/positionImg/Position_Plat-Top.png">탑</span>
+								src="/img/jhl/positionImg/Position_Plat-Top.png"></span>
 						</div>
 						<!--  this 사용하면 div에 모든 게 반환됨-->
-						<div class="lines Jug" id="jug"
-							onclick="champLine(this.id)">
+						<div class="lines Jug" id="jug" onclick="champLine(this.id)">
 							<span><img
-								src="/img/jhl/positionImg/Position_Plat-Jungle.png">정글</span>
+								src="/img/jhl/positionImg/Position_Plat-Jungle.png"></span>
 						</div>
-						<div class="lines Mid" id="mid" 
-							onclick="champLine(this.id)">
+						<div class="lines Mid" id="mid" onclick="champLine(this.id)">
 							<span><img
-								src="/img/jhl/positionImg/Position_Plat-Mid.png">미들</span>
+								src="/img/jhl/positionImg/Position_Plat-Mid.png"></span>
 						</div>
-						<div class="lines Bot" id="adc" 
-							onclick="champLine(this.id)">
+						<div class="lines Bot" id="adc" onclick="champLine(this.id)">
 							<span><img
-								src="/img/jhl/positionImg/Position_Plat-Bot.png">바텀</span>
+								src="/img/jhl/positionImg/Position_Plat-Bot.png"></span>
 						</div>
-						<div class="lines Sup" id="sup"
-							onclick="champLine(this.id)">
+						<div class="lines Sup" id="sup" onclick="champLine(this.id)">
 							<span><img
-								src="/img/jhl/positionImg/Position_Plat-Support.png">서폿</span>
+								src="/img/jhl/positionImg/Position_Plat-Support.png"></span>
 						</div>
 					</div>
 				</div>
 				<div class="champImgItems">
 					<div class="se">
-						<div class="champs">
-							
-						</div>
+						<div class="champs"></div>
+						<div class='cimgs'></div>
 					</div>
 				</div>
 			</div>
@@ -83,9 +115,9 @@
 					</select>
 				</div>
 
-				<div class="RankTable" style="border: 1px solid #8CB9FC;">
-					<div
-						style="text-align: center; border-bottom: 1px solid #8CB9FC; height: 50px; display: flex; align-items: center;">
+				<div class="rankTable">
+					<div class="rankLine"
+						style="text-align: center; height: 50px; display: flex; align-items: center;">
 						<div class="rankSearch">
 							<span><img
 								src="/img/jhl/positionImg/Position_Plat-Top.png">탑</span>
@@ -108,14 +140,17 @@
 						</div>
 					</div>
 					<div class="lineRankTable">라인별 (승률/픽률 등)랭킹 테이블</div>
+					<div class="w">
+						툴팁을 사용해보자 <span class="tooltiptext tooltip-right">툴팁 연습중 정보 담기</span>
+					</div>
 
 				</div>
 			</div>
+
 		</div>
-
-
 		<div class="aside right"></div>
 	</div>
+
 
 	<%@include file="../inc/footer.jsp"%>
 </body>

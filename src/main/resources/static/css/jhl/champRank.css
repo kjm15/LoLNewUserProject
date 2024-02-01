@@ -85,7 +85,7 @@ input:focus {
 	width: 455px;
 	border: 1px solid #8CB9FC;
 	justify-content: center;
-	margin-right: 8px;
+	margin-right: 12px;
 }
 
 .se {
@@ -105,7 +105,6 @@ input:focus {
 	width: 55px;
 	align-items: center;
 	margin: 5px;
-	filter: drop-shadow(2px 2px 2px gray)
 }
 
 .champImgItem:hover {
@@ -117,6 +116,7 @@ input:focus {
 .cimgs {
 	overflow: hidden;
 	border-radius: 5px;
+	filter: drop-shadow(2px 2px 2px gray);
 }
 
 .championImg {
