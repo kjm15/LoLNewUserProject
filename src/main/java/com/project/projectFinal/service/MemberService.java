@@ -1,8 +1,8 @@
 package com.project.projectFinal.service;
 
-import java.util.HashMap;
-
+import org.apache.coyote.BadRequestException;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -11,36 +11,38 @@ import com.project.projectFinal.dao.MemberDao;
 import com.project.projectFinal.dto.KakaoDto;
 import com.project.projectFinal.dto.MemberDto;
 
+import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 
+@RequiredArgsConstructor
 @Service
 @Slf4j
 public class MemberService {
 
 	@Autowired
 	MemberDao memberDao;
+	private final PasswordEncoder passwordEncoder;
 
-	public MemberDto login(MemberDto memberDto) throws CustomException {
-
+	public MemberDto login(MemberDto memberDto) throws CustomException, BadRequestException {
 		MemberDto mDto = memberDao.login(memberDto);
-		HashMap<String, String> mMap = new HashMap<>();
-		if (mDto != null) {
-			memberDao.loginNow(mDto);
-			return mDto;
-		} else {
-
-			throw new CustomException("아이디 혹은 비밀번호가 틀렸습니다.");
+		if (!memberDto.getUserPw().isEmpty() || !passwordEncoder.matches(mDto.getUserPw(), memberDto.getUserPw())) {
+			throw new BadRequestException();
 		}
-
+		return mDto;
 	}
 
 	@Transactional
 	public MemberDto join(MemberDto memberDto) {
 
-		if (memberDao.find(memberDto) == 1) {
+		// encodedPassword : 암호화된 비밀번호를 만들어 담음
+		MemberDto mDto = MemberDto.passwordEnconderDto(memberDto, passwordEncoder);
+
+		log.info("===", mDto);
+
+		if (memberDao.find(mDto) == 1) {
 			throw new CustomException("아이디가 중복되었습니다.");
 		}
-		if (memberDao.join(memberDto) == 1) {
+		if (memberDao.join(mDto) == 1) {
 
 			if (memberDto.getUserId().equals("") || memberDto.getUserPw().equals("")) {
 
@@ -49,7 +51,8 @@ public class MemberService {
 
 		}
 
-		return memberDto;
+		return mDto;
+//		return null;
 	}
 
 	@Transactional
@@ -73,19 +76,14 @@ public class MemberService {
 
 	}
 
-
-
-
-
 	public MemberDto joinIdCheck(MemberDto memberDto) { // 회원가입 시 아이디 중복채크
 		return memberDao.joinIdCheck(memberDto);
 
 	}
 
 	public void logoutNow(String userId) {
-		 memberDao.logoutNow(userId);
-		
+		memberDao.logoutNow(userId);
+
 	}
 
-	
 }

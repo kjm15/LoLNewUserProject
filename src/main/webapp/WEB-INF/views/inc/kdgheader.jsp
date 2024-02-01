@@ -78,7 +78,7 @@
 			<div class="modal-body">
 
 				<h3>빈곳을 입력해 가입해주세요</h3>
-				<form action="/join" method="post">
+				<form action="/member/join" method="post">
 					
 					아이디 : <input type="text" name="userId" id = "joinId"><span id = "checkId">아이디</span></br> 패스워드
 					:<input type="password" name="userPw" id = "joinPw"><span id="checkPw">비밀번호</span></br>
@@ -115,7 +115,7 @@
 
 				<h3>로그인창</h3>
 
-				<form action="/login" method="post">
+				<form action="/member/login" method="post">
 					아이디 : <input type="text" id='userId' name="userId"> </br> 패스워드 :
 					<input type="text" id="userPw" name="userPw"> </br>
 					<div class="modal-footer">

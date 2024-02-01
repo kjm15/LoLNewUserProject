@@ -17,39 +17,35 @@ import org.springframework.security.web.SecurityFilterChain;
 @EnableMethodSecurity
 public class SpringSecurityConfig {
 
-    @Bean
-    public SecurityFilterChain filterChain(HttpSecurity http) throws Exception {
+	@Bean
+	public SecurityFilterChain filterChain(HttpSecurity http) throws Exception {
+		// (변경된)자바 스프링 공식 예제 : 빼고 싶은 주소 넣는법
+//		http.authorizeHttpRequests((authz) -> authz.anyRequest().authenticated()).httpBasic(withDefaults());
 
-        http
-		        .authorizeHttpRequests((authz) -> authz
-		            .anyRequest().authenticated()
-		        )
-		        .httpBasic(withDefaults());
-		   
-        			
-        http      .formLogin(login -> login
-                        .loginPage("/new")	// [A] 커스텀 로그인 페이지 지정
-                        .loginProcessingUrl("/login")	// [B] submit 받을 url
-                        .usernameParameter("userId")	// [C] submit할 아이디
-                        .passwordParameter("userPw")	// [D] submit할 비밀번호
-                        .defaultSuccessUrl("/new", true)
-                        
-                        .permitAll()
-                )
-                .logout(withDefaults());	// 로그아웃은 기본설정으로 (/logout으로 인증해제)
+		http.csrf().disable().cors().disable()
+				.formLogin(login -> login.loginPage("/kdg") // 처음 시작 화면 고정
+				.loginProcessingUrl("/member/login") // 로그인 submit 받을 url
+//				.usernameParameter("userId") // 들고갈 아이디
+//				.passwordParameter("userPw") // 들고갈 비밀번호
+				.defaultSuccessUrl("/new", true) // 로그인 성공시 리다이렉트 주소
 
-        return http.build();
-    }
-    @Bean
- 	public PasswordEncoder passwordEncoder() {//간단하게 비밀번호 암호화
- 		return new BCryptPasswordEncoder(); 
- 	}
+				).logout(withDefaults()); // 로그아웃은 기본설정으로 (/logout으로 인증해제)
 
-    @Bean
-    public WebSecurityCustomizer webSecurityCustomizer() {
-        return (web) -> web.ignoring().requestMatchers("/new", "/jgh/**")
-        		.requestMatchers("resoures/**");
-    }
 
- 
+
+		return http.build();
+	}
+
+	// 정적 리소스 주소는 시큐리티에서 제외
+	@Bean
+	public WebSecurityCustomizer webSecurityCustomizer() {
+		return (web) -> web.ignoring().requestMatchers("/js/**","/css/**","/kdg/**","/member/**","/new/**");
+
+	}
+
+	@Bean
+	public PasswordEncoder passwordEncoder() {// 간단하게 비밀번호 암호화
+		return new BCryptPasswordEncoder();
+	}
+
 }
