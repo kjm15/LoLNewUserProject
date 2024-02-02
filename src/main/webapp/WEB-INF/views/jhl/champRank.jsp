@@ -14,7 +14,7 @@
 
 .w .tooltiptext {
 	visibility: hidden;
-	width: 180px;
+	width: 300px;
 	background-color: #8CB9FC;
 	color: #fff;
 	text-align: center;
@@ -139,9 +139,9 @@
 								src="/img/jhl/positionImg/Position_Plat-Support.png">서폿</span>
 						</div>
 					</div>
-					<div class="lineRankTable">라인별 (승률/픽률 등)랭킹 테이블</div>
+					<div class="lineRankTable">라인별 (티어 에메랄드로 테스트용 데이터 받고 있는 중)랭킹 테이블 만들곳</div>
 					<div class="w">
-						툴팁을 사용해보자 <span class="tooltiptext tooltip-right">툴팁 연습중 정보 담기</span>
+						전체버튼도 생성함<span class="tooltiptext tooltip-right"> 툴팁사용해보기</span>
 					</div>
 
 				</div>
