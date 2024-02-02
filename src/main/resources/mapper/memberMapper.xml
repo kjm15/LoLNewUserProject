@@ -14,29 +14,30 @@
 
 		select *
 		from memberT
-		where userId = #{userId} and
-		userPw = #{userPw}
+		where userId = #{userId}
 
 	</select>
 	<update id="loginNow">
 
 		update memberT
 		set loginNow = 1
-		where userId = #{userId} ;
+		where userId =
+		#{userId} ;
 
-	</update >
+	</update>
 	<update id="logoutNow">
 
 		update memberT
 		set loginNow = 0
-		where userId = #{userId} ;
+		where userId =
+		#{userId} ;
 
-	</update >
+	</update>
 	<insert id="join">
 
-		insert into memberT(userId , userPw)
+		insert into memberT(userId , userPw,role)
 		values(#{userId}
-		, #{userPw})
+		, #{userPw},#{role})
 	</insert>
 
 	<select id="find">
@@ -81,8 +82,10 @@
 	<select id="joinIdCheck">
 		select userId from memberT where userId=#{userId};
 	</select>
-	
 
+	<select id="checkAdmin">
+		select adminLevel from memberT where userId=#{userId};
+	</select>
 
 
 </mapper>

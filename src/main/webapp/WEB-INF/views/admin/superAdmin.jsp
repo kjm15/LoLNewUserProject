@@ -12,9 +12,11 @@
 </head>
 
 <%@include file="../inc/header.jsp"%>
-[[중간 관리자와 총괄관리자만 들어올수 있습니다.]]
-<%@include file="../admin/adminFunction/button.jsp"%>
-<a href = "/admin/super"> 총괄관리자로가기</a>
+
+[[총괄 관리자만 들어올수 있습니다.]]
+
+
+<a href = "/admin/middle">중관관리자페이지가기</a>
 
 <script defer src="/js/admin/info.js"></script>
 

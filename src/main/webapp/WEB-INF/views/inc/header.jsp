@@ -30,8 +30,7 @@
 			class="navbar-brand" href="/jgh">장기훈</a> <a class="navbar-brand"
 			href="/kdg">김동근</a> <a class="navbar-brand" href="/kyt">김윤태</a> <a
 			class="navbar-brand" href="/kjm">김진문</a> <a class="navbar-brand"
-			href="/stm">송태민</a> <a class="navbar-brand" href="/jhl">정혜린</a> <a
-			class="navbar-brand" href="/shop">상점(Transaction 연습)</a>
+			href="/stm">송태민</a> <a class="navbar-brand" href="/jhl">정혜린</a> 
 
 		<c:choose>
 			<c:when test="${userId != null}">
@@ -77,7 +76,7 @@
 			<div class="modal-body">
 
 				<h3>빈곳을 입력해 가입해주세요</h3>
-				<form action="/join" method="post">
+				<form action="/member/join" method="post">
 
 					아이디 : <input type="text" name="userId" id="joinId"><span
 						id="checkId">아이디</span></br> 패스워드 :<input type="password" name="userPw"
@@ -115,7 +114,7 @@
 
 				<h3>로그인창</h3>
 
-				<form action="/login" method="post">
+				<form action="/member/login" method="post">
 					아이디 : <input type="text" id='userId' name="userId"> </br> 패스워드 :
 					<input type="text" id="userPw" name="userPw"> </br>
 					<div class="modal-footer">

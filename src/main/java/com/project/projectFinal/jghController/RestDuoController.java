@@ -5,6 +5,7 @@ import java.util.HashMap;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.project.projectFinal.dto.DuoMsgDto;
@@ -16,6 +17,7 @@ import lombok.extern.slf4j.Slf4j;
 
 @RestController
 @Slf4j
+@RequestMapping("/jgh")
 public class RestDuoController {
 
 	@Autowired
@@ -23,8 +25,9 @@ public class RestDuoController {
 
 	@PostMapping("/duostartinfo")
 	public ArrayList<HashMap<String, DuoSearchDto>> duostartinfo() {
-
-		return duoService.duostartinfo();
+		ArrayList<HashMap<String, DuoSearchDto>>  a  = duoService.duostartinfo();
+		log.info("==={}",a);
+		return a;
 	}
 	@PostMapping("/chattRoomInfo")
 	public ArrayList<HashMap<String, DuoMsgDto>> chattRoomInfo(DuoMsgDto duoMsgDto,

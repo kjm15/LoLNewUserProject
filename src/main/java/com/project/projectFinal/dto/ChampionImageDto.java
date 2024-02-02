@@ -16,5 +16,7 @@ public class ChampionImageDto {
 	private String champion_name_cons; //알리아스
 	private String champSearch;
 	private String line;
+	private String searchChamp;
+	
 	
 }
