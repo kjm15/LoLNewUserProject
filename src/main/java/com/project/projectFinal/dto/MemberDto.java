@@ -2,8 +2,6 @@ package com.project.projectFinal.dto;
 
 import org.springframework.security.crypto.password.PasswordEncoder;
 
-import com.project.projectFinal.config.MemberRole;
-
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
@@ -23,13 +21,13 @@ public class MemberDto {
 	// 1: 2: 3: 4: 5: 6: 999://총관리자
 	private String adminLevel; // 관리자 분류
 
-	private MemberRole role;
-
+	private String role;
+	
 	public static MemberDto passwordEnconderDto(MemberDto memberDto , PasswordEncoder passwordEncoder) {
 		
 		MemberDto mDto = MemberDto.builder().userId(memberDto.getUserId())
 				.userPw(passwordEncoder.encode(memberDto.getUserPw())) // 암호화처리
-				.role(MemberRole.USER).build();
+				.build();
 		return mDto;
 	}
 }

@@ -23,12 +23,15 @@ public class MemberService {
 	MemberDao memberDao;
 	private final PasswordEncoder passwordEncoder;
 
-	public MemberDto login(MemberDto memberDto) throws CustomException, BadRequestException {
+	public boolean login(MemberDto memberDto) throws CustomException, BadRequestException {
 		MemberDto mDto = memberDao.login(memberDto);
-		if (!memberDto.getUserPw().isEmpty() || !passwordEncoder.matches(mDto.getUserPw(), memberDto.getUserPw())) {
-			throw new BadRequestException();
+//		log.info("=={}",mDto);
+		if (passwordEncoder.matches(memberDto.getUserPw(),mDto.getUserPw())) {
+			return true;
+		}else {
+			return false;
 		}
-		return mDto;
+		
 	}
 
 	@Transactional
