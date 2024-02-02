@@ -1,44 +1,70 @@
 package com.project.projectFinal.controller;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.core.Authentication;
+import org.springframework.security.core.context.SecurityContextHolder;
+import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.stereotype.Controller;
-import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.servlet.mvc.support.RedirectAttributes;
+import org.springframework.web.bind.annotation.RequestMapping;
 
 import com.project.projectFinal.dto.MemberDto;
 import com.project.projectFinal.service.MemberService;
 
+import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpSession;
 import lombok.extern.slf4j.Slf4j;
 
 @Controller
 @Slf4j
+@RequestMapping("/member")
 public class MemberController {
 
 	@Autowired
 	MemberService memberService;
 
-	////POST매핑
+	@GetMapping("login")
+	public String login(HttpServletRequest req) {
+		String referer = req.getHeader("Referer");
+		req.getSession().setAttribute("prevPage", referer);
+		return "aMain/loginFrm";
+	}
 
-	@PostMapping("/login") // 로그인 구현
-	public String login(MemberDto memberDto, HttpSession session, Model model,RedirectAttributes redirectAttributes) {
+	@GetMapping("join")
+	public String join() {
+
+		return "aMain/joinFrm";
+	}
+	
+	@GetMapping("/success")
+	public String loginResult(Authentication authentication, HttpSession httpSession) {
 		
-		memberService.login(memberDto); //성공 or 실패시 에러
-		
-		//로그인 아이디 세션에 저장
-		session.setAttribute("userId", memberDto.getUserId());
-		
-		redirectAttributes.addFlashAttribute("msg","로그인성공");
-		return "redirect:/main";
+		  UserDetails userDetails = (UserDetails) authentication.getPrincipal();
+		 String result =  userDetails.getUsername();
+		if (result.equals("anonymousUser")) {
+
+			result = "Guest";
+		} 
+	
+		httpSession.setAttribute("userId", result);
+
+		return "redirect:/new";
+	}
+	
+	@PostMapping("join")
+	public String join(MemberDto memberDto) {
+
+		if (memberService.join(memberDto)) {
+
+			return "redirect:/member/login";
+		} else {
+
+			return "redirect:/member/join";
+		}
 
 	}
 
-	@PostMapping("/join") // 회원가입구현
-	public String join(MemberDto memberDto, Model model,RedirectAttributes redirectAttributes) {
-		memberService.join(memberDto);//성공 or 실패시 에러
-		redirectAttributes.addFlashAttribute("msg","로그인성공");	
-		return "redirect:/main";
-	}
+
 
 }

@@ -1,11 +1,18 @@
 package com.project.projectFinal.service;
 
-import java.util.HashMap;
+import java.util.Arrays;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.core.authority.SimpleGrantedAuthority;
+import org.springframework.security.core.userdetails.User;
+import org.springframework.security.core.userdetails.UserDetails;
+import org.springframework.security.core.userdetails.UserDetailsService;
+import org.springframework.security.core.userdetails.UsernameNotFoundException;
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
+import com.project.projectFinal.config.MemberRole;
 import com.project.projectFinal.customEx.CustomException;
 import com.project.projectFinal.dao.MemberDao;
 import com.project.projectFinal.dto.KakaoDto;
@@ -15,42 +22,12 @@ import lombok.extern.slf4j.Slf4j;
 
 @Service
 @Slf4j
-public class MemberService {
+public class MemberService implements UserDetailsService {
 
 	@Autowired
+	BCryptPasswordEncoder passwordEncoder;
+	@Autowired
 	MemberDao memberDao;
-
-	public MemberDto login(MemberDto memberDto) throws CustomException {
-
-		MemberDto mDto = memberDao.login(memberDto);
-		HashMap<String, String> mMap = new HashMap<>();
-		if (mDto != null) {
-			memberDao.loginNow(mDto);
-			return mDto;
-		} else {
-
-			throw new CustomException("아이디 혹은 비밀번호가 틀렸습니다.");
-		}
-
-	}
-
-	@Transactional
-	public MemberDto join(MemberDto memberDto) {
-
-		if (memberDao.find(memberDto) == 1) {
-			throw new CustomException("아이디가 중복되었습니다.");
-		}
-		if (memberDao.join(memberDto) == 1) {
-
-			if (memberDto.getUserId().equals("") || memberDto.getUserPw().equals("")) {
-
-				throw new CustomException("아이디 혹은 비밀번호가 공백입니다.");
-			}
-
-		}
-
-		return memberDto;
-	}
 
 	@Transactional
 	public void payDbSave(KakaoDto paymentDto) {
@@ -73,19 +50,42 @@ public class MemberService {
 
 	}
 
-
-
-
-
 	public MemberDto joinIdCheck(MemberDto memberDto) { // 회원가입 시 아이디 중복채크
 		return memberDao.joinIdCheck(memberDto);
 
 	}
 
 	public void logoutNow(String userId) {
-		 memberDao.logoutNow(userId);
-		
+		memberDao.logoutNow(userId);
+
 	}
 
-	
+	// 로그인
+	@Override
+	public UserDetails loadUserByUsername(String userId) throws UsernameNotFoundException {
+		MemberDto memberDto = new MemberDto();
+		memberDto.setUserId(userId);
+		MemberDto mDto = memberDao.login(memberDto);
+		if (mDto == null) {
+			throw new UsernameNotFoundException("존재하지 않는 아이디 입니다.");
+		}
+		return new User(mDto.getUserId(), mDto.getUserPw(), Arrays.asList(new SimpleGrantedAuthority(mDto.getRole())));
+	}
+
+	// 회원가입
+	@Transactional
+	public boolean join(MemberDto memberDto) {
+
+		if (memberDao.login(memberDto) != null) {
+			return false;
+		}
+		MemberDto mDto = new MemberDto();
+		mDto.setUserId(memberDto.getUserId());
+		mDto.setUserPw(passwordEncoder.encode(memberDto.getUserPw()));
+		mDto.setRole("USER");
+
+		memberDao.join(mDto);
+		log.info("==={}", mDto);
+		return true;
+	}
 }

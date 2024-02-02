@@ -30,7 +30,7 @@
 		<header id="header" class="alt">
 
 
-			<img class = "mainlogo" id = "mainlogo" src = "../img/kjm/logo3.gif">
+			<img class="mainlogo" id="mainlogo" src="../img/kjm/logo3.gif">
 		</header>
 		<span class="logo"><img src="images/logo.svg" alt="" /></span>
 		<h1 align="center">태민이 검색바</h1>
@@ -66,13 +66,27 @@
 		<!-- Nav -->
 		<nav id="nav">
 			<ul>
-				<li><a href="/jgh" class="active">장기훈</a></li>
+				<li><a href="/jgh" class="active">데이터Boom듀오찾기</a></li>
 				<li><a href="/kdg">김동근</a></li>
 				<li><a href="/kjm">김진문</a></li>
 				<li><a href="/stm">송태민</a></li>
 				<li><a href="/kyt">김윤태</a></li>
 				<li><a href="/jhl">정혜린</a></li>
-				<li><a href="/admin">관리자용</a></li>
+				<li><a href="/admin/middle">관리자용(구현중)</a></li>
+
+
+				<c:choose>
+					<c:when test="${userId != null}">
+						<span>${userId}님 접속중</span>
+						<li><a href="/Note">메일함</a></li>
+						<li><a href="#">결제하기</a></li>
+							<li><a href="/member/logout">로그아웃</a></li>
+					
+					</c:when>
+					<c:otherwise>
+							<li><a href="/member/login">로그인/회원가입</a></li>
+					</c:otherwise>
+				</c:choose>
 			</ul>
 		</nav>
 
@@ -118,7 +132,7 @@
 
 
 			<button type="button" onclick="alert('변경바람')">
-				<img class = "buttonimg" src="../img/kjm/buttonimg.jpg" />
+				<img class="buttonimg" src="../img/kjm/buttonimg.jpg" />
 			</button>
 
 

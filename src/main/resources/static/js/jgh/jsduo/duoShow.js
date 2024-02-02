@@ -9,7 +9,7 @@ function duoMainInfo() {
 
 	$.ajax({
 		type: 'post',
-		url: '/duostartinfo',
+		url: '/jgh/duostartinfo',
 		success: function(res) {
 //			console.log(res)
 			let str = ''
@@ -90,7 +90,7 @@ function showChattInfo() {
 	$.ajax({
 		//
 		type: 'post',
-		url: '/chattRoomInfo',
+		url: '/jgh/chattRoomInfo',
 		success: function(res) {
 			
 			if (res != '') {

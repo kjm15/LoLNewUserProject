@@ -28,5 +28,7 @@ public interface MemberDao {
 
 	void logoutNow(String userId);
 
+	String checkAdmin(String userId);
+
 
 }

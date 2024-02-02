@@ -30,8 +30,7 @@
 			class="navbar-brand" href="/jgh">장기훈</a> <a class="navbar-brand"
 			href="/kdg">김동근</a> <a class="navbar-brand" href="/kyt">김윤태</a> <a
 			class="navbar-brand" href="/kjm">김진문</a> <a class="navbar-brand"
-			href="/stm">송태민</a> <a class="navbar-brand" href="/jhl">정혜린</a> <a
-			class="navbar-brand" href="/shop">상점(Transaction 연습)</a>
+			href="/stm">송태민</a> <a class="navbar-brand" href="/jhl">정혜린</a> 
 
 		<c:choose>
 			<c:when test="${userId != null}">
@@ -40,7 +39,7 @@
 				<button type="button" class="btn btn-primary" data-bs-toggle="modal"
 					data-bs-target="#exampleModal3">결제하기</button>
 				<button>
-					<a class="btn btn-secondary" href="/logout">로그아웃</a>
+					<a class="btn btn-secondary" href="/member/logout">로그아웃</a>
 				</button>
 
 
@@ -48,9 +47,9 @@
 			</c:when>
 			<c:otherwise>
 				<button type="button" class="btn btn-primary" data-bs-toggle="modal"
-					data-bs-target="#exampleModal2">로그인</button>
+					data-bs-target="#exampleModal2" id = "memberlogin">로그인</button>
 				<button type="button" class="btn btn-primary" data-bs-toggle="modal"
-					data-bs-target="#exampleModal1">회원가입</button>
+					data-bs-target="#exampleModal1" id = "memberjoin">회원가입</button>
 			</c:otherwise>
 		</c:choose>
 
@@ -76,23 +75,14 @@
 			</div>
 			<div class="modal-body">
 
-				<h3>빈곳을 입력해 가입해주세요</h3>
-				<form action="/join" method="post">
-
-					아이디 : <input type="text" name="userId" id="joinId"><span
-						id="checkId">아이디</span></br> 패스워드 :<input type="password" name="userPw"
-						id="joinPw"><span id="checkPw">비밀번호</span></br>
-					<hr>
-					이름 : <input type="text" name="userName"> (db만들기) </br> e-mail :
-					<input type="text" name="userEmail"> (db만들기) </br>
+			
 
 					<div class="modal-footer">
-						<button type="button" class="btn btn-secondary"
-							data-bs-dismiss="modal">닫기</button>
+	
 						<button type="submit" class="btn btn-primary" id="joinbnt">회원가입하기</button>
 					</div>
 
-				</form>
+		
 
 			</div>
 
@@ -115,12 +105,7 @@
 
 				<h3>로그인창</h3>
 
-				<form action="/login" method="post">
-					아이디 : <input type="text" id='userId' name="userId"> </br> 패스워드 :
-					<input type="text" id="userPw" name="userPw"> </br>
-					<div class="modal-footer">
-						<button type="button" class="btn btn-secondary"
-							data-bs-dismiss="modal">닫기</button>
+				<form action="/member/login" method="post">
 						<button type="submit" class="btn btn-primary">로그인하기</button>
 					</div>
 				</form>

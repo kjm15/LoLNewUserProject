@@ -59,7 +59,7 @@ public class DuoService {
 //	}
 
 	public ArrayList<HashMap<String, DuoSearchDto>> duostartinfo() {
-
+		
 		return duoDao.duoInfo();
 
 	}
