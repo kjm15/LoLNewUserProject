@@ -18,6 +18,8 @@ public interface JhlChampDao {
 
 	public List<HashMap<String, String>> champLineSelect(ChampionImageDto champDto);
 
+	public List<HashMap<String, String>> champListAll();
+
 
 
 	
