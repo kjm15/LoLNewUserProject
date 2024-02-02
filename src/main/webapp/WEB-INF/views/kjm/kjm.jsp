@@ -30,6 +30,7 @@
 
 	<%@include file="../inc/header2.jsp"%>
 	<div style="height: 700px; background: whitesmoke;"></div>
+	<h1>test</h1>
 	<%@include file="../inc/footer.jsp"%>
 
 	<!-- js들어갈자리  -->
