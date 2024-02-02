@@ -1,14 +1,13 @@
 package com.project.projectFinal.config;
 
-import lombok.AllArgsConstructor;
-import lombok.Getter;
+import lombok.Data;
+import lombok.ToString;
 
-@AllArgsConstructor
-@Getter
-public enum MemberRole {
 
-	SUPERADMIN("ROLE_SUPERADMIN,ROLE_ADMIN"), 
-	ADMIN("ROLE_ADMIN");
+@ToString
+@Data
+public class MemberRole {
 
-	private String value;
+	private String role;
+
 }

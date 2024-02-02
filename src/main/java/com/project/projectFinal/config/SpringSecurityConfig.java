@@ -1,53 +1,78 @@
 package com.project.projectFinal.config;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
+import org.springframework.security.config.annotation.authentication.builders.AuthenticationManagerBuilder;
 import org.springframework.security.config.annotation.method.configuration.EnableMethodSecurity;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
+import org.springframework.security.config.annotation.web.configuration.WebSecurityCustomizer;
+import org.springframework.security.config.annotation.web.configurers.AbstractHttpConfigurer;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
-import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.security.web.SecurityFilterChain;
+import org.springframework.security.web.authentication.AuthenticationSuccessHandler;
+import org.springframework.security.web.util.matcher.AntPathRequestMatcher;
 
-@Configuration
+import com.project.projectFinal.service.MemberService;
+
+import lombok.RequiredArgsConstructor;
+
 @EnableWebSecurity
 @EnableMethodSecurity
+@Configuration
+@RequiredArgsConstructor
 public class SpringSecurityConfig {
 
+	@Autowired
+	MemberService memberService;
+	
 	@Bean
 	public SecurityFilterChain filterChain(HttpSecurity http) throws Exception {
-		// (변경된)자바 스프링 공식 예제 : 
-//		http.authorizeHttpRequests((authz) -> authz.anyRequest().authenticated()).httpBasic(withDefaults());
+		return http
+				// 개발용이므로 csrf 옵션끄기.
 
-//		http.csrf(csrf ->csrf.disable()).cors(cors ->cors.disable())
-//		
-//				.formLogin(login -> login.loginPage("/kdg") // 처음 시작 화면 고정
-//				.loginProcessingUrl("/member/login") // 로그인 submit 받을 url
-////				.usernameParameter("userId") // 들고갈 아이디
-////				.passwordParameter("userPw") // 들고갈 비밀번호
-//				.defaultSuccessUrl("/new", true) // 로그인 성공시 리다이렉트 주소
-//
-//				).logout(withDefaults()); // 로그아웃은 기본설정으로 (/logout으로 인증해제)
+				.csrf(AbstractHttpConfigurer::disable)
+
+				.authorizeHttpRequests((authorizeRequests) -> {
+//                authorizeRequests.requestMatchers("/user/**").authenticated(); //인증이 필요한 url이라는뜻
+
+					authorizeRequests.requestMatchers("/manager/**").hasRole("MANAGER");
+					// ROLE_은 붙이면 안됨. hasAnyRole()을 사용할 때 자동으로 ROLE_이 붙기 때문이다.
+
+					authorizeRequests.requestMatchers("/admin/**").hasRole("ADMIN");
 		
-		 http.authorizeHttpRequests((request) ->  request
-				
-				 .requestMatchers("/**").permitAll()
-				 .requestMatchers("/admin/**").hasRole("ADMIN")
-				 );
 
-			return http.build();
+					authorizeRequests.anyRequest().permitAll();
+				})
+
+				.formLogin((formLogin) -> {
+					/* 권한이 필요한 요청은 해당 url로 리다이렉트 */
+					formLogin.loginPage("/member/login")
+							.defaultSuccessUrl("/new").permitAll().failureUrl("/member/login");
+				}).logout((logOut) -> {
+
+					logOut.logoutRequestMatcher(new AntPathRequestMatcher("/logout")).logoutSuccessUrl("/new");
+				}).build();
 	}
 
 	// 정적 리소스 주소는 시큐리티에서 제외
-//	@Bean
-//	public WebSecurityCustomizer webSecurityCustomizer() {
-//		return (web) -> web.ignoring().requestMatchers("/js/**", "/css/**");
-//
-//	}
-
 	@Bean
-	public PasswordEncoder passwordEncoder() {// 간단하게 비밀번호 암호화
-		return new BCryptPasswordEncoder();
+	public WebSecurityCustomizer webSecurityCustomizer() {
+		return (web) -> web.ignoring().requestMatchers("/resorces/**");
+
 	}
 
+	@Bean
+	public static BCryptPasswordEncoder bCryptPasswordEncoder() {
+		return new BCryptPasswordEncoder();
+	}
+	@Autowired
+	public void configureGlobal(AuthenticationManagerBuilder auth) throws Exception {
+	  auth.userDetailsService(memberService).passwordEncoder(bCryptPasswordEncoder());
+	}
+	@Bean
+	public AuthenticationSuccessHandler successHandler() {
+	    return new CustomLoginSuccessHandler("/defaultUrl");
+	}
 }
