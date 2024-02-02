@@ -67,18 +67,14 @@ public class MemberService implements UserDetailsService {
 		memberDto.setUserId(userId);
 		MemberDto mDto = memberDao.login(memberDto);
 		if (mDto == null) {
-			new IllegalArgumentException("존재하지 않는 유저입니다.");
-
+			throw new UsernameNotFoundException("존재하지 않는 아이디 입니다.");
 		}
 		return new User(mDto.getUserId(), mDto.getUserPw(), Arrays.asList(new SimpleGrantedAuthority(mDto.getRole())));
 	}
-//				 new MemberDto(mDto.getUserId(), mDto.getUserPw(), Arrays.asList(new SimpleGrantedAuthority(mDto.getRole())));
 
 	// 회원가입
 	@Transactional
 	public boolean join(MemberDto memberDto) {
-		MemberRole role = new MemberRole();
-		role.setRole("USER");
 
 		if (memberDao.login(memberDto) != null) {
 			return false;
@@ -86,10 +82,10 @@ public class MemberService implements UserDetailsService {
 		MemberDto mDto = new MemberDto();
 		mDto.setUserId(memberDto.getUserId());
 		mDto.setUserPw(passwordEncoder.encode(memberDto.getUserPw()));
-		mDto.setRole("BASIC");
+		mDto.setRole("USER");
 
 		memberDao.join(mDto);
-		log.info("==={}", memberDto);
+		log.info("==={}", mDto);
 		return true;
 	}
 }

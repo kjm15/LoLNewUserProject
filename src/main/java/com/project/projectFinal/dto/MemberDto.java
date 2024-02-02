@@ -1,6 +1,7 @@
 package com.project.projectFinal.dto;
 
 import lombok.AllArgsConstructor;
+import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 import lombok.ToString;
@@ -17,7 +18,7 @@ public class MemberDto {
 	private int loginNow; // 현재 로그인 확인용
 
 	private String role;
-
+@Builder
 	public MemberDto(String userId, String userPw, String role) {
 		this.userId = userId;
 		this.userPw = userPw;

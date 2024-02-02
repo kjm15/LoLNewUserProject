@@ -50,17 +50,7 @@ public class MainController {
 		return "payment";
 	}
 
-	@GetMapping("/logout")
-	public String logout(HttpSession session, RedirectAttributes redirectAttributes) {
-		
-		String userId =  (String) session.getAttribute("userId");
-		memberService.logoutNow(userId);
-		session.invalidate();
-		redirectAttributes.addFlashAttribute("msg", "로그아웃되었습니다.");
-		
-		
-		return "redirect:/";
-	}
+
 
 	// 동기처리시
 //	@PostMapping("/main/info") //소환사 이름검색 << 추후 이걸로 로그인 대신받기도 가능 

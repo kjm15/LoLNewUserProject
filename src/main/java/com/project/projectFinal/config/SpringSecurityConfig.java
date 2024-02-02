@@ -35,9 +35,9 @@ public class SpringSecurityConfig {
 				.csrf(AbstractHttpConfigurer::disable)
 
 				.authorizeHttpRequests((authorizeRequests) -> {
-//                authorizeRequests.requestMatchers("/user/**").authenticated(); //인증이 필요한 url이라는뜻
-
-					authorizeRequests.requestMatchers("/manager/**").hasRole("MANAGER");
+                authorizeRequests.requestMatchers("/member/success").authenticated(); //로그인 성공시 세션에 아이디값저장, 인증시에만 들어가게 막아둠
+						
+					authorizeRequests.requestMatchers("/manager/**").hasRole("SUPERADMIN");
 					// ROLE_은 붙이면 안됨. hasAnyRole()을 사용할 때 자동으로 ROLE_이 붙기 때문이다.
 
 					authorizeRequests.requestMatchers("/admin/**").hasRole("ADMIN");
@@ -49,10 +49,10 @@ public class SpringSecurityConfig {
 				.formLogin((formLogin) -> {
 					/* 권한이 필요한 요청은 해당 url로 리다이렉트 */
 					formLogin.loginPage("/member/login")
-							.defaultSuccessUrl("/new").permitAll().failureUrl("/member/login");
+							.defaultSuccessUrl("/member/success").permitAll().failureUrl("/member/login");
 				}).logout((logOut) -> {
 
-					logOut.logoutRequestMatcher(new AntPathRequestMatcher("/logout")).logoutSuccessUrl("/new");
+					logOut.logoutRequestMatcher(new AntPathRequestMatcher("/member/logout")).logoutSuccessUrl("/new");
 				}).build();
 	}
 
@@ -75,4 +75,7 @@ public class SpringSecurityConfig {
 	public AuthenticationSuccessHandler successHandler() {
 	    return new CustomLoginSuccessHandler("/defaultUrl");
 	}
+	
+	
+	
 }
