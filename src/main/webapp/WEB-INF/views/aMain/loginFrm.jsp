@@ -45,6 +45,8 @@
 							type="password" id="userPw" name="password"> <input
 							type="submit" value="로그인"> <input
 							type="button" id = "memberjoin" value="회원가입">
+							 <input
+							type="button" id = "membermain" value="메인으로">
 					</form>
 				</div>
 			</div>

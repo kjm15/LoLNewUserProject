@@ -33,21 +33,21 @@
 		<div class="container">
 			<div class="left">
 				<div class="login">회원가입</div>
-				<div class="eula">By logging in you agree to the ridiculously
-					long terms that you didn't bother to read</div>
+				<div class="eula">데이터붐 회원가입 페이지입니다.</div>
 			</div>
 			<div class="right">
 
 				<div class="form">
 					<form action="/member/join" method="post">
 						<label for="userId">아이디</label> 
-						<input type="text" id="userId"
-							name="userId"> <label for="userPw">패스워드</label> 
-							<input
-							type="password" id="userPw" name="userPw"> 
-							<input
-							type="submit" value="회원가입">
+						<input type="text" id="userId" name="userId"> 
+						<label for="userPw">패스워드</label> 
+						<input 	type="password" id="userPw" name="userPw"> 
+						<input 	type="submit" value="회원가입">
+						<input type="button" id = "membermain" value="메인으로">
 					</form>
+					
+					
 				</div>
 			</div>
 		</div>

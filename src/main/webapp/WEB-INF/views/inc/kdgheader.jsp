@@ -37,7 +37,7 @@
 				<span class="navbar-brand">${userId}님 접속중</span>
 				<button type="button" class="btn btn-primary" data-bs-toggle="modal"
 					data-bs-target="#exampleModal3">결제하기</button>
-				<button  ><a class="btn btn-secondary" href="/logout">로그아웃</a></button>
+				<button  ><a class="btn btn-secondary" href="/member/logout">로그아웃</a></button>
 
 
 
