@@ -31,13 +31,13 @@
 		<header id="header" class="alt">
 
 
-			<img class="mainlogo" id="mainlogo" src="../img/kjm/logo3.gif">
+<!-- 			<img class="mainlogo" id="mainlogo" src="../img/kjm/logo3.gif"> -->
 		</header>
 		<span class="logo"><img src="images/logo.svg" alt="" /></span>
 		<h1 align="center">검색바</h1>
 
 
-
+		</br>
 		<!-- 			송태민시작 -->
 
 		<div class="tcontainer">
