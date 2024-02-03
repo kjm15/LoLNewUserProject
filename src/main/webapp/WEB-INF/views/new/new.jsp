@@ -72,7 +72,7 @@
 				<li><a href="/stm">송태민</a></li>
 				<li><a href="/kyt">김윤태</a></li>
 				<li><a href="/jhl">정혜린</a></li>
-				<li><a href="/admin/middle">관리자용(구현중)</a></li>
+				<li><a href="/admin/middle">관리자용</a></li>
 
 
 				<c:choose>

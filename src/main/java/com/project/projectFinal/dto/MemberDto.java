@@ -18,13 +18,13 @@ public class MemberDto {
 	private int loginNow; // 현재 로그인 확인용
 
 	private String role;
-@Builder
+
+	@Builder
 	public MemberDto(String userId, String userPw, String role) {
 		this.userId = userId;
 		this.userPw = userPw;
 		this.role = role;
 
 	}
-
 
 }
