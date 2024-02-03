@@ -1,4 +1,4 @@
-package com.project.projectFinal.config;
+package com.project.projectFinal.handler;
 import java.io.IOException;
 
 import org.springframework.security.access.AccessDeniedException;

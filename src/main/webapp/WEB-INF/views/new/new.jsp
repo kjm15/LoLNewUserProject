@@ -8,13 +8,14 @@
 <meta charset="utf-8" />
 <meta name="viewport"
 	content="width=device-width, initial-scale=1, user-scalable=no" />
+	<!-- 로그인시 꽃가루 -->
+	
 <script type="text/javascript"
 	src="https://code.jquery.com/jquery-1.12.4.min.js"></script>
 <link rel="stylesheet" href="new/assets/css/main.css" />
 <link rel="stylesheet" href="new/assets/css/div.css" />
 <link rel="stylesheet" href="new/assets/css/kdg.css" />
 <link rel="stylesheet" href="new/assets/css/jhl.css" />
-
 
 
 
@@ -72,7 +73,7 @@
 				<li><a href="/stm">송태민</a></li>
 				<li><a href="/kyt">김윤태</a></li>
 				<li><a href="/jhl">정혜린</a></li>
-				<li><a href="/admin/middle">관리자용</a></li>
+				<li><a href="/admin/mng">담장자페이지</a></li>
 
 
 				<c:choose>
@@ -202,5 +203,6 @@
 	<script src="new/assets/js/util.js"></script>
 	<script src="new/assets/js/main.js"></script>
 	<script src="new/assets/js/jhl.js"></script>
+	
 </body>
 </html>

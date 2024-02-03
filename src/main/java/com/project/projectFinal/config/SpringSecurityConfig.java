@@ -11,10 +11,11 @@ import org.springframework.security.config.annotation.web.configuration.WebSecur
 import org.springframework.security.config.annotation.web.configurers.AbstractHttpConfigurer;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.web.SecurityFilterChain;
-import org.springframework.security.web.access.AccessDeniedHandler;
 import org.springframework.security.web.authentication.AuthenticationSuccessHandler;
 import org.springframework.security.web.util.matcher.AntPathRequestMatcher;
 
+import com.project.projectFinal.handler.CustomLoginSuccessHandler;
+import com.project.projectFinal.handler.SecurityAccessDeniedHandler;
 import com.project.projectFinal.service.MemberService;
 
 import lombok.RequiredArgsConstructor;

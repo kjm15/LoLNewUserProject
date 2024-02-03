@@ -24,14 +24,14 @@ public class MemberController {
 	@Autowired
 	MemberService memberService;
 
-	@GetMapping("login")
+	@GetMapping("/login")
 	public String login(HttpServletRequest req) {
 		String referer = req.getHeader("Referer");
 		req.getSession().setAttribute("prevPage", referer);
 		return "aMain/loginFrm";
 	}
 
-	@GetMapping("join")
+	@GetMapping("/join")
 	public String join() {
 
 		return "aMain/joinFrm";
@@ -53,7 +53,7 @@ public class MemberController {
 		return "redirect:/new";
 	}
 	
-	@PostMapping("join")
+	@PostMapping("/join")
 	public String join(MemberDto memberDto) {
 
 		if (memberService.join(memberDto)) {
