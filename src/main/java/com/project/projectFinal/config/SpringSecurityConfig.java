@@ -32,13 +32,14 @@ public class SpringSecurityConfig {
 	public SecurityFilterChain filterChain(HttpSecurity http) throws Exception {
 		return http
 				// 개발용이므로 csrf 옵션끄기.
-
 				.csrf(AbstractHttpConfigurer::disable)
 
 				.authorizeHttpRequests((authorizeRequests) -> {
-					authorizeRequests.requestMatchers("/member/success").authenticated(); // 로그인 성공시 세션에 아이디값저장, 인증시에만
-																							// 들어가게 막아둠
-
+					authorizeRequests.requestMatchers("/member/success").authenticated(); 
+					// 로그인 성공시 필터에 저장되어 있는 아이디값을 세션에 아이디값저장, 인증시에만 들어가게 막아둠
+			
+					
+					
 					//아래 내용을 메소드와 클래스에 붙이는걸로 변경
 //					authorizeRequests.requestMatchers("/super/**").hasAuthority("SUPERADMIN");
 //						// ROLE_은 붙이면 안됨. hasAnyRole()을 사용할 때 자동으로 ROLE_이 붙기 때문이다.
