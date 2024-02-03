@@ -41,6 +41,7 @@ public class MemberController {
 	public String loginResult(Authentication authentication, HttpSession httpSession) {
 		
 		  UserDetails userDetails = (UserDetails) authentication.getPrincipal();
+		  	log.info("====={}",userDetails);
 		 String result =  userDetails.getUsername();
 		if (result.equals("anonymousUser")) {
 

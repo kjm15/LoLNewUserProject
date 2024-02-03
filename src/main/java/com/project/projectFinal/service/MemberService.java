@@ -12,7 +12,6 @@ import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
-import com.project.projectFinal.config.MemberRole;
 import com.project.projectFinal.customEx.CustomException;
 import com.project.projectFinal.dao.MemberDao;
 import com.project.projectFinal.dto.KakaoDto;
