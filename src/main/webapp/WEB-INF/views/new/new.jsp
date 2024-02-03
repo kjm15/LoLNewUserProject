@@ -8,8 +8,8 @@
 <meta charset="utf-8" />
 <meta name="viewport"
 	content="width=device-width, initial-scale=1, user-scalable=no" />
-	<!-- 로그인시 꽃가루 -->
-	
+<!-- 로그인시 꽃가루 -->
+
 <script type="text/javascript"
 	src="https://code.jquery.com/jquery-1.12.4.min.js"></script>
 <link rel="stylesheet" href="new/assets/css/main.css" />
@@ -34,7 +34,7 @@
 			<img class="mainlogo" id="mainlogo" src="../img/kjm/logo3.gif">
 		</header>
 		<span class="logo"><img src="images/logo.svg" alt="" /></span>
-		<h1 align="center">태민이 검색바</h1>
+		<h1 align="center">검색바</h1>
 
 
 
@@ -67,27 +67,29 @@
 		<!-- Nav -->
 		<nav id="nav">
 			<ul>
-				<li><a href="/jgh" class="active">데이터Boom듀오찾기</a></li>
-				<li><a href="/kdg">김동근</a></li>
-				<li><a href="/kjm">김진문</a></li>
-				<li><a href="/stm">송태민</a></li>
-				<li><a href="/kyt">김윤태</a></li>
-				<li><a href="/jhl">정혜린</a></li>
-				<li><a href="/admin/mng">담장자페이지</a></li>
+				<li><a href="/stm">전적더보기</a></li>
+				<li><a href="/kdg">아이템더보기</a></li>
 
+				<li><a href="/jgh">듀오찾기</a></li>
 
 				<c:choose>
 					<c:when test="${userId != null}">
-						<span>${userId}님 접속중</span>
-						<li><a href="/Note">메일함</a></li>
+						<!-- 						<li><a href="/Note">메일함</a></li> -->
+
 						<li><a href="#">결제하기</a></li>
-							<li><a href="/member/logout">로그아웃</a></li>
-					
+						<li><a href="/admin/mng">관리자페이지</a></li>
+						<span>${userId}님 접속중</span>
+
+						
+						<li><a href="/member/logout">로그아웃</a></li>
+
 					</c:when>
 					<c:otherwise>
-							<li><a href="/member/login">로그인/회원가입</a></li>
+						<li><a href="/member/login">로그인/회원가입</a></li>
 					</c:otherwise>
 				</c:choose>
+
+
 			</ul>
 		</nav>
 
@@ -195,14 +197,7 @@
 	<script defer src="../js/kdg/item/itemBuild.js" /></script>
 
 	<!-- Scripts -->
-	<script src="new/assets/js/jquery.min.js"></script>
-	<script src="new/assets/js/jquery.scrollex.min.js"></script>
-	<script src="new/assets/js/jquery.scrolly.min.js"></script>
-	<script src="new/assets/js/browser.min.js"></script>
-	<script src="new/assets/js/breakpoints.min.js"></script>
-	<script src="new/assets/js/util.js"></script>
-	<script src="new/assets/js/main.js"></script>
 	<script src="new/assets/js/jhl.js"></script>
-	
+
 </body>
 </html>
