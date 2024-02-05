@@ -1,5 +1,8 @@
 package com.project.projectFinal.dao;
 
+import java.util.ArrayList;
+import java.util.HashMap;
+
 import org.apache.ibatis.annotations.Mapper;
 
 import com.project.projectFinal.dto.MemberDto;
@@ -29,6 +32,8 @@ public interface MemberDao {
 	void logoutNow(String userId);
 
 	String checkAdmin(String userId);
+
+	ArrayList<HashMap<String, MemberDto>> memberTable();
 
 
 }

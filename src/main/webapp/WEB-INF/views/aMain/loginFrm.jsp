@@ -37,7 +37,7 @@
 					long terms that you didn't bother to read</div>
 			</div>
 			<div class="right">
-
+<!-- 		시큐리시 시스템으로 인해 id의 name = username , pw의 name = password로 고정 -->
 				<div class="form">
 					<form action="/member/login" method="post">
 						<label for="email">아이디</label> <input type="text" id="userId"

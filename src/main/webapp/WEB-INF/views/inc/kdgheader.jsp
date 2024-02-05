@@ -174,7 +174,7 @@
 		</div>
 	</div>
 </div>
-<script defer src ="/js/stm/joinId.js"></script>
+
 
 
 

@@ -86,6 +86,8 @@
 	<select id="checkAdmin">
 		select adminLevel from memberT where userId=#{userId};
 	</select>
-
+	<select id="memberTable">
+		select * from memberT;
+	</select>
 
 </mapper>
