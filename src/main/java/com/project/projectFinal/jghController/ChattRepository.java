@@ -1,12 +1,8 @@
 package com.project.projectFinal.jghController;
 
-import java.util.HashMap;
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
-import org.springframework.transaction.annotation.Transactional;
 
-import com.project.projectFinal.customEx.CustomException;
 import com.project.projectFinal.dao.MsgDao;
 import com.project.projectFinal.dto.DuoMsgDto;
 import com.project.projectFinal.dto.DuoSearchDto;
@@ -19,52 +15,31 @@ public class ChattRepository {
 	@Autowired
 	MsgDao msgDao;
 
-	public void insertMsg(HashMap<String, String> map) {
+	public DuoSearchDto roomUpdate(DuoSearchDto mDto) {
 
-		DuoMsgDto msgDto = new DuoMsgDto();
-
-		msgDto.setRCnt(String.valueOf(map.get("rCnt")));
-		msgDto.setUserId(map.get("userId"));
-		msgDto.setMsg(String.valueOf(map.get("msg")));
-		msgDao.insertMsg(msgDto);
+		
+		
+		return msgDao.roomUpdate(mDto);
 
 	}
 
-	public void roomUpdate(HashMap<String, String> map) {
-		DuoSearchDto duoSearchDto = new DuoSearchDto();
-		log.info("=={}", map.get("userId").length());
+	public DuoMsgDto chattInfo(DuoMsgDto mDto) {
 
-		if (map.get("userId").length() == 0) {
-			duoSearchDto.setUserId("비회원");
-		} else {
-			duoSearchDto.setUserId(map.get("userId"));
-		}
-
-		duoSearchDto.setDuoPosition(map.get("duoPosition"));
-		duoSearchDto.setMyPosition(map.get("myPosition"));
-		duoSearchDto.setTier(map.get("tier"));
-		duoSearchDto.setGameType(map.get("gameType"));
-		duoSearchDto.setMemo(map.get("memo"));
-		msgDao.roomUpdate(duoSearchDto);
-		// savedb
+		return msgDao.chattInfo(mDto);
 
 	}
 
-	@Transactional
-	public void connectRoom(HashMap<String, String> map) {
-		log.info("map : {}", map);
-		try {
-			DuoMsgDto duoChattRoomDto = new DuoMsgDto();
-			duoChattRoomDto.setRCnt(map.get("rCnt"));
-			duoChattRoomDto.setHostId(map.get("hostId"));
-			duoChattRoomDto.setGuestId(map.get("guestId"));
-			log.info("==={}", duoChattRoomDto);
-			msgDao.connectRoom(duoChattRoomDto);
-		} catch (Exception e) {
+	public DuoSearchDto duoInfo(DuoSearchDto mDto) {
+		return msgDao.duoInfo(mDto);
+	}
 
-			throw new CustomException("방생성 오류");
+	public DuoMsgDto duoCreateMsgRoom(DuoMsgDto mDto) {
 
-		}
+		return msgDao.connectRoom(mDto);
+	}
+
+	public void insertMsg(DuoMsgDto mDto) {
+		msgDao.insertMsg(mDto);
 
 	}
 
