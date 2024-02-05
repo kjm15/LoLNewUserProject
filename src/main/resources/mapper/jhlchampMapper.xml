@@ -4,17 +4,17 @@
 <mapper namespace="com.project.projectFinal.dao.JhlChampDao">
 
 <select id="champListAll">
-select champion_name_kr, champion_name, line from champName;
+select champion_name_kr, champion_name, line from champListT;
 </select>
 
 <select id="champSearch">
-select champion_name_kr, champion_name, line from champName where champion_name_kr like concat(#{champSearch}, '%') or champion_name like concat(#{champSearch}, '%') 
+select champion_name_kr, champion_name, line from champListT where champion_name_kr like concat(#{champSearch}, '%') or champion_name like concat(#{champSearch}, '%') 
 or champion_name_cons like concat(#{champSearch}, '%');
 </select>
 
 
 <select id="champLineSelect">
-select champion_name_kr, champion_name, line from champName where line like concat('%',#{line}, '%');
+select champion_name_kr, champion_name, line from champListT where line like concat('%',#{line}, '%');
 </select>
 
 
