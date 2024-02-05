@@ -91,7 +91,7 @@ $("#getpuuid").on("click", function() {
 			$.ajax({
 				type: 'post',
 				url: '/riot/game',
-				data: data,
+//				data: data,
 				success: function(res) {
 					showGameTamble(res)
 				}
