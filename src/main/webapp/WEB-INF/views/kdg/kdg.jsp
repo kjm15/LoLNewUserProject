@@ -18,7 +18,7 @@
 </head>
 <body>
 	<!-- header -->
-	<%@include file="../inc/kdgheader.jsp"%>
+	<%@include file="../inc/header.jsp"%>
 	<!-- body jsp 파일 들어갈 곳 -->
 	<%@include file="../kdg/kdgBody.jsp"%>
 	<!-- footer -->

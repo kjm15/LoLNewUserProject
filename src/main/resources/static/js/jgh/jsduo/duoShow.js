@@ -16,7 +16,7 @@ function duoMainInfo() {
 			for (let i in res) {
 
 				let strbtn = ''
-				str += "<tr class='select'>"
+				str += "<tr>"
 				str += "<td>" + res[i].rCnt + "</td>"
 				str += "<td>" + res[i].userId + "</td>"
 				str += "<td>" + res[i].myPosition + "</td>"
@@ -27,10 +27,10 @@ function duoMainInfo() {
 				str += "<td>" + res[i].memo + "</td>"
 //				str += "<td>" + res[i].date + "</td>"
 
-				strbtn += "<div class='dropdown'><button class='btn btn-secondary dropdown-toggle'type='button'"
-				strbtn += "data-bs-toggle='dropdown' aria-expanded='false'>...</button>"
-				strbtn += "<ul class='dropdown-menu'><li><a class='dropdown-item' href='#'>수정</a></li>"
-				strbtn += "<li><a class='dropdown-item' href='javascript:deleteDuo(" + res[i].rCnt + ")'>삭제</a></li></ul></div>"
+				strbtn += "<div><button type='button'"
+				strbtn += " >...</button>"
+				strbtn += "<ul ><li><a  href='#'>수정</a></li>"
+				strbtn += "<li><a  href='javascript:deleteDuo(" + res[i].rCnt + ")'>삭제</a></li></ul></div>"
 
 				str += "<td>" + strbtn + "</td>"
 				str += "</tr>"
@@ -61,11 +61,11 @@ function showNewDuo(res) {
 	str += "<td>" + date + "</td>"
 
 	str += "<td><div class='dropdown'>" +
-		"<button class='btn btn-secondary dropdown-toggle' type='button' data-bs-toggle='dropdown' aria-expanded='false'>" +
+		"<button  type='button' >" +
 		"..." + "</button>" +
-		"<ul class='dropdown-menu'>" +
-		"<li><a class='dropdown-item' href='#'>수정</a></li>" +
-		"<li><a class='dropdown-item' href='javascript:deleteDuo(" + res.rCnt + ")'>삭제</a></li>" +
+		"<ul >" +
+		"<li><a  href='#'>수정</a></li>" +
+		"<li><a  href='javascript:deleteDuo(" + res.rCnt + ")'>삭제</a></li>" +
 		"</ul>" +
 		"</div></td>"
 

@@ -14,7 +14,7 @@
 	</div>
 
 
-	<table class="table table-dark table-hover" id="modal_wrap">
+	<table id="modal_wrap">
 		<thead>
 			<tr>
 				<th>번호</th>
