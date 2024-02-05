@@ -7,6 +7,7 @@ import java.util.HashSet;
 import java.util.Map;
 import java.util.Set;
 
+import org.json.simple.JSONObject;
 import org.springframework.stereotype.Controller;
 
 import com.fasterxml.jackson.core.type.TypeReference;
@@ -14,6 +15,7 @@ import com.fasterxml.jackson.databind.ObjectMapper;
 import com.project.projectFinal.config.CTXProvider;
 import com.project.projectFinal.config.WebSocketConfig;
 import com.project.projectFinal.dto.DuoMsgDto;
+import com.project.projectFinal.dto.DuoSearchDto;
 
 import jakarta.servlet.http.HttpSession;
 import jakarta.websocket.EndpointConfig;
@@ -50,19 +52,16 @@ public class WebSocketChattService {
 		});
 		String msg1 = msg;
 		// db에 저장할 구문
-		cServ.moveService(map);
+//		cServ.moveService(map);
 
 		log.info("======work : {}", map.get("work"));
 
-		// 각 부분별로 나누어주기
+		// 메세지 보내기 //
 		if (map.get("work").equals("sendMsg")) {
 
+			cServ.chattInfo(map);
 			String rCnt = map.get("rCnt");
-
-			DuoMsgDto mDto = cServ.chattInfo(rCnt);
-
-			log.info("==={}", mDto);
-//			for (Map<Session, String> a : )  // 해당 인원에게만
+			DuoMsgDto mDto = cServ.chattInfo(map);
 			users.forEach((key, value) -> {
 				if (value.equals(mDto.getGuestId()) || value.equals(mDto.getHostId())) {
 					try {
@@ -75,14 +74,60 @@ public class WebSocketChattService {
 				}
 			});
 
+		} else if (map.get("work").equals("createQuestion")) {// 승낙문구보내기
+			String rCnt = map.get("rCnt");
+			DuoSearchDto mDto = cServ.duoInfo(rCnt);
+
+			String userId = map.get("userId");
+
+			users.forEach((key, value) -> {
+
+				if (value.equals(mDto.getUserId())) {
+					try {
+						JSONObject jsonObject = new JSONObject();
+						jsonObject.put("rCnt", mDto.getRCnt());
+						jsonObject.put("userId", mDto.getUserId());
+						jsonObject.put("guestId", userId);
+						jsonObject.put("work", "createQuestion");
+						String msg2 = jsonObject.toString();
+						key.getBasicRemote().sendText(msg2);
+
+					} catch (IOException e) {
+						// TODO Auto-generated catch block
+						e.printStackTrace();
+					}
+				}
+			});
+		} else if (map.get("work").equals("connectRoom")) {// 서로 방띄우기
+			DuoMsgDto mDto = cServ.duoCreateMsgRoom(map);
+
+			log.info("connectroom통과");
+			users.forEach((key, value) -> {
+
+				if (value.equals(mDto.getGuestId()) || value.equals(mDto.getHostId())) {
+					try {
+						JSONObject jsonObject = new JSONObject();
+						jsonObject.put("rCnt", mDto.getRCnt());
+						jsonObject.put("hostId", mDto.getHostId());
+						jsonObject.put("guestId", mDto.getGuestId());
+						jsonObject.put("work", "connectRoom");
+						String msg2 = jsonObject.toString();
+						key.getBasicRemote().sendText(msg2);
+
+					} catch (IOException e) {
+						// TODO Auto-generated catch block
+						e.printStackTrace();
+					}
+				}
+			});
+		} else {// 전체메세지
+			log.info("방만들기");
+			for (Session s : clients) {
+				s.getBasicRemote().sendText(msg1);
+			}
+
 		}
 
-//		synchronized (clients) { // 강제 동기화시킴
-//			for (Session s : clients) { // 전체메세지
-//				s.getBasicRemote().sendText(msg1);
-//
-//			}
-//		}
 	}
 
 	@OnOpen // 클라이언트 접속시
@@ -90,11 +135,10 @@ public class WebSocketChattService {
 
 		this.hSession = (HttpSession) config.getUserProperties().get("hSession");
 
-//		log.info("httpsession ===== {}" ,this.hSession.getAttribute("userId"));
 		String userId = (String) this.hSession.getAttribute("userId");
 
 		if (!clients.contains(s)) {
-//			clients.add(s);
+			clients.add(s);
 			users.put(s, userId);
 			log.info("웹소켓 사용 시작 아이디 : " + userId);
 			log.info("session open : " + s);

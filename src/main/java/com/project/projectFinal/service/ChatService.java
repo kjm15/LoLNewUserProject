@@ -6,6 +6,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.project.projectFinal.dto.DuoMsgDto;
+import com.project.projectFinal.dto.DuoSearchDto;
 import com.project.projectFinal.jghController.ChattRepository;
 
 import lombok.extern.slf4j.Slf4j;
@@ -20,26 +21,41 @@ public class ChatService {
 	// 서비스를 여기서 실행
 	// 메세지 저장문구
 	public void moveService(HashMap<String, String> map) {
-		if (map.get("work").equals("sendMsg")) {
-			chattRepository.insertMsg(map);
-		}
 
 		if (map.get("work").equals("roomUpdate")) {
 			chattRepository.roomUpdate(map);
 		}
 
-		if (map.get("work").equals("connectRoom")) {
-			chattRepository.connectRoom(map);
-		}
-
 	}
 
-	public DuoMsgDto chattInfo(String rCnt) {
+	public DuoMsgDto chattInfo(HashMap<String, String> map) {
 		DuoMsgDto mDto = new DuoMsgDto();
-		mDto.setRCnt(rCnt);
+
+		mDto.setRCnt(map.get("rCnt"));
+		mDto.setUserId(map.get("userId"));
+		mDto.setMsg(map.get("msg"));
+		mDto.setDate(map.get("date"));
 
 		return chattRepository.chattInfo(mDto);
 
+	}
+
+	public DuoSearchDto duoInfo(String rCnt) {
+		DuoSearchDto mDto = new DuoSearchDto();
+
+		mDto.setRCnt(Integer.valueOf(rCnt));
+		return chattRepository.duoInfo(mDto);
+	}
+
+	public DuoMsgDto duoCreateMsgRoom(HashMap<String, String> map) {
+
+		DuoMsgDto mDto = new DuoMsgDto();
+		mDto.setRCnt(map.get("rCnt"));
+		mDto.setGuestId(map.get("guestId"));
+		mDto.setHostId(map.get("hostId"));
+		log.info("=={}", mDto);
+
+		return chattRepository.duoCreateMsgRoom(mDto);
 	}
 
 }

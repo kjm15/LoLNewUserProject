@@ -7,10 +7,8 @@ $('#duoParty').on("click", function() {
 	let hostId = $('#hostId').val() //작성자
 	let temp1 = {}
 	temp1.work = "createQuestion"
-	temp1.hostId = hostId
-	temp1.guestId = userId
 	temp1.rCnt = rCnt
-
+	temp1.userId = userId
 	if (userId == '') {
 
 		$('#flagcollapse').html("<font color='red'>회원전용입니다. 로그인 부탁드립니다.</font>")
@@ -31,19 +29,14 @@ $('#duoParty').on("click", function() {
 	$('.flagA').hide();
 
 	//상대방에게 허락구문
+
 	let temp = JSON.stringify(temp1)
 
 	ws.send(temp)
 
-
-
 })
 //승낙시
-function connect() { //승낙 >> 방만들기
-
-	let rCnt = $('#rCnt').val()
-	let hostId = $('#hostId').val()
-	let guestId = $('#guestId').val()
+function connect(rCnt, hostId, guestId) { //승낙 >> 방만들기
 
 	let data = {
 		'rCnt': rCnt,
@@ -106,11 +99,11 @@ function send() {
 
 //채팅 작성 시 
 function chattcontents(data) { //저장한 채팅과 같은방에서 실행
-//	console.log(data)
+	//	console.log(data)
 
 	let userId = $('#userId').val()
 	var css;
-	
+
 	if (data.userId == userId) { //작성자와 로그인한 사람이 같음
 		css = ' class=me';
 		userIdcheck = userId
@@ -131,6 +124,11 @@ function chattcontents(data) { //저장한 채팅과 같은방에서 실행
 // 듀오채팅 요청 승낙/거절 구문
 function createQuestion(eventjson) {
 
+	let guestId = eventjson.guestId
+	let hostId = eventjson.userId
+	let rCnt = eventjson.rCnt
+
+	console.log(guestId)
 	let str = ''
 	str += '<div class="question" class="duoPartyChatt" id="' + eventjson.rCnt + '">'
 
@@ -140,8 +138,8 @@ function createQuestion(eventjson) {
 	str += '<p>(승낙시 해당글은 삭제되어집니다.)</p>'
 
 	str += '</div>'
-	str += "<h3><input type='button' onclick='javascript:connect()' value='승낙' /></h3>"
-	str += '<h3><input type="button" onclick="javascript:disconnect(' + eventjson.rCnt + ')" value="거절" /></h3>'
+	str += '<h3><input type="button" onclick="connect(\'' + rCnt + '\',\'' + hostId + '\',\'' + guestId + '\')" value="승낙" /></h3>'
+	str += '<h3><input type="button" onclick="disconnect()" value="거절" /></h3>'
 
 	str += '</div>'
 

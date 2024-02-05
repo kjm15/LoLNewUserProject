@@ -9,7 +9,7 @@ if (ws == null || ws == '') {
 ws.addEventListener("message", (event) => {
 
 	let eventjson = JSON.parse(event.data)
-	console.log(eventjson)
+	//	console.log(eventjson)
 
 	if (eventjson.work == 'roomUpdate') { // 방만들고 업데이트하기
 		duoMainInfo()
@@ -17,12 +17,8 @@ ws.addEventListener("message", (event) => {
 	} else if (eventjson.work == 'createQuestion') {//다른사람으로부터 승낙요청
 		console.log(eventjson)
 		let userId = $('#userId').val()
-
-		if (eventjson.hostId == userId) {
-
-			document.getElementById("hostId").value = eventjson.hostId;
-			document.getElementById("guestId").value = eventjson.guestId;
-			document.getElementById("rCnt").value = eventjson.rCnt;
+		console.log(userId)
+		if (eventjson.userId == userId) {
 
 			createQuestion(eventjson)
 
@@ -30,24 +26,13 @@ ws.addEventListener("message", (event) => {
 
 
 	} else if (eventjson.work == 'connectRoom') { //서로 대화창에 들어옴
-		//		console.log(eventjson)
+		console.log(eventjson)
 		let userId = $('#userId').val()
 
 		if (userId == eventjson.hostId || userId == eventjson.guestId) {
-			$("#msg").css("background-color", "white");
-			$("#msg").attr("disabled", false);
-			$('#talk').html("");
-			open()
-			$('.chatthead').empty()
-			$('.chatthead').append("듀오채팅     [" + eventjson.rCnt + "번방]")
-			$('#chatt').show();
-			$('.wrap').hide();
-			$('#' + eventjson.rCnt).remove()
-			$('.menu').empty()
-			$("#msg").attr("disabled", false);
-			$('#talck').empty()
+			
+			myRoom(eventjson.rCnt)
 			showChattInfo() //왼쪽 사이드바 최신화 업데이트
-
 			let res = {}
 			res.work = "roomInfo"
 			let temp = JSON.stringify(res)
@@ -56,40 +41,25 @@ ws.addEventListener("message", (event) => {
 		}
 
 
-	} else if (eventjson.work == 'reject') { //대화거절시 상대방에게 거절알림
-
-		close()
-		$('.accordion-box').empty()
-		$('#duoParty').show();
-		$('#duoPartyCancel').hide();
-		$('#flagcollapse').html('=================')
-		alert('거절하였습니다.')
-		$('#' + rCntflag).remove()
-
-
 	} else if (eventjson.work == "sendMsg") { //메세지 보내기 //완료
-//		let userId = $('#userId').val()
-//		let rCnt = $('#rCnt').val()
+		//		let userId = $('#userId').val()
+		let rCnt = $('#rCnt').val()
 
 		//대화창 안에서 보내기
-
 		if (rCnt == eventjson.rCnt) {
 
 			chattcontents(eventjson)
 
 		}
 
-
-	} else if (eventjson.work == "reload") { //누군가 방접속시 기존화면 초기화
-		$('#preflag').empty()
-		duoMainInfo()
-
-
-	} else if (eventjson.work == "roomInfo") { //누군가 방접속시 기존화면 초기화
-
-		duoMainInfo()
-
 	}
+	//	else if (eventjson.work == "reload") { //누군가 방접속시 기존화면 초기화
+	//		$('#preflag').empty()
+	//		duoMainInfo()
+	//
+	//
+	//	} 
+
 
 });
 

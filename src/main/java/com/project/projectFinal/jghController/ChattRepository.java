@@ -19,20 +19,9 @@ public class ChattRepository {
 	@Autowired
 	MsgDao msgDao;
 
-	public void insertMsg(HashMap<String, String> map) {
-
-		DuoMsgDto msgDto = new DuoMsgDto();
-
-		msgDto.setRCnt(String.valueOf(map.get("rCnt")));
-		msgDto.setUserId(map.get("userId"));
-		msgDto.setMsg(String.valueOf(map.get("msg")));
-		msgDao.insertMsg(msgDto);
-
-	}
-
 	public void roomUpdate(HashMap<String, String> map) {
 		DuoSearchDto duoSearchDto = new DuoSearchDto();
-		log.info("=={}", map.get("userId").length());
+//		log.info("=={}", map.get("userId").length());
 
 		if (map.get("userId").length() == 0) {
 			duoSearchDto.setUserId("비회원");
@@ -50,27 +39,28 @@ public class ChattRepository {
 
 	}
 
-	@Transactional
-	public void connectRoom(HashMap<String, String> map) {
-		log.info("map : {}", map);
-		try {
-			DuoMsgDto duoChattRoomDto = new DuoMsgDto();
-			duoChattRoomDto.setRCnt(map.get("rCnt"));
-			duoChattRoomDto.setHostId(map.get("hostId"));
-			duoChattRoomDto.setGuestId(map.get("guestId"));
-			log.info("==={}", duoChattRoomDto);
-			msgDao.connectRoom(duoChattRoomDto);
-		} catch (Exception e) {
 
-			throw new CustomException("방생성 오류");
 
-		}
+	public DuoMsgDto chattInfo(DuoMsgDto mDto) {
+
+		return msgDao.chattInfo(mDto);
 
 	}
 
-	public DuoMsgDto chattInfo(DuoMsgDto mDto) {
+	public DuoSearchDto duoInfo(DuoSearchDto mDto) {
+		return msgDao.duoInfo(mDto);
+	}
+
+	public DuoMsgDto duoCreateMsgRoom(DuoMsgDto mDto) {
+	
 		
-		return msgDao.chattInfo(mDto);
+		return msgDao.connectRoom(mDto);
+	}
+
+
+
+	public void insertMsg(DuoMsgDto mDto) {
+		msgDao.insertMsg(mDto);
 		
 	}
 

@@ -17,7 +17,7 @@
 	</insert>
 
 
-	<delete id="connectRoom">
+	<select id="connectRoom">
 
 		insert IGNORE into  duoChattRoomT(rCnt,
 		hostId,guestId)
@@ -26,7 +26,9 @@
 		delete from
 		duoT where rCnt =
 		#{rCnt};
-	</delete>
+		
+		select * from duoChattRoomT where rCnt = #{rCnt};
+	</select>
 
 	<select id = "chattInfo">
 	
@@ -34,6 +36,14 @@
 	
 	
 	</select>
+<select id = "duoInfo">
+	
+	select * from duoT where rCnt = #{rCnt}; 
+	
+	
+	</select>
+
+
 
 
 
