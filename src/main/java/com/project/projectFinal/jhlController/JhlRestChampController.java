@@ -4,6 +4,7 @@ import java.util.HashMap;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
@@ -13,8 +14,11 @@ import com.fasterxml.jackson.core.JsonProcessingException;
 import com.project.projectFinal.dto.ChampionImageDto;
 import com.project.projectFinal.service.JhlChampService;
 
+import lombok.extern.slf4j.Slf4j;
+
 
 @RestController
+@Slf4j
 public class JhlRestChampController {
 	
 	@Autowired
@@ -37,9 +41,6 @@ public class JhlRestChampController {
 		return champService.champListAll();
 	}
 	
-	/*
-	 * js에서 어떤값을 
-	 * 
-	 * 
-	 */
+	
+
 }
