@@ -4,7 +4,7 @@
 <mapper namespace="com.project.projectFinal.dao.ChampionDao">
 
 	<select id="champList">
-		select * from champName;
+		select * from champListT;
 	</select>
 	
 	<select id="searchChamp">

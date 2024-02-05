@@ -7,9 +7,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.project.projectFinal.dao.ChampionDao;
-import com.project.projectFinal.dto.ChampionDto;
-import com.project.projectFinal.dto.ItemDto;
-import com.project.projectFinal.dto.itemToolTipDto;
+import com.project.projectFinal.dto.ChampionImageDto;
 
 
 @Service
@@ -24,14 +22,14 @@ public class ChampionService {
 	
 	}
 
-	public List<HashMap<String, String>> searchChamp(ChampionDto cDto) {
+	public List<HashMap<String, String>> searchChamp(ChampionImageDto cDto) {
 		
 		return cd.searchChamp(cDto);
 		
 	}
 
 
-	public List<HashMap<String, String>> champLine(ChampionDto cDto) {
+	public List<HashMap<String, String>> champLine(ChampionImageDto cDto) {
 		
 		return cd.champLine(cDto);
 		

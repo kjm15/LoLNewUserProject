@@ -44,17 +44,17 @@ public class MainController {
 		return "main";
 	}
 
-	@GetMapping("/pay")
-	public String pay() {
+//	@GetMapping("/pay")
+//	public String pay() {
+//
+//		return "payment";
+//	}
 
-		return "payment";
-	}
-
-	@GetMapping("/shop")
-	public String shop() {
-
-		return "shop";
-	}
+//	@GetMapping("/shop")
+//	public String shop() {
+//
+//		return "shop";
+//	}
 
 
 	@GetMapping("/kyt")

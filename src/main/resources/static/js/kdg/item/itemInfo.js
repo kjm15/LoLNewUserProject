@@ -24,7 +24,7 @@ $(document).ready(function() {
 	$.ajax({
 
 		type: "POST",
-		url: "/kdg/test",
+		url: "/kdg/itemInfo",
 		data: data,
 		success: function(res) {
 			
@@ -189,7 +189,7 @@ function analy(){
 	$.ajax({
 
 		type: "POST",
-		url: "/kdg/test",
+		url: "/kdg/itemInfo",
 		data: data,
 		success: function(res) {
 
