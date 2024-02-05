@@ -25,7 +25,7 @@ function duoMainInfo() {
 				str += "<td>" + res[i].duoPosition + "</td>"
 				str += "<td>" + "최근챔피언개발중" + "</td>"
 				str += "<td>" + res[i].memo + "</td>"
-				str += "<td>" + res[i].date + "</td>"
+//				str += "<td>" + res[i].date + "</td>"
 
 				strbtn += "<div class='dropdown'><button class='btn btn-secondary dropdown-toggle'type='button'"
 				strbtn += "data-bs-toggle='dropdown' aria-expanded='false'>...</button>"

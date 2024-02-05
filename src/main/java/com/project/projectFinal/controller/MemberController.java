@@ -24,14 +24,14 @@ public class MemberController {
 	@Autowired
 	MemberService memberService;
 
-	@GetMapping("login")
+	@GetMapping("/login")
 	public String login(HttpServletRequest req) {
 		String referer = req.getHeader("Referer");
 		req.getSession().setAttribute("prevPage", referer);
 		return "aMain/loginFrm";
 	}
 
-	@GetMapping("join")
+	@GetMapping("/join")
 	public String join() {
 
 		return "aMain/joinFrm";
@@ -42,18 +42,18 @@ public class MemberController {
 		
 		  UserDetails userDetails = (UserDetails) authentication.getPrincipal();
 		  	log.info("====={}",userDetails);
-		 String result =  userDetails.getUsername();
-		if (result.equals("anonymousUser")) {
+		 String userId =  userDetails.getUsername();
+		if (userId.equals("anonymousUser")) {
 
-			result = "Guest";
+			userId = "Guest";
 		} 
 	
-		httpSession.setAttribute("userId", result);
+		httpSession.setAttribute("userId", userId);
 
 		return "redirect:/new";
 	}
 	
-	@PostMapping("join")
+	@PostMapping("/join")
 	public String join(MemberDto memberDto) {
 
 		if (memberService.join(memberDto)) {

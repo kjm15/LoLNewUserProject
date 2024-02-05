@@ -13,6 +13,7 @@ function monthSelect(e) {
 }
 
 function kakaopay() {
+	
 	let userId = $('#userId').val()
 	//	console.log(userId)
 	let totalMoney = $('#totalMoney').val()

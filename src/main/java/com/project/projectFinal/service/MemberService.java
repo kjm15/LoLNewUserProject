@@ -1,6 +1,8 @@
 package com.project.projectFinal.service;
 
+import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.HashMap;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
@@ -86,5 +88,11 @@ public class MemberService implements UserDetailsService {
 		memberDao.join(mDto);
 		log.info("==={}", mDto);
 		return true;
+	}
+
+	public ArrayList<HashMap<String, MemberDto>> memberTable() {
+
+		return memberDao.memberTable();
+
 	}
 }

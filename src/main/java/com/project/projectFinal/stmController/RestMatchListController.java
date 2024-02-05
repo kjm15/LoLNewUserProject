@@ -16,12 +16,14 @@ import com.project.projectFinal.dto.RiotApiDto;
 import com.project.projectFinal.dto.RiotGameDto;
 import com.project.projectFinal.service.MatchListService;
 
+import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 
 @RestController
 @Slf4j
 public class RestMatchListController {
 	@Autowired
+
 	MatchListService matchListService;
 	
 	private List<String> matchList;

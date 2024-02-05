@@ -17,7 +17,7 @@
 <link rel="stylesheet"
 	href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.5.2/animate.min.css">
 
-<script defer src="/js/aCommon/common.js"></script>
+
 
 <link href="/css/common/login.css" rel="stylesheet" type="text/css">
 <!-- Google JQuery CDN -->
@@ -40,10 +40,10 @@
 				<div class="form">
 					<form action="/member/join" method="post">
 						<label for="userId">아이디</label> 
-						<input type="text" id="userId" name="userId"> 
+						<input type="text" id="userId" name="userId"> <span id = "checkId">아이디를 적어주세요</span>
 						<label for="userPw">패스워드</label> 
-						<input 	type="password" id="userPw" name="userPw"> 
-						<input 	type="submit" value="회원가입">
+						<input 	type="password" id="userPw" name="userPw">  <span id = "checkPw"></span>
+						<input 	type="submit" value="회원가입" id = "joinBtn">
 						<input type="button" id = "membermain" value="메인으로">
 					</form>
 					
@@ -52,7 +52,7 @@
 			</div>
 		</div>
 	</div>
-
-
+<script defer src="/js/aCommon/member.js"></script>
+<script defer src="/js/aCommon/common.js"></script>
 </body>
 </html>
