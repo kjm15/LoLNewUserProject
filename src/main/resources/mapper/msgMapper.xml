@@ -3,29 +3,53 @@
 
 <mapper namespace="com.project.projectFinal.dao.MsgDao">
 
-	<insert id="roomUpdate">
+	<select id="roomUpdate">
 
 		insert IGNORE into
 		duoT(userId,myPosition,tier,duoPosition,gameType,memo)
 		values(#{userId},#{myPosition},#{tier},#{duoPosition},#{gameType},#{memo});
 
-	</insert>
+		select * from duoT order by rCnt desc limit 1;
+
+	</select>
 
 	<insert id="insertMsg">
 		insert IGNORE into msgT(rCnt,userId,msg)
 		values(#{rCnt},#{userId},#{msg});
+
+
 	</insert>
 
 
-	<delete id="connectRoom">
+	<select id="connectRoom">
 
-		insert IGNORE into  duoChattRoomT(rCnt,
+		insert IGNORE into duoChattRoomT(rCnt,
 		hostId,guestId)
 		values(#{rCnt},#{hostId},#{guestId});
 
 		delete from
-		duoT where rCnt =
+		duoT
+		where rCnt =
 		#{rCnt};
-	</delete>
+
+		select * from duoChattRoomT where rCnt = #{rCnt};
+	</select>
+
+	<select id="chattInfo">
+
+		select * from duoChattRoomT where rCnt = #{rCnt};
+
+
+	</select>
+	<select id="duoInfo">
+
+		select * from duoT where rCnt = #{rCnt};
+
+
+	</select>
+
+
+
+
 
 </mapper>

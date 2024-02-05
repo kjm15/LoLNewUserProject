@@ -7,94 +7,49 @@
 		select * from duoT order by rCnt desc limit 10;
 
 	</select>
+	<select id="chattRoomInfo">
+		select * from duoChattRoomT where (hostId = #{userId}
+		|| guestId = #{userId}) order by rCnt desc
+	</select>
 
 	<select id="infoDuoT">
 
 		select * from duoT where rCnt = #{rCnt};
 
 	</select>
+	<select id="myRoomCheck">
 
-<!-- 	<select id="comparerCnt"> -->
+		update duoChattRoomT
+		set guestId = ''
+		where rCnt = #{rCnt} and guestId = #{userId};
 
-<!-- 		select * from duoT order by rCnt desc limit 1; -->
+		update duoChattRoomT
+		set hostId = ''
+		where rCnt = #{rCnt} and hostId = #{userId};
 
-<!-- 	</select> -->
 
-	<select id="saveDbDuo">
-
-		insert into
-		duoT(userId,myPosition,tier,duoPosition,gameType,memo)
-		values(#{userId},#{myPosition},#{tier},#{duoPosition},#{gameType},#{memo});
-
-		select * from duoT order by rCnt desc limit 1;
-
+		select * from
+		duoChattRoomT
+		where rCnt =
+		#{rCnt}
 	</select>
 
+
+	<select id="msgAll">
+		select * from msgT where rCnt = #{rCnt} order by
+		autocnt
+	</select>
+
+
+	<delete id="deleteChattRoom">
+
+		delete from duoChattRoomT where rCnt=#{rCnt}
+
+	</delete>
 	<select id="nowlogin">
 
 		select userId , loginNow from memberT where userId =
 		#{friendId};
 
 	</select>
-
-	<select id="createChattRoom">
-
-		insert into duoChattRoomT
-		values(null,#{rCnt},#{hostId},#{guestId});
-
-
-		delete from duoT where
-		rCnt = #{rCnt};
-
-
-		select * from duoChattRoomT
-		order by cnt desc limit
-		1;
-	</select>
-
-
-	<select id="msgSave">
-		insert into msgT(rCnt,userId,msg)
-		values(#{rCnt},#{userId},#{msg});
-
-		select * from msgT where rCnt =
-		#{rCnt} order by rCnt desc limit 1;
-	</select>
-
-	<select id="msgRead">
-		select * from msgT where rCnt = #{rCnt} order by
-		autocnt desc limit 1;
-	</select>
-
-	<select id="msgAll">
-		select * from msgT where rCnt = #{rCnt} order by
-		autocnt
-	</select>
-	<select id="myRoomCheck">
-		select * from duoChattRoomT where rCnt =
-		#{rCnt}
-	</select>
-	<select id="chattRoomInfo">
-		select * from duoChattRoomT where (hostId = #{userId}
-		|| guestId = #{userId}) order by rCnt desc
-	</select>
-
-	<update id="goOutRoomGuest">
-
-		update duoChattRoomT set guestId = '' where rCnt =
-		#{rCnt}
-
-	</update>
-
-	<update id="goOutRoomHost">
-
-		update duoChattRoomT set hostId = '' where rCnt =
-		#{rCnt}
-
-	</update>
-	<delete id="deleteChattRoom">
-
-		delete from duoChattRoomT where rCnt=#{rCnt}
-
-	</delete>
 </mapper>

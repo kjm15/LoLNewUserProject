@@ -25,19 +25,20 @@ public class RestDuoController {
 
 	@PostMapping("/duostartinfo")
 	public ArrayList<HashMap<String, DuoSearchDto>> duostartinfo() {
-		ArrayList<HashMap<String, DuoSearchDto>>  a  = duoService.duostartinfo();
-		log.info("==={}",a);
+		ArrayList<HashMap<String, DuoSearchDto>> a = duoService.duostartinfo();
+		log.info("==={}", a);
 		return a;
 	}
+
 	@PostMapping("/chattRoomInfo")
-	public ArrayList<HashMap<String, DuoMsgDto>> chattRoomInfo(DuoMsgDto duoMsgDto,
-			HttpSession session) {
+	public ArrayList<HashMap<String, DuoMsgDto>> chattRoomInfo(DuoMsgDto duoMsgDto, HttpSession session) {
 		String userId = (String) session.getAttribute("userId");
-		
+
 		ArrayList<HashMap<String, DuoMsgDto>> cDto = duoService.chattRoomInfo(userId);
 //		log.info("=={}",cDto);
 		return cDto;
 	}
+
 	@PostMapping("/duoInfo")
 	public DuoSearchDto duoInfo(DuoSearchDto duoSearchDto) {
 
@@ -50,67 +51,21 @@ public class RestDuoController {
 
 		return duoService.myRoomCheck(duoChattRoomDto);
 	}
+
 	@PostMapping("/msgAll")
 	public ArrayList<HashMap<String, DuoMsgDto>> msgAll(DuoMsgDto msgDto) {
-	
+
 		return duoService.msgAll(msgDto);
 
 	}
+
 	@PostMapping("/goOutRoom")
-	public DuoMsgDto goOutRoom(DuoMsgDto duoChattRoomDto, HttpSession session) {
+	public void goOutRoom(DuoMsgDto duoMsgDto, HttpSession session) {
 		String userId = (String) session.getAttribute("userId");
-		
-		return duoService.goOutRoom(duoChattRoomDto, userId);
+
+		duoMsgDto.setUserId(userId);
+		duoService.goOutRoom(duoMsgDto);
 	}
-
-	
-	@PostMapping("/createChattRoom")
-	public DuoMsgDto createChattRoom(DuoMsgDto duoChattRoomDto) {
-
-		return duoService.createChattRoom(duoChattRoomDto);
-	}
-//
-//	@PostMapping("/comparerCnt")
-//	public DuoSearchDto comparerCnt() {
-//
-//		return duoService.comparerCnt();
-//
-//	}
-
-
-
-//	@PostMapping("/nowlogin")
-//	public DuoSearchDto nowlogin(DuoSearchDto duoSearchDto, HttpSession session) {
-//		log.info("==={}",duoSearchDto);
-//		String userId = (String) session.getAttribute("userId");
-//		DuoSearchDto dDto = duoService.nowlogin(duoSearchDto); // userId = hostId
-//
-//		dDto.setUserId(userId);
-//
-////		log.info("========={}", duoSearchDto);
-//		return dDto;
-//
-//	}
-//
-//	@PostMapping("/msgSave")
-//	public DuoMsgDto msgSave(DuoMsgDto msgDto) {
-////		log.info("====="+msgDto);
-//
-//		return duoService.msgSave(msgDto);
-//
-//	}
-//
-//	@PostMapping("/msgRead")
-//	public DuoMsgDto msgRead(DuoMsgDto msgDto) {
-//
-//		return duoService.msgRead(msgDto);
-//
-//	}
-
-
-
-
-
 
 
 }
