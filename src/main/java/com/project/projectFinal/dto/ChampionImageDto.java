@@ -18,5 +18,5 @@ public class ChampionImageDto {
 	private String line;
 	private String searchChamp;
 	
-	
+	private String teamPosition;
 }

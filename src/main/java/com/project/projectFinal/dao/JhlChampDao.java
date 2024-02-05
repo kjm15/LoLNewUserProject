@@ -20,6 +20,8 @@ public interface JhlChampDao {
 
 	public List<HashMap<String, String>> champListAll();
 
+	public List<HashMap<String, Object>> champRank(ChampionImageDto champDto);
+
 
 
 	
