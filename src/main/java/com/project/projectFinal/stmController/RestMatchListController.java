@@ -52,7 +52,9 @@ public class RestMatchListController {
 			List<Map> MList = matchListService.gamedate(matchList);
 			return MList;
 		} else { // 디비에 정보가 다 있다면
-			return null;
+			List<Map> MList = matchListService.gamedate(matchList);
+			return MList;
+//			return null;
 		}
 
 	}

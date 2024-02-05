@@ -16,6 +16,7 @@ $("#getpuuid").on("click", function() {
 		url: '/match/list',
 		data: data,
 		success: function(res) {
+			console.log(res)
 			if (res != []) {
 				console.log("데이터 들어옴")
 				MList = [];
@@ -26,7 +27,11 @@ $("#getpuuid").on("click", function() {
 						mm = {}
 						mm.riotIdGameName = res[i]["info"]['participants'][j]['riotIdGameName']//닉네임
 						mm.riotIdTagline = res[i]["info"]['participants'][j]['riotIdTagline'] // 태그
+						mm.summonerName = res[i]["info"]['participants'][j]['summonerName']
 						mm.championName = res[i]["info"]['participants'][j]['championName']//챔피언 아이디
+	//					mm.legendaryItemUsed = res[i]["info"]['participants'][j]['challenges']['legendaryItemUsed'] 
+	//					mm.summoner1Id = res[i]["info"]['participants'][j]['summoner1Id']//스펠 D
+	//					mm.summoner2Id = res[i]["info"]['participants'][j]['summoner2Id']//스펠 F 화면에 출력 가능할 떄 할 것
 						mm.teamId = res[i]["info"]['participants'][j]['teamId']
 						mm.win = res[i]["info"]['participants'][j]['win']
 						mm.matchId = res[i]['metadata']['matchId'] // 매치 아이디
@@ -44,7 +49,6 @@ $("#getpuuid").on("click", function() {
 						mm.totalEnemyJungleMinionsKilled = res[i]["info"]['participants'][j]['totalEnemyJungleMinionsKilled'] //상대 정글몹 킬
 						mm.wardsKilled = res[i]["info"]['participants'][j]['wardsKilled'] // 와드 킬
 						mm.wardsPlaced = res[i]["info"]['participants'][j]['wardsPlaced'] // 시야점수
-						//					mm.legendaryItemUsed = res[i]["info"]['participants'][j]['challenges']['legendaryItemUsed'] 
 						mm.gameStartTimestamp = res[i]["info"]['gameStartTimestamp']
 						mm.gameEndTimestamp = res[i]["info"]['gameEndTimestamp']
 						ingamedata.push(mm)
@@ -86,12 +90,12 @@ $("#getpuuid").on("click", function() {
 					dataType: 'json',
 				})
 			}
-			
-			
+
+
 			$.ajax({
 				type: 'post',
 				url: '/riot/game',
-//				data: data,
+				//				data: data,
 				success: function(res) {
 					showGameTamble(res)
 				}

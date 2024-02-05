@@ -3,7 +3,7 @@
 <mapper namespace="com.project.projectFinal.dao.RiotGameDao">
 <insert id="RiotGameInfo">
 insert IGNORE into RiotGameInfoT values (#{matchId},#{championName},#{riotIdGameName},
-#{riotIdTagline},#{queueId},#{teamId},#{lane},#{kills},
+#{riotIdTagline},#{summonerName}, #{queueId},#{teamId},#{lane},#{kills},
 #{assists},#{deaths},#{kda},#{firstBloodKill},#{gameEndTimestamp},
 #{gameStartTimestamp},#{totalAllyJungleMinionsKilled},#{totalDamageDealtToChampions},
 #{totalDamageTaken},#{totalEnemyJungleMinionsKilled},#{totalMinionsKilled},
