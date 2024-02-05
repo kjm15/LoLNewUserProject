@@ -23,14 +23,17 @@ public class MainController {
 	@GetMapping("/")
 	public String index() {
 
-		return "new/new";
+		return "newMain";
 	}
+	// 기존:  "new/new";
 
 	@GetMapping("/new")
 	public String new1() {
 
-		return "new/new";
+		return "newMain";
 	}
+	// 기존:  "new/new";
+	
 	@GetMapping("/main")
 	public String main(HttpSession session, MemberDto memberDto, Model model) {
 		if (session.getAttribute("userId") != null) {
