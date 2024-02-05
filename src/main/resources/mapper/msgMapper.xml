@@ -28,4 +28,13 @@
 		#{rCnt};
 	</delete>
 
+	<select id = "chattInfo">
+	
+	select * from duoChattRoomT where rCnt = #{rCnt}; 
+	
+	
+	</select>
+
+
+
 </mapper>

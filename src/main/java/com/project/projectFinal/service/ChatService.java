@@ -5,6 +5,7 @@ import java.util.HashMap;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import com.project.projectFinal.dto.DuoMsgDto;
 import com.project.projectFinal.jghController.ChattRepository;
 
 import lombok.extern.slf4j.Slf4j;
@@ -30,6 +31,14 @@ public class ChatService {
 		if (map.get("work").equals("connectRoom")) {
 			chattRepository.connectRoom(map);
 		}
+
+	}
+
+	public DuoMsgDto chattInfo(String rCnt) {
+		DuoMsgDto mDto = new DuoMsgDto();
+		mDto.setRCnt(rCnt);
+
+		return chattRepository.chattInfo(mDto);
 
 	}
 

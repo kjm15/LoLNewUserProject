@@ -68,4 +68,10 @@ public class ChattRepository {
 
 	}
 
+	public DuoMsgDto chattInfo(DuoMsgDto mDto) {
+		
+		return msgDao.chattInfo(mDto);
+		
+	}
+
 }

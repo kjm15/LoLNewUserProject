@@ -68,8 +68,8 @@ ws.addEventListener("message", (event) => {
 
 
 	} else if (eventjson.work == "sendMsg") { //메세지 보내기 //완료
-		let userId = $('#userId').val()
-		let rCnt = $('#rCnt').val()
+//		let userId = $('#userId').val()
+//		let rCnt = $('#rCnt').val()
 
 		//대화창 안에서 보내기
 

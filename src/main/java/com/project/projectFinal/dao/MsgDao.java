@@ -14,5 +14,7 @@ public interface MsgDao {
 
 	void connectRoom(DuoMsgDto duoChattRoomDto);
 
+	DuoMsgDto chattInfo(DuoMsgDto mDto);
+
 	
 }
