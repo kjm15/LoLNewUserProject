@@ -10,7 +10,7 @@ function itemToolTip(a){
 	}
 	$.ajax({
 	type : "POST",
-	url : "/kdg/itemInfo",
+	url : "/kdg/itemToolTip",
 	data : data,
 	success : function(res) {
 		

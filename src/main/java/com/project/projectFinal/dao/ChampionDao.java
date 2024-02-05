@@ -5,18 +5,16 @@ import java.util.List;
 
 import org.apache.ibatis.annotations.Mapper;
 
-import com.project.projectFinal.dto.ChampionDto;
-import com.project.projectFinal.dto.ItemDto;
-import com.project.projectFinal.dto.itemToolTipDto;
+import com.project.projectFinal.dto.ChampionImageDto;
 
 @Mapper
 public interface ChampionDao {
 
 	public List<HashMap<String,String>> champList();
 
-	public List<HashMap<String,String>> searchChamp(ChampionDto cDto);
+	public List<HashMap<String,String>> searchChamp(ChampionImageDto cDto);
 
-	public List<HashMap<String, String>> champLine(ChampionDto cDto);
+	public List<HashMap<String, String>> champLine(ChampionImageDto cDto);
 	
 	public List<HashMap<String, String>> reChampList();
 

@@ -5,21 +5,21 @@ import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.project.projectFinal.dto.ChampionDto;
+import com.project.projectFinal.dto.ChampionImageDto;
 import com.project.projectFinal.dto.ItemDto;
 import com.project.projectFinal.dto.itemInfoDto;
 import com.project.projectFinal.dto.itemToolTipDto;
 import com.project.projectFinal.service.ChampionService;
-import com.project.projectFinal.service.MainService;
 import com.project.projectFinal.service.itemService;
 
 import lombok.extern.slf4j.Slf4j;
-import retrofit2.http.POST;
 
 @Slf4j
 @RestController
+@RequestMapping("/kdg")
 public class kdgRestController {
 
 	@Autowired
@@ -28,42 +28,42 @@ public class kdgRestController {
 	@Autowired
 	itemService is;
 
-	@PostMapping("/kdg/search")
-	public List<HashMap<String, String>> search(ChampionDto cDto) {
+	@PostMapping("/search")
+	public List<HashMap<String, String>> search(ChampionImageDto cDto) {
 
 		return cs.searchChamp(cDto);
 
 	}
 
-	@PostMapping("/kdg/position")
-	public List<HashMap<String, String>> line(ChampionDto cDto) {
+	@PostMapping("/position")
+	public List<HashMap<String, String>> line(ChampionImageDto cDto) {
 
 		return cs.champLine(cDto);
 
 	}
 
-	@PostMapping("/kdg/re")
+	@PostMapping("/re")
 	public List<HashMap<String, String>> reList() {
 
 		return cs.reChampList();
 
 	}
 
-	@PostMapping("/kdg/itemBuild")
+	@PostMapping("/itemBuild")
 	public List<HashMap<String, ItemDto>> itemBuild(ItemDto iDto) {
 
 		return is.itemBuild(iDto);
 
 	}
 
-	@PostMapping("/kdg/itemBuildperTier")
+	@PostMapping("/itemBuildperTier")
 	public List<HashMap<String, ItemDto>> itemBuildperTier(ItemDto iDto) {
 
 		return is.itemBuildperTier(iDto);
 
 	}
 
-	@PostMapping("/kdg/itemInfo")
+	@PostMapping("/itemToolTip")
 	public List<itemToolTipDto> itemToolTip(itemToolTipDto iTTDto) {
 		
 		int itemId = iTTDto.getItemId();
@@ -71,7 +71,7 @@ public class kdgRestController {
 
 	}
 	
-	@PostMapping("/kdg/test")
+	@PostMapping("/itemInfo")
 	public List<HashMap<String, itemInfoDto>> itemInfo(itemInfoDto iIDto) {
 		
 		return is.itemInfo(iIDto);
