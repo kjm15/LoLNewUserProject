@@ -16,14 +16,15 @@ import com.project.projectFinal.dto.RiotApiDto;
 import com.project.projectFinal.dto.RiotGameDto;
 import com.project.projectFinal.service.MatchListService;
 
+import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 
 @RestController
 @Slf4j
 public class RestMatchListController {
 	@Autowired
-	MatchListService matchListService;
-
+	MatchListService matchListService;	
+	
 	@PostMapping("/match/list")
 	public List<Map> matchList(RiotApiDto userListDto) {
 		RiotGameDto riotGameDto = new RiotGameDto();

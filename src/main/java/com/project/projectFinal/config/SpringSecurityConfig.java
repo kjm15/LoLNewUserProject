@@ -39,7 +39,7 @@ public class SpringSecurityConfig {
 					authorizeRequests.requestMatchers("/member/success").authenticated(); 
 					// 로그인 성공시 필터에 저장되어 있는 아이디값을 세션에 아이디값저장, 인증시에만 들어가게 막아둠
 			
-					
+					authorizeRequests.requestMatchers("/jgh").authenticated(); 
 					
 					//아래 내용을 메소드와 클래스에 붙이는걸로 변경
 //					authorizeRequests.requestMatchers("/super/**").hasAuthority("SUPERADMIN");

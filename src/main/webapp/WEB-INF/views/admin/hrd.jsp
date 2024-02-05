@@ -16,9 +16,13 @@
 <a href = "/admin/mng"> 메인으로 가기</a>
 [[인사담당관 출입가능.]]
 
+<div id = "memberTable"></div>
 
 
-<!-- <script defer src="/js/admin/info.js"></script> -->
+
+<script defer src="/js/admin/hrd.js"></script>
+
+
 
 
 

@@ -42,13 +42,13 @@ public class MemberController {
 		
 		  UserDetails userDetails = (UserDetails) authentication.getPrincipal();
 		  	log.info("====={}",userDetails);
-		 String result =  userDetails.getUsername();
-		if (result.equals("anonymousUser")) {
+		 String userId =  userDetails.getUsername();
+		if (userId.equals("anonymousUser")) {
 
-			result = "Guest";
+			userId = "Guest";
 		} 
 	
-		httpSession.setAttribute("userId", result);
+		httpSession.setAttribute("userId", userId);
 
 		return "redirect:/new";
 	}
