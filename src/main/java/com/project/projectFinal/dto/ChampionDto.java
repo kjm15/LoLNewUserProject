@@ -13,6 +13,8 @@ public class ChampionDto {
 	private String champion_name_kr;
 	private String champion_name;
 	
+	private String searchChamp;
+	
 	private String line;
 	
 }
