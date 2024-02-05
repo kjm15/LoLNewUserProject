@@ -23,14 +23,16 @@ import lombok.extern.slf4j.Slf4j;
 public class RestMatchListController {
 	@Autowired
 	MatchListService matchListService;
-
+	
+	private List<String> matchList;
+	
 	@PostMapping("/match/list")
 	public List<Map> matchList(RiotApiDto userListDto) {
 		RiotGameDto riotGameDto = new RiotGameDto();
 		String puuid = matchListService.puuId(userListDto);
 		userListDto.setPuuid(puuid);
-
-		List<String> matchList = matchListService.MatchList(userListDto.getPuuid());
+//		List<String> 
+		matchList = matchListService.MatchList(userListDto.getPuuid());
 		List<String> DbMatchList = matchListService.DBRiotGameMatchSelect(userListDto.getGameName());
 		if (DbMatchList.size() == 0) { // 만약 디비에 저장 데이터가 없을경우 바로 api 가기
 			System.out.println("DB에 데이터 없음. api로 감");
@@ -88,17 +90,15 @@ public class RestMatchListController {
 	}
 
 	@PostMapping("/riot/game")
-	public ArrayList<HashMap<String, Object>> RiotGame(RiotApiDto userListDto) {
-		System.out.println("디비에서 데이터 가져옴");
-		String puuid = matchListService.puuId(userListDto);
-		userListDto.setPuuid(puuid);
-		List<String> matchList = matchListService.MatchList(userListDto.getPuuid());
+	public ArrayList<HashMap<String, Object>> RiotGame() {
+		List<String> MatchList = matchList;
+		
 		ArrayList<HashMap<String, Object>> MList = new ArrayList<>();
 		HashMap<String, Object> newGList = new HashMap<>();
-		for (int i = 0; i < matchList.size(); i++) {
-			List<HashMap<String, RiotGameDto>> infoData = matchListService.RiotGameInfoSelect(matchList.get(i));
-			List<HashMap<String, RiotGameDto>> teamsData = matchListService.RiotGameTeamsSelect(matchList.get(i));
-			List<HashMap<String, RiotGameDto>> bansData = matchListService.RiotGameBansSelect(matchList.get(i));
+		for (int i = 0; i < MatchList.size(); i++) {
+			List<HashMap<String, RiotGameDto>> infoData = matchListService.RiotGameInfoSelect(MatchList.get(i));
+			List<HashMap<String, RiotGameDto>> teamsData = matchListService.RiotGameTeamsSelect(MatchList.get(i));
+			List<HashMap<String, RiotGameDto>> bansData = matchListService.RiotGameBansSelect(MatchList.get(i));
 			newGList.put("bans",bansData);
 			newGList.put("teams",teamsData);
 			newGList.put("info", infoData);
