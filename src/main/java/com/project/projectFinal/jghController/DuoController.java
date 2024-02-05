@@ -21,8 +21,6 @@ public class DuoController {
 	@GetMapping("/jgh")
 	public String duoInfo(Model model) {
 
-		model.addAttribute("dList", duoService.duoInfo());
-
 		return "jgh/jgh";
 	}
 

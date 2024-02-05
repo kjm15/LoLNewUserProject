@@ -10,7 +10,7 @@ public interface MsgDao {
 
 	int insertMsg(DuoMsgDto msgDto);
 
-	void roomUpdate(DuoSearchDto duoSearchDto);
+	DuoSearchDto roomUpdate(DuoSearchDto duoSearchDto);
 
 	DuoMsgDto connectRoom(DuoMsgDto duoChattRoomDto);
 

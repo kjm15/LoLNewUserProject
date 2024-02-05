@@ -37,7 +37,7 @@ $('#duoParty').on("click", function() {
 })
 //승낙시
 function connect(rCnt, hostId, guestId) { //승낙 >> 방만들기
-
+	$('#' + rCnt).remove();
 	let data = {
 		'rCnt': rCnt,
 		'hostId': hostId,
@@ -50,9 +50,11 @@ function connect(rCnt, hostId, guestId) { //승낙 >> 방만들기
 
 }
 //거절시
-function disconnect() {
+function disconnect(rCnt, hostId, guestId) {
+	$('#' + rCnt).remove();
 	let res = {}
 	res.work = "reject"
+	res.guestId = guestId
 
 	let temp = JSON.stringify(res)
 
@@ -139,7 +141,7 @@ function createQuestion(eventjson) {
 
 	str += '</div>'
 	str += '<h3><input type="button" onclick="connect(\'' + rCnt + '\',\'' + hostId + '\',\'' + guestId + '\')" value="승낙" /></h3>'
-	str += '<h3><input type="button" onclick="disconnect()" value="거절" /></h3>'
+	str += '<h3><input type="button" onclick="disconnect(\'' + rCnt + '\',\'' + hostId + '\',\'' + guestId + '\')" value="거절" /></h3>'
 
 	str += '</div>'
 
@@ -187,8 +189,6 @@ function myRoom(rCnt) {
 		data: msgdata,
 		success: function(res1) {
 			//			console.log(res1)
-
-
 
 			$('.chatthead').empty()
 

@@ -58,9 +58,8 @@ public class WebSocketChattService {
 
 		// 메세지 보내기 //
 		if (map.get("work").equals("sendMsg")) {
+			cServ.insertMsg(map);
 
-			cServ.chattInfo(map);
-			String rCnt = map.get("rCnt");
 			DuoMsgDto mDto = cServ.chattInfo(map);
 			users.forEach((key, value) -> {
 				if (value.equals(mDto.getGuestId()) || value.equals(mDto.getHostId())) {
@@ -119,6 +118,38 @@ public class WebSocketChattService {
 						e.printStackTrace();
 					}
 				}
+			});
+		} else if (map.get("work").equals("roomUpdate")) {// 방만들기
+			cServ.roomUpdate(map);
+
+			log.info("roomUpdate통과");
+			users.forEach((key, value) -> {
+
+				try {
+					key.getBasicRemote().sendText(msg1);
+
+				} catch (IOException e) {
+
+					e.printStackTrace();
+				}
+
+			});
+		} else if (map.get("work").equals("reject")) {// 방만들기
+			String guestId = map.get("guestId");
+			users.forEach((key, value) -> {
+				if (guestId.equals(value)) {
+					try {
+						JSONObject jsonObject = new JSONObject();
+						jsonObject.put("work", "reject");
+						String msg2 = jsonObject.toString();
+						key.getBasicRemote().sendText(msg2);
+						
+					} catch (IOException e) {
+
+						e.printStackTrace();
+					}
+				}
+
 			});
 		} else {// 전체메세지
 			log.info("방만들기");

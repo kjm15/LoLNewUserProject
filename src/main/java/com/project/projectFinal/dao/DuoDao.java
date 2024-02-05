@@ -10,43 +10,18 @@ import com.project.projectFinal.dto.DuoSearchDto;
 
 @Mapper
 public interface DuoDao {
-
-	DuoSearchDto saveDbDuo(DuoSearchDto duoSearchDto);
-
-	DuoSearchDto infoDuoT(DuoSearchDto duoSearchDto);
-
 	ArrayList<HashMap<String, DuoSearchDto>> duoInfo();
-
-
-//	
-//	DuoSearchDto comparerCnt();
-
-	DuoSearchDto nowlogin(DuoSearchDto duoSearchDto);
-
-	DuoMsgDto msgSave(DuoMsgDto msgDto);
-
-	
-	
-	
-	
-	DuoMsgDto msgRead(DuoMsgDto msgDto);
-
-	ArrayList<HashMap<String, DuoMsgDto>> msgAll(DuoMsgDto msgDto);
-
-	DuoMsgDto searchSameRoom(DuoSearchDto duoSearchDto);
-
-	DuoMsgDto myRoomCheck(DuoMsgDto duoChattRoomDto);
 
 	ArrayList<HashMap<String, DuoMsgDto>> chattRoomInfo(String userId);
 
-	DuoMsgDto createChattRoom(DuoMsgDto duoChattRoomDto);
+	DuoSearchDto infoDuoT(DuoSearchDto duoSearchDto);
 
-	void goOutRoomGuest(DuoMsgDto duoChattRoomDto);
+	DuoMsgDto myRoomCheck(DuoMsgDto duoChattRoomDto);
 
-	void goOutRoomHost(DuoMsgDto dDto);
+	ArrayList<HashMap<String, DuoMsgDto>> msgAll(DuoMsgDto msgDto);
 
 	void deleteChattRoom(DuoMsgDto duoChattRoomDto);
 
-	
+	DuoSearchDto nowlogin(DuoSearchDto duoSearchDto);
 
 }
