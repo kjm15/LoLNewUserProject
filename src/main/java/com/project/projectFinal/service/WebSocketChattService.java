@@ -62,7 +62,7 @@ public class WebSocketChattService {
 			clients.add(s);
 			log.info("session open : " + s);
 		} else {
-			log.info("이미 연결된 session 임!!!");
+			log.info("이미 연결된 session!");
 		}
 	}
 
