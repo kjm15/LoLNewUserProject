@@ -25,18 +25,17 @@ public class RestDuoController {
 
 	@PostMapping("/duostartinfo")
 	public ArrayList<HashMap<String, DuoSearchDto>> duostartinfo() {
-		ArrayList<HashMap<String, DuoSearchDto>> a = duoService.duostartinfo();
-		log.info("==={}", a);
-		return a;
+	
+		return duoService.duostartinfo();
 	}
 
 	@PostMapping("/chattRoomInfo")
 	public ArrayList<HashMap<String, DuoMsgDto>> chattRoomInfo(DuoMsgDto duoMsgDto, HttpSession session) {
 		String userId = (String) session.getAttribute("userId");
 
-		ArrayList<HashMap<String, DuoMsgDto>> cDto = duoService.chattRoomInfo(userId);
+		 
 //		log.info("=={}",cDto);
-		return cDto;
+		return duoService.chattRoomInfo(userId);
 	}
 
 	@PostMapping("/duoInfo")

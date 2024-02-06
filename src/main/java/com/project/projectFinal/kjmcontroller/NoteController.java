@@ -31,7 +31,7 @@ public class NoteController {
 		return "kjm/Note";	
 	}
 	
-	
+	//url수정하라고 하기 ex) /note/send
 	@PostMapping("/send")
 	public String sendNote(NoteDto noteDto,HttpSession session,MemberDto memberDto) {
 		String userId = (String) session.getAttribute("userId");

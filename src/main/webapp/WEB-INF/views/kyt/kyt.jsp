@@ -234,7 +234,7 @@
 				return '';
 			}
 		}
-        function getAllWinRateData() {
+        function getAllWinRateData() { //임시 >> 실시간 데이터 변경예정
             return [60, 50, 45, 55, 70, 48]; // 각 드래곤의 승률 데이터 배열
         }
 

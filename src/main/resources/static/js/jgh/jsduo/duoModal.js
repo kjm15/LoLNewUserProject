@@ -1,5 +1,6 @@
 
 ///////////////////////////////모달/////////////////////////////////////
+
 const modal_wrap = document.querySelector('.modal_wrap')
 const modal_background = document.querySelector('.modal_background')
 
@@ -151,21 +152,21 @@ window.addEventListener("keyup", e => {
 
 
 const useCustomSelectBox = ({ targetRef }) => {
-  const [isSelectBoxOpened, setIsSelectBoxOpened] = useState(false);
+	const [isSelectBoxOpened, setIsSelectBoxOpened] = useState(false);
 
-  useEffect(() => {
-    const onCloseOptionList = (event) => {
-      if (!targetRef.current?.contains(event.target)) {
-        setIsSelectBoxOpened(false);
-      }
-    };
+	useEffect(() => {
+		const onCloseOptionList = (event) => {
+			if (!targetRef.current?.contains(event.target)) {
+				setIsSelectBoxOpened(false);
+			}
+		};
 
-    document.addEventListener('click', onCloseOptionList);
+		document.addEventListener('click', onCloseOptionList);
 
-    return () => {
-      document.removeEventListener('click', onCloseOptionList);
-    };
-  }, [isSelectBoxOpened, targetRef]);
+		return () => {
+			document.removeEventListener('click', onCloseOptionList);
+		};
+	}, [isSelectBoxOpened, targetRef]);
 
-  return [isSelectBoxOpened, setIsSelectBoxOpened];
+	return [isSelectBoxOpened, setIsSelectBoxOpened];
 };

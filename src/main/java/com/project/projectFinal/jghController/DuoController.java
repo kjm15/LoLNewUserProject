@@ -12,7 +12,7 @@ import lombok.extern.slf4j.Slf4j;
 
 @Slf4j
 @Controller
-@PreAuthorize("hasAnyAuthority('USER','ADMIN','HRD-MNG','PAY-MNG','ITEM-MNG','CHP-MNG')")
+//@PreAuthorize("hasAnyAuthority('USER','ADMIN','HRD-MNG','PAY-MNG','ITEM-MNG','CHP-MNG')")
 public class DuoController {
 
 	@Autowired
