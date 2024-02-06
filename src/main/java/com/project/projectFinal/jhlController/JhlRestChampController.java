@@ -12,6 +12,7 @@ import org.springframework.web.bind.annotation.RestController;
 
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.project.projectFinal.dto.ChampionImageDto;
+import com.project.projectFinal.dto.ChampionRankDto;
 import com.project.projectFinal.service.JhlChampService;
 
 import lombok.extern.slf4j.Slf4j;
@@ -41,6 +42,9 @@ public class JhlRestChampController {
 		return champService.champListAll();
 	}
 	
-	
+	@PostMapping("/champRank")
+	public List<HashMap<String, Object>> champRank(ChampionRankDto rankDto){
+		return champService.champRank(rankDto);
+	}
 
 }

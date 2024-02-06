@@ -9,7 +9,6 @@ import lombok.NoArgsConstructor;
 @AllArgsConstructor
 @NoArgsConstructor
 public class ChampionImageDto {
-	// 새로운 db 만들 예정
 	private int championid;
 	private String champion_name_kr; // 한국이름
 	private String champion_name; // 영어이름
@@ -17,6 +16,4 @@ public class ChampionImageDto {
 	private String champSearch;
 	private String line;
 	private String searchChamp;
-	
-	private String teamPosition;
 }

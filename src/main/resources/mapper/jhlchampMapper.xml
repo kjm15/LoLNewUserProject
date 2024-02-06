@@ -17,22 +17,5 @@ or champion_name_cons like concat(#{champSearch}, '%');
 select champion_name_kr, champion_name, line from champListT where line like concat('%',#{line}, '%');
 </select>
 
-<!-- <select id="champRank"> -->
 
-<!-- SELECT  -->
-<!--     championName as champion_Name, -->
-<!--     count(win) as top_win_total_cnt, -->
-<!--     CONCAT(ROUND((SUM(CASE WHEN win = 1 THEN 1 ELSE 0 END) / COUNT(	win)) * 100, 2), '%') AS top_win_rate, -->
-<!--     concat(round((COUNT(*) /(SELECT COUNT(*) FROM rank_test WHERE teamPosition = #{teamPosition}))*100,2),'%') as top_pick_rate -->
-<!-- FROM  -->
-<!--     rank_test -->
-<!-- WHERE  -->
-<!--     teamPosition = #{teamPosition} -->
-<!-- GROUP BY  -->
-<!--     championName, teamPosition -->
-    
-<!-- order by top_win_total_cnt desc -->
-<!-- LIMIT 60; -->
-
-<!-- </select> -->
 </mapper>

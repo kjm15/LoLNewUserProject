@@ -12,14 +12,22 @@
 </head>
 
 <body>
-	<%@include file="inc/header.jsp"%>
+
+	<div class="main">
+		<%-- 		<%@include file="newHeader.jsp"%> --%>
 
 
-	<%@include file="aMain/mainDetail.jsp"%>
+		<%@include file="inc/header.jsp"%>
 
 
-	<%@include file="inc/footer.jsp"%>
+		<%@include file="aMain/mainDetail.jsp"%>
 
+
+
+		<%@include file="inc/footer.jsp"%>
+
+		<%-- 		<%@include file="newFooter.jsp"%> --%>
+	</div>
 
 
 </body>
