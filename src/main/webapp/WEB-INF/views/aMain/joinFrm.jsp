@@ -50,25 +50,26 @@
 							<input type="text" name="userEmail" id="mail"
 								placeholder="이메일 입력">
 							<button type="button" id="sendBtn" name="sendBtn"
-								onclick="sendNumber()">인증번호</button>
+								onclick="sendNumber()"disabled="disabled">인증번호</button>
 						</div>
 						<br>
 						<div id="mail_number" name="mail_number" style="display: none">
 							<input type="text" name="number" id="number"
 								placeholder="인증번호 입력">
 							<button type="button" name="confirmBtn" id="confirmBtn"
-								onclick="confirmNumber()">이메일 인증</button>
+								onclick="confirmNumber()" >이메일 인증</button>
 						</div>
 						<br> <input type="text" id="Confirm" name="Confirm"
 							style="display: none" value="">
 
 
-					</form>
+				
 
 
 
 					<hr>
 					<input type="submit" value="회원가입" id="joinBtn" > 
+						</form>
 					<hr>
 				
 

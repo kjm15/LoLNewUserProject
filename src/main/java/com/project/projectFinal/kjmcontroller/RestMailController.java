@@ -1,21 +1,19 @@
 package com.project.projectFinal.kjmcontroller;
 
 
-import org.springframework.stereotype.Controller;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.bind.annotation.RestController;
 
 import com.project.projectFinal.service.MailService;
 
-import lombok.RequiredArgsConstructor;
-
-@Controller
-@RequiredArgsConstructor
+@RestController
 public class RestMailController {
+	@Autowired
+    MailService mailService;
+	
 
-    private final MailService mailService;
-
-    @ResponseBody
+   
     @PostMapping("/mail")
     public String MailSend(String mail){
 
