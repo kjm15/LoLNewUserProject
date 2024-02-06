@@ -9,7 +9,6 @@
 <!-- CSS -->
 <style>
         body {
-            display: flex;
             flex-direction: column;
             align-items: center;
             justify-content: center;
@@ -99,7 +98,7 @@
     <div class="dragon-container">
         <!-- 드래곤 이미지 표시 -->
         <div class="dragon-images-container">
-            <img src="img/kyt/바람.png" alt="Dragon 1" onclick="showDetails('바람')">
+            <img src="img/kyt/바람.png" alt="Dragon 1" onclick="showDetails('바람')">	
             <img src="img/kyt/대지.png" alt="Dragon 2" onclick="showDetails('대지')">
             <img src="img/kyt/화염.png" alt="Dragon 3" onclick="showDetails('화염')">
             <img src="img/kyt/바다.png" alt="Dragon 4" onclick="showDetails('바다')">
