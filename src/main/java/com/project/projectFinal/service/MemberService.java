@@ -83,6 +83,7 @@ public class MemberService implements UserDetailsService {
 		MemberDto mDto = new MemberDto();
 		mDto.setUserId(memberDto.getUserId());
 		mDto.setUserPw(passwordEncoder.encode(memberDto.getUserPw()));
+		mDto.setUserEmail(memberDto.getUserEmail());
 		mDto.setRole("USER");
 
 		memberDao.join(mDto);

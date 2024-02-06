@@ -35,9 +35,9 @@
 	</update>
 	<insert id="join">
 
-		insert into memberT(userId , userPw,role)
+		insert into memberT(userId , userPw,role,userEmail)
 		values(#{userId}
-		, #{userPw},#{role})
+		, #{userPw},#{role},#{userEmail})
 	</insert>
 
 	<select id="find">

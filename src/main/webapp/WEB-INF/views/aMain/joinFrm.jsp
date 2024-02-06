@@ -34,6 +34,7 @@
 			<div class="left">
 				<div class="login">회원가입</div>
 				<div class="eula">데이터붐 회원가입 페이지입니다.</div>
+					<input 	type="button" id="membermain" value="메인으로">
 			</div>
 			<div class="right">
 
@@ -46,7 +47,8 @@
 
 						<!-- <span>이메일 </span> -->
 						<div id="mail_input" name="mail_input">
-							<input type="text" name="mail" id="mail" placeholder="이메일 입력">
+							<input type="text" name="userEmail" id="mail"
+								placeholder="이메일 입력">
 							<button type="button" id="sendBtn" name="sendBtn"
 								onclick="sendNumber()">인증번호</button>
 						</div>
@@ -59,24 +61,25 @@
 						</div>
 						<br> <input type="text" id="Confirm" name="Confirm"
 							style="display: none" value="">
-</body>
+
+
+					</form>
 
 
 
+					<hr>
+					<input type="submit" value="회원가입" id="joinBtn" > 
+					<hr>
+				
 
-<hr>
-<input type="submit" value="회원가입" id="joinBtn">
-<input type="button" id="membermain" value="메인으로">
-</form>
 
-
-</div>
-</div>
-</div>
-</div>
-<script defer src="/js/aCommon/member.js"></script>
-<script defer src="/js/aCommon/common.js"></script>
-<script defer src="/js/aCommon/email.js"></script>
+				</div>
+			</div>
+		</div>
+	</div>
+	<script defer src="/js/aCommon/member.js"></script>
+	<script defer src="/js/aCommon/common.js"></script>
+	<script defer src="/js/aCommon/email.js"></script>
 
 </body>
 </html>

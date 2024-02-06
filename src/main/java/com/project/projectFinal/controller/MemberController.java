@@ -39,7 +39,7 @@ public class MemberController {
 	
 	@PostMapping("/join")
 	public String join(MemberDto memberDto) {
-
+		log.info("=={}",memberDto);
 		if (memberService.join(memberDto)) {
 
 			return "redirect:/member/login";
