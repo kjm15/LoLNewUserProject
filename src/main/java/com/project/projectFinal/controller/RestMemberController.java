@@ -13,6 +13,7 @@ import lombok.extern.slf4j.Slf4j;
 
 @Slf4j
 @RestController
+
 @RequestMapping("/member")
 public class RestMemberController {
 		
@@ -23,5 +24,7 @@ public class RestMemberController {
 		MemberDto mDto = memberService.joinIdCheck(memberDto);
 		return mDto;
 	}
+	
 
+	
 }

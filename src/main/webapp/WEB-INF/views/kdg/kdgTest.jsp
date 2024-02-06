@@ -6,108 +6,105 @@
 <head>
 
 <meta charset="UTF-8">
-<script
-	src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+<!-- champ rank js 들어갈곳 -->
+<script defer src="../js/kdg/champion/champRank.js"></script>
+<!-- champ choice js 들어갈곳 -->
+<script defer src="../js/kdg/champion/champChoice.js"></script>
+<!-- champ list js 들어갈곳 -->
+<script defer src="../js/kdg/champion/champList.js"></script>
+<!-- modal js 들어갈 곳 -->
+<script defer src="../js/kdg/kdgModal.js"></script>
 <title>Insert title here</title>
-<style type="text/css">
-.coreItemList_caption {
-	caption-side: top;
-	text-align: right;
-}
 
-.coreItemList {
-	border: 1px solid black;
-	text-align: center;
-	color: black;
-	width: 1050px;
-	left: 25px;
-}
-
-.small_chtd, .small_chtd img {
-	width: 30px;
-	height: 30px;
-}
-
-.small_ltd, .small_ltd img {
-	width: 30px;
-	height: 30px;
-}
-
-.small_td {
-	width: 35px;
-	height: 30px;
-}
-
-.none_td {
-	width: 50px;
-}
-
-.long_rowtd {
-	width: 240px;
-}
-
-.itemName_td {
-	text-align: left;
-	width: 140px;
-	font-size: 13px;
-}
-
-.itemImg_td {
-	width: 100px;
-}
-
-.itemImg_td img {
-	width: 40px;
-	height: 40px;
-}
-
-.coreItemList_caption .caption_img {
-	width: 30px;
-	height: 30px;
-}
-
-.small_tiertd {
-	width: 50px;
-	height: 30px;
-}
-
-.td_txt {
-	font-size: 12px;
-}
-
-.long_rowtd2 {
-	width: 180px;
-}
-
-.analysis_btn {
-	width: 273px;
-	border-radius: 5%;
-}
-
-.jb-text {
-	
-	padding: 15px 20px;
-	background-color: #444444;
-	border-radius: 5px;
-	color: #ffffff;
-	position: absolute;
-	display: none;
-	
-	width: 400px;
-	
-	text-align: left;
-	
-}
-
-.jb-title:hover + .jb-text {	
-	 
-	display: block;
-	
-}
-</style>
+<link rel="stylesheet" href="../css/kdg/copy.css" />
 </head>
 <body>
-	<%@include file="../inc/kdgheader.jsp"%>
+	<%@include file="../inc/header.jsp"%>
+	<p id="name" style="visibility: hidden; position: absolute;"></p>
+	<div class = "champs">
+		<p id="myChampName" style="visibility: hidden; position: absolute;"></p>
+		<p id="enemyChampName" style="visibility: hidden; position: absolute;"></p>
+		<p id="lineCheck" style="visibility: hidden; position: absolute;"></p>
+		<p id="tierCheck" style="visibility: hidden; position: absolute;"></p>
+	</div>
+	
+	<div class="modal fade" id="exampleModalToggle" aria-hidden="true" aria-labelledby="exampleModalToggleLabel" tabindex="-1" style = "">
+	  <div class="modal-dialog modal-dialog-centered">
+	    <div class="modal-content" style = "width: 700px;">
+	      <div class="modal-header">
+	        <h5 class="modal-title" id="exampleModalToggleLabel">챔피언을 선택해보세요.</h5>
+	        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+	      </div>
+	      <div class="modal-body" style = "background-color: #3C3C41;">
+	        <div id="myChampion" class = "champimg1">
+				<img id = "myChamp" onclick="javascript:champ(this.id)" src = "../img/champ.jpg"></img>
+			</div>
+			<div id="vs">
+				<img src="../img/versus.png"></img>
+			</div>
+			<div id = "enemyChampion" class="champimg2">
+				<img id = "enemyChamp" onclick="javascript:champ(this.id)" src = "../img/champ.jpg"></img>
+			</div>
+					<div id=line>
+						<div class="img" id="topimg">
+							<img id="top" class="positionICN" src="../img/top.png"
+								name="top" onclick="line(this.id)">
+
+						</div>
+						<div class="img" id="jugimg">
+							<img id="jug" class="positionICN" src="../img/jug.png"
+								name="jug" onclick="line(this.id)">
+
+						</div>
+						<div class="img" id="midimg">
+							<img id="mid" class="positionICN" src="../img/mid.png"
+								name="mid" onclick="line(this.id)">
+
+						</div>
+						<div class="img" id="adcimg">
+							<img id="adc" class="positionICN" src="../img/adc.png"
+								name="adc" onclick="line(this.id)">
+
+						</div>
+						<div class="img" id="supimg">
+							<img id="sup" class="positionICN" src="../img/sup.png"
+								name="sup" onclick="line(this.id)">
+
+						</div>
+					</div>
+				<div id="champList" style = "display: none;">
+
+				</div>
+			</div>
+	      <div class="modal-footer">
+	        <button class="btn btn-primary" data-bs-target="#exampleModalToggle2" data-bs-toggle="modal" data-bs-dismiss="modal" style = "display: none;">선택 완료</button>
+	      </div>
+	    </div>
+	  </div>
+	</div>
+	<div class="modal fade" id="exampleModalToggle2" aria-hidden="true" aria-labelledby="exampleModalToggleLabel2" tabindex="-1">
+	  <div class="modal-dialog modal-dialog-centered">
+	    <div class="modal-content">
+	      <div class="modal-header">
+	        <h5 class="modal-title" id="exampleModalToggleLabel2">Modal 2</h5>
+	        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+	      </div>
+	      <div class="modal-body">
+	      	<div id="itemBuild"  style = "display: none;">
+	      	
+	      	</div>
+	      </div>
+	      <div class="modal-footer">
+	        <button class="btn btn-primary" data-bs-target="#exampleModalToggle" data-bs-toggle="modal" data-bs-dismiss="modal">Back to first</button>
+	      </div>
+	    </div>
+	  </div>
+	</div>
+	<a class="btn btn-primary" data-bs-toggle="modal" href="#exampleModalToggle" role="button">아이템 빌드가 필요하신가요?</a>
+
+
+
 	<h1>김동근 테스트 공간입니다.</h1>
 	<p id="selectMenu" style="postion: absolute; visibility: hidden;"></p>
 	<p id="tier_en" style="postion: absolute; visibility: hidden;">platinum</p>
@@ -165,7 +162,7 @@
 
 	</div>
 
-
+<%@include file="../inc/footer.jsp"%>
 
 </body>
 <script defer src="../js/kdg/item/itemInfo.js" /></script>

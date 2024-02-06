@@ -25,14 +25,14 @@ public class MainController {
 
 		return "newMain";
 	}
-	// 기존:  "new/new";
+	
 
 	@GetMapping("/new")
 	public String mainNew() {
 
 		return "newMain";
 	}
-	// 기존:  "new/new";
+	
 	
 	@GetMapping("/main")
 	public String main(HttpSession session, MemberDto memberDto, Model model) {
@@ -59,12 +59,6 @@ public class MainController {
 //		return "shop";
 //	}
 
-
-	@GetMapping("/kyt")
-	public String go3() {
-
-		return "kyt/kyt";
-	}
 
 	@GetMapping("/stm")
 	public String go5() {

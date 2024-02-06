@@ -3,7 +3,7 @@
  */
 
 $(document).ready(function() {
-	$('#anBtn').click(function() {
+	$('.btn-primary').click(function() {
 		/* 티어 버튼 보이기 */
 		$('#iron').show();
 		$('#bronze').show();
@@ -41,12 +41,12 @@ $(document).ready(function() {
 
 				for (let i = 0; i < res.length; i++) {
 					str2 += (i + 1)
-					str2 += "<img src='../img/tier/" + tier + ".png' style='width: 70px; height: 70px;'></img></td>"
-					str2 += "<img id = '" + res[i].itemId1 + "' class='jb-title' src='https://ddragon.leagueoflegends.com/cdn/14.1.1/img/item/" + res[i].itemId1 + ".png' onmouseover='javascript:itemToolTip(this.id)'></img>"
+					str2 += "<img src='../img/tier/" + tier + ".png' style='width: 40px; height: 40px;'></img></td>"
+					str2 += "<img id = '" + res[i].itemId1 + "' class='jb-title' src='https://ddragon.leagueoflegends.com/cdn/14.1.1/img/item/" + res[i].itemId1 + ".png' onmouseover='javascript:itemToolTip(this.id)' style='width: 40px; height: 40px;'></img>"
 					str2 += "<div class = 'jb-text'></div>"
-					str2 += "<img id = '" + res[i].itemId2 + "' class='jb-title' src='https://ddragon.leagueoflegends.com/cdn/14.1.1/img/item/" + res[i].itemId2 + ".png' onmouseover='javascript:itemToolTip(this.id)'></img>"
+					str2 += "<img id = '" + res[i].itemId2 + "' class='jb-title' src='https://ddragon.leagueoflegends.com/cdn/14.1.1/img/item/" + res[i].itemId2 + ".png' onmouseover='javascript:itemToolTip(this.id)' style='width: 40px; height: 40px;'></img>"
 					str2 += "<div class = 'jb-text'></div>"
-					str2 += "<img id = '" + res[i].itemId3 + "' class='jb-title' src='https://ddragon.leagueoflegends.com/cdn/14.1.1/img/item/" + res[i].itemId3 + ".png' onmouseover='javascript:itemToolTip(this.id)'></img>"
+					str2 += "<img id = '" + res[i].itemId3 + "' class='jb-title' src='https://ddragon.leagueoflegends.com/cdn/14.1.1/img/item/" + res[i].itemId3 + ".png' onmouseover='javascript:itemToolTip(this.id)' style='width: 40px; height: 40px;'></img>"
 					str2 += "<div class = 'jb-text'></div>"
 					str2 += (res[i].myBuildwinCount / res[i].myBuildPickCount * 100).toFixed(2) + "%"
 					str2 += res[i].myBuildPickCount + " 게임"
@@ -56,8 +56,8 @@ $(document).ready(function() {
 
 
 
-				$('#champList').html(str2);
-				$('#champList').show();
+				$('#itemBuild').html(str2);
+				$('#itemBuild').show();
 
 			}
 		})
@@ -103,12 +103,12 @@ function tier(c) {
 
 			for (let i = 0; i < res.length; i++) {
 				str2 += (i + 1)
-				str2 += "<img src='../img/tier/" + tier + ".png' style='width: 70px; height: 70px;'></img></td>"
-				str2 += "<img id = '" + res[i].itemId1 + "' class='jb-title' src='https://ddragon.leagueoflegends.com/cdn/14.1.1/img/item/" + res[i].itemId1 + ".png' onmouseover='javascript:itemToolTip(this.id)'></img>"
+				str2 += "<img src='../img/tier/" + tier + ".png' style='width: 40px; height: 40px;'></img></td>"
+				str2 += "<img id = '" + res[i].itemId1 + "' class='jb-title' src='https://ddragon.leagueoflegends.com/cdn/14.1.1/img/item/" + res[i].itemId1 + ".png' onmouseover='javascript:itemToolTip(this.id)' style='width: 40px; height: 40px;'></img>"
 				str2 += "<div class = 'jb-text'></div>"
-				str2 += "<img id = '" + res[i].itemId2 + "' class='jb-title' src='https://ddragon.leagueoflegends.com/cdn/14.1.1/img/item/" + res[i].itemId2 + ".png' onmouseover='javascript:itemToolTip(this.id)'></img>"
+				str2 += "<img id = '" + res[i].itemId2 + "' class='jb-title' src='https://ddragon.leagueoflegends.com/cdn/14.1.1/img/item/" + res[i].itemId2 + ".png' onmouseover='javascript:itemToolTip(this.id)' style='width: 40px; height: 40px;'></img>"
 				str2 += "<div class = 'jb-text'></div>"
-				str2 += "<img id = '" + res[i].itemId3 + "' class='jb-title' src='https://ddragon.leagueoflegends.com/cdn/14.1.1/img/item/" + res[i].itemId3 + ".png' onmouseover='javascript:itemToolTip(this.id)'></img>"
+				str2 += "<img id = '" + res[i].itemId3 + "' class='jb-title' src='https://ddragon.leagueoflegends.com/cdn/14.1.1/img/item/" + res[i].itemId3 + ".png' onmouseover='javascript:itemToolTip(this.id)' style='width: 40px; height: 40px;'></img>"
 				str2 += "<div class = 'jb-text'></div>"
 				str2 += (res[i].myBuildwinCount / res[i].myBuildPickCount * 100).toFixed(2) + "%"
 				str2 += res[i].myBuildPickCount + " 게임"

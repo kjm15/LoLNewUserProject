@@ -8,9 +8,11 @@
 <title>Insert title here</title>
 <script type="text/javascript"
 	src="https://code.jquery.com/jquery-1.12.4.min.js"></script>
-<link href="/css/newMain.css" rel="stylesheet">
+
 </head>
+
 <body>
+
 	<div class="main">
 		<%@include file="newHeader.jsp"%>
 		<section>
@@ -29,17 +31,22 @@
 							</div>
 							<input type="text" id="search-home" placeholder="플레이어이름 + #KR1">
 
-							<button id="searchBoom">BOOM</button>
-						</div>
-					</div>
-					<div class="black-box">빈칸</div>
+	<%@include file="inc/header.jsp"%>
 
-				</div>
-			</div>
+
+	<%@include file="aMain/mainDetail.jsp"%>
+
+
+
+	<%@include file="inc/footer.jsp"%>
+
+
 
 
 		</section>
 		<%@include file="newFooter.jsp"%>
 	</div>
+
+
 </body>
 </html>

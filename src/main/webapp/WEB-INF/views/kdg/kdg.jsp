@@ -10,6 +10,8 @@
 <script defer src="../js/kdg/champion/champChoice.js"></script>
 <!-- item info js 들어갈곳 -->
 <script defer src="../js/kdg/item/itemInfo.js"></script>
+<!-- modal js 들어갈 곳 -->
+<script defer src="../js/kdg/kdgModal.js"></script>
 <meta charset="UTF-8">
 <title>챔피언 분석</title>
 <!-- kdg css 들어갈곳 -->
@@ -18,7 +20,7 @@
 </head>
 <body>
 	<!-- header -->
-	<%@include file="../inc/kdgheader.jsp"%>
+	<%@include file="../inc/header.jsp"%>
 	<!-- body jsp 파일 들어갈 곳 -->
 	<%@include file="../kdg/kdgBody.jsp"%>
 	<!-- footer -->

@@ -1,22 +1,10 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
-	pageEncoding="UTF-8"%>
-
-<
-<!-- Footer -->
-<footer id="footer">
-	
-	<section>
-		
-	</section>
-	<p class="copyright">
-		&copy; Untitled. Design: <a href="https://html5up.net">HTML5 UP</a>.
-	</p>
-</footer>
-<!-- Scripts -->
-<script src="new/assets/js/jquery.min.js"></script>
-<script src="new/assets/js/jquery.scrollex.min.js"></script>
-<script src="new/assets/js/jquery.scrolly.min.js"></script>
-<script src="new/assets/js/browser.min.js"></script>
-<script src="new/assets/js/breakpoints.min.js"></script>
-<script src="new/assets/js/util.js"></script>
-<script src="new/assets/js/main.js"></script>
+	pageEncoding="UTF-8"%>	
+		<footer class="footer-bottom">
+			<h2>데이터 붐</h2>
+			<span>장기훈 김동근 김진문 김윤태 송태민 정혜린</span>
+			
+			<div>인천일보아카데미</div>
+			<div>인천광역시 미추홀구 매소홀로488번길 6-32 태승빌딩 5층</div>
+		</footer>
+	</div>
