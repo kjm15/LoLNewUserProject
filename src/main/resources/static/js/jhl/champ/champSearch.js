@@ -99,28 +99,5 @@ function champLine(lineSelect) {
 
 };
 
-//function champRank(a){
-//	$.ajax({
-//		type: "post",
-//		url: "/champRank",
-//		data: { "teamPosition": a },
-//		success: function(res) {
-//			let str1 = "<table>"
-//			let str2= ''
-//			for(let i=0; i<res.length; i++){
-//				str2 += "<tr>"
-//				str2 +="<td><img width='48' height='48' src='https://ddragon.leagueoflegends.com/cdn/14.2.1/img/champion/" + res[i].champion_name + ".png' class='championImg'></div></td>"
-//				str2 +="<td>"+res[i].top_win_rate+"</td>"
-//				str2 +="<td>"+res[i].top_pick_rate+"</td>" 
-//				str2+="</tr>"
-//			}
-//			let str3 ="</table>"
-//			
-//			$('.rankItems').html(str1 + str2 + str3)
-//		console.log(res)
-//		
-//		}
-//	})
-//}
 
 
