@@ -18,7 +18,7 @@
             background-repeat: no-repeat;
             color: #ffffff;
             margin: 0;
-            position: relative; /* 추가: 상대 위치 설정 */
+            position: relative; /* 추가: 상대 위치 설정 */             
         }
 
         .button-container {
