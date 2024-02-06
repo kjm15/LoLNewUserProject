@@ -14,8 +14,10 @@ public class MemberDto {
 
 	private String userId;
 	private String userPw;
+	private String userEmail;
 	private int userPoint;
 	private int loginNow; // 현재 로그인 확인용
+	
 
 	private String role;
 
