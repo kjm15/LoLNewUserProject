@@ -10,6 +10,7 @@ import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.project.projectFinal.dao.JhlChampDao;
 import com.project.projectFinal.dto.ChampionImageDto;
+import com.project.projectFinal.dto.ChampionRankDto;
 
 @Service
 public class JhlChampService {
@@ -17,11 +18,6 @@ public class JhlChampService {
 	@Autowired
 	JhlChampDao champDao;
 	
-	public List<HashMap<String, String>> champListImg() {
-
-		return champDao.champListImg();
-	}
-
 	public List<HashMap<String, String>> champSearch(ChampionImageDto champDto) {
 
 		return champDao.champSearch(champDto);
@@ -34,6 +30,11 @@ public class JhlChampService {
 
 	public List<HashMap<String, String>> champListAll() {
 		return champDao.champListAll();
+	}
+
+
+	public List<HashMap<String, Object>> champRank(ChampionRankDto rankDto) {
+		return champDao.champRank(rankDto);
 	}
 
 

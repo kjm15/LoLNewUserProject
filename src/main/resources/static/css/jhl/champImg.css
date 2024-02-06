@@ -1,0 +1,136 @@
+.contentsRank {
+	display: flex;
+	background-color: white;
+	margin-top: 100px;
+}
+
+.aside {
+	width: 700px;
+	/* 	border: 2px solid rgb(201, 252, 169); */
+}
+
+.search_line_champ {
+	width: 455px;
+}
+
+.selectChampline {
+	display: flex;
+	justify-content: center;
+	width: 455px;
+	margin-top: 10px;
+	margin-bottom: 10px;
+	border-radius: 5px;
+}
+
+.lines {
+	align-items: center;
+	display: flex;
+	justify-content: center;
+	width: 100%;
+	background-image: linear-gradient(315deg, #D6E5FC 0%, #9DC4FD 74%);
+	height: 51px;
+	line-height: 50px;
+	padding: 0;
+	border: none;
+	cursor: pointer;
+}
+
+.lines span {
+	position: relative;
+	display: block;
+	color: white;
+	text-align: center;
+	width: 100%;
+}
+
+.lines:hover {
+	background: transparent;
+	border: 1px solid #8CB9FC;
+	width: 100%;
+}
+
+.lines span:hover {
+	color: #8CB9FC;
+	width: 100%;
+}
+
+.lines img {
+	filter: invert(54%) sepia(6%) saturate(4603%) hue-rotate(211deg)
+		brightness(127%) contrast(106%);
+	width: 25px;
+	height: 25px
+}
+
+.contentsItemsChamp {
+	display: flex;
+	
+}
+
+.search_c {
+	width: 455px;
+	display: flex;
+	border: 1px solid #8CB9FC;
+}
+
+#champSearch {
+	border: none;
+	width: 95%
+}
+
+input:focus {
+	outline: none;
+}
+
+.champImgItems {
+	display: flex;
+	width: 455px;
+	border: 1px solid #8CB9FC;
+	justify-content: center;
+	margin-right: 12px;
+}
+
+.se {
+	display: flex;
+	width: 90%;
+	margin-top: 10px;
+}
+
+.champs {
+	display: flex;
+	flex-wrap: wrap;
+}
+
+.champImgItem {
+	flex-direction: column;
+	display: flex;
+	width: 55px;
+	align-items: center;
+	margin: 5px;
+}
+
+.champImgItem:hover {
+	transform: scale(1.2);
+	transition: transform .5s;
+	cursor: pointer;
+}
+
+.cimgs {
+	overflow: hidden;
+	border-radius: 5px;
+	filter: drop-shadow(2px 2px 2px gray);
+}
+
+.championImg {
+	margin: -4px;
+}
+
+.champName {
+	font-size: 12px;
+	overflow: hidden;
+	white-space: nowrap;
+	width: 52px;
+	text-overflow: ellipsis;
+	text-align: center;
+}
+
+
