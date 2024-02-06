@@ -60,12 +60,6 @@ public class MainController {
 //	}
 
 
-	@GetMapping("/kyt")
-	public String go3() {
-
-		return "kyt/kyt";
-	}
-
 	@GetMapping("/stm")
 	public String go5() {
 

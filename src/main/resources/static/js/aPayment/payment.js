@@ -1,25 +1,26 @@
 
+function openModal() {
+	$("#paymentModal").show();
+};
+function closeModal() {
+	$('.paymentModal').hide();
+};
 
+$('#payNow').on("click", function() {
+	
+	kakaopay()
+	
+})
 
-
-function monthSelect(e) {
-	let needMoney = (e.value);
-	const Money = e.value.toString()
-		.replace(/\B(?<!\.\d*)(?=(\d{3})+(?!\d))/g, ",");
-	$('#tMoney').html(Money)
-
-	document.querySelector('#totalMoney').value = e.value
-	console.log(totalMoney)
-}
 
 function kakaopay() {
-	
+
 	let userId = $('#userId').val()
-	//	console.log(userId)
+		console.log(userId)
 	let totalMoney = $('#totalMoney').val()
 	console.log(totalMoney)
 	let IMP = window.IMP;
-	IMP.init('imp11857210');
+	IMP.init('IMP11857210');
 	IMP.request_pay({
 		pg: 'kakaopay',
 		//		pay_method: 'card', //생략 가능
@@ -27,7 +28,7 @@ function kakaopay() {
 		merchant_uid: 'merchant_' + new Date().getTime(), // 상점에서 관리하는 주문 번호
 		name: '결제테스트: 테스트',
 		amount: totalMoney,
-		buyer_email: 'jgh@naver.com',
+		buyer_email: 'jgh@test.com',
 		buyer_name: '테스트',
 		buyer_tel: '010-1234-5678',
 		buyer_addr: '인천시 주안동',
@@ -71,7 +72,7 @@ function dbsave(userId, userCash) {
 		data: data,
 	}).done(function(res) {
 		alert("결제 성공");
-		location.href = "/main"
+		closeModal()
 	})
 
 }

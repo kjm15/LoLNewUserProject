@@ -14,7 +14,7 @@
 	</div>
 
 
-	<table id="modal_wrap">
+	<table id="modal_wrap" border = "2">
 		<thead>
 			<tr>
 				<th>번호</th>
