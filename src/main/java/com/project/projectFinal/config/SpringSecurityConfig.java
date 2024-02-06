@@ -36,10 +36,10 @@ public class SpringSecurityConfig {
 				.csrf(AbstractHttpConfigurer::disable)
 
 				.authorizeHttpRequests((authorizeRequests) -> {
-					authorizeRequests.requestMatchers("/member/success").authenticated(); 
+					
 					// 로그인 성공시 필터에 저장되어 있는 아이디값을 세션에 아이디값저장, 인증시에만 들어가게 막아둠
-			
-					authorizeRequests.requestMatchers("/jgh").authenticated(); 
+					authorizeRequests.requestMatchers("/admin/**").authenticated(); 
+					authorizeRequests.requestMatchers("/jgh/**").authenticated(); 
 					
 					//아래 내용을 메소드와 클래스에 붙이는걸로 변경
 //					authorizeRequests.requestMatchers("/super/**").hasAuthority("SUPERADMIN");
@@ -55,8 +55,9 @@ public class SpringSecurityConfig {
 
 				.formLogin((formLogin) -> {
 					/* 권한이 필요한 요청은 해당 url로 리다이렉트 */
-					formLogin.loginPage("/member/login").defaultSuccessUrl("/member/success").permitAll()
-							.failureUrl("/member/login");
+					formLogin.loginPage("/member/login").defaultSuccessUrl("/")
+					.successHandler( new CustomLoginSuccessHandler()) //성공시 세션에 아이디 저장
+					.failureUrl("/member/login");
 				}).logout((logOut) -> {
 
 					logOut.logoutRequestMatcher(new AntPathRequestMatcher("/member/logout")).logoutSuccessUrl("/new");
@@ -85,7 +86,7 @@ public class SpringSecurityConfig {
 
 	@Bean
 	public AuthenticationSuccessHandler successHandler() {
-		return new CustomLoginSuccessHandler("/defaultUrl");
+		return new CustomLoginSuccessHandler();
 	}
 
 }

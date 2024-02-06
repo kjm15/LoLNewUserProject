@@ -37,22 +37,6 @@ public class MemberController {
 		return "aMain/joinFrm";
 	}
 	
-	@GetMapping("/success")
-	public String loginResult(Authentication authentication, HttpSession httpSession) {
-		
-		  UserDetails userDetails = (UserDetails) authentication.getPrincipal();
-		  	log.info("====={}",userDetails);
-		 String userId =  userDetails.getUsername();
-		if (userId.equals("anonymousUser")) {
-
-			userId = "Guest";
-		} 
-	
-		httpSession.setAttribute("userId", userId);
-
-		return "redirect:/new";
-	}
-	
 	@PostMapping("/join")
 	public String join(MemberDto memberDto) {
 

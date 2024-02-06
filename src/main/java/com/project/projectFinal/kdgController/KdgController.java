@@ -24,6 +24,6 @@ public class KdgController {
 
 		model.addAttribute("list", list);
 
-		return "kdg/kdg";
+		return "kdg/kdgTest";
 		}
 }

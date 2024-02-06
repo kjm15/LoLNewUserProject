@@ -107,7 +107,7 @@
 </style>
 </head>
 <body>
-	<%@include file="../inc/kdgheader.jsp"%>
+	<%@include file="../inc/header.jsp"%>
 	<h1>김동근 테스트 공간입니다.</h1>
 	<p id="selectMenu" style="postion: absolute; visibility: hidden;"></p>
 	<p id="tier_en" style="postion: absolute; visibility: hidden;">platinum</p>
@@ -165,7 +165,7 @@
 
 	</div>
 
-
+<%@include file="../inc/footer.jsp"%>
 
 </body>
 <script defer src="../js/kdg/item/itemInfo.js" /></script>

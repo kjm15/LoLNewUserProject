@@ -41,8 +41,17 @@
 					<form action="/member/join" method="post">
 						<label for="userId">아이디</label> 
 						<input type="text" id="userId" name="userId"> <span id = "checkId">아이디를 적어주세요</span>
+					
 						<label for="userPw">패스워드</label> 
 						<input 	type="password" id="userPw" name="userPw">  <span id = "checkPw"></span>
+						
+						<label for="userEmail">이메일</label> 
+						<input 	type="email" id="userEmail" name="userEmail">  <button>인증하기</button> <input type="text"/>
+						
+						
+						
+						
+						<hr>
 						<input 	type="submit" value="회원가입" id = "joinBtn">
 						<input type="button" id = "membermain" value="메인으로">
 					</form>

@@ -27,6 +27,7 @@ window.addEventListener('click', (e) => {
 	}
 
 })
+//
 document.querySelector('#modal_wrap').addEventListener('click', (e) => {
 
 	//테이블의 tr행이 몇번째 행인지 알게 해주는 구문

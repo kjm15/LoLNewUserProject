@@ -8,7 +8,8 @@
 <meta charset="UTF-8">
 <title>롤 영혼의 Duo 찾기</title>
 <!-- css들어갈자리  -->
-<script src="https://cdn.jsdelivr.net/npm/sockjs-client@1/dist/sockjs.min.js"></script>
+<script
+	src="https://cdn.jsdelivr.net/npm/sockjs-client@1/dist/sockjs.min.js"></script>
 <link href="/css/jgh/button.css" rel="stylesheet" type="text/css">
 <link href="/css/style.css" rel="stylesheet" type="text/css">
 <link href="/css/jgh/modal.css" rel="stylesheet" type="text/css">
