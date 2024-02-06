@@ -16,8 +16,10 @@
 </head>
 
 <body>
-	<%@include file="../newHeader.jsp"%>
+	<%@include file="../inc/header.jsp"%>
+	<!-- 랭크 테이블  -->
 	<%@include file="champRank.jsp"%>
+	<%@include file="../inc/footer.jsp"%>
 
 
 	<!-- js들어갈자리  -->

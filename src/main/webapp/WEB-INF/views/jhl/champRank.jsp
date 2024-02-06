@@ -8,7 +8,7 @@
 
 </head>
 <body>
-
+<h1>rank 테이블 Test 용, 데이터 다시 받아서 수정할 예정</h1>
 	<div class="contentsRank">
 		<div class="aside left"></div>
 		<div class="contentsItemsChamp">
@@ -16,12 +16,13 @@
 			<div class="contentsItem LineRank">
 				<div
 					style="text-align: center; height: 60px; border: 1px solid #8CB9FC; display: flex; align-items: center; margin-bottom: 10px; justify-content: center">
-					챔피언 랭킹 <select>
-						<option value="Emerald+">Emerald+
+					챔피언 랭킹 <select id="rankSelect">
+						<option value="Emerald+" id ="Emerald">Emerald+
 						<option value="Diamond+">Diamond+
-						<option value="Master+">Master+
-						<option value="Challenger+">Challenger+
 					</select>
+						
+<!-- 						<option value="Master+">Master+ -->
+<!-- 						<option value="Challenger+">Challenger+ -->
 				</div>
 
 				<div class="rankTable">
@@ -91,7 +92,6 @@
 	</div>
 
 
-	<%@include file="../newFooter.jsp"%>
 </body>
 <script defer src="js/jhl/champ/champRank.js"></script>
 

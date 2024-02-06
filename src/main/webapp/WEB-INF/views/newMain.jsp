@@ -14,37 +14,19 @@
 <body>
 
 	<div class="main">
-		<%@include file="newHeader.jsp"%>
-		<section>
-			<div class="contents">
-				<div class="contentsItems">
-					<div class="logo-item">
-						<img alt="" src="/img/jhl/logo.png" width="300px" height="204px">
-					</div>
-					<div class="search-contents">
-						<div class="search-itmes">
-							<div class="sc-dataBoom">
-								<span class="sp teamname">DATABOOM</span>
-							</div>
-							<div class="sc-kr">
-								<span class="sp korea">KR1</span>
-							</div>
-							<input type="text" id="search-home" placeholder="플레이어이름 + #KR1">
-
-	<%@include file="inc/header.jsp"%>
+		<%-- 		<%@include file="newHeader.jsp"%> --%>
 
 
-	<%@include file="aMain/mainDetail.jsp"%>
+		<%@include file="inc/header.jsp"%>
+
+
+		<%@include file="aMain/mainDetail.jsp"%>
 
 
 
-	<%@include file="inc/footer.jsp"%>
+		<%@include file="inc/footer.jsp"%>
 
-
-
-
-		</section>
-		<%@include file="newFooter.jsp"%>
+		<%-- 		<%@include file="newFooter.jsp"%> --%>
 	</div>
 
 
