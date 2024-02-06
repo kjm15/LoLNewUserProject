@@ -32,7 +32,7 @@ function champ(a) {
 				str2 = ''
 						for (let i = 0; i < res.length; i++){
 							str2 += "<li><img id='"+res[i].champion_name+"' src='https://ddragon.leagueoflegends.com/cdn/14.1.1/img/champion/"+res[i].champion_name+".png'"
-							str2 += "width='72' height='72' alt='"+res[i].champion_name+"' class='bg-image' onclick='javascript:submit(this.id)'>"
+							str2 += "width='44' height='44' alt='"+res[i].champion_name+"' class='bg-image' onclick='javascript:submit(this.id)'>"
 							str2 +=	"<span>"+res[i].champion_name_kr+"</span></li>"
 							}
 				str3 = "</ul>"
@@ -45,6 +45,7 @@ function champ(a) {
 	
 	$('#anBtn').hide();
 	$('#champList').show();
+	$('#line').show();
 	$('#searchChamp').show();
 	$('.positionICN').show();
 	$('#searchChamp').val('');
@@ -78,11 +79,12 @@ function submit(b) {
 	let str = str1 + a + str2 + b + str3;
 	$('#' + c).html(str);
 	$('#' + d).html(b);
+	$('#line').hide();
 	$('#champList').hide();
 
 	if($('#myChampName').text() != ''){
 		if($('#enemyChampName').text() != ''){
-			$('#anBtn').show();
+			$('.btn-primary').show();
 		}
 	}
 }

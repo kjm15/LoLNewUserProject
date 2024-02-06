@@ -5,9 +5,9 @@
 <p id="name" style="visibility: hidden; position: absolute;"></p>
 <div class = "champs">
 	<p id="myChampName" style="visibility: hidden; position: absolute;"></p>
-<p id="enemyChampName" style="visibility: hidden; position: absolute;"></p>
-<p id="lineCheck" style="visibility: hidden; position: absolute;"></p>
-<p id="tierCheck" style="visibility: hidden; position: absolute;"></p>
+	<p id="enemyChampName" style="visibility: hidden; position: absolute;"></p>
+	<p id="lineCheck" style="visibility: hidden; position: absolute;"></p>
+	<p id="tierCheck" style="visibility: hidden; position: absolute;"></p>
 </div>
 
 
@@ -15,8 +15,7 @@
 <p id="name" style="visibility: hidden; position: absolute;"></p>
 <div class="champs">
 	<p id="myChampName" style="visibility: hidden; position: absolute;"></p>
-	<p id="enemyChampName"
-		style="visibility: hidden; position: absolute;"></p>
+	<p id="enemyChampName" style="visibility: hidden; position: absolute;"></p>
 	<p id="lineCheck" style="visibility: hidden; position: absolute;"></p>
 </div>
 <!-- <h1>김동근 페이지 입니다.</h1> -->
