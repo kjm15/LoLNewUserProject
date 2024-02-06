@@ -9,6 +9,11 @@
 	<script
 		src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
 	<link href="/css/newMain.css" rel="stylesheet">
+	
+	<link href="/css/jgh/modal.css" rel="stylesheet" type="text/css">
+	
+	<script defer src="js/aPayment/payment.js"></script>
+	
 	<div class="navbars">
 		<div class="navbarMain">
 			<a href="/">DATABOOM</a>
@@ -22,10 +27,10 @@
 					<div class="navChoice">
 						<a href="/Note">메일함</a>
 					</div>
-					<div class="navChoice">
-						<a href="#">결제하기</a>
+					<div class="navChoice"  id="modal_test">
+						<a href="javascript:openModal()">결제하기</a>
 					</div>
-					<div class="navChoice">
+					<div class="navChoice" >
 						<a href="/member/logout">로그아웃</a>
 					</div>
 				</div>
@@ -66,4 +71,11 @@
 		</div>
 	
 	</div>
+	
+	
+	<%@include file="modal4.jsp"%>
+	
+	
+	
+	<input type = "hidden" id = "userId" value = "${userId}"  />
 </header>
