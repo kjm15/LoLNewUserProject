@@ -45,8 +45,6 @@
 <!-- 전적 리스트 jsp -->
 <%@include file="../stm/lolList.jsp" %>
 
-<!-- <script defer src ="/js/stm/joinId.js"></script> -->
-<script defer src="/js/aCommon/member.js"></script>
 <script defer src ="/js/stm/loldata.js"></script>
 <script defer src="/js/stm/RiotGameTable.js"></script>
 </body>
