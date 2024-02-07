@@ -18,7 +18,7 @@
 <body>
 
 	<div class="main">
-		<%-- 		<%@include file="newHeader.jsp"%> --%>
+
 
 
 		<%@include file="inc/header.jsp"%>
@@ -30,7 +30,6 @@
 
 		<%@include file="inc/footer.jsp"%>
 
-		<%-- 		<%@include file="newFooter.jsp"%> --%>
 	</div>
 
 	<!-- js들어갈자리  -->

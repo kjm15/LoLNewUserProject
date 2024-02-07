@@ -24,6 +24,9 @@
 				</div>
 			</div>
 			<div class="black-box">
+
+			<a href="/css">duoCss수정중</a>
+
 				
 			  <div class="slider">
         <div class="slides">
@@ -36,6 +39,7 @@
         </div>
     </div>
 				
+
 			</div>
 
 		</div>
