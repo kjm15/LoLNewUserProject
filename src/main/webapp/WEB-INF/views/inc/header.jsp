@@ -86,27 +86,26 @@
 
 
 
-		<div class="navMenu duo">
-			<a href="/admin/mng">관리자</a>
-		</div>
 
+		<c:if test="${userId != null}">
 
+			<div class="navMenu duo">
+				<a href="/admin/mng">관리자</a>
+			</div>
+			<div class="navMenu duo">
+				<a href="#" id="rouletteStart">룰렛하기</a>
 
-		<div class="navMenu duo">
-			<a href="#" id="rouletteStart">룰렛하기</a>
+			</div>
 
-		</div>
+			<div id="progress-container">
+				<div id="progress-bar"></div>
+			</div>
+			<div>
+				<span id=roulette></span>[남은]횟수
+			</div>
 
+		</c:if>
 
-
-
-
-		<div id="progress-container">
-			<div id="progress-bar"></div>
-		</div>
-		<div>
-			<span id=roulette></span>[남은]횟수
-		</div>
 	</div>
 
 	<div id="app" class="aaa"></div>
