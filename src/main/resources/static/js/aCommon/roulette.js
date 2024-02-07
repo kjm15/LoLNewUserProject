@@ -1,4 +1,5 @@
 $('#app').hide()
+rouletteInfo()
 energyStart()
 
 
@@ -7,15 +8,17 @@ $('#rouletteStart').on("click", function() {
 
 
 	let rouletteCount = rouletteInfo()
-	
+
 	if (rouletteCount > 0) {
-		energyStart()
+
 		minusRoulette()
 		$('#app').show()
 		$('#rouletteStart').hide()
 		rouletteF()
 
 
+	} else {
+		alert("룰렛 에너지가 부족합니다.")
 	}
 
 })
@@ -27,6 +30,7 @@ function rouletteInfo() {
 		async: false,
 		success: function(res) {
 			a = res.rouletteCount
+			$('#roulette').text(a + "번");
 		}
 	})
 
@@ -117,25 +121,23 @@ document.getElementById("app").innerHTML = `
 function energyStart() {
 
 	setTimeout(function() {
-		i = 1; // 퍼센트
+		z = 1; // 퍼센트
 		var elem = document.getElementById("progress-bar");
 		var width = 0;
-		var id = setInterval(frame, 600);
+		var id = setInterval(frame, 1000);
 
 		function frame() {
 			if (width >= 100) {
 				clearInterval(id);
-				i = 0;
-				width = 0;
-				id = setInterval(frame, 600);
 
 				let rouletteCount = rouletteInfo()
 				if (rouletteCount < 5) {
 					addRoulette(id)
+					energyStart()
 				} else {
 					$('#roulette').text(rouletteCount + "번");
 					alert("에너지가 꽉 찼습니다.")
-					clearInterval(id);
+
 				}
 
 
@@ -150,13 +152,8 @@ function energyStart() {
 }
 
 
-function addRoulette(id) {
-	let rouletteCount = rouletteInfo()
-	if (rouletteCount >= 4) {
+function addRoulette() {
 
-		clearInterval(id);
-
-	}
 	$.ajax({
 		type: 'post',
 		url: '/member/addRoulette',
