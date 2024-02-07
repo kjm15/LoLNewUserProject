@@ -26,8 +26,7 @@ public class MemberController {
 
 	@GetMapping("/login")
 	public String login(HttpServletRequest req) {
-		String referer = req.getHeader("Referer");
-		req.getSession().setAttribute("prevPage", referer);
+		
 		return "aMain/loginFrm";
 	}
 
@@ -49,7 +48,5 @@ public class MemberController {
 		}
 
 	}
-
-
 
 }
