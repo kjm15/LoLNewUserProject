@@ -63,12 +63,7 @@
 	display: none;
 }
 
-/* 위에서 내려오기 */
-.b {
-	display: none;
-	height: 1000px;
-	background-color: #bbdefb;
-}
+
 /* 에너지바 */
    #progress-container {
         width: 5%;
