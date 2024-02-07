@@ -8,6 +8,10 @@
 <title>Insert title here</title>
 <script type="text/javascript"
 	src="https://code.jquery.com/jquery-1.12.4.min.js"></script>
+<link href="/css/new/new.css" rel="stylesheet" type="text/css">
+
+
+
 
 </head>
 
@@ -31,6 +35,6 @@
 
 	<!-- js들어갈자리  -->
 	<script defer src="js/new/gameNameSearch.js"></script>
-
+<script defer src="js/new/slide.js"></script>
 </body>
 </html>
