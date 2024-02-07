@@ -11,8 +11,7 @@
 </head>
 <body>
 <div id="userData">
-<div id="div1"><h1>유저 정보</h1></div>
-<div id="div2"><h1>그래프 or 메일함</h1></div>
+
 
 </div>
 </body>

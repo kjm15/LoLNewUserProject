@@ -5,7 +5,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.servlet.mvc.support.RedirectAttributes;
+import org.springframework.web.bind.annotation.PathVariable;
 
 import com.project.projectFinal.dto.MemberDto;
 import com.project.projectFinal.service.MemberService;
@@ -25,22 +25,20 @@ public class MainController {
 
 		return "newMain";
 	}
-	
 
 	@GetMapping("/new")
 	public String mainNew() {
 
 		return "newMain";
 	}
-	
-	
+
 	@GetMapping("/main")
 	public String main(HttpSession session, MemberDto memberDto, Model model) {
 		if (session.getAttribute("userId") != null) {
 			String userId = (String) session.getAttribute("userId");
-			
-			memberDto.setUserId(userId) ;
-			
+
+			memberDto.setUserId(userId);
+
 			MemberDto mDto = memberService.main(memberDto);
 			model.addAttribute("mDto", mDto);
 		}
@@ -59,18 +57,16 @@ public class MainController {
 //		return "shop";
 //	}
 
+	@GetMapping(value = { "/stm/{gameName}/{tagLine}", "/stm" })
+	public String searchRiotGameId(@PathVariable(required = false) String gameName,
+			@PathVariable(required = false) String tagLine, Model model) {
+		log.info("=={}", gameName);
 
-	@GetMapping("/stm")
-	public String go5() {
-
-		return "stm/stmmain";
-	}
-	
-	@GetMapping("/teststm")
-	public String gostmtest() {
+		model.addAttribute("gameName", gameName + "#" + tagLine);
 
 		return "stm/stmmain";
 	}
+
 	@GetMapping("/test")
 	public String test() {
 

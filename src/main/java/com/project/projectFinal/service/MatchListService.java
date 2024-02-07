@@ -36,10 +36,12 @@ public class MatchListService {
 
 	public List<Map> gamedate(List<String> matchList) {
 		List<Map> MList = new ArrayList<>();
+		System.out.println(matchList);
 		for(int i=0; i<matchList.size(); i++) {
 			Map gMap = webmatchListService.gamedate(matchList.get(i));
 			MList.add(gMap);
 		}
+//		System.out.println(MList);
 		return MList;
 	}
 
@@ -57,16 +59,16 @@ public class MatchListService {
 		
 	}
 
-	public List<HashMap<String, RiotGameDto>> RiotGameInfoSelect(String matchId) {
+	public List<Map<String, RiotGameDto>> RiotGameInfoSelect(String matchId) {
 		return riotGameDao.RiotGameInfoSelect(matchId);
 	}
 
-	public List<HashMap<String, RiotGameDto>> RiotGameTeamsSelect(String matchId) {
+	public List<Map<String, RiotGameDto>> RiotGameTeamsSelect(String matchId) {
 		return riotGameDao.RiotGameTeamsSelect(matchId);
 		
 	}
 
-	public List<HashMap<String, RiotGameDto>> RiotGameBansSelect(String matchId) {
+	public List<Map<String, RiotGameDto>> RiotGameBansSelect(String matchId) {
 		return riotGameDao.RiotGameBansSelect(matchId);
 		
 	}
