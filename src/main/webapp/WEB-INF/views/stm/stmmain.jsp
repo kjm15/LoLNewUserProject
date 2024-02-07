@@ -19,23 +19,19 @@
 
 
 
-
-
-
-
 <body>
 <%@include file="../inc/header.jsp" %>
-<div align="center">
-<input type="text" id="gameName" name="gameName" placeholder="아이디" value="동정팔이소년">
-<input type="text" id="tagLine" name ="tagLine" placeholder="태그" value="KR1">
-<button id="getpuuid">검색</button>
+
+<div class="searchbox">
+    <button type="button" class="searchbt1"><span>KR</span></button>
+    <input class="search" id='search' autocomplete="off" type="text" value="동정팔이소년#KR1">
+    <button type="button" class="searchbt2" id ="searchbt2"  onclick="searchbtn()"><span>검색</span></button>
 </div>
-
-
-
-
-
-
+<!-- <div align="center"> -->
+<!-- <input type="text" id="gameName" name="gameName" placeholder="아이디" value="동정팔이소년"> -->
+<!-- <input type="text" id="tagLine" name ="tagLine" placeholder="태그" value="KR1"> -->
+<!-- <button id="getpuuid">검색</button> -->
+<!-- </div> -->
 
 
 
