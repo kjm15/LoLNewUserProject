@@ -35,5 +35,11 @@ public interface MemberDao {
 
 	ArrayList<HashMap<String, MemberDto>> memberTable();
 
+	MemberDto addRoulette(MemberDto memberDto);
+
+	MemberDto rouletteInfo(MemberDto memberDto);
+
+	MemberDto minusRoulette(MemberDto memberDto);
+
 
 }

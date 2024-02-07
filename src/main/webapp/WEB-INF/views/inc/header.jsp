@@ -82,23 +82,39 @@
 		<div class="navMenu duo">
 			<a href="/jgh">듀오찾기</a>
 		</div>
+
+
+
+
 		<div class="navMenu duo">
 			<a href="/admin/mng">관리자</a>
 		</div>
+
+
+
 		<div class="navMenu duo">
-		<a href="#" id = "roulette">룰렛하기</a>
-	
+			<a href="#" id="rouletteStart">룰렛하기</a>
+
+		</div>
+
+
+
+
+
+		<div id="progress-container">
+			<div id="progress-bar"></div>
+		</div>
+		<div>
+			<span id=roulette></span>[남은]횟수
+		</div>
 	</div>
-			 
-	</div>
-	
-<div id="app" class = "aaa"></div>
-	
+
+	<div id="app" class="aaa"></div>
+
 
 
 	<%@include file="modal4.jsp"%>
-
 	<input type="hidden" id="gameName" value="${gameName}" /> <input
 		type="hidden" id="userId" value="${userId}" />
-		
+
 </header>

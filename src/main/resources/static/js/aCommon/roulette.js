@@ -1,20 +1,59 @@
-var rolLength = 6; // 해당 룰렛 콘텐츠 갯수
-var setNum; // 랜덤숫자 담을 변수
-var hiddenInput = document.createElement("input");
-hiddenInput.className = "hidden-input";
 $('#app').hide()
-//랜덤숫자부여
-const rRandom = () => {
+rouletteInfo()
+energyStart()
+
+
+// 룰렛 이벤트 클릭 버튼
+$('#rouletteStart').on("click", function() {
+
+
+	let rouletteCount = rouletteInfo()
+
+	if (rouletteCount > 0) {
+
+		minusRoulette()
+		$('#app').show()
+		$('#rouletteStart').hide()
+		rouletteF()
+
+
+	} else {
+		alert("룰렛 에너지가 부족합니다.")
+	}
+
+})
+function rouletteInfo() {
+	let a = 0;
+	$.ajax({
+		type: 'post',
+		url: '/member/rouletteInfo',
+		async: false,
+		success: function(res) {
+			a = res.rouletteCount
+			$('#roulette').text(a + "번");
+		}
+	})
+
+	return a;
+}
+function rouletteF() {
+	var rolLength = 6; // 해당 룰렛 콘텐츠 갯수
+	var setNum; // 랜덤숫자 담을 변수
+	var hiddenInput = document.createElement("input");
+	hiddenInput.className = "hidden-input";
+	//랜덤숫자부여
+
 	var min = Math.ceil(0);
 	var max = Math.floor(rolLength - 1);
-	return Math.floor(Math.random() * (max - min)) + min;
-};
+	var randamNum = Math.floor(Math.random() * (max - min)) + min;
 
-const rRotate = () => {
+	// 해당 룰렛 콘텐츠 갯수
+	// 랜덤숫자 담을 변수
 	var panel = document.querySelector(".rouletter-wacu");
 	var btn = document.querySelector(".rouletter-btn");
 	var deg = [];
 	// 룰렛 각도 설정(rolLength = 6)
+
 	for (var i = 1, len = rolLength; i <= len; i++) {
 		deg.push((360 / len) * i);
 	}
@@ -22,7 +61,7 @@ const rRotate = () => {
 	// 랜덤 생성된 숫자를 히든 인풋에 넣기
 	var num = 0;
 	document.body.append(hiddenInput);
-	setNum = hiddenInput.value = rRandom();
+	setNum = hiddenInput.value = randamNum;
 
 	// 애니설정
 	var ani = setInterval(() => {
@@ -35,53 +74,35 @@ const rRotate = () => {
 		if (num === 50) {
 			clearInterval(ani);
 			panel.style.transform = `rotate(${deg[setNum]}deg)`;
+			setTimeout(function() {
+				switch (setNum) {
+					case 1:
+						alert("당첨!! 스타벅스 아메리카노");
+						$('#app').hide()
+						$('#rouletteStart').show()
+						break;
+					case 3:
+						alert("당첨!! 햄버거 세트 교환권");
+						$('#app').hide()
+						$('#rouletteStart').show()
+						break;
+					case 5:
+						alert("당첨!! CU 3,000원 상품권");
+						$('#app').hide()
+						$('#rouletteStart').show()
+						break;
+					default:
+						alert("꽝! 다음기회에");
+						$('#app').hide()
+						$('#rouletteStart').show()
+				}
+			}, 2000);
 		}
+
 	}, 50);
-};
+}
 
-// 정해진 alert띄우기, custom modal등
-const rLayerPopup = (num) => {
-	switch (num) {
-		case 1:
-			alert("당첨!! 스타벅스 아메리카노");
-			$('#app').hide()
-			$('#roulette').show()
-			break;
-		case 3:
-			alert("당첨!! 햄버거 세트 교환권");
-			$('#app').hide()
-			$('#roulette').show()
-			break;
-		case 5:
-			alert("당첨!! CU 3,000원 상품권");
-			$('#app').hide()
-			$('#roulette').show()
-			break;
-		default:
-			alert("꽝! 다음기회에");
-			$('#app').hide()
-			$('#roulette').show()
-	}
-};
 
-// reset
-const rReset = (ele) => {
-	setTimeout(() => {
-		ele.disabled = false;
-		ele.style.pointerEvents = "auto";
-		rLayerPopup(setNum);
-		hiddenInput.remove();
-	}, 5500);
-};
-
-// 룰렛 이벤트 클릭 버튼
-document.addEventListener("click", function(e) {
-	var target = e.target;
-	if (target.tagName === "BUTTON") {
-		rRotate();
-		rReset(target);
-	}
-});
 
 // roulette default
 document.getElementById("app").innerHTML = `
@@ -90,15 +111,72 @@ document.getElementById("app").innerHTML = `
         <div class="rouletter-wacu"></div>
     </div>
     <div class="rouletter-arrow"></div>
-    <button class="rouletter-btn">start</button>
+    <button class="rouletter-btn" id = "rouletteStart" >start</button>
 </div>
 `;
 
-$('#roulette').on("click", function() {
-	$('#app').show()
-
-	$('#roulette').hide()
-})
 
 
+////
+function energyStart() {
 
+	setTimeout(function() {
+		z = 1; // 퍼센트
+		var elem = document.getElementById("progress-bar");
+		var width = 0;
+		var id = setInterval(frame, 1000);
+
+		function frame() {
+			if (width >= 100) {
+				clearInterval(id);
+
+				let rouletteCount = rouletteInfo()
+				if (rouletteCount < 5) {
+					addRoulette(id)
+					energyStart()
+				} else {
+					$('#roulette').text(rouletteCount + "번");
+					alert("에너지가 꽉 찼습니다.")
+
+				}
+
+
+			} else {
+				width++;
+				elem.style.width = width + "%";
+				elem.innerHTML = width + "%";
+			}
+		}
+
+	}, 1000);
+}
+
+
+function addRoulette() {
+
+	$.ajax({
+		type: 'post',
+		url: '/member/addRoulette',
+		success: function(res) {
+
+			$('#roulette').text(res.rouletteCount + "번");
+
+		}
+	})
+
+}
+function minusRoulette() {
+
+	$.ajax({
+		type: 'post',
+		url: '/member/minusRoulette',
+		success: function(res) {
+
+			$('#roulette').text(res.rouletteCount + "번");
+
+
+		}
+	})
+
+
+}

@@ -17,7 +17,7 @@ public class MemberDto {
 	private String userEmail;
 	private int userPoint;
 	private int loginNow; // 현재 로그인 확인용
-	
+	private	int rouletteCount;
 
 	private String role;
 
