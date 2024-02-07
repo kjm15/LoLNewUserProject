@@ -39,7 +39,7 @@
 			<div class="right">
 
 				<div class="form">
-					<form action="/member/join" method="post">
+					<form action="/member/join" method="post" onsubmit = "false">
 						<label for="userId">아이디</label> <input type="text" id="userId"
 							name="userId"> <span id="checkId">아이디를 적어주세요</span> <label
 							for="userPw">패스워드</label> <input type="password" id="userPw"
@@ -68,7 +68,7 @@
 
 
 					<hr>
-					<input type="submit" value="회원가입" id="joinBtn" > 
+					<input type="button" value="회원가입" id="joinBtn" > 
 						</form>
 					<hr>
 				

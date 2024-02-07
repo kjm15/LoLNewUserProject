@@ -12,7 +12,7 @@
 	
 	<link href="/css/jgh/modal.css" rel="stylesheet" type="text/css">
 	
-	<script defer src="js/aPayment/payment.js"></script>
+	<script defer src="/js/aPayment/payment.js"></script>
 	
 	<div class="navbars">
 		<div class="navbarMain">
