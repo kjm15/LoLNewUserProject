@@ -23,9 +23,5 @@ public class DuoController {
 
 		return "jgh/jgh";
 	}
-	@GetMapping("/test/jgh")
-	public String test(Model model) {
 
-		return "jhl/cssDuoMain";
-	}
 }
