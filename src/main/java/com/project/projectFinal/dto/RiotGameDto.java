@@ -36,4 +36,6 @@ public class RiotGameDto {
 	private int wardsKilled; // 와드 킬
 	private int wardsPlaced; // 시야 점수
 	private List<String> matchList;
+	private String summonerName;
+	private String champion_name_kr;
 }
