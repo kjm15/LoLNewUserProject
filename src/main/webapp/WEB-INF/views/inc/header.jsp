@@ -84,24 +84,19 @@
 		</div>
 
 
-
-
-
 		<c:if test="${userId != null}">
 
-			<div class="navMenu duo">
-				<a href="/admin/mng">관리자</a>
-			</div>
+		
 			<div class="navMenu duo">
 				<a href="#" id="rouletteStart">룰렛하기</a>
 
 			</div>
-
+&nbsp;&nbsp;&nbsp;
 			<div id="progress-container">
 				<div id="progress-bar"></div>
 			</div>
 			<div>
-				<span id=roulette></span>[남은]횟수
+				<span ></span>	&nbsp;&nbsp;&nbsp;[남은]횟수<span id=roulette></span>
 			</div>
 
 		</c:if>
