@@ -20,7 +20,9 @@
 					<button id="searchBoom">BOOM</button>
 				</div>
 			</div>
-			<div class="black-box">빈칸</div>
+			<div class="black-box">
+			<a href="/css">duoCss수정중</a>
+			</div>
 
 		</div>
 	</div>

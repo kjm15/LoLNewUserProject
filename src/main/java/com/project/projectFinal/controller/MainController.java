@@ -76,5 +76,10 @@ public class MainController {
 
 		return "kdg/kdgTest";
 	}
+	@GetMapping("/css")
+	public String css() {
 
+		return "jhl/cssDuoMain";
+	}
+	
 }
