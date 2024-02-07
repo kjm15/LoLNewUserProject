@@ -2,6 +2,34 @@
  * 
  */
 
+$(document).ready(function() {
+
+
+	mainStart()
+
+
+})
+
+function mainStart() {
+
+	let gameName = $('#gameName').val()
+
+
+	console.log(gameName) // 값이 안 넘어왔음
+	if (gameName != '') {
+		mainSearch(gameName)
+	}
+}
+function mainSearch(gameName1) {
+	var gameId = gameName1.split('#');
+	let gameName = gameId[0] // 아이디
+	let tagLine = gameId[1] // 태그
+	data = { 'gameName': gameName, 'tagLine': tagLine }
+	bbb(data)
+}
+
+//////////////////장기훈////
+
 function gamebtn(i) {
 	var gametable = document.getElementById("gametable" + i + "");
 	gametable.style.display = ((gametable.style.display != 'none') ? 'none' : 'block');
@@ -10,10 +38,8 @@ function searchbtn() {
 	searchbtn1()
 }
 
-
-
 function searchbtn1() {
-	
+
 	$('#newList').remove()
 	let search = $('#search').val();
 	var gameId = search.split('#');
@@ -21,31 +47,8 @@ function searchbtn1() {
 	let tagLine = gameId[1] // 태그
 	data = { 'gameName': gameName, 'tagLine': tagLine }
 	bbb(data)
-	//	bbb(data)
-	//		.then(function() {
-	//			console.log("bbb통과")
-	//			return aaa();
-	//		})
-	//		.then(function() {
-	//			console.log("aaa통과")
-	//		})
-	//		.catch(function(error) {
-	//			console.log(error)
-	//		})
-
-
-	//	const f3 = new Promise((resolve, reject) => {
-	//		bbb(data);
-	//		console.log("bbb통과")
-	//		resolve('done');
-	//	})
-	//
-	//	f3.then(() => {
-	//		console.log("aaa통과")
-	//		aaa();
-	//	})
-
 }
+
 
 function aaa(data) { // data == 검색한 게임 아이디
 	$.ajax({
@@ -54,7 +57,7 @@ function aaa(data) { // data == 검색한 게임 아이디
 
 		success: function(res) {
 			console.log(res)
-			showGameTamble(res,data)
+			showGameTamble(res, data)
 		}
 	})
 }
@@ -65,7 +68,7 @@ function bbb(data) {
 		type: 'post',
 		url: '/match/list',
 		data: data,
-//		async: true,
+		//		async: true,
 		success: function(res) {
 
 			if (res != '') {
@@ -138,7 +141,7 @@ function bbb(data) {
 					type: 'post',
 					url: '/riot/api',
 					data: data2,
-//					dataType: 'json',
+					//					dataType: 'json',
 					success: function(res) {
 						console.log(res)
 						aaa(data)
@@ -146,7 +149,7 @@ function bbb(data) {
 					}
 				})
 
-			}else{
+			} else {
 				aaa(data)
 			}
 

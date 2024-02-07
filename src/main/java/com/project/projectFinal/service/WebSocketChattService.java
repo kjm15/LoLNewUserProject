@@ -43,7 +43,7 @@ public class WebSocketChattService {
 
 	@OnMessage // 메세지 수신시
 	public void onMessage(String msg, Session session) throws Exception {
-
+		
 		// msg >> hashmap으로 변환시켜주는 구문
 		ObjectMapper mapper = new ObjectMapper();
 		HashMap<String, String> map = new HashMap<String, String>();

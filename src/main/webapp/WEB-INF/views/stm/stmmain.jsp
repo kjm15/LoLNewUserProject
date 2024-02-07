@@ -8,10 +8,8 @@
 <title>송태민 테스트</title>
 <script type="text/javascript" src="https://code.jquery.com/jquery-1.12.4.min.js" ></script>
 
-<link rel="stylesheet" href="../css/stm/lolDataList.css">
-<style type="text/css">
+<link rel="stylesheet" href="/css/stm/lolDataList.css"type="text/css">
 
-</style>
 </head>
 
 
@@ -45,8 +43,6 @@
 <!-- 전적 리스트 jsp -->
 <%@include file="../stm/lolList.jsp" %>
 
-<!-- <script defer src ="/js/stm/joinId.js"></script> -->
-<script defer src="/js/aCommon/member.js"></script>
 <script defer src ="/js/stm/loldata.js"></script>
 <script defer src="/js/stm/RiotGameTable.js"></script>
 </body>

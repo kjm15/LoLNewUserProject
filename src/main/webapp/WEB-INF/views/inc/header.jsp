@@ -12,7 +12,7 @@
 	
 	<link href="/css/jgh/modal.css" rel="stylesheet" type="text/css">
 	
-	<script defer src="js/aPayment/payment.js"></script>
+	<script defer src="/js/aPayment/payment.js"></script>
 	
 	<div class="navbars">
 		<div class="navbarMain">
@@ -51,9 +51,6 @@
 		<div class="navMenu">
 			<a href="/jhl" class="active">초보자</a>
 		</div>
-		<div class="navMenu">
-			<a href="/stm">전적검색</a>
-		</div>
 
 		<div class="navMenu">
 			<a href="/kdg">아이템분석</a>
@@ -75,7 +72,6 @@
 	
 	<%@include file="modal4.jsp"%>
 	
-	
-	
-	<input type = "hidden" id = "userId" value = "${userId}"  />
+		<input type = "hidden" id = "gameName" value = "${gameName}"  />
+		<input type = "hidden" id = "userId" value = "${userId}"  />
 </header>

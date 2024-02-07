@@ -26,3 +26,6 @@ function confirmNumber() {
 		alert("번호가 다릅니다.");
 	}
 }
+
+
+

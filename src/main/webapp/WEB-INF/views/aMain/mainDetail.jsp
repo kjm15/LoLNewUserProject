@@ -15,9 +15,11 @@
 					<div class="sc-kr">
 						<span class="sp korea">KR1</span>
 					</div>
-					<input type="text" id="search-home" placeholder="플레이어이름 + #KR1">
+				
+					<input type="text" id="search-home" placeholder="플레이어이름 + #KR1" value = "동정팔이소년#KR1">
 
 					<button id="searchBoom">BOOM</button>
+					
 				</div>
 			</div>
 			<div class="black-box">빈칸</div>

@@ -29,6 +29,8 @@
 		<%-- 		<%@include file="newFooter.jsp"%> --%>
 	</div>
 
+	<!-- js들어갈자리  -->
+	<script defer src="js/new/gameNameSearch.js"></script>
 
 </body>
 </html>
