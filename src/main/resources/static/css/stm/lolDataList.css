@@ -215,10 +215,10 @@
 
 .container1{
 	width : 800px;
-	height : 700px;
+	height : 500px;
 	position: absolute;
-	top : 420px;
-	left : 250px;
+	top : 600px;
+	left : 300px;
 	
 }
 .win-lose-board {
