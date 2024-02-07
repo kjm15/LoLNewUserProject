@@ -57,16 +57,12 @@ public class MainController {
 //		return "shop";
 //	}
 
-	@GetMapping(value = {"/stm/{gameName}","/stm"})
-	public String searchRiotGameId(@PathVariable(required = false) String gameName) {
+	@GetMapping(value = { "/stm/{gameName}/{tagLine}", "/stm" })
+	public String searchRiotGameId(@PathVariable(required = false) String gameName,
+			@PathVariable(required = false) String tagLine, Model model) {
+		log.info("=={}", gameName);
 
-		
-		
-		return "stm/stmmain";
-	}
-
-	@GetMapping("/teststm")
-	public String gostmtest() {
+		model.addAttribute("gameName", gameName + "#" + tagLine);
 
 		return "stm/stmmain";
 	}
