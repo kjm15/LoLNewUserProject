@@ -42,24 +42,27 @@ $('#duoSaveBtn').on("click", function() {
 function deleteDuo(rCnt) {
 
 	data = { 'rCnt': rCnt }
-	$.ajax({
 
-		type: 'post',
-		url: '/jgh/delete',
-		data: data,
-		success: function(res) {
+	if (confirm("정말 삭제하시겠습니까?")) {
 
-			if (res == 1) {
+		$.ajax({
 
-				alert("삭제완료.")
-				duoMainInfo()
-			} else {
+			type: 'post',
+			url: '/jgh/delete',
+			data: data,
+			success: function(res) {
 
-				alert("작성자 본인만 삭제 가능합니다.")
+				if (res == 1) {
+
+					alert("삭제완료.")
+					duoMainInfo()
+				} else {
+
+					alert("작성자 본인만 삭제 가능합니다.")
+
+				}
 
 			}
-
-		}
-	})
-
+		})
+	}
 }
