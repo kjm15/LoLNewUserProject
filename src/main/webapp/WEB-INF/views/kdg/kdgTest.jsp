@@ -22,19 +22,23 @@
 <body>
 	<%@include file="../inc/header.jsp"%>
 	<p id="name" style="visibility: hidden; position: absolute;"></p>
-	<div class = "champs">
+	<div class = "champs" style="visibility: hidden; position: absolute;">
 		<p id="myChampName" style="visibility: hidden; position: absolute;"></p>
 		<p id="enemyChampName" style="visibility: hidden; position: absolute;"></p>
 		<p id="lineCheck" style="visibility: hidden; position: absolute;"></p>
 		<p id="tierCheck" style="visibility: hidden; position: absolute;"></p>
 	</div>
+	<p id="selectMenu" style="visibility: hidden; position: absolute;"></p>	
+	<p id="tier_en" style="visibility: hidden; position: absolute;">platinum</p>
+	<p id="selectTier" style="visibility: hidden; position: absolute;">플래티넘</p>
+	<p id="selectCore" style="visibility: hidden; position: absolute;">1코어 아이템</p>
 	
 	<div class="modal fade" id="exampleModalToggle" aria-hidden="true" aria-labelledby="exampleModalToggleLabel" tabindex="-1" style = "">
 	  <div class="modal-dialog modal-dialog-centered">
 	    <div class="modal-content" style = "width: 700px;">
 	      <div class="modal-header">
 	        <h5 class="modal-title" id="exampleModalToggleLabel">챔피언을 선택해보세요.</h5>
-	        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+	        <button type="button" id="closeBtn" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
 	      </div>
 	      <div class="modal-body" style = "background-color: #3C3C41;">
 	        <div id="myChampion" class = "champimg1">
@@ -74,42 +78,38 @@
 						</div>
 					</div>
 				<div id="champList" style = "display: none;">
-
+					<ul>
+						<c:forEach var="cham" items="${list}">
+							<li>
+								<img id="${cham.champion_name}"
+								src="https://ddragon.leagueoflegends.com/cdn/14.1.1/img/champion/${cham.champion_name}.png"
+								width="77" height="77" alt="${cham.champion_name}"
+								class="bg-image" onclick="javascript:submit(this.id)">
+								<span>${cham.champion_name_kr}</span>
+							</li>
+						</c:forEach>
+					</ul>
 				</div>
+				<div id = "selectTier" style = "display: none;">
+				
+				</div>
+		      	<div id="itemBuild"  style = "display: none;">
+		      	
+		      	</div>
 			</div>
-	      <div class="modal-footer">
-	        <button class="btn btn-primary" data-bs-target="#exampleModalToggle2" data-bs-toggle="modal" data-bs-dismiss="modal" style = "display: none;">선택 완료</button>
+	      <div id = "btnDiv" class="modal-footer">
+	        <button id = "clickBtn" class="btn btn-primary" style = "display: none;">선택 완료</button>
+	        <button id = "reSelectBtn" class="btn btn-primary" style = "display: none;">다시 선택</button>
 	      </div>
 	    </div>
 	  </div>
 	</div>
-	<div class="modal fade" id="exampleModalToggle2" aria-hidden="true" aria-labelledby="exampleModalToggleLabel2" tabindex="-1">
-	  <div class="modal-dialog modal-dialog-centered">
-	    <div class="modal-content">
-	      <div class="modal-header">
-	        <h5 class="modal-title" id="exampleModalToggleLabel2">Modal 2</h5>
-	        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-	      </div>
-	      <div class="modal-body">
-	      	<div id="itemBuild"  style = "display: none;">
-	      	
-	      	</div>
-	      </div>
-	      <div class="modal-footer">
-	        <button class="btn btn-primary" data-bs-target="#exampleModalToggle" data-bs-toggle="modal" data-bs-dismiss="modal">Back to first</button>
-	      </div>
-	    </div>
-	  </div>
-	</div>
-	<a class="btn btn-primary" data-bs-toggle="modal" href="#exampleModalToggle" role="button">아이템 빌드가 필요하신가요?</a>
+	<a id = "analysisBtn" class="btn btn-primary" data-bs-toggle="modal" href="#exampleModalToggle" role="button">아이템 빌드가 필요하신가요?</a>
 
 
 
 	<h1>김동근 테스트 공간입니다.</h1>
-	<p id="selectMenu" style="postion: absolute; visibility: hidden;"></p>
-	<p id="tier_en" style="postion: absolute; visibility: hidden;">platinum</p>
-	<p id="selectTier" style="postion: absolute; visibility: hidden;">플래티넘</p>
-	<p id="selectCore" style="postion: absolute; visibility: hidden;">1코어 아이템</p>
+
 	<div class="dropdown">
 		<button id="TierDropDown" class="btn btn-secondary dropdown-toggle"
 			type="button" data-bs-toggle="dropdown" aria-expanded="false"

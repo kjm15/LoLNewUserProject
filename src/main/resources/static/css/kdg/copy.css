@@ -186,7 +186,7 @@
 	background: rgba(33, 122, 244, .1);
 }
 
-#champList, #itemBuild {
+#champList {
 	padding: 20px 20px 20px 20px;
 	background-color: #091428;
 	color: #C8AA6E;
@@ -194,6 +194,19 @@
 	width: 466px;
 	height: 466px;
 	overflow: scroll;
+	float: left;
+	margin: 0auto;
+	
+	display: none;
+}
+
+#itemBuild {
+	padding: 20px 20px 20px 20px;
+	background-color: #091428;
+	color: #C8AA6E;
+	top: 60px;
+	width: 466px;
+	height: 200px;
 	float: left;
 	margin: 0auto;
 	

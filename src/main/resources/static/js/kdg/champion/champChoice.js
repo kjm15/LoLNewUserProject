@@ -84,7 +84,7 @@ function submit(b) {
 
 	if($('#myChampName').text() != ''){
 		if($('#enemyChampName').text() != ''){
-			$('.btn-primary').show();
+			$('#clickBtn').show();
 		}
 	}
 }

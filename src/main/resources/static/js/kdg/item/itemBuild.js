@@ -3,7 +3,9 @@
  */
 
 $(document).ready(function() {
-	$('.btn-primary').click(function() {
+	$('#clickBtn').click(function() {
+		
+		
 		/* 티어 버튼 보이기 */
 		$('#iron').show();
 		$('#bronze').show();
@@ -15,13 +17,14 @@ $(document).ready(function() {
 		$('#master').show();
 		$('#grandmaster').show();
 		$('#challenger').show();
-		$('#anBtn').hide();
 
 		$('#lineCheck').empty();
 
 		var myChampName = $('#myChampName').text();
 		var enemyChampName = $('#enemyChampName').text();
 		var tier = 'platinum';
+		
+		$('#champList').hide();
 
 		data = {
 
@@ -54,10 +57,14 @@ $(document).ready(function() {
 
 				}
 
-
-
-				$('#itemBuild').html(str2);
 				$('#itemBuild').show();
+				$('#itemBuild').html(str2);
+				
+				$('#clickBtn').hide();
+				$('#reSelectBtn').show();
+				
+				str3 = ""
+				
 
 			}
 		})
