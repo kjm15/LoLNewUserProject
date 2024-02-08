@@ -38,4 +38,5 @@ public class RiotGameDto {
 	private List<String> matchList;
 	private String summonerName;
 	private String champion_name_kr;
+	private int participantId;
 }
