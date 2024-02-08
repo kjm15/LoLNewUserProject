@@ -3,10 +3,10 @@
  */
 
 $("#find").on("click", function() {
-
+	$('#detail2').empty()
 	let gameName1 = $('#gameName1').val()
 	let tagLine = $('#tagLine').val()
-
+	let str = ''
 	data = {
 		'gameName': gameName1,
 		'tagLine': tagLine
@@ -16,17 +16,35 @@ $("#find").on("click", function() {
 
 		type: 'post',
 		url: '/riotTv/findPuuIdFindList',
+		async: false,
 		data: data,
 		success: function(res) {
+			for (let z in res) {
 
-			let str = ''
-			for (let i in res) (
+				data2 = { 'matchIdjustOne': res[z] }
 
-				str += i + "번" + '<input type = "button" onclick = "findOne(this.id)" id = "' + res[i] + '" value = "click!!"> </br>'
+				let result1 = res
+				$.ajax({
 
-			)
-			$('#detail2').html(str);
+					type: 'post',
+					url: '/riotTv/findOnebyList',
+					async: false,
+					data: data2,
+					success: function(res) {
 
+						for (let j in res.info.participants) {
+
+							if (res.info.participants[j].riotIdGameName == gameName1) {
+								str += z + "번째 경기" + '<input type = "button" onclick = "findOne(this.id)" id = "' + result1[z] + '" value = ">>라문철tv분석<<">'
+									+" 내가 한 챔프 :"+ res.info.participants[j].championName + '</br>'
+								console.log(res.info.participants[j].championName)
+
+							}
+						}
+						$('#detail2').html(str)
+					}
+				})
+			}
 		}
 	})
 })
@@ -34,29 +52,7 @@ $("#find").on("click", function() {
 function findOne(matchIdjustOne) {
 	let gameName1 = $('#gameName1').val()
 	data = { 'matchIdjustOne': matchIdjustOne }
+
 	console.log(data)
-	$.ajax({
-
-		type: 'get',
-		url: '/riotTv/findOnebyList',
-		data: data,
-		success: function(res) {
-
-			for (let i in res) {
-				console.log(res.info.participants[i].riotIdGameName)
-//				if (res.info.participants[i].riotIdGameName == gameName1) {
-//
-//
-//					$('#detail3').html(res.info.participants[i].championName);
-//				}
-			}
-
-
-		
-
-
-
-		}
-	})
 
 }

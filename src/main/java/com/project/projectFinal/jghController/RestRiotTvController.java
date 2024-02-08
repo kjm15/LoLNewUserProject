@@ -34,7 +34,7 @@ public class RestRiotTvController {
 		// 리스트 가지고 오기(5개로 제한)
 	}
 
-	@GetMapping("/findOnebyList")
+	@PostMapping("/findOnebyList")
 	public Map findOnebyList(RiotApiDto riotApiDto) {
 
 		log.info("=={}", riotApiDto);
