@@ -126,10 +126,7 @@ function energyStart() {
 					clearInterval(id);
 					addRoulette()
 					rouletteCount = rouletteInfo()
-
-					if (rouletteCount < 5) {
-						energyStart()
-					}
+					energyStart()
 
 				} else {
 					width++;
