@@ -36,7 +36,7 @@
 	<%@include file="../inc/footer.jsp"%>
 
 	<!-- js들어갈자리  -->
-	<!-- 	<script defer src="js/jgh/jsduo/duoPort.js"></script> -->
+		<script defer src="/js/jgh/riotTv/main.js"></script>
 	<!-- 	<script defer src="/js/jgh/jsduo/duoChatting.js"></script> -->
 	<!-- 	<script defer src="/js/jgh/jsduo/duoDeleteSave.js"></script> -->
 	<!-- 	<script defer src="/js/jgh/jsduo/duoModal.js"></script> -->

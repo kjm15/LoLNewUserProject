@@ -8,7 +8,6 @@ import org.springframework.stereotype.Service;
 import org.springframework.web.reactive.function.client.WebClient;
 
 import com.project.projectFinal.dto.RiotApiDto;
-import com.project.projectFinal.dto.itemInfoDto;
 
 import lombok.extern.slf4j.Slf4j;
 
@@ -42,7 +41,7 @@ public class WebClientService {
 
 	public List<String> getgameid(String puuid) {
 
-		String count = "2"; // 가지고 올 경기 수 << 추후에 늘리기
+		String count = "5"; // 가지고 올 경기 수 << 추후에 늘리기
 
 		String url = "https://asia.api.riotgames.com/lol/match/v5/matches/by-puuid/" + puuid + "/ids?start=0&count="
 				+ count + "&api_key=" + api_key;

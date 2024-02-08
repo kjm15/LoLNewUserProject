@@ -6,5 +6,13 @@
 			
 			<div>인천일보아카데미</div>
 			<div>인천광역시 미추홀구 매소홀로488번길 6-32 태승빌딩 5층</div>
+			
+			<a href = "/riotTv/main">test라문철 페이지가기</a>
+			
+			
 		</footer>
-	</div>
+		
+		
+
+	
+	
