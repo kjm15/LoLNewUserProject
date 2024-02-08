@@ -18,6 +18,7 @@ $('#rouletteStart').on("click", function() {
 		if (rouletteCount == 5) {
 			energyStart()
 		}
+
 	} else {
 		alert("룰렛 에너지가 부족합니다.")
 	}
@@ -125,8 +126,8 @@ function energyStart() {
 					clearInterval(id);
 					addRoulette()
 					rouletteCount = rouletteInfo()
-				
-					if (rouletteCount < 5) {										
+
+					if (rouletteCount < 5) {
 						energyStart()
 					}
 
@@ -141,7 +142,7 @@ function energyStart() {
 
 	} else {
 
-	
+
 
 	}
 }
