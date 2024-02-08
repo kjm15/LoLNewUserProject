@@ -12,30 +12,47 @@ function duoMainInfo() {
 		url: '/jgh/duostartinfo',
 		success: function(res) {
 //			console.log(res)
+			const date = new Date();
+
 			let str = ''
 			for (let i in res) {
 
-				let strbtn = ''
-				str += "<tr>"
-				str += "<td>" + res[i].rCnt + "</td>"
-				str += "<td>" + res[i].userId + "</td>"
-				str += "<td>" + res[i].myPosition + "</td>"
-				str += "<td>" + res[i].tier + "</td>"
-				str += "<td>" + res[i].gameType + "</td>"
-				str += "<td>" + res[i].duoPosition + "</td>"
-				str += "<td>" + "최근챔피언개발중" + "</td>"
-				str += "<td>" + res[i].memo + "</td>"
-//				str += "<td>" + res[i].date + "</td>"
+				str += `<tr class="duoTr Dtd" >
 
-				strbtn += "<div><button type='button'"
-				strbtn += " >...</button>"
-				strbtn += "<ul ><li><a  href='#'>수정</a></li>"
-				strbtn += "<li><a  href='javascript:deleteDuo(" + res[i].rCnt + ")'>삭제</a></li></ul></div>"
+			<td class="duoitems dNo"><span class="duo-no">${res[i].rCnt}</span></td>
+			<td class="duoitems dName"><span class="duo-name">${res[i].userId}</span></td>
+			<td class="duoitems mPosition"><span class="duo-mPosition">${res[i].myPosition}</span></td>
+			<td class="duoitems dTear"><span class="duo-tear">${res[i].tier}</span></td>
+			<td class="duoitems dType"><span class="duo-gType">${res[i].gameType}</span></td>
+			<td class="duoitems yPosition"><span class="duo-yPosition">${res[i].duoPosition}</span></td>
+			<td class="duoitems recentP"><span class="duo-recentP">개발중</span></td>
+			<td class="duoitems dMeno"><div class="duo-momo">
+					<div class="duo-m">
+						<span class="duo-ms">${res[i].memo}</span>
+					</div>
+				</div></td>
+				
+				
+			<td class="duoitems blank">
+				<span class="duo-blank" >
+				
+				
+				<div class="dropdown">
+				  <button class="dropbtn">....</button>
+				  <div class="dropdown-content">
+				    <a href="#">수정</a>
+				    <a href="javascript:deleteDuo(${res[i].rCnt})">삭제</a>
+				
+				  </div>
+				</div>
 
-				str += "<td>" + strbtn + "</td>"
-				str += "</tr>"
+				</span>
+			</td>
+			</tr>`
+
 			}
-			$('#preflag').html(str)
+
+			document.getElementById("duotbody").innerHTML = str
 		}
 	})
 }
@@ -45,33 +62,49 @@ function duoMainInfo() {
 function showNewDuo(res) {
 	console.log(res);
 	const date = new Date();
-	let rCnt = $('#rCnt').val()
-	rCnt = rCnt + 1
-	document.getElementById('rCnt').value = rCnt
 	let str = ''
-	str += "<tr>"
-	str += "<td>" + res.rCnt + "</td>"
-	str += "<td>" + res.userId + "</td>"
-	str += "<td>" + res.myPosition + "</td>"
-	str += "<td>" + res.tier + "</td>"
-	str += "<td>" + res.gameType + "</td>"
-	str += "<td>" + res.duoPosition + "</td>"
-	str += "<td>최근챔피언개발중</td>"
-	str += "<td>" + res.memo + "</td>"
-	str += "<td>" + date + "</td>"
+	let rCnt = res.rCnt
+	let userId = res.userId
+	let myPosition = res.myPosition
+	let tier = res.tier
+	let gameType = res.gameType
+	let duoPosition = res.duoPosition
 
-	str += "<td><div class='dropdown'>" +
-		"<button  type='button' >" +
-		"..." + "</button>" +
-		"<ul >" +
-		"<li><a  href='#'>수정</a></li>" +
-		"<li><a  href='javascript:deleteDuo(" + res.rCnt + ")'>삭제</a></li>" +
-		"</ul>" +
-		"</div></td>"
+	let memo = res.memo
 
-	str += "</tr>"
 
-	$('#preflag').prepend(str)
+	str += `<tr class="duoTr Dtd" >
+
+			<td class="duoitems dNo"><span class="duo-no">${rCnt}</span></td>
+			<td class="duoitems dName"><span class="duo-name">${userId}</span></td>
+			<td class="duoitems mPosition"><span class="duo-mPosition">${myPosition}</span></td>
+			<td class="duoitems dTear"><span class="duo-tear">${tier}</span></td>
+			<td class="duoitems dType"><span class="duo-gType">${gameType}</span></td>
+			<td class="duoitems yPosition"><span class="duo-yPosition">${duoPosition}</span></td>
+			<td class="duoitems recentP"><span class="duo-recentP">개발중</span></td>
+			<td class="duoitems dMeno"><div class="duo-momo">
+					<div class="duo-m">
+						<span class="duo-ms">${memo}</span>
+					</div>
+				</div></td>
+				
+				
+			<td class="duoitems blank">
+				<span class="duo-blank" >
+				
+						<ul >
+							<li><a  href='#'>수정</a></li>
+							<li><a  href='javascript:deleteDuo(${res.rCnt})'>삭제</a></li>
+						</ul>
+				
+					
+				</span>
+			</td>
+			</tr>`
+
+
+
+	$('##duotbody').prepend(str)
 	$('#' + res.rCnt).hide()
 	$('#exampleModal').modal("hide");
 
@@ -92,7 +125,7 @@ function showChattInfo() {
 		type: 'post',
 		url: '/jgh/chattRoomInfo',
 		success: function(res) {
-			
+
 			if (res != '') {
 				str = ''
 				str += '<ul>'
@@ -113,6 +146,6 @@ function showChattInfo() {
 }
 
 
-
-
-
+//
+//	str += "</tr>"
+//

@@ -25,7 +25,7 @@ public class RestDuoController {
 
 	@PostMapping("/duostartinfo")
 	public ArrayList<HashMap<String, DuoSearchDto>> duostartinfo() {
-	
+
 		return duoService.duostartinfo();
 	}
 
@@ -33,7 +33,6 @@ public class RestDuoController {
 	public ArrayList<HashMap<String, DuoMsgDto>> chattRoomInfo(DuoMsgDto duoMsgDto, HttpSession session) {
 		String userId = (String) session.getAttribute("userId");
 
-		 
 //		log.info("=={}",cDto);
 		return duoService.chattRoomInfo(userId);
 	}
@@ -66,5 +65,12 @@ public class RestDuoController {
 		duoService.goOutRoom(duoMsgDto);
 	}
 
+	@PostMapping("/delete")
+	public int delete(DuoSearchDto duoSearchDto, HttpSession session) {
+		String userId = (String) session.getAttribute("userId");
+		duoSearchDto.setUserId(userId);
+		return duoService.delete(duoSearchDto);
+
+	}
 
 }
