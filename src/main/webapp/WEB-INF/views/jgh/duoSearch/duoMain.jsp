@@ -24,8 +24,12 @@
 	<%@include file="modal3.jsp"%>
 
 	<%@include file="modal2.jsp"%>
+
+	<%@include file="aaa.jsp"%>
 	<!--   아코디언 메세지 -->
 	<div class="accordion-box"></div>
+
+
 
 
 </body>

@@ -34,44 +34,45 @@
 			<div class="left">
 				<div class="login">회원가입</div>
 				<div class="eula">데이터붐 회원가입 페이지입니다.</div>
-					<input 	type="button" id="membermain" value="메인으로">
+				<input type="button" class = "membermain"id="membermain" value="메인으로">
 			</div>
 			<div class="right">
 
 				<div class="form">
-					<form action="/member/join" method="post" onsubmit = "false">
-						<label for="userId">아이디</label> <input type="text" id="userId"
-							name="userId"> <span id="checkId">아이디를 적어주세요</span> <label
-							for="userPw">패스워드</label> <input type="password" id="userPw"
-							name="userPw"> <span id="checkPw"></span>
+
+					<form action="/member/join" method="post" id="joinForm" onsubmit = "return confirmNumber();">
+
+						<!--  	<label for="userId">아이디</label> -->
+						<input type="text" id="userId" name="userId" placeholder="아이디">
+						<span id="checkId">아이디를 적어주세요</span>
+						<!-- <label
+							for="userPw">패스워드</label>-->
+
+						<input type="password" id="userPw" name="userPw"
+							placeholder="패스워드"> <span id="checkPw"></span>
+
 
 						<!-- <span>이메일 </span> -->
 						<div id="mail_input" name="mail_input">
-							<input type="text" name="userEmail" id="mail"
-								placeholder="이메일 입력">
+							<label for="email" id="mailTxt">이메일을 입력해주세요</label> 
+								<!-- id = mail 바꾸지 말것 --><input type="text" name="userEmail" id="mail" placeholder="이메일">
 							<button type="button" id="sendBtn" name="sendBtn"
-								onclick="sendNumber()"disabled="disabled">인증번호</button>
+								onclick="sendNumber()" disabled="disabled">인증번호</button>
 						</div>
 						<br>
 						<div id="mail_number" name="mail_number" style="display: none">
 							<input type="text" name="number" id="number"
 								placeholder="인증번호 입력">
 							<button type="button" name="confirmBtn" id="confirmBtn"
-								onclick="confirmNumber()" >이메일 인증</button>
+								onclick="confirmNumber()">이메일 인증</button>
 						</div>
 						<br> <input type="text" id="Confirm" name="Confirm"
 							style="display: none" value="">
-
-
-				
-
-
-
+						<hr>
+						<input type="submit" value="회원가입" id="joinBtn" > 
+					</form>
 					<hr>
-					<input type="button" value="회원가입" id="joinBtn" > 
-						</form>
-					<hr>
-				
+
 
 
 				</div>

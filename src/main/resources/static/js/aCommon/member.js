@@ -59,3 +59,18 @@ $("#userPw").keyup(function() {
 })
 
 
+
+//form태그 엔터 방지
+//$('input[type="text"]').keydown(function() {
+//  if (event.keyCode === 13) {
+//    event.preventDefault();
+//  };
+//});
+//
+//$('input[type="password"]').keydown(function() {
+//  if (event.keyCode === 13) {
+//    event.preventDefault();
+//  };
+//});
+
+
