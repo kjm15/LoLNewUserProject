@@ -111,4 +111,8 @@
 
 		select * from memberT where userId = #{userId};
 	</select>
+	<select id="findId">
+		select * from memberT where userEmail = #{userEmail};
+	</select>
+	
 </mapper>
