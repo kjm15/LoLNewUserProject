@@ -52,4 +52,9 @@
 		#{friendId};
 
 	</select>
+		<delete id = "delete">
+	
+	delete from duoT where rCnt = #{rCnt} and userId = #{userId}
+	
+	</delete>
 </mapper>
