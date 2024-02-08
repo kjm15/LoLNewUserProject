@@ -28,23 +28,32 @@ window.addEventListener('click', (e) => {
 	}
 
 })
-//
-document.querySelector('#modal_wrap').addEventListener('click', (e) => {
+
+document.querySelector('#duoboard').addEventListener('click', (e) => {
 
 	//테이블의 tr행이 몇번째 행인지 알게 해주는 구문
 	const rowIndex = e.target.closest("tr").rowIndex;
-	var table = document.getElementById("modal_wrap")
+	var table = document.getElementById("duoboard")
 	var tr = table.getElementsByTagName("tr");
-	let rCnt = tr[rowIndex].getElementsByTagName("td")[0].innerHTML
-	let hostId = tr[rowIndex].getElementsByTagName("td")[1].innerHTML
-	document.getElementById('hostId').value = hostId;
-	//rCnt를 통해서 정보를 가지고옴
+	let td = tr[rowIndex].getElementsByTagName("td")[0]
+	let rCnt = td.querySelector('.duo-no').innerText
 
 	document.getElementById('rCnt').value = rCnt;
 
 	duoinfo(rCnt)
+	if (e.target.className != 'dropbtn') {
 
-	open()
+		if (e.target.innerText != '수정' && e.target.innerText != '삭제') {
+
+			open()
+
+		}
+
+	}
+
+	console.log()
+
+
 
 })
 
@@ -129,7 +138,7 @@ function isModalOn() {
 function modalOff() {
 	modal.style.display = "none"
 }
-const btnModal = document.getElementById("btn-modal")
+const btnModal = document.getElementById("btn-duoSearch")
 btnModal.addEventListener("click", e => {
 	modalOn()
 })

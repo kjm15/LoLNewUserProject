@@ -24,4 +24,6 @@ public interface DuoDao {
 
 	DuoSearchDto nowlogin(DuoSearchDto duoSearchDto);
 
+	int delete(DuoSearchDto duoSearchDto);
+
 }

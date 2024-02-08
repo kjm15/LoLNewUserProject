@@ -21,7 +21,7 @@ public class DuoController {
 	@GetMapping("/jgh")
 	public String duoInfo(Model model) {
 
-		return "jgh/jgh";
+		return "jgh/DuoMain";
 	}
 
 }

@@ -64,5 +64,10 @@ public class DuoService {
 
 		return result;
 	}
+	public int delete(DuoSearchDto duoSearchDto) {
+		
+		return duoDao.delete(duoSearchDto);
+
+	}
 
 }

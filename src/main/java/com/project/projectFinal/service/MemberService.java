@@ -71,6 +71,7 @@ public class MemberService implements UserDetailsService {
 			throw new UsernameNotFoundException("존재하지 않는 아이디 입니다.");
 		}
 		return new User(mDto.getUserId(), mDto.getUserPw(), Arrays.asList(new SimpleGrantedAuthority(mDto.getRole())));
+//		return User.builder().username(mDto.getUserId()).password(mDto.getUserPw()).roles(mDto.getRole()).build();
 	}
 
 	// 회원가입
