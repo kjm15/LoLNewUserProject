@@ -15,27 +15,17 @@ $('#rouletteStart').on("click", function() {
 		$('#app').show()
 		$('#rouletteStart').hide()
 		rouletteF()
-
-
+		if (rouletteCount == 5) {
+			energyStart()
+		}
 	} else {
 		alert("룰렛 에너지가 부족합니다.")
 	}
 
-})
-function rouletteInfo() {
-	let a = 0;
-	$.ajax({
-		type: 'post',
-		url: '/member/rouletteInfo',
-		async: false,
-		success: function(res) {
-			a = res.rouletteCount
-			$('#roulette').text(a + "번");
-		}
-	})
 
-	return a;
-}
+})
+
+
 function rouletteF() {
 	var rolLength = 6; // 해당 룰렛 콘텐츠 갯수
 	var setNum; // 랜덤숫자 담을 변수
@@ -120,35 +110,40 @@ document.getElementById("app").innerHTML = `
 ////
 function energyStart() {
 
-	setTimeout(function() {
-		z = 1; // 퍼센트
-		var elem = document.getElementById("progress-bar");
-		var width = 0;
-		var id = setInterval(frame, 1000);
+	let rouletteCount = rouletteInfo()
+	$('#roulette').text(rouletteCount + "번");
+	if (rouletteCount < 5) {
 
-		function frame() {
-			if (width >= 100) {
-				clearInterval(id);
+		setTimeout(function() {
+			z = 1; // 퍼센트
+			var elem = document.getElementById("progress-bar");
+			var width = 0;
+			var id = setInterval(frame, 50);
 
-				let rouletteCount = rouletteInfo()
-				if (rouletteCount < 5) {
-					addRoulette(id)
-					energyStart()
+			function frame() {
+				if (width >= 100) {
+					clearInterval(id);
+					addRoulette()
+					rouletteCount = rouletteInfo()
+				
+					if (rouletteCount < 5) {										
+						energyStart()
+					}
+
 				} else {
-					$('#roulette').text(rouletteCount + "번");
-					alert("에너지가 꽉 찼습니다.")
-
+					width++;
+					elem.style.width = width + "%";
+					elem.innerHTML = width + "%";
 				}
-
-
-			} else {
-				width++;
-				elem.style.width = width + "%";
-				elem.innerHTML = width + "%";
 			}
-		}
 
-	}, 1000);
+		}, 1000);
+
+	} else {
+
+	
+
+	}
 }
 
 
@@ -163,8 +158,8 @@ function addRoulette() {
 
 		}
 	})
-
 }
+
 function minusRoulette() {
 
 	$.ajax({
@@ -174,9 +169,20 @@ function minusRoulette() {
 
 			$('#roulette').text(res.rouletteCount + "번");
 
-
+		}
+	})
+}
+function rouletteInfo() {
+	let a = 0;
+	$.ajax({
+		type: 'post',
+		url: '/member/rouletteInfo',
+		async: false,
+		success: function(res) {
+			a = res.rouletteCount
+			$('#roulette').text(a + "번");
 		}
 	})
 
-
+	return a;
 }
