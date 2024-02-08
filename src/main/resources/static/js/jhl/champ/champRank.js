@@ -2,17 +2,6 @@
 
 $(function() {
 
-//	$("#rankSelect").change(function () {
-//            var selectedOption = $(this).val();
-//
-//            if (selectedOption === "Emerald") {
-//                
-//                champRank("Top");
-//		        
-//            }
-//        });
-
-        // jQuery function to handle image click
         $("#Top").click(function () {
             champRank($(this).attr("id"));
         });
@@ -31,9 +20,9 @@ function champRank(a) {
 		url: "/champRank",
 		data: { "teamPosition": a },
 		success: function(res) {
-			let tableTop = "<table class='Rankable'>"
-			let tablecolgroup = "<colgroup><col width='35%'><col><col></colgroup><thead>"
-			let tableColumns = "<tr class='tableColumns'><th><span>챔피언</span></th><th><span>승률</span></th><th><span>픽률</span></th></tr></thead>";
+//			let tableTop = "<table class='Rankable'>"
+//			let tablecolgroup = "<colgroup><col width='40%'><col width='30%'><col width='30%'></colgroup><thead>"
+//			let tableColumns = "<tr class='tableColumns'><th><span>챔피언</span></th><th><span>승률</span></th><th><span>픽률</span></th></tr></thead>";
 			let tableRows = '';
 
 			for (let i = 0; i < res.length; i++) {
@@ -43,12 +32,15 @@ function champRank(a) {
 				tableRows += "<td class ='rData'>" + res[i].top_pick_rate + "</td>";
 				tableRows += "</tr>";
 			}
-			let tableBottom = "</table>"
-			$('.lineRank').html(tableTop + tablecolgroup + tableColumns + tableRows + tableBottom);
+//			let tableBottom = "</table>"
+			$('.rTableBody').html(tableRows);
 			console.log(res);
 		}
 	});
 }
 
 
-
+$(document).on('click', '.rankLine>div', function() {
+    $(this).addClass('ranklineBtn');
+    $(this).siblings().removeClass('ranklineBtn');
+});

@@ -71,13 +71,6 @@ a {
 	border-radius: 15px;
 }
 
-.navMenu:active {
-	width: 100px;
-	text-align: center;
-	background-color: rgba(255, 255, 255, 0.7);
-	color: #6799FF;
-	border-radius: 15px;
-}
 
 .contents {
 	display: flex;
