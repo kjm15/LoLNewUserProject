@@ -8,13 +8,17 @@
 <title>Insert title here</title>
 <script type="text/javascript"
 	src="https://code.jquery.com/jquery-1.12.4.min.js"></script>
+<link href="/css/new/new.css" rel="stylesheet" type="text/css">
+<link href="/css/new/bar.css" rel="stylesheet" type="text/css">
+
+
 
 </head>
 
 <body>
 
 	<div class="main">
-		<%-- 		<%@include file="newHeader.jsp"%> --%>
+
 
 
 		<%@include file="inc/header.jsp"%>
@@ -26,9 +30,11 @@
 
 		<%@include file="inc/footer.jsp"%>
 
-		<%-- 		<%@include file="newFooter.jsp"%> --%>
 	</div>
 
-
+	<!-- js들어갈자리  -->
+	<script defer src="js/new/gameNameSearch.js"></script>
+<script defer src="js/new/slide.js"></script>
+<script defer src="js/new/bar.js"></script>
 </body>
 </html>

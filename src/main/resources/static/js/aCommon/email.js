@@ -81,5 +81,7 @@ $("#mail").on("keyup", function() {
 		})
 		$("#sendBtn").attr("disabled", false);
 	}
+
 })
+
 

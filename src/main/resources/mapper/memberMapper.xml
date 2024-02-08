@@ -84,10 +84,31 @@
 	</select>
 
 	<select id="checkAdmin">
-		select adminLevel from memberT where userId=#{userId};
+		select adminLevel from memberT where
+		userId=#{userId};
 	</select>
 	<select id="memberTable">
 		select * from memberT;
 	</select>
 
+
+	<select id="addRoulette">
+
+		update memberT
+		set rouletteCount = (select rouletteCount from memberT where userId = #{userId})+1
+		where userId = #{userId};
+
+		select * from memberT where userId = #{userId};
+	</select>
+	<select id="rouletteInfo">
+		select * from memberT where userId = #{userId};
+	</select>
+	<select id="minusRoulette">
+
+		update memberT
+		set rouletteCount = (select rouletteCount from memberT where userId = #{userId})-1
+		where userId = #{userId};
+
+		select * from memberT where userId = #{userId};
+	</select>
 </mapper>

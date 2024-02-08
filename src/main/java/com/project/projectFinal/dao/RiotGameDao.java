@@ -17,11 +17,11 @@ public interface RiotGameDao {
 
 	void RiotGameBans(Map<String, RiotGameDto> rMap);
 
-	List<HashMap<String, RiotGameDto>> RiotGameInfoSelect(String matchId);
+	List<Map<String, RiotGameDto>> RiotGameInfoSelect(String matchId);
 
-	List<HashMap<String, RiotGameDto>> RiotGameTeamsSelect(String matchId);
+	List<Map<String, RiotGameDto>> RiotGameTeamsSelect(String matchId);
 
-	List<HashMap<String, RiotGameDto>> RiotGameBansSelect(String matchId);
+	List<Map<String, RiotGameDto>> RiotGameBansSelect(String matchId);
 
 	List<String> DBRiotGameMatchSelect(String gameName);
 

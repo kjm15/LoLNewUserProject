@@ -39,6 +39,7 @@
 			<div class="right">
 
 				<div class="form">
+
 					<form action="/member/join" method="post" id="joinForm" onsubmit = "return confirmNumber();">
 
 						<!--  	<label for="userId">아이디</label> -->
@@ -49,6 +50,7 @@
 
 						<input type="password" id="userPw" name="userPw"
 							placeholder="패스워드"> <span id="checkPw"></span>
+
 
 						<!-- <span>이메일 </span> -->
 						<div id="mail_input" name="mail_input">

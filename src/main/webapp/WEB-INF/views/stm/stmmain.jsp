@@ -8,15 +8,9 @@
 <title>송태민 테스트</title>
 <script type="text/javascript" src="https://code.jquery.com/jquery-1.12.4.min.js" ></script>
 
-<link rel="stylesheet" href="../css/stm/lolDataList.css">
-<style type="text/css">
+<link rel="stylesheet" href="/css/stm/lolDataList.css"type="text/css">
 
-</style>
 </head>
-
-
-
-
 
 
 
@@ -25,17 +19,17 @@
 
 <body>
 <%@include file="../inc/header.jsp" %>
-<div align="center">
-<input type="text" id="gameName" name="gameName" placeholder="아이디" value="동정팔이소년">
-<input type="text" id="tagLine" name ="tagLine" placeholder="태그" value="KR1">
-<button id="getpuuid">검색</button>
+
+<div class="searchbox">
+    <button type="button" class="searchbt1"><span>KR</span></button>
+    <input class="search" id='search' autocomplete="off" type="text" value="동정팔이소년#KR1">
+    <button type="button" class="searchbt2" id ="searchbt2"  onclick="searchbtn()"><span>검색</span></button>
 </div>
-
-
-
-
-
-
+<!-- <div align="center"> -->
+<!-- <input type="text" id="gameName" name="gameName" placeholder="아이디" value="동정팔이소년"> -->
+<!-- <input type="text" id="tagLine" name ="tagLine" placeholder="태그" value="KR1"> -->
+<!-- <button id="getpuuid">검색</button> -->
+<!-- </div> -->
 
 
 
@@ -49,7 +43,6 @@
 <!-- 전적 리스트 jsp -->
 <%@include file="../stm/lolList.jsp" %>
 
-<script defer src ="/js/stm/joinId.js"></script>
 <script defer src ="/js/stm/loldata.js"></script>
 <script defer src="/js/stm/RiotGameTable.js"></script>
 </body>

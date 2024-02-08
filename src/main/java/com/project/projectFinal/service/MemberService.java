@@ -96,4 +96,30 @@ public class MemberService implements UserDetailsService {
 		return memberDao.memberTable();
 
 	}
+	//룰렛 횟수 저장
+	@Transactional
+	public MemberDto addRoulette(MemberDto memberDto) throws CustomException {
+
+		
+		MemberDto mDto =  memberDao.addRoulette(memberDto);
+		if (memberDto.getUserId().equals("")) {
+			throw new CustomException("비회원입니다.");
+		}
+//		if(mDto.getRouletteCount() > 4) {
+//			throw new CustomException("수량초과입니다.");
+//		}
+		
+		return mDto;
+
+	}
+
+	public MemberDto rouletteInfo(MemberDto memberDto) {
+	
+		return  memberDao.rouletteInfo(memberDto);
+		
+	}
+
+	public MemberDto minusRoulette(MemberDto memberDto) {
+		return  memberDao.minusRoulette(memberDto);
+	}
 }
