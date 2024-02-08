@@ -7,6 +7,10 @@ $(function() {
 
 });
 
+$(document).on('click', '.selectChampline>div', function() {
+	$(this).addClass('lineClick');
+	$(this).siblings().removeClass('lineClick');
+});
 
 $('#champSearch').on('keyup', function() {
 	let searchChamp = $('#champSearch').val();
@@ -17,21 +21,18 @@ $('#champSearch').on('keyup', function() {
 		data: { "champSearch": searchChamp },
 		success: function(res) {
 
-			let str1 = "<div class='se'>"
-			let str2 = "<div class ='champs'> ";
-			let str3 = '';
+			var champContainer = $('.champs');
+
+			champContainer.empty();
+
 			for (let i = 0; i < res.length; i++) {
-				str3 += "<div class='champImgItem'><div class='cimgs'>";
-				str3 += "<img width='48' height='48' src='https://ddragon.leagueoflegends.com/cdn/14.2.1/img/champion/" + res[i].champion_name + ".png' class='championImg'></div>";
-				str3 += "<span class ='champName'>" + res[i].champion_name_kr + "</span>";
-				str3 += "</div>";
+				var imgSrc = 'https://ddragon.leagueoflegends.com/cdn/14.2.1/img/champion/' + res[i].champion_name + '.png';
+
+				var imgElement = $('<img>').addClass('championImg').attr('src', imgSrc);
+
+				champContainer.append($('<div>').addClass('champImgItem').append($('<div>').addClass('cimgs').append(imgElement)).append($('<span>').addClass('champName').append(res[i].champion_name_kr)));
 
 			}
-			let str4 = "</div>"
-			let str5 = "</div>"
-			$('.champImgItems').html(str1 + str2 + str3 + str4 + str5);
-//			console.log(res)
-
 		}
 	});
 });
@@ -42,22 +43,22 @@ function champImgAll() {
 		url: "/champListAll",
 		dataType: "json",
 		success: function(res) {
+			var champContainer = $('.champs');
 
-			let str1 = "<div class='se'>"
-			let str2 = "<div class ='champs'> ";
-			let str3 = '';
+			// 이전에 추가된 이미지 엘리먼트들을 초기화
+			champContainer.empty();
+	
 			for (let i = 0; i < res.length; i++) {
-				str3 += "<div class='champImgItem'><div class='cimgs'>";
-				str3 += "<img width='48' height='48' src='https://ddragon.leagueoflegends.com/cdn/14.2.1/img/champion/" + res[i].champion_name + ".png' class='championImg'></div>";
-				str3 += "<span class ='champName'>" + res[i].champion_name_kr + "</span>";
-				str3 += "</div>";
+				let champName = '카운터 챔피언 정보 넣어볼 예정'
+				var imgSrc = 'https://ddragon.leagueoflegends.com/cdn/14.2.1/img/champion/' + res[i].champion_name + '.png';
+
+				// 이미지 엘리먼트 동적으로 생성
+				var imgElement = $('<img>').addClass('championImg').attr('src', imgSrc);
+
+				// 생성된 이미지 엘리먼트를 컨테이너에 추가
+				champContainer.append($('<div>').addClass('champImgItem').append($('<span>').addClass('tooltiptext tooltip-top').append(champName)).append($('<div>').addClass('cimgs').append(imgElement)).append($('<span>').addClass('champName').append(res[i].champion_name_kr)));
 
 			}
-			let str4 = "</div>"
-			let str5 = "</div>"
-			$('.champImgItems').html(str1 + str2 + str3 + str4 + str5);
-//			console.log(res)
-
 		}
 	});
 
@@ -68,36 +69,23 @@ $('#champAll').on('click', function() {
 });
 
 
-
-
-
 function champLine(lineSelect) {
 	$.ajax({
 		type: "post",
 		url: "/champLineSelect",
 		data: { "line": lineSelect },
 		success: function(res) {
+			var champContainer = $('.champs');
+			
+			champContainer.empty();
 
-			let str1 = "<div class='se'>"
-			let str2 = "<div class ='champs'> ";
-			let str3 = '';
 			for (let i = 0; i < res.length; i++) {
-				str3 += "<div class='champImgItem'><div class='cimgs'>";
-				str3 += "<img width='48' height='48' src='https://ddragon.leagueoflegends.com/cdn/14.2.1/img/champion/" + res[i].champion_name + ".png' class='championImg'></div>";
-				str3 += "<span class ='champName'>" + res[i].champion_name_kr + "</span>";
-				str3 += "</div>";
+				let champName = res[i].champion_name_kr 
+				var imgSrc = 'https://ddragon.leagueoflegends.com/cdn/14.2.1/img/champion/' + res[i].champion_name + '.png';
+				var imgElement = $('<img>').addClass('championImg').attr('src', imgSrc);
+				champContainer.append($('<div>').addClass('champImgItem').append($('<span>').addClass('tooltiptext tooltip-top').append(champName)).append($('<div>').addClass('cimgs').append(imgElement)).append($('<span>').addClass('champName').append(res[i].champion_name_kr)));
 
 			}
-			let str4 = "</div>"
-			let str5 = "</div>"
-			$('.champImgItems').html(str1 + str2 + str3 + str4 + str5)
-//			console.log(lineSelect)
-//			console.log(res)
-
 		}
-	})
-
-};
-
-
-
+	});
+}
