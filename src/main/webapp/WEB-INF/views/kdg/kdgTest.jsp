@@ -15,6 +15,10 @@
 <script defer src="../js/kdg/champion/champList.js"></script>
 <!-- modal js 들어갈 곳 -->
 <script defer src="../js/kdg/kdgModal.js"></script>
+
+<script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.2/dist/umd/popper.min.js" integrity="sha384-IQsoLXl5PILFhosVNubq5LC7Qb9DXgDA9i+tQ8Zj3iwWAwPtgFTxbJ8NT4GN1R8p" crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.min.js" integrity="sha384-cVKIPhGWiC2Al4u+LWgxfKTRIcfu0JTxR+EQDz/bgldoEyl4H0zUF0QKbrJ0EcQF" crossorigin="anonymous"></script>
+<script src="/static/js/bootstrap.bundle.js"></script>
 <title>Insert title here</title>
 
 <link rel="stylesheet" href="../css/kdg/copy.css" />
@@ -80,7 +84,7 @@
 				<div id="champList" style = "display: none;">
 					<ul>
 						<c:forEach var="cham" items="${list}">
-							<li>
+							<li id = "champListLi">
 								<img id="${cham.champion_name}"
 								src="https://ddragon.leagueoflegends.com/cdn/14.1.1/img/champion/${cham.champion_name}.png"
 								width="77" height="77" alt="${cham.champion_name}"
@@ -115,44 +119,49 @@
 			type="button" data-bs-toggle="dropdown" aria-expanded="false"
 			onclick="javascript:choice(this.id)">티어 선택</button>
 		<ul class="dropdown-menu">
-			<li><a id="iron" onclick="javascript:choiceTier(this.id)"
-				class="dropdown-item" href="#"><img src="../img/tier/iron.png"
-					style="width: 30px; height: 30px;"> 아이언</a></li>
-			<li><a id="bronze" onclick="javascript:choiceTier(this.id)"
-				class="dropdown-item" href="#"><img src="../img/tier/bronze.png"
-					style="width: 30px; height: 30px;"> 브론즈</a></li>
-			<li><a id="silver" onclick="javascript:choiceTier(this.id)"
-				class="dropdown-item" href="#"><img src="../img/tier/silver.png"
-					style="width: 30px; height: 30px;"> 실버</a></li>
-			<li><a id="gold" onclick="javascript:choiceTier(this.id)"
-				class="dropdown-item" href="#"><img src="../img/tier/gold.png"
-					style="width: 30px; height: 30px;"> 골드</a></li>
-			<li><a id="platinum" onclick="javascript:choiceTier(this.id)"
-				class="dropdown-item" href="#"><img
-					src="../img/tier/platinum.png" style="width: 30px; height: 30px;">
-					플래티넘</a></li>
-			<li><a id="emerald" onclick="javascript:choiceTier(this.id)"
-				class="dropdown-item" href="#"><img
-					src="../img/tier/emerald.png" style="width: 30px; height: 30px;">
-					에메랄드</a></li>
-			<li><a id="diamond" onclick="javascript:choiceTier(this.id)"
-				class="dropdown-item" href="#"><img
-					src="../img/tier/diamond.png" style="width: 30px; height: 30px;">
-					다이아몬드</a></li>
-			<li><a id="master" onclick="javascript:choiceTier(this.id)"
-				class="dropdown-item" href="#"><img src="../img/tier/master.png"
-					style="width: 30px; height: 30px;"> 마스터+</a></li>
+			<li>
+				<a id="iron" onclick="javascript:choiceTier(this.id)" class="dropdown-item" href="#">
+				<img src="../img/tier/iron.png" style="width: 30px; height: 30px;">아이언</a>
+			</li>
+			<li>
+				<a id="bronze" onclick="javascript:choiceTier(this.id)" class="dropdown-item" href="#">
+				<img src="../img/tier/bronze.png" style="width: 30px; height: 30px;">브론즈</a>
+			</li>
+			<li>
+				<a id="silver" onclick="javascript:choiceTier(this.id)" class="dropdown-item" href="#">
+				<img src="../img/tier/silver.png" style="width: 30px; height: 30px;">실버</a>
+			</li>
+			<li>
+				<a id="gold" onclick="javascript:choiceTier(this.id)" class="dropdown-item" href="#">
+				<img src="../img/tier/gold.png" style="width: 30px; height: 30px;">골드</a>
+			</li>
+			<li>
+				<a id="platinum" onclick="javascript:choiceTier(this.id)" class="dropdown-item" href="#">
+				<img src="../img/tier/platinum.png" style="width: 30px; height: 30px;">플래티넘</a>
+			</li>
+			<li>
+				<a id="emerald" onclick="javascript:choiceTier(this.id)" class="dropdown-item" href="#">
+				<img src="../img/tier/emerald.png" style="width: 30px; height: 30px;">에메랄드</a>
+			</li>
+			<li>
+				<a id="diamond" onclick="javascript:choiceTier(this.id)" class="dropdown-item" href="#">
+				<img src="../img/tier/diamond.png" style="width: 30px; height: 30px;">다이아몬드</a>
+			</li>
+			<li>
+				<a id="master" onclick="javascript:choiceTier(this.id)" class="dropdown-item" href="#">
+				<img src="../img/tier/master.png" style="width: 30px; height: 30px;"> 마스터+</a>
+			</li>
 		</ul>
 		<button id="CoreItemDropDown"
 			class="btn btn-secondary dropdown-toggle" type="button"
 			data-bs-toggle="dropdown" aria-expanded="false"
 			onclick="javascript:choice(this.id)">아이템 코어 선택</button>
 		<ul class="dropdown-menu">
-			<li><a id="firstCore" onclick="javascript:choiceCore(this.id)"
+			<li id="dropdownLi"><a id="firstCore" onclick="javascript:choiceCore(this.id)"
 				class="dropdown-item" href="#">1코어 아이템</a></li>
-			<li><a id="secondCore" onclick="javascript:choiceCore(this.id)"
+			<li id="dropdownLi"><a id="secondCore" onclick="javascript:choiceCore(this.id)"
 				class="dropdown-item" href="#">2코어 아이템</a></li>
-			<li><a id="thirdCore" onclick="javascript:choiceCore(this.id)"
+			<li id="dropdownLi"><a id="thirdCore" onclick="javascript:choiceCore(this.id)"
 				class="dropdown-item" href="#">3코어 아이템</a></li>
 		</ul>
 	</div>

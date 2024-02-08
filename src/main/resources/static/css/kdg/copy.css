@@ -225,7 +225,7 @@
 	height: 628px;
 }
 
-li {
+#champListLi {
 	position: relative;
 	width: 44px;
 	height: 44px;
@@ -234,7 +234,7 @@ li {
 	cursor: pointer;
 }
 
-ul {
+#champListUl {
 	list-style: none;
 	height: 500px;
 	
