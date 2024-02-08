@@ -30,9 +30,16 @@ function mainSearch(gameName1) {
 
 //////////////////장기훈////
 
+
+
 function gamebtn(i) {
+	console.log(i)
 	var gametable = document.getElementById("gametable" + i + "");
 	gametable.style.display = ((gametable.style.display != 'none') ? 'none' : 'block');
+	if((i+1) % 3 ==0){
+	loadMore.style.top =((gametable.style.display != 'none') ? '80%' : '25%');
+	}
+	
 }
 function searchbtn() {
 	searchbtn1()
@@ -56,7 +63,7 @@ function aaa(data) { // data == 검색한 게임 아이디
 		url: '/riot/game',
 
 		success: function(res) {
-			console.log(res)
+			
 			showGameTamble(res, data)
 		}
 	})
@@ -70,7 +77,7 @@ function bbb(data) {
 		data: data,
 		//		async: true,
 		success: function(res) {
-
+			console.log(res)
 			if (res != '') {
 				MList = [];
 				for (let i = 0; i < res.length; i++) {
@@ -82,6 +89,7 @@ function bbb(data) {
 						mm.riotIdTagline = res[i]["info"]['participants'][j]['riotIdTagline'] // 태그
 						mm.summonerName = res[i]["info"]['participants'][j]['summonerName']
 						mm.championName = res[i]["info"]['participants'][j]['championName']//챔피언 아이디
+						mm.participantId = res[i]["info"]['participants'][j]['participantId'] // 플레이어 고유 인덱스
 						//					mm.legendaryItemUsed = res[i]["info"]['participants'][j]['challenges']['legendaryItemUsed'] 
 						//					mm.summoner1Id = res[i]["info"]['participants'][j]['summoner1Id']//스펠 D
 						//					mm.summoner2Id = res[i]["info"]['participants'][j]['summoner2Id']//스펠 F 화면에 출력 가능할 떄 할 것
@@ -633,21 +641,5 @@ function bbb(data) {
 //		userGameMode.innerHTML = gameMode
 //	}
 //}
-//function findUserKda(gameName, res) {
-//	//	console.log(res)
-//	for (let i = 0; i < res.length; i++) {
-//		var userKda = document.getElementById("KDA" + i); // k/d/a
-//		var userKdaAverage = document.getElementById("KdaAverage" + i); // k/d/a
-//		for (let j = 0; j < res[i]["info"]['participants'].length; j++) {
-//			if (gameName == res[i]["info"]['participants'][j]['riotIdGameName']) {
-//				Kda = res[i]["info"]['participants'][j]['kills'] + "/" + res[i]["info"]['participants'][j]['deaths'] + "/" + res[i]["info"]['participants'][j]['assists']
-//				KdaAverage = ((res[i]["info"]['participants'][j]['kills'] + res[i]["info"]['participants'][j]['assists']) / res[i]["info"]['participants'][j]['deaths']).toFixed(2)
-//
-//			} // 평균 kda
-//		}
-//		userKda.innerHTML = Kda
-//		userKdaAverage.innerHTML = KdaAverage
-//
-//	}
-//}
+
 

@@ -4,7 +4,7 @@
 	<insert id="RiotGameInfo">
 		insert IGNORE into RiotGameInfoT values
 		(#{matchId},#{championName},default,#{riotIdGameName},
-		#{riotIdTagline},#{summonerName},#{queueId},#{teamId},#{lane},#{kills},
+		#{riotIdTagline},#{summonerName},#{participantId},#{queueId},#{teamId},#{lane},#{kills},
 		#{assists},#{deaths},#{kda},#{firstBloodKill},#{gameEndTimestamp},
 		#{gameStartTimestamp},#{totalAllyJungleMinionsKilled},#{totalDamageDealtToChampions},
 		#{totalDamageTaken},#{totalEnemyJungleMinionsKilled},#{totalMinionsKilled},
@@ -27,7 +27,7 @@
 	</insert>
 	<select id="RiotGameInfoSelect">
 		select * from RiotGameInfoT where matchId =
-		#{matchId}
+		#{matchId} order by participantId asc;
 	</select>
 	<select id="RiotGameTeamsSelect">
 		select * from RiotGameTeamsT where matchId =
