@@ -34,7 +34,11 @@
 		select * from riottvT where matchId = #{matchId};
 	
 	</select>
-
+	<select id="matchListVsDb">
+	
+		select count(*) from riottvT where matchId = #{matchId};
+	
+	</select>
 
 
 </mapper>

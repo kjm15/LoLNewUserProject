@@ -142,23 +142,31 @@ public class WebClientService {
 			return null;
 		} else {
 			List<Map<String, Object>> dList = new ArrayList<>();
-			
+
 			for (String i : mList) {
 				List<Map<String, Object>> dbList = new ArrayList<>();
 				dbList = webdao.dbFindData1(i);
-//				log.info("==={}", dbList);
 				dList.addAll(dbList);
-//				for (Map<String, Object> a : dbList) {
-//					
-//					dList.add(a);
-//					
-//				}
 
 			}
 
 			return dList;
 
 		}
+
+	}
+	//없는 매치아이디 리스트 확인작업
+	public ArrayList<String> matchListVsDb(List<String> mList) {
+		ArrayList<String> mdList = new ArrayList<>();
+		for (String matchId : mList) {
+
+			int result = webdao.matchListVsDb(matchId);
+			if (result == 0) {
+				mdList.add(matchId);
+			}
+
+		}
+		return mdList;
 
 	}
 

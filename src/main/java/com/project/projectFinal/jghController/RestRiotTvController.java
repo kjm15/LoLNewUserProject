@@ -1,5 +1,6 @@
 package com.project.projectFinal.jghController;
 
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
 
@@ -56,5 +57,13 @@ public class RestRiotTvController {
 
 		return webClientService.dbFindData(riotApiDto);
 		// 리스트 가지고 오기(3개로 제한)
+	}
+
+	@PostMapping("/matchListVsDb")
+	public ArrayList<String> matchListVsDb(@RequestBody List<String> mList) {
+
+		log.info("=={}", mList);
+		
+		return webClientService.matchListVsDb(mList);
 	}
 }

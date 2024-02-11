@@ -24,13 +24,12 @@ let riotIdTagline = ''
 //db에 넣을때 사용하는 리스트
 let dbList = [];
 $("#find").on("click", function() {
-
-	dbFindData()
-	if(dbFindList == ''){
-		console.log("Db내용없음 api출발")
-		findPuuIdFindListSaveDb()
-	}
+	//db가서 최신 matchId와 다른지 확인 후 다르면 업데이트
+	findPuuIdFindListSaveDb()
 	
+	//업데이트 후에 db에서 가지고 오기
+	dbFindData()
+
 
 })
 
@@ -41,8 +40,6 @@ function findOne(res) {
 	console.log(data)
 
 }
-
-
 
 function dbFindData() {
 	$('#detail2').empty()
@@ -79,7 +76,7 @@ function dbFindData() {
 			}
 
 			$('#detail2').html(str)
-
+			console.log("db갔다옴")
 		}
 
 	})
@@ -117,6 +114,7 @@ function dbSaveInfoRiotTv() {
 		contentType: 'application/json',
 		type: 'post',
 		url: '/riotTv/dbSaveInfoRiotTv',
+		async: false,
 		data: JSON.stringify(dbList),
 		success: function(res) {
 
@@ -146,6 +144,10 @@ function findPuuIdFindListSaveDb() {
 		data: data,
 		success: function(res) {
 			//res : matchid list
+			//db와 api받아온 것 차이
+			res = matchListVsDb(res)
+			console.log(res)
+
 			for (let z in res) {
 
 				data2 = { 'matchIdjustOne': res[z] }
@@ -200,18 +202,33 @@ function findPuuIdFindListSaveDb() {
 
 							dbList.push(db)
 						}
-
-
-
 					}
 				})
 			}
-			dbSaveInfoRiotTv()
-			dbFindData()
+			if (dbList != '') {
+
+				dbSaveInfoRiotTv()
+			}
+
 		}
 	})
-	//db에 내용 보내기 (아래)
+}
+//최신
+function matchListVsDb(res) {
 
+	res1 = [];
 
-	console.log(dbList)
+	$.ajax({
+		contentType: 'application/json',
+		type: 'post',
+		url: '/riotTv/matchListVsDb',
+		async: false,
+		data: JSON.stringify(res),
+		success: function(res) {
+
+			res1 = res
+		}
+	})
+	return res1;
+
 }

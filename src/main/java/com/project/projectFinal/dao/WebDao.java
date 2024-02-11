@@ -17,4 +17,6 @@ public interface WebDao {
 
 	List<Map<String, Object>> dbFindData1(String matchId);
 
+	int matchListVsDb(String matchId);
+
 }
