@@ -8,6 +8,8 @@
 <meta charset="UTF-8">
 <title>라문철 test</title>
 <!-- css들어갈자리  -->
+ <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
+ <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 <script
 	src="https://cdn.jsdelivr.net/npm/sockjs-client@1/dist/sockjs.min.js"></script>
 <!-- <link href="/css/jgh/button.css" rel="stylesheet" type="text/css"> -->
