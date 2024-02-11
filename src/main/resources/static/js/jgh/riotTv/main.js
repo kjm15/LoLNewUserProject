@@ -25,15 +25,13 @@ let riotIdTagline = ''
 let dbList = [];
 $("#find").on("click", function() {
 
-	result = dbFindData()
-
-	console.log(result)
-	if(result){
-		
+	dbFindData()
+	if(dbFindList == ''){
+		console.log("Db내용없음 api출발")
 		findPuuIdFindListSaveDb()
 	}
 	
-	
+
 })
 
 function findOne(res) {
@@ -47,22 +45,27 @@ function findOne(res) {
 
 
 function dbFindData() {
+	$('#detail2').empty()
 	let gameName1 = $('#gameName1').val()
 	let tagLine = $('#tagLine').val()
 	data = {
 		'gameName': gameName1,
 		'tagLine': tagLine
 	}
+	let cnt = 1;
+	dbFindList = []
+	let str = ''
+
 	$.ajax({
 
 		type: 'post',
 		url: '/riotTv/dbFindData',
+		async: false,
 		data: data,
 		success: function(res) {
-			let cnt = 1;
-			let str = ''
+
 			dbFindList = res
-			console.log(dbFindList)
+
 			for (let z in res) {
 
 				if (res[z].riotIdGameName == gameName1) {
@@ -77,13 +80,9 @@ function dbFindData() {
 
 			$('#detail2').html(str)
 
-
-		}, error: function(error) {
-			return false;
 		}
 
 	})
-	return true;
 
 }
 
@@ -138,7 +137,7 @@ function findPuuIdFindListSaveDb() {
 		'gameName': gameName1,
 		'tagLine': tagLine
 	}
-	console.table(data)
+
 	$.ajax({
 
 		type: 'post',
@@ -207,9 +206,12 @@ function findPuuIdFindListSaveDb() {
 					}
 				})
 			}
+			dbSaveInfoRiotTv()
+			dbFindData()
 		}
 	})
 	//db에 내용 보내기 (아래)
-	dbSaveInfoRiotTv()
+
+
 	console.log(dbList)
 }
