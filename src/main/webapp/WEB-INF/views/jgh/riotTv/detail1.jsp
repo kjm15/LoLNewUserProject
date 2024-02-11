@@ -10,12 +10,17 @@
 
 <input type = "button" id = "find" value = "찾기">
 
+<div id = "loading"><img src="/img/loadingimg.gif"/></div>
+
+
 <div id = detail2>
 
 
 </div>
 
-
-<div id = detail3>
-
+<div style="max-width:500px;" id="myChart1">
+   
+</div>
+<div style="max-width: 300px" id="myChart2">
+    
 </div>

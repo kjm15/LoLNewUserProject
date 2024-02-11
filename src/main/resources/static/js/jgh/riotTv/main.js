@@ -1,6 +1,7 @@
 /**
  * 
  */
+$('#loading').hide()
 //db넣은걸 가지고 와서 사용할떄 쓰는 리스트
 let dbFindList = []
 
@@ -27,25 +28,27 @@ let dbList = [];
 let matchIdCnt = 0;
 $("#find").on("click", function() {
 
+
 	matchIdCnt = 0;
 	startRiotTv()
 
 })
 function startRiotTv() {
+
+	$("#loading").show()
 	//db가서 최신 matchId와 다른지 확인 후 다르면 업데이트
+
 	findPuuIdFindListSaveDb()
 
 	//업데이트 후에 db에서 가지고 오기
 	dbFindData()
 
-
+	$('#loading').hide()
 
 }
-function findOne(res) {
+function findOne(matchId) {
 
-	data = { 'res': res }
-
-	console.log(data)
+	chartteam(matchId)
 
 }
 
@@ -87,36 +90,13 @@ function dbFindData() {
 
 			$('#detail2').html(str)
 			console.log("최신 db통신완료")
+
 		}
 
 	})
 
 }
-
-
-
-//	console.log(
-//		date.getFullYear() + '/' + (date.getMonth() + 1) + '/' +
-//		date.getDate() + ' ' + date.getHours() + ':' + date.getMinutes() + ':' +
-//		date.getSeconds());
-
-
-//function changeNameEngToKor(engName) {
-//
-//	data = { 'engName': engName }
-//	$.ajax({
-//
-//		type: 'post',
-//		url: '/riotTv/changNameEngToKor',
-//		//		async: false,
-//		data: data2,
-//		success: function(res) {
-//
-//
-//		}
-//	})
-//}
-
+//db에 저장하기
 function dbSaveInfoRiotTv() {
 
 
@@ -133,6 +113,8 @@ function dbSaveInfoRiotTv() {
 	})
 
 }
+//dbList에 값이 있으면 새로운데이터 존재 >> db저장 >> db불러오기 순서
+//dbList에 값이 없으면 현재 db가 최신db >> db불러오기
 function findPuuIdFindListSaveDb() {
 
 	let gameName1 = $('#gameName1').val()
@@ -217,16 +199,16 @@ function findPuuIdFindListSaveDb() {
 			if (dbList != '') {
 
 				dbSaveInfoRiotTv()
-				console.log("현재 최신db아님 / api정보 업뎃 /db최신화 완료")
+				console.log("db최신화 완료(API통신완료)")
 
 			} else {
-				console.log("현재 최신db api안감")
+				console.log("현재 최신db DB통신완료")
 			}
 
 		}
 	})
 }
-//최신
+//최신matchList 확인 함수
 function matchListVsDb(res) {
 
 	res1 = [];
@@ -247,3 +229,183 @@ function matchListVsDb(res) {
 }
 
 
+
+//data중 스템프타임 사용시에 필요한 것들
+//	console.log(
+//		date.getFullYear() + '/' + (date.getMonth() + 1) + '/' +
+//		date.getDate() + ' ' + date.getHours() + ':' + date.getMinutes() + ':' +
+//		date.getSeconds());
+
+function loadingLogoInput() {
+	let str = ''
+	str += '<img src="/img/loadingimg.gif"/>'
+
+	$('#loading').html(str)
+
+}
+function loadingLogoOutput() {
+
+	$('#loading').empty()
+
+}
+////그래프/////
+
+
+
+
+function chartteam(matchId) {
+		$('#myChart1').empty();
+		$('#myChart2').empty();
+	 $('#myChart1').append('<canvas id="circle"><canvas>');
+	  $('#myChart2').append('<canvas id="doughnutChart"><canvas>');
+	let teamIdmatch = ''
+	let gameName1 = $('#gameName1').val()
+	for (let i in dbFindList) {
+
+		if (dbFindList[i].matchId == matchId && dbFindList[i].riotIdGameName == gameName1) {
+
+			teamIdmatch = dbFindList[i].teamId
+
+		}
+
+	}
+	let championNameList = []
+	for (let i in dbFindList) {
+
+		if (dbFindList[i].matchId == matchId && dbFindList[i].teamId == teamIdmatch) {
+
+
+			championNameList.push(dbFindList[i].championName)
+
+		}
+
+	}
+
+
+	let killParticipationList = []
+	for (let i in dbFindList) {
+
+		if (dbFindList[i].matchId == matchId && dbFindList[i].teamId == teamIdmatch) {
+
+
+			killParticipationList.push(dbFindList[i].killParticipation)
+
+		}
+
+	}
+
+	let damageTakenOnTeamPercentageList = []
+	for (let i in dbFindList) {
+
+		if (dbFindList[i].matchId == matchId && dbFindList[i].teamId == teamIdmatch) {
+
+
+			damageTakenOnTeamPercentageList.push(dbFindList[i].damageTakenOnTeamPercentage)
+
+		}
+
+	}
+	console.log(dbFindList)
+
+	var ctx = document.getElementById('circle').getContext('2d');
+	var chart = new Chart(ctx, {
+		type: 'pie', // 
+		data: {
+			labels: championNameList,
+			datasets: [{
+				label: "받은피해량",
+				backgroundColor: [
+					'rgba(255, 99, 132, 0.2)',
+					'rgba(54, 162, 235, 0.2)',
+					'rgba(255, 206, 86, 0.2)',
+					'rgba(75, 192, 192, 0.2)',
+					//                      'rgba(153, 102, 255, 0.2)',
+					'rgba(255, 159, 64, 0.2)'
+				],
+				borderColor: [
+					'rgba(255, 99, 132, 1)',
+					'rgba(54, 162, 235, 1)',
+					'rgba(255, 206, 86, 1)',
+					'rgba(75, 192, 192, 1)',
+					//                      'rgba(153, 102, 255, 1)',
+					'rgba(255, 159, 64, 1)'
+				],
+				borderWidth: 2, // 바 테두리 두께	
+				data: damageTakenOnTeamPercentageList
+			}]
+		},
+		options: {
+			responsive: false,
+			tooltips: {
+				enabled: true
+			},
+			hover: {
+				animationDuration: 1
+			},
+
+			scales: {
+//				xAxes: [{
+//					gridLines: {
+//						display: true
+//					},
+//				}],
+				yAxes: [{
+//					gridLines: {
+//						drawBorder: false//축과 데이터의 경계선 표시 여부
+//					},
+					ticks: {
+						display: true,//축의 값 표시 여부
+						max: 1,
+						min: 0
+					}
+				}]
+			},
+
+
+		}
+	})
+
+
+	let teamDamagePercentageList = []
+	for (let i in dbFindList) {
+
+		if (dbFindList[i].matchId == matchId && dbFindList[i].teamId == teamIdmatch) {
+
+
+			teamDamagePercentageList.push(dbFindList[i].teamDamagePercentage)
+
+		}
+
+	}
+
+	const doughnutChartCtx = document.querySelector('#doughnutChart').getContext('2d');
+	const doughnutChart = new Chart(doughnutChartCtx, {
+		type: 'doughnut',
+		data: {
+			labels: championNameList,
+			datasets: [{
+				data: teamDamagePercentageList,
+				label: "가한데미지량",
+				backgroundColor: [
+					'rgba(255, 0, 0, 0.5)',
+					'rgba(0, 0, 255, 0.5)',
+					'rgba(255, 206, 86, 0.2)',
+					'rgba(75, 192, 192, 0.2)',
+					'rgba(48, 255, 93, 0.5)'
+				],
+				borderColor: [
+					'rgba(255, 0, 0, 1)',
+					'rgba(0, 0, 255, 1)',
+					'rgba(255, 206, 86, 0.2)',
+					'rgba(75, 192, 192, 0.2)',
+					'rgba(48, 255, 93, 1)'
+				],
+				borderWidth: 2
+			}]
+		},
+		options: {
+			cutout: '50%',
+		}
+	});
+
+}
