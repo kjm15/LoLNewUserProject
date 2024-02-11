@@ -254,10 +254,10 @@ function loadingLogoOutput() {
 
 
 function chartteam(matchId) {
-		$('#myChart1').empty();
-		$('#myChart2').empty();
-	 $('#myChart1').append('<canvas id="circle"><canvas>');
-	  $('#myChart2').append('<canvas id="doughnutChart"><canvas>');
+	$('#myChart1').empty();
+	$('#myChart2').empty();
+	$('#myChart1').append('<canvas id="circle"><canvas>');
+	$('#myChart2').append('<canvas id="doughnutChart"><canvas>');
 	let teamIdmatch = ''
 	let gameName1 = $('#gameName1').val()
 	for (let i in dbFindList) {
@@ -305,7 +305,7 @@ function chartteam(matchId) {
 		}
 
 	}
-	console.log(dbFindList)
+//	console.log(dbFindList)
 
 	var ctx = document.getElementById('circle').getContext('2d');
 	var chart = new Chart(ctx, {
@@ -344,21 +344,21 @@ function chartteam(matchId) {
 			},
 
 			scales: {
-//				xAxes: [{
-//					gridLines: {
-//						display: true
-//					},
-//				}],
-				yAxes: [{
-//					gridLines: {
-//						drawBorder: false//축과 데이터의 경계선 표시 여부
-//					},
-					ticks: {
-						display: true,//축의 값 표시 여부
-						max: 1,
-						min: 0
-					}
-				}]
+				//				xAxes: [{
+				//					gridLines: {
+				//						display: true
+				//					},
+				//				}],
+				//				yAxes: [{
+				////					gridLines: {
+				////						drawBorder: false//축과 데이터의 경계선 표시 여부
+				////					},
+				//					ticks: {
+				////						display: true,//축의 값 표시 여부
+				//						max: 1,
+				//						min: 0
+				//					}
+				//				}]
 			},
 
 
@@ -387,18 +387,20 @@ function chartteam(matchId) {
 				data: teamDamagePercentageList,
 				label: "가한데미지량",
 				backgroundColor: [
-					'rgba(255, 0, 0, 0.5)',
-					'rgba(0, 0, 255, 0.5)',
+					'rgba(255, 99, 132, 0.2)',
+					'rgba(54, 162, 235, 0.2)',
 					'rgba(255, 206, 86, 0.2)',
 					'rgba(75, 192, 192, 0.2)',
-					'rgba(48, 255, 93, 0.5)'
+					//                      'rgba(153, 102, 255, 0.2)',
+					'rgba(255, 159, 64, 0.2)'
 				],
 				borderColor: [
-					'rgba(255, 0, 0, 1)',
-					'rgba(0, 0, 255, 1)',
-					'rgba(255, 206, 86, 0.2)',
-					'rgba(75, 192, 192, 0.2)',
-					'rgba(48, 255, 93, 1)'
+					'rgba(255, 99, 132, 1)',
+					'rgba(54, 162, 235, 1)',
+					'rgba(255, 206, 86, 1)',
+					'rgba(75, 192, 192, 1)',
+					//                      'rgba(153, 102, 255, 1)',
+					'rgba(255, 159, 64, 1)'
 				],
 				borderWidth: 2
 			}]
