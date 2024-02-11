@@ -1,12 +1,15 @@
 package com.project.projectFinal.service;
 
 import java.time.Instant;
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.web.reactive.function.client.WebClient;
 
+import com.project.projectFinal.dao.WebDao;
 import com.project.projectFinal.dto.RiotApiDto;
 
 import lombok.extern.slf4j.Slf4j;
@@ -14,6 +17,9 @@ import lombok.extern.slf4j.Slf4j;
 @Service
 @Slf4j
 public class WebClientService {
+
+	@Autowired
+	WebDao webdao;
 
 	private String api_key = "RGAPI-e674eb69-7d34-41d9-adfb-e43ad16950ca";
 
@@ -31,8 +37,8 @@ public class WebClientService {
 //				.retrieve()
 //				.bodyToMono(Map.class)
 //				.block();
-		RiotApiDto response = webClient.get().uri(uriBuilder -> uriBuilder.build()).retrieve().bodyToMono(RiotApiDto.class)
-				.block();
+		RiotApiDto response = webClient.get().uri(uriBuilder -> uriBuilder.build()).retrieve()
+				.bodyToMono(RiotApiDto.class).block();
 		// 결과 확인
 //		log.info(response.toString());
 		return response.getPuuid();
@@ -41,7 +47,7 @@ public class WebClientService {
 
 	public List<String> getgameid(String puuid) {
 
-		String count = "5"; // 가지고 올 경기 수 << 추후에 늘리기
+		String count = "3"; // 가지고 올 경기 수 << 추후에 늘리기
 
 		String url = "https://asia.api.riotgames.com/lol/match/v5/matches/by-puuid/" + puuid + "/ids?start=0&count="
 				+ count + "&api_key=" + api_key;
@@ -68,7 +74,7 @@ public class WebClientService {
 //		JSONObject parser = new JSONObject(checkTime(response)); // 받은 데이터를 json화 시킴
 //
 //		return parser;
-		
+
 		return response;
 
 	}
@@ -116,6 +122,44 @@ public class WebClientService {
 		}
 		response.put("timeCheck", spentTime);
 		return response;
+	}
+
+	public void dbSaveInfoRiotTv(List<Map<String, Object>> dbList) {
+
+		for (Map<String, Object> i : dbList) {
+
+			webdao.dbSaveInfoRiotTv(i);
+
+		}
+
+	}
+
+	public List<Map<String, Object>> dbFindData(RiotApiDto riotApiDto) {
+
+		ArrayList<String> mList = webdao.dbFindData(riotApiDto);
+		if (mList.size() == 0) {
+
+			return null;
+		} else {
+			List<Map<String, Object>> dList = new ArrayList<>();
+			
+			for (String i : mList) {
+				List<Map<String, Object>> dbList = new ArrayList<>();
+				dbList = webdao.dbFindData1(i);
+//				log.info("==={}", dbList);
+				dList.addAll(dbList);
+//				for (Map<String, Object> a : dbList) {
+//					
+//					dList.add(a);
+//					
+//				}
+
+			}
+
+			return dList;
+
+		}
+
 	}
 
 }
