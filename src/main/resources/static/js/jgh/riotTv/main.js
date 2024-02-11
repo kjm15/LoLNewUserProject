@@ -23,16 +23,24 @@ let riotIdGameName = ''
 let riotIdTagline = ''
 //db에 넣을때 사용하는 리스트
 let dbList = [];
+
+let matchIdCnt = 0;
 $("#find").on("click", function() {
+
+	matchIdCnt = 0;
+	startRiotTv()
+
+})
+function startRiotTv() {
 	//db가서 최신 matchId와 다른지 확인 후 다르면 업데이트
 	findPuuIdFindListSaveDb()
-	
+
 	//업데이트 후에 db에서 가지고 오기
 	dbFindData()
 
 
-})
 
+}
 function findOne(res) {
 
 	data = { 'res': res }
@@ -47,7 +55,8 @@ function dbFindData() {
 	let tagLine = $('#tagLine').val()
 	data = {
 		'gameName': gameName1,
-		'tagLine': tagLine
+		'tagLine': tagLine,
+		'matchIdCnt': matchIdCnt * 3
 	}
 	let cnt = 1;
 	dbFindList = []
@@ -74,9 +83,10 @@ function dbFindData() {
 				}
 
 			}
+			str += "<a href = 'javascript: startRiotTv()'> ▽ ▽ ▽ ▽ ▽▽▽  더보기 ▽▽▽ ▽ ▽ ▽ ▽ ▽ ▽ </a>"
 
 			$('#detail2').html(str)
-			console.log("db갔다옴")
+			console.log("최신 db통신완료")
 		}
 
 	})
@@ -118,8 +128,6 @@ function dbSaveInfoRiotTv() {
 		data: JSON.stringify(dbList),
 		success: function(res) {
 
-			console.log("db저장완료")
-
 		}
 
 	})
@@ -130,12 +138,13 @@ function findPuuIdFindListSaveDb() {
 	let gameName1 = $('#gameName1').val()
 	let tagLine = $('#tagLine').val()
 	$('#detail2').empty()
-
+	matchIdCnt++
 	data = {
 		'gameName': gameName1,
-		'tagLine': tagLine
+		'tagLine': tagLine,
+		'matchIdCnt': matchIdCnt * 3
 	}
-
+	console.log(matchIdCnt)
 	$.ajax({
 
 		type: 'post',
@@ -208,6 +217,10 @@ function findPuuIdFindListSaveDb() {
 			if (dbList != '') {
 
 				dbSaveInfoRiotTv()
+				console.log("현재 최신db아님 / api정보 업뎃 /db최신화 완료")
+
+			} else {
+				console.log("현재 최신db api안감")
 			}
 
 		}
@@ -232,3 +245,5 @@ function matchListVsDb(res) {
 	return res1;
 
 }
+
+

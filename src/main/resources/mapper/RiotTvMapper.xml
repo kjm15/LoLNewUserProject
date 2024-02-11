@@ -26,12 +26,12 @@
 
 	<select id="dbFindData">
 	
-		select matchId from riottvT where riotIdGameName=#{gameName} and riotIdTagline=#{tagLine};
+		select matchId from riottvT where riotIdGameName=#{gameName} and riotIdTagline=#{tagLine} order by matchId desc  limit #{matchIdCnt};
 	
 	</select>
 	<select id="dbFindData1">
 	
-		select * from riottvT where matchId = #{matchId};
+		select * from riottvT where matchId = #{matchId} ;
 	
 	</select>
 	<select id="matchListVsDb">

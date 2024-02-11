@@ -45,9 +45,9 @@ public class WebClientService {
 
 	}
 
-	public List<String> getgameid(String puuid) {
+	public List<String> getgameid(String puuid, String count) {
 
-		String count = "3"; // 가지고 올 경기 수 << 추후에 늘리기
+		 // 가지고 올 경기 수 << 추후에 늘리기
 
 		String url = "https://asia.api.riotgames.com/lol/match/v5/matches/by-puuid/" + puuid + "/ids?start=0&count="
 				+ count + "&api_key=" + api_key;

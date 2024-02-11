@@ -26,28 +26,22 @@ public class RestRiotTvController {
 	@PostMapping("/findPuuIdFindList")
 	public List<String> findPuuIdFindList(RiotApiDto riotApiDto) {
 
-		log.info("=={}", riotApiDto);
-		// 푸아이디 가지고 오기
 		String puuid = webClientService.getPuuId(riotApiDto.getGameName(), riotApiDto.getTagLine());
 
-		return webClientService.getgameid(puuid);
-		// 리스트 가지고 오기(5개로 제한)
+		return webClientService.getgameid(puuid, String.valueOf(riotApiDto.getMatchIdCnt()));
+
 	}
 
 	@PostMapping("/findOnebyList")
 	public Map findOnebyList(RiotApiDto riotApiDto) {
 
-		log.info("=={}", riotApiDto);
-		// 푸아이디 가지고 오기
-		
 		return webClientService.getgameinfo(riotApiDto.getMatchIdjustOne());
-		// 리스트 가지고 오기(3개로 제한)
+
 	}
 
 	@PostMapping("/dbSaveInfoRiotTv")
 	public void dbSaveInfoRiotTv(@RequestBody List<Map<String, Object>> dbList) {
 
-//		log.info("=={}", dbList);
 		// 리스트맵 db저장
 		webClientService.dbSaveInfoRiotTv(dbList);
 	}
@@ -56,14 +50,12 @@ public class RestRiotTvController {
 	public List<Map<String, Object>> dbFindData(RiotApiDto riotApiDto) {
 
 		return webClientService.dbFindData(riotApiDto);
-		// 리스트 가지고 오기(3개로 제한)
+
 	}
 
 	@PostMapping("/matchListVsDb")
 	public ArrayList<String> matchListVsDb(@RequestBody List<String> mList) {
 
-		log.info("=={}", mList);
-		
 		return webClientService.matchListVsDb(mList);
 	}
 }
