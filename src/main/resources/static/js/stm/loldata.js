@@ -36,10 +36,10 @@ function gamebtn(i) {
 	console.log(i)
 	var gametable = document.getElementById("gametable" + i + "");
 	gametable.style.display = ((gametable.style.display != 'none') ? 'none' : 'block');
-	if((i+1) % 3 ==0){
-	loadMore.style.top =((gametable.style.display != 'none') ? '80%' : '25%');
+	if ((i + 1) % 3 == 0) {
+		loadMore.style.top = ((gametable.style.display != 'none') ? '80%' : '25%');
 	}
-	
+
 }
 function searchbtn() {
 	searchbtn1()
@@ -63,7 +63,7 @@ function aaa(data) { // data == 검색한 게임 아이디
 		url: '/riot/game',
 
 		success: function(res) {
-			
+
 			showGameTamble(res, data)
 		}
 	})
@@ -83,14 +83,15 @@ function bbb(data) {
 				for (let i = 0; i < res.length; i++) {
 					Gamedata = {}; // 한게임당 데이터
 					ingamedata = [];
+					
 					for (let j = 0; j < res[i]["info"]['participants'].length; j++) {
 						mm = {}
+						
 						mm.riotIdGameName = res[i]["info"]['participants'][j]['riotIdGameName']//닉네임
 						mm.riotIdTagline = res[i]["info"]['participants'][j]['riotIdTagline'] // 태그
 						mm.summonerName = res[i]["info"]['participants'][j]['summonerName']
 						mm.championName = res[i]["info"]['participants'][j]['championName']//챔피언 아이디
 						mm.participantId = res[i]["info"]['participants'][j]['participantId'] // 플레이어 고유 인덱스
-						//					mm.legendaryItemUsed = res[i]["info"]['participants'][j]['challenges']['legendaryItemUsed'] 
 						//					mm.summoner1Id = res[i]["info"]['participants'][j]['summoner1Id']//스펠 D
 						//					mm.summoner2Id = res[i]["info"]['participants'][j]['summoner2Id']//스펠 F 화면에 출력 가능할 떄 할 것
 						mm.teamId = res[i]["info"]['participants'][j]['teamId']
@@ -101,7 +102,7 @@ function bbb(data) {
 						mm.kills = res[i]["info"]['participants'][j]['kills']
 						mm.deaths = res[i]["info"]['participants'][j]['deaths']
 						mm.assists = res[i]["info"]['participants'][j]['assists']
-						mm.kda = (res[i]["info"]['participants'][j]['challenges']['kda']).toFixed(2)
+						//						mm.kda = res[i]["info"]['participants'][j]['challenges']['kda'] // 우르프는 challenges가 없음 ㅋㅋㅋ
 						mm.lane = res[i]["info"]['participants'][j]['lane']
 						mm.totalDamageDealtToChampions = res[i]["info"]['participants'][j]['totalDamageDealtToChampions']
 						mm.totalDamageTaken = res[i]["info"]['participants'][j]['totalDamageTaken']
@@ -112,8 +113,26 @@ function bbb(data) {
 						mm.wardsPlaced = res[i]["info"]['participants'][j]['wardsPlaced'] // 시야점수
 						mm.gameStartTimestamp = res[i]["info"]['gameStartTimestamp']
 						mm.gameEndTimestamp = res[i]["info"]['gameEndTimestamp']
+						mm.item0 = res[i]["info"]['participants'][j]['item0']
+						mm.item1 = res[i]["info"]['participants'][j]['item1']
+						mm.item2 = res[i]["info"]['participants'][j]['item2']
+						mm.item3 = res[i]["info"]['participants'][j]['item3']
+						mm.item4 = res[i]["info"]['participants'][j]['item4']
+						mm.item5 = res[i]["info"]['participants'][j]['item5']
 						ingamedata.push(mm)
+		
+
+						
+							 
+						
+						
+//							ss.matchId = res[i]['metadata']['matchId']
+//							ss.participantId = res[i]["info"]['participants'][j]['participantId']
+//							ingameitem.push(ss)
+						
+//						Gamedata.item = ingameitem
 						Gamedata.info = ingamedata
+					
 					}
 					ingameteam = [];
 					bans = [];
@@ -141,7 +160,7 @@ function bbb(data) {
 					}
 					MList.push(Gamedata)
 				}
-
+				console.log(MList)
 				let temp = JSON.stringify(MList)
 				data2 = { 'Mlist': temp }
 

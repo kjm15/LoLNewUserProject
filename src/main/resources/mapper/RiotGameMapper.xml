@@ -4,7 +4,8 @@
 	<insert id="RiotGameInfo">
 		insert IGNORE into RiotGameInfoT values
 		(#{matchId},#{championName},default,#{riotIdGameName},
-		#{riotIdTagline},#{summonerName},#{participantId},#{queueId},#{teamId},#{lane},#{kills},
+		#{riotIdTagline},#{summonerName},#{participantId},#{queueId},#{teamId},
+		#{item0},#{item1},#{item2},#{item3},#{item4},#{item5},#{lane},#{kills},
 		#{assists},#{deaths},#{kda},#{firstBloodKill},#{gameEndTimestamp},
 		#{gameStartTimestamp},#{totalAllyJungleMinionsKilled},#{totalDamageDealtToChampions},
 		#{totalDamageTaken},#{totalEnemyJungleMinionsKilled},#{totalMinionsKilled},

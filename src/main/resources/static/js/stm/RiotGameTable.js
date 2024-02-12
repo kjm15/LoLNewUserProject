@@ -75,6 +75,8 @@ function showGameTamble(res, data) {
 				queue = "솔로랭크"
 			} else if (res[i]["info"][j]['queueId'] == 440) {
 				queue = "자유랭크"
+			} else if (res[i]["info"][j]['queueId'] == 1900){
+				queue = "우르프"
 			}
 			// 게임모드
 			if (data['gameName'] == res[i]["info"][j]['riotIdGameName'] || data['gameName'] == res[i]["info"][j]['summonerName']) {
@@ -91,6 +93,12 @@ function showGameTamble(res, data) {
 				deaths = res[i]["info"][j]['deaths']
 				assists = res[i]["info"][j]['assists']
 				kda = res[i]["info"][j]['kda']
+				item0 = res[i]["info"][j]['item0']
+				item1 = res[i]["info"][j]['item1']
+				item2 = res[i]["info"][j]['item2']
+				item3 = res[i]["info"][j]['item3']
+				item4 = res[i]["info"][j]['item4']
+				item5 = res[i]["info"][j]['item5']
 			}
 			// 플레이어 챔피언 사진 and kdad
 			if (data['gameName'] == res[i]["info"][j]['riotIdGameName'] || data['gameName'] == res[i]["info"][j]['summonerName']) {
@@ -167,12 +175,13 @@ function showGameTamble(res, data) {
 		str += "</div>"
 		str += "<div class='itemlist'>"
 		str += "<div class='tool'>"
-		str += "<div class='item1'></div>"
-		str += "<div class='item2'></div>"
-		str += "<div class='item3'></div>"
-		str += "<div class='item4'></div>"
-		str += "<div class='item5'></div>"
-		str += "<div class='item6'></div>"
+		
+		str += "<div class='item1'><img width='23' height='23'  alt='못 불러옴' src='https://opgg-static.akamaized.net/meta/images/lol/14.3.1/item/"+item0+".png?image=q_auto,f_webp,w_64,h_64&v=1707283412529'></div>"
+		str += "<div class='item2'><img width='23' height='23'  alt='못 불러옴' src='https://opgg-static.akamaized.net/meta/images/lol/14.3.1/item/"+item1+".png?image=q_auto,f_webp,w_64,h_64&v=1707283412529'></div>"
+		str += "<div class='item3'><img width='23' height='23'  alt='못 불러옴' src='https://opgg-static.akamaized.net/meta/images/lol/14.3.1/item/"+item2+".png?image=q_auto,f_webp,w_64,h_64&v=1707283412529'></div>"
+		str += "<div class='item4'><img width='23' height='23'  alt='못 불러옴' src='https://opgg-static.akamaized.net/meta/images/lol/14.3.1/item/"+item3+".png?image=q_auto,f_webp,w_64,h_64&v=1707283412529'></div>"
+		str += "<div class='item5'><img width='23' height='23'  alt='못 불러옴' src='https://opgg-static.akamaized.net/meta/images/lol/14.3.1/item/"+item4+".png?image=q_auto,f_webp,w_64,h_64&v=1707283412529'></div>"
+		str += "<div class='item6'><img width='23' height='23'  alt='못 불러옴' src='https://opgg-static.akamaized.net/meta/images/lol/14.3.1/item/"+item5+".png?image=q_auto,f_webp,w_64,h_64&v=1707283412529'></div>"
 		str += "</div>"
 		str += "</div>"
 		str += "</div>"

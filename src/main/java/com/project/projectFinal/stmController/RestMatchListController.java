@@ -49,7 +49,7 @@ public class RestMatchListController {
 			Dbcount += Db;
 		}
 		System.out.println(Dbcount);
-		if (Dbcount == 0) { // 만약 디비에 정보가 없을경우
+		if (Dbcount < 30) { // 만약 디비에 정보가 없을경우
 			System.out.println("api감");
 			List<Map> MList = matchListService.gamedate(matchList);
 			return MList;
@@ -75,13 +75,14 @@ public class RestMatchListController {
 			for (int j = 0; j < info.size(); j++) {
 				Map RiotInfo = (Map) info.get(j);
 				matchListService.RiotGameInfo(RiotInfo);
-				System.out.println("인포성공");
+				
 			}
+			
 			List teams = (List) response.get("teams");
 			for (int j = 0; j < teams.size(); j++) {
 				Map RiotTeams = (Map) teams.get(j);
 				matchListService.RiotGameTeams(RiotTeams);
-				System.out.println("팀스성공");
+				
 			}
 			if (response.get("bans") == null) {
 				res += 1;
@@ -90,7 +91,7 @@ public class RestMatchListController {
 				for (int j = 0; j < bans.size(); j++) {
 					Map RiotBans = (Map) bans.get(j);
 					matchListService.RiotGameBans(RiotBans);
-					System.out.println("벤스성공");
+					
 				}
 			}
 
