@@ -254,10 +254,13 @@ function loadingLogoOutput() {
 
 
 function chartteam(matchId) {
-		$('#myChart1').empty();
-		$('#myChart2').empty();
-	 $('#myChart1').append('<canvas id="circle"><canvas>');
-	  $('#myChart2').append('<canvas id="doughnutChart"><canvas>');
+	$('#myChart1').empty();
+	$('#myChart2').empty();
+	$('#myChart3').empty();
+	$('#myChart1').append('<canvas id="circle"><canvas>');
+	$('#myChart2').append('<canvas id="doughnutChart"><canvas>');
+	$('#myChart3').append('<canvas id="radar-chart"><canvas>');
+	console.log(dbFindList)
 	let teamIdmatch = ''
 	let gameName1 = $('#gameName1').val()
 	for (let i in dbFindList) {
@@ -305,7 +308,7 @@ function chartteam(matchId) {
 		}
 
 	}
-	console.log(dbFindList)
+	//	console.log(dbFindList)
 
 	var ctx = document.getElementById('circle').getContext('2d');
 	var chart = new Chart(ctx, {
@@ -335,7 +338,7 @@ function chartteam(matchId) {
 			}]
 		},
 		options: {
-			responsive: false,
+//			responsive: false,
 			tooltips: {
 				enabled: true
 			},
@@ -344,21 +347,21 @@ function chartteam(matchId) {
 			},
 
 			scales: {
-//				xAxes: [{
-//					gridLines: {
-//						display: true
-//					},
-//				}],
-				yAxes: [{
-//					gridLines: {
-//						drawBorder: false//축과 데이터의 경계선 표시 여부
-//					},
-					ticks: {
-						display: true,//축의 값 표시 여부
-						max: 1,
-						min: 0
-					}
-				}]
+				//				xAxes: [{
+				//					gridLines: {
+				//						display: true
+				//					},
+				//				}],
+				//				yAxes: [{
+				////					gridLines: {
+				////						drawBorder: false//축과 데이터의 경계선 표시 여부
+				////					},
+				//					ticks: {
+				////						display: true,//축의 값 표시 여부
+				//						max: 1,
+				//						min: 0
+				//					}
+				//				}]
 			},
 
 
@@ -387,18 +390,20 @@ function chartteam(matchId) {
 				data: teamDamagePercentageList,
 				label: "가한데미지량",
 				backgroundColor: [
-					'rgba(255, 0, 0, 0.5)',
-					'rgba(0, 0, 255, 0.5)',
+					'rgba(255, 99, 132, 0.2)',
+					'rgba(54, 162, 235, 0.2)',
 					'rgba(255, 206, 86, 0.2)',
 					'rgba(75, 192, 192, 0.2)',
-					'rgba(48, 255, 93, 0.5)'
+					//                      'rgba(153, 102, 255, 0.2)',
+					'rgba(255, 159, 64, 0.2)'
 				],
 				borderColor: [
-					'rgba(255, 0, 0, 1)',
-					'rgba(0, 0, 255, 1)',
-					'rgba(255, 206, 86, 0.2)',
-					'rgba(75, 192, 192, 0.2)',
-					'rgba(48, 255, 93, 1)'
+					'rgba(255, 99, 132, 1)',
+					'rgba(54, 162, 235, 1)',
+					'rgba(255, 206, 86, 1)',
+					'rgba(75, 192, 192, 1)',
+					//                      'rgba(153, 102, 255, 1)',
+					'rgba(255, 159, 64, 1)'
 				],
 				borderWidth: 2
 			}]
@@ -408,4 +413,56 @@ function chartteam(matchId) {
 		}
 	});
 
+
+	let allList = []
+	for (let i in dbFindList) {
+
+		if (dbFindList[i].matchId == matchId && dbFindList[i].riotIdGameName == gameName1) {
+
+
+			allList.push(dbFindList[i].damageTakenOnTeamPercentage)
+			allList.push(dbFindList[i].killParticipation)
+
+			allList.push(dbFindList[i].teamDamagePercentage)
+
+
+
+		}
+
+	}
+
+
+	new Chart(document.getElementById("radar-chart"), {
+		type: 'radar',
+		data: {
+			labels: ['damageTakenOnTeamPercentage', 'killParticipation', 'teamDamagePercentage'],
+			datasets: [
+				{
+					label: "본인 통계 ",
+					fill: true,
+					backgroundColor: "rgba(179,181,198,0.2)",
+					borderColor: "rgba(179,181,198,1)",
+					pointBorderColor: "#fff",
+					pointBackgroundColor: "rgba(179,181,198,1)",
+					data: allList
+				},
+				//{
+				//					label: "2050",
+				//					fill: true,
+				//					backgroundColor: "rgba(255,99,132,0.2)",
+				//					borderColor: "rgba(255,99,132,1)",
+				//					pointBorderColor: "#fff",
+				//					pointBackgroundColor: "rgba(255,99,132,1)",
+				//					pointBorderColor: "#fff",
+				//					data: [25.48, 54.16, 7.61, 8.06, 4.45]
+				//				}
+			]
+		},
+		options: {
+			title: {
+				display: true,
+				text: '본인 확인표'
+			}
+		}
+	});
 }
