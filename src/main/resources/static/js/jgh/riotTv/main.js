@@ -256,8 +256,11 @@ function loadingLogoOutput() {
 function chartteam(matchId) {
 	$('#myChart1').empty();
 	$('#myChart2').empty();
+	$('#myChart3').empty();
 	$('#myChart1').append('<canvas id="circle"><canvas>');
 	$('#myChart2').append('<canvas id="doughnutChart"><canvas>');
+	$('#myChart3').append('<canvas id="radar-chart"><canvas>');
+	console.log(dbFindList)
 	let teamIdmatch = ''
 	let gameName1 = $('#gameName1').val()
 	for (let i in dbFindList) {
@@ -305,7 +308,7 @@ function chartteam(matchId) {
 		}
 
 	}
-//	console.log(dbFindList)
+	//	console.log(dbFindList)
 
 	var ctx = document.getElementById('circle').getContext('2d');
 	var chart = new Chart(ctx, {
@@ -335,7 +338,7 @@ function chartteam(matchId) {
 			}]
 		},
 		options: {
-			responsive: false,
+//			responsive: false,
 			tooltips: {
 				enabled: true
 			},
@@ -410,4 +413,56 @@ function chartteam(matchId) {
 		}
 	});
 
+
+	let allList = []
+	for (let i in dbFindList) {
+
+		if (dbFindList[i].matchId == matchId && dbFindList[i].riotIdGameName == gameName1) {
+
+
+			allList.push(dbFindList[i].damageTakenOnTeamPercentage)
+			allList.push(dbFindList[i].killParticipation)
+
+			allList.push(dbFindList[i].teamDamagePercentage)
+
+
+
+		}
+
+	}
+
+
+	new Chart(document.getElementById("radar-chart"), {
+		type: 'radar',
+		data: {
+			labels: ['damageTakenOnTeamPercentage', 'killParticipation', 'teamDamagePercentage'],
+			datasets: [
+				{
+					label: "본인 통계 ",
+					fill: true,
+					backgroundColor: "rgba(179,181,198,0.2)",
+					borderColor: "rgba(179,181,198,1)",
+					pointBorderColor: "#fff",
+					pointBackgroundColor: "rgba(179,181,198,1)",
+					data: allList
+				},
+				//{
+				//					label: "2050",
+				//					fill: true,
+				//					backgroundColor: "rgba(255,99,132,0.2)",
+				//					borderColor: "rgba(255,99,132,1)",
+				//					pointBorderColor: "#fff",
+				//					pointBackgroundColor: "rgba(255,99,132,1)",
+				//					pointBorderColor: "#fff",
+				//					data: [25.48, 54.16, 7.61, 8.06, 4.45]
+				//				}
+			]
+		},
+		options: {
+			title: {
+				display: true,
+				text: '본인 확인표'
+			}
+		}
+	});
 }

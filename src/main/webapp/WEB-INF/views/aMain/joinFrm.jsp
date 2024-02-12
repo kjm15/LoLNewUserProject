@@ -42,17 +42,18 @@
 
 					<form action="/member/join" method="post" id="joinForm" onsubmit = "return confirmNumber();">
 
-						<!--  	<label for="userId">아이디</label> -->
+						<label for="userId">아이디</label>
+					
 						<input type="text" id="userId" name="userId" placeholder="아이디">
-						<span id="checkId">아이디를 적어주세요</span>
-						<!-- <label
-							for="userPw">패스워드</label>-->
-
+						<span id="checkId"></span>
+						<label for="userPw">패스워드</label>
+					
+	
 						<input type="password" id="userPw" name="userPw"
 							placeholder="패스워드"> <span id="checkPw"></span>
 
 
-						<!-- <span>이메일 </span> -->
+					
 						<div id="mail_input" name="mail_input">
 							<label for="email" id="mailTxt">이메일을 입력해주세요</label> 
 								<!-- id = mail 바꾸지 말것 --><input type="text" name="userEmail" id="mail" placeholder="이메일">
