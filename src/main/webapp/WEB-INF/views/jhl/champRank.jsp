@@ -4,11 +4,12 @@
 <!DOCTYPE html>
 <html>
 <head>
-</style>
+<script defer src="js/jhl/champ/champRank.js"></script>
 
 </head>
 <body>
 <h1>rank 테이블 Test 용, 데이터 다시 받아서 수정할 예정</h1>
+<div class="tooltip" id="tooltip">Champion Name</div>
 	<div class="contentsRank">
 		<div class="aside left"></div>
 		<div class="contentsItemsChamp">
@@ -26,9 +27,8 @@
 				</div>
 
 				<div class="rankTable">
-					<div class="rankLine"
-						style="text-align: center; height: 50px; display: flex; align-items: center;">
-						<div class="rankSearch">
+					<div class="rankLine">
+						<div class="rankSearch ranklineBtn">
 							<span><img
 								src="/img/jhl/positionImg/Position_Plat-Top.png" id="Top"
 								onclick="champRank(this.id)">탑</span>
@@ -56,13 +56,13 @@
 					</div>
 					<div class="lineRank">
 						<div class="rankItems">
-
 							<table class="Rankable">
-								<colgroup>
-									<col width="35%">
-									<col>
-									<col>
-								</colgroup>
+							<colgroup>
+							<col width="40%">
+							<col width="30%">
+							<col width="30%">
+
+							</colgroup>
 								<thead>
 									<tr class="tableColumns">
 										<th><span>챔피언</span></th>
@@ -70,7 +70,7 @@
 										<th><span>픽률</span></th>
 									</tr>
 								</thead>
-								<tbody>
+								<tbody class ="rTableBody">
 									<tr class="rTable">
 										<td class="rData"></td>
 										<td class="rData"></td>
@@ -93,7 +93,6 @@
 
 
 </body>
-<script defer src="js/jhl/champ/champRank.js"></script>
 
 
 </html>
