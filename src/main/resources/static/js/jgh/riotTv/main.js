@@ -260,7 +260,7 @@ function chartteam(matchId) {
 	$('#myChart1').append('<canvas id="circle"><canvas>');
 	$('#myChart2').append('<canvas id="doughnutChart"><canvas>');
 	$('#myChart3').append('<canvas id="radar-chart"><canvas>');
-	console.log(dbFindList)
+//	console.log(dbFindList)
 	let teamIdmatch = ''
 	let gameName1 = $('#gameName1').val()
 	for (let i in dbFindList) {
