@@ -9,7 +9,7 @@ SELECT
     cT.champion_name_kr,
     COUNT(rt.win) AS top_win_total_cnt,
     CONCAT(ROUND((SUM(CASE WHEN rt.win = 1 THEN 1 ELSE 0 END) / COUNT(rt.win)) * 100, 2), '%') AS top_win_rate,
-    (SELECT COUNT(*) FROM rank_test WHERE teamPosition = 'TOP') AS total_champion_pick,
+   
     CONCAT(ROUND((COUNT(*) / (SELECT COUNT(*) FROM rank_test WHERE teamPosition= #{teamPosition})) * 100, 2), '%') AS top_pick_rate
 FROM 
     rank_test rt
