@@ -32,7 +32,7 @@
 			</div>
 			<div class="black-box">
 
-			<a href="/css">duoCss수정중</a>
+			
 			
 			<p>쌩큐쌩큐~ ~감사감사~</p>
 				
