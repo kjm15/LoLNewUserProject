@@ -18,12 +18,16 @@
 
 </div>
 
-<div style="max-width:150px;" id="myChart1">
+<div style="max-width:300px;" id="myChart1">
    
 </div>
-<div style="max-width: 150px" id="myChart2">
+<div style="max-width: 300px" id="myChart2">
     
 </div>
-<div style="max-width: 200px" id="myChart3">
+<div style="max-width: 300px" id="myChart3">
     
 </div>
+<div style="max-width: 300px" id="myChart4">
+    
+</div>
+

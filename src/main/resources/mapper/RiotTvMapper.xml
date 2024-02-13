@@ -6,38 +6,40 @@
 
 	<insert id="dbSaveInfoRiotTv">
 
-		insert ignore into riottvT(matchId,teamId,championName
-		,riotIdGameName,riotIdTagline
-		,win,kda,
-		soloKills,goldPerMinute,killParticipation,damageTakenOnTeamPercentage
-		,teamDamagePercentage,totalTimeSpentDead,visionScore,visionWardsBoughtInGame
-		,gameStartTimestamp) 
-		
-		 values(#{matchId},#{teamId},#{championName}
-		 ,#{riotIdGameName},#{riotIdTagline}	
-		 ,#{win},#{kda},
-		#{soloKills},#{goldPerMinute},#{killParticipation},#{damageTakenOnTeamPercentage}
-		,#{teamDamagePercentage},#{totalTimeSpentDead},#{visionScore},#{visionWardsBoughtInGame}
-		,#{gameStartTimestamp})
+		insert ignore into
+		riottvT(matchId,championName,teamId,teamName,kills,assists,deaths,kda,totalTimeSpentDead,visionWardsBoughtInGame
+		,visionScore,win,gameStartTimestamp,riotIdGameName,riotIdTagline,goldEarned,totalDamageDealtToChampions,
+		totalMinionsKilled,wardsPlaced,puuid,championId)
+
+		values(#{matchId},#{championName},#{teamId},#{teamName},#{kills},#{assists},#{deaths},#{kda},#{totalTimeSpentDead},#{visionWardsBoughtInGame}
+		,#{visionScore},#{win},#{gameStartTimestamp},#{riotIdGameName},#{riotIdTagline},#{goldEarned},#{totalDamageDealtToChampions},
+		#{totalMinionsKilled},#{wardsPlaced},#{puuid},#{championId});
 
 
+		update riottvT
+		set koChampionName = (select champion_name_kr from cn_kr where championId = #{championId})
+		where matchId = #{matchId} and championName = #{championName};
 
 	</insert>
 
 	<select id="dbFindData">
-	
-		select matchId from riottvT where riotIdGameName=#{gameName} and riotIdTagline=#{tagLine} order by matchId desc  limit #{matchIdCnt};
-	
+
+		select matchId from riottvT where
+		riotIdGameName=#{gameName} and
+		riotIdTagline=#{tagLine} order by
+		matchId desc limit #{matchIdCnt};
+
 	</select>
 	<select id="dbFindData1">
-	
+
 		select * from riottvT where matchId = #{matchId} ;
-	
+
 	</select>
 	<select id="matchListVsDb">
-	
-		select count(*) from riottvT where matchId = #{matchId};
-	
+
+		select count(*) from riottvT where matchId =
+		#{matchId};
+
 	</select>
 
 

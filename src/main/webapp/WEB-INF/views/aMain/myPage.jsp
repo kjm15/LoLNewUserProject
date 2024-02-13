@@ -6,10 +6,8 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>라문철 test</title>
+<title>마이페이지</title>
 <!-- css들어갈자리  -->
-
-<script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.9.3/Chart.min.js"></script>
 
 <script src="https://cdn.jsdelivr.net/npm/chart.js@2.9.4/dist/Chart.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/chartjs-plugin-datalabels@0.7.0"></script>
@@ -28,9 +26,9 @@
 
 
 
-		<p>라문철 테스트 페이지 입니다. 모듈화로 옮겨갈 예정</p>
+		<p>마이페이지입니다.</p>
 
-		<%@include file="../jgh/riotTv/detail1.jsp"%>
+
 
 
 
@@ -39,7 +37,7 @@
 	<%@include file="../inc/footer.jsp"%>
 
 	<!-- js들어갈자리  -->
-	<script defer src="/js/jgh/riotTv/main.js"></script>
+
 	<!-- 	<script defer src="/js/jgh/jsduo/duoChatting.js"></script> -->
 	<!-- 	<script defer src="/js/jgh/jsduo/duoDeleteSave.js"></script> -->
 	<!-- 	<script defer src="/js/jgh/jsduo/duoModal.js"></script> -->

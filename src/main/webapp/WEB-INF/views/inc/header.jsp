@@ -43,6 +43,9 @@
 						<span>${userId}님 접속중</span>
 					</div>
 					<div class="navChoice">
+						<a href="/member/mypage">마이페이지</a>
+					</div>
+					<div class="navChoice">
 						<a href="/Note">메일함</a>
 					</div>
 					<!-- 					 <div id="app"></div> -->
@@ -84,22 +87,22 @@
 		</div>
 
 
-		<c:if test="${userId != null}">
+<!-- 		<c:if test="${userId != null}">-->
 
 		
-			<div class="navMenu duo">
-				<a href="#" id="rouletteStart">룰렛하기</a>
+<!-- 			<div class="navMenu duo"> -->
+<!-- 				<a href="#" id="rouletteStart">룰렛하기</a> -->
 
-			</div>
-&nbsp;&nbsp;&nbsp;
-			<div id="progress-container">
-				<div id="progress-bar"></div>
-			</div>
-			<div>
-				<span ></span>	&nbsp;&nbsp;&nbsp;[남은]횟수<span id=roulette></span>
-			</div>
+<!-- 			</div> -->
+<!-- &nbsp;&nbsp;&nbsp; -->
+<!-- 			<div id="progress-container"> -->
+<!-- 				<div id="progress-bar"></div> -->
+<!-- 			</div> -->
+<!-- 			<div> -->
+<!-- 				<span ></span>	&nbsp;&nbsp;&nbsp;[남은]횟수<span id=roulette></span> -->
+<!-- 			</div> -->
 
-		</c:if>
+<!-- 		</c:if> -->
 
 	</div>
 
