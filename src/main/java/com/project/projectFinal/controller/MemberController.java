@@ -36,6 +36,12 @@ public class MemberController {
 
 		return "aMain/joinFrm";
 	}
+
+	@GetMapping("/mypage")
+	public String mypage() {
+
+		return "aMain/myPage";
+	}
 	
 	@PostMapping("/join")
 	public String join(MemberDto memberDto) {

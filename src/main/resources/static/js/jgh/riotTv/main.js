@@ -4,17 +4,17 @@
 $('#loading').hide()
 //db넣은걸 가지고 와서 사용할떄 쓰는 리스트
 let dbFindList = []
+let values = []
+let images = []
+let labels = []
+
 
 let championName = ''
 let teamId = ''
 let matchId = ''
 
-let damageTakenOnTeamPercentage = ''
 let kda = ''
-let killParticipation = ''
 let teamDamagePercentage = ''
-let goldPerMinute = ''
-let soloKills = ''
 let totalTimeSpentDead = ''
 let visionWardsBoughtInGame = ''
 let visionScore = ''
@@ -22,6 +22,19 @@ let win = ''
 let gameStartTimestamp = ''
 let riotIdGameName = ''
 let riotIdTagline = ''
+let goldEarned = ''
+let puuid = ''
+let totalDamageDealtToChampions = ''
+let totalMinionsKilled = ''
+let wardsPlaced = ''
+let kills = ''
+let assists = ''
+let deaths = ''
+let teamName = ''
+let championId = ''
+let participantId = ''
+
+
 //db에 넣을때 사용하는 리스트
 let dbList = [];
 
@@ -35,7 +48,7 @@ $("#find").on("click", function() {
 })
 function startRiotTv() {
 
-	$("#loading").show()
+
 	//db가서 최신 matchId와 다른지 확인 후 다르면 업데이트
 
 	findPuuIdFindListSaveDb()
@@ -43,13 +56,14 @@ function startRiotTv() {
 	//업데이트 후에 db에서 가지고 오기
 	dbFindData()
 
-	$('#loading').hide()
 
 }
 function findOne(matchId) {
 
 	chartteam(matchId)
 
+	$('.riotgraph').show();
+	$('#riotSearch').hide();
 }
 
 function dbFindData() {
@@ -79,14 +93,14 @@ function dbFindData() {
 
 				if (res[z].riotIdGameName == gameName1) {
 
-					str += cnt + "번째 경기" + '<input type = "button" onclick = "findOne(\'' + res[z].matchId + '\')" value = ">>라문철tv분석<<">'
-					str += "내 챔프 : <img width='50' height='50'  alt='못 불러옴' src='https://ddragon.leagueoflegends.com/cdn/14.1.1/img/champion/" + res[z].championName + ".png'>"
-					str += res[z].teamId + '</br>'
+					str += cnt + "경기 /진형:" + res[z].teamName + "결과 : " + res[z].win + '<input type = "button" onclick = "findOne(\'' + res[z].matchId + '\')" value = ">>라문철tv분석<<">'
+					str += "내 챔프 : <img width='30' height='30'  alt='못 불러옴' src='https://ddragon.leagueoflegends.com/cdn/14.3.1/img/champion/" + res[z].championName + ".png'>"
+					str += '</br>'
 					cnt++;
 				}
 
 			}
-			str += "<a href = 'javascript: startRiotTv()'> ▽ ▽ ▽ ▽ ▽▽▽  더보기 ▽▽▽ ▽ ▽ ▽ ▽ ▽ ▽ </a>"
+			str += "<button align = center><a href = 'javascript: startRiotTv()'> ▽▽더보기click!▽▽</a></button>"
 
 			$('#detail2').html(str)
 			console.log("최신 db통신완료")
@@ -150,46 +164,69 @@ function findPuuIdFindListSaveDb() {
 					async: false,
 					data: data2,
 					success: function(res) {
-
+						console.log(res)
 						for (let j in res.info.participants) {
 
-							matchId = res.metadata.matchId
-							championName = res.info.participants[j].championName
-							teamId = res.info.participants[j].teamId
-							damageTakenOnTeamPercentage = res.info.participants[j].challenges.damageTakenOnTeamPercentage
-							kda = res.info.participants[j].challenges.kda
-							killParticipation = res.info.participants[j].challenges.killParticipation
-							teamDamagePercentage = res.info.participants[j].challenges.teamDamagePercentage
-							goldPerMinute = res.info.participants[j].challenges.goldPerMinute
-							soloKills = res.info.participants[j].challenges.soloKills
+							matchId = res.metadata.matchId //경기번호
+							championName = res.info.participants[j].championName //챔피언 이름
+							teamId = res.info.participants[j].teamId //블루or레드  100:블루 200:레드
+							if (teamId == 100) {
+								teamName = '블루'
+							} else {
+								teamName = '레드'
+							}
 
-							totalTimeSpentDead = res.info.participants[j].totalTimeSpentDead
-							visionWardsBoughtInGame = res.info.participants[j].visionWardsBoughtInGame
-							visionScore = res.info.participants[j].visionScore
-							win = res.info.participants[j].win
-							gameStartTimestamp = res.info.gameStartTimestamp
-							riotIdGameName = res.info.participants[j].riotIdGameName
-							riotIdTagline = res.info.participants[j].riotIdTagline
+							kills = res.info.participants[j].kills //킬
+							assists = res.info.participants[j].assists //어시스트
+							deaths = res.info.participants[j].deaths//데쓰
+							kda = ((kills + assists) / deaths).toFixed(2) //kda
 
+							totalTimeSpentDead = res.info.participants[j].totalTimeSpentDead //총 죽어있던시간
+							visionWardsBoughtInGame = res.info.participants[j].visionWardsBoughtInGame // 와드산겟수
+							visionScore = res.info.participants[j].visionScore //시야점수
+							win = res.info.participants[j].win //승패
+							gameStartTimestamp = res.info.gameStartTimestamp //게임시작시간
 
+							riotIdGameName = res.info.participants[j].riotIdGameName //게임아이디
+							riotIdTagline = res.info.participants[j].riotIdTagline //태그
+
+							goldEarned = res.info.participants[j].goldEarned //총 골드량
+							totalDamageDealtToChampions = res.info.participants[j].totalDamageDealtToChampions //챔피언에게 가한 피해량
+							totalMinionsKilled = res.info.participants[j].totalMinionsKilled //전체 미니언킬
+							wardsPlaced = res.info.participants[j].wardsPlaced //와드 설치수
+							puuid = res.info.participants[j].puuid //puuid
+							championId = res.info.participants[j].championId
+							participantId = res.info.participants[j].participantId
 
 							db = {}
 							db.matchId = matchId
 							db.championName = championName
 							db.teamId = teamId
-							db.damageTakenOnTeamPercentage = damageTakenOnTeamPercentage
+							db.teamName = teamName
+
+							db.kills = kills
+							db.assists = assists
+							db.deaths = deaths
 							db.kda = kda
-							db.killParticipation = killParticipation
-							db.teamDamagePercentage = teamDamagePercentage
-							db.goldPerMinute = goldPerMinute
-							db.soloKills = soloKills
+
 							db.totalTimeSpentDead = totalTimeSpentDead
 							db.visionWardsBoughtInGame = visionWardsBoughtInGame
 							db.visionScore = visionScore
 							db.win = win
 							db.gameStartTimestamp = gameStartTimestamp
+
 							db.riotIdGameName = riotIdGameName
 							db.riotIdTagline = riotIdTagline
+
+							db.goldEarned = goldEarned
+							db.totalDamageDealtToChampions = totalDamageDealtToChampions
+							db.totalMinionsKilled = totalMinionsKilled
+							db.wardsPlaced = wardsPlaced
+							db.puuid = puuid
+							db.championId = championId
+							db.participantId = participantId
+
+
 
 							dbList.push(db)
 						}
@@ -254,13 +291,22 @@ function loadingLogoOutput() {
 
 
 function chartteam(matchId) {
+	$('#teamrate').hide();
 	$('#myChart1').empty();
 	$('#myChart2').empty();
 	$('#myChart3').empty();
+
+
+	$('#myChart1').append('챔피언 딜량');
 	$('#myChart1').append('<canvas id="circle"><canvas>');
-	$('#myChart2').append('<canvas id="doughnutChart"><canvas>');
-	$('#myChart3').append('<canvas id="radar-chart"><canvas>');
-//	console.log(dbFindList)
+	$('#myChart2').append('챔피언 처치 킬 수');
+	$('#myChart2').append('<canvas id="doughnutChart" width = "250"><canvas>');
+	$('#myChart3').append('와드 구매수');
+	$('#myChart3').append('<canvas id="bar-chart-horizontal" width = "250"><canvas>');
+
+
+
+	//	console.log(dbFindList)
 	let teamIdmatch = ''
 	let gameName1 = $('#gameName1').val()
 	for (let i in dbFindList) {
@@ -272,57 +318,54 @@ function chartteam(matchId) {
 		}
 
 	}
+	let championImgList = []
+	for (let i in dbFindList) {
+
+		if (dbFindList[i].matchId == matchId && dbFindList[i].teamId == teamIdmatch) {
+
+			let img = "https://ddragon.leagueoflegends.com/cdn/14.3.1/img/champion/" + dbFindList[i].championName + ".png"
+			//				championNameList.push(dbFindList[i].koChampionName)
+			championImgList.push(img)
+		}
+
+	}
 	let championNameList = []
 	for (let i in dbFindList) {
 
 		if (dbFindList[i].matchId == matchId && dbFindList[i].teamId == teamIdmatch) {
 
-
-			championNameList.push(dbFindList[i].championName)
+			championNameList.push(dbFindList[i].koChampionName)
 
 		}
 
 	}
 
-
-	let killParticipationList = []
+	let totalDamageDealtToChampionsList = []
 	for (let i in dbFindList) {
 
 		if (dbFindList[i].matchId == matchId && dbFindList[i].teamId == teamIdmatch) {
 
 
-			killParticipationList.push(dbFindList[i].killParticipation)
+			totalDamageDealtToChampionsList.push(dbFindList[i].totalDamageDealtToChampions)
 
 		}
 
 	}
 
-	let damageTakenOnTeamPercentageList = []
-	for (let i in dbFindList) {
-
-		if (dbFindList[i].matchId == matchId && dbFindList[i].teamId == teamIdmatch) {
-
-
-			damageTakenOnTeamPercentageList.push(dbFindList[i].damageTakenOnTeamPercentage)
-
-		}
-
-	}
-	//	console.log(dbFindList)
+	console.log(dbFindList)
 
 	var ctx = document.getElementById('circle').getContext('2d');
 	var chart = new Chart(ctx, {
-		type: 'pie', // 
+		type: 'doughnut', //
 		data: {
 			labels: championNameList,
 			datasets: [{
-				label: "받은피해량",
+				label: "챔피언 데미지량",
 				backgroundColor: [
 					'rgba(255, 99, 132, 0.2)',
 					'rgba(54, 162, 235, 0.2)',
 					'rgba(255, 206, 86, 0.2)',
 					'rgba(75, 192, 192, 0.2)',
-					//                      'rgba(153, 102, 255, 0.2)',
 					'rgba(255, 159, 64, 0.2)'
 				],
 				borderColor: [
@@ -330,139 +373,248 @@ function chartteam(matchId) {
 					'rgba(54, 162, 235, 1)',
 					'rgba(255, 206, 86, 1)',
 					'rgba(75, 192, 192, 1)',
-					//                      'rgba(153, 102, 255, 1)',
 					'rgba(255, 159, 64, 1)'
 				],
-				borderWidth: 2, // 바 테두리 두께	
-				data: damageTakenOnTeamPercentageList
+				borderWidth: 2, // 바 테두리 두께
+				data: totalDamageDealtToChampionsList
 			}]
 		},
 		options: {
-//			responsive: false,
+			//			responsive: false,
 			tooltips: {
 				enabled: true
 			},
 			hover: {
 				animationDuration: 1
 			},
-
-			scales: {
-				//				xAxes: [{
-				//					gridLines: {
-				//						display: true
-				//					},
-				//				}],
-				//				yAxes: [{
-				////					gridLines: {
-				////						drawBorder: false//축과 데이터의 경계선 표시 여부
-				////					},
-				//					ticks: {
-				////						display: true,//축의 값 표시 여부
-				//						max: 1,
-				//						min: 0
-				//					}
-				//				}]
+			legend: {
+				display: false
 			},
-
+			title: {
+				display: false
+			},
 
 		}
 	})
 
 
-	let teamDamagePercentageList = []
+	let killsList = []
 	for (let i in dbFindList) {
 
 		if (dbFindList[i].matchId == matchId && dbFindList[i].teamId == teamIdmatch) {
 
 
-			teamDamagePercentageList.push(dbFindList[i].teamDamagePercentage)
+			killsList.push(dbFindList[i].kills)
 
 		}
 
 	}
 
-	const doughnutChartCtx = document.querySelector('#doughnutChart').getContext('2d');
-	const doughnutChart = new Chart(doughnutChartCtx, {
-		type: 'doughnut',
+	///수평바
+	labels = championNameList;
+	images = championImgList
+
+		.map(png => {
+			const image = new Image();
+			image.src = png;
+			return image;
+		});
+	values = killsList;
+
+	new Chart(document.getElementById("doughnutChart"), {
+		type: "horizontalBar",
+		plugins: [{
+			afterDraw: chart => {
+				var ctx = chart.chart.ctx;
+				var xAxis = chart.scales['x-axis-0'];
+				var yAxis = chart.scales['y-axis-0'];
+				yAxis.ticks.forEach((value, index) => {
+					var y = yAxis.getPixelForTick(index);
+					ctx.drawImage(images[index], xAxis.left - 27, y - 7, 15, 15);
+				});
+			}
+		}],
 		data: {
-			labels: championNameList,
+			labels: labels,
 			datasets: [{
-				data: teamDamagePercentageList,
-				label: "가한데미지량",
+				label: '와드 구입 갯수',
+				data: values,
 				backgroundColor: [
 					'rgba(255, 99, 132, 0.2)',
 					'rgba(54, 162, 235, 0.2)',
 					'rgba(255, 206, 86, 0.2)',
 					'rgba(75, 192, 192, 0.2)',
-					//                      'rgba(153, 102, 255, 0.2)',
 					'rgba(255, 159, 64, 0.2)'
-				],
-				borderColor: [
+				], borderColor: [
 					'rgba(255, 99, 132, 1)',
 					'rgba(54, 162, 235, 1)',
 					'rgba(255, 206, 86, 1)',
 					'rgba(75, 192, 192, 1)',
-					//                      'rgba(153, 102, 255, 1)',
 					'rgba(255, 159, 64, 1)'
 				],
 				borderWidth: 2
 			}]
 		},
 		options: {
-			cutout: '50%',
+			responsive: false,
+			maintainAspectRatio: false, //x축 반으로 줄임
+			layout: {
+				padding: {
+					left: 50
+				}
+			},
+			tooltips: { //튤팁제거
+				enabled: false
+			},
+			legend: {
+				display: false
+			},
+			title: {
+				display: false
+			},
+			scales: {
+				yAxes: [{
+					ticks: {
+						display: false
+					},
+					gridLines: {
+						drawBorder: false,
+					}
+				}],
+				xAxes: [{
+					ticks: {
+						beginAtZero: true
+					},
+					gridLines: {
+						display: false,
+					},
+					ticks: {
+						autoSkip: true,  // 👈
+						maxTicksLimit: 1 // 👈
+					}
+				}],
+
+			}
 		}
 	});
 
 
-	let allList = []
+
+
+
+
+
+
+
+	let visionWardsBoughtInGameList = []
 	for (let i in dbFindList) {
 
-		if (dbFindList[i].matchId == matchId && dbFindList[i].riotIdGameName == gameName1) {
+		if (dbFindList[i].matchId == matchId && dbFindList[i].teamId == teamIdmatch) {
 
 
-			allList.push(dbFindList[i].damageTakenOnTeamPercentage)
-			allList.push(dbFindList[i].killParticipation)
-
-			allList.push(dbFindList[i].teamDamagePercentage)
-
-
+			visionWardsBoughtInGameList.push(dbFindList[i].visionWardsBoughtInGame)
 
 		}
 
 	}
+	///수평바
+	labels = championNameList;
+	images = championImgList
 
+		.map(png => {
+			const image = new Image();
+			image.src = png;
+			return image;
+		});
+	values = visionWardsBoughtInGameList;
 
-	new Chart(document.getElementById("radar-chart"), {
-		type: 'radar',
+	new Chart(document.getElementById("bar-chart-horizontal"), {
+		type: "horizontalBar",
+		plugins: [{
+			afterDraw: chart => {
+				var ctx = chart.chart.ctx;
+				var xAxis = chart.scales['x-axis-0'];
+				var yAxis = chart.scales['y-axis-0'];
+				yAxis.ticks.forEach((value, index) => {
+					var y = yAxis.getPixelForTick(index);
+					ctx.drawImage(images[index], xAxis.left - 27, y - 7, 15, 15);
+				});
+			}
+		}],
 		data: {
-			labels: ['damageTakenOnTeamPercentage', 'killParticipation', 'teamDamagePercentage'],
-			datasets: [
-				{
-					label: "본인 통계 ",
-					fill: true,
-					backgroundColor: "rgba(179,181,198,0.2)",
-					borderColor: "rgba(179,181,198,1)",
-					pointBorderColor: "#fff",
-					pointBackgroundColor: "rgba(179,181,198,1)",
-					data: allList
-				},
-				//{
-				//					label: "2050",
-				//					fill: true,
-				//					backgroundColor: "rgba(255,99,132,0.2)",
-				//					borderColor: "rgba(255,99,132,1)",
-				//					pointBorderColor: "#fff",
-				//					pointBackgroundColor: "rgba(255,99,132,1)",
-				//					pointBorderColor: "#fff",
-				//					data: [25.48, 54.16, 7.61, 8.06, 4.45]
-				//				}
-			]
+			labels: labels,
+			datasets: [{
+				label: '와드 구입 갯수',
+				data: values,
+				backgroundColor: [
+					'rgba(255, 99, 132, 0.2)',
+					'rgba(54, 162, 235, 0.2)',
+					'rgba(255, 206, 86, 0.2)',
+					'rgba(75, 192, 192, 0.2)',
+					'rgba(255, 159, 64, 0.2)'
+				], borderColor: [
+					'rgba(255, 99, 132, 1)',
+					'rgba(54, 162, 235, 1)',
+					'rgba(255, 206, 86, 1)',
+					'rgba(75, 192, 192, 1)',
+					'rgba(255, 159, 64, 1)'
+				],
+				borderWidth: 2
+			}]
 		},
 		options: {
+			responsive: false,
+			maintainAspectRatio: false, //x축 반으로 줄임
+			layout: {
+				padding: {
+					left: 50
+				}
+			},
+			tooltips: { //튤팁제거
+				enabled: false
+			},
+			legend: {
+				display: false
+			},
 			title: {
-				display: true,
-				text: '본인 확인표'
+				display: false
+			},
+			scales: {
+				yAxes: [{
+					ticks: {
+						display: false
+					},
+					gridLines: {
+						drawBorder: false,
+					}
+				}],
+				xAxes: [{
+					ticks: {
+						beginAtZero: true
+					},
+					gridLines: {
+						display: false,
+					},
+					ticks: {
+						autoSkip: true,  // 👈
+						maxTicksLimit: 1 // 👈
+					}
+				}],
+
 			}
 		}
 	});
+
+
+	$('#teamrate').show();
+
 }
+
+$('#backRiot').on("click", function() {
+
+
+	$('.riotgraph').hide();
+	$('#riotSearch').show();
+})
+
+
