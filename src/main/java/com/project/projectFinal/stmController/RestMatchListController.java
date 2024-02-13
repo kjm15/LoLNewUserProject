@@ -74,10 +74,8 @@ public class RestMatchListController {
 			List info = (List) response.get("info");
 			for (int j = 0; j < info.size(); j++) {
 				Map RiotInfo = (Map) info.get(j);
-				matchListService.RiotGameInfo(RiotInfo);
-				
+				matchListService.RiotGameInfo(RiotInfo);				
 			}
-			
 			List teams = (List) response.get("teams");
 			for (int j = 0; j < teams.size(); j++) {
 				Map RiotTeams = (Map) teams.get(j);

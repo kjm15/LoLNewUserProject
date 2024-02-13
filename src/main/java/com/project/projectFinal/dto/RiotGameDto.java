@@ -44,4 +44,8 @@ public class RiotGameDto {
 	private int item3; 
 	private int item4; 
 	private int item5; 
+	private int summoner1Id;
+	private int summoner2Id;
+	private int summonerLevel;
+	private int profileIcon;
 }
