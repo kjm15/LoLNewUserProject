@@ -124,13 +124,9 @@ public class MemberService implements UserDetailsService {
 		return  memberDao.minusRoulette(memberDto);
 	}
 
-	public boolean findId(MemberDto memberDto) {
-		boolean findId = memberDao.findId(memberDto);
-		if(findId) {
-			return findId;
-		}else {
-			return false;
-		}
+	public MemberDto findId(MemberDto memberDto) {
+		log.info("=====서비스={}",memberDto);
+		return memberDao.findId(memberDto);
 		
 	}
 }

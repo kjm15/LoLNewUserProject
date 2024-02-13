@@ -2,10 +2,10 @@
 function sendNumber() {
 	$("#mail_number").css("display", "block");
 	$.ajax({
-		url: "/mail",
+		url: "/userEmail",
 		type: "post",
 		dataType: "json",
-		data: { "mail": $("#mail").val() },
+		data: { "userEmail": $("#userEmail").val() },
 		success: function(data) {
 			alert("인증번호 발송");
 			$("#Confirm").attr("value", data);
@@ -51,11 +51,11 @@ function confirmNumber() {
 
 //이메일 형식체크
 
-$("#mail").on("keyup", function() {
+$("#userEmail").on("keyup", function() {
 	let emchk = false;
 	let regExp = /^[0-9a-zA-Z]([-_.]?[0-9a-zA-Z])*@[0-9a-zA-Z]([-_.]?[0-9a-zA-Z])*.[a-zA-Z]{2,3}$/i;
 	//console.log("email : "+$userEmail.val());
-	if (!regExp.test($("#mail").val())) {
+	if (!regExp.test($("#userEmail").val())) {
 		//console.log("형식 미확인");
 		emchk = false;
 

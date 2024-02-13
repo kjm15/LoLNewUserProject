@@ -41,7 +41,9 @@ public interface MemberDao {
 
 	MemberDto minusRoulette(MemberDto memberDto);
 
-	boolean findId(MemberDto memberDto);
+	MemberDto findId(MemberDto memberDto);
+
+	
 
 
 }

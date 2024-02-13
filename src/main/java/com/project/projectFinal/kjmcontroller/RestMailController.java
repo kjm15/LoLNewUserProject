@@ -14,10 +14,10 @@ public class RestMailController {
 	
 
    
-    @PostMapping("/mail")
-    public String MailSend(String mail){
+    @PostMapping("/userEmail")
+    public String MailSend(String userEmail){
 
-       int number = mailService.sendMail(mail);
+       int number = mailService.sendMail(userEmail);
 
        String num = "" + number;
 

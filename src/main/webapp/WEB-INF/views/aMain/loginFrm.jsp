@@ -11,7 +11,8 @@
 
 <!-- Font online-->
 <link href="https://fonts.googleapis.com/css?family=Open+Sans"
-	rel="stylesheet">
+	rel="
+	stylesheet">
 
 <!--        Animate.css-->
 <link rel="stylesheet"
@@ -19,6 +20,8 @@
 
 <script defer src="/js/aCommon/common.js"></script>
 <script defer src="/js/aCommon/findidmodal.js"></script>
+
+
 
 <link href="/css/common/login.css" rel="stylesheet" type="text/css">
 <link href="/css/common/modal.css" rel="stylesheet" type="text/css">

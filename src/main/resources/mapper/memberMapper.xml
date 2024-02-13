@@ -113,7 +113,7 @@
 	</select>
 
 	<select id="findId">
-		select * from memberT where userEmail = #{userEmail};
+		select userId from memberT where userEmail = #{userEmail};
 	</select>
 
 	
