@@ -13,7 +13,7 @@
 
 <script src="https://cdn.jsdelivr.net/npm/chart.js@2.9.4/dist/Chart.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/chartjs-plugin-datalabels@0.7.0"></script>
-<!-- <link href="/css/jgh/button.css" rel="stylesheet" type="text/css"> -->
+<link href="/css/jgh/riot.css" rel="stylesheet" type="text/css">
 <!-- <link href="/css/style.css" rel="stylesheet" type="text/css"> -->
 <!-- <link href="/css/jgh/modal.css" rel="stylesheet" type="text/css"> -->
 <!-- <link href="/css/jgh/style.css" rel="stylesheet" type="text/css"> -->
@@ -24,7 +24,7 @@
 
 	<%@include file="../inc/header.jsp"%>
 
-	<div style="height: 1000px; background: rgba(0, 0, 0, 0);">
+	<div style="height: 1000px; width : 500px; background: rgba(0, 0, 0, 0);">
 
 
 

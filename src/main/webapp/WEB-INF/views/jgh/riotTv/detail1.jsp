@@ -15,24 +15,37 @@
 	<img src="/img/loadingimg.gif" />
 </div>
 
-<div id = riotSearch style="overflow:scroll; width:400px; height:150px;">
-<div id=detail2></div>
+<div id=riotSearch
+	style="overflow: scroll; width: 500px; height: 150px;">
+	<div id=detail2></div>
 </div>
+
+
+
 <div class=riotgraph>
-	<div style="max-width: 300px;" id="myChart1"></div>
+	<div id='container'>
+		<div id='box-left'>
+			<div style="max-width: 300px" id="myChart2"></div>
+		</div>
+		<div id='box-center'>
+			<div style="max-width: 300px;" id="myChart1"></div>
+		</div>
+		<div id='box-right'>
+			<div style="max-width: 300px" id="myChart3"></div>
+		</div>
+		<div id='box-side'>
+			
+		</div>
+	</div>
 
-	<div style="max-width: 150px" id="myChart2"></div>
 
-	<div style="max-width: 150px" id="myChart3"></div>
-	<div style="max-width: 300px" id="myChart4"></div>
 	<div id="teamrate" style="display: none;">
-		<p>팀기여도 1위! >> id나오는곳</p>
-		<p>팀기여도 2위! >> id나오는곳</p>
-		<p>팀기여도 3위! >> id나오는곳</p>
-		<p>팀기여도 4위! >> id나오는곳</p>
-		<p>팀기여도 꼴찌! >> id나오는곳</p>
+		팀기여도 1위! >> id나오는곳</br> 팀기여도 2위! >> id나오는곳</br> 팀기여도 3위! >> id나오는곳</br> 팀기여도 4위! >>
+		id나오는곳</br> 팀기여도 꼴찌! >> id나오는곳</br>
 		<p id="backRiot">
-			<a href=#>뒤로가기</a>
+			<button>
+				<a href=#>뒤로가기</a>
+			</button>
 		</p>
 	</div>
 </div>
