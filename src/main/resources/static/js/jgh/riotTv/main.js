@@ -4,6 +4,10 @@
 $('#loading').hide()
 //db넣은걸 가지고 와서 사용할떄 쓰는 리스트
 let dbFindList = []
+let values = []
+let images = []
+let labels = []
+
 
 let championName = ''
 let teamId = ''
@@ -28,6 +32,8 @@ let assists = ''
 let deaths = ''
 let teamName = ''
 let championId = ''
+let participantId = ''
+
 
 //db에 넣을때 사용하는 리스트
 let dbList = [];
@@ -42,7 +48,7 @@ $("#find").on("click", function() {
 })
 function startRiotTv() {
 
-	$("#loading").show()
+
 	//db가서 최신 matchId와 다른지 확인 후 다르면 업데이트
 
 	findPuuIdFindListSaveDb()
@@ -50,13 +56,14 @@ function startRiotTv() {
 	//업데이트 후에 db에서 가지고 오기
 	dbFindData()
 
-	$('#loading').hide()
 
 }
 function findOne(matchId) {
 
 	chartteam(matchId)
 
+	$('.riotgraph').show();
+	$('#riotSearch').hide();
 }
 
 function dbFindData() {
@@ -86,14 +93,14 @@ function dbFindData() {
 
 				if (res[z].riotIdGameName == gameName1) {
 
-					str += cnt + "번째 경기" + '<input type = "button" onclick = "findOne(\'' + res[z].matchId + '\')" value = ">>라문철tv분석<<">'
-					str += "내 챔프 : <img width='50' height='50'  alt='못 불러옴' src='https://ddragon.leagueoflegends.com/cdn/14.3.1/img/champion/" + res[z].championName + ".png'>"
-					str += "진형 : " + res[z].teamName + '</br>'
+					str += cnt + "경기 /진형:" + res[z].teamName + "결과 : " + res[z].win + '<input type = "button" onclick = "findOne(\'' + res[z].matchId + '\')" value = ">>라문철tv분석<<">'
+					str += "내 챔프 : <img width='30' height='30'  alt='못 불러옴' src='https://ddragon.leagueoflegends.com/cdn/14.3.1/img/champion/" + res[z].championName + ".png'>"
+					str += '</br>'
 					cnt++;
 				}
 
 			}
-			str += "<a href = 'javascript: startRiotTv()'> ▽ ▽ ▽ ▽ ▽▽▽  더보기 ▽▽▽ ▽ ▽ ▽ ▽ ▽ ▽ </a>"
+			str += "<button align = center><a href = 'javascript: startRiotTv()'> ▽▽더보기click!▽▽</a></button>"
 
 			$('#detail2').html(str)
 			console.log("최신 db통신완료")
@@ -157,7 +164,7 @@ function findPuuIdFindListSaveDb() {
 					async: false,
 					data: data2,
 					success: function(res) {
-						//						console.log(res)
+						console.log(res)
 						for (let j in res.info.participants) {
 
 							matchId = res.metadata.matchId //경기번호
@@ -189,7 +196,7 @@ function findPuuIdFindListSaveDb() {
 							wardsPlaced = res.info.participants[j].wardsPlaced //와드 설치수
 							puuid = res.info.participants[j].puuid //puuid
 							championId = res.info.participants[j].championId
-
+							participantId = res.info.participants[j].participantId
 
 							db = {}
 							db.matchId = matchId
@@ -217,6 +224,9 @@ function findPuuIdFindListSaveDb() {
 							db.wardsPlaced = wardsPlaced
 							db.puuid = puuid
 							db.championId = championId
+							db.participantId = participantId
+
+
 
 							dbList.push(db)
 						}
@@ -281,13 +291,18 @@ function loadingLogoOutput() {
 
 
 function chartteam(matchId) {
+	$('#teamrate').hide();
 	$('#myChart1').empty();
 	$('#myChart2').empty();
 	$('#myChart3').empty();
 
+
+	$('#myChart1').append('챔피언 딜량');
 	$('#myChart1').append('<canvas id="circle"><canvas>');
-	$('#myChart2').append('<canvas id="doughnutChart"><canvas>');
-	$('#myChart3').append('<canvas id="bar-chart-horizontal"><canvas>');
+	$('#myChart2').append('챔피언 처치 킬 수');
+	$('#myChart2').append('<canvas id="doughnutChart" width = "250"><canvas>');
+	$('#myChart3').append('와드 구매수');
+	$('#myChart3').append('<canvas id="bar-chart-horizontal" width = "250"><canvas>');
 
 
 
@@ -371,7 +386,13 @@ function chartteam(matchId) {
 			},
 			hover: {
 				animationDuration: 1
-			}
+			},
+			legend: {
+				display: false
+			},
+			title: {
+				display: false
+			},
 
 		}
 	})
@@ -389,22 +410,42 @@ function chartteam(matchId) {
 
 	}
 
-	const doughnutChartCtx = document.querySelector('#doughnutChart').getContext('2d');
-	const doughnutChart = new Chart(doughnutChartCtx, {
-		type: 'doughnut',
+	///수평바
+	labels = championNameList;
+	images = championImgList
+
+		.map(png => {
+			const image = new Image();
+			image.src = png;
+			return image;
+		});
+	values = killsList;
+
+	new Chart(document.getElementById("doughnutChart"), {
+		type: "horizontalBar",
+		plugins: [{
+			afterDraw: chart => {
+				var ctx = chart.chart.ctx;
+				var xAxis = chart.scales['x-axis-0'];
+				var yAxis = chart.scales['y-axis-0'];
+				yAxis.ticks.forEach((value, index) => {
+					var y = yAxis.getPixelForTick(index);
+					ctx.drawImage(images[index], xAxis.left - 27, y - 7, 15, 15);
+				});
+			}
+		}],
 		data: {
-			labels: championNameList,
+			labels: labels,
 			datasets: [{
-				data: killsList,
-				label: "챔피언 킬수",
+				label: '와드 구입 갯수',
+				data: values,
 				backgroundColor: [
 					'rgba(255, 99, 132, 0.2)',
 					'rgba(54, 162, 235, 0.2)',
 					'rgba(255, 206, 86, 0.2)',
 					'rgba(75, 192, 192, 0.2)',
 					'rgba(255, 159, 64, 0.2)'
-				],
-				borderColor: [
+				], borderColor: [
 					'rgba(255, 99, 132, 1)',
 					'rgba(54, 162, 235, 1)',
 					'rgba(255, 206, 86, 1)',
@@ -415,28 +456,55 @@ function chartteam(matchId) {
 			}]
 		},
 		options: {
-			cutout: '50%',
+			responsive: false,
+			maintainAspectRatio: false, //x축 반으로 줄임
+			layout: {
+				padding: {
+					left: 50
+				}
+			},
+			tooltips: { //튤팁제거
+				enabled: false
+			},
+			legend: {
+				display: false
+			},
+			title: {
+				display: false
+			},
+			scales: {
+				yAxes: [{
+					ticks: {
+						display: false
+					},
+					gridLines: {
+						drawBorder: false,
+					}
+				}],
+				xAxes: [{
+					ticks: {
+						beginAtZero: true
+					},
+					gridLines: {
+						display: false,
+					},
+					ticks: {
+						autoSkip: true,  // 👈
+						maxTicksLimit: 1 // 👈
+					}
+				}],
 
+			}
 		}
 	});
 
 
-	let allList = []
-	for (let i in dbFindList) {
-
-		if (dbFindList[i].matchId == matchId && dbFindList[i].riotIdGameName == gameName1) {
-
-
-			allList.push(dbFindList[i].damageTakenOnTeamPercentage)
-			allList.push(dbFindList[i].killParticipation)
-
-			allList.push(dbFindList[i].teamDamagePercentage)
 
 
 
-		}
 
-	}
+
+
 
 	let visionWardsBoughtInGameList = []
 	for (let i in dbFindList) {
@@ -450,15 +518,15 @@ function chartteam(matchId) {
 
 	}
 	///수평바
-	const labels = championNameList;
-	const images = championImgList
+	labels = championNameList;
+	images = championImgList
 
 		.map(png => {
 			const image = new Image();
 			image.src = png;
 			return image;
 		});
-	const values = visionWardsBoughtInGameList;
+	values = visionWardsBoughtInGameList;
 
 	new Chart(document.getElementById("bar-chart-horizontal"), {
 		type: "horizontalBar",
@@ -484,7 +552,7 @@ function chartteam(matchId) {
 					'rgba(255, 206, 86, 0.2)',
 					'rgba(75, 192, 192, 0.2)',
 					'rgba(255, 159, 64, 0.2)'
-				],borderColor: [
+				], borderColor: [
 					'rgba(255, 99, 132, 1)',
 					'rgba(54, 162, 235, 1)',
 					'rgba(255, 206, 86, 1)',
@@ -496,18 +564,20 @@ function chartteam(matchId) {
 		},
 		options: {
 			responsive: false,
+			maintainAspectRatio: false, //x축 반으로 줄임
 			layout: {
 				padding: {
 					left: 50
 				}
 			},
-//			title: {
-//				display : true,
-//				text: '와드 구입 갯수'
-//			},
-			lenged : {
-				
-				display : true
+			tooltips: { //튤팁제거
+				enabled: false
+			},
+			legend: {
+				display: false
+			},
+			title: {
+				display: false
 			},
 			scales: {
 				yAxes: [{
@@ -519,15 +589,32 @@ function chartteam(matchId) {
 					}
 				}],
 				xAxes: [{
-//					ticks: {
-//						beginAtZero: true
-//					},
+					ticks: {
+						beginAtZero: true
+					},
 					gridLines: {
 						display: false,
+					},
+					ticks: {
+						autoSkip: true,  // 👈
+						maxTicksLimit: 1 // 👈
 					}
 				}],
+
 			}
 		}
 	});
 
+
+	$('#teamrate').show();
+
 }
+
+$('#backRiot').on("click", function() {
+
+
+	$('.riotgraph').hide();
+	$('#riotSearch').show();
+})
+
+

@@ -9,11 +9,11 @@
 		insert ignore into
 		riottvT(matchId,championName,teamId,teamName,kills,assists,deaths,kda,totalTimeSpentDead,visionWardsBoughtInGame
 		,visionScore,win,gameStartTimestamp,riotIdGameName,riotIdTagline,goldEarned,totalDamageDealtToChampions,
-		totalMinionsKilled,wardsPlaced,puuid,championId)
+		totalMinionsKilled,wardsPlaced,puuid,championId,participantId)
 
 		values(#{matchId},#{championName},#{teamId},#{teamName},#{kills},#{assists},#{deaths},#{kda},#{totalTimeSpentDead},#{visionWardsBoughtInGame}
 		,#{visionScore},#{win},#{gameStartTimestamp},#{riotIdGameName},#{riotIdTagline},#{goldEarned},#{totalDamageDealtToChampions},
-		#{totalMinionsKilled},#{wardsPlaced},#{puuid},#{championId});
+		#{totalMinionsKilled},#{wardsPlaced},#{puuid},#{championId},#{participantId});
 
 
 		update riottvT
@@ -24,15 +24,15 @@
 
 	<select id="dbFindData">
 
-		select matchId from riottvT where
-		riotIdGameName=#{gameName} and
-		riotIdTagline=#{tagLine} order by
-		matchId desc limit #{matchIdCnt};
+		select matchId 
+		from riottvT
+		where riotIdGameName=#{gameName} and riotIdTagline=#{tagLine} 
+		order by participantId limit #{matchIdCnt};
 
 	</select>
 	<select id="dbFindData1">
 
-		select * from riottvT where matchId = #{matchId} ;
+		select * from riottvT where matchId = #{matchId} order by participantId ;
 
 	</select>
 	<select id="matchListVsDb">
