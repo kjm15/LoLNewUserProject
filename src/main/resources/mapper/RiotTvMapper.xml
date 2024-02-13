@@ -9,11 +9,11 @@
 		insert ignore into
 		riottvT(matchId,championName,teamId,teamName,kills,assists,deaths,kda,totalTimeSpentDead,visionWardsBoughtInGame
 		,visionScore,win,gameStartTimestamp,riotIdGameName,riotIdTagline,goldEarned,totalDamageDealtToChampions,
-		totalMinionsKilled,wardsPlaced,puuid,championId,participantId)
+		totalMinionsKilled,wardsPlaced,puuid,championId,participantId,winCheck)
 
 		values(#{matchId},#{championName},#{teamId},#{teamName},#{kills},#{assists},#{deaths},#{kda},#{totalTimeSpentDead},#{visionWardsBoughtInGame}
 		,#{visionScore},#{win},#{gameStartTimestamp},#{riotIdGameName},#{riotIdTagline},#{goldEarned},#{totalDamageDealtToChampions},
-		#{totalMinionsKilled},#{wardsPlaced},#{puuid},#{championId},#{participantId});
+		#{totalMinionsKilled},#{wardsPlaced},#{puuid},#{championId},#{participantId},#{winCheck});
 
 
 		update riottvT
