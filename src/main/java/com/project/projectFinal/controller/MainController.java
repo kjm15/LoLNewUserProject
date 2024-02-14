@@ -22,8 +22,14 @@ public class MainController {
 
 	@GetMapping("/")
 	public String index() {
-
+		
+//		Object principal = SecurityContextHolder.getContext().getAuthentication();
+//		
+//		log.info("==={}",principal);
+		
+		
 		return "newMain";
+		
 	}
 
 	@GetMapping("/new")
