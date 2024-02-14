@@ -88,20 +88,25 @@ function dbFindData() {
 		success: function(res) {
 
 			dbFindList = res
-
+			str += "<center><hr>!!! 라문철 tv !!!<hr></center>"
 			for (let z in res) {
 
 				if (res[z].riotIdGameName == gameName1) {
+					var currentDate = new Date(parseInt(res[z].gameStartTimestamp));
+					var currentFormatDate = dateFormat(currentDate);
+					str += "<center>"
+					str += currentFormatDate + " |경기|"
+					str += "<img width='30' height='30'  alt='못 불러옴' src='https://ddragon.leagueoflegends.com/cdn/14.3.1/img/champion/" + res[z].championName + ".png'>"
 
-					str += cnt + "경기 / 진형:" + res[z].teamName + "결과 : " + res[z].winCheck + '<input type = "button" onclick = "findOne(\'' + res[z].matchId + '\')" value = ">>라문철tv분석<<">'
-					str += "내 챔프 : <img width='30' height='30'  alt='못 불러옴' src='https://ddragon.leagueoflegends.com/cdn/14.3.1/img/champion/" + res[z].championName + ".png'>"
-					str += '</br>'
+					str += "|" +res[z].teamName + "|" + res[z].winCheck + "|    " + '<input type = "button" onclick = "findOne(\'' + res[z].matchId + '\')" value = "라문철분석">'
+					str += "</center>"
 					cnt++;
 				}
 
 			}
-			str += "<button align = center><a href = 'javascript: startRiotTv()'> ▽▽더보기click!▽▽</a></button>"
-
+			str += '<hr>'
+			str += "<center><button align = center><a href = 'javascript: startRiotTv()'> ▽▽더보기click!▽▽</a></button></center>"
+			str += '<hr>'
 			$('#detail2').html(str)
 			console.log("최신 db통신완료")
 
@@ -109,6 +114,21 @@ function dbFindData() {
 
 	})
 
+}
+function dateFormat(date) {
+	let month = date.getMonth() + 1;
+	let day = date.getDate();
+	let hour = date.getHours();
+	let minute = date.getMinutes();
+	let second = date.getSeconds();
+
+	month = month >= 10 ? month : '0' + month;
+	day = day >= 10 ? day : '0' + day;
+	hour = hour >= 10 ? hour : '0' + hour;
+	minute = minute >= 10 ? minute : '0' + minute;
+	//	second = second >= 10 ? second : '0' + second;
+
+	return date.getFullYear() + '.' + month + '.' + day + '.' + hour + '시' + minute + '분';
 }
 //db에 저장하기
 function dbSaveInfoRiotTv() {
@@ -274,10 +294,8 @@ function matchListVsDb(res) {
 
 
 //data중 스템프타임 사용시에 필요한 것들
-//	console.log(
-//		date.getFullYear() + '/' + (date.getMonth() + 1) + '/' +
-//		date.getDate() + ' ' + date.getHours() + ':' + date.getMinutes() + ':' +
-//		date.getSeconds());
+
+
 
 function loadingLogoInput() {
 	let str = ''
@@ -480,14 +498,14 @@ function chartteam(matchId) {
 			cutoutPercentage: 80,
 			elements: {
 				center: {
-					text:  totalDamageDealtToChampionsSum + " -------------            " + MytotalDamageDealtToChampions,
+					text: totalDamageDealtToChampionsSum + " -------------            " + MytotalDamageDealtToChampions,
 					color: '#FF6384', // Default is #000000
 					fontStyle: 'Arial', // Default is Arial
 					sidePadding: 20, // Default is 20 (as a percentage)
 					minFontSize: 20, // Default is 20 (in px), set to false and text will not wrap.
 					lineHeight: 10 // Default is 25 (in px), used for when text wraps
-					
-					
+
+
 				}
 			}
 		}

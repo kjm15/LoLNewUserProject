@@ -27,7 +27,8 @@
 		select matchId 
 		from riottvT
 		where riotIdGameName=#{gameName} and riotIdTagline=#{tagLine} 
-		order by participantId limit #{matchIdCnt};
+		order by gameStartTimestamp desc,participantId 
+		limit #{matchIdCnt};
 
 	</select>
 	<select id="dbFindData1">

@@ -6,7 +6,7 @@
 모듈화 1번
 
 <input type="text" id="gameName1" placeholder="아이디를 적어주세요"
-	value="bury my비애" />
+	value="동정팔이소년" />
 <input type="text" id="tagLine" placeholder="태그를 적어주세요" value="KR1" />
 
 <input type="button" id="find" value="찾기">
@@ -16,7 +16,7 @@
 </div>
 
 <div id=riotSearch
-	style="overflow: scroll; width: 500px; height: 150px;">
+	style="overflow: scroll; width: 450px; height: 250px;">
 	<div id=detail2></div>
 </div>
 
