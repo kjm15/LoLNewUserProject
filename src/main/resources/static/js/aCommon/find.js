@@ -1,17 +1,18 @@
-//$("#joinBtn").hide();
-function sendNumber() {
-	$("#mail_number").css("display", "block");
-	$.ajax({
-		url: "/userEmail",
-		type: "post",
-		dataType: "json",
-		data: { "userEmail": $("#userEmail").val() },
-		success: function(data) {
-			alert("인증번호 발송");
-			$("#Confirm").attr("value", data);
-		}
-	});
-}
+//모달 열기
+
+const modal = document.getElementById("modal")
+const findid = document.getElementById("findId")
+findid.addEventListener("click", e => {
+	modal.style.display = "flex"
+
+})
+
+//모달 닫기
+const closeBtn = modal.querySelector(".close-area")
+closeBtn.addEventListener("click", e => {
+	modal.style.display = "none"
+})
+
 let check = 0;
 function confirmNumber() {
 	var number1 = $("#number").val();
@@ -25,15 +26,13 @@ function confirmNumber() {
 	}
 
 	if (check != 0) {
-
-		alert("회원가입성공!")
+		
 		return true;
 	}
 
 	if (number1 == number2) {
 		check ++;
 		alert("인증되었습니다.");
-		$("#joinBtn").show();
 
 
 		return false;
@@ -43,11 +42,8 @@ function confirmNumber() {
 		return false;
 	}
 
-	//$('#joinForm').submit();
 
 }
-
-
 
 //이메일 형식체크
 
@@ -84,4 +80,16 @@ $("#userEmail").on("keyup", function() {
 
 })
 
-
+function sendNumber() {
+	$("#mail_number").css("display", "block");
+	$.ajax({
+		url: "/userEmail",
+		type: "post",
+		dataType: "json",
+		data: { "userEmail": $("#userEmail").val() },
+		success: function(data) {
+			alert("인증번호 발송");
+			$("#Confirm").attr("value", data);
+		}
+	});
+}
