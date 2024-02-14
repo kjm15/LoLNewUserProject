@@ -98,7 +98,7 @@ input:focus {
 	 cursor: pointer;
 }
 
-.champImgItem:hover {
+.championImg:hover {
 	transform: scale(1.2);
 	transition: transform .5s;
 	cursor: pointer;
@@ -127,13 +127,13 @@ input:focus {
 
 .tooltiptext {
   visibility: hidden;
-  width: 120px;
-  background-color: black;
+  width: 110px;
+  background-color: #8CB9FC;
+  border: 1px solid rgb(120, 173, 252);
   color: #fff;
   text-align: center;
   border-radius: 6px;
   padding: 5px 0;
-
   position: absolute;
   z-index: 1;
 }
@@ -141,13 +141,13 @@ input:focus {
 .champImgItem:hover .tooltiptext {
   visibility: visible;
   	transform: scale(0.8);
-  	transition: transform .1s;
+/*   	transition: transform .1s; */
 }
 
 .champImgItem .tooltip-top {
-  width: 120px;
-  bottom: 110%;
-  left: 50%;
+  width: 110px;
+  bottom: 100%;
+  left: 60%;
   margin-left: -60px;
 }
 

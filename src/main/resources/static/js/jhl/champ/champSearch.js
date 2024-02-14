@@ -58,7 +58,7 @@ function champImgAll() {
 				var imgElement = $('<img>').addClass('championImg').attr('src', imgSrc).attr('id',Name);
 
 				// 생성된 이미지 엘리먼트를 컨테이너에 추가
-				champContainer.append($('<div>').addClass('champImgItem').append($('<span>').addClass('tooltiptext tooltip-top').append(Name))
+				champContainer.append($('<div>').addClass('champImgItem').append($('<span>').addClass('tooltiptext tooltip-top').append(champName))
 				.append($('<div>').addClass('cimgs').append(imgElement)).append($('<span>').addClass('champName').append(res[i].champion_name_kr)));
 
 			}
