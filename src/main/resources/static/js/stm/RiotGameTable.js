@@ -169,7 +169,7 @@ function showGameTamble(res, data) {
 		str += queue
 		str += "</div>"
 
-		str += "<div class='win-lose'>"
+		str += "<div class='win-lose' id='win-lose'>"
 		str += win_lose
 		str += "</div>"
 		str += "</div>"
@@ -389,24 +389,15 @@ function showGameTamble(res, data) {
 	str += "</div>"
 	$('#puuid').append(str)
 	$('#puuid').show();
-	let como = 1;
+//	let como = 1;
 	$("#loadMore").on("click", function() {
-		//		const asd = document.getElementById('asd');
-		//		
+		$('#loadMore').remove()
+		document.getElementById('asd').append(bbb(data))
 		loadMore.style.top = '30%'
-		//		const newH1 = document.createElement('h1');
-		//		newH1.textContent = 'asd';
-		//		for (let i = 0; i < 5; i++) {
-		//		asd.appendChild(newH1);
-		//
-		//
-		//		}
-		$("#asd").append("<p class='original' style='top:32%; position : absolute;;'>등장" + como + "</p>");
-		como += 1
+//	ㅁㄴㅇ
+//		$("#asd").append("<p class='original' style='top:32%; position : absolute;;'>등장" + como + "</p>");
+//		como += 1
 		console.log(res.length)
 
 	})
 }
-//function asdasd() {
-//
-//}
