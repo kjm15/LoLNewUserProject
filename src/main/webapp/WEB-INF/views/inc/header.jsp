@@ -25,6 +25,7 @@
 
 	<link href="/css/jgh/modal.css" rel="stylesheet" type="text/css">
 	<link href="/css/common/roulette.css" rel="stylesheet" type="text/css">
+	<link rel="stylesheet" href="/css/stm/lolDataList.css" type="text/css">
 	<script defer src="/js/aPayment/payment.js"></script>
 	<script defer src="/js/aCommon/roulette.js"></script>
 
@@ -35,6 +36,21 @@
 	<div class="navbars">
 		<div class="navbarMain">
 			<a href="/">DATABOOM</a>
+		</div>
+		<div>
+			<c:if test="${searchbox == null}">
+				<div class="searchbox">
+					<button type="button" class="searchbt1">
+						<span>KR</span>
+					</button>
+					<input class="search" id='search' autocomplete="off" type="text"
+						value="동정팔이소년#KR1">
+					<button type="button" class="searchbt2" id="searchbt2"
+						onclick="searchbtn()">
+						<span>검색</span>
+					</button>
+				</div>
+			</c:if>
 		</div>
 		<c:choose>
 			<c:when test="${userId != null}">
@@ -87,22 +103,22 @@
 		</div>
 
 
-<!-- 		<c:if test="${userId != null}">-->
+		<!-- 		<c:if test="${userId != null}">-->
 
-		
-<!-- 			<div class="navMenu duo"> -->
-<!-- 				<a href="#" id="rouletteStart">룰렛하기</a> -->
 
-<!-- 			</div> -->
-<!-- &nbsp;&nbsp;&nbsp; -->
-<!-- 			<div id="progress-container"> -->
-<!-- 				<div id="progress-bar"></div> -->
-<!-- 			</div> -->
-<!-- 			<div> -->
-<!-- 				<span ></span>	&nbsp;&nbsp;&nbsp;[남은]횟수<span id=roulette></span> -->
-<!-- 			</div> -->
+		<!-- 			<div class="navMenu duo"> -->
+		<!-- 				<a href="#" id="rouletteStart">룰렛하기</a> -->
 
-<!-- 		</c:if> -->
+		<!-- 			</div> -->
+		<!-- &nbsp;&nbsp;&nbsp; -->
+		<!-- 			<div id="progress-container"> -->
+		<!-- 				<div id="progress-bar"></div> -->
+		<!-- 			</div> -->
+		<!-- 			<div> -->
+		<!-- 				<span ></span>	&nbsp;&nbsp;&nbsp;[남은]횟수<span id=roulette></span> -->
+		<!-- 			</div> -->
+
+		<!-- 		</c:if> -->
 
 	</div>
 

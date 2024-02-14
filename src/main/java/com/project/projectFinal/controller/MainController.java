@@ -21,8 +21,9 @@ public class MainController {
 	MemberService memberService;
 
 	@GetMapping("/")
-	public String index() {
-		
+	public String index(Model model) {
+		String searchbox = "메롱";
+		model.addAttribute("searchbox", searchbox);
 //		Object principal = SecurityContextHolder.getContext().getAuthentication();
 //		
 //		log.info("==={}",principal);
