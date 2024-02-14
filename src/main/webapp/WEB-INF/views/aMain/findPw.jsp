@@ -13,7 +13,7 @@
 	src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
 
 <div class="div_email">
-					<form action="/member/findPw" method="post" id="findPw" 
+					<form action="/member/findPw" method="post" id="findPw" onsubmit = "return confirmNumber();"
 						>
 						<label for="r_pn2" class="label_rd">본인확인 이메일로 인증</label>
 						<div class="box_inn_sub">
