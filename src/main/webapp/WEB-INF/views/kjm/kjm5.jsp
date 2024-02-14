@@ -30,7 +30,7 @@
 
 <body>
 
-	<%@include file="../inc/header2.jsp"%>
+<%@include file="../inc/header.jsp"%>
 	<div id="div1" style="height: 1500px; background: whitesmoke;">
 		<nav class="navbar bg-body-tertiary,nav c">
 			<div class="container-fluid" id=Sform>

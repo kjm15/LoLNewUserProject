@@ -14,3 +14,9 @@ $('#memberlogin').on("click",function(){
 	location.href="/member/login"
 	
 })
+
+$('#memberfindPw').on("click",function(){
+	
+	location.href="/member/findPw"	
+	
+})

@@ -56,7 +56,7 @@
 					
 						<div id="mail_input" name="mail_input">
 							<label for="email" id="mailTxt">이메일을 입력해주세요</label> 
-								<!-- id = mail 바꾸지 말것 --><input type="text" name="userEmail" id="mail" placeholder="이메일">
+								<input type="text" name="userEmail" id="userEmail" placeholder="이메일">
 							<button type="button" id="sendBtn" name="sendBtn"
 								onclick="sendNumber()" disabled="disabled">인증번호</button>
 						</div>
