@@ -46,14 +46,15 @@ function searchbtn() {
 }
 
 function searchbtn1() {
-
+	
 	$('#newList').remove()
 	let search = $('#search').val();
 	var gameId = search.split('#');
 	let gameName = gameId[0] // 아이디
 	let tagLine = gameId[1] // 태그
-	data = { 'gameName': gameName, 'tagLine': tagLine }
-	bbb(data)
+//	data = { 'gameName': gameName, 'tagLine': tagLine }
+	location.href= '/stm/'+gameName+'/'+tagLine
+//	bbb(data)
 }
 
 
