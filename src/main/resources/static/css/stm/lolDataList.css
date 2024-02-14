@@ -553,3 +553,14 @@
     text-decoration: none;
     box-sizing: border-box;
 }
+
+
+.cimg{
+	
+	width: 163.15px;
+	height: 26.96px;
+	
+	overflow: hidden;
+	text-overflow: ellipsis;
+	
+}
