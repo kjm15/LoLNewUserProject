@@ -14,7 +14,7 @@
 		count(itemId1) as myBuildPickCount,
 		count(if(win =
 		'True', itemId1, null)) as myBuildwinCount
-		from emerald_lol_datas
+		from ${tier}_lol_datas
 		where
 		myChampName = #{myChampName} and enemyChampName = #{enemyChampName}
 		group by itemId1,itemId2,itemId3

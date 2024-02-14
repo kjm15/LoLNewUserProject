@@ -67,11 +67,7 @@ public class MainController {
 		return "stm/stmmain";
 	}
 
-	@GetMapping("/test")
-	public String test() {
 
-		return "kdg/kdgTest";
-	}
 
 	
 }
