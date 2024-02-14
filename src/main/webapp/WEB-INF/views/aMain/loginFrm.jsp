@@ -19,7 +19,7 @@
 	href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.5.2/animate.min.css">
 
 <script defer src="/js/aCommon/common.js"></script>
-<script defer src="/js/aCommon/findidmodal.js"></script>
+<script defer src="/js/aCommon/find.js"></script>
 
 
 
@@ -52,8 +52,8 @@
 							type="password" id="userPw" name="password"> <input
 							type="submit" value="로그인">
 						 <input type="button" id = "memberjoin" value="회원가입">
-						 <input type="button" id = "findid" value="아이디찾기">
-						 <input type="button" id = "findpw" value="비밀번호찾기">
+						 <input type="button" id = "findId" value="아이디찾기">
+						 <input type="button" id = "memberfindPw" value="비밀번호찾기">
 					</form>
 				</div>
 			</div>

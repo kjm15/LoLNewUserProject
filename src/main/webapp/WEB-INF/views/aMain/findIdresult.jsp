@@ -8,7 +8,8 @@
 <title>Insert title here</title>
 </head>
 <body>
-<h1>제발</h1>
+<h1>가입하신 아이디는</h1>
 <h1>${memberDto.userId}</h1>
+<h1>입니다.</h1>
 </body>
 </html>

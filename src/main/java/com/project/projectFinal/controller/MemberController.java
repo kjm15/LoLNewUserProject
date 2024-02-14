@@ -54,7 +54,7 @@ public class MemberController {
 
 	@GetMapping("/findId")
 	public String fId() {
-		return "aMain/idInfo";
+		return "aMain/findId";
 	}
 
 	@PostMapping("/findId")
@@ -67,5 +67,31 @@ public class MemberController {
 		
 		return "aMain/findIdresult";
 	}
-
+	
+	@GetMapping("/findPw")
+	public String fPw() {
+		return "aMain/findPw";
+	}
+	
+	@PostMapping("/findPw")
+	public String findPw (MemberDto memberDto, HttpSession session) {
+//		@RequestParam String userId,
+//		memberDto.setUserId(userId);
+		
+		boolean findPw = memberService.findPw(memberDto);
+		if(findPw) {
+			session.setAttribute("userId", memberDto.getUserId());
+			return "aMain/changePw";
+		}else {
+			return "aMain/findPw";
+		}
+	}
+	
+	@PostMapping("/changePw")
+	public String changePw(MemberDto memberDto) {
+		log.info("==========={}",memberDto);
+		memberService.changePw(memberDto);
+	
+		return "redirect:/member/login";
+	}
 }

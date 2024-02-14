@@ -1,18 +1,3 @@
-//모달 열기
-
-const modal = document.getElementById("modal")
-const findid = document.getElementById("findid")
-findid.addEventListener("click", e => {
-	modal.style.display = "flex"
-
-})
-
-//모달 닫기
-const closeBtn = modal.querySelector(".close-area")
-closeBtn.addEventListener("click", e => {
-	modal.style.display = "none"
-})
-
 let check = 0;
 function confirmNumber() {
 	var number1 = $("#number").val();
@@ -33,7 +18,6 @@ function confirmNumber() {
 	if (number1 == number2) {
 		check ++;
 		alert("인증되었습니다.");
-		$("#NextBtn").show();
 
 
 		return false;

@@ -43,6 +43,10 @@ public interface MemberDao {
 
 	MemberDto findId(MemberDto memberDto);
 
+	boolean findPw(MemberDto memberDto);
+
+	int changePw(MemberDto memberDto);
+
 	
 
 

@@ -20,16 +20,16 @@
 			<div class="content">
 				<div class="div_email">
 					<form action="/member/findId" method="post" id="findId"
-						>
-<!-- 						<label for="r_pn2" class="label_rd">본인확인 이메일로 인증</label> -->
+						onsubmit = "return confirmNumber();">
+						<label for="r_pn2" class="label_rd">본인확인 이메일로 인증</label>
 						<div class="box_inn_sub">
-<!-- 							<p class="dsc">본인확인 이메일 주소와 입력한 이메일 주소가 같아야, 인증번호를 받을 수 있습니다.</p> -->
+							<p class="dsc">본인확인 이메일 주소와 입력한 이메일 주소가 같아야, 인증번호를 받을 수 있습니다.</p>
 
 <!-- 							<label for="emailNm" class="label_txt">이름</label> <input -->
 <!-- 								type="text" id="emailNm" class="emailNm" name="emailNm" -->
 <!-- 								maxlength="40" class="input_txt" style="width: 217px"> -->
 
-							<!-- <span>이메일 </span> -->
+							<span>이메일 </span>
 							<div id="mail_input" name="mail_input">
 								<label for="email" id="mailTxt">이메일을 입력해주세요</label>
 								<!-- id = mail 바꾸지 말것 -->
@@ -49,7 +49,7 @@
 								style="display: none" value="">
 						</div>
 						
-						<input type="submit" value="아이디찾기" id="findIdBtn" > 
+						<input type="submit" value="아이디찾기" id="findBtn" > 
 					</form>
 				</div>
 				<div class=""></div>
