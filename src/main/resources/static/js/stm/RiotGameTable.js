@@ -394,7 +394,7 @@ function showGameTamble(res, data) {
 		$('#loadMore').remove()
 		document.getElementById('asd').append(bbb(data))
 		loadMore.style.top = '30%'
-//	ㅁㄴㅇ
+//	ㅁㄴㅇㅁㄴㅇㅁㄴㅇ
 //		$("#asd").append("<p class='original' style='top:32%; position : absolute;;'>등장" + como + "</p>");
 //		como += 1
 		console.log(res.length)
