@@ -424,11 +424,17 @@ span {
 	text-align: right;
 }
 
+.coreItemList_box{
+	
+	margin-left: 20%;
+	
+}
+
 .coreItemList {
 	border: 1px solid black;
 	text-align: center;
 	color: black;
-	width: 1050px;
+	width: 1100px;
 	left: 25px;
 }
 
@@ -489,7 +495,7 @@ span {
 }
 
 .analysis_btn {
-	width: 273px;
+	width: 100px;
 	border-radius: 5%;
 }
 
@@ -509,6 +515,70 @@ span {
 }
 
 .jb-title:hover + .jb-text {	
+	 
+	display: block;
+	
+}
+
+.dropdown {
+	
+	width: 310px;
+	
+}
+
+.sideBanner {
+  position: absolute;
+  margin-left: 1%;
+  width: 350px;
+  height: 350px;
+  top: 50px;
+  color: #ffffff;
+}
+
+.txt-label {
+	
+	width: 350px;
+	height: 40px;
+	
+}
+
+.bannerImg {
+	
+	width: 350px;
+	height: 310px;
+	
+}
+
+.itemBuild-direction {
+    display: inline-block;
+    width: 24px;
+    height: 24px;
+    line-height: 24px;
+    background-image: url(https://s-lol-web.op.gg/images/icon/icon-arrow-right.svg);
+    background-size: 100%;
+    background-repeat: no-repeat;
+    text-align: center;
+}
+
+.jb-text-modal {
+	
+	padding: 15px 20px;
+	background-color: #444444;
+	border-radius: 5px;
+	color: #ffffff;
+	position: absolute;
+	display: none;
+	
+	width: 400px;
+	
+	text-align: left;
+	
+	left: 550px;
+	bottom: 27px;
+	
+}
+
+.jb-title-modal:hover + .jb-text-modal {	
 	 
 	display: block;
 	
