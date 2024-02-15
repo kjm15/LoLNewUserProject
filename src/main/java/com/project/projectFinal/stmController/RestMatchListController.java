@@ -52,7 +52,7 @@ public class RestMatchListController {
 				newApiMatchList.add(matchList.get(i));
 			}
 		}
-		// newApiMatchList 를 새로 선언한 리스트에 저장
+		//asd = newApiMatchList 를 새로 선언한 리스트에 저장
 		System.out.println(newApiMatchList);
 		if (newApiMatchList.size() != 0) {
 			List<Map> MList = matchListService.gamedate(newApiMatchList);
