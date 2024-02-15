@@ -125,12 +125,17 @@ public class WebClientService {
 	}
 
 	public void dbSaveInfoRiotTv(List<Map<String, Object>> dbList) {
-
+		log.info("=== {}",dbList);
+		log.info("=== 시작");
+		int z = 0;
 		for (Map<String, Object> i : dbList) {
 
 			webdao.dbSaveInfoRiotTv(i);
-
+			z++;
+			
 		}
+		log.info("===={}",z);
+		log.info("=== 끝");
 
 	}
 

@@ -98,7 +98,7 @@ function dbFindData() {
 					str += currentFormatDate + " |경기|"
 					str += "<img width='30' height='30'  alt='못 불러옴' src='https://ddragon.leagueoflegends.com/cdn/14.3.1/img/champion/" + res[z].championName + ".png'>"
 
-					str += "|" +res[z].teamName + "|" + res[z].winCheck + "|    " + '<input type = "button" onclick = "findOne(\'' + res[z].matchId + '\')" value = "라문철분석">'
+					str += "|" + res[z].teamName + "|" + res[z].winCheck + "|    " + '<input type = "button" onclick = "findOne(\'' + res[z].matchId + '\')" value = "라문철분석">'
 					str += "</center>"
 					cnt++;
 				}
@@ -172,7 +172,7 @@ function findPuuIdFindListSaveDb() {
 			//db와 api받아온 것 차이
 			res = matchListVsDb(res)
 			console.log(res)
-
+			dbList = []
 			for (let z in res) {
 
 				data2 = { 'matchIdjustOne': res[z] }
@@ -199,7 +199,15 @@ function findPuuIdFindListSaveDb() {
 							kills = res.info.participants[j].kills //킬
 							assists = res.info.participants[j].assists //어시스트
 							deaths = res.info.participants[j].deaths//데쓰
-							kda = ((kills + assists) / deaths).toFixed(2) //kda
+							if (deaths == 0) {
+
+								let deaths1 = 1;
+								kda = ((kills + assists) / deaths1).toFixed(2) //kda
+							} else {
+
+								kda = ((kills + assists) / deaths).toFixed(2) //kda
+
+							}
 
 							totalTimeSpentDead = res.info.participants[j].totalTimeSpentDead //총 죽어있던시간
 							visionWardsBoughtInGame = res.info.participants[j].visionWardsBoughtInGame // 와드산겟수
@@ -260,7 +268,7 @@ function findPuuIdFindListSaveDb() {
 				})
 			}
 			if (dbList != '') {
-
+				console.log(dbList)
 				dbSaveInfoRiotTv()
 				console.log("db최신화 완료(API통신완료)")
 
