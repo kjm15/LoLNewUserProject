@@ -4,12 +4,13 @@ import java.util.ArrayList;
 
 import org.apache.ibatis.annotations.Mapper;
 
+import com.project.projectFinal.dto.MemberDto;
 import com.project.projectFinal.dto.NoteDto;
 
 @Mapper
 public interface NoteDao {
 
-	ArrayList<NoteDto> NoteInfo(NoteDto noteDto);
+	ArrayList<NoteDto> NoteInfo(MemberDto memberDto);
 
 	int sendNote(NoteDto noteDto);
 
