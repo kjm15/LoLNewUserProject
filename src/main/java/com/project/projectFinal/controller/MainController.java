@@ -27,10 +27,9 @@ public class MainController {
 //		Object principal = SecurityContextHolder.getContext().getAuthentication();
 //		
 //		log.info("==={}",principal);
-		
-		
+
 		return "newMain";
-		
+
 	}
 
 	@GetMapping("/new")
@@ -75,7 +74,10 @@ public class MainController {
 		return "stm/stmmain";
 	}
 
-
-
+	@GetMapping("/testboard")
+	public String testboard() {
 	
+		return "stm/recordBoard";
+	}
+
 }
