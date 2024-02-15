@@ -28,31 +28,17 @@
 	<script defer src="/js/aPayment/payment.js"></script>
 	<script defer src="/js/aCommon/roulette.js"></script>
 
-
-	<link rel="stylesheet" href="/css/stm/lolDataList.css" type="text/css">
 	<script defer src="/js/stm/loldata.js"></script>
 	<script defer src="/js/stm/RiotGameTable.js"></script>
-	<!-- 송태민 -->
+
+
+
 
 	<div class="navbars">
 		<div class="navbarMain">
 			<a href="/">DATABOOM</a>
 		</div>
-		<div>
-			<c:if test="${searchbox == null}">
-				<div class="searchbox">
-					<button type="button" class="searchbt1">
-						<span>KR</span>
-					</button>
-					<input class="search123" id='search' autocomplete="off" type="text"
-						value="동정팔이소년#KR1">
-					<button type="button" class="searchbt2" id="searchbt2"
-						onclick="searchbtn()">
-						<span>검색</span>
-					</button>
-				</div>
-			</c:if>
-		</div>
+
 		<c:choose>
 			<c:when test="${userId != null}">
 				<div class="navbarLogin">
@@ -83,6 +69,44 @@
 
 
 	</div>
+
+
+
+	<c:if test="${searchbox == null}">
+		<div class=navbarMain1>
+			<div class=searchL></div>
+
+
+
+			<div class=searchC>
+
+				<div class=navbarMain2>
+					<!-- 			왼쪽 -->
+
+					<div class=searchLL>
+						<span>KR</span>
+					</div>
+					<!-- 				가운데 -->
+					<div class=searchCC>
+						<input id='search' class="searchCCC" autocomplete="off"
+							type="text" value="동정팔이소년#KR1">
+					</div>
+					<!-- 				오른쪽 -->
+					<div class=searchRR>
+						<button type="button" id="searchbt2" onclick="searchbtn()">검색</button>
+					</div>
+				</div>
+
+			</div>
+
+
+			<div class=searchR></div>
+		</div>
+	</c:if>
+
+
+
+
 	<div class="headerItmes">
 		<div class="navMenu home">
 			<a href="/">홈</a>
