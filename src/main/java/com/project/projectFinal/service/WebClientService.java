@@ -47,7 +47,16 @@ public class WebClientService {
 
 	public List<String> getgameid(String puuid, String count) {
 
-		 // 가지고 올 경기 수 << 추후에 늘리기
+		// 가지고 올 경기 수 << 추후에 늘리기
+		String[] ApikeyList = { "RGAPI-e674eb69-7d34-41d9-adfb-e43ad16950ca",
+
+				"RGAPI-c6320d0e-7590-4ec7-9e0b-d4ae0f1f775a",
+				"RGAPI-9c64dc62-e93a-48f3-9080-14ab007cd6e3",
+				"RGAPI-3437c0e1-8256-4aae-b01c-1854a01a3533"};
+
+		String apiKeyTeam = ApikeyList[Integer.valueOf(count) % ApikeyList.length];
+
+		log.info(apiKeyTeam);
 
 		String url = "https://asia.api.riotgames.com/lol/match/v5/matches/by-puuid/" + puuid + "/ids?start=0&count="
 				+ count + "&api_key=" + api_key;
@@ -125,16 +134,16 @@ public class WebClientService {
 	}
 
 	public void dbSaveInfoRiotTv(List<Map<String, Object>> dbList) {
-		log.info("=== {}",dbList);
+		log.info("=== {}", dbList);
 		log.info("=== 시작");
 		int z = 0;
 		for (Map<String, Object> i : dbList) {
 
 			webdao.dbSaveInfoRiotTv(i);
 			z++;
-			
+
 		}
-		log.info("===={}",z);
+		log.info("===={}", z);
 		log.info("=== 끝");
 
 	}
@@ -160,7 +169,8 @@ public class WebClientService {
 		}
 
 	}
-	//없는 매치아이디 리스트 확인작업
+
+	// 없는 매치아이디 리스트 확인작업
 	public ArrayList<String> matchListVsDb(List<String> mList) {
 		ArrayList<String> mdList = new ArrayList<>();
 		for (String matchId : mList) {
