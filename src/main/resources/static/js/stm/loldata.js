@@ -150,10 +150,12 @@ function bbb(data) {
 							ss = {}
 							ss.matchId = res[i]['metadata']['matchId']
 							ss.teamId = res[i]["info"]['teams'][j]['teamId']
+							ss.pickTurn = res[i]["info"]['teams'][j]['bans'][k]['pickTurn']
 							ss.championId = res[i]["info"]['teams'][j]['bans'][k]['championId']
 							bans.push(ss)
 							Gamedata.bans = bans
 						}
+						
 						if (Gamedata.bans == undefined) {
 
 							Gamedata.bans = null

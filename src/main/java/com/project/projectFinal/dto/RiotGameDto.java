@@ -48,4 +48,5 @@ public class RiotGameDto {
 	private int summoner2Id;
 	private int summonerLevel;
 	private int profileIcon;
+	private int pickTurn;
 }
