@@ -25,13 +25,14 @@
 
 	<link href="/css/jgh/modal.css" rel="stylesheet" type="text/css">
 	<link href="/css/common/roulette.css" rel="stylesheet" type="text/css">
-	<link rel="stylesheet" href="/css/stm/lolDataList.css" type="text/css">
 	<script defer src="/js/aPayment/payment.js"></script>
 	<script defer src="/js/aCommon/roulette.js"></script>
 
 
-
-
+	<link rel="stylesheet" href="/css/stm/lolDataList.css" type="text/css">
+	<script defer src="/js/stm/loldata.js"></script>
+	<script defer src="/js/stm/RiotGameTable.js"></script>
+	<!-- 송태민 -->
 
 	<div class="navbars">
 		<div class="navbarMain">
@@ -43,7 +44,7 @@
 					<button type="button" class="searchbt1">
 						<span>KR</span>
 					</button>
-					<input class="search" id='search' autocomplete="off" type="text"
+					<input class="search123" id='search' autocomplete="off" type="text"
 						value="동정팔이소년#KR1">
 					<button type="button" class="searchbt2" id="searchbt2"
 						onclick="searchbtn()">
