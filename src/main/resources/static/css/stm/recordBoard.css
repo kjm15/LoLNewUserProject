@@ -1,7 +1,28 @@
-.container {
-	height: 75%;
-	width: 75%;
+.containerXX {
+	display: flex;
+	width: 100%;
+
 }
+
+
+.containerXl {
+
+	flex-basis: 20%;
+}
+
+
+.containerXR {
+
+	flex-basis: 20%;
+}
+
+.containerXC {
+	height: 75%;
+	flex-basis: 60%;
+}
+
+
+
 
 .graph1 {
 	display: flex;
@@ -14,9 +35,13 @@
 }
 
 .container2 {
-	display: flex;
-	height: 300px;
+	height: 100%;
 	background: pink;
+}
+
+.container3 {
+	height: 500px;
+	background: #ffffff;
 }
 
 .box-left {
@@ -32,7 +57,7 @@
 
 .box-center2 {
 	background: #800080;
-	flex-basis: 200px;
+	flex-basis: 10%;
 	text-align: center;
 }
 
@@ -53,7 +78,7 @@
 	display: flex;
 	width: 100%;
 	height: 20px;
-	background: blue;
+	background: #e6ece9;
 }
 
 .champImg {
@@ -134,6 +159,110 @@
 }
 
 .itemStart {
-background: #8080c0;
+	background: #8080c0;
 	flex-basis: 500px;
+}
+
+.teamId {
+	background: #ff80ff;
+	flex-basis: 40%;
+}
+
+.kda {
+	background: #808000;
+	flex-basis: 10%;
+}
+
+.damage {
+	background: #800000;
+	flex-basis: 20%;
+}
+
+.cs {
+	background: #008080;
+	flex-basis: 10%;
+}
+
+.itemTeam {
+	background: #0080ff;
+	flex: 1;
+}
+
+.legend {
+	display: flex;
+	background: #ff80c0;
+	flex-basis: 10%;
+}
+
+.ct1 {
+	display: flex;
+	background: #ffff80;
+	flex-basis: 90%;
+}
+
+.teamId1 {
+	display: flex;
+	background: #8080ff;
+	flex-basis: 40%;
+}
+
+.kda1 {
+	background: #004080;
+	flex-basis: 10%;
+}
+
+.damage1 {
+	background: #ffff80;
+	flex-basis: 20%;
+}
+
+.cs1 {
+	background: #ff80c0;
+	flex-basis: 10%;
+}
+
+.itemTeam1 {
+	background: #ff8080;
+	flex: 1;
+}
+
+.killDeathAssist {
+	background: #ff80c0;
+	height: 50%;
+}
+
+.kdaCheck {
+	background: #80ffff;
+	height: 50%;
+}
+
+.damageAmount {
+	background: #8080c0;
+	height: 50%;
+}
+
+.damageGraph {
+	background: #80ff80;
+	height: 50%;
+}
+
+.itemTeamCheck {
+	display: flex;
+	background: #0080c0;
+	text-align: center;
+}
+
+.champImgM {
+	background: #80ffff;
+	flex-basis: 10%;
+}
+
+.spellM {
+	background: #ff80c0;
+	flex-basis: 10%;
+}
+
+.nickNameM {
+	background: #ff8040;
+	flex-basis: 80%;
 }
