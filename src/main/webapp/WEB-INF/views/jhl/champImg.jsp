@@ -43,9 +43,9 @@
 
 		<div class="champImgItems">
 			<div class="se">
-				<span class="tooltiptext tooltip-top">위쪽 툴팁</span>
+
 				<div class="champs">
-					<div class="champImgItem" id='champImgItem'>
+					<div class="champImgItem">
 						<div class='cimgs'>
 							<img class='championImg'>
 						</div>
