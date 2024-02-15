@@ -28,7 +28,7 @@ public class RestMatchListController {
 
 	@PostMapping("/match/list")
 	public List<Map> matchList(RiotApiDto userListDto) {
-		
+
 		System.out.println(userListDto);
 		RiotGameDto riotGameDto = new RiotGameDto();
 		String puuid = matchListService.puuId(userListDto);
@@ -41,6 +41,7 @@ public class RestMatchListController {
 		if (DbMatchList.size() == 0) { // 만약 디비에 저장 데이터가 없을경우 바로 api 가기
 			System.out.println("DB에 데이터 없음. api로 감");
 			List<Map> MList = matchListService.gamedate(matchList);
+
 			return MList;
 		}
 		int Dbcount = 0; // 디비에 있는지 확인을 위하여 카운트
@@ -51,13 +52,13 @@ public class RestMatchListController {
 				newApiMatchList.add(matchList.get(i));
 			}
 		}
+		// newApiMatchList 를 새로 선언한 리스트에 저장
 		System.out.println(newApiMatchList);
 		if (newApiMatchList.size() != 0) {
 			List<Map> MList = matchListService.gamedate(newApiMatchList);
 			return MList;
 		}
 
-		
 		return null;
 
 	}
@@ -68,20 +69,21 @@ public class RestMatchListController {
 		Gson gson = new Gson();
 		ArrayList<HashMap<String, ArrayList<HashMap<String, String>>>> map1 = gson.fromJson(Mlist, ArrayList.class);
 		System.out.println("디비에 저장하러 옴");
+		System.out.println("인설트하는 리스트 수" + map1.size());
 		int res = 0;
 		for (int i = 0; i < map1.size(); i++) {
 			Map response = map1.get(i);
-
 			List info = (List) response.get("info");
 			for (int j = 0; j < info.size(); j++) {
 				Map RiotInfo = (Map) info.get(j);
 				matchListService.RiotGameInfo(RiotInfo);
+				System.out.println("인포");
 			}
 			List teams = (List) response.get("teams");
 			for (int j = 0; j < teams.size(); j++) {
 				Map RiotTeams = (Map) teams.get(j);
 				matchListService.RiotGameTeams(RiotTeams);
-
+				System.out.println("팀스");
 			}
 			if (response.get("bans") == null) {
 				res += 1;
@@ -90,7 +92,7 @@ public class RestMatchListController {
 				for (int j = 0; j < bans.size(); j++) {
 					Map RiotBans = (Map) bans.get(j);
 					matchListService.RiotGameBans(RiotBans);
-
+					System.out.println("벤스");
 				}
 			}
 

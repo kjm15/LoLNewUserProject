@@ -28,7 +28,7 @@ public class WebMatchListService {
 	}
 
 	public List<String> MatchList(RiotApiDto apiDto) {
-		int Matchcnt = apiDto.getMatchCnt()*5;
+		int Matchcnt = apiDto.getMatchCnt()*3;
 		String count = Integer.toString(Matchcnt); 
 //		String count = "3"; // 인트쓰면 인식 못 함 (문자열로 써야함)
 
