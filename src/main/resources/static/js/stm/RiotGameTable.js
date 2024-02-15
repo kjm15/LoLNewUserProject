@@ -391,6 +391,8 @@ function showGameTamble(res, data) {
 	$('#puuid').show();
 //	let como = 1;
 	$("#loadMore").on("click", function() {
+		data['matchCnt']++;
+//		console.log('asd')
 		$('#loadMore').remove()
 		document.getElementById('asd').append(bbb(data))
 		loadMore.style.top = '30%'

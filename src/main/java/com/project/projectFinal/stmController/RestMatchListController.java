@@ -28,12 +28,13 @@ public class RestMatchListController {
 
 	@PostMapping("/match/list")
 	public List<Map> matchList(RiotApiDto userListDto) {
+		
 		System.out.println(userListDto);
 		RiotGameDto riotGameDto = new RiotGameDto();
 		String puuid = matchListService.puuId(userListDto);
 		userListDto.setPuuid(puuid);
 
-		matchList = matchListService.MatchList(userListDto.getPuuid());
+		matchList = matchListService.MatchList(userListDto);
 		System.out.println("검색시" + matchList);
 
 		List<String> DbMatchList = matchListService.DBRiotGameMatchSelect(userListDto.getGameName());
