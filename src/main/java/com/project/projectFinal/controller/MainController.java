@@ -34,8 +34,9 @@ public class MainController {
 	}
 
 	@GetMapping("/new")
-	public String mainNew() {
-
+	public String mainNew(Model model) {
+		String searchbox = "메롱";
+		model.addAttribute("searchbox", searchbox);
 		return "newMain";
 	}
 

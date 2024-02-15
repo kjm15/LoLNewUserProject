@@ -72,7 +72,7 @@
 	width: 45px;
 	height: 30px;
 	margin: 0px;
-	left: 80.3%;
+	left: 50.3%;
 	cursor: pointer;
 	display: inline-block;
 	-webkit-box-align: center;
@@ -83,12 +83,12 @@
 	font-size: 15px;
 }
 
-.search {
+.search123 {
 	background-color: #ECF2FF;
 	margin: 0px;
 	display: inline-block;
 	border: none;
-	width: 60%;
+	width: 30%;
 	height: 30px;
 	position: absolute;
 	left: 20%;

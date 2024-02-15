@@ -25,11 +25,12 @@
 
 	<link href="/css/jgh/modal.css" rel="stylesheet" type="text/css">
 	<link href="/css/common/roulette.css" rel="stylesheet" type="text/css">
-	<link rel="stylesheet" href="/css/stm/lolDataList.css" type="text/css">
 	<script defer src="/js/aPayment/payment.js"></script>
 	<script defer src="/js/aCommon/roulette.js"></script>
+
 	<script defer src="/js/stm/loldata.js"></script>
 	<script defer src="/js/stm/RiotGameTable.js"></script>
+
 
 
 
@@ -37,8 +38,6 @@
 		<div class="navbarMain">
 			<a href="/">DATABOOM</a>
 		</div>
-
-
 
 		<c:choose>
 			<c:when test="${userId != null}">
