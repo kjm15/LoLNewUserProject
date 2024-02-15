@@ -84,7 +84,7 @@
 					<!-- 			왼쪽 -->
 
 					<div class=searchLL>
-						<span>KR</span>
+						KR
 					</div>
 					<!-- 				가운데 -->
 					<div class=searchCC>
