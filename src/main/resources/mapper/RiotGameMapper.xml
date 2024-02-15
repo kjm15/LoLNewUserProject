@@ -2,7 +2,7 @@
 
 <mapper namespace="com.project.projectFinal.dao.RiotGameDao">
 	<insert id="RiotGameInfo">
-		insert into RiotGameInfoT values
+		insert into RiotGameInfoT values 
 		(#{matchId},#{championName},(select champion_name_kr from cn_kr where
 		championId = #{championId}),#{riotIdGameName},
 		#{riotIdTagline},#{summonerName},#{summonerLevel},#{profileIcon},#{participantId},#{queueId},#{teamId},
