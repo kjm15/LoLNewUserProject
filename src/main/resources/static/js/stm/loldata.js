@@ -9,7 +9,7 @@ $(document).ready(function() {
 
 
 })
-
+let cnt = 0;
 function mainStart() {
 
 	let gameName = $('#gameName').val()
@@ -21,10 +21,12 @@ function mainStart() {
 	}
 }
 function mainSearch(gameName1) {
+	cnt++;
 	var gameId = gameName1.split('#');
 	let gameName = gameId[0] // 아이디
 	let tagLine = gameId[1] // 태그
-	data = { 'gameName': gameName, 'tagLine': tagLine }
+	let matchCnt = cnt;
+	data = { 'gameName': gameName, 'tagLine': tagLine, 'matchCnt':matchCnt }
 	bbb(data)
 }
 
@@ -71,7 +73,6 @@ function aaa(data) { // data == 검색한 게임 아이디
 }
 
 function bbb(data) {
-
 	$.ajax({
 		type: 'post',
 		url: '/match/list',
@@ -149,10 +150,12 @@ function bbb(data) {
 							ss = {}
 							ss.matchId = res[i]['metadata']['matchId']
 							ss.teamId = res[i]["info"]['teams'][j]['teamId']
+							ss.pickTurn = res[i]["info"]['teams'][j]['bans'][k]['pickTurn']
 							ss.championId = res[i]["info"]['teams'][j]['bans'][k]['championId']
 							bans.push(ss)
 							Gamedata.bans = bans
 						}
+						
 						if (Gamedata.bans == undefined) {
 
 							Gamedata.bans = null

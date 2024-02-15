@@ -27,10 +27,12 @@ public class WebMatchListService {
 		return response.getPuuid();
 	}
 
-	public List<String> MatchList(String puuid) {
-		String count = "3"; // 인트쓰면 인식 못 함 (문자열로 써야함)
+	public List<String> MatchList(RiotApiDto apiDto) {
+		int Matchcnt = apiDto.getMatchCnt()*3;
+		String count = Integer.toString(Matchcnt); 
+//		String count = "3"; // 인트쓰면 인식 못 함 (문자열로 써야함)
 
-		String url = "https://asia.api.riotgames.com/lol/match/v5/matches/by-puuid/" + puuid
+		String url = "https://asia.api.riotgames.com/lol/match/v5/matches/by-puuid/" + apiDto.getPuuid()
 				+ "/ids?start=0&count=" + count + "&api_key=" + api_key;
 
 		WebClient webClient = WebClient.builder().baseUrl(url).build();
