@@ -8,6 +8,7 @@ import org.springframework.transaction.annotation.Transactional;
 
 import com.project.projectFinal.customEx.CustomException;
 import com.project.projectFinal.dao.NoteDao;
+import com.project.projectFinal.dto.MemberDto;
 import com.project.projectFinal.dto.NoteDto;
 
 import lombok.extern.slf4j.Slf4j;
@@ -18,9 +19,9 @@ public class NoteService {
 	@Autowired
 	NoteDao noteDao;
 
-	public ArrayList<NoteDto> NoteInfo(NoteDto noteDto) {
+	public ArrayList<NoteDto> NoteInfo(MemberDto memberDto) {
 
-		ArrayList<NoteDto> maillist = noteDao.NoteInfo(noteDto);
+		ArrayList<NoteDto> maillist = noteDao.NoteInfo(memberDto);
 		return maillist;
 	}
 

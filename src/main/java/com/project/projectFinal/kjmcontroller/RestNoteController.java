@@ -34,8 +34,8 @@ public class RestNoteController {
 	   
 		//쪽찌 자세히보기
 		@GetMapping("/detail")
-		public ArrayList<NoteDto> detailNote(Model model, NoteDto noteDto) {
-			ArrayList<NoteDto> maillist= noteService.NoteInfo(noteDto);
+		public ArrayList<NoteDto> detailNote(Model model) {
+			ArrayList<NoteDto> maillist= noteService.NoteInfo(null);
 			return maillist;
 		}
 }

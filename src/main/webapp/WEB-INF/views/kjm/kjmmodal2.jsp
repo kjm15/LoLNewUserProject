@@ -29,11 +29,11 @@
 						</tr>
 						<tr>
 							<th>보낸사람</th>
-							<td id="recvuser"></td>
+							<td id="sendusder"></td>
 						</tr>
 						<tr>
-							<th>보낸사람</th>
-							<td id="sendusder"></td>
+							<th>받는사람</th>
+							<td id="recvuser"></td>
 						</tr>
 						<tr>
 							<th>날짜</th>
