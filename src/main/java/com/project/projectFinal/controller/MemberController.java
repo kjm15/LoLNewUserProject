@@ -41,8 +41,11 @@ public class MemberController {
 
 
 	@GetMapping("/mypage")
-	public String mypage() {
-
+	public String mypage(Model model, HttpSession session, MemberDto memberDto) {
+		String userId = (String) session.getAttribute("userId");
+		memberDto.setUserId(userId);
+		MemberDto mlist = memberService.myInfo(memberDto);
+		model.addAttribute("mlist", mlist);
 		return "aMain/myPage";
 	}
 	
@@ -102,4 +105,6 @@ public class MemberController {
 	
 		return "redirect:/member/login";
 	}
+	
+	
 }

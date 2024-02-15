@@ -22,17 +22,7 @@
 
 	<%@include file="../inc/header.jsp"%>
 
-	<div style="height: 1000px; background: rgba(0, 0, 0, 0);">
-
-
-
-		<p>마이페이지입니다.</p>
-
-
-
-
-
-	</div>
+	<%@include file="../aMain/myPageMain.jsp"%>
 
 	<%@include file="../inc/footer.jsp"%>
 

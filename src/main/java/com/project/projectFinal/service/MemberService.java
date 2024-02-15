@@ -149,4 +149,9 @@ public class MemberService implements UserDetailsService {
 		return result;
 		
 	}
+
+	public MemberDto myInfo(MemberDto memberDto) {
+		MemberDto mlist = memberDao.myInfo(memberDto);
+		return mlist;
+	}
 }

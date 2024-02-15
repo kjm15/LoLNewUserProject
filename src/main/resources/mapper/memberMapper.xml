@@ -123,6 +123,10 @@
 	<update id="changePw">
 		update memberT set userPw = #{userPw} where userId = #{userId};
 	</update>
+	
+	<select id="myInfo">
+		select userId ,userPoint, userEmail, userName from memberT where userId = #{userId}
+	</select>
 
 	
 
