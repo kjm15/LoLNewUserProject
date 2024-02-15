@@ -93,7 +93,7 @@ button.learn-more:active::before {
       margin:0;
     }
     input[type="text"]{
-      width:70%;
+/*       width:70%; */
       height:100%;
       border:none;
       font-size:1em;

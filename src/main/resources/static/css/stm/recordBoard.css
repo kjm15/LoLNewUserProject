@@ -1,0 +1,268 @@
+.containerXX {
+	display: flex;
+	width: 100%;
+
+}
+
+
+.containerXl {
+
+	flex-basis: 20%;
+}
+
+
+.containerXR {
+
+	flex-basis: 20%;
+}
+
+.containerXC {
+	height: 75%;
+	flex-basis: 60%;
+}
+
+
+
+
+.graph1 {
+	display: flex;
+	height: 300px;
+}
+
+.container1 {
+	display: flex;
+	height: 120px;
+}
+
+.container2 {
+	height: 100%;
+	background: pink;
+}
+
+.container3 {
+	height: 500px;
+	background: #ffffff;
+}
+
+.box-left {
+	background: red;
+	flex-basis: 200px;
+}
+
+.box-center1 {
+	background: orange;
+	flex-basis: 500px;
+	text-align: center;
+}
+
+.box-center2 {
+	background: #800080;
+	flex-basis: 10%;
+	text-align: center;
+}
+
+.box-center3 {
+	display: flex;
+	background: #0080c0;
+	flex: 1;
+	text-align: center;
+}
+
+.box-right {
+	background: yellow;
+	flex-basis: 70px;
+	text-align: right;
+}
+
+.line1 {
+	display: flex;
+	width: 100%;
+	height: 20px;
+	background: #e6ece9;
+}
+
+.champImg {
+	display: flex;
+	width: 100%;
+	height: 70px;
+	background: blue;
+}
+
+.box-left3 {
+	background: #ff00ff;
+	flex-basis: 200px;
+}
+
+.box-right3 {
+	background: #8080ff;
+	flex-basis: 200px;
+}
+
+.item {
+	display: flex;
+	background: #ff80c0;
+	height: 30%;
+}
+
+.champSepll {
+	display: flex;
+	background: #c0c0c0;
+	height: 70%;
+}
+
+.box-left4 {
+	background: #ff00ff;
+	flex-basis: 100px;
+}
+
+.box-right4 {
+	background: #8080ff;
+	flex-basis: 200px;
+}
+
+.box-center4 {
+	background: #0080c0;
+	flex-basis: 150px;
+	text-align: center;
+}
+
+.box-center44 {
+	background: #ff8000;
+	flex-basis: 100px;
+	text-align: center;
+}
+
+.spell1 {
+	background: #ff80c0;
+	height: 50%;
+}
+
+.spell2 {
+	display: flex;
+	background: #c0c0c0;
+	height: 50%;
+}
+
+.blueChamp {
+	background: #ff00ff;
+	flex-basis: 50%;
+}
+
+.redChamp {
+	background: #8080ff;
+	flex-basis: 50%;
+}
+
+.itemNo {
+	background: #804040;
+	flex-basis: 100px;
+}
+
+.itemStart {
+	background: #8080c0;
+	flex-basis: 500px;
+}
+
+.teamId {
+	background: #ff80ff;
+	flex-basis: 40%;
+}
+
+.kda {
+	background: #808000;
+	flex-basis: 10%;
+}
+
+.damage {
+	background: #800000;
+	flex-basis: 20%;
+}
+
+.cs {
+	background: #008080;
+	flex-basis: 10%;
+}
+
+.itemTeam {
+	background: #0080ff;
+	flex: 1;
+}
+
+.legend {
+	display: flex;
+	background: #ff80c0;
+	flex-basis: 10%;
+}
+
+.ct1 {
+	display: flex;
+	background: #ffff80;
+	flex-basis: 90%;
+}
+
+.teamId1 {
+	display: flex;
+	background: #8080ff;
+	flex-basis: 40%;
+}
+
+.kda1 {
+	background: #004080;
+	flex-basis: 10%;
+}
+
+.damage1 {
+	background: #ffff80;
+	flex-basis: 20%;
+}
+
+.cs1 {
+	background: #ff80c0;
+	flex-basis: 10%;
+}
+
+.itemTeam1 {
+	background: #ff8080;
+	flex: 1;
+}
+
+.killDeathAssist {
+	background: #ff80c0;
+	height: 50%;
+}
+
+.kdaCheck {
+	background: #80ffff;
+	height: 50%;
+}
+
+.damageAmount {
+	background: #8080c0;
+	height: 50%;
+}
+
+.damageGraph {
+	background: #80ff80;
+	height: 50%;
+}
+
+.itemTeamCheck {
+	display: flex;
+	background: #0080c0;
+	text-align: center;
+}
+
+.champImgM {
+	background: #80ffff;
+	flex-basis: 10%;
+}
+
+.spellM {
+	background: #ff80c0;
+	flex-basis: 10%;
+}
+
+.nickNameM {
+	background: #ff8040;
+	flex-basis: 80%;
+}

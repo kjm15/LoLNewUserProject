@@ -40,15 +40,17 @@ a {
 	display: flex;
 	margin: 10px;
 }
-.navChoice{
-	display:flex;
+
+.navChoice {
+	display: flex;
 	margin: 10px;
 }
+
 .headerItmes {
 	display: flex;
 	justify-content: center;
 	align-items: center;
-	height: 70px;
+	height: 50px;
 	background-color: rgb(157, 196, 253);
 	color: white;
 }
@@ -70,7 +72,6 @@ a {
 	color: #6799FF;
 	border-radius: 15px;
 }
-
 
 .contents {
 	display: flex;
@@ -151,11 +152,67 @@ a {
 	display: flex;
 	justify-content: center;
 	align-items: center;
-	min-height:200px;
+	min-height: 200px;
 	border: 1px solid rgb(120, 173, 252);
 }
 
 .footer-bottom {
 	background-color: rgb(120, 173, 252);
 	color: white;
+}
+
+.navbarMain1 {
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	width: 100%;
+	height: 50px;
+	background-color: rgba(27, 65, 221, 0.38);
+	color: white;
+}
+.navbarMain2 {
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	width: 100%;
+	height: 50px;
+/* 	background-color: rgba(27, 65, 221, 0.38); */
+	color: white;
+}
+.searchL {
+  background: red;
+  flex-basis: 500px;
+}
+.searchC {
+/*  background: orange; */
+  flex: 1;
+  text-align: center;
+}
+.searchR {
+  background: yellow;
+  flex-basis: 500px;
+  text-align: right;
+}
+
+.searchLL {
+/*   background: red; */
+  flex-basis: 50px;
+   text-align: right;
+}
+.searchCC {
+/*  background: orange; */
+  flex: 1;
+  width: 100%;
+  text-align: center;
+}
+.searchRR {
+/*   background: yellow; */
+  flex-basis: 50px;
+  text-align: left;
+}
+.searchCCC {
+
+
+  width: 100%;
+  text-align: center;
 }
