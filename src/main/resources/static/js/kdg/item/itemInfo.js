@@ -24,7 +24,7 @@ $(document).ready(function() {
 			
 			str = ""
 			str += "<table class = 'coreItemList'>"
-			str += "<caption class = 'coreItemList_caption resultTr1' style = 'color: white;'>전설 아이템을 3개 이상 구매한 유저들의 아이템 통계입니다!&ensp;</caption>"
+			str += "<caption class = 'coreItemList_caption resultTr1'>전설 아이템을 3개 이상 구매한 유저들의 아이템 통계입니다!&ensp;</caption>"
 			str += "<tr class = 'tableMainTr'><td colspan = '6' style = 'text-align: left;'>"
 			str += "<div class='dropdown'>"
 			str += "<button id='TierDropDown' class='btn btn-secondary dropdown-toggle' type='button' data-bs-toggle='dropdown' aria-expanded='false' onclick='javascript:choice(this.id)'><img src='../img/tier/platinum.png' style='width: 20px; height: 20px;'> 플래티넘</button>"
@@ -44,7 +44,7 @@ $(document).ready(function() {
 			str += "</td>"
 			str += "<td colspan = '10' style = 'text-align: right;'>version : 14.01"
 			str += "</td><td></td></tr>"
-			str += "<tr style = 'color: white;' class = 'resultTr0'>"
+			str += "<tr class = 'resultTr0'>"
 			str += "<td class = 'small_td'>#</td>"
 			str += "<td class = 'small_tiertd'>티어</td>"
 			str += "<td class = 'long_rowtd2' colspan='2'>전설 아이템</td>"
@@ -113,6 +113,25 @@ $(document).ready(function() {
 			str3 = "</table>"
 			
 			$('.coreItemList_box').html(str+str2+str3)
+			modNum = $('#modNum').text();
+			
+			if (modNum == 0){
+				
+				$('.tableMainTr').css("background-color","lightgrey")
+				$('.tableMainTr').css("color","black")
+				
+				$('.resultTr0').css("background-color","#dbebf8")
+				$('.resultTr0').css("color","black")
+				
+				$('.resultTr1').css("background-color","#6fccfe")
+				$('.resultTr1').css("color","black")
+				
+				$('.highest_rate').css("color","red")
+				
+				$('body').css("background-color","white")
+				
+			}
+
 		}
 
 	})
@@ -181,8 +200,8 @@ function choiceTier(b){
 			
 			str = ""
 			str += "<table class = 'coreItemList'>"
-			str += "<caption class = 'coreItemList_caption resultTr0' style = 'color: white;'>전설 아이템을 3개 이상 구매한 유저들의 아이템 통계입니다!&ensp;</caption>"
-			str += "<tr style = 'border: 1px solid black;' class = 'tableMainTr'><td colspan = '6' style = 'text-align: left;'>"
+			str += "<caption class = 'coreItemList_caption resultTr0'>전설 아이템을 3개 이상 구매한 유저들의 아이템 통계입니다!&ensp;</caption>"
+			str += "<tr class = 'tableMainTr'><td colspan = '6' style = 'text-align: left;'>"
 			str += "<div class='dropdown'>"
 			str += "<button id='TierDropDown' class='btn btn-secondary dropdown-toggle' type='button' data-bs-toggle='dropdown' aria-expanded='false' onclick='javascript:choice(this.id)'><img src='../img/tier/"+$('#tier_en').text()+".png' style='width: 20px; height: 20px;'> "+$('#selectTier').text()+"</button>"
 			str += "<ul class='dropdown-menu'><li><a id='iron' onclick='javascript:choiceTier(this.id)' class='dropdown-item' href='#'><img src='../img/tier/iron.png' style='width: 30px; height: 30px;'>아이언</a></li>"
@@ -201,7 +220,7 @@ function choiceTier(b){
 			str += "</td>"
 			str += "<td colspan = '10' style = 'text-align: right;'>version : 14.01"
 			str += "</td><td></td></tr>"
-			str += "<tr style = 'border: 1px solid black; color: white;' class = 'resultTr0'>"
+			str += "<tr class = 'resultTr0'>"
 			str += "<td class = 'small_td'>#</td>"
 			str += "<td class = 'small_tiertd'>티어</td>"
 			str += "<td class = 'long_rowtd2' colspan='2'>전설 아이템</td>"
@@ -270,6 +289,40 @@ function choiceTier(b){
 			str3 = "</table>"
 			
 			$('.coreItemList_box').html(str+str2+str3)
+			modNum = $('#modNum').text();
+			
+			if (modNum == 1){
+				
+				$('.tableMainTr').css("background-color","#343a40")
+				$('.tableMainTr').css("color","white")
+				
+				$('.resultTr0').css("background-color","#27282d")
+				$('.resultTr0').css("color","#999")
+				
+				$('.resultTr1').css("background-color","#2a2c33")
+				$('.resultTr1').css("color","#999")
+				
+				$('.highest_rate').css("color","rgb(248, 173, 83)")
+				
+				$('body').css("background-color","#222")
+							
+			} else if (modNum == 0){
+				
+				$('.tableMainTr').css("background-color","lightgrey")
+				$('.tableMainTr').css("color","black")
+				
+				$('.resultTr0').css("background-color","#dbebf8")
+				$('.resultTr0').css("color","black")
+				
+				$('.resultTr1').css("background-color","#6fccfe")
+				$('.resultTr1').css("color","black")
+				
+				$('.highest_rate').css("color","red")
+				
+				
+				$('body').css("background-color","white")
+				
+			}
 
 		}
 
@@ -320,8 +373,8 @@ function choiceCore(c){
 			
 			str = ""
 			str += "<table class = 'coreItemList'>"
-			str += "<caption class = 'coreItemList_caption resultTr0' style = 'color: white;'>전설 아이템을 3개 이상 구매한 유저들의 아이템 통계입니다!&ensp;</caption>"
-			str += "<tr style = 'border: 1px solid black;' class = 'tableMainTr'><td colspan = '6' style = 'text-align: left;'>"
+			str += "<caption class = 'coreItemList_caption resultTr0''>전설 아이템을 3개 이상 구매한 유저들의 아이템 통계입니다!&ensp;</caption>"
+			str += "<tr class = 'tableMainTr'><td colspan = '6' style = 'text-align: left;'>"
 			str += "<div class='dropdown'>"
 			str += "<button id='TierDropDown' class='btn btn-secondary dropdown-toggle' type='button' data-bs-toggle='dropdown' aria-expanded='false' onclick='javascript:choice(this.id)'><img src='../img/tier/"+$('#tier_en').text()+".png' style='width: 20px; height: 20px;'> "+$('#selectTier').text()+"</button>"
 			str += "<ul class='dropdown-menu'><li><a id='iron' onclick='javascript:choiceTier(this.id)' class='dropdown-item' href='#'><img src='../img/tier/iron.png' style='width: 30px; height: 30px;'>아이언</a></li>"
@@ -340,7 +393,7 @@ function choiceCore(c){
 			str += "</td>"
 			str += "<td colspan = '10' style = 'text-align: right;'>version : 14.01"
 			str += "</td><td></td></tr>"
-			str += "<tr style = 'border: 1px solid black; color: white;' class = 'resultTr0'>"
+			str += "<tr class = 'resultTr0'>"
 			str += "<td class = 'small_td'>#</td>"
 			str += "<td class = 'small_tiertd'>티어</td>"
 			str += "<td class = 'long_rowtd2' colspan='2'>전설 아이템</td>"
@@ -409,6 +462,40 @@ function choiceCore(c){
 			str3 = "</table>"
 			
 			$('.coreItemList_box').html(str+str2+str3)
+			modNum = $('#modNum').text();
+			
+			if (modNum == 1){
+				
+				$('.tableMainTr').css("background-color","#343a40")
+				$('.tableMainTr').css("color","white")
+				
+				$('.resultTr0').css("background-color","#27282d")
+				$('.resultTr0').css("color","#999")
+				
+				$('.resultTr1').css("background-color","#2a2c33")
+				$('.resultTr1').css("color","#999")
+				
+				$('.highest_rate').css("color","rgb(248, 173, 83)")
+				
+				$('body').css("background-color","#222")
+
+			} else if (modNum == 0){
+				
+				$('.tableMainTr').css("background-color","lightgrey")
+				$('.tableMainTr').css("color","black")
+				
+				$('.resultTr0').css("background-color","#dbebf8")
+				$('.resultTr0').css("color","black")
+				
+				$('.resultTr1').css("background-color","#6fccfe")
+				$('.resultTr1').css("color","black")
+				
+				$('.highest_rate').css("color","red")
+				
+				
+				$('body').css("background-color","white")
+
+			}
 			
 		}
 
