@@ -39,7 +39,13 @@ public class MemberController {
 		return "aMain/joinFrm";
 	}
 
-
+	@GetMapping("/passwordcheck")
+	public String pchk() {
+		
+		return "aMain/passwordChk";
+	}
+	
+	
 	@GetMapping("/mypage")
 	public String mypage(Model model, HttpSession session, MemberDto memberDto) {
 		String userId = (String) session.getAttribute("userId");
@@ -48,6 +54,8 @@ public class MemberController {
 		model.addAttribute("mlist", mlist);
 		return "aMain/myPage";
 	}
+	
+	
 	
 
 	@PostMapping("/join")
@@ -97,6 +105,7 @@ public class MemberController {
 			return "aMain/findPw";
 		}
 	}
+	
 	
 	@PostMapping("/changePw")
 	public String changePw(MemberDto memberDto) {

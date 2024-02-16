@@ -24,22 +24,22 @@ public class RestMatchListController {
 	@Autowired
 	MatchListService matchListService;
 
-	private List<String> matchList;
+	private List<String> matchList; // 검색시 리스트
+	private List<String> MorematchList; // 검색시 리스트
+//	private List<String> moreMatchList; // 더보기
 
 	@PostMapping("/match/list")
 	public List<Map> matchList(RiotApiDto userListDto) {
 
-		System.out.println(userListDto);
 		RiotGameDto riotGameDto = new RiotGameDto();
 		String puuid = matchListService.puuId(userListDto);
 		userListDto.setPuuid(puuid);
 
 		matchList = matchListService.MatchList(userListDto);
-		System.out.println("검색시" + matchList);
 
 		List<String> DbMatchList = matchListService.DBRiotGameMatchSelect(userListDto.getGameName());
 		if (DbMatchList.size() == 0) { // 만약 디비에 저장 데이터가 없을경우 바로 api 가기
-			System.out.println("DB에 데이터 없음. api로 감");
+
 			List<Map> MList = matchListService.gamedate(matchList);
 
 			return MList;
@@ -52,8 +52,7 @@ public class RestMatchListController {
 				newApiMatchList.add(matchList.get(i));
 			}
 		}
-		//asd = newApiMatchList 를 새로 선언한 리스트에 저장
-		System.out.println(newApiMatchList);
+
 		if (newApiMatchList.size() != 0) {
 			List<Map> MList = matchListService.gamedate(newApiMatchList);
 			return MList;
@@ -68,8 +67,7 @@ public class RestMatchListController {
 		RiotGameDto riotGameDto = new RiotGameDto();
 		Gson gson = new Gson();
 		ArrayList<HashMap<String, ArrayList<HashMap<String, String>>>> map1 = gson.fromJson(Mlist, ArrayList.class);
-		System.out.println("디비에 저장하러 옴");
-		System.out.println("인설트하는 리스트 수" + map1.size());
+
 		int res = 0;
 		for (int i = 0; i < map1.size(); i++) {
 			Map response = map1.get(i);
@@ -77,13 +75,13 @@ public class RestMatchListController {
 			for (int j = 0; j < info.size(); j++) {
 				Map RiotInfo = (Map) info.get(j);
 				matchListService.RiotGameInfo(RiotInfo);
-				System.out.println("인포");
+
 			}
 			List teams = (List) response.get("teams");
 			for (int j = 0; j < teams.size(); j++) {
 				Map RiotTeams = (Map) teams.get(j);
 				matchListService.RiotGameTeams(RiotTeams);
-				System.out.println("팀스");
+
 			}
 			if (response.get("bans") == null) {
 				res += 1;
@@ -92,7 +90,7 @@ public class RestMatchListController {
 				for (int j = 0; j < bans.size(); j++) {
 					Map RiotBans = (Map) bans.get(j);
 					matchListService.RiotGameBans(RiotBans);
-					System.out.println("벤스");
+
 				}
 			}
 
@@ -104,19 +102,36 @@ public class RestMatchListController {
 
 	@PostMapping("/riot/game")
 	public ArrayList<HashMap<String, Object>> RiotGame() {
-		List<String> MatchList = matchList;
+		List<String> MatchList = matchList; // 새로 가져온 리스트
+
+		if (MorematchList != null) {
+			if (MorematchList.size() > MatchList.size()) {
+				MorematchList = null;
+			}
+		}
+
+		List<String> MatchListSelect = new ArrayList<>();// 새로 가져온 리스트
+
+		if (MatchList.size() > 3) {
+			for (int j = MorematchList.size(); j < MatchList.size(); j++) {
+				MatchListSelect.add(MatchList.get(j));
+			}
+		} else {
+			MatchListSelect = MatchList;
+		}
+
 		ArrayList<HashMap<String, Object>> MList = new ArrayList<>();
-		for (int i = 0; i < MatchList.size(); i++) {
+		for (int i = 0; i < MatchListSelect.size(); i++) {
 			HashMap<String, Object> newGList = new HashMap<>();
-			List<Map<String, RiotGameDto>> infoData = matchListService.RiotGameInfoSelect(MatchList.get(i));
-			List<Map<String, RiotGameDto>> teamsData = matchListService.RiotGameTeamsSelect(MatchList.get(i));
-			List<Map<String, RiotGameDto>> bansData = matchListService.RiotGameBansSelect(MatchList.get(i));
+			List<Map<String, RiotGameDto>> infoData = matchListService.RiotGameInfoSelect(MatchListSelect.get(i));
+			List<Map<String, RiotGameDto>> teamsData = matchListService.RiotGameTeamsSelect(MatchListSelect.get(i));
+			List<Map<String, RiotGameDto>> bansData = matchListService.RiotGameBansSelect(MatchListSelect.get(i));
 			newGList.put("bans", bansData);
 			newGList.put("teams", teamsData);
 			newGList.put("info", infoData);
-
 			MList.add(newGList);
 		}
+		MorematchList = matchList;
 		return MList;
 	}
 }

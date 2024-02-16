@@ -1,7 +1,7 @@
 /**
  * 
  */
-champUpdate() 
+
 
 //setTimeout(() => { champUpdate() }, 5 * 1000); // 5초
 
@@ -10,7 +10,7 @@ champUpdate()
 function champUpdate() {
 	laneChampList = ['TOP', 'jug', 'mid', 'adc', 'sup']
 	for (let i in laneChampList) {
-		console.log(laneChampList[i])
+		console.log(laneChampList[i]+"업데이트 시작")
 
 		$.ajax({
 			type: "post",
@@ -18,8 +18,7 @@ function champUpdate() {
 			data: { "teamPosition": laneChampList[i] },
 			success: function(res) {
 				
-				champRank('top');
-				console.log("성공")
+				console.log("<< 5 뜨면 업데이트 성공")
 
 			}
 

@@ -9,6 +9,19 @@
 </head>
 <body>
 	<h1>rank 테이블 Test 용, 데이터 다시 받아서 수정할 예정</h1>
+
+
+
+     <c:if test = "${userId eq 'jhl'}">
+     
+        <input type="button" onclick="champUpdate()" value="관리자용업데이트버튼" />	
+        
+      </c:if>
+
+
+
+
+
 	<div class="tooltip" id="tooltip">Champion Name</div>
 	<div class="contentsRank">
 		<div class="aside left"></div>
@@ -25,6 +38,11 @@
 						<option value="Challenger+">Challenger+
 					</select>
 
+
+
+
+					<!-- 						<option value="Master+">Master+ -->
+					<!-- 						<option value="Challenger+">Challenger+ -->
 
 				</div>
 
