@@ -109,7 +109,7 @@ public class JhlChampService {
 			champRankTList.put("win_total_cnt", win_total_cnt);
 			champRankTList.put("champion_pick", allCnt);
 			champRankTList.put("ban_rate", ban_rate);
-
+			log.info("============{}",ban_rate);
 			champDao.saveChampRankT(champRankTList);
 		}
 		log.info("====초보자페이지 업데이트 종료 : {}",rankDto.getTeamPosition());

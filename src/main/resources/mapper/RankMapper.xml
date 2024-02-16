@@ -17,7 +17,8 @@
 		SELECT *
 		FROM champRankT
 		WHERE teamPosition =
-		#{teamPosition};
+		#{teamPosition}
+		order by win_total_cnt desc;
 
 	</select>
 
@@ -42,8 +43,6 @@
 
 	<insert id="saveChampRankT">
 
-
-		REPLACE into champRankT
 
 		REPLACE into champRankT(teamPosition,champion_name
 		,champion_name_kr,pick_rate
