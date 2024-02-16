@@ -46,7 +46,7 @@ public class WebClientService {
 
 	}
 
-	public List<String> getgameid(String puuid, String count) {
+	public ArrayList<String> getgameid(String puuid, String count) {
 
 		// 가지고 올 경기 수 << 추후에 늘리기
 		String[] ApikeyList = { "RGAPI-e674eb69-7d34-41d9-adfb-e43ad16950ca",
@@ -56,7 +56,7 @@ public class WebClientService {
 
 		String apiKeyTeam = ApikeyList[Integer.valueOf(count) % ApikeyList.length];
 
-		log.info(apiKeyTeam);
+//		log.info(apiKeyTeam);
 
 		String url = "https://asia.api.riotgames.com/lol/match/v5/matches/by-puuid/" + puuid + "/ids?start=0&count="
 				+ count + "&api_key=" + api_key;
@@ -67,7 +67,9 @@ public class WebClientService {
 				.block();
 		// 결과 확인
 //		log.info(response.toString());
-		return response;
+		ArrayList<String> res = new ArrayList<>(response);
+
+		return res;
 	}
 
 	public Map getgameinfo(String matchId) { // 매치id를 통해서 데이터를 받음
@@ -167,19 +169,25 @@ public class WebClientService {
 	}
 
 	// 없는 매치아이디 리스트 확인작업
-	public List<Map<String, Object>> matchListVsDb(List<String> mList, RiotApiDto riotApiDto) {
+	public List<Map<String, Object>> matchListVsDb(ArrayList<String> mList, RiotApiDto riotApiDto) {
 
-		log.info("===dbList{}", riotApiDto);
-		List<String> dbList = webdao.matchIdRecent(riotApiDto);
+		riotApiDto.setStartValue(riotApiDto.getStartValue() - riotApiDto.getMatchIdCnt());
 
-		mList.removeAll(dbList);
+		ArrayList<String> newmList = new ArrayList<>(); // 뒤에 3개만
 
-		log.info("===mList{}", mList);
-		log.info("===dbList{}", dbList);
+		for (int i = mList.size() - 1; mList.size() - riotApiDto.getMatchIdCnt() <= i; i--) {
+		
+			newmList.add(mList.get(i));
+		}
+	
+		ArrayList<String> dbList = webdao.matchIdRecent(riotApiDto);
+
+		newmList.removeAll(dbList);
+
 		List<Map<String, Object>> findList = new ArrayList<>();
 		if (mList.size() != 0) {// 3개다 같지 않다.
 
-			for (String matchId : mList) { // 남아있는 경기번호만 가면됨
+			for (String matchId : newmList) { // 남아있는 경기번호만 가면됨
 
 				Map<String, Object> mMap = getgameinfo(matchId);
 				findList.add(mMap);
@@ -193,6 +201,11 @@ public class WebClientService {
 	public List<Map<String, Object>> newDataInfo(RiotApiDto riotApiDto) {
 
 		return webdao.newDataInfo(riotApiDto);
+	}
+
+	public List<Map<String, Object>> forGraphInfo(RiotApiDto riotApiDto) {
+	
+		return webdao.forGraphInfo(riotApiDto);
 	}
 
 }

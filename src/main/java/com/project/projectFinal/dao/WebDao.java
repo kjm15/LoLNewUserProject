@@ -19,10 +19,12 @@ public interface WebDao {
 
 	int matchListVsDb(String matchId);
 
-	List<String> matchIdRecent(RiotApiDto riotApiDto);
+	ArrayList<String> matchIdRecent(RiotApiDto riotApiDto);
 
 
 
 	List<Map<String, Object>> newDataInfo(RiotApiDto riotApiDto);
+
+	List<Map<String, Object>> forGraphInfo(RiotApiDto riotApiDto);
 
 }

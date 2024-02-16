@@ -29,7 +29,7 @@ public class RestRiotTvController {
 		String puuid = webClientService.getPuuId(riotApiDto.getGameName(), riotApiDto.getTagLine());
 
 		// mList : api키로 받아온 경기번호
-		List<String> mList = webClientService.getgameid(puuid, String.valueOf(riotApiDto.getMatchIdCnt()));
+		ArrayList<String> mList = webClientService.getgameid(puuid, String.valueOf(riotApiDto.getStartValue()));
 		// db와 비교하여 모자란 것들 가지고 오기
 		List<Map<String, Object>> fList = webClientService.matchListVsDb(mList, riotApiDto);
 
@@ -53,9 +53,16 @@ public class RestRiotTvController {
 	}
 	@PostMapping("/newDataInfo")
 	public List<Map<String, Object>> newDataInfo(RiotApiDto riotApiDto) {
-		log.info("=====riotApiDto{}",riotApiDto);
+
 		return webClientService.newDataInfo(riotApiDto);
 
 	}
-	
+	@PostMapping("/forGraphInfo")
+	public List<Map<String, Object>> forGraphInfo(RiotApiDto riotApiDto) {
+
+		List<Map<String, Object>> aa = webClientService.forGraphInfo(riotApiDto);
+		
+		return aa;
+
+	}
 }

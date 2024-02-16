@@ -43,7 +43,7 @@ public class WebSocketChattService {
 
 	@OnMessage // 메세지 수신시
 	public void onMessage(String msg, Session session) throws Exception {
-		
+
 		// msg >> hashmap으로 변환시켜주는 구문
 		ObjectMapper mapper = new ObjectMapper();
 		HashMap<String, String> map = new HashMap<String, String>();
@@ -114,9 +114,21 @@ public class WebSocketChattService {
 						key.getBasicRemote().sendText(msg2);
 
 					} catch (IOException e) {
-						// TODO Auto-generated catch block
+						
 						e.printStackTrace();
 					}
+				} else {
+					JSONObject jsonObject = new JSONObject();
+					jsonObject.put("rCnt", mDto.getRCnt());
+					jsonObject.put("work", "allRejeck");
+					String msg2 = jsonObject.toString();
+					try {
+						key.getBasicRemote().sendText(msg2);
+					} catch (IOException e) {
+						
+						e.printStackTrace();
+					}
+
 				}
 			});
 		} else if (map.get("work").equals("roomUpdate")) {// 방만들기
@@ -143,7 +155,7 @@ public class WebSocketChattService {
 						jsonObject.put("work", "reject");
 						String msg2 = jsonObject.toString();
 						key.getBasicRemote().sendText(msg2);
-						
+
 					} catch (IOException e) {
 
 						e.printStackTrace();

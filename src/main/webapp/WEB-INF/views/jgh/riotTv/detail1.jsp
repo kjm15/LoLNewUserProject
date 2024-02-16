@@ -6,11 +6,11 @@
 모듈화 1번
 
 <input type="text" id="gameName1" placeholder="아이디를 적어주세요"
-	value="동정팔이소년" />
-<input type="text" id="tagLine" placeholder="태그를 적어주세요" value="KR1" />
+	value="유부남" />
+<input type="text" id="tagLine" placeholder="태그를 적어주세요" value="KR 1" />
 
 <input type="button" id="find" value="찾기">
-
+	<center><hr>!!! 라문철 tv !!!<hr></center>
 <div id="loading">
 	<img src="/img/loadingimg.gif" />
 </div>
@@ -20,7 +20,7 @@
 	<div id=detail2></div>
 </div>
 
-
+<div id = "myImg"></div>
 
 <div class=riotgraph>
 	<div id='container'>

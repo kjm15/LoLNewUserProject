@@ -10,13 +10,13 @@
 		riottvT(matchId,championName,teamId,teamName,kills,assists,deaths,kda,totalTimeSpentDead,visionWardsBoughtInGame
 		,visionScore,win,gameStartTimestamp,riotIdGameName,riotIdTagline,goldEarned,totalDamageDealtToChampions,
 		totalMinionsKilled,wardsPlaced,puuid,championId,koChampionName,
-		participantId,winCheck)
+		participantId,winCheck,gameMode)
 
 		values(#{matchId},#{championName},#{teamId},#{teamName},#{kills},#{assists},#{deaths},#{kda},#{totalTimeSpentDead},#{visionWardsBoughtInGame}
 		,#{visionScore},#{win},#{gameStartTimestamp},#{riotIdGameName},#{riotIdTagline},#{goldEarned},#{totalDamageDealtToChampions},
 		#{totalMinionsKilled},#{wardsPlaced},#{puuid},#{championId},(select
 		champion_name_kr from cn_kr where championId =
-		#{championId}),#{participantId},#{winCheck});
+		#{championId}),#{participantId},#{winCheck},#{gameMode});
 
 
 
@@ -26,25 +26,13 @@
 
 		select matchId
 		from riottvT
-		where
-		riotIdGameName=#{gameName} and riotIdTagline=#{tagLine}
-		order by
-		gameStartTimestamp desc,participantId
+		where riotIdGameName=#{gameName} and riotIdTagline=#{tagLine}
+		order by gameStartTimestamp desc,participantId
 		limit #{matchIdCnt};
 
 	</select>
-	<select id="dbFindData1">
+	
 
-		select * from riottvT where matchId = #{matchId}
-		order by participantId ;
-
-	</select>
-	<select id="matchListVsDb">
-
-		select count(*) from riottvT where matchId =
-		#{matchId};
-
-	</select>
 	<select id="matchIdRecent">
 
 		select matchId 
@@ -63,6 +51,16 @@
 		where riotIdGameName = #{gameName} 
 		order by gameStartTimestamp desc 
 		limit #{startValue},#{matchIdCnt};
+
+	</select>
+
+
+	<select id="forGraphInfo">
+
+		select * 
+		from riottvT 
+		where matchId = #{matchIdSolo}
+		order by participantId ;
 
 	</select>
 

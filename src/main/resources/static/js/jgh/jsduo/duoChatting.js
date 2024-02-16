@@ -3,6 +3,7 @@
 $('#duoParty').on("click", function() {
 
 	let rCnt = $('#rCnt').val()
+
 	let userId = $('#userId').val() //로그인한사람
 	let hostId = $('#hostId').val() //작성자
 	let temp1 = {}
@@ -22,7 +23,7 @@ $('#duoParty').on("click", function() {
 		return false
 
 	}
-
+	document.getElementById('request').value = rCnt
 	$('#flagcollapse').html("<font color='blue'><marquee scrollamount=5>상대방에게 듀오 요청중입니다. 잠시만 기다려주세요</marquee></font>")
 	$('#duoParty').hide();
 	$('#duoPartyCancel').show();

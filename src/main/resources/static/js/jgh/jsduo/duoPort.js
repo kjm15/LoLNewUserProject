@@ -22,15 +22,17 @@ ws.addEventListener("message", (event) => {
 
 			createQuestion(eventjson)
 
+
 		}
 
 
 	} else if (eventjson.work == 'connectRoom') { //서로 대화창에 들어옴
 		console.log(eventjson)
 		let userId = $('#userId').val()
-
+		duoMainInfo()
+		showChattInfo()
 		if (userId == eventjson.hostId || userId == eventjson.guestId) {
-			
+
 			myRoom(eventjson.rCnt)
 			showChattInfo() //왼쪽 사이드바 최신화 업데이트
 			let res = {}
@@ -52,9 +54,18 @@ ws.addEventListener("message", (event) => {
 
 		}
 
-	}else if (eventjson.work == "reject") { //메세지 보내기 //완료
+	} else if (eventjson.work == "reject") { //메세지 보내기 //완료
 		alert("상대방이 거절하였습니다.")
 		close();
+
+	} else if (eventjson.work == "allRejeck") { //승낙받지 못한 사람에게 거절 메세지 보내기
+		let request = $('#request').val()
+		if (request == eventjson.rCnt) {
+			alert("상대방이 다른사람과 연결되었습니다.")
+			close();
+			document.getElementById('request').value = '';
+		}
+
 
 	}
 
