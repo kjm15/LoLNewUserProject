@@ -23,6 +23,14 @@ public interface JhlChampDao {
 
 	public List<HashMap<String, Object>> champRank(ChampionRankDto rankDto);
 
+	public List<HashMap<String, Object>> rankListInfo(ChampionRankDto rankDto);
+
+	public List<HashMap<String, Object>> laneListInfo(ChampionRankDto rankDto);
+
+	public List<HashMap<String, Object>>  rankListTeamPositionInfo(String teamPosition, int championId);
+
+	public void saveChampRankT(HashMap<String, Object> champRankTList);
+
 
 
 	

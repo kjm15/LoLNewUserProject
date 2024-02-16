@@ -5,7 +5,7 @@
 <html>
 <head>
 <script defer src="js/jhl/champ/champRank.js"></script>
-
+<script defer src="js/jhl/champ/champUpdate.js"></script>
 </head>
 <body>
 <h1>rank 테이블 Test 용, 데이터 다시 받아서 수정할 예정</h1>
