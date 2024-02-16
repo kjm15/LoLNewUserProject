@@ -49,7 +49,7 @@ public class JhlRestChampController {
 	@PostMapping("/champUpdate")
 	public void champUpdate(ChampionRankDto rankDto) {
 //		log.info("==={}", rankDto.getTeamPosition());
-
+		
 		champService.champUpdate(rankDto);
 
 	}

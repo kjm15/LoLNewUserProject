@@ -60,6 +60,12 @@
 	select count(*) from rankListT where teamPosition = #{teamPosition} ;
 	
 	</select>
+	<select id = "banChampCnt">
 	
 	
+	select count(*) 
+	from rankListT 
+	where ban_champion_name_kr = #{champion_name_kr} ;
+	
+	</select>
 </mapper>

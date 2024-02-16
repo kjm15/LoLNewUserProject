@@ -8,8 +8,18 @@
 <script defer src="js/jhl/champ/champUpdate.js"></script>
 </head>
 <body>
-<h1>rank 테이블 Test 용, 데이터 다시 받아서 수정할 예정</h1>
-<div class="tooltip" id="tooltip">Champion Name</div>
+	<h1>rank 테이블 Test 용, 데이터 다시 받아서 수정할 예정</h1>
+
+     <c:if test = "${userId eq 'jhl'}">
+     
+        <input type="button" onclick="champUpdate()" value="관리자용업데이트버튼" />	
+        
+      </c:if>
+
+
+
+
+	<div class="tooltip" id="tooltip">Champion Name</div>
 	<div class="contentsRank">
 		<div class="aside left"></div>
 		<div class="contentsItemsChamp">
@@ -18,12 +28,12 @@
 				<div
 					style="text-align: center; height: 60px; border: 1px solid #8CB9FC; display: flex; align-items: center; margin-bottom: 10px; justify-content: center">
 					챔피언 랭킹 <select id="rankSelect">
-						<option value="Emerald+" id ="Emerald">Emerald+
+						<option value="Emerald+" id="Emerald">Emerald+
 						<option value="Diamond+">Diamond+
 					</select>
-						
-<!-- 						<option value="Master+">Master+ -->
-<!-- 						<option value="Challenger+">Challenger+ -->
+
+					<!-- 						<option value="Master+">Master+ -->
+					<!-- 						<option value="Challenger+">Challenger+ -->
 				</div>
 
 				<div class="rankTable">
@@ -57,12 +67,12 @@
 					<div class="lineRank">
 						<div class="rankItems">
 							<table class="Rankable">
-							<colgroup>
-							<col width="40%">
-							<col width="30%">
-							<col width="30%">
+								<colgroup>
+									<col width="40%">
+									<col width="30%">
+									<col width="30%">
 
-							</colgroup>
+								</colgroup>
 								<thead>
 									<tr class="tableColumns">
 										<th><span>챔피언</span></th>
@@ -70,7 +80,7 @@
 										<th><span>픽률</span></th>
 									</tr>
 								</thead>
-								<tbody class ="rTableBody">
+								<tbody class="rTableBody">
 									<tr class="rTable">
 										<td class="rData"></td>
 										<td class="rData"></td>
@@ -82,7 +92,7 @@
 						</div>
 					</div>
 
-					
+
 
 				</div>
 			</div>
