@@ -35,6 +35,8 @@ public interface JhlChampDao {
 
 	public int allChampCnt(String teamPosition);
 
+	public int banChampCnt(String champion_name_kr);
+
 
 
 	

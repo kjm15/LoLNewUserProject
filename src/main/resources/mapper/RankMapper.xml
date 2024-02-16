@@ -43,10 +43,15 @@
 
 	<insert id="saveChampRankT">
 
-		insert into champRankT
+		REPLACE into champRankT(teamPosition,champion_name
+		,champion_name_kr,pick_rate
+		,win_rate,win_total_cnt
+		,champion_pick,ban_rate)
+		
 		values(#{teamPosition},#{champion_name},#{champion_name_kr}
 		,#{pick_rate},#{win_rate},#{win_total_cnt}
 		,#{champion_pick},#{ban_rate} )
+	
 	
 	</insert>
 	<select id = "allChampCnt">
@@ -55,6 +60,12 @@
 	select count(*) from rankListT where teamPosition = #{teamPosition} ;
 	
 	</select>
+	<select id = "banChampCnt">
 	
 	
+	select count(*) 
+	from rankListT 
+	where ban_champion_name_kr = #{champion_name_kr} ;
+	
+	</select>
 </mapper>
