@@ -36,12 +36,12 @@
 					</div>
 
 					<div>
-						<button id="btn-duoSearch" >Duo찾기작성</button>
+						<button id="btn-duoSearch">Duo찾기작성</button>
 					</div>
 				</div>
 				<div class="duoTitems">
 					<div class="duoT">
-						<table class="DuoTable" id = "duoboard">
+						<table class="DuoTable" id="duoboard">
 							<colgroup>
 								<col width="5%">
 								<col width="15%">
@@ -49,8 +49,8 @@
 								<col width="10%">
 								<col width="10%">
 								<col width="10%">
-								<col width="10%">
-								<col width="15%">
+
+								<col width="25%">
 								<col width="5%">
 							</colgroup>
 
@@ -62,13 +62,13 @@
 								<th class="duoitems dTear">티어</th>
 								<th class="duoitems dType">게임타입</th>
 								<th class="duoitems yPosition">찾는 포지션</th>
-								<th class="duoitems recentP">최근 챔피언</th>
+
 								<th class="duoitems dMeno">메모</th>
 								<th class="duoitems blank"></th>
 
 							</tr>
-							<tbody id = "duotbody">
-								
+							<tbody id="duotbody">
+
 							</tbody>
 
 
@@ -82,15 +82,16 @@
 
 
 	</div>
-	
-	
+
+
 	<%@include file="../jgh/duoSearch/sideBar.jsp"%>
 
 	<%@include file="../jgh/duoSearch/modal3.jsp"%>
 
 	<%@include file="../jgh/duoSearch/modal2.jsp"%>
 	<div class="accordion-box"></div>
-	<!-- 본인아이디 -->
+	<!-- 요청 -->
+	<input type="hidden" value="" id="request" />
 	<!-- 	채팅번호,방번호, 현재 테이블에서 누른 방번호 알수있음-->
 	<input type="hidden" value="" id="rCnt" />
 	<!-- 	//요청자 -->

@@ -24,20 +24,19 @@ public class RestRiotTvController {
 	WebClientService webClientService;
 
 	@PostMapping("/findPuuIdFindList")
-	public List<String> findPuuIdFindList(RiotApiDto riotApiDto) {
+	public List<Map<String, Object>> findPuuIdFindList(RiotApiDto riotApiDto) {
 
 		String puuid = webClientService.getPuuId(riotApiDto.getGameName(), riotApiDto.getTagLine());
 
-		return webClientService.getgameid(puuid, String.valueOf(riotApiDto.getMatchIdCnt()));
+		// mList : api키로 받아온 경기번호
+		ArrayList<String> mList = webClientService.getgameid(puuid, String.valueOf(riotApiDto.getStartValue()));
+		// db와 비교하여 모자란 것들 가지고 오기
+		List<Map<String, Object>> fList = webClientService.matchListVsDb(mList, riotApiDto);
+
+		return fList;
 
 	}
 
-	@PostMapping("/findOnebyList")
-	public Map findOnebyList(RiotApiDto riotApiDto) {
-
-		return webClientService.getgameinfo(riotApiDto.getMatchIdjustOne());
-
-	}
 
 	@PostMapping("/dbSaveInfoRiotTv")
 	public void dbSaveInfoRiotTv(@RequestBody List<Map<String, Object>> dbList) {
@@ -48,14 +47,22 @@ public class RestRiotTvController {
 
 	@PostMapping("/dbFindData")
 	public List<Map<String, Object>> dbFindData(RiotApiDto riotApiDto) {
-
+		
 		return webClientService.dbFindData(riotApiDto);
 
 	}
+	@PostMapping("/newDataInfo")
+	public List<Map<String, Object>> newDataInfo(RiotApiDto riotApiDto) {
 
-	@PostMapping("/matchListVsDb")
-	public ArrayList<String> matchListVsDb(@RequestBody List<String> mList) {
+		return webClientService.newDataInfo(riotApiDto);
 
-		return webClientService.matchListVsDb(mList);
+	}
+	@PostMapping("/forGraphInfo")
+	public List<Map<String, Object>> forGraphInfo(RiotApiDto riotApiDto) {
+
+		List<Map<String, Object>> aa = webClientService.forGraphInfo(riotApiDto);
+		
+		return aa;
+
 	}
 }

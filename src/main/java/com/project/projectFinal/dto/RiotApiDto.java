@@ -27,6 +27,7 @@ public class RiotApiDto {
 	private String gameMode;
 	private int matchCnt;
 	//장기훈추가
-	private String matchIdjustOne;
+	private String matchIdSolo;
 	private Integer matchIdCnt;
+	private Integer startValue;
 }

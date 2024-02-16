@@ -11,7 +11,7 @@ function duoMainInfo() {
 		type: 'post',
 		url: '/jgh/duostartinfo',
 		success: function(res) {
-//			console.log(res)
+			//			console.log(res)
 			const date = new Date();
 
 			let str = ''
@@ -25,7 +25,7 @@ function duoMainInfo() {
 			<td class="duoitems dTear"><span class="duo-tear">${res[i].tier}</span></td>
 			<td class="duoitems dType"><span class="duo-gType">${res[i].gameType}</span></td>
 			<td class="duoitems yPosition"><span class="duo-yPosition">${res[i].duoPosition}</span></td>
-			<td class="duoitems recentP"><span class="duo-recentP">개발중</span></td>
+		
 			<td class="duoitems dMeno"><div class="duo-momo">
 					<div class="duo-m">
 						<span class="duo-ms">${res[i].memo}</span>
@@ -81,12 +81,12 @@ function showNewDuo(res) {
 			<td class="duoitems dTear"><span class="duo-tear">${tier}</span></td>
 			<td class="duoitems dType"><span class="duo-gType">${gameType}</span></td>
 			<td class="duoitems yPosition"><span class="duo-yPosition">${duoPosition}</span></td>
-			<td class="duoitems recentP"><span class="duo-recentP">개발중</span></td>
-			<td class="duoitems dMeno"><div class="duo-momo">
+		
+			<center><td class="duoitems dMeno"><div class="duo-momo">
 					<div class="duo-m">
-						<span class="duo-ms">${memo}</span>
+						<span class="duo-ms">${memo}	</span>
 					</div>
-				</div></td>
+				</div></td></center>
 				
 				
 			<td class="duoitems blank">
