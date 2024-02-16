@@ -42,17 +42,21 @@
 <link href="/css/newMain.css" rel="stylesheet">
 <link href="/css/jgh/modal.css" rel="stylesheet" type="text/css">
 <link href="/css/common/roulette.css" rel="stylesheet" type="text/css">
+<script defer src="/js/aPayment/payment.js"></script>
+<script defer src="/js/aCommon/roulette.js"></script>
+<script
+	src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
 
 </head>
 
 <body>
 
-<%-- 	<%@include file="../inc/header.jsp"%> --%>
+	<%-- 	<%@include file="../inc/header.jsp"%> --%>
 	<div class="ground">
 		<%@include file="../aMain/myPageMain.jsp"%>
 	</div>
-	<div class = "ground2">
-	<%@include file="../inc/footer.jsp"%>
+	<div class="ground2">
+		<%@include file="../inc/footer.jsp"%>
 	</div>
 
 	<!-- js들어갈자리  -->
@@ -61,7 +65,7 @@
 	<!-- 	<script defer src="/js/jgh/jsduo/duoDeleteSave.js"></script> -->
 	<!-- 	<script defer src="/js/jgh/jsduo/duoModal.js"></script> -->
 	<!-- 	<script defer src="/js/jgh/jsduo/duoShow.js"></script> -->
-
+	<%@include file="../inc/modal4.jsp"%>
 </body>
 
 </html>
