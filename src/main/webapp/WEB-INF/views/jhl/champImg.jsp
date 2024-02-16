@@ -39,15 +39,21 @@
 				</div>
 			</div>
 		</div>
-
+		<div id="myModal" class="modal">
+			<div class="modal-content">
+				<span class="close" onclick="closeModal()">&times;</span>
+				<!-- Content inside the modal -->
+				<div> aaa</div>
+			</div>
+		</div>
 
 		<div class="champImgItems">
 			<div class="se">
-				<span class="tooltiptext tooltip-top">위쪽 툴팁</span>
+
 				<div class="champs">
-					<div class="champImgItem" id='champImgItem'>
+					<div class="champImgItem">
 						<div class='cimgs'>
-							<img class='championImg'>
+							<img class='championImg' onclick = "openModal()">
 						</div>
 						<span class='champName'></span>
 					</div>

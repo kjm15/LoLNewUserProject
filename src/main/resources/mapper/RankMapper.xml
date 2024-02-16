@@ -2,27 +2,70 @@
 
 
 <mapper namespace="com.project.projectFinal.dao.JhlChampDao">
-<select id="champRank">
 
-SELECT 
-     cT.champion_name AS champion_name,
-    cT.champion_name_kr,
-    COUNT(rt.win) AS top_win_total_cnt,
-    CONCAT(ROUND((SUM(CASE WHEN rt.win = 1 THEN 1 ELSE 0 END) / COUNT(rt.win)) * 100, 2), '%') AS top_win_rate,
-    (SELECT COUNT(*) FROM rank_test WHERE teamPosition = 'TOP') AS total_champion_pick,
-    CONCAT(ROUND((COUNT(*) / (SELECT COUNT(*) FROM rank_test WHERE teamPosition= #{teamPosition})) * 100, 2), '%') AS top_pick_rate
-FROM 
-    rank_test rt
-JOIN 
-    champListT cT ON rt.championName = cT.champion_name
-WHERE 
-    rt.teamPosition = #{teamPosition}
-GROUP BY 
-    rt.championName, rt.teamPosition, cT.champion_name_kr
-ORDER BY 
-    top_win_total_cnt DESC
-LIMIT 60;
+	<select id="rankListInfo">
+
+		SELECT *
+		FROM rankListT
+		WHERE teamPosition =
+		#{teamPosition}
+
+	</select>
+
+	<select id="champRank">
+
+		SELECT *
+		FROM champRankT
+		WHERE teamPosition =
+		#{teamPosition}
+		LIMIT 60;
+
+	</select>
+
+	<select id="laneListInfo">
+
+		SELECT *
+		FROM champListT
+		where line like
+		concat('%',#{teamPosition}, '%')
+
+	</select>
+
+	<select id="rankListTeamPositionInfo">
+
+		SELECT *
+		FROM rankListT
+		where teamPosition =
+		#{teamPosition} and championId = #{championId}
 
 
-</select>
+	</select>
+
+	<insert id="saveChampRankT">
+
+		REPLACE into champRankT(teamPosition,champion_name
+		,champion_name_kr,pick_rate
+		,win_rate,win_total_cnt
+		,champion_pick,ban_rate)
+		
+		values(#{teamPosition},#{champion_name},#{champion_name_kr}
+		,#{pick_rate},#{win_rate},#{win_total_cnt}
+		,#{champion_pick},#{ban_rate} )
+	
+	
+	</insert>
+	<select id = "allChampCnt">
+	
+	
+	select count(*) from rankListT where teamPosition = #{teamPosition} ;
+	
+	</select>
+	<select id = "banChampCnt">
+	
+	
+	select count(*) 
+	from rankListT 
+	where ban_champion_name_kr = #{champion_name_kr} ;
+	
+	</select>
 </mapper>
