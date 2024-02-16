@@ -10,7 +10,4 @@ import lombok.NoArgsConstructor;
 public class ChampionRankDto {
 	private String teamPosition;
 	private String championName;
-    private int topWinTotalCnt;
-    private String topWinRate;
-    private String topPickRate;
 }

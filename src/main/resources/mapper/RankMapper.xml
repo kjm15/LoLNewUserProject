@@ -17,8 +17,7 @@
 		SELECT *
 		FROM champRankT
 		WHERE teamPosition =
-		#{teamPosition}
-		LIMIT 60;
+		#{teamPosition};
 
 	</select>
 
@@ -43,7 +42,7 @@
 
 	<insert id="saveChampRankT">
 
-		insert into champRankT
+		REPLACE into champRankT
 		values(#{teamPosition},#{champion_name},#{champion_name_kr}
 		,#{pick_rate},#{win_rate},#{win_total_cnt}
 		,#{champion_pick},#{ban_rate} )
