@@ -36,11 +36,15 @@ function mainSearch(gameName1) {
 
 function gamebtn(i) {
 	console.log(i)
-	var gametable = document.getElementById("gametable" + i + "");
-	gametable.style.display = ((gametable.style.display != 'none') ? 'none' : 'block');
-	if ((i + 1) % 3 == 0) {
-		loadMore.style.top = ((gametable.style.display != 'none') ? '80%' : '25%');
-	}
+	var line1 = document.getElementById("line1" + i + "");
+	var container2 = document.getElementById("container2" + i + "");
+//	var gametable = document.getElementById("gametable" + i + "");
+//	gametable.style.display = ((gametable.style.display != 'none') ? 'none' : 'block');
+	line1.style.display = ((line1.style.display != 'none') ? 'none' : 'block');
+	container2.style.display = ((container2.style.display != 'none') ? 'none' : 'block');
+//	if ((i + 1) % 3 == 0) {
+//		loadMore.style.top = ((gametable.style.display != 'none') ? '80%' : '25%');
+//	}
 
 }
 function searchbtn() {

@@ -30,6 +30,7 @@
 }
 
 .container1 {
+	border: 1px solid black;
 	display: flex;
 	height: 120px;
 }
@@ -45,7 +46,7 @@
 }
 
 .box-left {
-	background: red;
+	/*	background: red;*/
 	flex-basis: 200px;
 }
 
@@ -116,12 +117,12 @@
 }
 
 .box-right4 {
-	background: #8080ff;
+/*	background: #8080ff;*/
 	flex-basis: 200px;
 }
 
 .box-center4 {
-	background: #0080c0;
+	/*	background: #0080c0;*/
 	flex-basis: 150px;
 	text-align: center;
 }
@@ -139,8 +140,10 @@
 
 .spell2 {
 	display: flex;
-	background: #c0c0c0;
+	
+	/*	background: #c0c0c0;*/
 	height: 50%;
+
 }
 
 .blueChamp {
