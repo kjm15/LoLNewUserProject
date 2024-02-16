@@ -1,0 +1,71 @@
+@charset "UTF-8";
+.ground{
+	width : 70%;
+	height : 850px;
+	left : 15%;
+/* 	border: 1px solid black; */
+	position: relative;
+	background-color : hsla(214, 80%, 71%, 0.8);
+	
+}
+
+.ground2{
+	width : 70%;
+	height : auto;
+	left : 15%;
+/* 	border: 1px solid black; */
+	position: relative;
+}
+.profile{
+	width : 90%;
+	height : 50%;
+	margin: 5%;
+	position: relative;
+	border: 5px solid white;
+	border-radius: 1%;
+	background-color : rgba(158, 200, 255, 1);
+}
+.pline1{
+	width : 98%;
+	height : 7%;
+	margin : 1%;
+	position : relative;
+/* 	border: 1px solid black; */
+}
+.pline1-1{
+	width : 15%;
+	height : 100%;
+	float : left;
+	position : relative;
+	text-align: left;
+    color: white;
+    font-size: 20px;
+/* 	border: 1px solid black; */
+}
+.pline1-2{
+	width : 10%;
+	height : 100%;
+	float : left;
+	margin-left : 75%;
+	text-align : right;
+	position : relative;
+/* 	border: 1px solid black; */
+}
+.pline2{
+	width : 98%;
+	height : 15%;
+	margin : 1%;
+	position : relative;
+	border: 1px solid black;
+	text-align: left;
+	color : white;
+	font-size : 40px;
+}
+.emailimg{
+	width : 10%;
+	height : 100%;
+	position : relative;
+	text-align : left;
+	background-image: src="../img/kjm/email.png";
+	background-size: cover;
+}
