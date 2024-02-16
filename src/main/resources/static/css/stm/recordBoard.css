@@ -65,7 +65,7 @@
 .box-center3 {
 	display: flex;
 	background: #0080c0;
-	flex: 1;
+/*	flex: 1;*/
 	text-align: center;
 }
 
@@ -117,7 +117,7 @@
 }
 
 .box-right4 {
-/*	background: #8080ff;*/
+	/*	background: #8080ff;*/
 	flex-basis: 200px;
 }
 
@@ -140,7 +140,7 @@
 
 .spell2 {
 	display: flex;
-	
+
 	/*	background: #c0c0c0;*/
 	height: 50%;
 
@@ -245,7 +245,11 @@
 }
 
 .damageGraph {
-	background: #80ff80;
+	/*	background: #80ff80;*/
+/*	height: 100%;*/
+	border-radius: 2px;
+	background-color: #4caf50;
+	transition: width 0.5s ease-in-out;
 	height: 50%;
 }
 
@@ -269,3 +273,4 @@
 	background: #ff8040;
 	flex-basis: 80%;
 }
+
