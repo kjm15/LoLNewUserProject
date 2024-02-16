@@ -45,6 +45,7 @@ public class JhlChampService {
 		List<HashMap<String, Object>> laneChampList = champDao.laneListInfo(rankDto);
 
 		for (Map<String, Object> champ : laneChampList) {
+
 			List<HashMap<String, Object>> cList = new ArrayList<>();
 			champ.get("championid"); // 챔프아이디
 			String champion_name_kr = (String) champ.get("champion_name_kr"); // 한국어이름
@@ -56,31 +57,34 @@ public class JhlChampService {
 			// cList : 각각의 챔피언 총 리스트
 			cList = champDao.rankListTeamPositionInfo(teamPosition, championId);
 
-			int allCnt = cList.size();
+			int allCnt = cList.size(); // 한챔피언의 총 길이
 
 			int winCnt = 0;
 			int pickCnt = 0;
-			int win_rate = 0;
-			int pick_rate = 0;
+			double win_rate = 0;
+			double pick_rate = 0;
 			for (Map<String, Object> a : cList) {
+				allCnt++;
+
 				if ((int) a.get("win") == 1) {
 					winCnt++;
 				}
-				if (a.get("championId").equals(String.valueOf(championId))) {
-					pickCnt++;
-				}
 
 			}
-			if (winCnt != 0) {
-				win_rate = (Math.round(winCnt / allCnt * 100));
-				pick_rate = (Math.round(pickCnt / allCnt * 100));
+			int allChampCnt = champDao.allChampCnt(teamPosition);
+
+			double aa = (double) winCnt;
+			double bb = (double) allCnt;
+
+			if (allCnt != 0) {
+				win_rate = Math.round(((aa / allCnt) * 100) * 100) / 100.0;
+				pick_rate = Math.round(((bb / allChampCnt) * 100) * 100) / 100.0;
 			} else {
 				win_rate = 0;
 				pick_rate = 0;
 			}
 
 			int win_total_cnt = winCnt;
-			int champion_pick = pickCnt;
 
 			HashMap<String, Object> champRankTList = new HashMap<>();
 
@@ -90,7 +94,7 @@ public class JhlChampService {
 			champRankTList.put("pick_rate", pick_rate);
 			champRankTList.put("win_rate", win_rate);
 			champRankTList.put("win_total_cnt", win_total_cnt);
-			champRankTList.put("champion_pick", champion_pick);
+			champRankTList.put("champion_pick", allCnt);
 			champRankTList.put("ban_rate", 0);
 
 			champDao.saveChampRankT(champRankTList);

@@ -31,6 +31,10 @@ public interface JhlChampDao {
 
 	public void saveChampRankT(HashMap<String, Object> champRankTList);
 
+	public int saveChamppick_rate();
+
+	public int allChampCnt(String teamPosition);
+
 
 
 	

@@ -9,7 +9,6 @@ champUpdate()
 
 function champUpdate() {
 	laneChampList = ['TOP', 'jug', 'mid', 'adc', 'sup']
-	laneList = ['TOP', 'JUNGLE', 'MIDDLE', 'BOTTOM', 'UTILITY']
 	for (let i in laneChampList) {
 		console.log(laneChampList[i])
 
@@ -19,6 +18,7 @@ function champUpdate() {
 			data: { "teamPosition": laneChampList[i] },
 			success: function(res) {
 				
+				champRank('top');
 				console.log("성공")
 
 			}
