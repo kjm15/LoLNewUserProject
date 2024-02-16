@@ -9,10 +9,12 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.project.projectFinal.dto.ChampionImageDto;
+import com.project.projectFinal.dto.GraphDto;
 import com.project.projectFinal.dto.ItemDto;
 import com.project.projectFinal.dto.itemInfoDto;
 import com.project.projectFinal.dto.itemToolTipDto;
 import com.project.projectFinal.service.ChampionService;
+import com.project.projectFinal.service.GraphService;
 import com.project.projectFinal.service.itemService;
 
 import lombok.extern.slf4j.Slf4j;
@@ -27,6 +29,9 @@ public class kdgRestController {
 	
 	@Autowired
 	itemService is;
+	
+	@Autowired
+	GraphService gs;
 
 	@PostMapping("/search")
 	public List<HashMap<String, String>> search(ChampionImageDto cDto) {
@@ -75,6 +80,15 @@ public class kdgRestController {
 	public List<HashMap<String, itemInfoDto>> itemInfo(itemInfoDto iIDto) {
 		
 		return is.itemInfo(iIDto);
+		
+	}
+	
+	@PostMapping("/itemGraph")
+	public List<HashMap<String, GraphDto>> itemGraph (){
+		
+		log.info("================ 컨트롤러 진입","");
+		
+		return gs.itemGraph();
 		
 	}
 	

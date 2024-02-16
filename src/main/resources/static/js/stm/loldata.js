@@ -15,7 +15,7 @@ function mainStart() {
 	let gameName = $('#gameName').val()
 
 
-	console.log(gameName) // 값이 안 넘어왔음
+//	console.log(gameName) // 값이 안 넘어왔음
 	if (gameName != '') {
 		mainSearch(gameName)
 	}
