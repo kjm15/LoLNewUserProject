@@ -9,39 +9,15 @@ let values = []
 let images = []
 let labels = []
 
-
-//let championName = ''
-//let teamId = ''
-//let matchId = ''
-
-//let kda = ''
-//let teamDamagePercentage = ''
-//let totalTimeSpentDead = ''
-//let visionWardsBoughtInGame = ''
-//let visionScore = ''
-//let win = ''
-//let gameStartTimestamp = ''
-//let riotIdGameName = ''
-//let riotIdTagline = ''
-//let goldEarned = ''
-//let puuid = ''
-//let totalDamageDealtToChampions = ''
-//let totalMinionsKilled = ''
-//let wardsPlaced = ''
-//let kills = ''
-//let assists = ''
-//let deaths = ''
-//let teamName = ''
-//let championId = ''
-//let participantId = ''
-//let winCheck = ''
-
 //db에 넣을때 사용하는 리스트
 let dbList = [];
 let matchCnt = 0;
 let matchCnt1 = 1;
 const matchIdCnt = 3;
 $("#find").on("click", function() {
+	$('#detail2').html('')
+	matchCnt1 = 1;
+	matchCnt = 0;
 	$('#myImg').hide();
 	$('.riotgraph').hide();
 	$('#riotSearch').show();
