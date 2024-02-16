@@ -10,11 +10,14 @@
 <body>
 	<h1>rank 테이블 Test 용, 데이터 다시 받아서 수정할 예정</h1>
 
+
+
      <c:if test = "${userId eq 'jhl'}">
      
         <input type="button" onclick="champUpdate()" value="관리자용업데이트버튼" />	
         
       </c:if>
+
 
 
 
@@ -30,38 +33,40 @@
 					챔피언 랭킹 <select id="rankSelect">
 						<option value="Emerald+" id="Emerald">Emerald+
 						<option value="Diamond+">Diamond+
+						<option value="Master+">Master+
+						<option value="Master+">Grandmaster+
+						<option value="Challenger+">Challenger+
 					</select>
+
+
+
 
 					<!-- 						<option value="Master+">Master+ -->
 					<!-- 						<option value="Challenger+">Challenger+ -->
+
 				</div>
 
 				<div class="rankTable">
 					<div class="rankLine">
 						<div class="rankSearch ranklineBtn">
-							<span><img
-								src="/img/jhl/positionImg/Position_Plat-Top.png" id="Top"
-								onclick="champRank(this.id)">탑</span>
+							<span id="Top" onclick="champRank(this.id)"><img
+								src="/img/jhl/positionImg/Position_Plat-Top.png">탑</span>
 						</div>
 						<div class="rankSearch">
-							<span><img
-								src="/img/jhl/positionImg/Position_Plat-Jungle.png" id="JUNGLE"
-								onclick="champRank(this.id)">정글</span>
+							<span id="jug" onclick="champRank(this.id)"><img
+								src="/img/jhl/positionImg/Position_Plat-Jungle.png">정글</span>
 						</div>
 						<div class="rankSearch">
-							<span><img
-								src="/img/jhl/positionImg/Position_Plat-Mid.png" id="MIDDLE"
-								onclick="champRank(this.id)">미들</span>
+							<span id="mid" onclick="champRank(this.id)"><img
+								src="/img/jhl/positionImg/Position_Plat-Mid.png">미들</span>
 						</div>
 						<div class="rankSearch">
-							<span><img
-								src="/img/jhl/positionImg/Position_Plat-Bot.png" id="BOTTOM"
-								onclick="champRank(this.id)">바텀</span>
+							<span id="adc" onclick="champRank(this.id)"><img
+								src="/img/jhl/positionImg/Position_Plat-Bot.png">바텀</span>
 						</div>
 						<div class="rankSearch">
-							<span><img
-								src="/img/jhl/positionImg/Position_Plat-Support.png"
-								id="UTILITY" onclick="champRank(this.id)">서폿</span>
+							<span id="sup" onclick="champRank(this.id)"><img
+								src="/img/jhl/positionImg/Position_Plat-Support.png">서폿</span>
 						</div>
 					</div>
 					<div class="lineRank">

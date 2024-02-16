@@ -43,9 +43,12 @@ public class JhlChampService {
 		List<HashMap<String, Object>> rList = champDao.rankListInfo(rankDto);
 
 		List<HashMap<String, Object>> laneChampList = champDao.laneListInfo(rankDto);
-		log.info("====초보자페이지 업데이트 시작 : {}",rankDto.getTeamPosition());
-		for (Map<String, Object> champ : laneChampList) {
 
+		
+
+		log.info("====초보자페이지 업데이트 시작 : {}",rankDto.getTeamPosition());
+
+		for (Map<String, Object> champ : laneChampList) {
 			List<HashMap<String, Object>> cList = new ArrayList<>();
 			champ.get("championid"); // 챔프아이디
 			String champion_name_kr = (String) champ.get("champion_name_kr"); // 한국어이름
@@ -56,7 +59,11 @@ public class JhlChampService {
 
 			// cList : 각각의 챔피언 총 리스트
 			cList = champDao.rankListTeamPositionInfo(teamPosition, championId);
+
+			// log.info("========{}",cList);
+
 				
+
 			int allCnt = cList.size(); // 한챔피언의 총 길이
 
 			int winCnt = 0;
@@ -70,7 +77,8 @@ public class JhlChampService {
 				if ((int) a.get("win") == 1) {
 					winCnt++;
 				}
-
+				
+				
 			}
 			int allChampCnt = champDao.allChampCnt(teamPosition);
 			int banChampCnt = champDao.banChampCnt(champion_name_kr);
