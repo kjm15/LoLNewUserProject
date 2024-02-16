@@ -14,8 +14,6 @@ function mainStart() {
 
 	let gameName = $('#gameName').val()
 
-
-	console.log(gameName) // 값이 안 넘어왔음
 	if (gameName != '') {
 		mainSearch(gameName)
 	}
@@ -36,11 +34,12 @@ function mainSearch(gameName1) {
 
 function gamebtn(i) {
 	console.log(i)
-	var gametable = document.getElementById("gametable" + i + "");
-	gametable.style.display = ((gametable.style.display != 'none') ? 'none' : 'block');
-	if ((i + 1) % 3 == 0) {
-		loadMore.style.top = ((gametable.style.display != 'none') ? '80%' : '25%');
-	}
+	var line1 = document.getElementById("line1"+i);
+	var container2 = document.getElementById("container2"+i);
+
+	line1.style.display = ((line1.style.display != 'none') ? 'none' : 'block');
+	container2.style.display = ((container2.style.display != 'none') ? 'none' : 'block');
+
 
 }
 function searchbtn() {
@@ -48,7 +47,6 @@ function searchbtn() {
 }
 
 function searchbtn1() {
-	
 	$('#newList').remove()
 	let search = $('#search').val();
 	var gameId = search.split('#');
@@ -79,7 +77,6 @@ function bbb(data) {
 		data: data,
 		//		async: true,
 		success: function(res) {
-			console.log(res)
 			if (res != '') {
 				MList = [];
 				for (let i = 0; i < res.length; i++) {
