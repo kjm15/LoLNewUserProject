@@ -29,4 +29,5 @@ public class RiotApiDto {
 	//장기훈추가
 	private String matchIdjustOne;
 	private Integer matchIdCnt;
+	private Integer startValue;
 }

@@ -43,21 +43,10 @@ $("#find").on("click", function() {
 
 
 	matchIdCnt = 0;
-	startRiotTv()
-
-})
-function startRiotTv() {
-
-
-	//db가서 최신 matchId와 다른지 확인 후 다르면 업데이트
-
 	findPuuIdFindListSaveDb()
 
-	//업데이트 후에 db에서 가지고 오기
-	dbFindData()
+})
 
-
-}
 function findOne(matchId) {
 
 	chartteam(matchId)
@@ -66,55 +55,6 @@ function findOne(matchId) {
 	$('#riotSearch').hide();
 }
 
-function dbFindData() {
-	$('#detail2').empty()
-	let gameName1 = $('#gameName1').val()
-	let tagLine = $('#tagLine').val()
-	data = {
-		'gameName': gameName1,
-		'tagLine': tagLine,
-		'matchIdCnt': matchIdCnt * 3
-	}
-	let cnt = 1;
-	dbFindList = []
-	let str = ''
-
-	$.ajax({
-
-		type: 'post',
-		url: '/riotTv/dbFindData',
-		async: false,
-		data: data,
-		success: function(res) {
-
-			dbFindList = res
-			str += "<center><hr>!!! 라문철 tv !!!<hr></center>"
-			for (let z in res) {
-
-				if (res[z].riotIdGameName == gameName1) {
-					var currentDate = new Date(parseInt(res[z].gameStartTimestamp));
-					var currentFormatDate = dateFormat(currentDate);
-					str += "<center>"
-					str += currentFormatDate + " |경기|"
-					str += "<img width='30' height='30'  alt='못 불러옴' src='https://ddragon.leagueoflegends.com/cdn/14.3.1/img/champion/" + res[z].championName + ".png'>"
-
-					str += "|" + res[z].teamName + "|" + res[z].winCheck + "|    " + '<input type = "button" onclick = "findOne(\'' + res[z].matchId + '\')" value = "라문철분석">'
-					str += "</center>"
-					cnt++;
-				}
-
-			}
-			str += '<hr>'
-			str += "<center><button align = center><a href = 'javascript: startRiotTv()'> ▽▽더보기click!▽▽</a></button></center>"
-			str += '<hr>'
-			$('#detail2').html(str)
-			console.log("최신 db통신완료")
-
-		}
-
-	})
-
-}
 function dateFormat(date) {
 	let month = date.getMonth() + 1;
 	let day = date.getDate();
@@ -142,6 +82,7 @@ function dbSaveInfoRiotTv() {
 		data: JSON.stringify(dbList),
 		success: function(res) {
 
+			console.log("New데이터 db저장성공")
 		}
 
 	})
@@ -154,11 +95,12 @@ function findPuuIdFindListSaveDb() {
 	let gameName1 = $('#gameName1').val()
 	let tagLine = $('#tagLine').val()
 	$('#detail2').empty()
-	matchIdCnt++
+
 	data = {
 		'gameName': gameName1,
 		'tagLine': tagLine,
-		'matchIdCnt': matchIdCnt * 3
+		'matchIdCnt': 3,
+		'startValue': (matchIdCnt * 3)
 	}
 	console.log(matchIdCnt)
 	$.ajax({
@@ -168,142 +110,172 @@ function findPuuIdFindListSaveDb() {
 		async: false,
 		data: data,
 		success: function(res) {
-			//res : matchid list
-			//db와 api받아온 것 차이
-			res = matchListVsDb(res)
+			//res : 비교완료된 info정보
+
 			console.log(res)
 			dbList = []
-			for (let z in res) {
+			if (res.length != 0) {
+				for (let a in res) {
 
-				data2 = { 'matchIdjustOne': res[z] }
+					for (let j in res[a].info.participants) {
 
-				$.ajax({
-
-					type: 'post',
-					url: '/riotTv/findOnebyList',
-					async: false,
-					data: data2,
-					success: function(res) {
-						console.log(res)
-						for (let j in res.info.participants) {
-
-							matchId = res.metadata.matchId //경기번호
-							championName = res.info.participants[j].championName //챔피언 이름
-							teamId = res.info.participants[j].teamId //블루or레드  100:블루 200:레드
-							if (teamId == 100) {
-								teamName = '블루'
-							} else {
-								teamName = '레드'
-							}
-
-							kills = res.info.participants[j].kills //킬
-							assists = res.info.participants[j].assists //어시스트
-							deaths = res.info.participants[j].deaths//데쓰
-							if (deaths == 0) {
-
-								let deaths1 = 1;
-								kda = ((kills + assists) / deaths1).toFixed(2) //kda
-							} else {
-
-								kda = ((kills + assists) / deaths).toFixed(2) //kda
-
-							}
-
-							totalTimeSpentDead = res.info.participants[j].totalTimeSpentDead //총 죽어있던시간
-							visionWardsBoughtInGame = res.info.participants[j].visionWardsBoughtInGame // 와드산겟수
-							visionScore = res.info.participants[j].visionScore //시야점수
-							win = res.info.participants[j].win //승패
-							if (win == false) {
-
-								winCheck = "패배"
-							} else {
-								winCheck = "승리"
-							}
-							gameStartTimestamp = res.info.gameStartTimestamp //게임시작시간
-
-							riotIdGameName = res.info.participants[j].riotIdGameName //게임아이디
-							riotIdTagline = res.info.participants[j].riotIdTagline //태그
-
-							goldEarned = res.info.participants[j].goldEarned //총 골드량
-							totalDamageDealtToChampions = res.info.participants[j].totalDamageDealtToChampions //챔피언에게 가한 피해량
-							totalMinionsKilled = res.info.participants[j].totalMinionsKilled //전체 미니언킬
-							wardsPlaced = res.info.participants[j].wardsPlaced //와드 설치수
-							puuid = res.info.participants[j].puuid //puuid
-							championId = res.info.participants[j].championId
-							participantId = res.info.participants[j].participantId
-
-							db = {}
-							db.matchId = matchId
-							db.championName = championName
-							db.teamId = teamId
-							db.teamName = teamName
-
-							db.kills = kills
-							db.assists = assists
-							db.deaths = deaths
-							db.kda = kda
-
-							db.totalTimeSpentDead = totalTimeSpentDead
-							db.visionWardsBoughtInGame = visionWardsBoughtInGame
-							db.visionScore = visionScore
-							db.win = win
-							db.gameStartTimestamp = gameStartTimestamp
-
-							db.riotIdGameName = riotIdGameName
-							db.riotIdTagline = riotIdTagline
-
-							db.goldEarned = goldEarned
-							db.totalDamageDealtToChampions = totalDamageDealtToChampions
-							db.totalMinionsKilled = totalMinionsKilled
-							db.wardsPlaced = wardsPlaced
-							db.puuid = puuid
-							db.championId = championId
-							db.participantId = participantId
-							db.winCheck = winCheck
-
-
-							dbList.push(db)
+						matchId = res[a].metadata.matchId //경기번호
+						championName = res[a].info.participants[j].championName //챔피언 이름
+						teamId = res[a].info.participants[j].teamId //블루or레드  100:블루 200:레드
+						if (teamId == 100) {
+							teamName = '블루'
+						} else {
+							teamName = '레드'
 						}
+
+						kills = res[a].info.participants[j].kills //킬
+						assists = res[a].info.participants[j].assists //어시스트
+						deaths = res[a].info.participants[j].deaths//데쓰
+						if (deaths == 0) {
+
+							let deaths1 = 1;
+							kda = ((kills + assists) / deaths1).toFixed(2) //kda
+						} else {
+
+							kda = ((kills + assists) / deaths).toFixed(2) //kda
+
+						}
+
+						totalTimeSpentDead = res[a].info.participants[j].totalTimeSpentDead //총 죽어있던시간
+						visionWardsBoughtInGame = res[a].info.participants[j].visionWardsBoughtInGame // 와드산겟수
+						visionScore = res[a].info.participants[j].visionScore //시야점수
+						win = res[a].info.participants[j].win //승패
+						if (win == false) {
+
+							winCheck = "패배"
+						} else {
+							winCheck = "승리"
+						}
+						gameStartTimestamp = res[a].info.gameStartTimestamp //게임시작시간
+
+						riotIdGameName = res[a].info.participants[j].riotIdGameName //게임아이디
+						riotIdTagline = res[a].info.participants[j].riotIdTagline //태그
+
+						goldEarned = res[a].info.participants[j].goldEarned //총 골드량
+						totalDamageDealtToChampions = res[a].info.participants[j].totalDamageDealtToChampions //챔피언에게 가한 피해량
+						totalMinionsKilled = res[a].info.participants[j].totalMinionsKilled //전체 미니언킬
+						wardsPlaced = res[a].info.participants[j].wardsPlaced //와드 설치수
+						puuid = res[a].info.participants[j].puuid //puuid
+						championId = res[a].info.participants[j].championId
+						participantId = res[a].info.participants[j].participantId
+
+						db = {}
+						db.matchId = matchId
+						db.championName = championName
+						db.teamId = teamId
+						db.teamName = teamName
+
+						db.kills = kills
+						db.assists = assists
+						db.deaths = deaths
+						db.kda = kda
+
+						db.totalTimeSpentDead = totalTimeSpentDead
+						db.visionWardsBoughtInGame = visionWardsBoughtInGame
+						db.visionScore = visionScore
+						db.win = win
+						db.gameStartTimestamp = gameStartTimestamp
+
+						db.riotIdGameName = riotIdGameName
+						db.riotIdTagline = riotIdTagline
+
+						db.goldEarned = goldEarned
+						db.totalDamageDealtToChampions = totalDamageDealtToChampions
+						db.totalMinionsKilled = totalMinionsKilled
+						db.wardsPlaced = wardsPlaced
+						db.puuid = puuid
+						db.championId = championId
+						db.participantId = participantId
+						db.winCheck = winCheck
+
+						dbList.push(db)
 					}
-				})
-			}
-			if (dbList != '') {
-				console.log(dbList)
-				dbSaveInfoRiotTv()
+
+
+
+					if (dbList != '') {
+						console.log(dbList)
+						dbSaveInfoRiotTv()
+
+
+					}
+
+				}
 				console.log("db최신화 완료(API통신완료)")
+				newDataInfo()
 
 			} else {
-				console.log("현재 최신db DB통신완료")
+				console.log("db최신화상태 (db통신완료)")
+				newDataInfo()
 			}
 
 		}
+
 	})
 }
-//최신matchList 확인 함수
-function matchListVsDb(res) {
 
-	res1 = [];
+//db에 저장된 최신 데이터 가지고오기
+function newDataInfo() {
+
+	let gameName1 = $('#gameName1').val()
+	let tagLine = $('#tagLine').val()
+
+	data = {
+		'gameName': gameName1,
+		'tagLine': tagLine,
+		'matchIdCnt': 3,
+		'startValue': (matchIdCnt * 3)
+	}
 
 	$.ajax({
-		contentType: 'application/json',
 		type: 'post',
-		url: '/riotTv/matchListVsDb',
+		url: '/riotTv/newDataInfo',
 		async: false,
-		data: JSON.stringify(res),
+		data: data,
 		success: function(res) {
+			let str = ''
+			dbFindList = res
+			str += "<center><hr>!!! 라문철 tv !!!<hr></center>"
+			for (let z in res) {
 
-			res1 = res
+				if (res[z].riotIdGameName == gameName1) {
+					var currentDate = new Date(parseInt(res[z].gameStartTimestamp));
+					var currentFormatDate = dateFormat(currentDate);
+					str += "<center>"
+					str += currentFormatDate + " |경기|"
+					str += "<img width='30' height='30'  alt='못 불러옴' src='https://ddragon.leagueoflegends.com/cdn/14.3.1/img/champion/" + res[z].championName + ".png'>"
+
+					str += "|" + res[z].teamName + "|" + res[z].winCheck + "|    " + '<input type = "button" onclick = "findOne(\'' + res[z].matchId + '\')" value = "라문철분석">'
+					str += "</center>"
+					cnt++;
+				}
+
+			}
+			str += '<hr>'
+			str += "<center><button align = center><a href = 'javascript:findPuuIdFindListSaveDb()'> ▽▽더보기click!▽▽</a></button></center>"
+			str += '<hr>'
+			$('#detail2').append(str)
+			console.log("최신 db통신완료")
+
+
+
 		}
 	})
-	return res1;
+	matchIdCnt++
+
 
 }
 
 
 
-//data중 스템프타임 사용시에 필요한 것들
 
 
+///////그래프///////////////////////
 
 function loadingLogoInput() {
 	let str = ''
