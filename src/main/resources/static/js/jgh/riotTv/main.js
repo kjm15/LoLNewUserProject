@@ -123,6 +123,8 @@ function findPuuIdFindListSaveDb() {
 			if (res.length != 0) {
 				for (let a in res) {
 
+					console.log(res)
+
 					for (let j in res[a].info.participants) {
 
 						let matchId = res[a].metadata.matchId //경기번호
@@ -172,8 +174,7 @@ function findPuuIdFindListSaveDb() {
 						let puuid = res[a].info.participants[j].puuid //puuid
 						let championId = res[a].info.participants[j].championId
 						let participantId = res[a].info.participants[j].participantId
-						let gameMode = res[a].info.gameMode
-
+						let queueId = res[a].info.queueId
 
 
 						db = {}
@@ -204,8 +205,7 @@ function findPuuIdFindListSaveDb() {
 						db.championId = championId
 						db.participantId = participantId
 						db.winCheck = winCheck
-						db.gameMode = gameMode
-
+						db.queueId = queueId
 
 						dbList.push(db)
 					}
@@ -261,27 +261,27 @@ function newDataInfo() {
 				if (res[z].riotIdGameName == gameName1) {
 
 					let time = res[z].gameStartTimestamp
-					let gameMode = ''
-					if (res[z].gameMode == 'CLASSIC') {
+					let queue = ''
 
-						gameMode = "<span style='color: red;'>랭크</span>"
-
-					} else if (res[z].gameMode == 'URF') {
-
-						gameMode = "<span style='color: green;'>우르프</span>"
-					} else if (res[z].gameMode == 'ARAM') {
-
-						gameMode = "<span style='color: blue;'>칼바람</span>"
+					if (res[z]['queueId'] == 450) {
+						queue = "<span style=color:blue;> 칼바람</span>"
+					} else if (res[z]['queueId'] == 490) {
+						queue = "<span style=color:gray;> 빠른대전</span>"
+					} else if (res[z]['queueId'] == 420) {
+						queue = "<span style=color:red;> 솔로랭크</span>"
+					} else if (res[z]['queueId'] == 440) {
+						queue = "<span style=color:skyblue;> 자유랭크</span>"
+					} else if (res[z]['queueId'] == 1900) {
+						queue = "<span style=color:green;> 우르프</span>"
 					}
-
 
 
 					str += "<center>"
 					str += dateFormat(time)
-					str += "|" + gameMode + "|"
+					str += "|" + queue + "|"
 					str += "<img width='30' height='30'  alt='못 불러옴' src='https://ddragon.leagueoflegends.com/cdn/14.3.1/img/champion/" + res[z].championName + ".png'>"
 
-					str += "|" + res[z].teamName + "|" + res[z].winCheck + "|    " + '<input type = "button" onclick = "findOne(\'' + res[z].matchId + '\')" value = "라문철분석">'
+					str += "|" + res[z].teamName + "|" + res[z].winCheck + "| " + '<input type = "button" onclick = "findOne(\'' + res[z].matchId + '\')" value = "라문철분석">'
 					str += "</center>"
 					cnt++;
 

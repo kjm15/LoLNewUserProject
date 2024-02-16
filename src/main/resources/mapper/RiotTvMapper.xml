@@ -10,13 +10,13 @@
 		riottvT(matchId,championName,teamId,teamName,kills,assists,deaths,kda,totalTimeSpentDead,visionWardsBoughtInGame
 		,visionScore,win,gameStartTimestamp,riotIdGameName,riotIdTagline,goldEarned,totalDamageDealtToChampions,
 		totalMinionsKilled,wardsPlaced,puuid,championId,koChampionName,
-		participantId,winCheck,gameMode)
+		participantId,winCheck,queueId)
 
 		values(#{matchId},#{championName},#{teamId},#{teamName},#{kills},#{assists},#{deaths},#{kda},#{totalTimeSpentDead},#{visionWardsBoughtInGame}
 		,#{visionScore},#{win},#{gameStartTimestamp},#{riotIdGameName},#{riotIdTagline},#{goldEarned},#{totalDamageDealtToChampions},
 		#{totalMinionsKilled},#{wardsPlaced},#{puuid},#{championId},(select
 		champion_name_kr from cn_kr where championId =
-		#{championId}),#{participantId},#{winCheck},#{gameMode});
+		#{championId}),#{participantId},#{winCheck},#{queueId});
 
 
 
