@@ -2,9 +2,9 @@
 
 <mapper namespace="com.project.projectFinal.dao.GraphDao">
 
-	<select id="itemGraph">
+	<select id="itemGraphLine">
 	
-		select * from Top5ItemPerLineT
+		select * from Top5ItemPerLineT where line_graph = #{line_graph}
 	
 	</select>
 

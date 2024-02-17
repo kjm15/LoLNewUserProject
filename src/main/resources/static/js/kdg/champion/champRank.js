@@ -28,8 +28,6 @@ $(document).ready(function() {
 					i = i + 1;
 		
 				} else if (i == 1) {
-					
-					console.log('정글')
 		
 					firstChamp = "<img class = 'crown_img' src='../img/kdg/glory.png'><img id = 'myChamp' class = 'firstTierChamp' src = 'https://ddragon.leagueoflegends.com/cdn/14.3.1/img/champion/"+res[1][0].champion_name+".png'>"
 					$('.comm_firstChamp_img').html(firstChamp)
@@ -43,8 +41,6 @@ $(document).ready(function() {
 					i = i + 1;
 		
 				} else if (i == 2) {
-					
-					console.log('미드')
 		
 					firstChamp = "<img class = 'crown_img' src='../img/kdg/glory.png'><img id = 'myChamp' class = 'firstTierChamp' src = 'https://ddragon.leagueoflegends.com/cdn/14.3.1/img/champion/"+res[2][0].champion_name+".png'>"
 					$('.comm_firstChamp_img').html(firstChamp)
@@ -58,8 +54,6 @@ $(document).ready(function() {
 					i = i + 1;
 		
 				} else if (i == 3) {
-					
-					console.log('원딜')
 		
 					firstChamp = "<img class = 'crown_img' src='../img/kdg/glory.png'><img id = 'myChamp' class = 'firstTierChamp' src = 'https://ddragon.leagueoflegends.com/cdn/14.3.1/img/champion/"+res[3][0].champion_name+".png'>"
 					$('.comm_firstChamp_img').html(firstChamp)
@@ -73,8 +67,6 @@ $(document).ready(function() {
 					i = i + 1;
 					
 				} else if (i == 4) {
-					
-					console.log('서폿')
 		
 					firstChamp = "<img class = 'crown_img' src='../img/kdg/glory.png'><img id = 'myChamp' class = 'firstTierChamp' src = 'https://ddragon.leagueoflegends.com/cdn/14.3.1/img/champion/"+res[4][0].champion_name+".png'>"
 					$('.comm_firstChamp_img').html(firstChamp)
@@ -107,8 +99,6 @@ $(document).ready(function() {
 			  type: "POST",
 			  url: "/kdg/champRankStart",
 			  success: function(res) {
-			  	  	
-			  	  	console.log('탑')
 		
 					firstChamp = "<img class = 'crown_img' src='../img/kdg/glory.png'><img id = 'myChamp' class = 'firstTierChamp' src = 'https://ddragon.leagueoflegends.com/cdn/14.3.1/img/champion/"+res[0].champion_name+".png'>"
 					$('.comm_firstChamp_img').html(firstChamp)

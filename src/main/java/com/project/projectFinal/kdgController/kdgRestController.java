@@ -85,10 +85,10 @@ public class kdgRestController {
 		
 	}
 	
-	@PostMapping("/itemGraph")
-	public List<HashMap<String, GraphDto>> itemGraph (){
+	@PostMapping("/itemGraphLine")
+	public List<HashMap<String, GraphDto>> itemGraphLine (GraphDto gDto){
 		
-		return gs.itemGraph();
+		return gs.itemGraphLine(gDto);
 		
 	}
 	

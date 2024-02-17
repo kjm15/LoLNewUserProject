@@ -35,9 +35,8 @@ $(document).ready(function() {
 });
 
 function line(a){
+	
 	$('#lineCheck').html(a)
-	str = "아이템 버전 : 14.01, 설정 티어 : platinum <img src='../img/tier/platinum.png' style = 'width: 30px; height: 30px;'></img>, 라인 : all"	
-	$('#info22').html(str)
 	
 	$('#champList').empty()
 	data = {

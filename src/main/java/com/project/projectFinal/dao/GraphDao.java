@@ -10,6 +10,6 @@ import com.project.projectFinal.dto.GraphDto;
 @Mapper
 public interface GraphDao {
 
-	List<HashMap<String, GraphDto>> itemGraph();
+	List<HashMap<String, GraphDto>> itemGraphLine(GraphDto gDto);
 	
 }
