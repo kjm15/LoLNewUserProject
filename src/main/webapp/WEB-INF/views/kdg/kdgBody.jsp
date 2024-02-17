@@ -18,6 +18,8 @@
 <p id="selectTierModal" style="visibility: hidden; position: absolute;">플래티넘</p>
 <p id="selectCore" style="visibility: hidden; position: absolute;">1코어 아이템</p>
 <p id="modNum" style="visibility: hidden; position: absolute;">0</p>
+
+
 <div class = "darkmod_checkbox">
 	<div class = "toggle_box">
 		<input type="checkbox" id="toggle" class ="darkmod_toggle" hidden> 
@@ -38,7 +40,7 @@
 	
 	<div class = "graph_title">
 		<div class = "graph_title1">
-			<p> 라인 별 Popular Items
+			<p> 라인 별 TOP5 Items
 		</div>
 		<div class = "graph_title2">
 			<p> 상위 5개 아이템,&nbsp;<br>전체 티어 기준입니다.
@@ -46,7 +48,6 @@
 	</div>
 </div>
 <br>
-
 <div class = "comm_graph_box">
 
 	<div class = "comm_box">
@@ -81,21 +82,21 @@
 	<div class = "graph_box">
 		<div class = "graph_box1">
 			<div class = "top_graph">
-			
+				<div id="chart_top" style="width: 100%; height: 100%;"></div>
 			</div>
 			<div class = "jug_graph">
-			
+				<div id="chart_jug" style="width: 100%; height: 100%;"></div>
 			</div>
 		</div>
 		<div class = "graph_box2">
 			<div class = "mid_graph">
-			
+				<div id="chart_mid" style="width: 100%; height: 100%;"></div>
 			</div>
 			<div class = "adc_graph">
-			
+				<div id="chart_adc" style="width: 100%; height: 100%;"></div>
 			</div>	
 			<div class = "sup_graph">
-			
+				<div id="chart_sup" style="width: 100%; height: 100%;"></div>
 			</div>	
 		</div>
 	</div>
@@ -103,13 +104,14 @@
 
 </div>
 <br>
+<br>
 
 <div class="coreItemList_box" style="background-color: lightgray; color: white; width: 1100px; height: 1549px;">
 
 </div>
 
 <div class="sideBanner">
-  <a data-bs-toggle="modal" href="#exampleModalToggle"><img class = "bannerImg" src="../img/kdg/kdgBanner.jpg"></a>
+  <a data-bs-toggle="modal" href="#exampleModalToggle" onclick='javascript:test()'><img class = "bannerImg" src="../img/kdg/kdgBanner.jpg"></a>
   <span class="txt-label banner_span_txt">
     <a id = "analysisBtn" class="btn btn-primary banner_to_modalBtn" data-bs-toggle="modal" href="#exampleModalToggle" role="button" style = "width: 150px;" onclick='javascript:test()'>get Item Build</a>
   </span>

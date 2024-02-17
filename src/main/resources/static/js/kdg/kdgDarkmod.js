@@ -32,13 +32,13 @@ $(document).ready(function() {
 						
 		} else if (modNum == 1){
 			
-			$('.tableMainTr').css("background-color","lightgrey")
+			$('.tableMainTr').css("background-color","rgba(27, 65, 221, 0.58)")
 			$('.tableMainTr').css("color","black")
 			
-			$('.resultTr0').css("background-color","#dbebf8")
+			$('.resultTr0').css("background-color","rgba(157, 196, 253, 0.4)")
 			$('.resultTr0').css("color","black")
 			
-			$('.resultTr1').css("background-color","#6fccfe")
+			$('.resultTr1').css("background-color","rgba(157, 196, 253, 0.9)")
 			$('.resultTr1').css("color","black")
 			
 			$('.highest_rate').css("color","red")

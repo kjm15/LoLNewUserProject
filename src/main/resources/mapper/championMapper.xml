@@ -43,4 +43,34 @@
 		
 	</select>
 	
+	<select id="champRankTOP">
+	
+		select teamPosition, champion_name from champRankT where teamPosition = 'top' and champion_pick > 70 order by win_rate desc limit 0,3
+	
+	</select>
+	
+	<select id="champRankJUG">
+	
+		select teamPosition, champion_name from champRankT where teamPosition = 'jug' and champion_pick > 70 order by win_rate desc limit 0,3
+	
+	</select>
+	
+	<select id="champRankMID">
+	
+		select teamPosition, champion_name from champRankT where teamPosition = 'mid' and champion_pick > 70 order by win_rate desc limit 0,3
+	
+	</select>
+	
+	<select id="champRankADC">
+	
+		select teamPosition, champion_name from champRankT where teamPosition = 'adc' and champion_pick > 70 order by win_rate desc limit 0,3
+	
+	</select>
+	
+	<select id="champRankSUP">
+	
+		select teamPosition, champion_name from champRankT where teamPosition = 'sup' and champion_pick > 70 order by win_rate desc limit 0,3
+	
+	</select>
+	
 </mapper>
