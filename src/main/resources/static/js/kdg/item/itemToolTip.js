@@ -53,7 +53,7 @@ function itemToolTip(a){
 		str += "<br>"
 		str += "가격 : "+res[0].totalGold+"("+res[0].sellGold+")"
 		
-		$('.jb-text').html(str);
+		$('.jb-text').attr("title",str);
 		
 		}
 	})

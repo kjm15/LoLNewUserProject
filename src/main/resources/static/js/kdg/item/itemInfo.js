@@ -28,19 +28,19 @@ $(document).ready(function() {
 			str += "<tr class = 'tableMainTr'><td colspan = '6' style = 'text-align: left;'>"
 			str += "<div class='dropdown'>"
 			str += "<button id='TierDropDown' class='btn btn-secondary dropdown-toggle' type='button' data-bs-toggle='dropdown' aria-expanded='false' onclick='javascript:choice(this.id)'><img src='../img/tier/platinum.png' style='width: 20px; height: 20px;'> 플래티넘</button>"
-			str += "<ul class='dropdown-menu'><li><a id='iron' onclick='javascript:choiceTier(this.id)' class='dropdown-item' href='#'><img src='../img/tier/iron.png' style='width: 30px; height: 30px;'>아이언</a></li>"
-			str += "<li><a id='bronze' onclick='javascript:choiceTier(this.id)' class='dropdown-item' href='#'><img src='../img/tier/bronze.png' style='width: 30px; height: 30px;'>브론즈</a></li>"
-			str += "<li><a id='silver' onclick='javascript:choiceTier(this.id)' class='dropdown-item' href='#'><img src='../img/tier/silver.png' style='width: 30px; height: 30px;'>실버</a></li>"
-			str += "<li><a id='gold' onclick='javascript:choiceTier(this.id)' class='dropdown-item' href='#'><img src='../img/tier/gold.png' style='width: 30px; height: 30px;'>골드</a></li>"
-			str += "<li><a id='platinum' onclick='javascript:choiceTier(this.id)' class='dropdown-item' href='#'><img src='../img/tier/platinum.png' style='width: 30px; height: 30px;'>플래티넘</a></li>"
-			str += "<li><a id='emerald' onclick='javascript:choiceTier(this.id)' class='dropdown-item' href='#'><img src='../img/tier/emerald.png' style='width: 30px; height: 30px;'>에메랄드</a></li>"
-			str += "<li><a id='diamond' onclick='javascript:choiceTier(this.id)' class='dropdown-item' href='#'><img src='../img/tier/diamond.png' style='width: 30px; height: 30px;'>다이아몬드</a></li>"
-			str += "<li><a id='master' onclick='javascript:choiceTier(this.id)' class='dropdown-item' href='#'><img src='../img/tier/master.png' style='width: 30px; height: 30px;'>마스터+</a></li></ul>"
+			str += "<ul class='dropdown-menu'><li><a id='iron' onclick='javascript:choiceTier(this.id)' class='dropdown-item'><img src='../img/tier/iron.png' style='width: 30px; height: 30px;'>아이언</a></li>"
+			str += "<li><a id='bronze' onclick='javascript:choiceTier(this.id)' class='dropdown-item'><img src='../img/tier/bronze.png' style='width: 30px; height: 30px;'>브론즈</a></li>"
+			str += "<li><a id='silver' onclick='javascript:choiceTier(this.id)' class='dropdown-item'><img src='../img/tier/silver.png' style='width: 30px; height: 30px;'>실버</a></li>"
+			str += "<li><a id='gold' onclick='javascript:choiceTier(this.id)' class='dropdown-item'><img src='../img/tier/gold.png' style='width: 30px; height: 30px;'>골드</a></li>"
+			str += "<li><a id='platinum' onclick='javascript:choiceTier(this.id)' class='dropdown-item'><img src='../img/tier/platinum.png' style='width: 30px; height: 30px;'>플래티넘</a></li>"
+			str += "<li><a id='emerald' onclick='javascript:choiceTier(this.id)' class='dropdown-item'><img src='../img/tier/emerald.png' style='width: 30px; height: 30px;'>에메랄드</a></li>"
+			str += "<li><a id='diamond' onclick='javascript:choiceTier(this.id)' class='dropdown-item'><img src='../img/tier/diamond.png' style='width: 30px; height: 30px;'>다이아몬드</a></li>"
+			str += "<li><a id='master' onclick='javascript:choiceTier(this.id)' class='dropdown-item'><img src='../img/tier/master.png' style='width: 30px; height: 30px;'>마스터+</a></li></ul>"
 			str += "<button id='CoreItemDropDown' class='btn btn-secondary dropdown-toggle' type='button' data-bs-toggle='dropdown' aria-expanded='false' onclick='javascript:choice(this.id)'>1코어 아이템</button>"
 			str += "<ul class='dropdown-menu'>"
-			str += "<li id='dropdownLi'><a id='firstCore' onclick='javascript:choiceCore(this.id)' class='dropdown-item' href='#'>1코어 아이템</a></li>"
-			str += "<li id='dropdownLi'><a id='secondCore' onclick='javascript:choiceCore(this.id)' class='dropdown-item' href='#'>2코어 아이템</a></li>"
-			str += "<li id='dropdownLi'><a id='thirdCore' onclick='javascript:choiceCore(this.id)' class='dropdown-item' href='#'>3코어 아이템</a></li></ul></div>"
+			str += "<li id='dropdownLi'><a id='firstCore' onclick='javascript:choiceCore(this.id)' class='dropdown-item'>1코어 아이템</a></li>"
+			str += "<li id='dropdownLi'><a id='secondCore' onclick='javascript:choiceCore(this.id)' class='dropdown-item'>2코어 아이템</a></li>"
+			str += "<li id='dropdownLi'><a id='thirdCore' onclick='javascript:choiceCore(this.id)' class='dropdown-item'>3코어 아이템</a></li></ul></div>"
 			str += "</td>"
 			str += "<td colspan = '10' style = 'text-align: right;'>version : 14.01"
 			str += "</td><td></td></tr>"
@@ -117,16 +117,14 @@ $(document).ready(function() {
 			
 			if (modNum == 0){
 				
-				$('.tableMainTr').css("background-color","lightgrey")
+				$('.tableMainTr').css("background-color","rgba(27, 65, 221, 0.58)")
 				$('.tableMainTr').css("color","black")
 				
-				$('.resultTr0').css("background-color","#dbebf8")
+				$('.resultTr0').css("background-color","#B4D4FF")
 				$('.resultTr0').css("color","black")
 				
-				$('.resultTr1').css("background-color","#6fccfe")
+				$('.resultTr1').css("background-color","#86B6F6")
 				$('.resultTr1').css("color","black")
-				
-				$('.highest_rate').css("color","red")
 				
 				$('body').css("background-color","white")
 				
@@ -204,19 +202,19 @@ function choiceTier(b){
 			str += "<tr class = 'tableMainTr'><td colspan = '6' style = 'text-align: left;'>"
 			str += "<div class='dropdown'>"
 			str += "<button id='TierDropDown' class='btn btn-secondary dropdown-toggle' type='button' data-bs-toggle='dropdown' aria-expanded='false' onclick='javascript:choice(this.id)'><img src='../img/tier/"+$('#tier_en').text()+".png' style='width: 20px; height: 20px;'> "+$('#selectTier').text()+"</button>"
-			str += "<ul class='dropdown-menu'><li><a id='iron' onclick='javascript:choiceTier(this.id)' class='dropdown-item' href='#'><img src='../img/tier/iron.png' style='width: 30px; height: 30px;'>아이언</a></li>"
-			str += "<li><a id='bronze' onclick='javascript:choiceTier(this.id)' class='dropdown-item' href='#'><img src='../img/tier/bronze.png' style='width: 30px; height: 30px;'>브론즈</a></li>"
-			str += "<li><a id='silver' onclick='javascript:choiceTier(this.id)' class='dropdown-item' href='#'><img src='../img/tier/silver.png' style='width: 30px; height: 30px;'>실버</a></li>"
-			str += "<li><a id='gold' onclick='javascript:choiceTier(this.id)' class='dropdown-item' href='#'><img src='../img/tier/gold.png' style='width: 30px; height: 30px;'>골드</a></li>"
-			str += "<li><a id='platinum' onclick='javascript:choiceTier(this.id)' class='dropdown-item' href='#'><img src='../img/tier/platinum.png' style='width: 30px; height: 30px;'>플래티넘</a></li>"
-			str += "<li><a id='emerald' onclick='javascript:choiceTier(this.id)' class='dropdown-item' href='#'><img src='../img/tier/emerald.png' style='width: 30px; height: 30px;'>에메랄드</a></li>"
-			str += "<li><a id='diamond' onclick='javascript:choiceTier(this.id)' class='dropdown-item' href='#'><img src='../img/tier/diamond.png' style='width: 30px; height: 30px;'>다이아몬드</a></li>"
-			str += "<li><a id='master' onclick='javascript:choiceTier(this.id)' class='dropdown-item' href='#'><img src='../img/tier/master.png' style='width: 30px; height: 30px;'>마스터+</a></li></ul>"
+			str += "<ul class='dropdown-menu'><li><a id='iron' onclick='javascript:choiceTier(this.id)' class='dropdown-item'><img src='../img/tier/iron.png' style='width: 30px; height: 30px;'>아이언</a></li>"
+			str += "<li><a id='bronze' onclick='javascript:choiceTier(this.id)' class='dropdown-item'><img src='../img/tier/bronze.png' style='width: 30px; height: 30px;'>브론즈</a></li>"
+			str += "<li><a id='silver' onclick='javascript:choiceTier(this.id)' class='dropdown-item'><img src='../img/tier/silver.png' style='width: 30px; height: 30px;'>실버</a></li>"
+			str += "<li><a id='gold' onclick='javascript:choiceTier(this.id)' class='dropdown-item'><img src='../img/tier/gold.png' style='width: 30px; height: 30px;'>골드</a></li>"
+			str += "<li><a id='platinum' onclick='javascript:choiceTier(this.id)' class='dropdown-item'><img src='../img/tier/platinum.png' style='width: 30px; height: 30px;'>플래티넘</a></li>"
+			str += "<li><a id='emerald' onclick='javascript:choiceTier(this.id)' class='dropdown-item'><img src='../img/tier/emerald.png' style='width: 30px; height: 30px;'>에메랄드</a></li>"
+			str += "<li><a id='diamond' onclick='javascript:choiceTier(this.id)' class='dropdown-item'><img src='../img/tier/diamond.png' style='width: 30px; height: 30px;'>다이아몬드</a></li>"
+			str += "<li><a id='master' onclick='javascript:choiceTier(this.id)' class='dropdown-item'><img src='../img/tier/master.png' style='width: 30px; height: 30px;'>마스터+</a></li></ul>"
 			str += "<button id='CoreItemDropDown' class='btn btn-secondary dropdown-toggle' type='button' data-bs-toggle='dropdown' aria-expanded='false' onclick='javascript:choice(this.id)'>"+$('#selectCore').text()+"</button>"
 			str += "<ul class='dropdown-menu'>"
-			str += "<li id='dropdownLi'><a id='firstCore' onclick='javascript:choiceCore(this.id)' class='dropdown-item' href='#'>1코어 아이템</a></li>"
-			str += "<li id='dropdownLi'><a id='secondCore' onclick='javascript:choiceCore(this.id)' class='dropdown-item' href='#'>2코어 아이템</a></li>"
-			str += "<li id='dropdownLi'><a id='thirdCore' onclick='javascript:choiceCore(this.id)' class='dropdown-item' href='#'>3코어 아이템</a></li></ul></div>"
+			str += "<li id='dropdownLi'><a id='firstCore' onclick='javascript:choiceCore(this.id)' class='dropdown-item'>1코어 아이템</a></li>"
+			str += "<li id='dropdownLi'><a id='secondCore' onclick='javascript:choiceCore(this.id)' class='dropdown-item'>2코어 아이템</a></li>"
+			str += "<li id='dropdownLi'><a id='thirdCore' onclick='javascript:choiceCore(this.id)' class='dropdown-item'>3코어 아이템</a></li></ul></div>"
 			str += "</td>"
 			str += "<td colspan = '10' style = 'text-align: right;'>version : 14.01"
 			str += "</td><td></td></tr>"
@@ -302,24 +300,19 @@ function choiceTier(b){
 				$('.resultTr1').css("background-color","#2a2c33")
 				$('.resultTr1').css("color","#999")
 				
-				$('.highest_rate').css("color","rgb(248, 173, 83)")
-				
 				$('body').css("background-color","#222")
 							
 			} else if (modNum == 0){
 				
-				$('.tableMainTr').css("background-color","lightgrey")
+				$('.tableMainTr').css("background-color","rgba(27, 65, 221, 0.58)")
 				$('.tableMainTr').css("color","black")
 				
-				$('.resultTr0').css("background-color","#dbebf8")
+				$('.resultTr0').css("background-color","#B4D4FF")
 				$('.resultTr0').css("color","black")
 				
-				$('.resultTr1').css("background-color","#6fccfe")
+				$('.resultTr1').css("background-color","#86B6F6")
 				$('.resultTr1').css("color","black")
-				
-				$('.highest_rate').css("color","red")
-				
-				
+								
 				$('body').css("background-color","white")
 				
 			}
@@ -377,19 +370,19 @@ function choiceCore(c){
 			str += "<tr class = 'tableMainTr'><td colspan = '6' style = 'text-align: left;'>"
 			str += "<div class='dropdown'>"
 			str += "<button id='TierDropDown' class='btn btn-secondary dropdown-toggle' type='button' data-bs-toggle='dropdown' aria-expanded='false' onclick='javascript:choice(this.id)'><img src='../img/tier/"+$('#tier_en').text()+".png' style='width: 20px; height: 20px;'> "+$('#selectTier').text()+"</button>"
-			str += "<ul class='dropdown-menu'><li><a id='iron' onclick='javascript:choiceTier(this.id)' class='dropdown-item' href='#'><img src='../img/tier/iron.png' style='width: 30px; height: 30px;'>아이언</a></li>"
-			str += "<li><a id='bronze' onclick='javascript:choiceTier(this.id)' class='dropdown-item' href='#'><img src='../img/tier/bronze.png' style='width: 30px; height: 30px;'>브론즈</a></li>"
-			str += "<li><a id='silver' onclick='javascript:choiceTier(this.id)' class='dropdown-item' href='#'><img src='../img/tier/silver.png' style='width: 30px; height: 30px;'>실버</a></li>"
-			str += "<li><a id='gold' onclick='javascript:choiceTier(this.id)' class='dropdown-item' href='#'><img src='../img/tier/gold.png' style='width: 30px; height: 30px;'>골드</a></li>"
-			str += "<li><a id='platinum' onclick='javascript:choiceTier(this.id)' class='dropdown-item' href='#'><img src='../img/tier/platinum.png' style='width: 30px; height: 30px;'>플래티넘</a></li>"
-			str += "<li><a id='emerald' onclick='javascript:choiceTier(this.id)' class='dropdown-item' href='#'><img src='../img/tier/emerald.png' style='width: 30px; height: 30px;'>에메랄드</a></li>"
-			str += "<li><a id='diamond' onclick='javascript:choiceTier(this.id)' class='dropdown-item' href='#'><img src='../img/tier/diamond.png' style='width: 30px; height: 30px;'>다이아몬드</a></li>"
-			str += "<li><a id='master' onclick='javascript:choiceTier(this.id)' class='dropdown-item' href='#'><img src='../img/tier/master.png' style='width: 30px; height: 30px;'>마스터+</a></li></ul>"
+			str += "<ul class='dropdown-menu'><li><a id='iron' onclick='javascript:choiceTier(this.id)' class='dropdown-item'><img src='../img/tier/iron.png' style='width: 30px; height: 30px;'>아이언</a></li>"
+			str += "<li><a id='bronze' onclick='javascript:choiceTier(this.id)' class='dropdown-item'><img src='../img/tier/bronze.png' style='width: 30px; height: 30px;'>브론즈</a></li>"
+			str += "<li><a id='silver' onclick='javascript:choiceTier(this.id)' class='dropdown-item'><img src='../img/tier/silver.png' style='width: 30px; height: 30px;'>실버</a></li>"
+			str += "<li><a id='gold' onclick='javascript:choiceTier(this.id)' class='dropdown-item'><img src='../img/tier/gold.png' style='width: 30px; height: 30px;'>골드</a></li>"
+			str += "<li><a id='platinum' onclick='javascript:choiceTier(this.id)' class='dropdown-item'><img src='../img/tier/platinum.png' style='width: 30px; height: 30px;'>플래티넘</a></li>"
+			str += "<li><a id='emerald' onclick='javascript:choiceTier(this.id)' class='dropdown-item'><img src='../img/tier/emerald.png' style='width: 30px; height: 30px;'>에메랄드</a></li>"
+			str += "<li><a id='diamond' onclick='javascript:choiceTier(this.id)' class='dropdown-item'><img src='../img/tier/diamond.png' style='width: 30px; height: 30px;'>다이아몬드</a></li>"
+			str += "<li><a id='master' onclick='javascript:choiceTier(this.id)' class='dropdown-item'><img src='../img/tier/master.png' style='width: 30px; height: 30px;'>마스터+</a></li></ul>"
 			str += "<button id='CoreItemDropDown' class='btn btn-secondary dropdown-toggle' type='button' data-bs-toggle='dropdown' aria-expanded='false' onclick='javascript:choice(this.id)'>"+$('#selectCore').text()+"</button>"
 			str += "<ul class='dropdown-menu'>"
-			str += "<li id='dropdownLi'><a id='firstCore' onclick='javascript:choiceCore(this.id)' class='dropdown-item' href='#'>1코어 아이템</a></li>"
-			str += "<li id='dropdownLi'><a id='secondCore' onclick='javascript:choiceCore(this.id)' class='dropdown-item' href='#'>2코어 아이템</a></li>"
-			str += "<li id='dropdownLi'><a id='thirdCore' onclick='javascript:choiceCore(this.id)' class='dropdown-item' href='#'>3코어 아이템</a></li></ul></div>"
+			str += "<li id='dropdownLi'><a id='firstCore' onclick='javascript:choiceCore(this.id)' class='dropdown-item'>1코어 아이템</a></li>"
+			str += "<li id='dropdownLi'><a id='secondCore' onclick='javascript:choiceCore(this.id)' class='dropdown-item'>2코어 아이템</a></li>"
+			str += "<li id='dropdownLi'><a id='thirdCore' onclick='javascript:choiceCore(this.id)' class='dropdown-item'>3코어 아이템</a></li></ul></div>"
 			str += "</td>"
 			str += "<td colspan = '10' style = 'text-align: right;'>version : 14.01"
 			str += "</td><td></td></tr>"
@@ -475,24 +468,19 @@ function choiceCore(c){
 				$('.resultTr1').css("background-color","#2a2c33")
 				$('.resultTr1').css("color","#999")
 				
-				$('.highest_rate').css("color","rgb(248, 173, 83)")
-				
 				$('body').css("background-color","#222")
 
 			} else if (modNum == 0){
 				
-				$('.tableMainTr').css("background-color","lightgrey")
+				$('.tableMainTr').css("background-color","rgba(27, 65, 221, 0.58)")
 				$('.tableMainTr').css("color","black")
 				
-				$('.resultTr0').css("background-color","#dbebf8")
+				$('.resultTr0').css("background-color","#B4D4FF")
 				$('.resultTr0').css("color","black")
 				
-				$('.resultTr1').css("background-color","#6fccfe")
+				$('.resultTr1').css("background-color","#86B6F6")
 				$('.resultTr1').css("color","black")
-				
-				$('.highest_rate').css("color","red")
-				
-				
+
 				$('body').css("background-color","white")
 
 			}

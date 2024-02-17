@@ -1,5 +1,10 @@
 $(document).ready(function() {
 	$('#clickBtn').click(function() {
+		
+		str = "<img src='../img/kdg/loading.gif' class = 'loadingImg2'>"	
+		$('#itemBuild').html(str)
+		
+		$('.loadingImg2').show()
 
 		var myChampName = $('#myChampName').text();
 		var enemyChampName = $('#enemyChampName').text();
@@ -55,6 +60,8 @@ $(document).ready(function() {
 				
 				str5 = "<img src='../img/tier/"+ tier +".png' style='width: 20px; height: 20px;'></img> 플래티넘"
 				$('.modalTier').html(str5)
+				
+				$('.loadingImg2').hide()
 			}
 		})
 	})
@@ -87,6 +94,11 @@ $(document).ready(function() {
 	
 
 function choiceTierModal(a){
+	
+		str = "<img src='../img/kdg/loading.gif' class = 'loadingImg2'>"	
+		$('#itemBuild').html(str)
+		
+		$('.loadingImg2').show()
 	
 		$('#lineCheck').empty();
 		$('#tier_en_Modal').text(a)
@@ -154,6 +166,8 @@ function choiceTierModal(a){
 				
 				str5 = "<img src='../img/tier/"+ a +".png' style='width: 20px; height: 20px;'></img> "+$('#selectTierModal').text()
 				$('.modalTier').html(str5)
+				
+				$('.loadingImg2').hide()
 			}
 		})
 	}

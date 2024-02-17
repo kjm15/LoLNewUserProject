@@ -18,10 +18,9 @@ public class GraphService {
 	@Autowired
 	GraphDao gd;
 
-	public List<HashMap<String, GraphDto>> itemGraph() {	
+	public List<HashMap<String, GraphDto>> itemGraphLine(GraphDto gDto) {
 		
-		return gd.itemGraph();
-		
+		return gd.itemGraphLine(gDto);
 	}
 
 }

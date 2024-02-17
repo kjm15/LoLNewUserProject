@@ -18,6 +18,7 @@
 <p id="selectTierModal" style="visibility: hidden; position: absolute;">플래티넘</p>
 <p id="selectCore" style="visibility: hidden; position: absolute;">1코어 아이템</p>
 <p id="modNum" style="visibility: hidden; position: absolute;">0</p>
+<p id="graph_line" style="visibility: hidden; position: absolute;">top</p>
 
 
 <div class = "darkmod_checkbox">
@@ -42,6 +43,35 @@
 		<div class = "graph_title1">
 			<p> 라인 별 TOP5 Items
 		</div>
+		<div class = "graph_line">
+			<div id = "lineDropdown">
+				<div class='dropdown1'>
+					<button id='lineDropdown_btn' class='btn btn-secondary dropdown-toggle line-select' type='button' data-bs-toggle='dropdown' aria-expanded='false'>라인 선택</button>
+					<ul class='dropdown-menu'>
+						<li>
+							<a id='top' onclick='javascript:choiceLineGraph(this.id)' class='dropdown-item'>
+							<img src='../img/top.png' style='width: 20px; height: 20px;'> 탑</a>
+						</li>
+						<li>
+							<a id='jug' onclick='javascript:choiceLineGraph(this.id)' class='dropdown-item'>
+							<img src='../img/jug.png' style='width: 20px; height: 20px;'> 정글</a>
+						</li>
+						<li>
+							<a id='mid' onclick='javascript:choiceLineGraph(this.id)' class='dropdown-item'>
+							<img src='../img/mid.png' style='width: 20px; height: 20px;'> 미드</a>
+						</li>
+						<li>
+							<a id='adc' onclick='javascript:choiceLineGraph(this.id)' class='dropdown-item'>
+							<img src='../img/adc.png' style='width: 20px; height: 20px;'> 원딜</a>
+						</li>
+						<li>
+							<a id='sup' onclick='javascript:choiceLineGraph(this.id)' class='dropdown-item'>
+							<img src='../img/sup.png' style='width: 20px; height: 20px;'> 서폿</a>
+						</li>
+					</ul>
+				</div>
+			</div>
+		</div>
 		<div class = "graph_title2">
 			<p> 상위 5개 아이템,&nbsp;<br>전체 티어 기준입니다.
 		</div>
@@ -54,51 +84,26 @@
 	
 		<div class = "comm_firstChamp">
 			<div class = "comm_firstChamp_imgbox">
-				<div class = "comm_firstChamp_img">
-					<img class = "crown_img" src="../img/kdg/glory.png">
-					<img id = 'myChamp' class = 'firstTierChamp' src = 'https://ddragon.leagueoflegends.com/cdn/14.1.1/img/champion/Brand.png'>
-				</div>
+				<div class = "comm_firstChamp_img"></div>
 			</div>
 		</div>
 		
 		<div class = "comm_secondChamp">
 			<div class = "comm_secondChamp_imgbox">
-				<div class = "comm_secondChamp_img">
-					<img id = 'myChamp' class = 'secondTierChamp' src = 'https://ddragon.leagueoflegends.com/cdn/14.1.1/img/champion/Lillia.png'>
-				</div>
+				<div class = "comm_secondChamp_img"></div>
 			</div>
 		</div>
 		
 		<div class = "comm_thirdChamp">
 			<div class = "comm_thirdChamp_imgbox">
-				<div class = "comm_thirdChamp_img">
-					<img id = 'myChamp' class = 'thirdTierChamp' src = 'https://ddragon.leagueoflegends.com/cdn/14.1.1/img/champion/Graves.png'>
-				</div>			
+				<div class = "comm_thirdChamp_img"></div>			
 			</div>
 		</div>
 		
 	</div>
 	
 	<div class = "graph_box">
-		<div class = "graph_box1">
-			<div class = "top_graph">
-				<div id="chart_top" style="width: 100%; height: 100%;"></div>
-			</div>
-			<div class = "jug_graph">
-				<div id="chart_jug" style="width: 100%; height: 100%;"></div>
-			</div>
-		</div>
-		<div class = "graph_box2">
-			<div class = "mid_graph">
-				<div id="chart_mid" style="width: 100%; height: 100%;"></div>
-			</div>
-			<div class = "adc_graph">
-				<div id="chart_adc" style="width: 100%; height: 100%;"></div>
-			</div>	
-			<div class = "sup_graph">
-				<div id="chart_sup" style="width: 100%; height: 100%;"></div>
-			</div>	
-		</div>
+		<div id = "chart"></div>
 	</div>
 
 
