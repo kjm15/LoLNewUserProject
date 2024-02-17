@@ -18,9 +18,7 @@ public class GraphService {
 	@Autowired
 	GraphDao gd;
 
-	public List<HashMap<String, GraphDto>> itemGraph() {
-		
-		log.info("================ 서비스 진입","");		
+	public List<HashMap<String, GraphDto>> itemGraph() {	
 		
 		return gd.itemGraph();
 		

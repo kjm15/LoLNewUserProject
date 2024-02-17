@@ -1,5 +1,6 @@
 package com.project.projectFinal.kdgController;
 
+import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 
@@ -9,6 +10,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.project.projectFinal.dto.ChampionImageDto;
+import com.project.projectFinal.dto.ChampionRankDto;
 import com.project.projectFinal.dto.GraphDto;
 import com.project.projectFinal.dto.ItemDto;
 import com.project.projectFinal.dto.itemInfoDto;
@@ -86,9 +88,29 @@ public class kdgRestController {
 	@PostMapping("/itemGraph")
 	public List<HashMap<String, GraphDto>> itemGraph (){
 		
-		log.info("================ 컨트롤러 진입","");
-		
 		return gs.itemGraph();
+		
+	}
+	
+	@PostMapping("/champRank")
+	public List<List<HashMap<String, ChampionRankDto>>> champRank (){
+		
+		List<List<HashMap<String, ChampionRankDto>>> crList = new ArrayList<>();
+		
+		crList.add(cs.champRankTOP());
+		crList.add(cs.champRankJUG());
+		crList.add(cs.champRankMID());
+		crList.add(cs.champRankADC());
+		crList.add(cs.champRankSUP());
+		
+		return crList;
+		
+	}
+	
+	@PostMapping("/champRankStart")
+	public List<HashMap<String, ChampionRankDto>> champRankStart (){
+
+		return cs.champRankTOP();
 		
 	}
 	

@@ -8,6 +8,8 @@ import org.springframework.stereotype.Service;
 
 import com.project.projectFinal.dao.ChampionDao;
 import com.project.projectFinal.dto.ChampionImageDto;
+import com.project.projectFinal.dto.ChampionRankDto;
+import com.project.projectFinal.dto.GraphDto;
 
 
 @Service
@@ -44,6 +46,31 @@ public class ChampionService {
 		
 		return cd.reChampList();
 		
+	}
+
+	public List<HashMap<String, ChampionRankDto>> champRankTOP() {
+		
+		return cd.champRankTOP();
+	}
+
+	public List<HashMap<String, ChampionRankDto>> champRankJUG() {
+
+		return cd.champRankJUG();
+	}
+	
+	public List<HashMap<String, ChampionRankDto>> champRankMID() {
+		
+		return cd.champRankMID();
+	}
+	
+	public List<HashMap<String, ChampionRankDto>> champRankADC() {
+		
+		return cd.champRankADC();
+	}
+	
+	public List<HashMap<String, ChampionRankDto>> champRankSUP() {
+		
+		return cd.champRankSUP();
 	}
 
 	
