@@ -5,12 +5,15 @@
 
 모듈화 1번
 
-<input type="text" id="gameName1" placeholder="아이디를 적어주세요"
-	value="유부남" />
-<input type="text" id="tagLine" placeholder="태그를 적어주세요" value="KR 1" />
+<input type="text" id="gameName1" placeholder="아이디를 적어주세요" value="MaRin" />
+<input type="text" id="tagLine" placeholder="태그를 적어주세요" value="Pro" />
 
 <input type="button" id="find" value="찾기">
-	<center><hr>!!! 라문철 tv !!!<hr></center>
+<center>
+	<hr>
+	!!! 라문철 tv !!!
+	<hr>
+</center>
 <div id="loading">
 	<img src="/img/loadingimg.gif" />
 </div>
@@ -20,22 +23,21 @@
 	<div id=detail2></div>
 </div>
 
-<div id = "myImg"></div>
+<div id="myImg"></div>
 
 <div class=riotgraph>
 	<div id='container'>
 		<div id='box-left'>
-			<div style="max-width: 300px" id="myChart2"></div>
+			<div style="max-width: 300px;" id="myChart1"></div>
+
 		</div>
 		<div id='box-center'>
-			<div style="max-width: 300px;" id="myChart1"></div>
+			<div style="max-width: 300px" id="myChart2"></div>
 		</div>
 		<div id='box-right'>
 			<div style="max-width: 300px" id="myChart3"></div>
 		</div>
-		<div id='box-side'>
-			
-		</div>
+		<div id='box-side'></div>
 	</div>
 
 

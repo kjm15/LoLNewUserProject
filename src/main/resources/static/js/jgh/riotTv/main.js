@@ -278,10 +278,10 @@ function newDataInfo() {
 
 					str += "<center>"
 					str += dateFormat(time)
-					str += "|" + queue + "|"
+					str += "|" + res[z].winCheck   + "|" + res[z].teamName + "|" +queue+ "| "
 					str += "<img width='30' height='30'  alt='못 불러옴' src='https://ddragon.leagueoflegends.com/cdn/14.3.1/img/champion/" + res[z].championName + ".png'>"
 
-					str += "|" + res[z].teamName + "|" + res[z].winCheck + "| " + '<input type = "button" onclick = "findOne(\'' + res[z].matchId + '\')" value = "라문철분석">'
+					str += "  "+ '<input type = "button" onclick = "findOne(\'' + res[z].matchId + '\')" value = "라문철분석">'
 					str += "</center>"
 					cnt++;
 
@@ -534,19 +534,7 @@ function chartteam(matchId) {
 
 			var ctx = document.getElementById("circle").getContext("2d");
 			var myChart = new Chart(ctx, config);
-
-
-
-
-
-
-
-
-
-
-
-
-
+			///////////////////////////////////////////////////////////
 			let killsList = []
 			for (let i in res) {
 
@@ -558,7 +546,134 @@ function chartteam(matchId) {
 				}
 
 			}
+			Chart.pluginService.register({
+				beforeDraw: function(chart) {
+					if (chart.config.options.elements.center) {
+						// Get ctx from string
+						var ctx = chart.chart.ctx;
 
+						// Get options from the center object in options
+						var centerConfig = chart.config.options.elements.center;
+						var fontStyle = centerConfig.fontStyle || 'Arial';
+						var txt = centerConfig.text;
+						var color = centerConfig.color || '#000';
+						var maxFontSize = centerConfig.maxFontSize || 75;
+						var sidePadding = centerConfig.sidePadding || 20;
+						var sidePaddingCalculated = (sidePadding / 100) * (chart.innerRadius * 2)
+						// Start with a base font of 30px
+						ctx.font = "30px " + fontStyle;
+
+						// Get the width of the string and also the width of the element minus 10 to give it 5px side padding
+						var stringWidth = ctx.measureText(txt).width;
+						var elementWidth = (chart.innerRadius * 2) - sidePaddingCalculated;
+
+						// Find out how much the font can grow in width.
+						var widthRatio = elementWidth / stringWidth;
+						var newFontSize = Math.floor(30 * widthRatio);
+						var elementHeight = (chart.innerRadius * 2);
+
+						// Pick a new font size so it will not be larger than the height of label.
+						var fontSizeToUse = Math.min(newFontSize, elementHeight, maxFontSize);
+						var minFontSize = centerConfig.minFontSize;
+						var lineHeight = centerConfig.lineHeight || 25;
+						var wrapText = false;
+
+						if (minFontSize === undefined) {
+							minFontSize = 20;
+						}
+
+						if (minFontSize && fontSizeToUse < minFontSize) {
+							fontSizeToUse = minFontSize;
+							wrapText = true;
+						}
+
+						// Set font settings to draw it correctly.
+						ctx.textAlign = 'center';
+						ctx.textBaseline = 'middle';
+						var centerX = ((chart.chartArea.left + chart.chartArea.right) / 2);
+						var centerY = ((chart.chartArea.top + chart.chartArea.bottom) / 2);
+						ctx.font = fontSizeToUse + "px " + fontStyle;
+						ctx.fillStyle = color;
+
+						if (!wrapText) {
+							ctx.fillText(txt, centerX, centerY);
+							return;
+						}
+
+						var words = txt.split(' ');
+						var line = '';
+						var lines = [];
+
+						// Break words up into multiple lines if necessary
+						for (var n = 0; n < words.length; n++) {
+							var testLine = line + words[n] + ' ';
+							var metrics = ctx.measureText(testLine);
+							var testWidth = metrics.width;
+							if (testWidth > elementWidth && n > 0) {
+								lines.push(line);
+								line = words[n] + ' ';
+							} else {
+								line = testLine;
+							}
+						}
+
+						// Move the center up depending on line height and number of lines
+						centerY -= (lines.length / 2) * lineHeight;
+
+						for (var n = 0; n < lines.length; n++) {
+							ctx.fillText(lines[n], centerX, centerY);
+							centerY += lineHeight;
+						}
+						//Draw text in center
+						ctx.fillText(line, centerX, centerY);
+					}
+				}
+			});
+
+
+			var config = {
+				type: 'doughnut',
+				data: {
+					//			labels: championNameList,
+					datasets: [{
+						data: totalDamageDealtToChampionsList,
+
+						backgroundColor: [
+							'rgba(255, 99, 132, 0.2)',
+							'rgba(54, 162, 235, 0.2)',
+							'rgba(255, 206, 86, 0.2)',
+							'rgba(75, 192, 192, 0.2)',
+							'rgba(255, 159, 64, 0.2)'
+						], borderColor: [
+							'rgba(255, 99, 132, 1)',
+							'rgba(54, 162, 235, 1)',
+							'rgba(255, 206, 86, 1)',
+							'rgba(75, 192, 192, 1)',
+							'rgba(255, 159, 64, 1)'
+						]
+					}]
+				},
+				options: {
+					responsive: false,
+					maintainAspectRatio: false, //x축 반으로 줄임
+					cutoutPercentage: 80,
+					elements: {
+						center: {
+							text: dmgPercent.toFixed(2) + "%",
+							color: '#FF6384', // Default is #000000
+							fontStyle: 'Arial', // Default is Arial
+							sidePadding: 20, // Default is 20 (as a percentage)
+							minFontSize: 20, // Default is 20 (in px), set to false and text will not wrap.
+							lineHeight: 10 // Default is 25 (in px), used for when text wraps
+
+
+						}
+					}
+				}
+			};
+
+			var ctx = document.getElementById("circle").getContext("2d");
+			var myChart = new Chart(ctx, config);
 			///수평바
 			labels = championNameList;
 			images = championImgList
