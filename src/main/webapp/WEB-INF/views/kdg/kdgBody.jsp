@@ -17,8 +17,9 @@
 <p id="selectTier" style="visibility: hidden; position: absolute;">플래티넘</p>
 <p id="selectTierModal" style="visibility: hidden; position: absolute;">플래티넘</p>
 <p id="selectCore" style="visibility: hidden; position: absolute;">1코어 아이템</p>
-<p id="modNum" style="visibility: hidden; position: absolute;">0</p>
+<p id="modNum" style="visibility: hidden; position: absolute;">1</p>
 <p id="graph_line" style="visibility: hidden; position: absolute;">top</p>
+<p id="hide_champList" style="visibility: hidden; position: absolute;">O</p>
 
 
 <div class = "darkmod_checkbox">
@@ -36,12 +37,11 @@
 
 <div class = "comm_graph_title">
 	<div class = "comm_title">
-		<p> 라인 별 Best Pick
 	</div>
 	
 	<div class = "graph_title">
 		<div class = "graph_title1">
-			<p> 라인 별 TOP5 Items
+			<p> 라인별 TOP5 Items
 		</div>
 		<div class = "graph_line">
 			<div id = "lineDropdown">
@@ -77,7 +77,9 @@
 		</div>
 	</div>
 </div>
-<br>
+<div class = "comm_champ_line">
+	<p class = "champ_line"></p>
+</div>
 <div class = "comm_graph_box">
 
 	<div class = "comm_box">
@@ -118,6 +120,6 @@
 <div class="sideBanner">
   <a data-bs-toggle="modal" href="#exampleModalToggle" onclick='javascript:test()'><img class = "bannerImg" src="../img/kdg/kdgBanner.jpg"></a>
   <span class="txt-label banner_span_txt">
-    <a id = "analysisBtn" class="btn btn-primary banner_to_modalBtn" data-bs-toggle="modal" href="#exampleModalToggle" role="button" style = "width: 150px;" onclick='javascript:test()'>get Item Build</a>
+    <a id = "analysisBtn" class="btn btn-primary banner_to_modalBtn" data-bs-toggle="modal" href="#exampleModalToggle" role="button" style = "width: 150px; margin-left: 26%;" onclick='javascript:test()'>get Item Build</a>
   </span>
 </div>
