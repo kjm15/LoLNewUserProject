@@ -1,6 +1,8 @@
 $(document).ready(function() {
 	$('#clickBtn').click(function() {
 		
+		$('#hide_champList').html("X")
+		
 		str = "<img src='../img/kdg/loading.gif' class = 'loadingImg2'>"	
 		$('#itemBuild').html(str)
 		
@@ -26,13 +28,22 @@ $(document).ready(function() {
 
 				$('#champList').empty();
 				$('#champList').hide();
+				
+				if(res.length == 0) {
+					
+					str2 = "<p class = 'nodata_build'>데이터가 없습니다.</p>"
+					$('#itemBuild').html(str2)
+					$('#selectTier_modal').show()
+					$('#itemBuild').show();
+					
+				} else {
 
 				str2 = ""
 				str2 += "<table>"
 				str2 += "<caption class = 'itemBuild_modal_caption'>추천 빌드</caption>"
 
 				for (let i = 0; i < res.length; i++) {
-					str2 += "<tr><td><div class = 'itemBuild_modal_tr'>"
+					str2 += "<tr class = 'modal_talbel_tr'><td><div class = 'itemBuild_modal_tr'>"
 					str2 += "<img id = '" + res[i].itemId1 + "' class='jb-title-modal' src='https://ddragon.leagueoflegends.com/cdn/14.1.1/img/item/" + res[i].itemId1 + ".png' onmouseover='javascript:itemToolTipModal(this.id)' style='width: 40px; height: 40px;'></img>"
 					str2 += "<div class = 'jb-text-modal'></div>"
 					str2 += "<span class='itemBuild-direction'></span>"
@@ -52,6 +63,8 @@ $(document).ready(function() {
 				$('#itemBuild').show();
 				$('#itemBuild').html(str2);
 				
+				}
+				
 				$('#clickBtn').hide();
 				$('#reSelectBtn').show();
 					
@@ -69,6 +82,8 @@ $(document).ready(function() {
 
 $(document).ready(function() {
 	$('#reSelectBtn').click(function() {
+		
+		$('#hide_champList').text("O")
 		
 		$('#reSelectBtn').hide()
 		$('#clickBtn').hide()
@@ -94,6 +109,8 @@ $(document).ready(function() {
 	
 
 function choiceTierModal(a){
+	
+		$('#hide_champList').html("X")
 	
 		str = "<img src='../img/kdg/loading.gif' class = 'loadingImg2'>"	
 		$('#itemBuild').html(str)
@@ -137,13 +154,19 @@ function choiceTierModal(a){
 			url: "/kdg/itemBuild",
 			data: data,
 			success: function(res) {
+				if(res.length == 0) {
+					
+					str2 = "<p class = 'nodata_build'>데이터가 없습니다.</p>"
+					$('#itemBuild').html(str2)
+					
+				} else {
 
 				str2 = ""
 				str2 += "<table>"
 				str2 += "<caption class = 'itemBuild_modal_caption'>추천 빌드</caption>"
 
 				for (let i = 0; i < res.length; i++) {
-					str2 += "<tr><td><div class = 'itemBuild_modal_tr'>"
+					str2 += "<tr class = 'modal_talbel_tr'><td><div class = 'itemBuild_modal_tr'>"
 					str2 += "<img id = '" + res[i].itemId1 + "' class='jb-title-modal' src='https://ddragon.leagueoflegends.com/cdn/14.1.1/img/item/" + res[i].itemId1 + ".png' onmouseover='javascript:itemToolTipModal(this.id)' style='width: 40px; height: 40px;'></img>"
 					str2 += "<div class = 'jb-text-modal'></div>"
 					str2 += "<span class='itemBuild-direction'></span>"
@@ -160,6 +183,8 @@ function choiceTierModal(a){
 				str2 += "</table>"
 				
 				$('#itemBuild').html(str2);
+				
+				}
 					
 				str4 = "빌드를 확인해보세요."
 				$('#exampleModalToggleLabel').html(str4);
@@ -173,6 +198,8 @@ function choiceTierModal(a){
 	}
 
 function test(){
+	
+		$('#hide_champList').html("O")
 		
 		$('#clickBtn').hide()
 		$('#reSelectBtn').hide()

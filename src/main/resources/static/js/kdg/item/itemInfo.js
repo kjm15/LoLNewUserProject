@@ -91,11 +91,11 @@ $(document).ready(function() {
 						str2 += "<td class = 'small_chtd' ><img src = 'https://ddragon.leagueoflegends.com/cdn/14.1.1/img/champion/Fiddlesticks.png'></td>"
 					}
 						str2 += "<td rowspan='2'>"
-						str2 += "<td class = 'small_ltd'><img src='../img/"+res[i].line1+".png'></td>"
-						str2 += "<td class = 'small_ltd'><img src='../img/"+res[i].line2+".png'></td>"
-						str2 += "<td class = 'small_ltd'><img src='../img/"+res[i].line3+".png'></td>"
-						str2 += "<td class = 'small_ltd'><img src='../img/"+res[i].line4+".png'></td>"
-						str2 += "<td class = 'small_ltd'><img src='../img/"+res[i].line5+".png'></td>"
+						str2 += "<td class = 'small_ltd'><img id = '"+i+"_"+res[i].line1+"' class='jb-title-line' src='../img/"+res[i].line1+".png' onmouseover='javascript:lineToolTip(this.id)'><p class='tooltiptext tooltip-top'></p></td>"
+						str2 += "<td class = 'small_ltd'><img id = '"+i+"_"+res[i].line2+"' class='jb-title-line' src='../img/"+res[i].line2+".png' onmouseover='javascript:lineToolTip(this.id)'><p class='tooltiptext tooltip-top'></p></td>"
+						str2 += "<td class = 'small_ltd'><img id = '"+i+"_"+res[i].line3+"' class='jb-title-line' src='../img/"+res[i].line3+".png' onmouseover='javascript:lineToolTip(this.id)'><p class='tooltiptext tooltip-top'></p></td>"
+						str2 += "<td class = 'small_ltd'><img id = '"+i+"_"+res[i].line4+"' class='jb-title-line' src='../img/"+res[i].line4+".png' onmouseover='javascript:lineToolTip(this.id)'><p class='tooltiptext tooltip-top'></p></td>"
+						str2 += "<td class = 'small_ltd'><img id = '"+i+"_"+res[i].line5+"' class='jb-title-line' src='../img/"+res[i].line5+".png' onmouseover='javascript:lineToolTip(this.id)'><p class='tooltiptext tooltip-top'></p></td>"
 					str2 += "</tr>"
 					str2 += "<tr class = 'resultTr"+((i+1)%2)+"'>"
 						str2 += "<td class = 'td_txt highest_rate'>"+(res[i].itemPickCnt1/res[i].itemCnt*100).toFixed(2)+"%</td>"
@@ -115,19 +115,20 @@ $(document).ready(function() {
 			$('.coreItemList_box').html(str+str2+str3)
 			modNum = $('#modNum').text();
 			
-			if (modNum == 0){
+			if (modNum == 1){
 				
-				$('.tableMainTr').css("background-color","rgba(27, 65, 221, 0.58)")
-				$('.tableMainTr').css("color","black")
-				
-				$('.resultTr0').css("background-color","#B4D4FF")
-				$('.resultTr0').css("color","black")
-				
-				$('.resultTr1').css("background-color","#86B6F6")
-				$('.resultTr1').css("color","black")
+			$('.tableMainTr').css("background-color","rgba(27, 65, 221, 0.58)")
+			$('.tableMainTr').css("color","black")
+			
+			$('.resultTr0').css("background-color","rgb(120, 173, 252)")
+			$('.resultTr0').css("color","black")
+			
+			$('.resultTr1').css("background-color","rgb(157, 196, 253)")
+			$('.resultTr1').css("color","black")	
 				
 				$('body').css("background-color","white")
-				
+			
+								
 			}
 
 		}
@@ -289,7 +290,7 @@ function choiceTier(b){
 			$('.coreItemList_box').html(str+str2+str3)
 			modNum = $('#modNum').text();
 			
-			if (modNum == 1){
+			if (modNum == 0){
 				
 				$('.tableMainTr').css("background-color","#343a40")
 				$('.tableMainTr').css("color","white")
@@ -302,19 +303,18 @@ function choiceTier(b){
 				
 				$('body').css("background-color","#222")
 							
-			} else if (modNum == 0){
+			} else if (modNum == 1){
 				
-				$('.tableMainTr').css("background-color","rgba(27, 65, 221, 0.58)")
-				$('.tableMainTr').css("color","black")
+			$('.tableMainTr').css("background-color","rgba(27, 65, 221, 0.58)")
+			$('.tableMainTr').css("color","black")
+			
+			$('.resultTr0').css("background-color","rgb(120, 173, 252)")
+			$('.resultTr0').css("color","black")
+			
+			$('.resultTr1').css("background-color","rgb(157, 196, 253)")
+			$('.resultTr1').css("color","black")	
 				
-				$('.resultTr0').css("background-color","#B4D4FF")
-				$('.resultTr0').css("color","black")
-				
-				$('.resultTr1').css("background-color","#86B6F6")
-				$('.resultTr1').css("color","black")
-								
 				$('body').css("background-color","white")
-				
 			}
 
 		}
@@ -457,7 +457,7 @@ function choiceCore(c){
 			$('.coreItemList_box').html(str+str2+str3)
 			modNum = $('#modNum').text();
 			
-			if (modNum == 1){
+			if (modNum == 0){
 				
 				$('.tableMainTr').css("background-color","#343a40")
 				$('.tableMainTr').css("color","white")
@@ -470,17 +470,17 @@ function choiceCore(c){
 				
 				$('body').css("background-color","#222")
 
-			} else if (modNum == 0){
+			} else if (modNum == 1){
 				
-				$('.tableMainTr').css("background-color","rgba(27, 65, 221, 0.58)")
-				$('.tableMainTr').css("color","black")
+			$('.tableMainTr').css("background-color","rgba(27, 65, 221, 0.58)")
+			$('.tableMainTr').css("color","black")
+			
+			$('.resultTr0').css("background-color","rgb(120, 173, 252)")
+			$('.resultTr0').css("color","black")
+			
+			$('.resultTr1').css("background-color","rgb(157, 196, 253)")
+			$('.resultTr1').css("color","black")	
 				
-				$('.resultTr0').css("background-color","#B4D4FF")
-				$('.resultTr0').css("color","black")
-				
-				$('.resultTr1').css("background-color","#86B6F6")
-				$('.resultTr1').css("color","black")
-
 				$('body').css("background-color","white")
 
 			}

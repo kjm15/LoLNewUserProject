@@ -3,7 +3,7 @@ $(document).ready(function() {
 		
 		modNum = $('#modNum').text();
 		
-		if (modNum == 0){
+		if (modNum == 1){ // 다그코드 on
 			
 			$('.tableMainTr').css("background-color","#343a40")
 			$('.tableMainTr').css("color","white")
@@ -25,10 +25,10 @@ $(document).ready(function() {
 			$('.navbarMain1').css("background-color","#2a2c33")				
 			$('.headerItmes').css("background-color","#27282d")			
 			
-			i = 1
-			$('#modNum').html(i)
+			dkmodnum = 0
+			$('#modNum').html(dkmodnum)
 						
-		} else if (modNum == 1){
+		} else if (modNum == 0){ // 다크모드 off
 			
 			$('.tableMainTr').css("background-color","rgba(27, 65, 221, 0.58)")
 			$('.tableMainTr').css("color","black")
@@ -50,8 +50,8 @@ $(document).ready(function() {
 			$('.navbarMain1').css("background-color","rgba(27, 65, 221, 0.38)")				
 			$('.headerItmes').css("background-color","rgb(157, 196, 253)")		
 			
-			i = 0
-			$('#modNum').html(i)
+			dkmodnum = 1
+			$('#modNum').html(dkmodnum)
 			
 		}
 

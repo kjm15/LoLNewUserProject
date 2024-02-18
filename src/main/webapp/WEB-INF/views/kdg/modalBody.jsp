@@ -69,31 +69,31 @@
 					<button id='TierDropDownModal' class='btn btn-secondary dropdown-toggle modalTier' type='button' data-bs-toggle='dropdown' aria-expanded='false'>티어 선택</button>
 						<ul class='dropdown-menu'>
 							<li>
-								<a id='iron' onclick='javascript:choiceTierModal(this.id)' class='dropdown-item' href='#'>
+								<a id='iron' onclick='javascript:choiceTierModal(this.id)' class='dropdown-item'>
 								<img src='../img/tier/iron.png' style='width: 30px; height: 30px;'>아이언</a>
 							</li>
 							<li>
-								<a id='bronze' onclick='javascript:choiceTierModal(this.id)' class='dropdown-item' href='#'>
+								<a id='bronze' onclick='javascript:choiceTierModal(this.id)' class='dropdown-item'>
 								<img src='../img/tier/bronze.png' style='width: 30px; height: 30px;'>브론즈</a>
 							</li>
 							<li>
-								<a id='silver' onclick='javascript:choiceTierModal(this.id)' class='dropdown-item' href='#'>
+								<a id='silver' onclick='javascript:choiceTierModal(this.id)' class='dropdown-item'>
 								<img src='../img/tier/silver.png' style='width: 30px; height: 30px;'>실버</a>
 							</li>
 							<li>
-								<a id='gold' onclick='javascript:choiceTierModal(this.id)' class='dropdown-item' href='#'>
+								<a id='gold' onclick='javascript:choiceTierModal(this.id)' class='dropdown-item'>
 								<img src='../img/tier/gold.png' style='width: 30px; height: 30px;'>골드</a>
 							</li>
 							<li>
-								<a id='platinum' onclick='javascript:choiceTierModal(this.id)' class='dropdown-item' href='#'>
+								<a id='platinum' onclick='javascript:choiceTierModal(this.id)' class='dropdown-item'>
 								<img src='../img/tier/platinum.png' style='width: 30px; height: 30px;'>플래티넘</a>
 							</li>
 							<li>
-								<a id='emerald' onclick='javascript:choiceTierModal(this.id)' class='dropdown-item' href='#'>
+								<a id='emerald' onclick='javascript:choiceTierModal(this.id)' class='dropdown-item'>
 								<img src='../img/tier/emerald.png' style='width: 30px; height: 30px;'>에메랄드</a>
 							</li>
 							<li>
-								<a id='diamond' onclick='javascript:choiceTierModal(this.id)' class='dropdown-item' href='#'>
+								<a id='diamond' onclick='javascript:choiceTierModal(this.id)' class='dropdown-item'>
 								<img src='../img/tier/diamond.png' style='width: 30px; height: 30px;'>다이아몬드</a>
 							</li>
 						</ul>

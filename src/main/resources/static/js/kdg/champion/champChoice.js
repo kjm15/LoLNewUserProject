@@ -1,33 +1,38 @@
 function champ(a) {
 	
-	$('#line').show()
-	
-	$('#champList').empty();
+	if($('#lineCheck').text() == ''){
+		
+		$('#champList').empty();
+		
+	}
 	$.ajax({
 		type : "POST",
 		url : "/kdg/re",
-		success : function(res) {			
+		success : function(res) {
 			
-			str1 = "<ul id = 'champListUl'>"
-			str2 = ''
-					for (let i = 0; i < res.length; i++){
-						if(res[i].champion_name != 'Smolder'){
-							str2 += "<li  id = 'champListLi'><img id='"+res[i].champion_name+"' src='https://ddragon.leagueoflegends.com/cdn/14.3.1/img/champion/"+res[i].champion_name+".png'"
-							str2 += "width='44' height='44' alt='"+res[i].champion_name+"' class='bg-image' onclick='javascript:submit(this.id)'>"
-							str2 +=	"<span>"+res[i].champion_name_kr+"</span></li>"
-							}
-						}
-			str3 = "</ul>"
+			if($('#hide_champList').text() == 'O'){	
 				
-			$('#champList').html(str1 + str2 + str3)
+				str1 = "<ul id = 'champListUl'>"
+				str2 = ''
+						for (let i = 0; i < res.length; i++){
+							if(res[i].champion_name != 'Smolder'){
+								str2 += "<li  id = 'champListLi'><img id='"+res[i].champion_name+"' src='https://ddragon.leagueoflegends.com/cdn/14.3.1/img/champion/"+res[i].champion_name+".png'"
+								str2 += "width='44' height='44' alt='"+res[i].champion_name+"' class='bg-image' onclick='javascript:submit(this.id)'>"
+								str2 +=	"<span class = 'champList_span'>"+res[i].champion_name_kr+"</span></li>"
+								}
+							}
+				str3 = "</ul>"
+					
+				$('#champList').html(str1 + str2 + str3)
+				
+				$('#champList').show();
+				$('.positionICN').show();
+				$('#line').show()
+				
+				$('#name').html(a);
+			}
 		}
 	})
-
-	
-	$('#champList').show();
-	$('.positionICN').show();
-	
-	$('#name').html(a);
 }
 
 function submit(b) {

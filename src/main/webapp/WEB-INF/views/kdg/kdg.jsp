@@ -23,6 +23,8 @@
 <script defer src="../js/kdg/item/itemInfo.js" /></script>
 <!-- itemToolTip js 들어갈 곳 -->
 <script defer src="../js/kdg/item/itemToolTip.js" /></script>
+<!-- lineToolTip js 들어갈 곳 -->
+<script defer src="../js/kdg/lineToolTip.js" /></script>
 <!-- itemBuild js 들어갈 곳 -->
 <script defer src="../js/kdg/item/itemBuild.js" /></script>
 
@@ -31,7 +33,7 @@
 <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
 
 <!-- <script src="/static/js/bootstrap.bundle.js"></script> -->
-<link rel="stylesheet" href="../css/kdg/copy.css" />
+<link rel="stylesheet" href="../css/kdg/kdg.css" />
 </head>
 <body>
 	<!-- header jsp -->
