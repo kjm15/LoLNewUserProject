@@ -13,9 +13,18 @@
 </head>
 <body>
 
+
+
 <h1>이곳은ai테스트페이지입니다..</h1>
 
-값 Output_line = <%= request.getAttribute("line") %> 
+
+<form action="/py/aicheck" method = "post">
+<input type = "text" placeholder="cs 개수를 입력해주세요" name = "cs">
+<input type = "text" placeholder="와드 개수를 입력해주세요" name = "ward">
+<input type = "submit" value = "눌러주세요" />
+</form> 
+
+결과값 = ${check}
 <pyscript>
 
 
