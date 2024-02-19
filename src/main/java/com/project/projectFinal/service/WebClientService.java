@@ -181,9 +181,10 @@ public class WebClientService {
 		}
 	
 		ArrayList<String> dbList = webdao.matchIdRecent(riotApiDto);
-
+		log.info("==dbList{}",newmList);
+		log.info("==dbList{}",dbList);
 		newmList.removeAll(dbList);
-
+		log.info("==dbList{}",newmList);
 		List<Map<String, Object>> findList = new ArrayList<>();
 		if (mList.size() != 0) {// 3개다 같지 않다.
 

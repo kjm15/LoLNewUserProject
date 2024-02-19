@@ -1,0 +1,71 @@
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+
+<mapper namespace="com.project.projectFinal.dao.JhlChampDao">
+
+	<select id="rankListInfo">
+
+		SELECT *
+		FROM rankListT
+		WHERE teamPosition =
+		#{teamPosition}
+
+	</select>
+
+	<select id="champRank">
+
+		SELECT *
+		FROM champRankT
+		WHERE teamPosition =
+		#{teamPosition}
+		LIMIT 60;
+
+	</select>
+
+	<select id="laneListInfo">
+
+		SELECT *
+		FROM champListT
+		where line like
+		concat('%',#{teamPosition}, '%')
+
+	</select>
+
+	<select id="rankListTeamPositionInfo">
+
+		SELECT *
+		FROM rankListT
+		where teamPosition =
+		#{teamPosition} and championId = #{championId}
+
+
+	</select>
+
+	<insert id="saveChampRankT">
+
+		REPLACE into champRankT(teamPosition,champion_name
+		,champion_name_kr,pick_rate
+		,win_rate,win_total_cnt
+		,champion_pick,ban_rate)
+		
+		values(#{teamPosition},#{champion_name},#{champion_name_kr}
+		,#{pick_rate},#{win_rate},#{win_total_cnt}
+		,#{champion_pick},#{ban_rate} )
+	
+	
+	</insert>
+	<select id = "allChampCnt">
+	
+	
+	select count(*) from rankListT where teamPosition = #{teamPosition} ;
+	
+	</select>
+	<select id = "banChampCnt">
+	
+	
+	select count(*) 
+	from rankListT 
+	where ban_champion_name_kr = #{champion_name_kr} ;
+	
+	</select>
+</mapper>
