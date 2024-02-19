@@ -75,12 +75,14 @@ public class RestMatchListController {
 			for (int j = 0; j < info.size(); j++) {
 				Map RiotInfo = (Map) info.get(j);
 				matchListService.RiotGameInfo(RiotInfo);
+				System.out.println("인포");
 
 			}
 			List teams = (List) response.get("teams");
 			for (int j = 0; j < teams.size(); j++) {
 				Map RiotTeams = (Map) teams.get(j);
 				matchListService.RiotGameTeams(RiotTeams);
+				System.out.println("팀");
 
 			}
 			if (response.get("bans") == null) {
@@ -90,6 +92,7 @@ public class RestMatchListController {
 				for (int j = 0; j < bans.size(); j++) {
 					Map RiotBans = (Map) bans.get(j);
 					matchListService.RiotGameBans(RiotBans);
+					System.out.println("벤");
 
 				}
 			}
