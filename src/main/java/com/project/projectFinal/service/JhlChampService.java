@@ -1,9 +1,11 @@
 package com.project.projectFinal.service;
 
+import java.lang.ProcessHandle.Info;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
+import java.util.Objects;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -39,13 +41,11 @@ public class JhlChampService {
 	}
 
 	public void champUpdate(ChampionRankDto rankDto) {
-
-		List<HashMap<String, Object>> rList = champDao.rankListInfo(rankDto);
-
 		List<HashMap<String, Object>> laneChampList = champDao.laneListInfo(rankDto);
-		log.info("====초보자페이지 업데이트 시작 : {}",rankDto.getTeamPosition());
-		for (Map<String, Object> champ : laneChampList) {
 
+		log.info("====초보자페이지 업데이트 시작 : {}", rankDto.getTeamPosition());
+
+		for (Map<String, Object> champ : laneChampList) {
 			List<HashMap<String, Object>> cList = new ArrayList<>();
 			champ.get("championid"); // 챔프아이디
 			String champion_name_kr = (String) champ.get("champion_name_kr"); // 한국어이름
@@ -56,7 +56,9 @@ public class JhlChampService {
 
 			// cList : 각각의 챔피언 총 리스트
 			cList = champDao.rankListTeamPositionInfo(teamPosition, championId);
-				
+
+			log.info("========{}", cList);
+
 			int allCnt = cList.size(); // 한챔피언의 총 길이
 
 			int winCnt = 0;
@@ -74,8 +76,7 @@ public class JhlChampService {
 			}
 			int allChampCnt = champDao.allChampCnt(teamPosition);
 			int banChampCnt = champDao.banChampCnt(champion_name_kr);
-			
-			
+
 			double aa = (double) winCnt;
 			double bb = (double) allCnt;
 			double cc = (double) banChampCnt;
@@ -101,10 +102,86 @@ public class JhlChampService {
 			champRankTList.put("win_total_cnt", win_total_cnt);
 			champRankTList.put("champion_pick", allCnt);
 			champRankTList.put("ban_rate", ban_rate);
-
+			log.info("============{}", ban_rate);
 			champDao.saveChampRankT(champRankTList);
 		}
-		log.info("====초보자페이지 업데이트 종료 : {}",rankDto.getTeamPosition());
+		log.info("====초보자페이지 업데이트 종료 : {}", rankDto.getTeamPosition());
+	}
+
+	public void champCounter(ChampionRankDto rankDto) {
+		List<HashMap<String, Object>> rListAll = champDao.rankListInfo(rankDto);
+		List<HashMap<String, Object>> laneChampCounterList = champDao.laneCounterListInfo(rankDto);
+
+//		log.info("============={}",laneChampCounterList);
+//		
+		for (Map<String, Object> counterChamp : laneChampCounterList) {
+
+			String teamPosition = rankDto.getTeamPosition();
+			int championId = (int) counterChamp.get("championid");
+			int winMCnt = 0;
+			int loseMCnt = 0;
+			int winECnt = 0;
+			int loseECnt = 0;
+			double win_rateM = 0;
+			double lose_rateM = 0;
+
+			List<HashMap<String, Object>> rankCWin = champDao.rankListCounterA(teamPosition, championId);
+
+			for (Map<String, Object> rw : rankCWin) {
+				String match_id = (String) rw.get("match_id");
+				String teamPosition1 = (String) rw.get("teamPosition");
+				Integer championIdM = Integer.parseInt((String) rw.get("championId"));
+				Integer championMWin = (Integer) rw.get("win");
+				
+				
+				List<HashMap<String, Object>> rankLose = champDao.rankListCounterEnemy(teamPosition1, match_id);
+				for (Map<String, Object> rl : rankLose) {
+					Integer championIdE = Integer.parseInt((String) rl.get("championId"));
+					Integer championEWin = (Integer) rl.get("win");
+					
+					if (match_id.equals((String) rl.get("match_id")) && championIdM != championIdE && championMWin!=championEWin) {
+						HashMap<String, Object> champCounterList = new HashMap<>();
+//						if((int)rw.get("win") == 1) {
+//							winMCnt++;
+//						}else {
+//							loseMCnt++;
+//						}
+//						
+//						if((int)rl.get("win") == 0) {
+//							loseECnt++;
+//						}else{
+//							winECnt++;
+//						} 
+						// 전체 개수는 다 맞음.. 근데 필요한건 M챔피언 이긴 수 E챔피언 이긴 수 total 값이란 말이지..
+//						
+//						double aa = (double) winMCnt;
+//						double bb = (double) loseMCnt;
+//						double Ecnt = (double)aa+bb;
+//						win_rateM = Math.round(((aa / Ecnt) * 100) * 100) / 100.0;
+//						lose_rateM = Math.round(((bb / Ecnt) * 100) * 100) / 100.0;
+//						double cc = (double) loseECnt;
+//						double dd = (double) winECnt;
+//						double Mcnt = (double)cc+dd;
+
+						champCounterList.put("match_id", match_id);
+						champCounterList.put("teamPosition", teamPosition1);
+						champCounterList.put("championIdM", championIdM);
+						champCounterList.put("championMWin", championMWin);
+						champCounterList.put("championIdE", championIdE);
+						champCounterList.put("championEWin", championEWin);
+						champCounterList.put("winMCnt", winMCnt);
+						champCounterList.put("loseMCnt", loseMCnt);
+						champCounterList.put("winECnt", loseECnt);
+						champCounterList.put("loseECnt", winECnt);
+						
+						log.info("============={}", champCounterList);
+
+						}
+					}
+
+			}
+		}
+
 	}
 
 }
