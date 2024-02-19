@@ -41,12 +41,15 @@ public interface JhlChampDao {
 
 	public List<HashMap<String, Object>> rankListWinChampInfo();
 
-	public List<HashMap<String, Object>> rankListCounterChampInfo(String teamPosition, int championId);
+//	public List<HashMap<String, Object>> rankListCounterChampInfo(String teamPosition, int championId);
 
-	public List<HashMap<String, Object>> rankListCounterWin(String teamPosition, int championId);
+	public List<HashMap<String, Object>> rankListCounterA(String teamPosition, int championId);
+
+	public List<HashMap<String, Object>> rankListCounterEnemy(String teamPosition1, String match_id);
+
+//	public List<HashMap<String, Object>> rankWinList(Integer championIdWin, String match_id);
 
 
-	public List<HashMap<String, Object>> rankListCounterlose(String teamPosition, String match_id);
 
 
 

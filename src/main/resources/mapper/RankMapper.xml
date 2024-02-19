@@ -91,8 +91,6 @@
 
 	</select>
 
-
-
 	<select id="rankListInfo">
 		SELECT *
 		FROM rankListT;
@@ -105,28 +103,19 @@
 		concat('%',#{teamPosition}, '%')
 	</select>
 
-<!-- 	<select id="rankListCounterChampInfo"> -->
-<!-- 		SELECT * -->
-<!-- 		FROM rankListT -->
-<!-- 		where teamPosition = -->
-<!-- 		#{teamPosition} and championId = -->
-<!-- 		#{championId} -->
-<!-- 	</select> -->
-
-	<select id="rankListCounterWin">
+	<select id="rankListCounterA">
 		SELECT *
 		FROM rankListT
 		where teamPosition =
 		#{teamPosition} and championId =
-		#{championId}
-		where win = 1;
+		#{championId};
 	</select>
 
-	<select id="rankListCounterlose">
+	<select id="rankListCounterEnemy">
 		SELECT *
 		FROM rankListT
 		where teamPosition =
-		#{teamPosition} and match_id =#{match_id}
-		where win =0;
+		#{teamPosition1} and match_id =#{match_id};
 	</select>
+
 </mapper>

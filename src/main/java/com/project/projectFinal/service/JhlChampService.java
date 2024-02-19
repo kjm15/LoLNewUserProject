@@ -118,26 +118,68 @@ public class JhlChampService {
 
 			String teamPosition = rankDto.getTeamPosition();
 			int championId = (int) counterChamp.get("championid");
-			int winCnt = 0;
-			int loseCnt = 0;
-//		for(Map<String, Object> ra :rListAll) {
-//			List<HashMap<String, Object>> counterCampList = champDao.rankListCounterChampInfo(teamPosition, championId);
-//			for(Map<String, Object> ct : counterCampList) {
+			int winMCnt = 0;
+			int loseMCnt = 0;
+			int winECnt = 0;
+			int loseECnt = 0;
+			double win_rateM = 0;
+			double lose_rateM = 0;
 
-			List<HashMap<String, Object>> rankCWin = champDao.rankListCounterWin(teamPosition, championId);
+			List<HashMap<String, Object>> rankCWin = champDao.rankListCounterA(teamPosition, championId);
 
 			for (Map<String, Object> rw : rankCWin) {
 				String match_id = (String) rw.get("match_id");
-				List<HashMap<String, Object>> rankCLose = champDao.rankListCounterlose(teamPosition, match_id);
-				for (Map<String, Object> rl : rankCLose) {
-					log.info("============={}", rl);
+				String teamPosition1 = (String) rw.get("teamPosition");
+				Integer championIdM = Integer.parseInt((String) rw.get("championId"));
+				Integer championMWin = (Integer) rw.get("win");
+				
+				
+				List<HashMap<String, Object>> rankLose = champDao.rankListCounterEnemy(teamPosition1, match_id);
+				for (Map<String, Object> rl : rankLose) {
+					Integer championIdE = Integer.parseInt((String) rl.get("championId"));
+					Integer championEWin = (Integer) rl.get("win");
+					
+					if (match_id.equals((String) rl.get("match_id")) && championIdM != championIdE && championMWin!=championEWin) {
+						HashMap<String, Object> champCounterList = new HashMap<>();
+//						if((int)rw.get("win") == 1) {
+//							winMCnt++;
+//						}else {
+//							loseMCnt++;
+//						}
+//						
+//						if((int)rl.get("win") == 0) {
+//							loseECnt++;
+//						}else{
+//							winECnt++;
+//						} 
+						// 전체 개수는 다 맞음.. 근데 필요한건 M챔피언 이긴 수 E챔피언 이긴 수 total 값이란 말이지..
+//						
+//						double aa = (double) winMCnt;
+//						double bb = (double) loseMCnt;
+//						double Ecnt = (double)aa+bb;
+//						win_rateM = Math.round(((aa / Ecnt) * 100) * 100) / 100.0;
+//						lose_rateM = Math.round(((bb / Ecnt) * 100) * 100) / 100.0;
+//						double cc = (double) loseECnt;
+//						double dd = (double) winECnt;
+//						double Mcnt = (double)cc+dd;
 
-				}
+						champCounterList.put("match_id", match_id);
+						champCounterList.put("teamPosition", teamPosition1);
+						champCounterList.put("championIdM", championIdM);
+						champCounterList.put("championMWin", championMWin);
+						champCounterList.put("championIdE", championIdE);
+						champCounterList.put("championEWin", championEWin);
+						champCounterList.put("winMCnt", winMCnt);
+						champCounterList.put("loseMCnt", loseMCnt);
+						champCounterList.put("winECnt", loseECnt);
+						champCounterList.put("loseECnt", winECnt);
+						
+						log.info("============={}", champCounterList);
+
+						}
+					}
 
 			}
-
-//				}
-//			}
 		}
 
 	}
