@@ -73,4 +73,10 @@
 	
 	</select>
 	
+	<select id="getKRname">
+	
+		select champion_name_kr from champListT where champion_name = #{champion_name};
+	
+	</select>
+	
 </mapper>

@@ -31,5 +31,7 @@ public interface ChampionDao {
 	
 	public List<HashMap<String, ChampionRankDto>> champRankSUP();
 
+	public String getKRname(ChampionImageDto ciDto);
+
 
 }

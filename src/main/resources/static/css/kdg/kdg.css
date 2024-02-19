@@ -637,7 +637,7 @@
   width: 20px;
   height: 20px;
   position: absolute;
-  top: 43.7%;
+  top: 48.7%;
   left: 4px;
   transform: translateY(-50%);
   border-radius: 50%;
@@ -1053,7 +1053,8 @@
     
 }
 
-.jb-title-line:hover + .tooltiptext {	
+.jb-title-line:hover + .tooltiptext,
+.jb-title-champ:hover + .tooltiptext {	
 	 
 	display: block;
 	

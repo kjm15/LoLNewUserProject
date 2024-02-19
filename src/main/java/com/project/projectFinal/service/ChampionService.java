@@ -73,5 +73,10 @@ public class ChampionService {
 		return cd.champRankSUP();
 	}
 
+	public String getKRname(ChampionImageDto ciDto) {
+		
+		return cd.getKRname(ciDto);
+	}
+
 	
 }
