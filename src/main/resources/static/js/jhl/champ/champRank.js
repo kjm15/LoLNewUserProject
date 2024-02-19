@@ -1,16 +1,27 @@
 
 
 $(function() {
-		
-		$('Emerald').click(function(){
-			$("#Top").click();
-		})
-        $("#Top").click(function () {
-            champRank($(this).attr("id"));
-        });
-			champRank('Top');
 
+	$('Emerald').click(function() {
+		$("#Top").click();
+	})
+	$("#Top").click(function() {
+		champRank($(this).attr("id"));
+	});
+	champRank('Top');
+	champCounter();
 });
+
+
+function tierSelect(t) {
+	$.ajax({
+		type: "post",
+		url: "tierSelect",
+		data: { "tier": t },
+		success: function(res) { }
+	})
+}
+
 
 
 
@@ -23,9 +34,9 @@ function champRank(a) {
 		url: "/champRank",
 		data: { "teamPosition": a },
 		success: function(res) {
-//			let tableTop = "<table class='Rankable'>"
-//			let tablecolgroup = "<colgroup><col width='40%'><col width='30%'><col width='30%'></colgroup><thead>"
-//			let tableColumns = "<tr class='tableColumns'><th><span>챔피언</span></th><th><span>승률</span></th><th><span>픽률</span></th></tr></thead>";
+			//			let tableTop = "<table class='Rankable'>"
+			//			let tablecolgroup = "<colgroup><col width='40%'><col width='30%'><col width='30%'></colgroup><thead>"
+			//			let tableColumns = "<tr class='tableColumns'><th><span>챔피언</span></th><th><span>승률</span></th><th><span>픽률</span></th></tr></thead>";
 			let tableRows = '';
 
 			for (let i = 0; i < res.length; i++) {
@@ -36,7 +47,7 @@ function champRank(a) {
 				tableRows += "<td class ='rData'>" + res[i].ban_rate + "</td>";
 				tableRows += "</tr>";
 			}
-//			let tableBottom = "</table>"
+			//			let tableBottom = "</table>"
 			$('.rTableBody').html(tableRows);
 			console.log(res);
 			console.log(a);
@@ -46,6 +57,6 @@ function champRank(a) {
 
 
 $(document).on('click', '.rankLine>div', function() {
-    $(this).addClass('ranklineBtn');
-    $(this).siblings().removeClass('ranklineBtn');
+	$(this).addClass('ranklineBtn');
+	$(this).siblings().removeClass('ranklineBtn');
 });

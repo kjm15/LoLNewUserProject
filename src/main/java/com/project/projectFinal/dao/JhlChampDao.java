@@ -37,6 +37,17 @@ public interface JhlChampDao {
 
 	public int banChampCnt(String champion_name_kr);
 
+	public List<HashMap<String, Object>> laneCounterListInfo(ChampionRankDto rankDto);
+
+	public List<HashMap<String, Object>> rankListWinChampInfo();
+
+	public List<HashMap<String, Object>> rankListCounterChampInfo(String teamPosition, int championId);
+
+	public List<HashMap<String, Object>> rankListCounterWin(String teamPosition, int championId);
+
+
+	public List<HashMap<String, Object>> rankListCounterlose(String teamPosition, String match_id);
+
 
 
 	
