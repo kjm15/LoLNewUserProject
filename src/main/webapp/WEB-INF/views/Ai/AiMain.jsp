@@ -23,8 +23,7 @@
 <input type = "text" placeholder="와드 개수를 입력해주세요" name = "ward">
 <input type = "submit" value = "눌러주세요" />
 </form> 
-
-결과값 = ${check}
+<button><a href = "/">메인으로 이동</a></button>
 <pyscript>
 
 
