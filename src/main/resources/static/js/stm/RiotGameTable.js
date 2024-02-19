@@ -3,9 +3,57 @@
  */
 $('a.feellink').click(function(e) //a태그 눌러도 맨위로 안올라감
 {
-	e.preventDefault();   
+	e.preventDefault();
 });
+let win = 0
+let lose = 0
 function showGameTamble(res, data) {
+	$('.graph1').empty()
+	let ccc = ''
+	for (let i in res) {
+		for (let j in res[i]['info']) {
+			if (data['gameName'] == res[i]["info"][j]['riotIdGameName'] || data['gameName'] == res[i]["info"][j]['summonerName']) {
+				if (res[i]["info"][j]['win'] == '1') {
+					win += 1
+				} else {
+					lose += 1
+				}
+
+			}
+		}
+	}
+
+	for (let j in res[0]['info']) {
+		if (data['gameName'] == res[0]["info"][j]['riotIdGameName'] || data['gameName'] == res[0]["info"][j]['summonerName']) {
+			profileIcon = res[0]["info"][j]['profileIcon']
+			summonerLevel = res[0]["info"][j]['summonerLevel']
+			riotIdGameName = res[0]["info"][j]['riotIdGameName']
+
+		}
+	}
+	console.log(profileIcon)
+	console.log(summonerLevel)
+	console.log(riotIdGameName)
+	console.log(win)
+	console.log(lose)
+	
+	ccc += `<div class=container333>
+	<div class="stmH">
+            <div class="stmHright">
+                <div class="cpicon">
+                    <div class = "cpimg">
+	<img width='85' height='85' alt='못 불러옴' src=https://ddragon.leagueoflegends.com/cdn/14.3.1/img/profileicon/${profileIcon}.png>
+                    </div></div>
+                <div class="uid">${riotIdGameName} </div>
+                <div class="ulevel">${summonerLevel}레벨</div>
+            </div>
+            <div class="stmHleft">
+                <div class="u-chart">그래프</div>
+            </div>
+        </div>
+        </div>`
+	$('.graph1').append(ccc)
+
 
 
 	let str = ''
@@ -66,9 +114,12 @@ function showGameTamble(res, data) {
 			} else if (res[i]["info"][j]['queueId'] == 1900) {
 				queue = "우르프"
 			}
+			//			var container1 = document.getElementsByClassName("container1");
+
 			if (data['gameName'] == res[i]["info"][j]['riotIdGameName'] || data['gameName'] == res[i]["info"][j]['summonerName']) {
 				if (res[i]["info"][j]['win'] == '1') {
 					win_lose = '승리'
+					//					container1.style.backgroundColor = "rgba(255, 2, 73, 0.09)";
 				} else {
 					win_lose = '패배'
 				}
@@ -111,8 +162,19 @@ function showGameTamble(res, data) {
 
 		}
 
+		for (j in res[i]['info']) {
+			if (data['gameName'] == res[i]["info"][j]['riotIdGameName'] || data['gameName'] == res[i]["info"][j]['summonerName']) {
+				if (res[i]["info"][j]['win'] == '1') {
+					str += `<div class="container1" id = 'container1' style='background-color :#99ccff'>`
+
+				} else {
+					str += `<div class="container1" id = 'container1' style='background-color :rgba(255, 2, 73, 0.09)'>`
+
+				}
+			}
+		}
 		str += `
-<div class="container1" id = 'container1'>
+
 				<div class="box-left" >
 
 					<div>${queue}</div>
@@ -147,6 +209,8 @@ function showGameTamble(res, data) {
 					if (res[i]["info"][j]['item' + k] != 0) {
 						str += `<img width='30' height='30' alt='못 불러옴' src=https://ddragon.leagueoflegends.com/cdn/14.3.1/img/item/${res[i]["info"][j]['item' + k]}.png>&nbsp;&nbsp;`
 					}
+
+
 				}
 			}
 		}
@@ -177,6 +241,11 @@ function showGameTamble(res, data) {
 							
 							
 								</div>`
+				if (res[i]["info"][j]['win'] == '1') {
+					blueWin = '승리'
+				} else {
+					blueWin = '패배'
+				}
 			}
 		}
 		str += `
@@ -194,19 +263,36 @@ function showGameTamble(res, data) {
 				${riotIdGameName}
 			</div>`
 			}
+			if (res[i]["info"][j]['win'] == '1') {
+				redWin = '승리'
+			} else {
+				redWin = '패배'
+			}
 		}
 
 		str += `
 				</div>
-				</div>
-				<div class="box-right" id ="gamebtn${goBtn}" onclick ="gamebtn(${goBtn})"><a href = 'javascript:;'><p></p><div>더</div><div>보</div><div>기</div><p>∨</p></a></div>
+				</div>`
+		//		asdsaddadsasdasad
+		for (j in res[i]['info']) {
+			if (data['gameName'] == res[i]["info"][j]['riotIdGameName'] || data['gameName'] == res[i]["info"][j]['summonerName']) {
+				if (res[i]["info"][j]['win'] == '1') {
+					str += `<div class="box-right" style='background-color :#9ac2e2' id ="gamebtn${goBtn}" onclick ="gamebtn(${goBtn})"><a href = 'javascript:;'><p></p><div>더</div><div>보</div><div>기</div><p>∨</p></a></div>`
 
-		
-			</div>
+				} else {
+					str += `<div class="box-right" style='background-color : rgba(255, 2, 73, 0.18)' id ="gamebtn${goBtn}" onclick ="gamebtn(${goBtn})"><a href = 'javascript:;'><p></p><div>더</div><div>보</div><div>기</div><p>∨</p></a></div>`
+
+				}
+			}
+		}
+
+
+
+		str += `</div>
 			<div class="line1" id = 'line1${goBtn}' style='display: none'>흰색 선</div>`
 		str += `<div class="container2" id='container2${goBtn}' style='display: none'>
 				<div class="legend">
-					<div class="teamId" style=color:blue;>블루팀</div>
+					<div class="teamId" style=color:blue;>블루팀(${blueWin})</div>
 					<div class=kda>kda</div>
 					<div class=damage>가한피해량</div>
 					<div class=cs>총합cs</div>
@@ -222,7 +308,9 @@ function showGameTamble(res, data) {
 			champimg = res[i]["info"][j]['championName']
 			spellD = res[i]["info"][j]['summonerSpellD']
 			spellF = res[i]["info"][j]['summonerSpellF']
-			riotIdGameName = res[i]["info"][j]['riotIdGameName']
+			riotIdGameName = res[i]["info"][j]['riotIdGameName'];
+			riotIdTagline = res[i]["info"][j]['riotIdTagline'];
+
 			champion_name_kr = res[i]["info"][j]['champion_name_kr']
 			kills = res[i]["info"][j]['kills']
 			deaths = res[i]["info"][j]['deaths']
@@ -249,7 +337,8 @@ function showGameTamble(res, data) {
 								src='https://ddragon.leagueoflegends.com/cdn/14.3.1/img/spell/${spellF}.png'>
 							</div>
 						</div>
-						<div class=nickNameM><div class = nickNameML></div><div class = nickNameMR>${riotIdGameName}</div></div>
+						<div class=nickNameM><div class = nickNameML></div><a  href='/stm/${riotIdGameName}/${riotIdTagline}'><div class = nickNameMR>${riotIdGameName}</div></a></div>
+						
 					</div>
 					<div class=kda1>
 						<div class=killDeathAssist>${kills}/${deaths}/${assists}</div>
@@ -278,7 +367,7 @@ function showGameTamble(res, data) {
 		}
 		str += `
 		<div class="legend1">
-					<div class="teamId" style=color:red;>레드팀</div>
+					<div class="teamId" style=color:red;>레드팀(${redWin})</div>
 					<div class=kda>kda</div>
 					<div class=damage>가한피해량</div>
 					<div class=cs>총합cs</div>
@@ -319,7 +408,7 @@ function showGameTamble(res, data) {
 								src='https://ddragon.leagueoflegends.com/cdn/14.3.1/img/spell/${spellF}.png'>
 							</div>
 						</div>
-						<div class=nickNameM><div class = nickNameML></div><div class = nickNameMR>${riotIdGameName}</div></div>
+						<div class=nickNameM><div class = nickNameML></div><a  href='/stm/${riotIdGameName}/${riotIdTagline}'><div class = nickNameMR>${riotIdGameName}</div></a></div>
 					</div>
 					<div class=kda1>
 						<div class=killDeathAssist>${kills}/${deaths}/${assists}</div>
@@ -358,7 +447,9 @@ function showGameTamble(res, data) {
 		`
 
 
+
 	$('.containerXC').append(str)
+
 
 
 	$("#loadMore").on("click", function() {
@@ -368,4 +459,8 @@ function showGameTamble(res, data) {
 	})
 }
 
+function fffff(goApi) {
+
+	console.log(goApi)
+}
 

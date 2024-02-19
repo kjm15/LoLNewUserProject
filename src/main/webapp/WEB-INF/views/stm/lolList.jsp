@@ -10,7 +10,7 @@
 	src="https://code.jquery.com/jquery-1.12.4.min.js"></script>
 </head>
 <body>
-	<div class="graph1">그래프용</div>
+	<div class="graph1" id = 'graph1'></div>
 	<div id="puuid">
 		<div class="containerXX">
 			<div class="containerXl"></div>
