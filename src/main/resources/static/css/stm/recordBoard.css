@@ -5,7 +5,7 @@
 }
 
 .containerXl {
-	width: 400px;
+	width: 200px;
 }
 
 .containerXR {
@@ -24,7 +24,8 @@
 }
 
 .container1 {
-	background: rgba(255, 2, 73, 0.09);
+/*	background: rgba(255, 2, 73, 0.09);*/
+/*	background: #99ccff  ;*/
 	border: 1px solid skyblue;
 	display: flex;
 	height: 120px;
@@ -68,7 +69,7 @@
 }
 
 .box-right {
-	background: rgba(255, 2, 73, 0.18);
+/*	background: rgba(255, 2, 73, 0.18);*/
 	flex-basis: 70px;
 	text-align: center;
 }
@@ -262,12 +263,12 @@
 }
 
 .damageGraph {
-	/*	background: #80ff80;*/
+		background: #80ff80;
 	/*	height: 100%;*/
 	border-radius: 2px;
 	/* 	background-color: #4caf50; */
 	transition: width 0.5s ease-in-out;
-	height: 50%;
+	height: 40%;
 }
 
 .itemTeamCheck {
@@ -319,4 +320,70 @@
 .nickNameML {
 	/* 	background: #ff8040; */
 	flex-basis: 10%;
+}
+
+.container333{
+    width: 100%;
+    height: 660px;
+    
+/*    position: relative;*/
+}
+
+
+.stmH{
+    width : 60%;
+    height : 30%;
+    margin: 0 auto;
+/*    border: 1px solid black;*/
+    position: relative;
+}
+.stmHright{
+    width : 49.5%;
+    height : 100%;
+    float: left;
+    
+}
+.cpicon{
+    width: 100%;
+    height : 50%;
+    position: relative;
+    margin: 0 auto;
+    
+}
+.cpimg{
+    width: 20%;
+    height: 90%;
+/*    position: relative;*/
+	float: right;
+/*    border : 1px solid black;*/
+	border-radius: 70%;
+    margin : 5% 25% 0% 0%;
+}
+.uid{
+    width: 60%;
+    height : 20%;
+    text-align: center;
+    float: right;
+    border : 1px solid black;
+    margin-right: 5%;
+}
+.ulevel{
+    width: 60%;
+    height : 20%;
+    text-align: center;
+    float: right;
+    border : 1px solid black;
+    margin-right: 5%;
+}
+.u-chart{
+    width : 30%;
+    height: 70%;
+    position: relative;
+    border: 1px solid black;
+    margin: 7% 10% 10% 15%;
+}
+.stmHleft{
+    width : 50%;
+    height : 100%;
+    float: right;    
 }
