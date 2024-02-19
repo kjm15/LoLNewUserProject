@@ -13,6 +13,8 @@
 <script defer src="../js/kdg/champion/champList.js"></script>
 <!-- champ rank js 들어갈곳 -->
 <script defer src="../js/kdg/champion/champRank.js"></script>
+<!-- champ rank js 들어갈곳 -->
+<script defer src="../js/kdg/champion/champToolTip.js"></script>
 <!-- banner js 들어갈 곳 -->
 <script defer src="../js/kdg/kdgBanner.js"></script>
 <!-- kdg darkmod js 들어갈 곳 -->

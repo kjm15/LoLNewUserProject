@@ -66,29 +66,29 @@ $(document).ready(function() {
 					str2 += "<td rowspan='2'>"+(res[i].itemCnt/res[i].allItemCnt*100).toFixed(2)+"%</td>"
 					str2 += "<td rowspan='2'>"+(res[i].itemWinCnt/res[i].itemCnt*100).toFixed(2)+"%</td>"
 					if(res[i].itemPickChamp1 != 'FiddleSticks'){
-						str2 += "<td class = 'small_chtd' ><img src = 'https://ddragon.leagueoflegends.com/cdn/14.1.1/img/champion/"+res[i].itemPickChamp1+".png'></td>"
+						str2 += "<td class = 'small_chtd' ><img id = '"+i+"_"+res[i].itemPickChamp1+"' class='jb-title-champ' src = 'https://ddragon.leagueoflegends.com/cdn/14.1.1/img/champion/"+res[i].itemPickChamp1+".png' onmouseover='javascript:champToolTip(this.id)'><p class='tooltiptext tooltip-champ'></p></td>"
 					} else {
-						str2 += "<td class = 'small_chtd' ><img src = 'https://ddragon.leagueoflegends.com/cdn/14.1.1/img/champion/Fiddlesticks.png'></td>"
+						str2 += "<td class = 'small_chtd' ><img id = '"+i+"_Fiddlesticks' class='jb-title-champ' src = 'https://ddragon.leagueoflegends.com/cdn/14.1.1/img/champion/Fiddlesticks.png' onmouseover='javascript:champToolTip(this.id)'><p class='tooltiptext tooltip-champ'></p></td>"
 					}
 					if(res[i].itemPickChamp2 != 'FiddleSticks'){
-						str2 += "<td class = 'small_chtd' ><img src = 'https://ddragon.leagueoflegends.com/cdn/14.1.1/img/champion/"+res[i].itemPickChamp2+".png'></td>"
+						str2 += "<td class = 'small_chtd' ><img id = '"+i+"_"+res[i].itemPickChamp2+"' class='jb-title-champ' src = 'https://ddragon.leagueoflegends.com/cdn/14.1.1/img/champion/"+res[i].itemPickChamp2+".png' onmouseover='javascript:champToolTip(this.id)'><p class='tooltiptext tooltip-champ'></p></td>"
 					} else {
-						str2 += "<td class = 'small_chtd' ><img src = 'https://ddragon.leagueoflegends.com/cdn/14.1.1/img/champion/Fiddlesticks.png'></td>"
+						str2 += "<td class = 'small_chtd' ><img id = '"+i+"_Fiddlesticks' class='jb-title-champ' src = 'https://ddragon.leagueoflegends.com/cdn/14.1.1/img/champion/Fiddlesticks.png' onmouseover='javascript:champToolTip(this.id)'><p class='tooltiptext tooltip-champ'></p></td>"
 					}
 					if(res[i].itemPickChamp3 != 'FiddleSticks'){
-						str2 += "<td class = 'small_chtd' ><img src = 'https://ddragon.leagueoflegends.com/cdn/14.1.1/img/champion/"+res[i].itemPickChamp3+".png'></td>"
+						str2 += "<td class = 'small_chtd' ><img id = '"+i+"_"+res[i].itemPickChamp3+"' class='jb-title-champ' src = 'https://ddragon.leagueoflegends.com/cdn/14.1.1/img/champion/"+res[i].itemPickChamp3+".png' onmouseover='javascript:champToolTip(this.id)'><p class='tooltiptext tooltip-champ'></p></td>"
 					} else {
-						str2 += "<td class = 'small_chtd' ><img src = 'https://ddragon.leagueoflegends.com/cdn/14.1.1/img/champion/Fiddlesticks.png'></td>"
+						str2 += "<td class = 'small_chtd' ><img id = '"+i+"_Fiddlesticks' class='jb-title-champ' src = 'https://ddragon.leagueoflegends.com/cdn/14.1.1/img/champion/Fiddlesticks.png' onmouseover='javascript:champToolTip(this.id)'><p class='tooltiptext tooltip-champ'></p></td>"
 					}
 					if(res[i].itemPickChamp4 != 'FiddleSticks'){
-						str2 += "<td class = 'small_chtd' ><img src = 'https://ddragon.leagueoflegends.com/cdn/14.1.1/img/champion/"+res[i].itemPickChamp4+".png'></td>"
+						str2 += "<td class = 'small_chtd' ><img id = '"+i+"_"+res[i].itemPickChamp4+"' class='jb-title-champ' src = 'https://ddragon.leagueoflegends.com/cdn/14.1.1/img/champion/"+res[i].itemPickChamp4+".png' onmouseover='javascript:champToolTip(this.id)'><p class='tooltiptext tooltip-champ'></p></td>"
 					} else {
-						str2 += "<td class = 'small_chtd' ><img src = 'https://ddragon.leagueoflegends.com/cdn/14.1.1/img/champion/Fiddlesticks.png'></td>"
+						str2 += "<td class = 'small_chtd' ><img id = '"+i+"_Fiddlesticks' class='jb-title-champ' src = 'https://ddragon.leagueoflegends.com/cdn/14.1.1/img/champion/Fiddlesticks.png' onmouseover='javascript:champToolTip(this.id)'><p class='tooltiptext tooltip-champ'></p></td>"
 					}
 					if(res[i].itemPickChamp5 != 'FiddleSticks'){
-						str2 += "<td class = 'small_chtd' ><img src = 'https://ddragon.leagueoflegends.com/cdn/14.1.1/img/champion/"+res[i].itemPickChamp5+".png'></td>"
+						str2 += "<td class = 'small_chtd' ><img id = '"+i+"_"+res[i].itemPickChamp5+"' class='jb-title-champ' src = 'https://ddragon.leagueoflegends.com/cdn/14.1.1/img/champion/"+res[i].itemPickChamp5+".png' onmouseover='javascript:champToolTip(this.id)'><p class='tooltiptext tooltip-champ'></p></td>"
 					} else {
-						str2 += "<td class = 'small_chtd' ><img src = 'https://ddragon.leagueoflegends.com/cdn/14.1.1/img/champion/Fiddlesticks.png'></td>"
+						str2 += "<td class = 'small_chtd' ><img id = '"+i+"_Fiddlesticks' class='jb-title-champ' src = 'https://ddragon.leagueoflegends.com/cdn/14.1.1/img/champion/Fiddlesticks.png' onmouseover='javascript:champToolTip(this.id)'><p class='tooltiptext tooltip-champ'></p></td>"
 					}
 						str2 += "<td rowspan='2'>"
 						str2 += "<td class = 'small_ltd'><img id = '"+i+"_"+res[i].line1+"' class='jb-title-line' src='../img/"+res[i].line1+".png' onmouseover='javascript:lineToolTip(this.id)'><p class='tooltiptext tooltip-top'></p></td>"
@@ -241,36 +241,36 @@ function choiceTier(b){
 					str2 += "<td rowspan='2'>"+(res[i].itemCnt/res[i].allItemCnt*100).toFixed(2)+"%</td>"
 					str2 += "<td rowspan='2'>"+(res[i].itemWinCnt/res[i].itemCnt*100).toFixed(2)+"%</td>"
 					if(res[i].itemPickChamp1 != 'FiddleSticks'){
-						str2 += "<td class = 'small_chtd' ><img src = 'https://ddragon.leagueoflegends.com/cdn/14.1.1/img/champion/"+res[i].itemPickChamp1+".png'></td>"
+						str2 += "<td class = 'small_chtd' ><img id = '"+i+"_"+res[i].itemPickChamp1+"' class='jb-title-champ' src = 'https://ddragon.leagueoflegends.com/cdn/14.1.1/img/champion/"+res[i].itemPickChamp1+".png' onmouseover='javascript:champToolTip(this.id)'><p class='tooltiptext tooltip-champ'></p></td>"
 					} else {
-						str2 += "<td class = 'small_chtd' ><img src = 'https://ddragon.leagueoflegends.com/cdn/14.1.1/img/champion/Fiddlesticks.png'></td>"
+						str2 += "<td class = 'small_chtd' ><img id = '"+i+"_Fiddlesticks' class='jb-title-champ' src = 'https://ddragon.leagueoflegends.com/cdn/14.1.1/img/champion/Fiddlesticks.png' onmouseover='javascript:champToolTip(this.id)'><p class='tooltiptext tooltip-champ'></p></td>"
 					}
 					if(res[i].itemPickChamp2 != 'FiddleSticks'){
-						str2 += "<td class = 'small_chtd' ><img src = 'https://ddragon.leagueoflegends.com/cdn/14.1.1/img/champion/"+res[i].itemPickChamp2+".png'></td>"
+						str2 += "<td class = 'small_chtd' ><img id = '"+i+"_"+res[i].itemPickChamp2+"' class='jb-title-champ' src = 'https://ddragon.leagueoflegends.com/cdn/14.1.1/img/champion/"+res[i].itemPickChamp2+".png' onmouseover='javascript:champToolTip(this.id)'><p class='tooltiptext tooltip-champ'></p></td>"
 					} else {
-						str2 += "<td class = 'small_chtd' ><img src = 'https://ddragon.leagueoflegends.com/cdn/14.1.1/img/champion/Fiddlesticks.png'></td>"
+						str2 += "<td class = 'small_chtd' ><img id = '"+i+"_Fiddlesticks' class='jb-title-champ' src = 'https://ddragon.leagueoflegends.com/cdn/14.1.1/img/champion/Fiddlesticks.png' onmouseover='javascript:champToolTip(this.id)'><p class='tooltiptext tooltip-champ'></p></td>"
 					}
 					if(res[i].itemPickChamp3 != 'FiddleSticks'){
-						str2 += "<td class = 'small_chtd' ><img src = 'https://ddragon.leagueoflegends.com/cdn/14.1.1/img/champion/"+res[i].itemPickChamp3+".png'></td>"
+						str2 += "<td class = 'small_chtd' ><img id = '"+i+"_"+res[i].itemPickChamp3+"' class='jb-title-champ' src = 'https://ddragon.leagueoflegends.com/cdn/14.1.1/img/champion/"+res[i].itemPickChamp3+".png' onmouseover='javascript:champToolTip(this.id)'><p class='tooltiptext tooltip-champ'></p></td>"
 					} else {
-						str2 += "<td class = 'small_chtd' ><img src = 'https://ddragon.leagueoflegends.com/cdn/14.1.1/img/champion/Fiddlesticks.png'></td>"
+						str2 += "<td class = 'small_chtd' ><img id = '"+i+"_Fiddlesticks' class='jb-title-champ' src = 'https://ddragon.leagueoflegends.com/cdn/14.1.1/img/champion/Fiddlesticks.png' onmouseover='javascript:champToolTip(this.id)'><p class='tooltiptext tooltip-champ'></p></td>"
 					}
 					if(res[i].itemPickChamp4 != 'FiddleSticks'){
-						str2 += "<td class = 'small_chtd' ><img src = 'https://ddragon.leagueoflegends.com/cdn/14.1.1/img/champion/"+res[i].itemPickChamp4+".png'></td>"
+						str2 += "<td class = 'small_chtd' ><img id = '"+i+"_"+res[i].itemPickChamp4+"' class='jb-title-champ' src = 'https://ddragon.leagueoflegends.com/cdn/14.1.1/img/champion/"+res[i].itemPickChamp4+".png' onmouseover='javascript:champToolTip(this.id)'><p class='tooltiptext tooltip-champ'></p></td>"
 					} else {
-						str2 += "<td class = 'small_chtd' ><img src = 'https://ddragon.leagueoflegends.com/cdn/14.1.1/img/champion/Fiddlesticks.png'></td>"
+						str2 += "<td class = 'small_chtd' ><img id = '"+i+"_Fiddlesticks' class='jb-title-champ' src = 'https://ddragon.leagueoflegends.com/cdn/14.1.1/img/champion/Fiddlesticks.png' onmouseover='javascript:champToolTip(this.id)'><p class='tooltiptext tooltip-champ'></p></td>"
 					}
 					if(res[i].itemPickChamp5 != 'FiddleSticks'){
-						str2 += "<td class = 'small_chtd' ><img src = 'https://ddragon.leagueoflegends.com/cdn/14.1.1/img/champion/"+res[i].itemPickChamp5+".png'></td>"
+						str2 += "<td class = 'small_chtd' ><img id = '"+i+"_"+res[i].itemPickChamp5+"' class='jb-title-champ' src = 'https://ddragon.leagueoflegends.com/cdn/14.1.1/img/champion/"+res[i].itemPickChamp5+".png' onmouseover='javascript:champToolTip(this.id)'><p class='tooltiptext tooltip-champ'></p></td>"
 					} else {
-						str2 += "<td class = 'small_chtd' ><img src = 'https://ddragon.leagueoflegends.com/cdn/14.1.1/img/champion/Fiddlesticks.png'></td>"
+						str2 += "<td class = 'small_chtd' ><img id = '"+i+"_Fiddlesticks' class='jb-title-champ' src = 'https://ddragon.leagueoflegends.com/cdn/14.1.1/img/champion/Fiddlesticks.png' onmouseover='javascript:champToolTip(this.id)'><p class='tooltiptext tooltip-champ'></p></td>"
 					}
 					str2 += "<td rowspan='2'>"
-					str2 += "<td class = 'small_ltd'><img src='../img/"+res[i].line1+".png'></td>"
-					str2 += "<td class = 'small_ltd'><img src='../img/"+res[i].line2+".png'></td>"
-					str2 += "<td class = 'small_ltd'><img src='../img/"+res[i].line3+".png'></td>"
-					str2 += "<td class = 'small_ltd'><img src='../img/"+res[i].line4+".png'></td>"
-					str2 += "<td class = 'small_ltd'><img src='../img/"+res[i].line5+".png'></td>"
+						str2 += "<td class = 'small_ltd'><img id = '"+i+"_"+res[i].line1+"' class='jb-title-line' src='../img/"+res[i].line1+".png' onmouseover='javascript:lineToolTip(this.id)'><p class='tooltiptext tooltip-top'></p></td>"
+						str2 += "<td class = 'small_ltd'><img id = '"+i+"_"+res[i].line2+"' class='jb-title-line' src='../img/"+res[i].line2+".png' onmouseover='javascript:lineToolTip(this.id)'><p class='tooltiptext tooltip-top'></p></td>"
+						str2 += "<td class = 'small_ltd'><img id = '"+i+"_"+res[i].line3+"' class='jb-title-line' src='../img/"+res[i].line3+".png' onmouseover='javascript:lineToolTip(this.id)'><p class='tooltiptext tooltip-top'></p></td>"
+						str2 += "<td class = 'small_ltd'><img id = '"+i+"_"+res[i].line4+"' class='jb-title-line' src='../img/"+res[i].line4+".png' onmouseover='javascript:lineToolTip(this.id)'><p class='tooltiptext tooltip-top'></p></td>"
+						str2 += "<td class = 'small_ltd'><img id = '"+i+"_"+res[i].line5+"' class='jb-title-line' src='../img/"+res[i].line5+".png' onmouseover='javascript:lineToolTip(this.id)'><p class='tooltiptext tooltip-top'></p></td>"
 				str2 += "</tr>"
 				str2 += "<tr class = 'resultTr"+((i+1)%2)+"'>"
 					str2 += "<td class = 'td_txt highest_rate'>"+(res[i].itemPickCnt1/res[i].itemCnt*100).toFixed(2)+"%</td>"
@@ -408,36 +408,36 @@ function choiceCore(c){
 					str2 += "<td rowspan='2'>"+(res[i].itemCnt/res[i].allItemCnt*100).toFixed(2)+"%</td>"
 					str2 += "<td rowspan='2'>"+(res[i].itemWinCnt/res[i].itemCnt*100).toFixed(2)+"%</td>"
 					if(res[i].itemPickChamp1 != 'FiddleSticks'){
-						str2 += "<td class = 'small_chtd' ><img src = 'https://ddragon.leagueoflegends.com/cdn/14.1.1/img/champion/"+res[i].itemPickChamp1+".png'></td>"
+						str2 += "<td class = 'small_chtd' ><img id = '"+i+"_"+res[i].itemPickChamp1+"' class='jb-title-champ' src = 'https://ddragon.leagueoflegends.com/cdn/14.1.1/img/champion/"+res[i].itemPickChamp1+".png' onmouseover='javascript:champToolTip(this.id)'><p class='tooltiptext tooltip-champ'></p></td>"
 					} else {
-						str2 += "<td class = 'small_chtd' ><img src = 'https://ddragon.leagueoflegends.com/cdn/14.1.1/img/champion/Fiddlesticks.png'></td>"
+						str2 += "<td class = 'small_chtd' ><img id = '"+i+"_Fiddlesticks' class='jb-title-champ' src = 'https://ddragon.leagueoflegends.com/cdn/14.1.1/img/champion/Fiddlesticks.png' onmouseover='javascript:champToolTip(this.id)'><p class='tooltiptext tooltip-champ'></p></td>"
 					}
 					if(res[i].itemPickChamp2 != 'FiddleSticks'){
-						str2 += "<td class = 'small_chtd' ><img src = 'https://ddragon.leagueoflegends.com/cdn/14.1.1/img/champion/"+res[i].itemPickChamp2+".png'></td>"
+						str2 += "<td class = 'small_chtd' ><img id = '"+i+"_"+res[i].itemPickChamp2+"' class='jb-title-champ' src = 'https://ddragon.leagueoflegends.com/cdn/14.1.1/img/champion/"+res[i].itemPickChamp2+".png' onmouseover='javascript:champToolTip(this.id)'><p class='tooltiptext tooltip-champ'></p></td>"
 					} else {
-						str2 += "<td class = 'small_chtd' ><img src = 'https://ddragon.leagueoflegends.com/cdn/14.1.1/img/champion/Fiddlesticks.png'></td>"
+						str2 += "<td class = 'small_chtd' ><img id = '"+i+"_Fiddlesticks' class='jb-title-champ' src = 'https://ddragon.leagueoflegends.com/cdn/14.1.1/img/champion/Fiddlesticks.png' onmouseover='javascript:champToolTip(this.id)'><p class='tooltiptext tooltip-champ'></p></td>"
 					}
 					if(res[i].itemPickChamp3 != 'FiddleSticks'){
-						str2 += "<td class = 'small_chtd' ><img src = 'https://ddragon.leagueoflegends.com/cdn/14.1.1/img/champion/"+res[i].itemPickChamp3+".png'></td>"
+						str2 += "<td class = 'small_chtd' ><img id = '"+i+"_"+res[i].itemPickChamp3+"' class='jb-title-champ' src = 'https://ddragon.leagueoflegends.com/cdn/14.1.1/img/champion/"+res[i].itemPickChamp3+".png' onmouseover='javascript:champToolTip(this.id)'><p class='tooltiptext tooltip-champ'></p></td>"
 					} else {
-						str2 += "<td class = 'small_chtd' ><img src = 'https://ddragon.leagueoflegends.com/cdn/14.1.1/img/champion/Fiddlesticks.png'></td>"
+						str2 += "<td class = 'small_chtd' ><img id = '"+i+"_Fiddlesticks' class='jb-title-champ' src = 'https://ddragon.leagueoflegends.com/cdn/14.1.1/img/champion/Fiddlesticks.png' onmouseover='javascript:champToolTip(this.id)'><p class='tooltiptext tooltip-champ'></p></td>"
 					}
 					if(res[i].itemPickChamp4 != 'FiddleSticks'){
-						str2 += "<td class = 'small_chtd' ><img src = 'https://ddragon.leagueoflegends.com/cdn/14.1.1/img/champion/"+res[i].itemPickChamp4+".png'></td>"
+						str2 += "<td class = 'small_chtd' ><img id = '"+i+"_"+res[i].itemPickChamp4+"' class='jb-title-champ' src = 'https://ddragon.leagueoflegends.com/cdn/14.1.1/img/champion/"+res[i].itemPickChamp4+".png' onmouseover='javascript:champToolTip(this.id)'><p class='tooltiptext tooltip-champ'></p></td>"
 					} else {
-						str2 += "<td class = 'small_chtd' ><img src = 'https://ddragon.leagueoflegends.com/cdn/14.1.1/img/champion/Fiddlesticks.png'></td>"
+						str2 += "<td class = 'small_chtd' ><img id = '"+i+"_Fiddlesticks' class='jb-title-champ' src = 'https://ddragon.leagueoflegends.com/cdn/14.1.1/img/champion/Fiddlesticks.png' onmouseover='javascript:champToolTip(this.id)'><p class='tooltiptext tooltip-champ'></p></td>"
 					}
 					if(res[i].itemPickChamp5 != 'FiddleSticks'){
-						str2 += "<td class = 'small_chtd' ><img src = 'https://ddragon.leagueoflegends.com/cdn/14.1.1/img/champion/"+res[i].itemPickChamp5+".png'></td>"
+						str2 += "<td class = 'small_chtd' ><img id = '"+i+"_"+res[i].itemPickChamp5+"' class='jb-title-champ' src = 'https://ddragon.leagueoflegends.com/cdn/14.1.1/img/champion/"+res[i].itemPickChamp5+".png' onmouseover='javascript:champToolTip(this.id)'><p class='tooltiptext tooltip-champ'></p></td>"
 					} else {
-						str2 += "<td class = 'small_chtd' ><img src = 'https://ddragon.leagueoflegends.com/cdn/14.1.1/img/champion/Fiddlesticks.png'></td>"
+						str2 += "<td class = 'small_chtd' ><img id = '"+i+"_Fiddlesticks' class='jb-title-champ' src = 'https://ddragon.leagueoflegends.com/cdn/14.1.1/img/champion/Fiddlesticks.png' onmouseover='javascript:champToolTip(this.id)'><p class='tooltiptext tooltip-champ'></p></td>"
 					}
 					str2 += "<td rowspan='2'>"
-					str2 += "<td class = 'small_ltd'><img src='../img/"+res[i].line1+".png'></td>"
-					str2 += "<td class = 'small_ltd'><img src='../img/"+res[i].line2+".png'></td>"
-					str2 += "<td class = 'small_ltd'><img src='../img/"+res[i].line3+".png'></td>"
-					str2 += "<td class = 'small_ltd'><img src='../img/"+res[i].line4+".png'></td>"
-					str2 += "<td class = 'small_ltd'><img src='../img/"+res[i].line5+".png'></td>"
+						str2 += "<td class = 'small_ltd'><img id = '"+i+"_"+res[i].line1+"' class='jb-title-line' src='../img/"+res[i].line1+".png' onmouseover='javascript:lineToolTip(this.id)'><p class='tooltiptext tooltip-top'></p></td>"
+						str2 += "<td class = 'small_ltd'><img id = '"+i+"_"+res[i].line2+"' class='jb-title-line' src='../img/"+res[i].line2+".png' onmouseover='javascript:lineToolTip(this.id)'><p class='tooltiptext tooltip-top'></p></td>"
+						str2 += "<td class = 'small_ltd'><img id = '"+i+"_"+res[i].line3+"' class='jb-title-line' src='../img/"+res[i].line3+".png' onmouseover='javascript:lineToolTip(this.id)'><p class='tooltiptext tooltip-top'></p></td>"
+						str2 += "<td class = 'small_ltd'><img id = '"+i+"_"+res[i].line4+"' class='jb-title-line' src='../img/"+res[i].line4+".png' onmouseover='javascript:lineToolTip(this.id)'><p class='tooltiptext tooltip-top'></p></td>"
+						str2 += "<td class = 'small_ltd'><img id = '"+i+"_"+res[i].line5+"' class='jb-title-line' src='../img/"+res[i].line5+".png' onmouseover='javascript:lineToolTip(this.id)'><p class='tooltiptext tooltip-top'></p></td>"
 				str2 += "</tr>"
 				str2 += "<tr class = 'resultTr"+((i+1)%2)+"'>"
 					str2 += "<td class = 'td_txt highest_rate'>"+(res[i].itemPickCnt1/res[i].itemCnt*100).toFixed(2)+"%</td>"

@@ -114,6 +114,13 @@ public class kdgRestController {
 		
 	}
 	
+	@PostMapping("/getKRname")
+	public String getKRname (ChampionImageDto ciDto){
+		
+		return cs.getKRname(ciDto);
+		
+	}
+	
 
 
 }
