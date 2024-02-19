@@ -1,4 +1,4 @@
-package com.project.projectFinal.controller;
+package com.project.projectFinal.jghController;
 
 import java.io.BufferedReader;
 import java.io.InputStreamReader;
