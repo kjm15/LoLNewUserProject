@@ -24,8 +24,8 @@ public class PythonBuilder {
 
 	@PostMapping("/aicheck")
 	public String main(String[] args, Model model, String cs, String ward) throws Exception {
-		
-		String filePath = "C:\\Users\\user\\Desktop\\test\\test.py";
+		String filePath = "src/main/resources/static/py/test.py";
+//		String filePath = "C:\\Users\\user\\Desktop\\test\\test.py";
 		ProcessBuilder pb = new ProcessBuilder().command("python", filePath, cs, ward);
 		Process p = pb.start();
 		BufferedReader in = new BufferedReader(new InputStreamReader(p.getInputStream()));
