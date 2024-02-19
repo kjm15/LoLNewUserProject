@@ -15,7 +15,8 @@
 <h1>이곳은ai 결과입니다..</h1>
 
 
-결과값 = ${check}
+결과값 = ${check.result}
+<button><a href = "/py/main">뒤로가기</a></button>
 <pyscript>
 
 

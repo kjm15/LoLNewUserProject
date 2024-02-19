@@ -38,7 +38,9 @@
 		<div class="navbarMain">
 			<a href="/">DATABOOM</a>
 		</div>
-
+		<div class="navMenu duo">
+			<a href="/jgh">듀오찾기</a>
+		</div>
 		<c:choose>
 			<c:when test="${userId != null}">
 				<div class="navbarLogin">
@@ -83,9 +85,7 @@
 				<div class=navbarMain2>
 					<!-- 			왼쪽 -->
 
-					<div class=searchLL>
-						KR&ensp;
-					</div>
+					<div class=searchLL>KR&ensp;</div>
 					<!-- 				가운데 -->
 					<div class=searchCC>
 						<input id='search' class="searchCCC" autocomplete="off"
@@ -123,8 +123,9 @@
 		<div class="navMenu">
 			<a href="/kyt">드래곤</a>
 		</div>
-		<div class="navMenu duo">
-			<a href="/jgh">듀오찾기</a>
+	
+		<div class="navMenu">
+			<a href="/py/main">AI인공지능</a>
 		</div>
 
 

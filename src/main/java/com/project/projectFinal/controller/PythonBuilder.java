@@ -15,10 +15,10 @@ import com.fasterxml.jackson.databind.ObjectMapper;
 @Controller
 @RequestMapping("/py")
 public class PythonBuilder {
-	@GetMapping("/test")
+	@GetMapping("/main")
 	public String test(Model model) {
 
-		return "Aitest";
+		return "Ai/AiMain";
 
 	}
 
@@ -42,6 +42,6 @@ public class PythonBuilder {
 		Map<String, String> map = mapper.readValue(buffer.toString(), Map.class);
 		
 		model.addAttribute("check", map);
-		return "AiResult";
+		return "Ai/AiResult";
 	}
 }
