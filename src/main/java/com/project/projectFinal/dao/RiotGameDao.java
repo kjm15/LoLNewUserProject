@@ -21,7 +21,7 @@ public interface RiotGameDao {
 
 	List<Map<String, RiotGameDto>> RiotGameTeamsSelect(String matchId);
 
-	List<Map<String, RiotGameDto>> RiotGameBansSelect(String matchId);
+//	List<Map<String, RiotGameDto>> RiotGameBansSelect(String matchId);
 
 	List<String> DBRiotGameMatchSelect(String gameName);
 

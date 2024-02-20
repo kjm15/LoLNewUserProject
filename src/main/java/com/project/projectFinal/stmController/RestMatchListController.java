@@ -85,17 +85,17 @@ public class RestMatchListController {
 				System.out.println("팀");
 
 			}
-			if (response.get("bans") == null) {
-				res += 1;
-			} else {
-				List bans = (List) response.get("bans");
-				for (int j = 0; j < bans.size(); j++) {
-					Map RiotBans = (Map) bans.get(j);
-					matchListService.RiotGameBans(RiotBans);
-					System.out.println("벤");
-
-				}
-			}
+//			if (response.get("bans") == null) {
+//				res += 1;
+//			} else {
+//				List bans = (List) response.get("bans");
+//				for (int j = 0; j < bans.size(); j++) {
+//					Map RiotBans = (Map) bans.get(j);
+//					matchListService.RiotGameBans(RiotBans);
+//					System.out.println("벤");
+//
+//				}
+//			}
 
 		}
 
@@ -128,8 +128,8 @@ public class RestMatchListController {
 			HashMap<String, Object> newGList = new HashMap<>();
 			List<Map<String, RiotGameDto>> infoData = matchListService.RiotGameInfoSelect(MatchListSelect.get(i));
 			List<Map<String, RiotGameDto>> teamsData = matchListService.RiotGameTeamsSelect(MatchListSelect.get(i));
-			List<Map<String, RiotGameDto>> bansData = matchListService.RiotGameBansSelect(MatchListSelect.get(i));
-			newGList.put("bans", bansData);
+//			List<Map<String, RiotGameDto>> bansData = matchListService.RiotGameBansSelect(MatchListSelect.get(i));
+//			newGList.put("bans", bansData);
 			newGList.put("teams", teamsData);
 			newGList.put("info", infoData);
 			MList.add(newGList);

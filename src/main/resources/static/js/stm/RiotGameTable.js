@@ -8,11 +8,15 @@ $('a.feellink').click(function(e) //a태그 눌러도 맨위로 안올라감
 let win = 0
 let lose = 0
 function showGameTamble(res, data) {
+	console.log(res)
 	$('.graph1').empty()
 	let ccc = ''
 	for (let i in res) {
 		for (let j in res[i]['info']) {
 			if (data['gameName'] == res[i]["info"][j]['riotIdGameName'] || data['gameName'] == res[i]["info"][j]['summonerName']) {
+				profileIcon = res[i]["info"][j]['profileIcon']
+				summonerLevel = res[i]["info"][j]['summonerLevel']
+				riotIdGameName = res[i]["info"][j]['riotIdGameName']
 				if (res[i]["info"][j]['win'] == '1') {
 					win += 1
 				} else {
@@ -23,20 +27,13 @@ function showGameTamble(res, data) {
 		}
 	}
 
-	for (let j in res[0]['info']) {
-		if (data['gameName'] == res[0]["info"][j]['riotIdGameName'] || data['gameName'] == res[0]["info"][j]['summonerName']) {
-			profileIcon = res[0]["info"][j]['profileIcon']
-			summonerLevel = res[0]["info"][j]['summonerLevel']
-			riotIdGameName = res[0]["info"][j]['riotIdGameName']
 
-		}
-	}
 	console.log(profileIcon)
 	console.log(summonerLevel)
 	console.log(riotIdGameName)
 	console.log(win)
 	console.log(lose)
-	
+
 	ccc += `<div class=container333>
 	<div class="stmH">
             <div class="stmHright">
@@ -48,13 +45,38 @@ function showGameTamble(res, data) {
                 <div class="ulevel">${summonerLevel}레벨</div>
             </div>
             <div class="stmHleft">
-                <div class="u-chart">그래프</div>
+                <div class="u-chart"><canvas id="donutChart" width="130" height="130"></canvas></div>
             </div>
         </div>
         </div>`
 	$('.graph1').append(ccc)
 
-
+	var ctx = document.getElementById('donutChart').getContext('2d');
+	var myChart = new Chart(ctx, {
+		type: 'doughnut',
+		data: {
+			labels: ['승리', '패배'],
+			datasets: [{
+				label: '승리',
+				data: [win, lose], // 승리와 패배 데이터
+				backgroundColor: [
+					'rgba(75, 192, 192, 0.2)',
+					'rgba(255, 99, 132, 0.2)'
+				],
+				borderColor: [
+					'rgba(75, 192, 192, 1)',
+					'rgba(255, 99, 132, 1)'
+				],
+				borderWidth: 1
+			}]
+		},
+		options: {
+			responsive: false,
+			legend: {
+				position: 'bottom', // 범례 위치
+			},
+		}
+	});
 
 	let str = ''
 	let queue = ''
@@ -126,7 +148,7 @@ function showGameTamble(res, data) {
 				if (aaa < 5) {
 					win_lose = '다시하기'
 				}
-
+ 
 
 				champimg = res[i]["info"][j]['championName']
 				spellD = res[i]["info"][j]['summonerSpellD']
@@ -375,7 +397,7 @@ function showGameTamble(res, data) {
 					</div>`
 
 		for (j in res[i]['info']) {
-			console.log(res[i]['info'])
+			//			console.log(res[i]['info'])
 
 
 			champimg = res[i]["info"][j]['championName']
@@ -443,7 +465,6 @@ function showGameTamble(res, data) {
 	str += `
 		<div class="containerXR"></div>
 		<div class='more'><center><button  id = 'loadMore'>더 보기</button></center></div>
-	
 		`
 
 

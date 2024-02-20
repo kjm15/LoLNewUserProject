@@ -67,10 +67,10 @@ public class MatchListService {
 		
 	}
 
-	public List<Map<String, RiotGameDto>> RiotGameBansSelect(String matchId) {
-		return riotGameDao.RiotGameBansSelect(matchId);
-		
-	}
+//	public List<Map<String, RiotGameDto>> RiotGameBansSelect(String matchId) {
+//		return riotGameDao.RiotGameBansSelect(matchId);
+//		
+//	}
 
 	public List<String> DBRiotGameMatchSelect(String gameName) {
 		 return riotGameDao.DBRiotGameMatchSelect(gameName);

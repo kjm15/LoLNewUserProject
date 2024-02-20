@@ -136,28 +136,14 @@ function bbb(data) {
 
 					}
 					ingameteam = [];
-					bans = [];
+				
 					for (j = 0; j < 2; j++) {
 						mm = {}
 						mm.matchId = res[i]['metadata']['matchId']
 						mm.teamId = res[i]["info"]['teams'][j]['teamId']
 						mm.dragon = res[i]["info"]['teams'][j]['objectives']['dragon']['kills']
 						mm.kills = res[i]["info"]['teams'][j]['objectives']['champion']['kills']
-						for (k = 0; k < res[i]["info"]['teams'][j]['bans'].length; k++) {
-							ss = {}
-							ss.matchId = res[i]['metadata']['matchId']
-							ss.teamId = res[i]["info"]['teams'][j]['teamId']
-							ss.pickTurn = res[i]["info"]['teams'][j]['bans'][k]['pickTurn']
-							ss.championId = res[i]["info"]['teams'][j]['bans'][k]['championId']
-							bans.push(ss)
-							Gamedata.bans = bans
-						}
-						
-						if (Gamedata.bans == undefined) {
-
-							Gamedata.bans = null
-						}
-
+		
 						ingameteam.push(mm)
 						Gamedata.teams = ingameteam
 					}
