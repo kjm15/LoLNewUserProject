@@ -387,3 +387,8 @@
     height : 100%;
     float: right;    
 }
+.chart-container {
+  width: 400px; /* 원하는 너비로 조정 */
+  height: 400px; /* 원하는 높이로 조정 */
+  margin: 0 auto; /* 가운데 정렬을 위해 */
+}
