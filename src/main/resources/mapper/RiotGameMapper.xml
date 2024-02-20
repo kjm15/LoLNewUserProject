@@ -25,10 +25,10 @@
 		insert into RiotGameTeamsT values
 		(#{matchId},#{teamId},#{kills},#{dragon});
 	</insert>
-	<insert id="RiotGameBans">
-		insert into RiotGameBansT values
-		(#{matchId},#{championId},#{pickTurn},#{teamId});
-	</insert>
+<!-- 	<insert id="RiotGameBans"> -->
+<!-- 		insert into RiotGameBansT values -->
+<!-- 		(#{matchId},#{championId},#{pickTurn},#{teamId}); -->
+<!-- 	</insert> -->
 	<select id="RiotGameInfoSelect">
 		select * from RiotGameInfoT where matchId =
 		#{matchId} order by participantId asc;
@@ -37,10 +37,10 @@
 		select * from RiotGameTeamsT where matchId =
 		#{matchId}
 	</select>
-	<select id="RiotGameBansSelect">
-		select * from RiotGameBansT where matchId =
-		#{matchId}
-	</select>
+<!-- 	<select id="RiotGameBansSelect"> -->
+<!-- 		select * from RiotGameBansT where matchId = -->
+<!-- 		#{matchId} -->
+<!-- 	</select> -->
 	<select id="DBRiotGameMatchSelect">
 		select matchId from RiotGameInfoT where
 		riotIdGameName =#{gameName} group by
