@@ -2,7 +2,12 @@
 
 <mapper namespace="com.project.projectFinal.dao.RiotGameDao">
 	<insert id="RiotGameInfo">
-		insert into RiotGameInfoT values 
+		insert into RiotGameInfoT 
+<!-- 		(matchId,championName,champion_name_kr,riotIdGameName,riotIdTagline,summonerName,summonerLevel,profileIcon,participantId,queueId, -->
+<!-- 		teamId,item0,item1,item2,item3,item4,item5,summoner1Id,summoner2Id,summonerSpellD,summonerSpellF,lane,kills,assists,deaths,kda,firstBloodKill, -->
+<!-- 		gameEndTimestamp,gameStartTimestamp,totalAllyJungleMinionsKilled,totalDamageDealtToChampions,totalDamageTaken,totalEnemyJungleMinionsKilled, -->
+<!-- 		totalMinionsKilled,wardsKilled,wardsPlaced,win) -->
+		values 
 		(#{matchId},#{championName},
 		(select champion_name_kr from champListT where champion_name = #{championName}),
 		#{riotIdGameName},
@@ -13,7 +18,7 @@
 		#{assists},#{deaths},#{kda},#{firstBloodKill},#{gameEndTimestamp},
 		#{gameStartTimestamp},#{totalAllyJungleMinionsKilled},#{totalDamageDealtToChampions},
 		#{totalDamageTaken},#{totalEnemyJungleMinionsKilled},#{totalMinionsKilled},
-		#{wardsKilled},#{wardsPlaced},#{win});
+		#{wardsKilled},#{wardsPlaced},#{win},null,null,null,null,null);
 
 	</insert>
 	<insert id="RiotGameTeams">
