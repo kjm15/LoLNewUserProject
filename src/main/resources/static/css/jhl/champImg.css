@@ -1,3 +1,11 @@
+/* .bannerC{ */
+/* 	display: flex; */
+/* 	justify-content: center; */
+/* 	width: 81%; */
+/* 	margin-left: 9%; */
+/* 	background-color: #8CB9FC; */
+/* } */
+
 .contentsRank {
 	display: flex;
 	background-color: white;
@@ -5,7 +13,7 @@
 }
 
 .aside {
-	width: 700px;
+	width: 700%;
 }
 
 .search_line_champ {
