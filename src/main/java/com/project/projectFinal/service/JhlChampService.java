@@ -113,7 +113,7 @@ public class JhlChampService {
 	public void champCounter(ChampionRankDto rankDto) {
 		List<HashMap<String, Object>> rList = champDao.rankListInfo(rankDto);
 		
-			log.info("=========={}",rList);
+//			log.info("=========={}",rList);
 		
 		
 		
