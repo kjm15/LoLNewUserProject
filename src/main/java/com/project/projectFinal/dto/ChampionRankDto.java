@@ -10,5 +10,6 @@ import lombok.NoArgsConstructor;
 public class ChampionRankDto {
 	private String teamPosition;
 	private String championName;
+	private String championId;
 	private String tier;
 }
