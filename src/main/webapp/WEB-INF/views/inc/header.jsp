@@ -44,11 +44,11 @@
 		<c:choose>
 			<c:when test="${userId != null}">
 				<div class="navbarLogin">
+<!-- 					<div class="navChoice"> -->
+<%-- 						<span>${userId}님 접속중</span> --%>
+<!-- 					</div> -->
 					<div class="navChoice">
-						<span>${userId}님 접속중</span>
-					</div>
-					<div class="navChoice">
-						<a href="/member/mypage">마이페이지</a>
+						<a href="/member/mypage">${userId}님</a>
 					</div>
 					<div class="navChoice">
 						<a href="/Note">메일함</a>
