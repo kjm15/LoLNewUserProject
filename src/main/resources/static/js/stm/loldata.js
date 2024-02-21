@@ -77,6 +77,7 @@ function bbb(data) {
 		data: data,
 		//		async: true,
 		success: function(res) {
+			console.log(res)
 			if (res != '') {
 				MList = [];
 				for (let i = 0; i < res.length; i++) {

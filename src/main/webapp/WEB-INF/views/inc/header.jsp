@@ -93,7 +93,7 @@
 					</div>
 					<!-- 				오른쪽 -->
 					<div class=searchRR>
-						<button type="button" id="searchbt2" onclick="searchbtn()">검색</button>
+						<button type="button" class="searchbt22" id="searchbt2" onclick="searchbtn()">&ensp;검색</button>
 					</div>
 				</div>
 
