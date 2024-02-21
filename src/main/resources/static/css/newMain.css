@@ -211,8 +211,28 @@ a {
   text-align: left;
 }
 .searchCCC {
-
-
+  border: 1px solid white;
+  background: none;
+  color: white;
   width: 100%;
-  text-align: center;
+  text-align: left;
+}
+.searchbt22 {
+	background: none;
+	color: white;
+	border: none;
+/*	border-top-right-radius: 0;*/
+/*	border-bottom-right-radius: 0;*/
+/*	width: 45px;*/
+/*	height: 30px;*/
+/*	margin: 0px;*/
+/*	right: 40%;*/
+	cursor: pointer;
+/*	display: inline-block;*/
+/*	-webkit-box-align: center;*/
+	align-items: center;
+/*	overflow: hidden;*/
+/*	position: absolute;*/
+	border-radius: 4px;
+	font-size: 15px;
 }

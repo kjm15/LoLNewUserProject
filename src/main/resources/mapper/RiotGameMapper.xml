@@ -18,7 +18,7 @@
 		#{assists},#{deaths},#{kda},#{firstBloodKill},#{gameEndTimestamp},
 		#{gameStartTimestamp},#{totalAllyJungleMinionsKilled},#{totalDamageDealtToChampions},
 		#{totalDamageTaken},#{totalEnemyJungleMinionsKilled},#{totalMinionsKilled},
-		#{wardsKilled},#{wardsPlaced},#{win},null,null,null,null,null);
+		#{wardsKilled},#{wardsPlaced},#{win},null,null);
 
 	</insert>
 	<insert id="RiotGameTeams">
