@@ -77,8 +77,6 @@
 
 	</insert>
 	<select id="allChampCnt">
-
-
 		select count(*) from rankListT where teamPosition =
 		#{teamPosition} ;
 
@@ -91,33 +89,59 @@
 
 	</select>
 
+	<!-- <select id="rankListInfo"> -->
+	<!-- SELECT * -->
+	<!-- FROM rankListT; -->
+	<!-- </select> -->
+
+	<!-- <select id="laneCounterListInfo"> -->
+	<!-- SELECT * -->
+	<!-- FROM champListT -->
+	<!-- where line like -->
+	<!-- concat('%',#{teamPosition}, '%') -->
+	<!-- </select> -->
+
+
 	<select id="rankListInfo">
-		SELECT *
-		FROM rankListT;
+		select
+		T1.championName,
+		T1.teamPosition,
+		SUM(CASE WHEN T1.win = 1 THEN 1 ELSE 0 END) AS champ_win_cnt,
+		ROUND((SUM(CASE WHEN T1.win = 1 THEN 1 ELSE 0 END) / COUNT(*))
+		* 100, 2) AS win_rate,
+		T2.championName AS enemy_championName,
+		T2.teamPosition,
+		SUM(CASE WHEN T2.win = 1 THEN 1 ELSE 0 END) AS enemy_champ_win_cnt,
+		count(*) AS total,
+		ROUND((SUM(CASE WHEN T2.win = 1 THEN 1 ELSE 0 END) / COUNT(*)) * 100, 2) AS
+		enemy_win_rate
+
+		FROM (SELECT match_id, championName, WIN, teamPosition FROM rankListT
+		WHERE championName = #{championName}) T1 JOIN
+		(SELECT match_id, championName, WIN, teamPosition FROM rankListT) T2
+		ON T1.match_id=T2.match_id AND T1.teamPosition = T2.teamPosition
+		WHERE T1.championName!=T2.championName and T1.teamPosition=#{teamPosition}
+		GROUP BY T1.championName ,T2.championName
+		order by enemy_win_rate desc;
+
+
 	</select>
 
-	<select id="laneCounterListInfo">
-		SELECT *
-		FROM champListT
-		where line like
-		concat('%',#{teamPosition}, '%')
-	</select>
+	<!-- <select id="rankListCounterA"> -->
+	<!-- SELECT * -->
+	<!-- FROM rankListT -->
+	<!-- where teamPosition = -->
+	<!-- #{teamPosition} and championId = -->
+	<!-- #{championId}; -->
+	<!-- </select> -->
 
-	<select id="rankListCounterA">
-		SELECT *
-		FROM rankListT
-		where teamPosition =
-		#{teamPosition} and championId =
-		#{championId};
-	</select>
-
-	<select id="rankListCounterEnemy">
-		SELECT *
-		FROM rankListT
-		where teamPosition =
-		#{teamPosition1} and
-		match_id =#{match_id};
-	</select>
+	<!-- <select id="rankListCounterEnemy"> -->
+	<!-- SELECT * -->
+	<!-- FROM rankListT -->
+	<!-- where teamPosition = -->
+	<!-- #{teamPosition1} and -->
+	<!-- match_id =#{match_id}; -->
+	<!-- </select> -->
 
 
 
@@ -155,21 +179,15 @@
 	<!-- </select> -->
 
 
-
-
 	<!-- <insert id="saveChampCounterT"> -->
 
+	<!-- REPLACE into champCountertest(match_id, -->
+	<!-- teamPosition,championIdM,championNameM,cnameKM,winM -->
+	<!-- ,championIdE,championNameE,cnameKE,winE,tier) -->
 
-	<!-- REPLACE into champCounterT(teamPostion, -->
-	<!-- cname1,cnameK1,champ_win_cnt,win_rate -->
-	<!-- ,cname2,cnameK2,enemy_champ_win_cnt,enemy_win_rate,total) -->
-
-
-	<!-- values(#{teamPosition3}, -->
-	<!-- #{cname1},#{cnameK1},#{champ_win_cnt},#{win_rate} -->
-	<!-- ,#{cname2},#{cnameK2},#{enemy_champ_win_cnt} -->
-	<!-- ,#{enemy_win_rate},#{total} ) -->
-
+	<!-- values(#{match_id}, -->
+	<!-- #{teamPosition},#{championIdM},#{championNameM},#{cnameKM},#{winM}, -->
+	<!-- #{championIdE},#{championNameE},#{cnameKE},#{winE},#{tier} ) -->
 
 	<!-- </insert> -->
 </mapper>

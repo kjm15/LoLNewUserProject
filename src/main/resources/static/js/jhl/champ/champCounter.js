@@ -14,7 +14,7 @@ function champCounter() {
 			url: "/champCounter",
 			data: { "teamPosition": laneChampCounterList[i] },
 			success: function(res) {
-				console.log("<< 5 뜨면 업데이트 성공")
+//				console.log("<<  뜨면 업데이트 성공")
 			}
 		})
 	}

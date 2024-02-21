@@ -33,17 +33,19 @@ public interface JhlChampDao {
 
 	public int banChampCnt(String champion_name_kr);
 
-	public List<HashMap<String, Object>> laneCounterListInfo(ChampionRankDto rankDto);
+//	public List<HashMap<String, Object>> laneCounterListInfo(ChampionRankDto rankDto);
 
-	public List<HashMap<String, Object>> rankListCounterA(String teamPosition, int championId);
+//	public List<HashMap<String, Object>> rankListCounterA(String teamPosition, int championId);
 
 //	public List<HashMap<String, Object>> rankListCounterEnemy(String teamPosition1, String match_id, int championId);
 //
 //	public List<HashMap<String, Object>> rankAllListCounter(Integer championIdM, Integer championIdE, String teamPosition2);
 
-	public List<HashMap<String, Object>> rankListCounterEnemy(String teamPosition1, String match_id);
+//	public List<HashMap<String, Object>> rankListCounterEnemy(String teamPosition1, String match_id);
 //
-//	public void saveChampCounterT(HashMap<String, Object> cshampCounterList);
+
+
+//	public void saveChampCounterT(HashMap<String, Object> champCounterList);
 
 
 

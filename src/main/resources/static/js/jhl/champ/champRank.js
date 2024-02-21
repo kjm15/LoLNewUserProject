@@ -13,14 +13,14 @@ $(function() {
 });
 
 
-function tierSelect(t) {
-	$.ajax({
-		type: "post",
-		url: "tierSelect",
-		data: { "tier": t },
-		success: function(res) { }
-	})
-}
+//function tierSelect(t) {
+//	$.ajax({
+//		type: "post",
+//		url: "tierSelect",
+//		data: { "tier": t },
+//		success: function(res) { }
+//	})
+//}
 
 
 
@@ -49,7 +49,7 @@ function champRank(a) {
 			}
 			//			let tableBottom = "</table>"
 			$('.rTableBody').html(tableRows);
-			console.log(res);
+//			console.log(res);
 			console.log(a);
 		}
 	});
