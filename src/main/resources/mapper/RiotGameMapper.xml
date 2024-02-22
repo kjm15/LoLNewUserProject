@@ -14,9 +14,9 @@
 		#{riotIdTagline},#{summonerName},#{summonerLevel},#{profileIcon},#{participantId},#{queueId},#{teamId},
 		#{item0},#{item1},#{item2},#{item3},#{item4},#{item5},#{summoner1Id},#{summoner2Id},
 		(select spellName from RiotGameSpellT where summonerId = #{summoner1Id}),(select spellName from RiotGameSpellT where summonerId = #{summoner2Id}),
-		#{lane},#{kills},
-		#{assists},#{deaths},#{kda},#{firstBloodKill},#{gameEndTimestamp},
-		#{gameStartTimestamp},#{totalAllyJungleMinionsKilled},#{totalDamageDealtToChampions},
+		#{teamPosition},#{kills},
+		#{assists},#{deaths},#{kda},#{firstBloodKill},#{goldEarned},#{gameEndTimestamp},
+		#{gameStartTimestamp},#{gameDuration},#{totalAllyJungleMinionsKilled},#{totalDamageDealtToChampions},
 		#{totalDamageTaken},#{totalEnemyJungleMinionsKilled},#{totalMinionsKilled},
 		#{wardsKilled},#{wardsPlaced},#{win},null,null);
 

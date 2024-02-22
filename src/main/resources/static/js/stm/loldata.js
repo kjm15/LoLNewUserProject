@@ -71,6 +71,7 @@ function bbb(data) {
 						mm.participantId = res[i]["info"]['participants'][j]['participantId'] // 플레이어 고유 인덱스
 						mm.summoner1Id = res[i]["info"]['participants'][j]['summoner1Id']//스펠 D
 						mm.summoner2Id = res[i]["info"]['participants'][j]['summoner2Id']//스펠 F 화면에 출력 가능할 떄 할 것
+						mm.goldEarned = res[i]["info"]['participants'][j]['goldEarned']
 						//						mm.puuid =res[i]["info"]['participants'][j]['puuid']
 						mm.teamId = res[i]["info"]['participants'][j]['teamId']
 						mm.win = res[i]["info"]['participants'][j]['win']
@@ -86,8 +87,8 @@ function bbb(data) {
 						} else {
 							mm.kda = (((res[i]["info"]['participants'][j]['kills'] + res[i]["info"]['participants'][j]['assists'])) / res[i]["info"]['participants'][j]['deaths']).toFixed(2)
 						}
-						//						mm.kda = res[i]["info"]['participants'][j]['challenges']['kda'] // 우르프는 challenges가 없음 ㅋㅋㅋ
-						mm.lane = res[i]["info"]['participants'][j]['lane']
+
+						mm.teamPosition = res[i]["info"]['participants'][j]['teamPosition']
 						mm.totalDamageDealtToChampions = res[i]["info"]['participants'][j]['totalDamageDealtToChampions']
 						mm.totalDamageTaken = res[i]["info"]['participants'][j]['totalDamageTaken']
 						mm.totalMinionsKilled = res[i]["info"]['participants'][j]['totalMinionsKilled'] // 미니언 킬
@@ -97,6 +98,7 @@ function bbb(data) {
 						mm.wardsPlaced = res[i]["info"]['participants'][j]['wardsPlaced'] // 시야점수
 						mm.gameStartTimestamp = res[i]["info"]['gameStartTimestamp']
 						mm.gameEndTimestamp = res[i]["info"]['gameEndTimestamp']
+						mm.gameDuration = (res[i]["info"]['gameDuration'] / 60).toFixed(0)
 						mm.item0 = res[i]["info"]['participants'][j]['item0']
 						mm.item1 = res[i]["info"]['participants'][j]['item1']
 						mm.item2 = res[i]["info"]['participants'][j]['item2']
@@ -194,4 +196,21 @@ function searchbtn1() {
 	//	data = { 'gameName': gameName, 'tagLine': tagLine }
 	location.href = '/stm/' + gameName + '/' + tagLine
 	//	bbb(data)
+}
+
+function summonerV4(res) {
+	console.log(res)
+	let temp = JSON.stringify(res)
+console.log(temp)
+//	$.ajax({
+//		type: 'post',
+//		url: '/summoner/v4',
+//		data: { 'riotIdGameName': riotIdGameName, 'riotIdTagline': riotIdTagline },
+//		
+////				data2 = { 'Mlist': temp }
+//		success: function(res) {
+//			console.log(res)
+//
+//		}
+//	})
 }
