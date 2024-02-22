@@ -23,6 +23,8 @@ public class RiotGameDto {
 	private String kda; // kda
 	private String gameEndTimestamp; // 게임 끝난 시간
 	private String gameStartTimestamp;// 게임 시작 시간
+	private String gameDuration;
+	private String teamPosition;
 	private String lane; // 라인
 	private int queueId; // 게임 모드
 	private boolean win; // 승패
@@ -49,4 +51,7 @@ public class RiotGameDto {
 	private int summonerLevel;
 	private int profileIcon;
 	private int pickTurn;
+	private int goldEarned;
+	
+	
 }

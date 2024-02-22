@@ -7,6 +7,7 @@ $('a.feellink').click(function(e) //a태그 눌러도 맨위로 안올라감
 });
 let win = 0
 let lose = 0
+
 function showGameTamble(res, data) {
 	console.log(res)
 	let ccc = ''
@@ -42,6 +43,7 @@ function showGameTamble(res, data) {
 
 			}
 		}
+
 	}
 	ccc += `<div class=container333>
 	<div class="stmH">
@@ -155,7 +157,11 @@ function showGameTamble(res, data) {
 				kills = res[i]["info"][j]['kills']
 				deaths = res[i]["info"][j]['deaths']
 				assists = res[i]["info"][j]['assists']
-				kda = (((kills + assists)) / deaths).toFixed(2)
+				if (deaths == 0) {
+					kda = 'perfect';
+				} else {
+					kda = (((kills + assists)) / deaths).toFixed(2)
+				}
 				wardscore = res[i]["info"][j]['wardsKilled'] + res[i]["info"][j]['wardsPlaced']
 				totalCs = res[i]["info"][j]['totalMinionsKilled'] + res[i]["info"][j]['totalAllyJungleMinionsKilled'] + res[i]["info"][j]['totalEnemyJungleMinionsKilled']
 
@@ -301,7 +307,13 @@ function showGameTamble(res, data) {
 				</div>
 				</div>`
 		//		asdsaddadsasdasad
+		let summoner = []
 		for (j in res[i]['info']) {
+			mm = {}
+			mm.riotIdGameName = res[i]['info'][j]['riotIdGameName']
+			mm.riotIdTagline = res[i]['info'][j]['riotIdTagline']
+			summoner.push(mm)
+
 			if (data['gameName'] == res[i]["info"][j]['riotIdGameName'] || data['gameName'] == res[i]["info"][j]['summonerName']) {
 				if (res[i]["info"][j]['win'] == '1') {
 					str += `<div class="box-right" style='background-color :#9ac2e2' id ="gamebtn${goBtn}" onclick ="gamebtn(${goBtn},'${MatchId}')"><a href = 'javascript:;'><p></p><div>더</div><div>보</div><div>기</div><p>∨</p></a></div>`
@@ -313,7 +325,7 @@ function showGameTamble(res, data) {
 			}
 		}
 
-
+		console.log(summoner)
 
 		str += `</div>
 			<div class="line1" id = 'line1${goBtn}' style='display: none'>흰색 선</div>`
@@ -345,7 +357,11 @@ function showGameTamble(res, data) {
 			kills = res[i]["info"][j]['kills']
 			deaths = res[i]["info"][j]['deaths']
 			assists = res[i]["info"][j]['assists']
-			kda = (((kills + assists)) / deaths).toFixed(2)
+			if (deaths == 0) {
+				kda = 'perfect';
+			} else {
+				kda = (((kills + assists)) / deaths).toFixed(2)
+			}
 			totalDamageDealtToChampions = res[i]["info"][j]['totalDamageDealtToChampions']
 			bartotalDamageDealtToChampions = (((totalDamageDealtToChampions / highestdamageToChampions) * 99)).toFixed(0)
 
@@ -481,12 +497,19 @@ function showGameTamble(res, data) {
 		`
 
 
-	function asd(){
-		console.log("와")
-	}
 	$('.containerXC').append(str)
-
-
+	//	let summoner = []
+	//	for (i in res) {
+	//		sommonerUser = {}
+	//		for (j in res[i]['info']) {
+	//			mm = {}
+	//			mm.riotIdGameName = res[i]['info'][j]['riotIdGameName']
+	//			mm.riotIdTagline = res[i]['info'][j]['riotIdTagline']
+	//			summoner.push(mm)
+	//		}
+	//	}
+	//	summonerV4(summoner)
+	//	
 
 	$("#loadMore").on("click", function() {
 		data['matchCnt']++;
