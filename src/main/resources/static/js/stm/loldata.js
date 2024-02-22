@@ -37,9 +37,13 @@ function aiCheckTroll(matchId) {
 		data: data,
 		success: function(res) {
 			
-			console.log(res)
 			console.log("성공")
-			
+			for (const [key, value] of Object.entries(res)) {
+				$('#' + key).html(value);
+				console.log(key + ': ' + value);
+			}
+
+
 		}
 	})
 }
@@ -222,16 +226,16 @@ function searchbtn1() {
 function summonerV4(res) {
 	console.log(res)
 	let temp = JSON.stringify(res)
-console.log(temp)
-//	$.ajax({
-//		type: 'post',
-//		url: '/summoner/v4',
-//		data: { 'riotIdGameName': riotIdGameName, 'riotIdTagline': riotIdTagline },
-//		
-////				data2 = { 'Mlist': temp }
-//		success: function(res) {
-//			console.log(res)
-//
-//		}
-//	})
+	console.log(temp)
+	//	$.ajax({
+	//		type: 'post',
+	//		url: '/summoner/v4',
+	//		data: { 'riotIdGameName': riotIdGameName, 'riotIdTagline': riotIdTagline },
+	//		
+	////				data2 = { 'Mlist': temp }
+	//		success: function(res) {
+	//			console.log(res)
+	//
+	//		}
+	//	})
 }

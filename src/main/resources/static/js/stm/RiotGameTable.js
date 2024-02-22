@@ -408,7 +408,7 @@ function showGameTamble(res, data) {
 
 				str += `</div>
 					</div>
-					<div class = aidetail id = "${MatchId}"+"${participantId}"><img width='20' height='20' alt='못 불러옴' src = "/img/loadingimg.gif"></div>
+					<div class = aidetail id = ${MatchId}` + `${participantId}><img width='20' height='20' alt='못 불러옴' src = "/img/loadingimg.gif"></div>
 				</div>`
 			}
 		}
@@ -441,7 +441,7 @@ function showGameTamble(res, data) {
 			bartotalDamageDealtToChampions = (((totalDamageDealtToChampions / highestdamageToChampions) * 99)).toFixed(0)
 
 			totalCs = res[i]["info"][j]['totalMinionsKilled'] + res[i]["info"][j]['totalAllyJungleMinionsKilled'] + res[i]["info"][j]['totalEnemyJungleMinionsKilled']
-
+			participantId = res[i]["info"][j]['participantId']
 			if (res[i]['info'][j]['teamId'] == 200) {
 
 				str += `<div class="ct2">
@@ -479,10 +479,9 @@ function showGameTamble(res, data) {
 					}
 				}
 
-
 				str += `</div>
 					</div>
-					<div class = aidetail id = "${MatchId}"+"${participantId}"><img width='20' height='20' alt='못 불러옴' src = "/img/loadingimg.gif"></div>
+					<div class = aidetail id = ${MatchId}` + `${participantId}><img width=20 height='20' alt='못 불러옴' src = "/img/loadingimg.gif"></div>
 				</div>`
 			}
 		}

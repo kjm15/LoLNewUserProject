@@ -6,11 +6,9 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
-import org.json.simple.JSONObject;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
@@ -34,14 +32,21 @@ public class RestPythonBuilder {
 		List<Map<String, String>> aList = matchListService.sendDataToPy(matchId);
 //		aMap.get("tier")
 		log.info("===myMap : {}", aList);
-		
-		for (Map<String, String> aMap : aList) {
-			String participantId = aMap.get("participantId");
-			String filePath = "src/main/resources/static/py/jgh/aiTrollCheck.py";
+		String filePath = "src/main/resources/static/py/jgh/aiTrollCheck.py";
 
-			ProcessBuilder pb = new ProcessBuilder().command("python", filePath, "GOLD", aMap.get("teamPosition"),
-					aMap.get("kda"), aMap.get("totalDamageDealtToChampions"), aMap.get("goldEarned") // ,
-					);
+		for (Map<String, String> aMap : aList) {
+			String participantId = String.valueOf(aMap.get("participantId"));
+			String teamPosition = aMap.get("teamPosition");
+			String kda = String.valueOf(aMap.get("kda"));
+			String totalDamageDealtToChampions = String.valueOf(aMap.get("totalDamageDealtToChampions"));
+			String goldEarned = String.valueOf(aMap.get("goldEarned"));
+//			log.info(goldEarned);
+//			String participantId = String.valueOf(aMap.get("participantId")) ;
+//			String participantId = String.valueOf(aMap.get("participantId")) ;
+
+			ProcessBuilder pb = new ProcessBuilder().command("python", filePath, "GOLD", teamPosition, kda,
+					totalDamageDealtToChampions, goldEarned // ,
+			);
 			Process p = pb.start();
 			BufferedReader in = new BufferedReader(new InputStreamReader(p.getInputStream()));
 			StringBuilder buffer = new StringBuilder();
@@ -51,13 +56,18 @@ public class RestPythonBuilder {
 			}
 			int exitCode = p.waitFor();
 
-			log.info("Value is: " + buffer.toString());
-			
-			
-			resultMap.put(matchId+participantId, buffer.toString());
+//			log.info("Value is: " + buffer.toString());
+
 			in.close();
+			ObjectMapper objectMapper = new ObjectMapper();
+			Map<String, String> a = objectMapper.readValue(buffer.toString(), Map.class);
+			log.info("Value is: " + a);
+
+			resultMap.put(matchId + participantId, a.get("result"));
+			
+			
 		}
-	
+
 		return resultMap;
 	}
 
