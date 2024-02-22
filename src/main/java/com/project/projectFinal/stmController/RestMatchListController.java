@@ -122,16 +122,17 @@ public class RestMatchListController {
 		} else {
 			MatchListSelect = MatchList;
 		}
-
 		ArrayList<HashMap<String, Object>> MList = new ArrayList<>();
 		for (int i = 0; i < MatchListSelect.size(); i++) {
 			HashMap<String, Object> newGList = new HashMap<>();
 			List<Map<String, RiotGameDto>> infoData = matchListService.RiotGameInfoSelect(MatchListSelect.get(i));
 			List<Map<String, RiotGameDto>> teamsData = matchListService.RiotGameTeamsSelect(MatchListSelect.get(i));
+			String MatchId = MatchListSelect.get(i);
 //			List<Map<String, RiotGameDto>> bansData = matchListService.RiotGameBansSelect(MatchListSelect.get(i));
 //			newGList.put("bans", bansData);
-			newGList.put("teams", teamsData);
 			newGList.put("info", infoData);
+			newGList.put("teams", teamsData);
+			newGList.put("MatchId", MatchId);
 			MList.add(newGList);
 		}
 		MorematchList = matchList;
