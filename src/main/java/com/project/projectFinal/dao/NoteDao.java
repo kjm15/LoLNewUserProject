@@ -22,6 +22,8 @@ public interface NoteDao {
 
 	int findId(NoteDto noteDto);
 
+	ArrayList<NoteDto> inqMain(String userId);
+
 //	int findMsg(NoteDto noteDto);
 
 }

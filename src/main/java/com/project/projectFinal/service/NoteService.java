@@ -59,4 +59,9 @@ public class NoteService {
 
 	}
 
+	public ArrayList<NoteDto> inqMain(String userId) {
+		
+		return noteDao.inqMain(userId);
+	}
+
 }

@@ -55,9 +55,6 @@
 	<div class="ground">
 		<%@include file="../aMain/myPageMain.jsp"%>
 	</div>
-	<div class="ground2">
-		<%@include file="../inc/footer.jsp"%>
-	</div>
 
 	<!-- js들어갈자리  -->
 

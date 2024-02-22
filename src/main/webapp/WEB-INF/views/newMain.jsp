@@ -10,6 +10,7 @@
 	src="https://code.jquery.com/jquery-1.12.4.min.js"></script>
 <link href="/css/new/new.css" rel="stylesheet" type="text/css">
 <link href="/css/new/bar.css" rel="stylesheet" type="text/css">
+<link href="/css/kjm/modal_main.css" rel="stylesheet" type="text/css">
 
 
 
@@ -26,15 +27,21 @@
 
 		<%@include file="aMain/mainDetail.jsp"%>
 
-
-
+		<%@include file="kjm/inqMain.jsp"%>
+		<%@include file="kjm/sendInq.jsp"%>
+		<%@include file="kjm/myInq.jsp"%>
 		<%@include file="inc/footer.jsp"%>
+
 
 	</div>
 
+
 	<!-- js들어갈자리  -->
 	<script defer src="js/new/gameNameSearch.js"></script>
-<script defer src="js/new/slide.js"></script>
-<script defer src="js/new/bar.js"></script>
+	<script defer src="js/new/slide.js"></script>
+	<script defer src="js/new/bar.js"></script>
+	<script defer src="js/new/comprehensive.js"></script>
+	<script defer src="/js/kjm/Note/inqMain.js"></script>
+
 </body>
 </html>

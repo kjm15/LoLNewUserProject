@@ -38,4 +38,10 @@ public class RestNoteController {
 			ArrayList<NoteDto> maillist= noteService.NoteInfo(null);
 			return maillist;
 		}
+		
+		@PostMapping("/inqMainInfo")
+		public ArrayList<NoteDto> inqMain(HttpSession session) {
+			String userId = (String) session.getAttribute("userId");
+			return noteService.inqMain(userId);
+		}
 }
