@@ -24,12 +24,15 @@
 }
 
 .container1 {
-/*	background: rgba(255, 2, 73, 0.09);*/
-/*	background: #99ccff  ;*/
-	border: 1px solid skyblue;
+	/*	background: rgba(255, 2, 73, 0.09);*/
+	/*	background: #99ccff  ;*/
+	/*	border: 1px solid skyblue;*/
+	border-top: 3px solid white;
 	display: flex;
 	height: 120px;
 	width: 1100px;
+	margin-bottom: 5px;
+	left: 350px;
 }
 
 .container2 {
@@ -69,7 +72,7 @@
 }
 
 .box-right {
-/*	background: rgba(255, 2, 73, 0.18);*/
+	/*	background: rgba(255, 2, 73, 0.18);*/
 	flex-basis: 70px;
 	text-align: center;
 }
@@ -117,12 +120,9 @@
 
 .box-right4 {
 	/*	background: #8080ff;*/
-
-	  height : 40px;
-
-	  text-align : center;
-
-	  line-height : 40px;
+	height: 40px;
+	text-align: center;
+	line-height: 40px;
 	flex-basis: 200px;
 }
 
@@ -213,12 +213,14 @@
 	display: flex;
 	background: rgba(100, 154, 255, 0.38);
 	flex-basis: 90%;
+	/*	border-bottom: 1px solid black;*/
 }
 
 .ct2 {
 	display: flex;
 	background: rgba(194, 45, 75, 0.09);
 	flex-basis: 90%;
+	/*	border-bottom: 1px solid black;*/
 }
 
 .teamId1 {
@@ -263,18 +265,31 @@
 }
 
 .damageGraph {
-		background: #80ff80;
+	background: #80ff80;
 	/*	height: 100%;*/
 	border-radius: 2px;
 	/* 	background-color: #4caf50; */
 	transition: width 0.5s ease-in-out;
 	height: 40%;
+	font-size: 14px;
 }
 
 .itemTeamCheck {
 	display: flex;
 	/* 	background: #0080c0; */
 	text-align: center;
+}
+
+.teamItem1 {
+	width: 265px;
+	/* 	background: #0080c0; */
+	text-align: left;
+}
+.aidetail {
+	top : 15px;
+	width: 50px;
+text-align: center;
+
 }
 
 .champImgM {
@@ -322,68 +337,87 @@
 	flex-basis: 10%;
 }
 
-.container333{
-    width: 100%;
-    height: 660px;
-    
-/*    position: relative;*/
+.container333 {
+	width: 100%;
+	height: 660px;
+
+	/*    position: relative;*/
 }
 
+.stmH {
+	width: 60%;
+	height: 30%;
+	margin: 0 auto;
+	/*    border: 1px solid black;*/
+	position: relative;
+}
 
-.stmH{
-    width : 60%;
-    height : 30%;
-    margin: 0 auto;
-/*    border: 1px solid black;*/
-    position: relative;
+.stmHright {
+	width: 49.5%;
+	height: 100%;
+	float: left;
 }
-.stmHright{
-    width : 49.5%;
-    height : 100%;
-    float: left;
-    
+
+.cpicon {
+	width: 100%;
+	height: 50%;
+	position: relative;
+	margin: 0 auto;
 }
-.cpicon{
-    width: 100%;
-    height : 50%;
-    position: relative;
-    margin: 0 auto;
-    
-}
-.cpimg{
-    width: 20%;
-    height: 90%;
-/*    position: relative;*/
+
+.cpimg {
+	width: 20%;
+	height: 90%;
+	/*    position: relative;*/
 	float: right;
-/*    border : 1px solid black;*/
+	/*    border : 1px solid black;*/
 	border-radius: 70%;
-    margin : 5% 25% 0% 0%;
+	margin: 5% 25% 0% 0%;
 }
-.uid{
-    width: 60%;
-    height : 20%;
-    text-align: center;
-    float: right;
-    border : 1px solid black;
-    margin-right: 5%;
+
+.uid {
+	width: 60%;
+	height: 20%;
+	text-align: center;
+	float: right;
+	/*    border : 1px solid black;*/
+	margin-right: 5%;
 }
-.ulevel{
-    width: 60%;
-    height : 20%;
-    text-align: center;
-    float: right;
-    border : 1px solid black;
-    margin-right: 5%;
+
+.ulevel {
+	width: 60%;
+	height: 20%;
+	text-align: center;
+	float: right;
+	/*    border : 1px solid black;*/
+	margin-right: 5%;
 }
-.u-chart{
-    width : 30%;
-    height: 70%;
-    position: relative;
-    border: 1px solid black;
-    margin: 7% 10% 10% 15%;
+
+.u-chart {
+	width: 150px;
+	height: 150px;
+	position: relative;
+	/*    border: 1px solid black;*/
+	margin: 7% 10% 10% 15%;
 }
-.stmHleft{
-    width : 50%;
-    height : 100%;
-    float: right;    
+
+.stmHleft {
+	width: 50%;
+	height: 100%;
+	float: right;
+}
+
+.chart-container {
+	width: 40%; /* 원하는 너비로 조정 */
+	height: 40%; /* 원하는 높이로 조정 */
+	margin: 0 auto; /* 가운데 정렬을 위해 */
+}
+
+.loadMore {
+	width: 100%;
+	height: 35px;
+	border: none;
+	background-color: whitesmoke;
+	color: black;
+	font-size: 15px;
 }

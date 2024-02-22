@@ -90,11 +90,11 @@
 					<!-- 				가운데 -->
 					<div class=searchCC>
 						<input id='search' class="searchCCC" autocomplete="off"
-							type="text" value="동정팔이소년#KR1">
+							type="text" value="그래서뱀사안사#KR1">
 					</div>
 					<!-- 				오른쪽 -->
 					<div class=searchRR>
-						<button type="button" id="searchbt2" onclick="searchbtn()">검색</button>
+						<button type="button" class="searchbt22" id="searchbt2" onclick="searchbtn()">&ensp;검색</button>
 					</div>
 				</div>
 

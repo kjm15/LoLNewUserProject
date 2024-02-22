@@ -18,7 +18,8 @@ public class MatchListService {
 	@Autowired
 	RiotGameDao riotGameDao;
 	public String puuId(RiotApiDto userListDto) {
-		String puuid = webmatchListService.getpuuId(userListDto.getGameName(), userListDto.getTagLine());
+		String puuid = webmatchListService.getpuuId(userListDto);
+		
 		  return puuid;
 	}
 
@@ -67,10 +68,10 @@ public class MatchListService {
 		
 	}
 
-	public List<Map<String, RiotGameDto>> RiotGameBansSelect(String matchId) {
-		return riotGameDao.RiotGameBansSelect(matchId);
-		
-	}
+//	public List<Map<String, RiotGameDto>> RiotGameBansSelect(String matchId) {
+//		return riotGameDao.RiotGameBansSelect(matchId);
+//		
+//	}
 
 	public List<String> DBRiotGameMatchSelect(String gameName) {
 		 return riotGameDao.DBRiotGameMatchSelect(gameName);
@@ -90,6 +91,12 @@ public class MatchListService {
 	public int getMatchId(String matchId) {
 		int riotcount = riotGameDao.getMatchId(matchId);
 		return riotcount;
+	}
+	
+//	장기훈
+	public List<Map<String, String>> sendDataToPy(String matchId) {		
+		
+		return riotGameDao.sendDataToPy(matchId);
 	}
 
 

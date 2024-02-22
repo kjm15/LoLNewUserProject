@@ -883,5 +883,3 @@ $('#backRiot').on("click", function() {
 	$('.riotgraph').hide();
 	$('#riotSearch').show();
 })
-
-

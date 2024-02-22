@@ -6,6 +6,7 @@ import java.util.List;
 import java.util.Map;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RestController;
 
@@ -29,10 +30,11 @@ public class RestMatchListController {
 //	private List<String> moreMatchList; // 더보기
 
 	@PostMapping("/match/list")
-	public List<Map> matchList(RiotApiDto userListDto) {
+	public List<Map> matchList(RiotApiDto userListDto, Model model) {
 
 		RiotGameDto riotGameDto = new RiotGameDto();
 		String puuid = matchListService.puuId(userListDto);
+	
 		userListDto.setPuuid(puuid);
 
 		matchList = matchListService.MatchList(userListDto);
@@ -85,17 +87,7 @@ public class RestMatchListController {
 				System.out.println("팀");
 
 			}
-			if (response.get("bans") == null) {
-				res += 1;
-			} else {
-				List bans = (List) response.get("bans");
-				for (int j = 0; j < bans.size(); j++) {
-					Map RiotBans = (Map) bans.get(j);
-					matchListService.RiotGameBans(RiotBans);
-					System.out.println("벤");
 
-				}
-			}
 
 		}
 
@@ -122,19 +114,20 @@ public class RestMatchListController {
 		} else {
 			MatchListSelect = MatchList;
 		}
-
 		ArrayList<HashMap<String, Object>> MList = new ArrayList<>();
 		for (int i = 0; i < MatchListSelect.size(); i++) {
 			HashMap<String, Object> newGList = new HashMap<>();
 			List<Map<String, RiotGameDto>> infoData = matchListService.RiotGameInfoSelect(MatchListSelect.get(i));
 			List<Map<String, RiotGameDto>> teamsData = matchListService.RiotGameTeamsSelect(MatchListSelect.get(i));
-			List<Map<String, RiotGameDto>> bansData = matchListService.RiotGameBansSelect(MatchListSelect.get(i));
-			newGList.put("bans", bansData);
-			newGList.put("teams", teamsData);
+			String MatchId = MatchListSelect.get(i);
 			newGList.put("info", infoData);
+			newGList.put("teams", teamsData);
+			newGList.put("MatchId", MatchId);
 			MList.add(newGList);
 		}
 		MorematchList = matchList;
 		return MList;
 	}
+	
+
 }

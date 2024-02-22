@@ -1,6 +1,5 @@
 package com.project.projectFinal.dao;
 
-import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
@@ -21,12 +20,14 @@ public interface RiotGameDao {
 
 	List<Map<String, RiotGameDto>> RiotGameTeamsSelect(String matchId);
 
-	List<Map<String, RiotGameDto>> RiotGameBansSelect(String matchId);
+//	List<Map<String, RiotGameDto>> RiotGameBansSelect(String matchId);
 
 	List<String> DBRiotGameMatchSelect(String gameName);
 
 	Map DbriotGameData(String matchId);
 
 	int getMatchId(String matchId);
+
+	List<Map<String, String>> sendDataToPy(String matchId);
 
 }

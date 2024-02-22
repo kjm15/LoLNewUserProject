@@ -562,6 +562,7 @@
 	text-align: center;
 	text-decoration: none;
 	box-sizing: border-box;
+	
 }
 
 
@@ -573,4 +574,9 @@
 	overflow: hidden;
 	text-overflow: ellipsis;
 
+}
+
+.err{
+	text-align: center;
+	
 }
