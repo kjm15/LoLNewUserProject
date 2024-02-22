@@ -12,24 +12,29 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
+import com.google.gson.Gson;
 
 import lombok.extern.slf4j.Slf4j;
 
 @RestController
-@RequestMapping("/trollCheck")
+@RequestMapping("/ai")
 @Slf4j
 public class RestPythonBuilder {
+//	
+	@PostMapping("/dataToAi")
+	public Map<String, String> sendDataToPy(@RequestBody Map<String, String> aMap, Model model) throws Exception {
 
-	@PostMapping("/sendDataToPy")
-	public Map<String, String> sendDataToPy(@RequestBody Map<String, Object> myMap, Model model) throws Exception {
-
-		log.info("===myMap : {}", myMap);
+		log.info("===myMap : {}", aMap);
 
 		String filePath = "src/main/resources/static/py/jgh/aiTrollCheck.py";
-		JSONObject json = new JSONObject(myMap); // 맵에서 받은 데이터를 json화 시킴
-		String.valueOf(json); // 스트링으로 형변환
-		ProcessBuilder pb = new ProcessBuilder().command("python", filePath, String.valueOf(json));
 
+		
+
+
+		ProcessBuilder pb = new ProcessBuilder().command("python", filePath
+				, aMap.get("tier"), aMap.get("teamPosition"), aMap.get("kda"), aMap.get("totalDamageDealtToChampions")
+			, aMap.get("goldEarned") //	, aMap.get("tier"), aMap.get("tier"), aMap.get("tier")
+				);
 		Process p = pb.start();
 		BufferedReader in = new BufferedReader(new InputStreamReader(p.getInputStream()));
 		StringBuilder buffer = new StringBuilder();
@@ -49,8 +54,8 @@ public class RestPythonBuilder {
 	}
 
 	@PostMapping("/getDb")
-	public Map<String, String> getDb(String[] args,String tier, Model model) throws Exception {
-	
+	public Map<String, String> getDb(String[] args, String tier, Model model) throws Exception {
+
 		String filePath = "src/main/resources/static/py/jgh/trollcheckdb.py";
 		ProcessBuilder pb = new ProcessBuilder().command("python", filePath, tier);
 		Process p = pb.start();

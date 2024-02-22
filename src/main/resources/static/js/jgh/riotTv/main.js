@@ -883,28 +883,3 @@ $('#backRiot').on("click", function() {
 	$('.riotgraph').hide();
 	$('#riotSearch').show();
 })
-
-$('#getData').on("click", function() {
-
-	let tier = $('#tier').val();
-	data = { "tier": tier }
-	$('#getData').hide()
-	console.log("데이터 받기 시작")
-	$.ajax({
-		
-		type: 'post',
-		url: '/trollCheck/getDb',
-		data: data,
-		success: function(res) {
-
-			console.log(res)
-			$('#getData').show()
-		},error : function(err){
-				console.log(err)
-			$('#getData').show()
-		}
-
-	})
-
-})
-
