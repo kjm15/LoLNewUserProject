@@ -98,8 +98,8 @@ function showGameTamble(res, data) {
 
 
 	for (let i in res) {
-//		let MatchId = res[i]['MatchId']
-		console.log(MatchId)
+		let MatchId = res[i]['MatchId']
+//		console.log(MatchId)
 		sss = Number(i);
 		let goBtn = sss + (data['matchCnt']) * 4
 
