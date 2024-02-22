@@ -239,7 +239,7 @@ function gamebtn(goBtn, matchId) {
 			data: { 'matchId': matchId },
 			success: function(res) {
 				console.log(res)
-        aiCheckTroll(matchId)
+        		// aiCheckTroll(matchId)
 			}
 		})
 	}
