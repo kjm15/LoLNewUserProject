@@ -7,7 +7,6 @@ $('a.feellink').click(function(e) //a태그 눌러도 맨위로 안올라감
 });
 let win = 0
 let lose = 0
-
 function showGameTamble(res, data) {
 	console.log(res)
 	let ccc = ''
@@ -307,13 +306,7 @@ function showGameTamble(res, data) {
 				</div>
 				</div>`
 		//		asdsaddadsasdasad
-		let summoner = []
 		for (j in res[i]['info']) {
-			mm = {}
-			mm.riotIdGameName = res[i]['info'][j]['riotIdGameName']
-			mm.riotIdTagline = res[i]['info'][j]['riotIdTagline']
-			summoner.push(mm)
-
 			if (data['gameName'] == res[i]["info"][j]['riotIdGameName'] || data['gameName'] == res[i]["info"][j]['summonerName']) {
 				if (res[i]["info"][j]['win'] == '1') {
 					str += `<div class="box-right" style='background-color :#9ac2e2' id ="gamebtn${goBtn}" onclick ="gamebtn(${goBtn},'${MatchId}')"><a href = 'javascript:;'><p></p><div>더</div><div>보</div><div>기</div><p>∨</p></a></div>`
@@ -325,7 +318,7 @@ function showGameTamble(res, data) {
 			}
 		}
 
-		console.log(summoner)
+
 
 		str += `</div>
 			<div class="line1" id = 'line1${goBtn}' style='display: none'>흰색 선</div>`
@@ -498,25 +491,15 @@ function showGameTamble(res, data) {
 
 
 	$('.containerXC').append(str)
-	//	let summoner = []
-	//	for (i in res) {
-	//		sommonerUser = {}
-	//		for (j in res[i]['info']) {
-	//			mm = {}
-	//			mm.riotIdGameName = res[i]['info'][j]['riotIdGameName']
-	//			mm.riotIdTagline = res[i]['info'][j]['riotIdTagline']
-	//			summoner.push(mm)
-	//		}
-	//	}
-	//	summonerV4(summoner)
-	//	
+
+
 
 	$("#loadMore").on("click", function() {
 		data['matchCnt']++;
 		$('#loadMore').remove()
 		bbb(data)
 	})
-
+	
 }
 
 
