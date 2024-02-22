@@ -392,6 +392,7 @@ function showGameTamble(res, data) {
 
 				str += `</div>
 					</div>
+					<div class = aidetail><img width='20' height='20' alt='못 불러옴' src = "/img/loadingimg.gif"></div>
 				</div>`
 			}
 		}
@@ -465,6 +466,7 @@ function showGameTamble(res, data) {
 
 				str += `</div>
 					</div>
+					<div class = aidetail><img width='20' height='20' alt='못 불러옴' src = "/img/loadingimg.gif"></div>
 				</div>`
 			}
 		}
