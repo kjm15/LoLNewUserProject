@@ -18,7 +18,7 @@
 		#{assists},#{deaths},#{kda},#{firstBloodKill},#{gameEndTimestamp},
 		#{gameStartTimestamp},#{totalAllyJungleMinionsKilled},#{totalDamageDealtToChampions},
 		#{totalDamageTaken},#{totalEnemyJungleMinionsKilled},#{totalMinionsKilled},
-		#{wardsKilled},#{wardsPlaced},#{win},null,null);
+		#{wardsKilled},#{wardsPlaced},#{win},null,null,#{summonerId});
 
 	</insert>
 	<insert id="RiotGameTeams">
@@ -43,8 +43,7 @@
 <!-- 	</select> -->
 	<select id="DBRiotGameMatchSelect">
 		select matchId from RiotGameInfoT where
-		riotIdGameName =#{gameName} group by
-		matchId;
+		riotIdGameName =#{gameName};
 	</select>
 	<select id="DbriotGameData">
 		select * from RiotGameInfoT where matchId =
