@@ -11,7 +11,7 @@ function duoMainInfo() {
 		type: 'post',
 		url: '/jgh/duostartinfo',
 		success: function(res) {
-			//			console.log(res)
+						console.log(res)
 			const date = new Date();
 
 			let str = ''

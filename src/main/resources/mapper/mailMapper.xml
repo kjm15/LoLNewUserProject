@@ -9,8 +9,13 @@
 	</insert>
 
 	<select id="NoteInfo">
-	select * from NoteTableT where recv_userId = #{userId}  order by n_num
-		DESC limit 10;
+		select * from NoteTableT where recv_userId = #{userId} order by n_num
+		DESC
+		limit 10;
+	</select>
+
+	<select id="inqMain">
+		select * from NoteTableT where send_userId= #{userId} order by n_num DESC;
 	</select>
 
 	<delete id="DeleteNote">

@@ -14,6 +14,7 @@ import com.project.projectFinal.dto.NoteDto;
 import com.project.projectFinal.service.NoteService;
 
 import jakarta.servlet.http.HttpSession;
+import kotlin.OverloadResolutionByLambdaReturnType;
 import lombok.extern.slf4j.Slf4j;
 
 @Slf4j
@@ -28,10 +29,11 @@ public class NoteController {
 
 		memberDto.setUserId(userId);
 		ArrayList<NoteDto> maillist= noteService.NoteInfo(memberDto);
-
+		
 		model.addAttribute("maillist", maillist);
 		return "kjm/Note";	
 	}
+	
 	
 	//url수정하라고 하기 ex) /note/send
 	@PostMapping("/send")
