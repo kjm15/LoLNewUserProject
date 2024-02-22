@@ -12,41 +12,10 @@ data = sys.argv[1:]
 nickname ='동정팔이소년'
 tag = 'KR1'
 
-num = 3 #matchId갯수
+num = 10 #matchId갯수
 api_key = 'RGAPI-e674eb69-7d34-41d9-adfb-e43ad16950ca'
 
-def get_puuid(nickname, tag, api_key):
-    url = f'https://asia.api.riotgames.com/riot/account/v1/accounts/by-riot-id/{nickname}/{tag}?api_key={api_key}'
-    res = requests.get(url).json()
-    puuid = res['puuid']
-    return puuid
 
-puuid = get_puuid(nickname, tag, api_key)
-
-def get_match_id(puuid,num,api_key):
-    url = f'https://asia.api.riotgames.com/lol/match/v5/matches/by-puuid/{puuid}/ids?type=ranked&start=0&count={num}&api_key={api_key}'
-    match_list = requests.get(url).json()
-    return match_list
-
-
-
-matchid = get_match_id(puuid,num,api_key)
-
-
-def get_matches(matchid,api_key):
-    url1 = f'https://asia.api.riotgames.com/lol/match/v5/matches/{matchid}?api_key={api_key}'
-    matches = requests.get(url1).json()
-    return matches
-
-# def get_timelines(matchid,api_key):
-#     url2 = f'https://asia.api.riotgames.com/lol/match/v5/matches/{matchid}/timeline?api_key={api_key}'
-#     timelines = requests.get(url2).json()
-#     return timelines
-
-matches = []
-for i in matchid:
-    m = get_matches(i,api_key)
-    matches.append(m)
 
 
 matchesInfo = []
