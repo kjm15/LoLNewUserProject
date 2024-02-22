@@ -111,113 +111,56 @@ public class JhlChampService {
 	}
 
 	public void champCounter(ChampionRankDto rankDto) {
-		List<HashMap<String, Object>> rList = champDao.rankListInfo(rankDto);
-		
-//			log.info("=========={}",rList);
-		
-		
-		
-//		List<HashMap<String, Object>> rListAll = champDao.rankListInfo(rankDto);
-//		List<HashMap<String, Object>> laneChampCounterList = champDao.laneCounterListInfo(rankDto);
+	
+		List<HashMap<String, Object>> laneChampCounterList = champDao.laneCounterListInfo(rankDto);
 //
-//		for (Map<String, Object> counterChamp : laneChampCounterList) {
+		for (Map<String, Object> counterChamp : laneChampCounterList) {
 //
-//			String teamPosition = rankDto.getTeamPosition();
-//			int championId = (int) counterChamp.get("championid");
+			String teamPosition = rankDto.getTeamPosition();
+			int championId = (int) counterChamp.get("championid");
 //
-//			List<HashMap<String, Object>> rankCWin = champDao.rankListCounterA(teamPosition, championId);
-//
-//			for (Map<String, Object> rw : rankCWin) {
-//				String match_id = (String) rw.get("match_id");
-//				String teamPosition1 = (String) rw.get("teamPosition");
-//				String championNameM = (String) rw.get("championName");
-//				String cnameKM = (String) rw.get("champion_name_kr");
-//				String tier = (String) rw.get("tier");
-//
-//				int winM = (int) rw.get("win");
-//				int winM_cnt = 0;
-//				int loseM_cnt = 0;
-//				int winE_cnt = 0;
-//				int loseE_cnt = 0;
-//
-//				Integer championIdM = Integer.parseInt((String) rw.get("championId"));
-//
-//				List<HashMap<String, Object>> rankLose = champDao.rankListCounterEnemy(teamPosition1, match_id);
-//				for (Map<String, Object> rl : rankLose) {
-//					String match_id1 = (String) rl.get("match_id");
-//					String teamPosition2 = (String) rl.get("teamPosition");
-//					String championNameE = (String) rl.get("championName");
-//					String cnameKE = (String) rl.get("champion_name_kr");
-//					int winE = (int) rl.get("win");
-//					Integer championIdE = Integer.parseInt((String) rl.get("championId"));
-//					HashMap<String, Object> champCounterList = new HashMap<>();
-//					if (match_id1.equals(match_id) && championIdM != championIdE winM&& !=winE) {
-//
-//						champCounterList.put("match_id", match_id);
-//						champCounterList.put("teamPosition", teamPosition2);
-//						champCounterList.put("championIdM", championIdM);
-//						champCounterList.put("championNameM", championNameM);
-//						champCounterList.put("cnameKM", cnameKM);
-//						champCounterList.put("winM", winM);
-//						champCounterList.put("championIdE", championIdE);
-//						champCounterList.put("championNameE", championNameE);
-//						champCounterList.put("cnameKE", cnameKE);
-//						champCounterList.put("winE", winE);
-//						champCounterList.put("tier", tier);
-//
-////						log.info("============{}", champCounterList);
-//						champDao.saveChampCounterT(champCounterList);
-//					}
-//
-//				}
+			
+			List<HashMap<String, Object>> rList = champDao.rankListInfo(teamPosition, championId);
 
-//					
+			for(Map<String, Object> rl : rList) {
+				Object championName = rl.get("championName");
+				Object champion_name_kr = rl.get("champion_name_kr");
+				Object champ_win_cnt = rl.get("champ_win_cnt");
+				Object champ_win_rate = rl.get("champ_win_rate");
+				Object enemy_championName = rl.get("enemy_championName");
+				Object enemy_championName_kr = rl.get("enemy_championName_kr");
+				Object teamPosition1 = rl.get("teamPosition");
+				Object enemy_champ_win_cnt = rl.get("enemy_champ_win_cnt");
+				Object total = rl.get("total");
+				Object enemy_win_rate = rl.get("enemy_win_rate");
+				Object tier = rl.get("tier");
+//				
+						HashMap<String, Object> champCounterList = new HashMap<>();
+						champCounterList.put("championName", championName);
+						champCounterList.put("champion_name_kr", champion_name_kr);
+						champCounterList.put("champ_win_cnt", champ_win_cnt);
+						champCounterList.put("champ_win_rate", champ_win_rate);
+						champCounterList.put("enemy_championName", enemy_championName);
+						champCounterList.put("enemy_championName_kr", enemy_championName_kr);
+						champCounterList.put("teamPosition", teamPosition1);
+						champCounterList.put("enemy_champ_win_cnt", enemy_champ_win_cnt);
+						champCounterList.put("total", total);
+						champCounterList.put("enemy_win_rate", enemy_win_rate);
+						champCounterList.put("tier", tier);
+						champDao.saveChampCounterT(champCounterList);
+				}
+					
 
-//					List<HashMap<String, Object>> counterList = champDao.rankAllListCounter(championIdM, championIdE,
-//							teamPosition2);
-//					
-//					for (Map<String, Object> ct : counterList) {
-//						
-//						String match_id1 = (String) ct.get("match_id");
-//						String cname1 = (String) ct.get("cname1");
-//						String cname2 = (String) ct.get("cname2");
-//						String cnameK1 = (String) ct.get("cnameK1");
-//						String cnameK2 = (String) ct.get("cnameK2");
-//						String teamPosition3 = (String) ct.get("teamPosition");
-//						Integer win1 = (Integer) ct.get("win1");
-//						Integer win2 = (Integer) ct.get("win2");
-//						
-//						
-////						BigDecimal champ_win_cnt = (BigDecimal)ct.get("champ_win_cnt");
-////						BigDecimal enemy_champ_win_cnt = (BigDecimal)ct.get("enemy_champ_win_cnt");
-//						
-//						BigDecimal  total = (BigDecimal) ct.get("total");
-//						HashMap<String, Object> champCounterList = new HashMap<>();
-//
-//
-//						
-//						
-////						champCounterList.put("match_id", match_id1);
-//						champCounterList.put("teamPostion", teamPosition3);
-//						champCounterList.put("cname1", cname1);
-//						champCounterList.put("cnameK1", cnameK1);
-//						champCounterList.put("win1", win1);
-//						champCounterList.put("cname2", cname2);
-//						champCounterList.put("cnameK2", cnameK2);
-//						champCounterList.put("win2", win2);
-////						champCounterList.put("enemy_champ_win_cnt", enemy_champ_win_cnt);
-////						champCounterList.put("enemy_win_rate", enemy_win_rate);
-////						champCounterList.put("total", total);
-//						log.info("============{}",champCounterList);
-////						champDao.saveChampCounterT(champCounterList);
-//
-//					}
 
-//						}
-//
-//			}
-//		}
+		}
 
 	}
+	
+	public List<HashMap<String, Object>> CounterchampList (ChampionRankDto rankDto){
+		
+		return champDao.CounterchampList(rankDto);
+		
+	}
+	
 
 }

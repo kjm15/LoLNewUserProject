@@ -9,16 +9,16 @@
 <script defer src="js/jhl/champ/champCounter.js"></script>
 </head>
 <body>
-
+<!-- 	<h3>카운터 챔피언 제대로 구하려면 100만개 데이터 필요...</h3> -->
+	<input type="button" id="test" onclick="champCounter()"
+				value="test버튼" />
 	<c:if test="${userId eq 'jhl'}">
-		<div class="rankUpdateBtn"><
+		<div class="rankUpdateBtn">
 			<input type="button" id="jhlRankUpdateBtn" onclick="champUpdate()"
 				value="관리자용업데이트버튼" />
 		</div>
 	</c:if>
-<!-- <input type="button" onclick="champCounter()" value ="test"/> -->
 	<div class="rankContainer">
-<!-- 		<div class="bannerC">배너</div> -->
 		<div class="contentsRank">
 			<div class="aside left"></div>
 			<div class="contentsItemsChamp">
@@ -34,8 +34,6 @@
 							<option value="Emerald+" id="Emerald"
 								onclick="tierSelect(this.id)" selected>Emerald+
 							<option value="Diamond+" id="Diamond">Diamond+
-
-							
 						</select>
 
 
@@ -69,8 +67,9 @@
 								<table class="Rankable">
 									<colgroup>
 										<col width="40%">
-										<col width="30%">
-										<col width="30%">
+										<col width="20%">
+										<col width="20%">
+										<col width="20%">
 
 									</colgroup>
 									<thead>

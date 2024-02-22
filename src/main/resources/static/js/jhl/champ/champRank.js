@@ -9,7 +9,6 @@ $(function() {
 		champRank($(this).attr("id"));
 	});
 	champRank('Top');
-	champCounter();
 });
 
 
@@ -49,14 +48,14 @@ function champRank(a) {
 			}
 			//			let tableBottom = "</table>"
 			$('.rTableBody').html(tableRows);
-//			console.log(res);
-			console.log(a);
+			//			console.log(res);
+			//			console.log(a);
+	
 		}
 	});
 }
 
-
-$(document).on('click', '.rankLine>div', function() {
-	$(this).addClass('ranklineBtn');
-	$(this).siblings().removeClass('ranklineBtn');
-});
+	$(document).on('click', '.rankLine>div', function() {
+		$(this).addClass('ranklineBtn');
+		$(this).siblings().removeClass('ranklineBtn');
+	});

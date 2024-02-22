@@ -90,9 +90,9 @@ function champLine(lineSelect) {
                     .addClass('championImg')
                     .attr('src', imgSrc)
                     .attr('id', Name)
-                    .click(function () {
-                        openModal(imgSrc); // 클릭 시 모달 열기
-                    });
+//                    .click(function () {
+//                        openModal(championName); // 클릭 시 모달 열기
+//                    });
 				 // 챔피언 이미지 아이템 생성
                 var champImgItem = $('<div>').addClass('champImgItem')
                     .append($('<span>').addClass('tooltiptext tooltip-top').append(champName))
@@ -109,27 +109,4 @@ function champLine(lineSelect) {
 
 
 
-// 모달 열기 함수
-function openModal(imgSrc) {
-	var modalContainer = $('#myModal');
-//	var modalContent = $('.modal-content');
 
-	// 이미지 및 챔피언 이름을 모달 내부에 추가
-//	modalContent.empty().append($('<img>').attr('src', imgSrc));
-
-	// 모달 열기
-	modalContainer.css('display', 'flex');
-}
-
-// 모달 닫기 함수
-function closeModal() {
-	$('#myModal').css('display', 'none');
-}
-
-// 모달 외부를 클릭하면 모달이 닫히도록 함
-$(document).on('click', function(event) {
-	var modal = $('#myModal');
-	if (event.target == modal[0]) {
-		closeModal();
-	}
-});

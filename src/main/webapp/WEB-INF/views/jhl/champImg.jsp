@@ -43,7 +43,7 @@
 			<div class="modal-content">
 				<span class="close" onclick="closeModal()">&times;</span>
 				<!-- Content inside the modal -->
-				<div> aaa</div>
+<!-- 				<div> aaa</div> -->
 			</div>
 		</div>
 
