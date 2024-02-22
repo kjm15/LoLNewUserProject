@@ -37,9 +37,13 @@ function aiCheckTroll(matchId) {
 		data: data,
 		success: function(res) {
 			
-			console.log(res)
 			console.log("성공")
-			
+			for (const [key, value] of Object.entries(res)) {
+				$('#' + key).html(value);
+				console.log(key + ': ' + value);
+			}
+
+
 		}
 	})
 }
@@ -219,6 +223,7 @@ function summonerV4(res) {
 	//
 	//		}
 	//	})
+
 }
 
 
@@ -245,3 +250,4 @@ function gamebtn(goBtn, matchId) {
 	}
 
 }
+

@@ -1,3 +1,4 @@
+#-*- coding:utf-8 -*-
 import sys
 import pandas as pd
 import numpy as np
@@ -20,26 +21,26 @@ def connect_mysql(db='mydb'):
     return conn
 conn = connect_mysql()
 cursor = conn.cursor()
-
+limit_value = str(20) # 리미트값
 ############################
 
 data = sys.argv[1:]
 
-# data = map(data[0])
+# print(data)
 tier = data[0]
 teamPosition = data[1]
-kda = int(data[2])
+kda = float(data[2])
 totalDamageDealtToChampions = int(data[3])
 goldEarned = int(data[4])
-limit_value = str(20) # 리미트값
+
+
+
 # tier = 'GOLD'
 # teamPosition = 'TOP'
 # kda = 10
 # totalDamageDealtToChampions = 25302
 # goldEarned = 17000
 
-
-# myMap = data[0] #현재 json상태이므로 map으로 변경 요망
 
 query = "select kda from riottvT where win = 'FALSE' and teamPosition = '"+teamPosition+"' and tier = " +"'"+ tier + "'" + "limit " + limit_value #질때의 kda
 
@@ -122,11 +123,11 @@ kn.fit(tier_data,tier_target)
 a1 = kn.score(tier_data,tier_target)
 # kn.score(tier_data,tier_target)
 # print(a1)
-trans={1:'경기 결과를 승리로 예측', 0:'경기결과를 패배로 예측'}
+trans={1:'예측:승', 0:'예측:패'}
 a = trans[kn.predict([[kda,totalDamageDealtToChampions,goldEarned]])[0]]
 
-data = {"result":a}
-json_string = json.dumps(data)
+data5 = {"result":a , "점수" : a1*100}
+
+json_string = json.dumps(data5)
 
 print(json_string)
-# print(a)
