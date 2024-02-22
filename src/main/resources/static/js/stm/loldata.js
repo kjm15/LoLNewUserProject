@@ -49,21 +49,6 @@ function aiCheckTroll(matchId) {
 //////////////////장기훈/////////////////////////
 
 
-function gamebtn(i, j) {
-	console.log(i)
-	//	console.log(j)
-	//파이썬으로 해당 matchId 찾으러감
-	aiCheckTroll(j)
-
-	var line1 = document.getElementById("line1" + i);
-	var container2 = document.getElementById("container2" + i);
-
-	line1.style.display = ((line1.style.display != 'none') ? 'none' : 'block');
-	container2.style.display = ((container2.style.display != 'none') ? 'none' : 'block');
-
-
-}
-
 function bbb(data) {
 	$.ajax({
 		type: 'post',
@@ -222,16 +207,41 @@ function searchbtn1() {
 function summonerV4(res) {
 	console.log(res)
 	let temp = JSON.stringify(res)
-console.log(temp)
-//	$.ajax({
-//		type: 'post',
-//		url: '/summoner/v4',
-//		data: { 'riotIdGameName': riotIdGameName, 'riotIdTagline': riotIdTagline },
-//		
-////				data2 = { 'Mlist': temp }
-//		success: function(res) {
-//			console.log(res)
-//
-//		}
-//	})
+	console.log(temp)
+	//	$.ajax({
+	//		type: 'post',
+	//		url: '/summoner/v4',
+	//		data: { 'riotIdGameName': riotIdGameName, 'riotIdTagline': riotIdTagline },
+	//		
+	////				data2 = { 'Mlist': temp }
+	//		success: function(res) {
+	//			console.log(res)
+	//
+	//		}
+	//	})
+}
+
+
+
+function gamebtn(goBtn, matchId) {
+  
+	var line1 = document.getElementById("line1" + goBtn);
+	var container2 = document.getElementById("container2" + goBtn);
+	line1.style.display = ((line1.style.display != 'none') ? 'none' : 'block');
+	container2.style.display = ((container2.style.display != 'none') ? 'none' : 'block');
+	console.log(goBtn)
+	console.log(matchId)
+	if (line1.style.display == 'block') {
+
+		$.ajax({
+			type: 'post',
+			url: '/summoner/v4',
+			data: { 'matchId': matchId },
+			success: function(res) {
+				console.log(res)
+        		// aiCheckTroll(matchId)
+			}
+		})
+	}
+
 }
