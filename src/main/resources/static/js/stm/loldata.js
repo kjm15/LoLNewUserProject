@@ -28,8 +28,25 @@ function mainSearch(gameName1) {
 	bbb(data)
 }
 
-//////////////////장기훈/////////////////////////
+function aiCheckTroll(matchId) {
 
+	data = { 'matchId': matchId }
+	$.ajax({
+		type: 'post',
+		url: '/ai/dataToAi',
+		data: data,
+		success: function(res) {
+			
+			console.log(res)
+			console.log("성공")
+			
+		}
+	})
+}
+
+
+
+//////////////////장기훈/////////////////////////
 
 
 function bbb(data) {
@@ -207,6 +224,7 @@ function summonerV4(res) {
 
 
 function gamebtn(goBtn, matchId) {
+  
 	var line1 = document.getElementById("line1" + goBtn);
 	var container2 = document.getElementById("container2" + goBtn);
 	line1.style.display = ((line1.style.display != 'none') ? 'none' : 'block');
@@ -221,7 +239,7 @@ function gamebtn(goBtn, matchId) {
 			data: { 'matchId': matchId },
 			success: function(res) {
 				console.log(res)
-
+        aiCheckTroll(matchId)
 			}
 		})
 	}

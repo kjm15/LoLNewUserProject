@@ -93,7 +93,9 @@ function showGameTamble(res, data) {
 
 	for (let i in res) {
 		let MatchId = res[i]['MatchId']
+
 		//		console.log(MatchId)
+
 		sss = Number(i);
 		let goBtn = sss + (data['matchCnt']) * 4
 
@@ -357,7 +359,7 @@ function showGameTamble(res, data) {
 			bartotalDamageDealtToChampions = (((totalDamageDealtToChampions / highestdamageToChampions) * 99)).toFixed(0)
 
 			totalCs = res[i]["info"][j]['totalMinionsKilled'] + res[i]["info"][j]['totalAllyJungleMinionsKilled'] + res[i]["info"][j]['totalEnemyJungleMinionsKilled']
-
+			participantId = res[i]["info"][j]['participantId']
 			if (res[i]['info'][j]['teamId'] == 100) {
 
 				str += `<div class="ct1">
@@ -399,6 +401,7 @@ function showGameTamble(res, data) {
 
 				str += `</div>
 					</div>
+					<div class = aidetail id = "${MatchId}"+"${participantId}"><img width='20' height='20' alt='못 불러옴' src = "/img/loadingimg.gif"></div>
 				</div>`
 			}
 		}
@@ -472,6 +475,7 @@ function showGameTamble(res, data) {
 
 				str += `</div>
 					</div>
+					<div class = aidetail id = "${MatchId}"+"${participantId}"><img width='20' height='20' alt='못 불러옴' src = "/img/loadingimg.gif"></div>
 				</div>`
 			}
 		}

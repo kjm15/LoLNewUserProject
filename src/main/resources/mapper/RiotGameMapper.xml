@@ -49,14 +49,19 @@
 		riotIdGameName =#{gameName};
 	</select>
 	<select id="DbriotGameData">
-		select * from RiotGameInfoT where matchId =
-		#{matchId}
+		select * from RiotGameInfoT where matchId = #{matchId}
 	</select>
 	<select id="getMatchId">
-		select count(*) from RiotGameInfoT where matchId =
-		#{matchId}
+		select count(*) from RiotGameInfoT where matchId = #{matchId}
 	</select>
+	
+	
+		<select id="sendDataToPy">
+		select * from RiotGameInfoT where matchId = #{matchId}
+	</select>
+
 	<select id="DBRiotGameName">
 		select riotIdGameName , riotIdTagline from RiotGameInfoT where matchId = #{matchId} and tier = 'Tier';
 	</select>
+
 </mapper>

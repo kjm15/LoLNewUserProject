@@ -90,6 +90,12 @@ public class MatchListService {
 		int riotcount = riotGameDao.getMatchId(matchId);
 		return riotcount;
 	}
+	
+//	장기훈
+	public List<Map<String, String>> sendDataToPy(String matchId) {		
+		
+		return riotGameDao.sendDataToPy(matchId);
+	}
 
 	public List<Map<String, RiotGameDto>> DBRiotGameName(String matchId) {
 		List<Map<String, RiotGameDto>> RiotGameName= riotGameDao.DBRiotGameName(matchId);
