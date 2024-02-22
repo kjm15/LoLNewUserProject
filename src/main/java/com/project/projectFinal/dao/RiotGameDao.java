@@ -29,4 +29,6 @@ public interface RiotGameDao {
 
 	int getMatchId(String matchId);
 
+	List<Map<String, RiotGameDto>> DBRiotGameName(String matchId);
+
 }
