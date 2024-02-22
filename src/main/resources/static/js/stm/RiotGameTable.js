@@ -9,8 +9,25 @@ let win = 0
 let lose = 0
 function showGameTamble(res, data) {
 	console.log(res)
-	$('.graph1').empty()
 	let ccc = ''
+	let str = ''
+	let queue = ''
+	let spentTime = ''
+	let ingamespentTime = ''
+	let win_lose = ''
+	let spellD = ''
+	let spellF = ''
+	let kills = ''
+	let deaths = ''
+	let assists = ''
+	let kda = ''
+	let mykill = ''
+	let wardscore = ''
+	let totalCs = ''
+	let dragon = ''
+	let champimg = ''
+
+	$('.graph1').empty()
 	for (let i in res) {
 		for (let j in res[i]['info']) {
 			if (data['gameName'] == res[i]["info"][j]['riotIdGameName'] || data['gameName'] == res[i]["info"][j]['summonerName']) {
@@ -26,14 +43,6 @@ function showGameTamble(res, data) {
 			}
 		}
 	}
-
-
-	console.log(profileIcon)
-	console.log(summonerLevel)
-	console.log(riotIdGameName)
-	console.log(win)
-	console.log(lose)
-
 	ccc += `<div class=container333>
 	<div class="stmH">
             <div class="stmHright">
@@ -57,7 +66,7 @@ function showGameTamble(res, data) {
 		data: {
 			labels: ['승리', '패배'],
 			datasets: [{
-//				label: '승리',
+				//				label: '승리',
 				data: [win, lose], // 승리와 패배 데이터
 				backgroundColor: [
 					'rgba(75, 192, 192, 0.2)',
@@ -78,28 +87,12 @@ function showGameTamble(res, data) {
 		}
 	});
 
-	let str = ''
-	let queue = ''
-	let spentTime = ''
-	let ingamespentTime = ''
-	let win_lose = ''
-	let spellD = ''
-	let spellF = ''
-	let kills = ''
-	let deaths = ''
-	let assists = ''
-	let kda = ''
-	let mykill = ''
-	let wardscore = ''
-	let totalCs = ''
-	let dragon = ''
-	
 
 
 
 	for (let i in res) {
-//		let MatchId = res[i]['MatchId']
-		console.log(MatchId)
+		let MatchId = res[i]['MatchId']
+		//		console.log(MatchId)
 		sss = Number(i);
 		let goBtn = sss + (data['matchCnt']) * 4
 
@@ -126,6 +119,8 @@ function showGameTamble(res, data) {
 		}
 		let aaa = Math.floor(ingametime / 1000 / 60);
 		ingamespentTime = aaa + "분 게임";
+
+		//시작
 		for (j in res[i]['info']) {
 			if (res[i]["info"][j]['queueId'] == 450) {
 				queue = "칼바람"
@@ -184,9 +179,7 @@ function showGameTamble(res, data) {
 
 
 
-		}
 
-		for (j in res[i]['info']) {
 			if (data['gameName'] == res[i]["info"][j]['riotIdGameName'] || data['gameName'] == res[i]["info"][j]['summonerName']) {
 				if (res[i]["info"][j]['win'] == '1') {
 					str += `<div class="container1" id = 'container1' style='background-color :#99ccff'>`
@@ -201,7 +194,7 @@ function showGameTamble(res, data) {
 
 				<div class="box-left" >
 
-					<div>${queue}</div>
+					<div><span>${queue}</span></div>
 					<div>${spentTime}</div>
 					<div>${win_lose}</div>
 					<div style="background-color: skypink;">${ingamespentTime}</div>
@@ -416,7 +409,7 @@ function showGameTamble(res, data) {
 			champimg = res[i]["info"][j]['championName']
 			if (champimg == "FiddleSticks") {
 				champimg = "Fiddlesticks"
-			}	
+			}
 			spellD = res[i]["info"][j]['summonerSpellD']
 			spellF = res[i]["info"][j]['summonerSpellF']
 			riotIdGameName = res[i]["info"][j]['riotIdGameName']
@@ -484,7 +477,9 @@ function showGameTamble(res, data) {
 		`
 
 
-
+	function asd(){
+		console.log("와")
+	}
 	$('.containerXC').append(str)
 
 
@@ -494,10 +489,8 @@ function showGameTamble(res, data) {
 		$('#loadMore').remove()
 		bbb(data)
 	})
+
 }
 
-function fffff(goApi) {
 
-	console.log(goApi)
-}
 

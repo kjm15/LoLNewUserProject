@@ -24,50 +24,23 @@ function mainSearch(gameName1) {
 	let gameName = gameId[0] // 아이디
 	let tagLine = gameId[1] // 태그
 	let matchCnt = cnt;
-	data = { 'gameName': gameName, 'tagLine': tagLine, 'matchCnt':matchCnt }
+	data = { 'gameName': gameName, 'tagLine': tagLine, 'matchCnt': matchCnt }
 	bbb(data)
 }
 
 //////////////////장기훈/////////////////////////
 
 
-function gamebtn(i,j) {
+function gamebtn(i, j) {
 	console.log(i)
 	console.log(j)
-	var line1 = document.getElementById("line1"+i);
-	var container2 = document.getElementById("container2"+i);
+	var line1 = document.getElementById("line1" + i);
+	var container2 = document.getElementById("container2" + i);
 
 	line1.style.display = ((line1.style.display != 'none') ? 'none' : 'block');
 	container2.style.display = ((container2.style.display != 'none') ? 'none' : 'block');
 
 
-}
-function searchbtn() {
-	searchbtn1()
-}
-
-function searchbtn1() {
-	$('#newList').remove()
-	let search = $('#search').val();
-	var gameId = search.split('#');
-	let gameName = gameId[0] // 아이디
-	let tagLine = gameId[1] // 태그
-//	data = { 'gameName': gameName, 'tagLine': tagLine }
-	location.href= '/stm/'+gameName+'/'+tagLine
-//	bbb(data)
-}
-
-
-function aaa(data) { // data == 검색한 게임 아이디
-	$.ajax({
-		type: 'post',
-		url: '/riot/game',
-
-		success: function(res) {
-
-			showGameTamble(res, data)
-		}
-	})
 }
 
 function bbb(data) {
@@ -77,6 +50,8 @@ function bbb(data) {
 		data: data,
 		//		async: true,
 		success: function(res) {
+
+
 			console.log(res)
 			if (res != '') {
 				MList = [];
@@ -96,7 +71,7 @@ function bbb(data) {
 						mm.participantId = res[i]["info"]['participants'][j]['participantId'] // 플레이어 고유 인덱스
 						mm.summoner1Id = res[i]["info"]['participants'][j]['summoner1Id']//스펠 D
 						mm.summoner2Id = res[i]["info"]['participants'][j]['summoner2Id']//스펠 F 화면에 출력 가능할 떄 할 것
-						mm.summonerId =res[i]["info"]['participants'][j]['summonerId']
+						//						mm.puuid =res[i]["info"]['participants'][j]['puuid']
 						mm.teamId = res[i]["info"]['participants'][j]['teamId']
 						mm.win = res[i]["info"]['participants'][j]['win']
 						mm.matchId = res[i]['metadata']['matchId'] // 매치 아이디
@@ -105,10 +80,10 @@ function bbb(data) {
 						mm.kills = res[i]["info"]['participants'][j]['kills']
 						mm.deaths = res[i]["info"]['participants'][j]['deaths']
 						mm.assists = res[i]["info"]['participants'][j]['assists']
-						if(res[i]["info"]['participants'][j]['deaths'] == 0){
-							mm.kda =(res[i]["info"]['participants'][j]['kills'] + res[i]["info"]['participants'][j]['assists'])
-							
-						}else{
+						if (res[i]["info"]['participants'][j]['deaths'] == 0) {
+							mm.kda = (res[i]["info"]['participants'][j]['kills'] + res[i]["info"]['participants'][j]['assists'])
+
+						} else {
 							mm.kda = (((res[i]["info"]['participants'][j]['kills'] + res[i]["info"]['participants'][j]['assists'])) / res[i]["info"]['participants'][j]['deaths']).toFixed(2)
 						}
 						//						mm.kda = res[i]["info"]['participants'][j]['challenges']['kda'] // 우르프는 challenges가 없음 ㅋㅋㅋ
@@ -144,14 +119,14 @@ function bbb(data) {
 
 					}
 					ingameteam = [];
-				
+
 					for (j = 0; j < 2; j++) {
 						mm = {}
 						mm.matchId = res[i]['metadata']['matchId']
 						mm.teamId = res[i]["info"]['teams'][j]['teamId']
 						mm.dragon = res[i]["info"]['teams'][j]['objectives']['dragon']['kills']
 						mm.kills = res[i]["info"]['teams'][j]['objectives']['champion']['kills']
-		
+
 						ingameteam.push(mm)
 						Gamedata.teams = ingameteam
 					}
@@ -177,9 +152,46 @@ function bbb(data) {
 				aaa(data)
 			}
 
+
+		},
+		error: function(jqXHR, textStatus, errorThrown) {
+			console.log(jqXHR);  //응답 메시지
+			console.log(textStatus); //"error"로 고정인듯함
+			console.log(errorThrown);
+
+			let m = "존재하지 않는 아이디입니다."
+			if (m != '') {
+				alert(m);
+			}
+			console.log(m)
+		}
+
+	})
+}
+
+function aaa(data) { // data == 검색한 게임 아이디
+	$.ajax({
+		type: 'post',
+		url: '/riot/game',
+
+		success: function(res) {
+
+			showGameTamble(res, data)
 		}
 	})
 }
 
+function searchbtn() {
+	searchbtn1()
+}
 
-
+function searchbtn1() {
+	$('#newList').remove()
+	let search = $('#search').val();
+	var gameId = search.split('#');
+	let gameName = gameId[0] // 아이디
+	let tagLine = gameId[1] // 태그
+	//	data = { 'gameName': gameName, 'tagLine': tagLine }
+	location.href = '/stm/' + gameName + '/' + tagLine
+	//	bbb(data)
+}

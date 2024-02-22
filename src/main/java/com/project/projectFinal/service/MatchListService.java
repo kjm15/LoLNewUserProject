@@ -19,6 +19,7 @@ public class MatchListService {
 	RiotGameDao riotGameDao;
 	public String puuId(RiotApiDto userListDto) {
 		String puuid = webmatchListService.getpuuId(userListDto);
+		
 		  return puuid;
 	}
 

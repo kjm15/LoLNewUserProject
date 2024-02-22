@@ -27,7 +27,7 @@ public class WebMatchListService {
 				+ apiDto.getTagLine() + "?api_key=" + api_key;
 
 		WebClient webClient = WebClient.builder().baseUrl(url).build();
-
+		
 		RiotApiDto response = webClient.get().uri(uriBuilder -> uriBuilder.build()).retrieve()
 				.bodyToMono(RiotApiDto.class).block();
 
