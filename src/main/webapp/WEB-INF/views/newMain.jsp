@@ -27,20 +27,21 @@
 
 		<%@include file="aMain/mainDetail.jsp"%>
 
-
-		<%@include file="kjm/Note.jsp"%>
+		<%@include file="kjm/inqMain.jsp"%>
+		<%@include file="kjm/sendInq.jsp"%>
+		<%@include file="kjm/myInq.jsp"%>
 		<%@include file="inc/footer.jsp"%>
-		
+
 
 	</div>
-	
 
-	<!-- js들어갈자리  -->	
-<script defer src="js/new/gameNameSearch.js"></script>
-<script defer src="js/new/slide.js"></script>
-<script defer src="js/new/bar.js"></script>
-<script defer src="js/new/comprehensive.js"></script>
-<script defer src="/js/kjm/Note/inqMain.js"></script>
+
+	<!-- js들어갈자리  -->
+	<script defer src="js/new/gameNameSearch.js"></script>
+	<script defer src="js/new/slide.js"></script>
+	<script defer src="js/new/bar.js"></script>
+	<script defer src="js/new/comprehensive.js"></script>
+	<script defer src="/js/kjm/Note/inqMain.js"></script>
 
 </body>
 </html>

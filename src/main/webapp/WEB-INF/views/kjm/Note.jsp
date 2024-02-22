@@ -13,13 +13,7 @@
 <title>Insert title here</title>
 </head>
 <body>
-	<div id="modal1" class="modal1-overlay">
-		<div class="modal1-window">
-			<div class="modal1-title">
-				<h2>내 문의내역</h2>
-			</div>
-			<div class="modal1-close-area">X</div>
-			<div class="modal1-content">
+
 				<table class="table table-green table-hover" id="modal_wrap">
 
 					<thead>
@@ -30,26 +24,24 @@
 					</thead>
 					<tbody>
 
-<%-- 						<c:forEach var="item" items="${maillist}"> --%>
-<!-- 							</a> -->
-<!-- 							<tr class="maillist" id="maillist"> -->
-<%-- 								<td>${item.n_num}</td> --%>
-<%-- 								<td>${item.recv_userId}</td> --%>
-<%-- 								<td>${item.n_title}</td> --%>
-<%-- 								<td>${item.n_date}</td> --%>
-<%-- 								<td style="display: none;">${item.send_userId}</td> --%>
-<%-- 								<td style="display: none;">${item.n_message}</td> --%>
-<!-- 							</tr> -->
-<%-- 							<input type="hidden" name="${item.recv_userId}" --%>
-<%-- 								id="${item.recv_userId}"> --%>
-<%-- 							<input type="hidden" name="${item.send_userId}" --%>
-<%-- 								id="${item.send_userId}"> --%>
-<%-- 						</c:forEach> --%>
+						<c:forEach var="item" items="${maillist}">
+							</a>
+							<tr class="maillist" id="maillist">
+								<td>${item.n_num}</td>
+								<td>${item.recv_userId}</td>
+								<td>${item.n_title}</td>
+								<td>${item.n_date}</td>
+								<td style="display: none;">${item.send_userId}</td>
+								<td style="display: none;">${item.n_message}</td>
+							</tr>
+							<input type="hidden" name="${item.recv_userId}"
+								id="${item.recv_userId}">
+							<input type="hidden" name="${item.send_userId}"
+								id="${item.send_userId}">
+						</c:forEach>
 					</tbody>
 				</table>
-			</div>
-		</div>
-	</div>
+
 
 
 

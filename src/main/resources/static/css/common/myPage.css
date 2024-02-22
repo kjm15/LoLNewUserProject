@@ -1,26 +1,30 @@
 @charset "UTF-8";
 .ground{
-	width : 70%;
-	height : 850px;
+	width : 85%;
+	height : 1000px;
 	left : 15%;
 /* 	border: 1px solid black; */
 	position: relative;
 	background-color : hsla(214, 80%, 71%, 0.8);
-/*	background-color : white;*/
-	
+/*	background-color : white;*/	
+}
+.left{
+	width : 30%;
+	height : 950px;
+	float : left;
+	border-right : 1px solid white;
 }
 
-.ground2{
+.right{
 	width : 70%;
-	height : auto;
-	left : 15%;
-/* 	border: 1px solid black; */
-	position: relative;
+	height : 950px;
+	float : right;
 }
+
 .profile{
 	width : 50%;
 	height : 50%;	
-	margin: 5% 00% 2% 25%;
+	margin: 5% 00% 2% 10%;
 	position: relative;
 	border: 5px solid white;
 	border-radius: 1%;
@@ -32,6 +36,10 @@
 	margin : 1%;
 	position : relative;
 /* 	border: 1px solid black; */
+}
+.changebutton{
+	width : 10%;
+	
 }
 .pline1-1{
 	width : 50%;
@@ -137,7 +145,7 @@
 .c-txt{
 	width : 50%;
 	height : 5%;
-	margin : 0% 0% 0.5% 25%;
+	margin : 0% 0% 0.5% 10%;
 	position: relative;
 	color : white;
 	text-align: left;
@@ -147,7 +155,7 @@
 .agree-to-receive{
 	width : 50%;
 	height : 20%;
-	margin: 0% 0% 5% 25%;
+	margin: 0% 0% 5% 10%;
 	position: relative;
 	border: 5px solid white;
 	border-radius: 1%;

@@ -55,7 +55,7 @@
 	</div>
 	<div class="comprehensive-menu" id="comprehensive-menu">
 		<div>
-			<input type="button" class="comprehensive-item" id="inqMain"
+			<input type="button" class="comprehensive-item" id="GoInq"
 				value="고객센터">
 		</div>
 		<div>
