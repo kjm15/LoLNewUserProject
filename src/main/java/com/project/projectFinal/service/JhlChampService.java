@@ -111,7 +111,7 @@ public class JhlChampService {
 	}
 
 	public void champCounter(ChampionRankDto rankDto) {
-	
+
 		List<HashMap<String, Object>> laneChampCounterList = champDao.laneCounterListInfo(rankDto);
 //
 		for (Map<String, Object> counterChamp : laneChampCounterList) {
@@ -119,10 +119,11 @@ public class JhlChampService {
 			String teamPosition = rankDto.getTeamPosition();
 			int championId = (int) counterChamp.get("championid");
 //
-			
+
 			List<HashMap<String, Object>> rList = champDao.rankListInfo(teamPosition, championId);
 
-			for(Map<String, Object> rl : rList) {
+			for (Map<String, Object> rl : rList) {
+
 				Object championName = rl.get("championName");
 				Object champion_name_kr = rl.get("champion_name_kr");
 				Object champ_win_cnt = rl.get("champ_win_cnt");
@@ -135,32 +136,42 @@ public class JhlChampService {
 				Object enemy_win_rate = rl.get("enemy_win_rate");
 				Object tier = rl.get("tier");
 //				
-						HashMap<String, Object> champCounterList = new HashMap<>();
-						champCounterList.put("championName", championName);
-						champCounterList.put("champion_name_kr", champion_name_kr);
-						champCounterList.put("champ_win_cnt", champ_win_cnt);
-						champCounterList.put("champ_win_rate", champ_win_rate);
-						champCounterList.put("enemy_championName", enemy_championName);
-						champCounterList.put("enemy_championName_kr", enemy_championName_kr);
-						champCounterList.put("teamPosition", teamPosition1);
-						champCounterList.put("enemy_champ_win_cnt", enemy_champ_win_cnt);
-						champCounterList.put("total", total);
-						champCounterList.put("enemy_win_rate", enemy_win_rate);
-						champCounterList.put("tier", tier);
-						champDao.saveChampCounterT(champCounterList);
-				}
-					
-
+				HashMap<String, Object> champCounterList = new HashMap<>();
+				champCounterList.put("championName", championName);
+				champCounterList.put("champion_name_kr", champion_name_kr);
+				champCounterList.put("champ_win_cnt", champ_win_cnt);
+				champCounterList.put("champ_win_rate", champ_win_rate);
+				champCounterList.put("enemy_championName", enemy_championName);
+				champCounterList.put("enemy_championName_kr", enemy_championName_kr);
+				champCounterList.put("teamPosition", teamPosition1);
+				champCounterList.put("enemy_champ_win_cnt", enemy_champ_win_cnt);
+				champCounterList.put("total", total);
+				champCounterList.put("enemy_win_rate", enemy_win_rate);
+				champCounterList.put("tier", tier);
+				champDao.saveChampCounterT(champCounterList);
+			}
 
 		}
 
 	}
-	
-	public List<HashMap<String, Object>> CounterchampList (ChampionRankDto rankDto){
-		
+
+	public List<HashMap<String, Object>> CounterchampList(ChampionRankDto rankDto) {
+
 		return champDao.CounterchampList(rankDto);
-		
+
 	}
-	
+
+	public void ranktierlistInfo(ChampionRankDto rankDto) {
+		List<HashMap<String, Object>> laneChampList = champDao.laneListInfo(rankDto);
+		for (Map<String, Object> champ : laneChampList) {
+			List<HashMap<String, Object>> cList = new ArrayList<>();
+			
+			String teamPosition = rankDto.getTeamPosition();
+			int championId = rankDto.getChampionId();
+			
+			champDao.ranktierlistInfo(teamPosition,championId);
+		}
+
+	}
 
 }

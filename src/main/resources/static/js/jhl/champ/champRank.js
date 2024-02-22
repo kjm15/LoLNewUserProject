@@ -50,12 +50,36 @@ function champRank(a) {
 			$('.rTableBody').html(tableRows);
 			//			console.log(res);
 			//			console.log(a);
-	
+
 		}
 	});
+
+
+//	const selectedTier = $("#rankSelect").val();
+//	$.ajax({
+//		type: "post",
+//		url: "/tierData",
+//		data: { "teamPosition": a, "tier": selectedTier},
+//		success: function(res) {
+//			let tableRows = '';
+//			console.log(selectedTier)
+//			for (let i = 0; i < res.length; i++) {
+//				tableRows += "<tr class='rTable'>";
+//				tableRows += "<td class ='rData'><div><div class = 'champs-sc'><div class ='champ-sc-img'><img width='48' height='48' src='https://ddragon.leagueoflegends.com/cdn/14.2.1/img/champion/" + res[i].champion_name + ".png' class='champRankImg'></div><span class='rankChampName'>" + res[i].champion_name_kr + "</span></div></div></td>";
+//				tableRows += "<td class ='rData'>" + res[i].win_rate + "</td>";
+//				tableRows += "<td class ='rData'>" + res[i].pick_rate + "</td>";
+//				tableRows += "<td class ='rData'>" + res[i].ban_rate + "</td>";
+//				tableRows += "</tr>";
+//			}
+//			//			let tableBottom = "</table>"
+//			$('.rTableBody').html(tableRows);
+//		}
+//	});
 }
 
-	$(document).on('click', '.rankLine>div', function() {
-		$(this).addClass('ranklineBtn');
-		$(this).siblings().removeClass('ranklineBtn');
-	});
+
+
+$(document).on('click', '.rankLine>div', function() {
+	$(this).addClass('ranklineBtn');
+	$(this).siblings().removeClass('ranklineBtn');
+});

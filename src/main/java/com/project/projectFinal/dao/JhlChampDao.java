@@ -40,5 +40,9 @@ public interface JhlChampDao {
 	public List<HashMap<String, Object>> CounterchampList(ChampionRankDto rankDto);
 
 
+	public void ranktierlistInfo(String teamPosition, int championId);
+
+
+
 
 }

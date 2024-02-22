@@ -27,13 +27,13 @@
 					<div
 						style="text-align: center; height: 60px; border: 1px solid #8CB9FC; display: flex; align-items: center; margin-bottom: 10px; justify-content: center">
 						챔피언 랭킹 <select id="rankSelect">
-							<option value="BRONZE+" id="Brozne">Bronze+
-							<option value="SILVER+" id="Silver">Silver+
-							<option value="GOLD+" id="Gold">Gold+
-							<option value="PLATINUM" id=Platinum+>Platinum+
-							<option value="Emerald+" id="Emerald"
-								onclick="tierSelect(this.id)" selected>Emerald+
-							<option value="Diamond+" id="Diamond">Diamond+
+							<option value="BRONZE+" id="brozne" onclick="tierSelect(brozne)">Bronze+
+							<option value="SILVER+" id="silver" onclick="tierSelect(silver)">Silver+
+							<option value="GOLD+" id="gold" onclick="tierSelect(gold)">Gold+
+							<option value="PLATINUM" id=platinum onclick="tierSelect(platinum)">Platinum+
+							<option value="Emerald+" id="emerald"
+								onclick="tierSelect(emerald)" selected>Emerald+
+							<option value="Diamond+" id="diamond" onclick="tierSelect(diamond)">Diamond+
 						</select>
 
 
