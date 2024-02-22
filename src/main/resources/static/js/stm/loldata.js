@@ -31,9 +31,9 @@ function mainSearch(gameName1) {
 //////////////////장기훈/////////////////////////
 
 
-
-function gamebtn(i) {
+function gamebtn(i,j) {
 	console.log(i)
+	console.log(j)
 	var line1 = document.getElementById("line1"+i);
 	var container2 = document.getElementById("container2"+i);
 
