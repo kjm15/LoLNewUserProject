@@ -43,6 +43,7 @@
 		<tbody>
 
 			<c:forEach var="item" items="${maillist}">
+				</a>
 				<tr class="maillist" id="maillist">
 					<td>${item.n_num}</td>
 					<td>${item.recv_userId}</td>

@@ -9,7 +9,7 @@ import lombok.extern.slf4j.Slf4j;
 
 @Slf4j
 @Controller
-@PreAuthorize("hasAnyAuthority('ADMIN','HRD-MNG','PAY-MNG','ITEM-MNG','CHP-MNG')")
+@PreAuthorize("hasAnyAuthority('ADMIN','HRD-MNG','PAY-MNG','ITEM-MNG','CHP-MNG' ,'INQ-MNG')")
 @RequestMapping("/admin")
 public class AdminController {
 	
@@ -49,4 +49,14 @@ public class AdminController {
 
 		return "admin/mainAdmin";
 	}
+	
+	@PreAuthorize("hasAnyAuthority('ADMIN','INQ-MNG')")
+	@GetMapping("/inq")
+	public String NoteAdmin() {
+
+		return "admin/inq";
+	}
+
+	
+	
 }

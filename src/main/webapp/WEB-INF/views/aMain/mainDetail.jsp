@@ -7,13 +7,10 @@
 			<div class="logo-item">
 				<img alt="" src="/img/jhl/logo.png" width="300px" height="204px">
 			</div>
-			
-			    <div class="container">
-    
 
-    </div>
-			
-			
+			<div class="container"></div>
+
+
 			<div class="search-contents">
 				<div class="search-itmes">
 					<div class="sc-dataBoom">
@@ -32,24 +29,40 @@
 			</div>
 			<div class="black-box">
 
-			
-			
-			<p>쌩큐쌩큐~ ~감사감사~</p>
-				
-			  <div class="slider">
-        <div class="slides">
-            <img src="https://www.mhnse.com/news/photo/202310/226166_234755_1442.jpg" alt="Image 1">
-            <img src="https://cdn.newsculture.press/news/photo/202302/517312_635335_819.jpg" alt="Image 2">
-            <img src="https://image.newsis.com/2021/05/18/NISI20210518_0000749326_web.jpg" alt="Image 3">
-            
-            <img src="https://image.newsis.com/2021/05/18/NISI20210518_0000749326_web.jpg" alt="Image 4">
-            <!-- 추가 이미지 -->
-        </div>
-    </div>
-				
+
+
+				<p>쌩큐쌩큐~ ~감사감사~</p>
+
+				<div class="slider">
+					<div class="slides">
+						<img
+							src="https://www.mhnse.com/news/photo/202310/226166_234755_1442.jpg"
+							alt="Image 1"> <img
+							src="https://cdn.newsculture.press/news/photo/202302/517312_635335_819.jpg"
+							alt="Image 2"> <img
+							src="https://image.newsis.com/2021/05/18/NISI20210518_0000749326_web.jpg"
+							alt="Image 3"> <img
+							src="https://image.newsis.com/2021/05/18/NISI20210518_0000749326_web.jpg"
+							alt="Image 4">
+						<!-- 추가 이미지 -->
+					</div>
+				</div>
+
 
 			</div>
 
 		</div>
 	</div>
+	<div class="comprehensive-menu" id="comprehensive-menu">
+		<div>
+			<input type="button" class="comprehensive-item" id="GoInq"
+				value="고객센터">
+		</div>
+		<div>
+			<a class="comprehensive-item" href="#">듀오찾기</a>
+		</div>
+	</div>
+	<button class="comprehensive-button" id="comprehensive-on-off">이미지
+		추천받음</button>
+
 </section>

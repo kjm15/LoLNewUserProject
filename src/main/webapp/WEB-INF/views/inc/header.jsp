@@ -44,15 +44,16 @@
 		<c:choose>
 			<c:when test="${userId != null}">
 				<div class="navbarLogin">
+					<!-- 					<div class="navChoice"> -->
+					<%-- 						<span>${userId}님 접속중</span> --%>
+					<!-- 					</div> -->
 					<div class="navChoice">
-						<span>${userId}님 접속중</span>
-					</div>
-					<div class="navChoice">
-						<a href="/member/mypage">마이페이지</a>
+						<a href="/member/mypage">${userId}님</a>
 					</div>
 					<div class="navChoice">
 						<a href="/Note">메일함</a>
 					</div>
+
 					<!-- 					 <div id="app"></div> -->
 					<div class="navChoice" id="modal_test">
 						<a href="javascript:openModal()">결제하기</a>
@@ -123,10 +124,11 @@
 		<div class="navMenu">
 			<a href="/kyt">드래곤</a>
 		</div>
-	
+
 		<div class="navMenu">
 			<a href="/py/main">AI인공지능</a>
 		</div>
+
 
 
 		<!-- 		<c:if test="${userId != null}">-->

@@ -4,14 +4,12 @@ $('#mailsend').on("click", function() {
 })
 
 function send() {
-	let userId = $('#userId').val()
 	let recv_userId = $('#recv_userId').val()
 	let send_userId = $('#send_userId').val()
 	let n_title = $('#n_title').val()
 	let n_message = $('#n_message').val()
 
 	data = {
-		'userId' : userId,
 		'recv_userId': recv_userId,
 		'send_userId': send_userId,
 		'n_title': n_title,
@@ -28,6 +26,9 @@ function send() {
 
 			if (res == 1) {
 				alert("메일을 성공적으로 보냈습니다.")
+				modal2.style.display = "none"
+				modal3.style.display = "none"
+				modal1.style.display = "flex"
 			} else {
 				alert("메일 전송 실패")
 			}
@@ -44,7 +45,7 @@ function send() {
 //})
 //
 //function detailNote(){
-//	
+//
 //	$.ajax({
 //
 //		type: 'get',
@@ -58,11 +59,11 @@ function send() {
 //		str +- "<td>" + res.recv_userId+"</td>"
 //		str +- "<td>" + res.n_date+"</td>"
 //		str +- "<td>" + res.n_message+"</td>"
-//		
+//
 //		str += "</tr>"
 //		$('#detailflag').html(str)
 //		}
-//		
+//
 //	})
 //
 //}
