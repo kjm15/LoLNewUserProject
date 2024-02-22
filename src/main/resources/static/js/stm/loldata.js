@@ -28,12 +28,33 @@ function mainSearch(gameName1) {
 	bbb(data)
 }
 
+function aiCheckTroll(matchId) {
+
+	data = { 'matchId': matchId }
+	$.ajax({
+		type: 'post',
+		url: '/ai/dataToAi',
+		data: data,
+		success: function(res) {
+			
+			console.log(res)
+			console.log("성공")
+			
+		}
+	})
+}
+
+
+
 //////////////////장기훈/////////////////////////
 
 
 function gamebtn(i, j) {
 	console.log(i)
-	console.log(j)
+	//	console.log(j)
+	//파이썬으로 해당 matchId 찾으러감
+	aiCheckTroll(j)
+
 	var line1 = document.getElementById("line1" + i);
 	var container2 = document.getElementById("container2" + i);
 

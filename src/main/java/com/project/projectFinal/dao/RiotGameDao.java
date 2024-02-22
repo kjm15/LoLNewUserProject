@@ -1,6 +1,5 @@
 package com.project.projectFinal.dao;
 
-import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
@@ -28,5 +27,7 @@ public interface RiotGameDao {
 	Map DbriotGameData(String matchId);
 
 	int getMatchId(String matchId);
+
+	List<Map<String, String>> sendDataToPy(String matchId);
 
 }
