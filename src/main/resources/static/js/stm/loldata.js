@@ -31,9 +31,9 @@ function mainSearch(gameName1) {
 //////////////////장기훈/////////////////////////
 
 
-
-function gamebtn(i) {
+function gamebtn(i,j) {
 	console.log(i)
+	console.log(j)
 	var line1 = document.getElementById("line1"+i);
 	var container2 = document.getElementById("container2"+i);
 
@@ -96,6 +96,7 @@ function bbb(data) {
 						mm.participantId = res[i]["info"]['participants'][j]['participantId'] // 플레이어 고유 인덱스
 						mm.summoner1Id = res[i]["info"]['participants'][j]['summoner1Id']//스펠 D
 						mm.summoner2Id = res[i]["info"]['participants'][j]['summoner2Id']//스펠 F 화면에 출력 가능할 떄 할 것
+						mm.summonerId =res[i]["info"]['participants'][j]['summonerId']
 						mm.teamId = res[i]["info"]['participants'][j]['teamId']
 						mm.win = res[i]["info"]['participants'][j]['win']
 						mm.matchId = res[i]['metadata']['matchId'] // 매치 아이디
@@ -104,6 +105,12 @@ function bbb(data) {
 						mm.kills = res[i]["info"]['participants'][j]['kills']
 						mm.deaths = res[i]["info"]['participants'][j]['deaths']
 						mm.assists = res[i]["info"]['participants'][j]['assists']
+						if(res[i]["info"]['participants'][j]['deaths'] == 0){
+							mm.kda =(res[i]["info"]['participants'][j]['kills'] + res[i]["info"]['participants'][j]['assists'])
+							
+						}else{
+							mm.kda = (((res[i]["info"]['participants'][j]['kills'] + res[i]["info"]['participants'][j]['assists'])) / res[i]["info"]['participants'][j]['deaths']).toFixed(2)
+						}
 						//						mm.kda = res[i]["info"]['participants'][j]['challenges']['kda'] // 우르프는 challenges가 없음 ㅋㅋㅋ
 						mm.lane = res[i]["info"]['participants'][j]['lane']
 						mm.totalDamageDealtToChampions = res[i]["info"]['participants'][j]['totalDamageDealtToChampions']

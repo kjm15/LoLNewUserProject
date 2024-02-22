@@ -93,11 +93,13 @@ function showGameTamble(res, data) {
 	let wardscore = ''
 	let totalCs = ''
 	let dragon = ''
-
+	
 
 
 
 	for (let i in res) {
+//		let MatchId = res[i]['MatchId']
+		console.log(MatchId)
 		sss = Number(i);
 		let goBtn = sss + (data['matchCnt']) * 4
 
@@ -307,10 +309,10 @@ function showGameTamble(res, data) {
 		for (j in res[i]['info']) {
 			if (data['gameName'] == res[i]["info"][j]['riotIdGameName'] || data['gameName'] == res[i]["info"][j]['summonerName']) {
 				if (res[i]["info"][j]['win'] == '1') {
-					str += `<div class="box-right" style='background-color :#9ac2e2' id ="gamebtn${goBtn}" onclick ="gamebtn(${goBtn})"><a href = 'javascript:;'><p></p><div>더</div><div>보</div><div>기</div><p>∨</p></a></div>`
+					str += `<div class="box-right" style='background-color :#9ac2e2' id ="gamebtn${goBtn}" onclick ="gamebtn(${goBtn},'${MatchId}')"><a href = 'javascript:;'><p></p><div>더</div><div>보</div><div>기</div><p>∨</p></a></div>`
 
 				} else {
-					str += `<div class="box-right" style='background-color : rgba(255, 2, 73, 0.18)' id ="gamebtn${goBtn}" onclick ="gamebtn(${goBtn})"><a href = 'javascript:;'><p></p><div>더</div><div>보</div><div>기</div><p>∨</p></a></div>`
+					str += `<div class="box-right" style='background-color : rgba(255, 2, 73, 0.18)' id ="gamebtn${goBtn}" onclick ="gamebtn(${goBtn},'${MatchId}')"><a href = 'javascript:;'><p></p><div>더</div><div>보</div><div>기</div><p>∨</p></a></div>`
 
 				}
 			}
