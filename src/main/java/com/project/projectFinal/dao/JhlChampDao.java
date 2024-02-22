@@ -19,8 +19,6 @@ public interface JhlChampDao {
 
 	public List<HashMap<String, Object>> champRank(ChampionRankDto rankDto);
 
-	public List<HashMap<String, Object>> rankListInfo(ChampionRankDto rankDto);
-
 	public List<HashMap<String, Object>> laneListInfo(ChampionRankDto rankDto);
 
 	public List<HashMap<String, Object>> rankListTeamPositionInfo(String teamPosition, int championId);
@@ -33,19 +31,17 @@ public interface JhlChampDao {
 
 	public int banChampCnt(String champion_name_kr);
 
-//	public List<HashMap<String, Object>> laneCounterListInfo(ChampionRankDto rankDto);
+	public List<HashMap<String, Object>> laneCounterListInfo(ChampionRankDto rankDto);
 
-//	public List<HashMap<String, Object>> rankListCounterA(String teamPosition, int championId);
+	public List<HashMap<String, Object>> rankListInfo(String teamPosition, int championId);
 
-//	public List<HashMap<String, Object>> rankListCounterEnemy(String teamPosition1, String match_id, int championId);
-//
-//	public List<HashMap<String, Object>> rankAllListCounter(Integer championIdM, Integer championIdE, String teamPosition2);
+	public void saveChampCounterT(HashMap<String, Object> champCounterList);
 
-//	public List<HashMap<String, Object>> rankListCounterEnemy(String teamPosition1, String match_id);
-//
+	public List<HashMap<String, Object>> CounterchampList(ChampionRankDto rankDto);
 
 
-//	public void saveChampCounterT(HashMap<String, Object> champCounterList);
+	public void ranktierlistInfo(String teamPosition, int championId);
+
 
 
 

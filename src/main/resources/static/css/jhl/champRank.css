@@ -19,18 +19,16 @@
 }
 
 .lineRank {
-	height: 3100px;
 	border-left: 1px solid #8CB9FC;
 	border-right: 1px solid #8CB9FC;
-	border-bottom: 1px solid #8CB9FC;
+/* 	border-bottom: 1px solid #8CB9FC; */
 }
 
-.Rankable {
-	height: 100%;
-}
+
 
 .rTable {
 	text-align: center;
+	border-bottom: 1px solid #8CB9FC;
 }
 
 .rankSearch {
@@ -75,12 +73,14 @@
 
 .Rankable {
 	width: 100%;
+	height:100%;
 }
 
 .tableColumns {
 	text-align: center;
 	font-size: 15px;
 	font-style: inherit;
+	border-bottom: 1px solid #8CB9FC;
 }
 
 .champs-sc {
