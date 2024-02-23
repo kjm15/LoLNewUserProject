@@ -14,6 +14,7 @@ import lombok.NoArgsConstructor;
 public class RiotApiDto {
 
 	private String puuid;
+	private String id; // SummonerId
 	private String gameName; // 라이엇 아이디
 	private String tagLine; // 라이엇 태그
 	private JSONObject matches;

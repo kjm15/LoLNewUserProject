@@ -9,7 +9,8 @@
 		<!-- totalMinionsKilled,wardsKilled,wardsPlaced,win) -->
 		values
 		(#{matchId},#{championName},
-		(select champion_name_kr from champListT where champion_name =
+		(select champion_name_kr from
+		champListT where champion_name =
 		#{championName}),
 		#{riotIdGameName},
 		#{riotIdTagline},#{summonerName},#{summonerLevel},#{profileIcon},#{participantId},#{queueId},#{teamId},
@@ -21,7 +22,7 @@
 		#{assists},#{deaths},#{kda},#{firstBloodKill},#{goldEarned},#{gameEndTimestamp},
 		#{gameStartTimestamp},#{gameDuration},#{totalAllyJungleMinionsKilled},#{totalDamageDealtToChampions},
 		#{totalDamageTaken},#{totalEnemyJungleMinionsKilled},#{totalMinionsKilled},
-		#{wardsKilled},#{wardsPlaced},#{win},default,null);
+		#{wardsKilled},#{wardsPlaced},#{win},default,null,#{totalTimeCCDealt},#{totalTimeSpentDead},#{onMyWayPings},#{enemyVisionPings});
 
 	</insert>
 	<insert id="RiotGameTeams">
@@ -49,19 +50,27 @@
 		riotIdGameName =#{gameName};
 	</select>
 	<select id="DbriotGameData">
-		select * from RiotGameInfoT where matchId = #{matchId}
+		select * from RiotGameInfoT where matchId =
+		#{matchId}
 	</select>
 	<select id="getMatchId">
-		select count(*) from RiotGameInfoT where matchId = #{matchId}
+		select count(*) from RiotGameInfoT where matchId =
+		#{matchId}
 	</select>
-	
-	
-		<select id="sendDataToPy">
-		select * from RiotGameInfoT where matchId = #{matchId}
+
+
+	<select id="sendDataToPy">
+		select * from RiotGameInfoT where matchId =
+		#{matchId}
 	</select>
 
 	<select id="DBRiotGameName">
-		select riotIdGameName , riotIdTagline from RiotGameInfoT where matchId = #{matchId} and tier = 'Tier';
+		select riotIdGameName , riotIdTagline from
+		RiotGameInfoT where matchId = #{matchId} and tier = 'Tier';
 	</select>
-
+	<update id="UPdateTier">
+		UPDATE RiotGameInfoT
+		SET tier =	#{tier}
+		WHERE matchId = #{matchId} and riotIdGameName = #{riotIdGameName};
+	</update>
 </mapper>
