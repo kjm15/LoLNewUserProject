@@ -10,7 +10,7 @@
 function champUpdate() {
 	laneChampList = ['TOP', 'jug', 'mid', 'adc', 'sup']
 	for (let i in laneChampList) {
-		console.log(laneChampList[i]+"업데이트 시작")
+//		console.log(laneChampList[i]+"업데이트 시작")
 
 		$.ajax({
 			type: "post",

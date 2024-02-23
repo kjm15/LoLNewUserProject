@@ -10,6 +10,10 @@ import lombok.NoArgsConstructor;
 public class ChampionRankDto {
 	private String teamPosition;
 	private String championName;
-	private String championId;
+	private int championId;
 	private String tier;
+	public void setTableName(String tableName) {
+		// TODO Auto-generated method stub
+		
+	}
 }
