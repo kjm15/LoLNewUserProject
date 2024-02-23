@@ -37,31 +37,42 @@ function aiCheckTroll(matchId) {
 		data: { 'matchId': matchId },
 		success: function(res) {
 
-				console.log(res)
+			console.log(res)
+
+
 			for (let i in res) {
 
-				data = res[i]
-				console.log(data)
+				if (res[i].queueId == 420) {
+					data = res[i]
+					console.log(data)
 
-				$.ajax({
-					contentType: 'application/json',
-					type: 'post',
-					url: '/ai/trollcheck',
-					data: JSON.stringify(data),
-					success: function(res1) {
-						for (const [key, value] of Object.entries(res1)) {
-							$('#' + key).html(value);
+					$.ajax({
+						contentType: 'application/json',
+						type: 'post',
+						url: '/ai/trollcheck',
+						data: JSON.stringify(data),
+						success: function(res1) {
+							for (const [key, value] of Object.entries(res1)) {
+								$('#' + key).html(value);
 
+							}
 						}
+					})//ajax끝
+				} else {
+					for (let i in res) {
+
+						key = res[i].matchId + res[i].participantId
+
+						$('#' + key).html("솔랭아님");
 
 					}
-				})
+				}
+
 
 			}
+		}//for끝
 
-
-		}
-	})
+	})//ajax끝
 }
 
 
@@ -70,7 +81,7 @@ function aiCheckTroll(matchId) {
 
 
 function bbb(data) {
-	
+
 	$.ajax({
 		type: 'post',
 		url: '/match/list',

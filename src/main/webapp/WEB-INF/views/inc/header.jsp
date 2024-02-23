@@ -125,10 +125,6 @@
 			<a href="/kyt">드래곤</a>
 		</div>
 
-		<div class="navMenu">
-			<a href="/py/main">AI인공지능</a>
-		</div>
-
 
 
 		<!-- 		<c:if test="${userId != null}">-->

@@ -47,12 +47,12 @@ public class RestPythonBuilder {
 			buffer.append(line);
 		}
 		int exitCode = p.waitFor();
-		System.out.println("Value is: " + buffer.toString());
+
 //        System.out.println("Process exit value:"+exitCode);        
 		in.close();
 		ObjectMapper mapper = new ObjectMapper();
 		Map<String, String> map = mapper.readValue(buffer.toString(), Map.class);
-
+		log.info("결과값 : {}", map);
 		return map;
 	}
 
@@ -61,11 +61,12 @@ public class RestPythonBuilder {
 
 		log.info("===myMap : {}", aMap);
 		String filePath = "src/main/resources/static/py/jgh/aiTrollCheck.py";
-		String matchId = (String)aMap.get("matchId");
-
+		String matchId = (String) aMap.get("matchId");
 		String participantId = String.valueOf(aMap.get("participantId"));
 		String key = matchId + participantId;
-		String teamPosition = (String)aMap.get("teamPosition");
+		String tier = "GOLD";
+		String teamPosition = String.valueOf(aMap.get("teamPosition"));
+		String gameDuration = String.valueOf(aMap.get("gameDuration"));
 		String kda = String.valueOf(aMap.get("kda"));
 		String totalDamageDealtToChampions = String.valueOf(aMap.get("totalDamageDealtToChampions"));
 		String goldEarned = String.valueOf(aMap.get("goldEarned"));
@@ -73,7 +74,7 @@ public class RestPythonBuilder {
 //			String participantId = String.valueOf(aMap.get("participantId")) ;
 //			String participantId = String.valueOf(aMap.get("participantId")) ;
 
-		ProcessBuilder pb = new ProcessBuilder().command("python", filePath, key, "GOLD", teamPosition, kda,
+		ProcessBuilder pb = new ProcessBuilder().command("python", filePath, key, tier, teamPosition, gameDuration, kda,
 				totalDamageDealtToChampions, goldEarned // ,
 		);
 		Process p = pb.start();
@@ -88,7 +89,7 @@ public class RestPythonBuilder {
 		in.close();
 		ObjectMapper objectMapper = new ObjectMapper();
 		Map<String, Object> aiReultMap = objectMapper.readValue(buffer.toString(), Map.class);
-		log.info("Value is: " + aiReultMap);
+		log.info("결과값 : {}", aiReultMap);
 
 		return aiReultMap;
 	}
