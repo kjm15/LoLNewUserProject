@@ -27,11 +27,12 @@ limit_value = str(20) # 리미트값
 data = sys.argv[1:]
 
 # print(data)
-tier = data[0]
-teamPosition = data[1]
-kda = float(data[2])
-totalDamageDealtToChampions = int(data[3])
-goldEarned = int(data[4])
+key = data[0]
+tier = data[1]
+teamPosition = data[2]
+kda = float(data[3])
+totalDamageDealtToChampions = int(data[4])
+goldEarned = int(data[5])
 
 
 
@@ -126,7 +127,7 @@ a1 = kn.score(tier_data,tier_target)
 trans={1:'예측:승', 0:'예측:패'}
 a = trans[kn.predict([[kda,totalDamageDealtToChampions,goldEarned]])[0]]
 
-data5 = {"result":a , "점수" : a1*100}
+data5 = {key:a , "점수" : a1*100}
 
 json_string = json.dumps(data5)
 

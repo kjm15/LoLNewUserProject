@@ -30,17 +30,33 @@ function mainSearch(gameName1) {
 
 function aiCheckTroll(matchId) {
 
-	data = { 'matchId': matchId }
+	console.log("data전송완료/인공지능시작")
 	$.ajax({
 		type: 'post',
 		url: '/ai/dataToAi',
-		data: data,
+		data: { 'matchId': matchId },
 		success: function(res) {
-			
-			console.log("성공")
-			for (const [key, value] of Object.entries(res)) {
-				$('#' + key).html(value);
-				console.log(key + ': ' + value);
+
+				console.log(res)
+			for (let i in res) {
+
+				data = res[i]
+				console.log(data)
+
+				$.ajax({
+					contentType: 'application/json',
+					type: 'post',
+					url: '/ai/trollcheck',
+					data: JSON.stringify(data),
+					success: function(res1) {
+						for (const [key, value] of Object.entries(res1)) {
+							$('#' + key).html(value);
+
+						}
+
+					}
+				})
+
 			}
 
 
@@ -54,6 +70,7 @@ function aiCheckTroll(matchId) {
 
 
 function bbb(data) {
+	
 	$.ajax({
 		type: 'post',
 		url: '/match/list',
@@ -229,7 +246,7 @@ function summonerV4(res) {
 
 
 function gamebtn(goBtn, matchId) {
-  
+
 	var line1 = document.getElementById("line1" + goBtn);
 	var container2 = document.getElementById("container2" + goBtn);
 	line1.style.display = ((line1.style.display != 'none') ? 'none' : 'block');
@@ -244,7 +261,7 @@ function gamebtn(goBtn, matchId) {
 			data: { 'matchId': matchId },
 			success: function(res) {
 				console.log(res)
-        		// aiCheckTroll(matchId)
+				aiCheckTroll(matchId)
 			}
 		})
 	}
