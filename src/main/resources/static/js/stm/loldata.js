@@ -36,7 +36,7 @@ function aiCheckTroll(matchId) {
 		url: '/ai/dataToAi',
 		data: data,
 		success: function(res) {
-			
+
 			console.log("성공")
 			for (const [key, value] of Object.entries(res)) {
 				$('#' + key).html(value);
@@ -229,22 +229,49 @@ function summonerV4(res) {
 
 
 function gamebtn(goBtn, matchId) {
-  
+
 	var line1 = document.getElementById("line1" + goBtn);
 	var container2 = document.getElementById("container2" + goBtn);
 	line1.style.display = ((line1.style.display != 'none') ? 'none' : 'block');
 	container2.style.display = ((container2.style.display != 'none') ? 'none' : 'block');
-	console.log(goBtn)
-	console.log(matchId)
-	if (line1.style.display == 'block') {
 
+	if (line1.style.display == 'block') {
+		console.log(goBtn)
+		console.log(matchId)
 		$.ajax({
 			type: 'post',
-			url: '/summoner/v4',
+			url: '/summoner/v4/userList',
 			data: { 'matchId': matchId },
 			success: function(res) {
-				console.log(res)
-        		// aiCheckTroll(matchId)
+				console.log(matchId)
+					mm = {}
+				for (i in res) {
+					mm.matchId = matchId
+					res2 = res[i]
+					
+					res2['matchId'] = matchId; // res 에 matchId 추가
+					
+					data2 = res2
+					$.ajax({
+						contentType: 'application/json',
+						type: 'post',
+						url: '/summoner/v4/Rank',
+						data: JSON.stringify(data2),
+						success: function(res1) {
+//							console.log(res1)
+							//							for (const [key, value] of Object.entries(res1)) {
+							//								$('#' + key).html(value);
+							//
+							//							}
+
+						}
+					})
+
+
+				}
+
+
+				// aiCheckTroll(matchId)
 			}
 		})
 	}
