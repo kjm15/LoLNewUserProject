@@ -113,9 +113,9 @@ function bbb(data) {
 						mm.goldEarned = res[i]["info"]['participants'][j]['goldEarned']
 						//						mm.puuid =res[i]["info"]['participants'][j]['puuid']
 						mm.totalTimeCCDealt = res[i]["info"]['participants'][j]['totalTimeCCDealt']
-						mm.totalTimeSpentDead =res[i]["info"]['participants'][j]['totalTimeSpentDead']
-						mm.onMyWayPings =res[i]["info"]['participants'][j]['onMyWayPings']
-						mm.enemyVisionPings =res[i]["info"]['participants'][j]['enemyVisionPings']
+						mm.totalTimeSpentDead = res[i]["info"]['participants'][j]['totalTimeSpentDead']
+						mm.onMyWayPings = res[i]["info"]['participants'][j]['onMyWayPings']
+						mm.enemyVisionPings = res[i]["info"]['participants'][j]['enemyVisionPings']
 						mm.teamId = res[i]["info"]['participants'][j]['teamId']
 						mm.win = res[i]["info"]['participants'][j]['win']
 						mm.matchId = res[i]['metadata']['matchId'] // 매치 아이디
@@ -278,13 +278,13 @@ function gamebtn(goBtn, matchId) {
 			success: function(res) {
 
 				console.log(matchId)
-					mm = {}
+				mm = {}
 				for (i in res) {
 					mm.matchId = matchId
 					res2 = res[i]
-					
+
 					res2['matchId'] = matchId; // res 에 matchId 추가
-					
+
 					data2 = res2
 					$.ajax({
 						contentType: 'application/json',
@@ -292,20 +292,15 @@ function gamebtn(goBtn, matchId) {
 						url: '/summoner/v4/Rank',
 						data: JSON.stringify(data2),
 						success: function(res1) {
-//							console.log(res1)
+							//							console.log(res1)
 							//							for (const [key, value] of Object.entries(res1)) {
 							//								$('#' + key).html(value);
 							//
 							//							}
-
+							aiCheckTroll(matchId)
 						}
 					})
-
-
 				}
-
-
-				 aiCheckTroll(matchId)
 
 			}
 		})
