@@ -148,7 +148,26 @@ function inqMaininfo() {
 	})
 }
 
+//문의내역 자세히 보기
+const modal4 = document.getElementById("modal4")
+const modal1_wrap = document.getElementById("modal1_wrap")
+modal1_wrap.addEventListener("click", e => {
+	//클릭 여러번 해도 한번만 나옴. 계속 덮어쓰기 되기 때문
+	modal4.style.display = "flex"
+	//테이블의 tr행이 몇번째 행인지 알게 해주는 구문
+	const rowIndex = e.target.closest("tr").rowIndex;
+	var table = document.getElementById("modal_wrap")
+	var tr = table.getElementsByTagName("tr");
+	let n_title = tr[rowIndex].getElementsByTagName("td")[0].textContent
+	let n_date = tr[rowIndex].getElementsByTagName("td")[1].textContent
 
+//	console.log(n_title)
+
+	document.querySelector("#title").innerText = n_title
+	document.querySelector("#date").innerText = n_date
+	document.querySelector("#message").innerText = n_message
+
+})
 //function inqMaininfo() {
 //        $.ajax({
 //            type: 'post',

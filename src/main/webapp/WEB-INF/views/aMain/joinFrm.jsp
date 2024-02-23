@@ -41,9 +41,13 @@
 				<div class="form">
 
 					<form action="/member/join" method="post" id="joinForm" onsubmit = "return confirmNumber();">
+						
+						<label for="userName">이름</label>
+					
+						<input type="text" id="userName" name="userName" placeholder="이름">
+
 
 						<label for="userId">아이디</label>
-					
 						<input type="text" id="userId" name="userId" placeholder="아이디">
 						<span id="checkId"></span>
 						<label for="userPw">패스워드</label>

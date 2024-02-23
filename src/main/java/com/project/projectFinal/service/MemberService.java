@@ -82,6 +82,7 @@ public class MemberService implements UserDetailsService {
 			return false;
 		}
 		MemberDto mDto = new MemberDto();
+		mDto.setUserName(memberDto.getUserName());
 		mDto.setUserId(memberDto.getUserId());
 		mDto.setUserPw(passwordEncoder.encode(memberDto.getUserPw()));
 		mDto.setUserEmail(memberDto.getUserEmail());

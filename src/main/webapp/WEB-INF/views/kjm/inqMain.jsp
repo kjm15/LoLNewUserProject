@@ -27,7 +27,7 @@
 
 
 			<div class="modal-content">
-				<table class="table table-green table-hover" id="modal_wrap">
+				<table class="table table-green table-hover" id="modal1_wrap">
 
 					<tr class = "inqlist">
 						<th class ="n_num" style="display : none;">번호</th>
