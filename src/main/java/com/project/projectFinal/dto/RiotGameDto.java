@@ -55,4 +55,5 @@ public class RiotGameDto {
 	private String tier;
 	private String rank;
 	
+	
 }

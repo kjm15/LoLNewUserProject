@@ -3,10 +3,14 @@ package com.project.projectFinal.service;
 import java.util.List;
 import java.util.Map;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.reactive.function.client.WebClient;
 
+import com.project.projectFinal.dao.RiotGameDao;
 import com.project.projectFinal.dto.RiotApiDto;
+import com.project.projectFinal.dto.RiotGameDto;
 
 import lombok.extern.slf4j.Slf4j;
 
@@ -15,8 +19,11 @@ import lombok.extern.slf4j.Slf4j;
 public class WebMatchListService {
 	private int apiCount = 0;
 	String[] ApikeyList = { "RGAPI-f94a4128-cb3b-4303-b92b-0016fa59b5a8", "RGAPI-3a9db266-dbba-4ead-9ec5-93b90d528991",
-			"RGAPI-175e99fa-a692-4cbb-acfb-9410f712f370" }; //깡통차기 , 씹악질 ,버프싸개
+			"RGAPI-175e99fa-a692-4cbb-acfb-9410f712f370" }; // 깡통차기 , 씹악질 ,버프싸개
 	private String api_key = null; // 리스트 돌아가면서 들어갈 예정
+	
+	@Autowired
+	RiotGameDao riotGameDao;
 
 //	private List<Map<String, RiotGameDto>> SummonerV4;
 	public String getpuuId(RiotApiDto apiDto) {
@@ -60,10 +67,13 @@ public class WebMatchListService {
 		return response;
 
 	}
+
 	private int RankCnt = 0;
-	public void SummonerV4(Map<String, String> data) {
-		RankCnt ++;                        // 동근 , 진문
-		String[] SummonerV4_Api_keyList = {"RGAPI-3437c0e1-8256-4aae-b01c-1854a01a3533","RGAPI-90ac9a4b-b80e-4142-b655-44166b6e9a2a"};
+
+	public void SummonerV4(@RequestBody Map<String, String> data) {
+		RankCnt++; // 동근 , 진문
+		String[] SummonerV4_Api_keyList = { "RGAPI-3437c0e1-8256-4aae-b01c-1854a01a3533",
+				"RGAPI-90ac9a4b-b80e-4142-b655-44166b6e9a2a" };
 		String SummonerV4_Api_key = SummonerV4_Api_keyList[RankCnt % SummonerV4_Api_keyList.length];
 //		System.out.println(RankCnt+ SummonerV4_Api_key);
 		String riotIdGameName = data.get("riotIdGameName");
@@ -92,13 +102,23 @@ public class WebMatchListService {
 
 		List<Map<String, String>> Tier = webClient3.get().uri(uriBuilder -> uriBuilder.build()).retrieve()
 				.bodyToMono(List.class).block();
-		
+
 		if (Tier.size() != 0) {
 			Map<String, String> UPdateTier = Tier.get(0);
-			if(UPdateTier.get("queueType").equals("RANKED_SOLO_5x5")) {
-				String tier =  UPdateTier.get("tier");
-				String rank =  UPdateTier.get("rank");
-				System.out.println(data);
+			if (UPdateTier.get("queueType").equals("RANKED_SOLO_5x5")) {
+				String tier = UPdateTier.get("tier");
+				String rank = UPdateTier.get("rank");
+//				System.out.println(data);
+				RiotGameDto rDto = new RiotGameDto();
+				rDto.setRiotIdGameName(data.get("riotIdGameName"));
+				rDto.setRiotIdTagline(data.get("riotIdTagline"));
+				rDto.setMatchId(data.get("matchId"));
+				rDto.setTier(tier);
+				rDto.setRank(rank);
+				System.out.println(rDto);
+				// 티어가 널일 때 업데이트
+				int aaa = riotGameDao.UPdateTier(rDto);
+				System.out.println(aaa);
 			}
 		}
 

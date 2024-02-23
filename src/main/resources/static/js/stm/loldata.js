@@ -83,6 +83,10 @@ function bbb(data) {
 						mm.summoner2Id = res[i]["info"]['participants'][j]['summoner2Id']//스펠 F 화면에 출력 가능할 떄 할 것
 						mm.goldEarned = res[i]["info"]['participants'][j]['goldEarned']
 						//						mm.puuid =res[i]["info"]['participants'][j]['puuid']
+						mm.totalTimeCCDealt = res[i]["info"]['participants'][j]['totalTimeCCDealt']
+						mm.totalTimeSpentDead =res[i]["info"]['participants'][j]['totalTimeSpentDead']
+						mm.onMyWayPings =res[i]["info"]['participants'][j]['onMyWayPings']
+						mm.enemyVisionPings =res[i]["info"]['participants'][j]['enemyVisionPings']
 						mm.teamId = res[i]["info"]['participants'][j]['teamId']
 						mm.win = res[i]["info"]['participants'][j]['win']
 						mm.matchId = res[i]['metadata']['matchId'] // 매치 아이디

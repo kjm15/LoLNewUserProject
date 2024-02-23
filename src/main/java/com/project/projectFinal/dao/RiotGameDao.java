@@ -33,5 +33,7 @@ public interface RiotGameDao {
 
 	List<Map<String, String>> sendDataToPy(String matchId);
 
+	int UPdateTier(RiotGameDto rDto);
+
 
 }
