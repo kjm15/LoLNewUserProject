@@ -21,7 +21,10 @@ public class JhlChampController {
 	JhlChampService champService;
 
 	@GetMapping("/jhl")
-	public String jhl() {
+	public String jhl(Model model) {
+		
+		List<HashMap<String, String>> champlist = champService.championList();
+		model.addAttribute("champlist",champlist);
 		return "jhl/jhl";
 	}
 }

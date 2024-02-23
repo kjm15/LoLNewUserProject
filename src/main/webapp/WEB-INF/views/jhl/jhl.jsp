@@ -17,6 +17,7 @@
 
 <body>
 	<%@include file="../inc/header.jsp"%>
+	
 	<!-- 랭크 테이블  -->
 	<%@include file="champRank.jsp"%>
 	<%@include file="../inc/footer.jsp"%>

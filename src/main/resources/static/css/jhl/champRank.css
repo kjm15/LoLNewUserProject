@@ -13,15 +13,17 @@
 .rankLine {
 	display: flex;
 	text-align: center;
-	height: 50px;
+	width: 510px;
+	height: 70px;
 	align-items: center;
 	margin-bottom: 1px;
+	border: 1px solid #8CB9FC;
+	justify-content: center;
 }
 
 .lineRank {
 	border-left: 1px solid #8CB9FC;
 	border-right: 1px solid #8CB9FC;
-/* 	border-bottom: 1px solid #8CB9FC; */
 }
 
 
@@ -64,7 +66,6 @@
 		rgb(255, 255, 255) 74%);
 	border: 1px solid #8CB9FC;
 	color: #8CB9FC;
-	height: 100%;
 }
 
 .ranklineBtn span {

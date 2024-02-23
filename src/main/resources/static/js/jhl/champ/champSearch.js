@@ -4,8 +4,8 @@
 $(function() {
 
 	champImgAll();
-
 });
+
 
 $(document).on('click', '.selectChampline>div', function() {
 	$(this).addClass('lineClick');

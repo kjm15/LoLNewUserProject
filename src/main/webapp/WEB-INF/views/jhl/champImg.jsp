@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <!DOCTYPE html>
 <html>
 <head>
@@ -43,21 +44,25 @@
 			<div class="modal-content">
 				<span class="close" onclick="closeModal()">&times;</span>
 				<!-- Content inside the modal -->
-<!-- 				<div> aaa</div> -->
+				<!-- 				<div> aaa</div> -->
 			</div>
 		</div>
 
 		<div class="champImgItems">
 			<div class="se">
-
-				<div class="champs">
-					<div class="champImgItem">
-						<div class='cimgs'>
-							<img class='championImg' onclick = "openModal()">
+					<div class="champs">
+				<c:forEach var="champImg" items="${champlist}">
+						<div class="champImgItem" >
+							<span class="tooltiptext tooltip-top">${champImg.champion_name_kr}</span>
+							<div class='cimgs'>
+								<img class='championImg'
+									src="https://ddragon.leagueoflegends.com/cdn/14.1.1/img/champion/${champImg.champion_name}.png"
+									id="${champImg.champion_name}" data-champion-name="${champImg.champion_name}">
+							</div>
+							<span class='champName'>${champImg.champion_name_kr}</span>
 						</div>
-						<span class='champName'></span>
+				</c:forEach>
 					</div>
-				</div>
 			</div>
 
 

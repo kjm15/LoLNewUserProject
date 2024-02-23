@@ -10,6 +10,7 @@ import com.project.projectFinal.dto.ChampionRankDto;
 
 @Mapper
 public interface JhlChampDao {
+	public List<HashMap<String, String>> championList();
 
 	public List<HashMap<String, String>> champSearch(ChampionImageDto champDto);
 
@@ -40,7 +41,13 @@ public interface JhlChampDao {
 	public List<HashMap<String, Object>> CounterchampList(ChampionRankDto rankDto);
 
 
-	public void ranktierlistInfo(String teamPosition, int championId);
+//	public void ranktierlistInfo(String teamPosition, int championId, String tier);
+
+//	public void ranktierlistInfo(ChampionRankDto rankDto);
+
+	public List<HashMap<String, Object>> ranktierlistInfo(String teamPosition, int championId);
+
+	
 
 
 

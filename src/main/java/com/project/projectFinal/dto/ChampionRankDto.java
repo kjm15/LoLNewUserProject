@@ -12,4 +12,8 @@ public class ChampionRankDto {
 	private String championName;
 	private int championId;
 	private String tier;
+	public void setTableName(String tableName) {
+		// TODO Auto-generated method stub
+		
+	}
 }
