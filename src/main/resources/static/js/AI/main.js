@@ -39,6 +39,40 @@ $('#sendToAi').on("click", function() {
 })
 
 
+$('#getData1').on("click", function() {
+	let tierList = ["DIAMOND", "EMERALD", "PLATINUM", "GOLD", "SILVER", "BRONZE"]
+
+
+	$('#getData1').hide()
+
+	console.log("전체 데이터 받기 시작")
+
+	for (let i in tierList) {
+
+		tier = tierList[i]
+
+		console.log(tier + "데이터 시작")
+		$.ajax({
+
+			type: 'post',
+			url: '/ai/getDb',
+			data: { "tier": tier },
+			success: function(res) {
+				console.log(tier + "데이터 완료")
+
+				$('#getData1').show()
+			}, error: function(err) {
+				console.log(err)
+				$('#getData1').show()
+			}
+
+		})
+
+	}
+
+
+})
+
 $('#getData').on("click", function() {
 
 	let tier = $('#tier').val();
@@ -62,4 +96,3 @@ $('#getData').on("click", function() {
 	})
 
 })
-

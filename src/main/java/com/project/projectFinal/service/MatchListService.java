@@ -92,7 +92,7 @@ public class MatchListService {
 	}
 	
 //	장기훈
-	public List<Map<String, String>> sendDataToPy(String matchId) {		
+	public List<Map<String, Object>> sendDataToPy(String matchId) {		
 		
 		return riotGameDao.sendDataToPy(matchId);
 	}

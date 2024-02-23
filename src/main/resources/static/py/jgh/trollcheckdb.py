@@ -89,61 +89,64 @@ def get_rawdata(tier):
 def get_match_timeline_df(df,tier):
     # df를 한개로 만들기
     dfs_creates = []
+    
 
     for i in tqdm(range(len(df))):       
         # matches 관련된 데이터 
-        try:
-            for j in range(len(df.iloc[i].matches['info']['participants'])):
-                tmp = []
-                tmp.append(df.iloc[i].match_id)
-                tmp.append(df.iloc[i].matches['info']['participants'][j]['championName'])
-                tmp.append(df.iloc[i].matches['info']['participants'][j]['teamId']) #100:블루 200:레드
+        if int(df.iloc[i].matches['info']['gameDuration']/60) >= 20 :
+            try:
+                for j in range(len(df.iloc[i].matches['info']['participants'])):
+                    tmp = []
+                    tmp.append(df.iloc[i].match_id)
+                    tmp.append(df.iloc[i].matches['info']['participants'][j]['championName'])
+                    tmp.append(df.iloc[i].matches['info']['participants'][j]['teamId']) #100:블루 200:레드
 
-                tmp.append(df.iloc[i].matches['info']['participants'][j]['kills'])
-                tmp.append(df.iloc[i].matches['info']['participants'][j]['assists'])
-                tmp.append(df.iloc[i].matches['info']['participants'][j]['deaths'])
+                    tmp.append(df.iloc[i].matches['info']['participants'][j]['kills'])
+                    tmp.append(df.iloc[i].matches['info']['participants'][j]['assists'])
+                    tmp.append(df.iloc[i].matches['info']['participants'][j]['deaths'])
 
-                if(df.iloc[i].matches['info']['participants'][j]['deaths'] == 0):
-                    kda = df.iloc[i].matches['info']['participants'][j]['kills'] + df.iloc[i].matches['info']['participants'][j]['assists']
-                else :
-                    kda = (df.iloc[i].matches['info']['participants'][j]['kills'] + df.iloc[i].matches['info']['participants'][j]['assists'] )/ df.iloc[i].matches['info']['participants'][j]['deaths']    
-                tmp.append(kda)
+                    if(df.iloc[i].matches['info']['participants'][j]['deaths'] == 0):
+                        kda = df.iloc[i].matches['info']['participants'][j]['kills'] + df.iloc[i].matches['info']['participants'][j]['assists']
+                    else :
+                        kda = (df.iloc[i].matches['info']['participants'][j]['kills'] + df.iloc[i].matches['info']['participants'][j]['assists'] )/ df.iloc[i].matches['info']['participants'][j]['deaths']    
+                    tmp.append(kda)
 
-                tmp.append(df.iloc[i].matches['info']['participants'][j]['totalTimeSpentDead'])
-                tmp.append(df.iloc[i].matches['info']['participants'][j]['visionWardsBoughtInGame'])
-                tmp.append(df.iloc[i].matches['info']['participants'][j]['visionScore'])
-                tmp.append(df.iloc[i].matches['info']['participants'][j]['win'])
-                tmp.append(df.iloc[i].matches['info']['participants'][j]['riotIdGameName']) #게임아이디
-                tmp.append(df.iloc[i].matches['info']['participants'][j]['riotIdTagline']) #태그
-                tmp.append(df.iloc[i].matches['info']['participants'][j]['goldEarned']) #총 골드량
-                tmp.append(df.iloc[i].matches['info']['participants'][j]['totalDamageDealtToChampions']) # 챔피언에게 가한 피해량
-                tmp.append(df.iloc[i].matches['info']['participants'][j]['totalMinionsKilled']) #전체 미니언킬
-                tmp.append(df.iloc[i].matches['info']['participants'][j]['wardsPlaced']) #와드 설치수
-                tmp.append(df.iloc[i].matches['info']['participants'][j]['puuid']) #puuid
+                    tmp.append(df.iloc[i].matches['info']['participants'][j]['totalTimeSpentDead'])
+                    tmp.append(df.iloc[i].matches['info']['participants'][j]['visionWardsBoughtInGame'])
+                    tmp.append(df.iloc[i].matches['info']['participants'][j]['visionScore'])
+                    tmp.append(df.iloc[i].matches['info']['participants'][j]['win'])
+                    tmp.append(df.iloc[i].matches['info']['participants'][j]['riotIdGameName']) #게임아이디
+                    tmp.append(df.iloc[i].matches['info']['participants'][j]['riotIdTagline']) #태그
+                    tmp.append(df.iloc[i].matches['info']['participants'][j]['goldEarned']) #총 골드량
+                    tmp.append(df.iloc[i].matches['info']['participants'][j]['totalDamageDealtToChampions']) # 챔피언에게 가한 피해량
+                    tmp.append(df.iloc[i].matches['info']['participants'][j]['totalMinionsKilled']) #전체 미니언킬
+                    tmp.append(df.iloc[i].matches['info']['participants'][j]['wardsPlaced']) #와드 설치수
+              
 
-                tmp.append(df.iloc[i].matches['info']['participants'][j]['championId']) #챔피언아이디
-                tmp.append(df.iloc[i].matches['info']['participants'][j]['participantId'])#경기자번호
-                tmp.append(df.iloc[i].matches['info']['queueId']) #큐아이디
-                tmp.append(df.iloc[i].matches['info']['participants'][j]['teamPosition'])#라인
-                tmp.append(df.iloc[i].matches['info']['participants'][j]['totalDamageTaken']) #총 맞은 데미지
-                tmp.append(df.iloc[i].matches['info']['participants'][j]['totalTimeCCDealt']) #총 cc기에 걸려있던 시간
-                tmp.append(df.iloc[i].matches['info']['participants'][j]['onMyWayPings'])
-                tmp.append(df.iloc[i].matches['info']['participants'][j]['enemyVisionPings'])
-                tmp.append(df.iloc[i].matches['info']['participants'][j]['summonerId'])
-                tmp.append(tier)
-                
-                dfs_creates.append(tmp)
-        except Exception as e:
-     
-            continue
+                    tmp.append(df.iloc[i].matches['info']['participants'][j]['championId']) #챔피언아이디
+                    tmp.append(df.iloc[i].matches['info']['participants'][j]['participantId'])#경기자번호
+                    tmp.append(df.iloc[i].matches['info']['queueId']) #큐아이디
+                    tmp.append(df.iloc[i].matches['info']['participants'][j]['teamPosition'])#라인
+                    tmp.append(df.iloc[i].matches['info']['participants'][j]['totalDamageTaken']) #총 맞은 데미지
+                    tmp.append(df.iloc[i].matches['info']['participants'][j]['totalTimeCCDealt']) #총 cc기에 걸려있던 시간
+                    tmp.append(df.iloc[i].matches['info']['participants'][j]['onMyWayPings'])
+                    tmp.append(df.iloc[i].matches['info']['participants'][j]['enemyVisionPings'])
+                    tmp.append(tier)
+                    tmp.append(int(df.iloc[i].matches['info']['gameDuration']/60))
+                    
+                    
+                    dfs_creates.append(tmp)
+            except Exception as e:
+
+                continue
     
-    columns = ['matchId','championName', 'teamId', 'kills', 'assists', 'deaths', 'kda','totalTimeSpentDead','visionWardsBoughtInGame','visionScore','win'
-               ,'riotIdGameName','riotIdTagline','goldEarned','totalDamageDealtToChampions'
-               ,'totalMinionsKilled','wardsPlaced','puuid','championId','participantId','queueId','teamPosition','totalDamageTaken'
-               ,'totalTimeCCDealt','onMyWayPings','enemyVisionPings','summonerId','tier']
-    df = pd.DataFrame(dfs_creates, columns=columns)
-    #27
-    return df
+            columns = ['matchId','championName', 'teamId', 'kills', 'assists', 'deaths', 'kda','totalTimeSpentDead','visionWardsBoughtInGame','visionScore','win'
+                    ,'riotIdGameName','riotIdTagline','goldEarned','totalDamageDealtToChampions'
+                    ,'totalMinionsKilled','wardsPlaced','championId','participantId','queueId','teamPosition','totalDamageTaken'
+                    ,'totalTimeCCDealt','onMyWayPings','enemyVisionPings','tier','gameDuration']
+            df = pd.DataFrame(dfs_creates, columns=columns)
+            #27
+            return df
 
 
 def insert_matches_timeline_mysql(row, conn):
@@ -151,14 +154,14 @@ def insert_matches_timeline_mysql(row, conn):
     query = (
         f"INSERT ignore INTO riottvT (matchId,championName, teamId, kills, assists,deaths,kda,totalTimeSpentDead,visionWardsBoughtInGame,visionScore,win"
         f",riotIdGameName,riotIdTagline,goldEarned,totalDamageDealtToChampions"
-        f",totalMinionsKilled,wardsPlaced,puuid,championId,participantId,queueId,teamPosition,totalDamageTaken"
-        f",totalTimeCCDealt,onMyWayPings,enemyVisionPings,summonerId,tier"
+        f",totalMinionsKilled,wardsPlaced,championId,participantId,queueId,teamPosition,totalDamageTaken"
+        f",totalTimeCCDealt,onMyWayPings,enemyVisionPings,tier,gameDuration"
         f")"
         f"VALUES (\'{row.matchId}\',\'{row.championName}\',\'{row.teamId}\',\'{row.kills}\', \'{row.assists}\', \'{row.deaths}\', \'{row.kda}\' "
         f", \'{row.totalTimeSpentDead}\', \'{row.visionWardsBoughtInGame}\',\'{row.visionScore}\',\'{row.win}\' ,\'{row.riotIdGameName}\'"
         f", \'{row.riotIdTagline}\', \'{row.goldEarned}\',\'{row.totalDamageDealtToChampions}\',\'{row.totalMinionsKilled}\',\'{row.wardsPlaced}\'"
-        f", \'{row.puuid}\', \'{row.championId}\',\'{row.participantId}\',\'{row.queueId}\',\'{row.teamPosition}\' ,\'{row.totalDamageTaken}\' "  
-        f", \'{row.totalTimeCCDealt}\', \'{row.onMyWayPings}\',\'{row.enemyVisionPings}\',\'{row.summonerId}\',\'{row.tier}\'"  
+        f", \'{row.championId}\',\'{row.participantId}\',\'{row.queueId}\',\'{row.teamPosition}\' ,\'{row.totalDamageTaken}\' "  
+        f", \'{row.totalTimeCCDealt}\', \'{row.onMyWayPings}\',\'{row.enemyVisionPings}\',\'{row.tier}\',\'{row.gameDuration}\'"  
         f") "  
     )
 
