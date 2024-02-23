@@ -52,6 +52,8 @@ public class RiotGameDto {
 	private int profileIcon;
 	private int pickTurn;
 	private int goldEarned;
+	private String tier;
+	private String rank;
 	
 	
 }
