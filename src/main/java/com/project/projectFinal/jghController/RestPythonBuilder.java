@@ -33,7 +33,7 @@ public class RestPythonBuilder {
 		return matchListService.sendDataToPy(matchId);
 
 	}
-
+	//데이터받기 급할떄
 	@PostMapping("/getDb")
 	public Map<String, String> getDb(String[] args, String tier, Model model) throws Exception {
 

@@ -38,9 +38,28 @@
 		<div class="navbarMain">
 			<a href="/">DATABOOM</a>
 		</div>
-		<div class="navMenu duo">
-			<a href="/jgh">듀오찾기</a>
+		<div class="navMenuDuo">
+			<a href="/jgh">영혼의Duo</a>
 		</div>
+		<c:if test="${searchbox == null}">
+			<div class="search-contents1">
+				<div class="search-itmes1">
+					<div class="sc-dataBoom">
+						<span class="sp teamname">DATABOOM</span>
+					</div>
+					<div class="sc-kr1">
+						<span class="sp korea">KR1</span>
+					</div>
+					<div class="search-home1">
+						<input type="text" class = "search-home11" id="search-home" placeholder="플레이어이름 + #KR1"
+							value="동정팔이소년#KR1">
+					</div>
+					<div class="searchBoom1">
+						<button id="searchBoom" class="searchBoom11">BOOM</button>
+					</div>
+				</div>
+			</div>
+		</c:if>
 		<c:choose>
 			<c:when test="${userId != null}">
 				<div class="navbarLogin">
@@ -50,9 +69,9 @@
 					<div class="navChoice">
 						<a href="/member/mypage">${userId}님</a>
 					</div>
-					<div class="navChoice">
-						<a href="/Note">메일함</a>
-					</div>
+					<!-- 					<div class="navChoice"> -->
+					<!-- 						<a href="/Note">메일함</a> -->
+					<!-- 					</div> -->
 
 					<!-- 					 <div id="app"></div> -->
 					<div class="navChoice" id="modal_test">
@@ -73,41 +92,6 @@
 
 	</div>
 
-
-
-	<c:if test="${searchbox == null}">
-		<div class=navbarMain1>
-			<div class=searchL></div>
-
-
-
-			<div class=searchC>
-
-				<div class=navbarMain2>
-					<!-- 			왼쪽 -->
-
-					<div class=searchLL>KR&ensp;</div>
-					<!-- 				가운데 -->
-					<div class=searchCC>
-						<input id='search' class="searchCCC" autocomplete="off"
-							type="text" value="그래서뱀사안사#KR1">
-					</div>
-					<!-- 				오른쪽 -->
-					<div class=searchRR>
-						<button type="button" class="searchbt22" id="searchbt2" onclick="searchbtn()">&ensp;검색</button>
-					</div>
-				</div>
-
-			</div>
-
-
-			<div class=searchR></div>
-		</div>
-	</c:if>
-
-
-
-
 	<div class="headerItmes">
 		<div class="navMenu home">
 			<a href="/">홈</a>
@@ -125,8 +109,9 @@
 			<a href="/kyt">드래곤</a>
 		</div>
 
-
-
+		<div class="navMenu" class="comprehensive-item">
+			<a id="GoInq" href="#">고객센터</a>
+		</div>
 		<!-- 		<c:if test="${userId != null}">-->
 
 
