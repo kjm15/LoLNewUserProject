@@ -50,7 +50,20 @@ function aiCheckTroll(matchId) {
 					$.ajax({
 						contentType: 'application/json',
 						type: 'post',
-						url: '/ai/trollcheck',
+						url: '/ai/trollcheck420',
+						data: JSON.stringify(data),
+						success: function(res1) {
+							for (const [key, value] of Object.entries(res1)) {
+								$('#' + key).html(value);
+
+							}
+						}
+					})//ajax끝
+				} else if (res[i].queueId == 450) {
+					$.ajax({
+						contentType: 'application/json',
+						type: 'post',
+						url: '/ai/trollcheck450',
 						data: JSON.stringify(data),
 						success: function(res1) {
 							for (const [key, value] of Object.entries(res1)) {

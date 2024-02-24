@@ -21,8 +21,8 @@ def connect_mysql(db='mydb'):
     return conn
 conn = connect_mysql()
 cursor = conn.cursor()
-limit_value = str(500) # 리미트값
-queueId = str(420)
+limit_value = str(20) # 리미트값
+queueId = str(450)
 ############################
 
 data = sys.argv[1:]
@@ -36,6 +36,7 @@ gameDuration = int(data[3])
 kda = float(data[4])
 totalDamageDealtToChampions = int(int(data[5])/gameDuration)
 goldEarned = int(int(data[6])/gameDuration)
+championName = data[7]
 # print(gameDuration)
 # tier = 'GOLD'
 # teamPosition = 'TOP'
@@ -43,7 +44,7 @@ goldEarned = int(int(data[6])/gameDuration)
 # totalDamageDealtToChampions = 1200
 # goldEarned = 600
 #졌을때 평균 구하기
-query = "select gameDuration from riottvT where win = 'FALSE' and queueId = '" +queueId+ "'and  teamPosition = '"+teamPosition+"' and tier = " +"'"+ tier + "'" + "limit " + limit_value #질때의 kda
+query = "select gameDuration from riottvT where win = 'FALSE'and championName = '" +championName+ "' and queueId = '" +queueId+ "' and  teamPosition = '"+teamPosition+"' limit " + limit_value #질때의 kda
 cursor.execute(query)
 result = cursor.fetchall()
 
@@ -53,7 +54,7 @@ for e in data:
     a, *_ = e
     lose_gameDuration_List.append(a)
 #이겼을때 평균 구하기
-query = "select gameDuration from riottvT where win = 'TRUE' and queueId = '" +queueId+ "'and teamPosition = '"+teamPosition+"' and tier = " +"'"+ tier + "'" + "limit " + limit_value #질때의 kda
+query = "select gameDuration from riottvT where win = 'TRUE' and championName = '" +championName+ "' and queueId = '" +queueId+ "'and teamPosition = '"+teamPosition+"' limit " + limit_value #질때의 kda
 cursor.execute(query)
 result = cursor.fetchall()
 
@@ -65,7 +66,7 @@ for e in data:
 
 
 
-query = "select kda from riottvT where win = 'FALSE' and queueId = '" +queueId+ "'and  teamPosition = '"+teamPosition+"' and tier = " +"'"+ tier + "'" + "limit " + limit_value #질때의 kda
+query = "select kda from riottvT where win = 'FALSE' and championName = '" +championName+ "' and queueId = '" +queueId+ "'and  teamPosition = '"+teamPosition+"' limit " + limit_value #질때의 kda
 
 cursor.execute(query)
 result = cursor.fetchall()
@@ -76,7 +77,7 @@ for e in data:
     a, *_ = e
     lose_kda_List.append(a)
 
-query = "select totalDamageDealtToChampions from riottvT where win = 'FALSE' and queueId = '" +queueId+ "'and  teamPosition = '"+teamPosition+"' and tier = " +"'"+ tier + "'" + "limit " + limit_value #질때의 kda
+query = "select totalDamageDealtToChampions from riottvT where win = 'FALSE' and championName = '" +championName+ "'  and queueId = '" +queueId+ "'and  teamPosition = '"+teamPosition+"' limit " + limit_value #질때의 kda
 cursor.execute(query)
 result = cursor.fetchall()
 
@@ -93,7 +94,7 @@ for i in range(len(lose_totalDamageDealtToChampions_List)):
 
 
 
-query = "select goldEarned from riottvT where win = 'FALSE' and  queueId = '" +queueId+ "'and  teamPosition = '"+teamPosition+"' and tier = " +"'"+ tier + "'" +  "limit " + limit_value #질때의 kda
+query = "select goldEarned from riottvT where win = 'FALSE' and championName = '" +championName+ "'  and  queueId = '" +queueId+ "'and  teamPosition = '"+teamPosition+"' limit " + limit_value #질때의 kda
 cursor.execute(query)
 result = cursor.fetchall()
 
@@ -108,7 +109,7 @@ for i in range(len(lose_goldEarned_List)):
     a = int(lose_goldEarned_List[i]/lose_gameDuration_List[i])
     lose_Mean_goldEarned.append(a)
 ###################################################################################################################################################
-query1 = "select kda from riottvT where win = 'True' and  queueId = '" +queueId+ "'and  teamPosition = '"+teamPosition+"' and tier = " +"'"+ tier + "'" +  "limit " + limit_value #이길때의 kda
+query1 = "select kda from riottvT where win = 'True' and championName = '" +championName+ "'  and  queueId = '" +queueId+ "'and  teamPosition = '"+teamPosition+"' limit " + limit_value #이길때의 kda
 
 cursor.execute(query1)
 result1 = cursor.fetchall()
@@ -120,7 +121,7 @@ for e in data1:
     a, *_ = e
     win_kda_List.append(a)
 
-query1 = "select totalDamageDealtToChampions from riottvT where win = 'True'  and  queueId = '" +queueId+ "'and  teamPosition = '"+teamPosition+"' and tier = " +"'"+ tier + "'" +  "limit " + limit_value #이길때의 kda
+query1 = "select totalDamageDealtToChampions from riottvT where win = 'True' and championName = '" +championName+ "'   and  queueId = '" +queueId+ "'and  teamPosition = '"+teamPosition+"' limit " + limit_value #이길때의 kda
 cursor.execute(query1)
 result = cursor.fetchall()
 
@@ -135,7 +136,7 @@ for i in range(len(win_totalDamageDealtToChampions_List)):
     a = int(win_totalDamageDealtToChampions_List[i]/win_gameDuration_List[i])
     win_Mean_totalDamageDealtToChampions.append(a)
 
-query1 = "select goldEarned from riottvT where win = 'True' and  queueId = '" +queueId+ "'and  teamPosition = '"+teamPosition+"' and tier = " +"'"+ tier + "'" +  "limit " + limit_value #이길때의 kda
+query1 = "select goldEarned from riottvT where win = 'True' and championName = '" +championName+ "'  and  queueId = '" +queueId+ "'and  teamPosition = '"+teamPosition+"' limit " + limit_value #이길때의 kda
 cursor.execute(query1)
 result = cursor.fetchall()
 
