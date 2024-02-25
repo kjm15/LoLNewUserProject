@@ -85,9 +85,18 @@ function aiCheckTroll(matchId) {
 				} else {
 					for (let i in res) {
 
+						if (res[i].queueId == 1900) {
+							queue = "우르프"
+						} else if (res[i].queueId == 490) {
+							queue = "빠른대전"
+						} else if (res[i].queueId == 440) {
+							queue = "자유랭크"
+						} 
+						
 						key = res[i].matchId + res[i].participantId
-
-						$('#' + key).html("솔랭아님");
+						
+						str = "<span><font size=2>|"+queue+"| <br>|개발중|</font></span>";
+						$('#' + key).html(str);
 
 					}
 				}
