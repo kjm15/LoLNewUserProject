@@ -3,20 +3,25 @@
 
 <mapper namespace="com.project.projectFinal.dao.JhlChampDao">
 
+<select id="championList">
+select champion_name_kr, champion_name from champListT order by champion_name_kr;
+
+</select>
+
 <select id="champListAll">
-select champion_name_kr, champion_name, line from champListT group by champion_name_kr;
+select champion_name_kr, champion_name, line from champListT order by champion_name_kr;
 </select>
 
 <select id="champSearch">
 select champion_name_kr, champion_name, line from champListT where champion_name_kr like concat(#{champSearch}, '%') or champion_name like concat(#{champSearch}, '%') 
 or champion_name_cons like concat(#{champSearch}, '%')
-group by champion_name_kr;
+order by champion_name_kr;
 </select>
 
 
 <select id="champLineSelect">
 select champion_name_kr, champion_name, line from champListT where line like concat('%',#{line}, '%')
-group by champion_name_kr;
+order by champion_name_kr;
 </select>
 
 

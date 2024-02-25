@@ -60,5 +60,12 @@ public class JhlRestChampController {
 		champService.champCounter(rankDto);
 
 	}
+	
+	@PostMapping("/tierData")
+	public void tierData(ChampionRankDto rankDto) {
+		
+		champService.ranktierlistInfo(rankDto);
+
+	}
 
 }
