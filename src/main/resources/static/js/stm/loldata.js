@@ -10,6 +10,18 @@ $(document).ready(function() {
 
 })
 let cnt = 0;
+$('#searchBoom').on("click", function() {
+
+	$('#newList').remove()
+	let search = $('#search-home').val();
+	var gameId = search.split('#');
+	let gameName = gameId[0] // 아이디
+	let tagLine = gameId[1] // 태그
+	//	data = { 'gameName': gameName, 'tagLine': tagLine }
+	location.href = '/stm/' + gameName + '/' + tagLine
+
+})
+
 function mainStart() {
 
 	let gameName = $('#gameName').val()
@@ -37,20 +49,31 @@ function aiCheckTroll(matchId) {
 		data: { 'matchId': matchId },
 		success: function(res) {
 
-			console.log(res)
-
-
-
 			for (let i in res) {
 
 				if (res[i].queueId == 420) {
 					data = res[i]
-					console.log(data)
+					//					console.log(data)
 
 					$.ajax({
 						contentType: 'application/json',
 						type: 'post',
-						url: '/ai/trollcheck',
+						url: '/ai/trollcheck420',
+						data: JSON.stringify(data),
+						success: function(res1) {
+							for (const [key, value] of Object.entries(res1)) {
+								$('#' + key).html(value);
+
+							}
+						}
+					})//ajax끝
+				} else if (res[i].queueId == 450) {
+					data = res[i]
+
+					$.ajax({
+						contentType: 'application/json',
+						type: 'post',
+						url: '/ai/trollcheck450',
 						data: JSON.stringify(data),
 						success: function(res1) {
 							for (const [key, value] of Object.entries(res1)) {
@@ -297,11 +320,12 @@ function gamebtn(goBtn, matchId) {
 							//								$('#' + key).html(value);
 							//
 							//							}
-							aiCheckTroll(matchId)
+
 						}
 					})
 				}
 
+				aiCheckTroll(matchId)
 			}
 		})
 	}
