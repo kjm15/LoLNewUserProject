@@ -59,7 +59,7 @@ public class RestPythonBuilder {
 	@PostMapping("/trollcheck420")
 	public Map<String, Object> trollcheck420(@RequestBody Map<String, Object> aMap, Model model) throws Exception {
 
-		log.info("===myMap : {}", aMap);
+//		log.info("===myMap : {}", aMap);
 		String filePath = "src/main/resources/static/py/jgh/aiTrollCheck420.py";
 		String matchId = (String) aMap.get("matchId");
 		String participantId = String.valueOf(aMap.get("participantId"));	
@@ -89,7 +89,7 @@ public class RestPythonBuilder {
 		in.close();
 		ObjectMapper objectMapper = new ObjectMapper();
 		Map<String, Object> aiReultMap = objectMapper.readValue(buffer.toString(), Map.class);
-		log.info("결과값 : {}", aiReultMap);
+		log.info("솔로랭크 결과값 : {}", aiReultMap);
 
 		return aiReultMap;
 	}
@@ -97,13 +97,11 @@ public class RestPythonBuilder {
 	@PostMapping("/trollcheck450")
 	public Map<String, Object> trollcheck450(@RequestBody Map<String, Object> aMap, Model model) throws Exception {
 
-		log.info("===myMap : {}", aMap);
+//		log.info("===myMap : {}", aMap);
 		String filePath = "src/main/resources/static/py/jgh/aiTrollCheck450.py";
 		String matchId = (String) aMap.get("matchId");
 		String participantId = String.valueOf(aMap.get("participantId"));
 		String key = matchId + participantId;
-		String tier = "GOLD";
-		String teamPosition = String.valueOf(aMap.get("teamPosition"));
 		String gameDuration = String.valueOf(aMap.get("gameDuration"));
 		String kda = String.valueOf(aMap.get("kda"));
 		String totalDamageDealtToChampions = String.valueOf(aMap.get("totalDamageDealtToChampions"));
@@ -113,8 +111,8 @@ public class RestPythonBuilder {
 //			String participantId = String.valueOf(aMap.get("participantId")) ;
 //			String participantId = String.valueOf(aMap.get("participantId")) ;
 
-		ProcessBuilder pb = new ProcessBuilder().command("python", filePath, key, tier, teamPosition, gameDuration, kda,
-				totalDamageDealtToChampions, goldEarned,championName // ,
+		ProcessBuilder pb = new ProcessBuilder().command("python", filePath,
+				key, gameDuration, kda,	totalDamageDealtToChampions, goldEarned,championName // ,
 		);
 		Process p = pb.start();
 		BufferedReader in = new BufferedReader(new InputStreamReader(p.getInputStream()));
@@ -126,9 +124,10 @@ public class RestPythonBuilder {
 		int exitCode = p.waitFor();
 
 		in.close();
+//		log.info("결과값 : {}", buffer.toString());
 		ObjectMapper objectMapper = new ObjectMapper();
 		Map<String, Object> aiReultMap = objectMapper.readValue(buffer.toString(), Map.class);
-		log.info("결과값 : {}", aiReultMap);
+		log.info("칼바람 결과값 : {}", aiReultMap);
 
 		return aiReultMap;
 	}
