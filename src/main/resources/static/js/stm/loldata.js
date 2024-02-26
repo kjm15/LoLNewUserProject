@@ -71,14 +71,26 @@ function aiCheckTroll(matchId) {
 						data: JSON.stringify(data),
 						success: function(res1) {
 							for (const [key, value] of Object.entries(res1)) {
-
-								if (value == '패') {
-
-									str = '<div class="stamp">평균이하</div>'
-									$('#' + key).html(str);
-
-								} else {
-									$('#' + key).html(value);
+								if (res[i].win == 1) { // 게임 : 승리
+									if (value == '패') { //인공지능 지표 : 패
+										str = '<div class="stampLose">평균이하</div>'
+										$('#' + key).html(str);
+									} else if (value == '데이터부족') { //인공지능 지표: 승
+										$('#' + key).html(value);
+									} else { //인공지능 지표: 승
+										str = "승리"
+										$('#' + key).html(str);
+									}
+								} else { // 게임 : 패배
+									if (value == '패') { //인공지능 지표 : 패
+										str = "패배"
+										$('#' + key).html(str);
+									} else if (value == '데이터부족') { //인공지능 지표: 승
+										$('#' + key).html(value);
+									}  else { //인공지능 지표: 승
+										str = '<div class="stampWin">평균이상</div>'
+										$('#' + key).html(str);
+									}
 								}
 							}
 						}
@@ -93,16 +105,30 @@ function aiCheckTroll(matchId) {
 						data: JSON.stringify(data),
 						success: function(res1) {
 							for (const [key, value] of Object.entries(res1)) {
+								if (res[i].win == 1) { // 게임 : 승리
 
-								if (value == '패') {
+									if (value == '패') { //인공지능 지표 : 패
 
-									str = '<div class="stamp">평균이하</div>'
-									$('#' + key).html(str);
+										str = '<div class="stampLose">평균이하</div>'
+										$('#' + key).html(str);
 
-								} else {
-									$('#' + key).html(value);
+									} else { //인공지능 지표: 승
+										str = '평균'
+										$('#' + key).html(str);
+									}
+								} else { // 게임 : 패배
+									if (value == '패') { //인공지능 지표 : 패
+
+										str = '평균'
+										$('#' + key).html(str);
+
+									} else { //인공지능 지표: 승
+										str = '<div class="stampWin">평균이상</div>'
+										$('#' + key).html(str);
+									}
+
+
 								}
-
 							}
 						}
 					})//ajax끝

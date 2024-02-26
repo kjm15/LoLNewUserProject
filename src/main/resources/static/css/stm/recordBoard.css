@@ -423,12 +423,12 @@
 }
 
 
-.stamp{
+.stampLose{
 /* position: absolute; */
-  height:40px;
+  height:30px;
   width:90px;
   left:0px;
-  top:-10px;
+  top:0px;
   border-radius:10px;
   position:relative;
   background-color:#ef8080;
@@ -445,6 +445,27 @@
    z-index : auto;
 }
 
+.stampWin{
+/* position: absolute; */
+  height:30px;
+  width:90px;
+  left:0px;
+  top:0px;
+  border-radius:10px;
+  position:relative;
+  background-color:#0080ff;
+  -webkit-animation-name: pulse;
+  animation-name: pulse;
+  animation-delay:0s;
+  -webkit-animation-delay:0s;
+  -webkit-animation-duration: 0.5s;
+  text-algin : justify;
+/*   animation-duration: 0.5s; */
+  opacity: 0;
+  -webkit-animation-fill-mode:forwards;
+   animation-fill-mode:forwards;
+   z-index : auto;
+}
 @-webkit-keyframes pulse{
   0%{
     opacity: 0;

@@ -91,10 +91,6 @@
 		</div>
 
 
-		<div class="navMenu">
-			<a href="/kyt">드래곤</a>
-		</div>
-
 		<div class="navMenu" class="comprehensive-item">
 			<a id="GoInq" href="#">고객센터</a>
 		</div>
