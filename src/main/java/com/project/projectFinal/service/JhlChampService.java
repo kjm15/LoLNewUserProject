@@ -42,9 +42,9 @@ public class JhlChampService {
 		return champDao.champListAll();
 	}
 
-	public List<HashMap<String, Object>> champRank(ChampionRankDto rankDto) {
-		return champDao.champRank(rankDto);
-	}
+//	public List<HashMap<String, Object>> champRank(ChampionRankDto rankDto) {
+//		return champDao.champRank(rankDto);
+//	}
 
 	public void champUpdate(ChampionRankDto rankDto) {
 		List<HashMap<String, Object>> laneChampList = champDao.laneListInfo(rankDto);
@@ -140,20 +140,25 @@ public class JhlChampService {
 				Object total = rl.get("total");
 				Object enemy_win_rate = rl.get("enemy_win_rate");
 				Object tier = rl.get("tier");
+				if (enemy_win_rate != null && enemy_win_rate instanceof Double) {
+					double enemyWinRate = (Double) enemy_win_rate;
+					if (enemyWinRate != 0.0 && enemyWinRate != 100.0) {
+						HashMap<String, Object> champCounterList = new HashMap<>();
+						champCounterList.put("championName", championName);
+						champCounterList.put("champion_name_kr", champion_name_kr);
+						champCounterList.put("champ_win_cnt", champ_win_cnt);
+						champCounterList.put("champ_win_rate", champ_win_rate);
+						champCounterList.put("enemy_championName", enemy_championName);
+						champCounterList.put("enemy_championName_kr", enemy_championName_kr);
+						champCounterList.put("teamPosition", teamPosition1);
+						champCounterList.put("enemy_champ_win_cnt", enemyWinRate);
+						champCounterList.put("total", total);
+						champCounterList.put("enemy_win_rate", enemy_win_rate);
+						champCounterList.put("tier", tier);
+						champDao.saveChampCounterT(champCounterList);
+					}
 //				
-				HashMap<String, Object> champCounterList = new HashMap<>();
-				champCounterList.put("championName", championName);
-				champCounterList.put("champion_name_kr", champion_name_kr);
-				champCounterList.put("champ_win_cnt", champ_win_cnt);
-				champCounterList.put("champ_win_rate", champ_win_rate);
-				champCounterList.put("enemy_championName", enemy_championName);
-				champCounterList.put("enemy_championName_kr", enemy_championName_kr);
-				champCounterList.put("teamPosition", teamPosition1);
-				champCounterList.put("enemy_champ_win_cnt", enemy_champ_win_cnt);
-				champCounterList.put("total", total);
-				champCounterList.put("enemy_win_rate", enemy_win_rate);
-				champCounterList.put("tier", tier);
-				champDao.saveChampCounterT(champCounterList);
+				}
 			}
 
 		}
@@ -166,12 +171,10 @@ public class JhlChampService {
 
 	}
 
-	//수정해야함..
+	// 수정해야함..
 	public void ranktierlistInfo(ChampionRankDto rankDto) {
-		
-		List<HashMap<String, Object>> laneChampList = champDao.laneListInfo(rankDto);
 
-		
+		List<HashMap<String, Object>> laneChampList = champDao.laneListInfo(rankDto);
 
 		for (Map<String, Object> champ : laneChampList) {
 			List<HashMap<String, Object>> cList = new ArrayList<>();
@@ -182,29 +185,33 @@ public class JhlChampService {
 			String teamPosition = rankDto.getTeamPosition(); // 현재 라인
 			int championId = (int) champ.get("championid");
 
-			
-			String tier = rankDto.getTier(); // ChampionRankDto에서 티어 가져오기
+			String tier = (String) rankDto.getTier();
+//
+//			// 티어정보를 사욯해 동적으로 적절한 테이블 선택
+//			String tableName;
+//			if (tier != null) {
+//			    tableName = switch (tier.toLowerCase()) {
+//			        case "diamond" -> "diamond_rankListT";
+//			        case "emerald" -> "emerald_rankListT";
+//			        case "platinum" -> "platinum_rankListT";
+//			        case "gold" -> "gold_rankListT";
+//			        case "silver" -> "silver_rankListT";
+//			        case "bronze" -> "bronze_rankListT";
+//			        default -> throw new IllegalArgumentException("Unexpected value: " + tier.toLowerCase());
+//			    };
+//			} else {
+//			    // tier가 null인 경우 처리할 내용을 정의합니다.
+//			    tableName = "default_table"; // 예를 들어 기본 테이블을 사용하거나 다른 기본 동작을 수행할 수 있습니다.
+//			}
+//
+//			rankDto.setTableName(tableName);
 
-			// 티어정보를 사욯해 동적으로 적절한 테이블 선택
-			String tableName = switch (tier.toLowerCase()) {
-			case "diamond" -> "diamond_rankListT";
-			case "emerald" -> "emerald_rankListT";
-			case "platinum" -> "platinum_rankListT";
-			case "gold" -> "gold_rankListT";
-			case "silver" -> "silver_rankListT";
-			case "bronze" -> "bronze_rankListT";
-
-			default -> throw new IllegalArgumentException("Unexpected value: " + tier.toLowerCase());
-
-			};
-			// rankDto에 테이블 이름 설정 또는 champDao.ranktierlistInfo 메서드가 테이블 이름을 받을 수 있도록 업데이트
-			rankDto.setTableName(tableName);
 			// Dao 메서드 호출
 //			champDao.ranktierlistInfo(rankDto);
 			// cList : 각각의 챔피언 총 리스트
-			cList = champDao.ranktierlistInfo(teamPosition, championId);
+			cList = champDao.ranktierlistInfo(tier, teamPosition, championId);
 
-			log.info("========{}", cList);
+//			log.info("========{}", cList);
 
 			int allCnt = cList.size(); // 한챔피언의 총 길이
 
@@ -221,8 +228,8 @@ public class JhlChampService {
 				}
 
 			}
-			int allChampCnt = champDao.allChampCnt(teamPosition);
-			int banChampCnt = champDao.banChampCnt(champion_name_kr);
+			int allChampCnt = champDao.allChampTierCnt(tier, teamPosition);
+			int banChampCnt = champDao.banChampTierCnt(tier, champion_name_kr);
 
 			double aa = (double) winCnt;
 			double bb = (double) allCnt;
@@ -240,23 +247,28 @@ public class JhlChampService {
 
 			int win_total_cnt = winCnt;
 
-			HashMap<String, Object> champRankTList = new HashMap<>();
+			HashMap<String, Object> champTierRankTList = new HashMap<>();
 
-			champRankTList.put("teamPosition", teamPosition);
-			champRankTList.put("champion_name", champion_name);
-			champRankTList.put("champion_name_kr", champion_name_kr);
-			champRankTList.put("pick_rate", pick_rate);
-			champRankTList.put("win_rate", win_rate);
-			champRankTList.put("win_total_cnt", win_total_cnt);
-			champRankTList.put("champion_pick", allCnt);
-			champRankTList.put("ban_rate", ban_rate);
+			champTierRankTList.put("teamPosition", teamPosition);
+			champTierRankTList.put("champion_name", champion_name);
+			champTierRankTList.put("champion_name_kr", champion_name_kr);
+			champTierRankTList.put("pick_rate", pick_rate);
+			champTierRankTList.put("win_rate", win_rate);
+			champTierRankTList.put("win_total_cnt", win_total_cnt);
+			champTierRankTList.put("champion_pick", allCnt);
+			champTierRankTList.put("ban_rate", ban_rate);
+			champTierRankTList.put("tier", tier);
 //			log.info("============{}", ban_rate);
-//			champDao.saveChampRankT(champRankTList);
+			champDao.saveChampTierRankT(champTierRankTList);
+//			log.info("============{}", champTierRankTList);
 		}
 //		log.info("====초보자페이지 업데이트 종료 : {}", rankDto.getTeamPosition());
-		
-		
-		
+
+	}
+
+	public List<HashMap<String, Object>> champTierRank(ChampionRankDto rankDto) {
+
+		return champDao.champTierRank(rankDto);
 	}
 
 }

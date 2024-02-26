@@ -41,11 +41,18 @@ public interface JhlChampDao {
 	public List<HashMap<String, Object>> CounterchampList(ChampionRankDto rankDto);
 
 
-//	public void ranktierlistInfo(String teamPosition, int championId, String tier);
 
-//	public void ranktierlistInfo(ChampionRankDto rankDto);
+	public List<HashMap<String, Object>> ranktierlistInfo(String tier,String teamPosition, int championId);
 
-	public List<HashMap<String, Object>> ranktierlistInfo(String teamPosition, int championId);
+	public void saveChampTierRankT(HashMap<String, Object> champTierRankTList);
+
+
+
+	public int allChampTierCnt(String tier, String teamPosition);
+
+	public int banChampTierCnt(String tier,String champion_name_kr);
+
+	public List<HashMap<String, Object>> champTierRank(ChampionRankDto rankDto);
 
 	
 

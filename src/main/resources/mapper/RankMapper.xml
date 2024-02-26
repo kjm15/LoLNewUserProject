@@ -12,7 +12,15 @@
 		order by win_total_cnt desc;
 
 	</select>
+	<select id="champTierRank">
 
+		SELECT *
+		FROM champTierRankT
+		WHERE teamPosition =
+		#{teamPosition} and tier =#{tier}
+		order by win_total_cnt desc;
+
+	</select>
 	<select id="laneListInfo">
 
 		SELECT *
@@ -25,65 +33,72 @@
 	<select id="rankListTeamPositionInfo">
 
 		SELECT *
-		FROM rankListT
+		FROM emerald_rankListT
 		where teamPosition =
 		#{teamPosition} and championId = #{championId}
 
 	</select>
 
-		<select id="ranktierlistInfo">
-			SELECT *
-			FROM
-			<choose>
-				<when test="tier == 'diamond'">
-					diamond_rankListT
-				</when>
-				<when test="tier == 'emerald'">
-					emerald_rankListT
-				</when>
-				<when test="tier == 'platinum'">
-					platinum_rankListT
-				</when>
-				<when test="tier == 'gold'">
-					gold_rankListT
-				</when>
-				<when test="tier == 'silver'">
-					silver_rankListT
-				</when>
-				<when test="tier == 'brozne'">
-					brozne_rankListT
-				</when>
-			</choose>
-			where teamPosition =
-			#{teamPosition} and championId = #{championId}
-	
-		</select>
+	<select id="ranktierlistInfo">
+		SELECT *
+		FROM
+		${tier}_rankListT
+		WHERE teamPosition =
+		#{teamPosition} AND championId = #{championId}
+	</select>
 
+	<insert id="saveChampTierRankT">
 
-
-	<insert id="saveChampRankT">
-
-
-		REPLACE into champRankT(teamPosition,champion_name
+		REPLACE into
+		champTierRankT(teamPosition,champion_name
 		,champion_name_kr,pick_rate
 		,win_rate,win_total_cnt
-		,champion_pick,ban_rate)
-
+		,champion_pick,ban_rate,tier)
 
 		values(#{teamPosition},#{champion_name},#{champion_name_kr}
 		,#{pick_rate},#{win_rate},#{win_total_cnt}
-		,#{champion_pick},#{ban_rate} )
-
+		,#{champion_pick},#{ban_rate},#{tier} )
 
 	</insert>
+
+	<!-- <insert id="saveChampRankT"> -->
+
+
+	<!-- REPLACE into champRankT(teamPosition,champion_name -->
+	<!-- ,champion_name_kr,pick_rate -->
+	<!-- ,win_rate,win_total_cnt -->
+	<!-- ,champion_pick,ban_rate) -->
+
+
+	<!-- values(#{teamPosition},#{champion_name},#{champion_name_kr} -->
+	<!-- ,#{pick_rate},#{win_rate},#{win_total_cnt} -->
+	<!-- ,#{champion_pick},#{ban_rate} ) -->
+
+
+	<!-- </insert> -->
 	<select id="allChampCnt">
-		select count(*) from rankListT where teamPosition =
+		select count(*) from emerald_rankListT where
+		teamPosition =
 		#{teamPosition} ;
 
 	</select>
 	<select id="banChampCnt">
 		select count(*)
-		from rankListT
+		from emerald_rankListT
+		where
+		ban_champion_name_kr = #{champion_name_kr} ;
+
+	</select>
+
+	<select id="allChampTierCnt">
+		select count(*) from ${tier}_rankListT where
+		teamPosition =
+		#{teamPosition} ;
+
+	</select>
+	<select id="banChampTierCnt">
+		select count(*)
+		from ${tier}_rankListT
 		where
 		ban_champion_name_kr = #{champion_name_kr} ;
 
@@ -119,14 +134,17 @@
 		2) AS
 		enemy_win_rate,
 		T2.tier
-		FROM (SELECT * FROM rankListT
+		FROM (SELECT * FROM emerald_rankListT
 		WHERE
 		championId = #{championId}) T1 JOIN
-		(SELECT * FROM rankListT) T2
+		(SELECT * FROM
+		emerald_rankListT) T2
 		ON
-		T1.match_id=T2.match_id AND T1.teamPosition = T2.teamPosition
+		T1.match_id=T2.match_id AND T1.teamPosition =
+		T2.teamPosition
 		WHERE
-		T1.championId!=T2.championId and T1.teamPosition=#{teamPosition}
+		T1.championId!=T2.championId and
+		T1.teamPosition=#{teamPosition}
 		GROUP
 		BY T1.championId ,T2.championId
 		order by total desc
