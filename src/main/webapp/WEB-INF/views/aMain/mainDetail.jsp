@@ -20,8 +20,8 @@
 						<span class="sp korea">KR1</span>
 					</div>
 					<div class = "search-home">
-						<input type="text" id="search-home" placeholder="플레이어이름 + #KR1"
-							value="동정팔이소년#KR1">
+						<center><input type="text" id="search-home" placeholder="플레이어이름 + #KR1"
+							value="동정팔이소년#KR1"></center>
 					</div>
 					<div class="searchBoom">
 						<button id="searchBoom">BOOM</button>
@@ -32,22 +32,6 @@
 
 
 
-				<p>쌩큐쌩큐~ ~감사감사~</p>
-
-				<div class="slider">
-					<div class="slides">
-						<img
-							src="https://www.mhnse.com/news/photo/202310/226166_234755_1442.jpg"
-							alt="Image 1"> <img
-							src="https://cdn.newsculture.press/news/photo/202302/517312_635335_819.jpg"
-							alt="Image 2"> <img
-							src="https://image.newsis.com/2021/05/18/NISI20210518_0000749326_web.jpg"
-							alt="Image 3"> <img
-							src="https://image.newsis.com/2021/05/18/NISI20210518_0000749326_web.jpg"
-							alt="Image 4">
-						<!-- 추가 이미지 -->
-					</div>
-				</div>
 
 
 			</div>
@@ -57,5 +41,6 @@
 
 <input type="button" class="comprehensive-item" id="GoGoGo"
 				value="고객센터">
+
 
 </section>

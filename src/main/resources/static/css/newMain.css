@@ -252,8 +252,8 @@ a {
 	display: flex;
 	justify-content: center;
 	align-items: center;
-	min-height: 200px;
-	border: 1px solid rgb(120, 173, 252);
+	min-height: 350px;
+/* 	border: 1px solid rgb(120, 173, 252); */
 }
 
 .footer-bottom {

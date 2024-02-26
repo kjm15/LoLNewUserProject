@@ -22,7 +22,7 @@
 
 
 
-		<%@include file="inc/header.jsp"%>
+		<%@include file="inc/mainHeader.jsp"%>
 
 
 		<%@include file="aMain/mainDetail.jsp"%>
