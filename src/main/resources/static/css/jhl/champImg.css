@@ -6,26 +6,32 @@
 /* 	background-color: #8CB9FC; */
 /* } */
 
-.contentsRank {
-	display: flex;
-	background-color: white;
-	margin-top: 100px;
+.rankContainer{
+	min-width: 1300px;
 }
-
 .aside {
 	width: 700%;
 }
 
+.contentsRank {
+	display: flex;
+	background-color: white;
+	margin-top: 100px;
+	width: 100%;
+	height: 3500px;
+	justify-content: center;
+}
+
 .search_line_champ {
 	width: 455px;
+	margin-top: 10px;
 }
 
 .selectChampline {
 	display: flex;
 	justify-content: center;
-	width: 455px;
-	margin-top: 10px;
-	margin-bottom: 10px;
+	width: 450px;
+	margin: 10px 0px;
 	border-radius: 5px;
 }
 
@@ -55,19 +61,27 @@
 	height: 25px
 }
 
-.contentsItemsChamp {
+/* .contentsItemsChamp { */
+/* 	display: flex; */
+/* } */
+.rankbanner{
+	background-color: #8CB9FC;
+	margin: 10px 0px;
+}
+.contentChampRank{
 	display: flex;
 }
 
 .search_c {
-	width: 455px;
+	width: 450px;
 	display: flex;
 	border: 1px solid #8CB9FC;
 }
 
 #champSearch {
 	border: none;
-	width: 95%
+	width: 95%;
+	font-size: 14px;
 }
 
 input:focus {
@@ -76,7 +90,7 @@ input:focus {
 
 .champImgItems {
 	display: flex;
-	width: 455px;
+	width: 450px;
 	border: 1px solid #8CB9FC;
 	justify-content: center;
 	margin-right: 12px;
