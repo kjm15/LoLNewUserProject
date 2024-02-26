@@ -11,13 +11,23 @@ $(document).ready(function() {
 let cnt = 0;
 $('#searchBoom').on("click", function() {
 
-	$('#newList').remove()
-	let search = $('#search-home').val();
-	var gameId = search.split('#');
-	let gameName = gameId[0] // 아이디
-	let tagLine = gameId[1] // 태그
-	//	data = { 'gameName': gameName, 'tagLine': tagLine }
-	location.href = '/stm/' + gameName + '/' + tagLine
+	let gameName = $('#search-home').val();
+	if (gameName.length < 1) {
+		alert("빈칸을 작성해 주세요")
+		return false
+	}
+
+	var result = gameName.search('#');
+	if (result == -1) {
+		tagLine = "#KR1"
+		location.href = '/stm/' + gameName + "/" + tagLine
+	} else {
+
+		var gameId = gameName.split('#');
+		let gameName1 = gameId[0] // 아이디
+		let tagLine = gameId[1] // 태그
+		location.href = '/stm/' + gameName1 + "/" + tagLine
+	}
 
 })
 
@@ -66,7 +76,6 @@ function aiCheckTroll(matchId) {
 
 									str = '<div class="stamp">평균이하</div>'
 									$('#' + key).html(str);
-									//									도장 css
 
 								} else {
 									$('#' + key).html(value);
@@ -84,7 +93,15 @@ function aiCheckTroll(matchId) {
 						data: JSON.stringify(data),
 						success: function(res1) {
 							for (const [key, value] of Object.entries(res1)) {
-								$('#' + key).html(value);
+
+								if (value == '패') {
+
+									str = '<div class="stamp">평균이하</div>'
+									$('#' + key).html(str);
+
+								} else {
+									$('#' + key).html(value);
+								}
 
 							}
 						}
