@@ -1,18 +1,26 @@
 package com.project.projectFinal.adminController;
 
+import java.util.ArrayList;
+
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 
+import com.project.projectFinal.dto.MemberDto;
+import com.project.projectFinal.dto.NoteDto;
+import com.project.projectFinal.service.NoteService;
+
+import jakarta.servlet.http.HttpSession;
 import lombok.extern.slf4j.Slf4j;
 
 @Slf4j
 @Controller
 @PreAuthorize("hasAnyAuthority('ADMIN','HRD-MNG','PAY-MNG','ITEM-MNG','CHP-MNG' ,'INQ-MNG')")
 @RequestMapping("/admin")
-public class AdminController {
-	
+public class AdminController {	
 	@GetMapping("/mng")
 	public String mainMng() {
 
@@ -50,12 +58,6 @@ public class AdminController {
 		return "admin/mainAdmin";
 	}
 	
-	@PreAuthorize("hasAnyAuthority('ADMIN','INQ-MNG')")
-	@GetMapping("/inq")
-	public String NoteAdmin() {
-
-		return "admin/inq";
-	}
 
 	
 	

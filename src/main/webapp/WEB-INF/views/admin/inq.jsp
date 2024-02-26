@@ -27,10 +27,6 @@
 	${userId }님
 	<br>
 	<a href="/">돌아가기</a>
-	<button type="button" class="btn btn-success" type="button"
-		class="btn btn-primary" data-bs-toggle="modal"
-		data-bs-target="#exampleModal">쪽지쓰기</button>
-
 
 	<table class="table table-green table-hover" id="modal_wrap">
 
@@ -39,18 +35,21 @@
 			<th>보낸사람</th>
 			<th>제목</th>
 			<th>날짜</th>
+			<th>상태</th>
 		</thead>
 		<tbody>
 
-			<c:forEach var="item" items="${maillist}">
+			<c:forEach var="item" items="${inqlist}">
 				</a>
-				<tr class="maillist" id="maillist">
+				<tr class="inqlist" id="inqlist">
 					<td>${item.n_num}</td>
-					<td>${item.recv_userId}</td>
+					<td>${item.send_userId}</td>
 					<td>${item.n_title}</td>
 					<td>${item.n_date}</td>
-					<td style="display: none;">${item.send_userId}</td>
+					<td id = "status">${item.status}</td>
+					<td style="display: none;">${item.recv_userId}</td>
 					<td style="display: none;">${item.n_message}</td>
+					
 				</tr>
 				<input type="hidden" name="${item.recv_userId}"
 					id="${item.recv_userId}">
@@ -60,14 +59,11 @@
 		</tbody>
 	</table>
 
-	<!-- 메일쓰기 -->
-	<%@include file="kjmmodal.jsp"%>
 	<!-- 메일 보기 -->
 	<%@include file="kjmmodal2.jsp"%>
 
 
 
-	<script defer src="/js/kjm/Note/Note.js"></script>
 	<script defer src="/js/kjm/Note/NoteModal.js"></script>
 
 

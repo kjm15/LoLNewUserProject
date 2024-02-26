@@ -9,10 +9,11 @@
 <body>
 	<div id="modal4" class="modal4-overlay">
 		<div class="modal4-window">
+		<div class="modal-close-area">X</div>
 			<div class="title">
 				<h2>모달타이틀</h2>
 			</div>
-			<div class="modal4-close-area">X</div>
+			
 			<div class="modal4-content">
 				<table>
 					<tr>

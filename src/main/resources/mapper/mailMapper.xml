@@ -4,11 +4,17 @@
 
 	<insert id="mailsend">
 		insert into
-		NoteTableT(recv_userId,send_userId,n_title,n_message)
-		values(#{recv_userId},#{send_userId},#{n_title},#{n_message})
+		NoteTableT(recv_userId,send_userId,n_title,n_message,status)
+		values(#{recv_userId},#{send_userId},#{n_title},#{n_message},#{status})
 	</insert>
 
 	<select id="NoteInfo">
+		select * from NoteTableT where recv_userId = #{userId} order by n_num
+		DESC
+		limit 10;
+	</select>
+	
+	<select id="adminInq">
 		select * from NoteTableT where recv_userId = #{userId} order by n_num
 		DESC
 		limit 10;
