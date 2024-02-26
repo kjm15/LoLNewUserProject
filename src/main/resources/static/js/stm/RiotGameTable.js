@@ -321,7 +321,7 @@ function showGameTamble(res, data) {
 
 
 		str += `</div>
-			<div class="line1" id = 'line1${goBtn}' style='display: none'>흰색 선</div>`
+			<div class="line1" id = 'line1${goBtn}' style='display: none'></div>`
 		str += `<div class="container2" id='container2${goBtn}' style='display: none'>
 				<div class="legend">
 					<div class="teamId" style=color:blue;>블루팀(${blueWin})</div>
