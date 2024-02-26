@@ -3,6 +3,7 @@ package com.project.projectFinal.kjmcontroller;
 import java.util.ArrayList;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -19,19 +20,31 @@ import lombok.extern.slf4j.Slf4j;
 
 @Slf4j
 @Controller
+@PreAuthorize("hasAnyAuthority('ADMIN','INQ-MNG')")
 public class NoteController {
 	@Autowired
 	NoteService noteService;
 	//쪽지함
-	@GetMapping("/Note")
-	public String Noteinfo(Model model, HttpSession session, MemberDto memberDto) {
+//	@GetMapping("/Note")
+//	public String Noteinfo(Model model, HttpSession session, MemberDto memberDto) {
+//		String userId = (String) session.getAttribute("userId");
+//
+//		memberDto.setUserId(userId);
+//		ArrayList<NoteDto> maillist= noteService.NoteInfo(memberDto);
+//		
+//		model.addAttribute("maillist", maillist);
+//		return "kjm/Note";	
+//	}
+	@PreAuthorize("hasAnyAuthority('ADMIN','INQ-MNG')")
+	@GetMapping("/admin/inq")
+	
+	public String NoteAdmin(HttpSession session, Model model ,MemberDto memberDto) {
 		String userId = (String) session.getAttribute("userId");
-
 		memberDto.setUserId(userId);
-		ArrayList<NoteDto> maillist= noteService.NoteInfo(memberDto);
-		
-		model.addAttribute("maillist", maillist);
-		return "kjm/Note";	
+		ArrayList<NoteDto> inqlist= noteService.adminInq(memberDto);
+		model.addAttribute("inqlist", inqlist);
+		log.info("========문의 컨트롤러{}",inqlist);
+		return "admin/inq";
 	}
 	
 	

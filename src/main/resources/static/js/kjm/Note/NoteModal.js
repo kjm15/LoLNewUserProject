@@ -1,5 +1,4 @@
 //모달 열기
-
 const modal = document.getElementById("modal")
 const modal_wrap = document.getElementById("modal_wrap")
 modal_wrap.addEventListener("click", e => {
@@ -10,16 +9,16 @@ modal_wrap.addEventListener("click", e => {
 	var table = document.getElementById("modal_wrap")
 	var tr = table.getElementsByTagName("tr");
 	let n_num = tr[rowIndex].getElementsByTagName("td")[0].textContent
-	let recv_userId = tr[rowIndex].getElementsByTagName("td")[1].textContent
+	let send_userId = tr[rowIndex].getElementsByTagName("td")[1].textContent
 	let n_title = tr[rowIndex].getElementsByTagName("td")[2].textContent
 	let n_date = tr[rowIndex].getElementsByTagName("td")[3].textContent
-	let send_userId = tr[rowIndex].getElementsByTagName("td")[4].textContent
-	let n_message = tr[rowIndex].getElementsByTagName("td")[5].innerText
+	let recv_userId = tr[rowIndex].getElementsByTagName("td")[5].textContent
+	let n_message = tr[rowIndex].getElementsByTagName("td")[6].innerText
 	console.log(n_title)
 
 	document.querySelector("#title").innerText = n_title
+	document.querySelector("#senduser").innerText = send_userId
 	document.querySelector("#recvuser").innerText = recv_userId
-	document.querySelector("#sendusder").innerText = send_userId
 	document.querySelector("#date").innerText = n_date
 	document.querySelector("#message").innerText = n_message
 	

@@ -54,16 +54,8 @@
 
 		</div>
 	</div>
-	<div class="comprehensive-menu" id="comprehensive-menu">
-		<div>
-			<input type="button" class="comprehensive-item" id="GoInq"
+
+<input type="button" class="comprehensive-item" id="GoGoGo"
 				value="고객센터">
-		</div>
-		<div>
-			<a class="comprehensive-item" href="#">듀오찾기</a>
-		</div>
-	</div>
-	<button class="comprehensive-button" id="comprehensive-on-off">이미지
-		추천받음</button>
 
 </section>

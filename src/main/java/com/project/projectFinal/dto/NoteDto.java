@@ -16,5 +16,5 @@ public class NoteDto {
 	private String n_title;
 	private String n_message;
 	private Date n_date;
-	private int status;
+	private String status;
 }

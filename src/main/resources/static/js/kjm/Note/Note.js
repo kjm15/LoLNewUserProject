@@ -8,12 +8,20 @@ function send() {
 	let send_userId = $('#send_userId').val()
 	let n_title = $('#n_title').val()
 	let n_message = $('#n_message').val()
+	let status = $('#status').val()
+	
+	 // 입력 필드가 비어 있는지 검사
+	    if (!n_title || !n_message) {
+        alert("메일 전송 실패");
+        return;
+    }
 
 	data = {
 		'recv_userId': recv_userId,
 		'send_userId': send_userId,
 		'n_title': n_title,
-		'n_message': n_message
+		'n_message': n_message,
+		'status': status
 	}
 
 	$.ajax({
@@ -38,32 +46,8 @@ function send() {
 
 
 }
-//메일 보기
+//
 
-//$('#modal_wrap').on("click", function() {
-//	detailNote()
-//})
-//
-//function detailNote(){
-//
-//	$.ajax({
-//
-//		type: 'get',
-//		url: '/detail',
-//		success: function(res) {
-//			console.log(res)
-//		let str = ''
-//		str += "<tr class = 'maillist'>"
-//		str +- "<td>" + res.n_title+"</td>"
-//		str +- "<td>" + res.send_userId+"</td>"
-//		str +- "<td>" + res.recv_userId+"</td>"
-//		str +- "<td>" + res.n_date+"</td>"
-//		str +- "<td>" + res.n_message+"</td>"
-//
-//		str += "</tr>"
-//		$('#detailflag').html(str)
-//		}
-//
-//	})
-//
-//}
+$(document).ready(function() {
+	document.querySelector("#status").innerText = 처리전
+})
