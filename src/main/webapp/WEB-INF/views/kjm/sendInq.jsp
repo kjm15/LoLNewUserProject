@@ -15,6 +15,7 @@
 			<div class="modal3-content">
 				<input type="hidden" name="send_userId" id="send_userId" value ="${userId }">
 				<input type="hidden" name="recv_userId" id="recv_userId" value ="admin">
+				<input type="hidden" name="status" id="status" value ="문의중">
 				
 				제목<input type="text" name="n_title" id="n_title"><br>
 				<textarea rows="6" cols="35" name="n_message" id="n_message"></textarea>

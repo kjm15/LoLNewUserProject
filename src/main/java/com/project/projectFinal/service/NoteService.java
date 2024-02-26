@@ -64,4 +64,11 @@ public class NoteService {
 		return noteDao.inqMain(userId);
 	}
 
+	public ArrayList<NoteDto> adminInq(MemberDto memberDto) {
+		// TODO Auto-generated method stub
+		ArrayList<NoteDto> inqlist = noteDao.adminInq(memberDto);
+		log.info("========문의 서비스{}",inqlist);
+		return inqlist;
+	}
+
 }

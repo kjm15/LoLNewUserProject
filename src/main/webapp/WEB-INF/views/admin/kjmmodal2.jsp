@@ -29,11 +29,7 @@
 						</tr>
 						<tr>
 							<th>보낸사람</th>
-							<td id="sendusder"></td>
-						</tr>
-						<tr>
-							<th>받는사람</th>
-							<td id="recvuser"></td>
+							<td id="senduser"></td>
 						</tr>
 						<tr>
 							<th>날짜</th>
@@ -41,7 +37,8 @@
 						</tr>
 						<tr>
 							<th>내용</th>
-							<td class="contents" id="message"></td>
+							<td class="contents" id="message">
+							</td>
 						</tr>
 					</thead>
 				</table>

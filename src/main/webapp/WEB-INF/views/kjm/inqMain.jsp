@@ -33,7 +33,7 @@
 						<th class ="n_num" style="display : none;">번호</th>
 						<th class ="n_title">제목</th>
 						<th class ="n_date">날짜</th>
-						<th>처리상태</th>
+						<th class = "status">상태</th>
 						<th class ="send_userId" style ="display : none;">보낸사람<th>
 						<input type="hidden" id="userId" value="${userId }">
 					<tr>
