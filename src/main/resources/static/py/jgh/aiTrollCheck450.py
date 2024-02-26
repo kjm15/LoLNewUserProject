@@ -11,8 +11,8 @@ import random
 from tqdm import tqdm
 import time
 import math
-kn = KNeighborsClassifier()
-
+kn = KNeighborsClassifier(n_neighbors=3)
+#kn = KNeighborsClassifier(n_neighbors=100, weights='distance',n_jobs=-1)
 #########################
 def connect_mysql(db='mydb'):
     conn = pymysql.connect(host='svc.sel4.cloudtype.app', port=32509,
@@ -30,15 +30,12 @@ data = sys.argv[1:]
 # print(data)
 
 key = data[0]
-# tier = data[1]
-# teamPosition = data[2]
 gameDuration = int(data[1])
 kda = float(data[2])
 totalDamageDealtToChampions = int(int(data[3])/gameDuration)
 goldEarned = int(int(data[4])/gameDuration)
 championName = data[5]
-# print(championName)
-# print(gameDuration)
+
 # key= '123'
 # kda = 10
 # totalDamageDealtToChampions = 1200
@@ -93,7 +90,11 @@ a1 = kn.score(tier_data,tier_target)
 trans={1:'예측:승', 0:'예측:패'}
 a = trans[kn.predict([[kda,totalDamageDealtToChampions,goldEarned]])[0]]
 
-data5 = {key:a , "점수" : a1}
+if len(tier_target) < 100 : 
+
+    data5 = {key:"데이터부족" , "정확도" : a1 , "총데이터길이"  :len(tier_target),'캐릭' : championName}
+else :
+    data5 = {key:a , "정확도" : a1 , "총데이터길이"  :len(tier_target), '캐릭' : championName}  
 
 json_string = json.dumps(data5)
 # print(a, a1)

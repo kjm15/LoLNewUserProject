@@ -70,12 +70,14 @@ public class RestPythonBuilder {
 		String kda = String.valueOf(aMap.get("kda"));
 		String totalDamageDealtToChampions = String.valueOf(aMap.get("totalDamageDealtToChampions"));
 		String goldEarned = String.valueOf(aMap.get("goldEarned"));
+		String championName = String.valueOf(aMap.get("championName"));
 //			log.info(goldEarned);
 //			String participantId = String.valueOf(aMap.get("participantId")) ;
 //			String participantId = String.valueOf(aMap.get("participantId")) ;
 
-		ProcessBuilder pb = new ProcessBuilder().command("python", filePath, key, tier, teamPosition, gameDuration, kda,
-				totalDamageDealtToChampions, goldEarned // ,
+		ProcessBuilder pb = new ProcessBuilder().command("python", filePath, 
+				key, tier, teamPosition, gameDuration, kda,
+				totalDamageDealtToChampions, goldEarned,championName // ,
 		);
 		Process p = pb.start();
 		BufferedReader in = new BufferedReader(new InputStreamReader(p.getInputStream()));

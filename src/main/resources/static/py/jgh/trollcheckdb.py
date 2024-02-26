@@ -9,7 +9,7 @@ import sys
 import json
 
 data = sys.argv[1:]
-# tier = "GOLD"
+tier = "GOLD"
 tier = data[0]
 api_key = 'RGAPI-36ff1947-075a-4441-9e90-df81d5d1cd03'
 num = 3
@@ -93,8 +93,9 @@ def get_match_timeline_df(df,tier):
 
     for i in tqdm(range(len(df))):       
         # matches 관련된 데이터 
-        if int(df.iloc[i].matches['info']['gameDuration']/60) >= 20 :
-            try:
+        
+        try:
+            if int(df.iloc[i].matches['info']['gameDuration']/60) >= 20 :    
                 for j in range(len(df.iloc[i].matches['info']['participants'])):
                     tmp = []
                     tmp.append(df.iloc[i].match_id)
@@ -136,17 +137,17 @@ def get_match_timeline_df(df,tier):
                     
                     
                     dfs_creates.append(tmp)
-            except Exception as e:
+        except Exception as e:
 
-                continue
+            continue
+
+    columns = ['matchId','championName', 'teamId', 'kills', 'assists', 'deaths', 'kda','totalTimeSpentDead','visionWardsBoughtInGame','visionScore','win'
+            ,'riotIdGameName','riotIdTagline','goldEarned','totalDamageDealtToChampions'
+            ,'totalMinionsKilled','wardsPlaced','championId','participantId','queueId','teamPosition','totalDamageTaken'
+            ,'totalTimeCCDealt','onMyWayPings','enemyVisionPings','tier','gameDuration']
+    df = pd.DataFrame(dfs_creates, columns=columns)
     
-            columns = ['matchId','championName', 'teamId', 'kills', 'assists', 'deaths', 'kda','totalTimeSpentDead','visionWardsBoughtInGame','visionScore','win'
-                    ,'riotIdGameName','riotIdTagline','goldEarned','totalDamageDealtToChampions'
-                    ,'totalMinionsKilled','wardsPlaced','championId','participantId','queueId','teamPosition','totalDamageTaken'
-                    ,'totalTimeCCDealt','onMyWayPings','enemyVisionPings','tier','gameDuration']
-            df = pd.DataFrame(dfs_creates, columns=columns)
-            #27
-            return df
+    return df
 
 
 def insert_matches_timeline_mysql(row, conn):
