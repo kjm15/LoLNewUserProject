@@ -52,7 +52,7 @@
 					</div>
 					<div class="search-home1">
 						<input type="text" class = "search-home11" id="search-home" placeholder="플레이어이름 + #KR1"
-							value="동정팔이소년#KR1">
+							value="">
 					</div>
 					<div class="searchBoom1">
 						<button id="searchBoom" class="searchBoom11">BOOM</button>

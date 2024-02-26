@@ -4,9 +4,8 @@
 
 $(document).ready(function() {
 
-
+	document.getElementById('search-home').value = ''
 	mainStart()
-
 
 })
 let cnt = 0;
@@ -62,8 +61,16 @@ function aiCheckTroll(matchId) {
 						data: JSON.stringify(data),
 						success: function(res1) {
 							for (const [key, value] of Object.entries(res1)) {
-								$('#' + key).html(value);
 
+								if (value == '패') {
+
+									str = '<div class="stamp">평균이하</div>'
+									$('#' + key).html(str);
+									//									도장 css
+
+								} else {
+									$('#' + key).html(value);
+								}
 							}
 						}
 					})//ajax끝
@@ -91,11 +98,11 @@ function aiCheckTroll(matchId) {
 							queue = "빠른대전"
 						} else if (res[i].queueId == 440) {
 							queue = "자유랭크"
-						} 
-						
+						}
+
 						key = res[i].matchId + res[i].participantId
-						
-						str = "<span><font size=2>|"+queue+"| <br>|개발중|</font></span>";
+
+						str = "<span><font size=2>|" + queue + "| <br>|개발중|</font></span>";
 						$('#' + key).html(str);
 
 					}

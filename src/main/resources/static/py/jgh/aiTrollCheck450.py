@@ -87,7 +87,7 @@ tier_target=[1]*len(win_kda_List)+[0]*len(lose_kda_List)
 kn.fit(tier_data,tier_target)
 a1 = kn.score(tier_data,tier_target)
 
-trans={1:'예측:승', 0:'예측:패'}
+trans={1:'승', 0:'패'}
 a = trans[kn.predict([[kda,totalDamageDealtToChampions,goldEarned]])[0]]
 
 if len(tier_target) < 100 : 
