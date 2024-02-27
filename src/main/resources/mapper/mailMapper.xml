@@ -6,6 +6,7 @@
 		insert into
 		NoteTableT(recv_userId,send_userId,n_title,n_message,status)
 		values(#{recv_userId},#{send_userId},#{n_title},#{n_message},#{status})
+
 	</insert>
 
 	<select id="NoteInfo">
