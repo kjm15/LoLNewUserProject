@@ -33,7 +33,6 @@
 
 
 
-
 	<div class="navbars">
 		<div class="navbarMain">
 			<a href="/">DATABOOM</a>
@@ -51,8 +50,8 @@
 						<span class="sp korea">KR1</span>
 					</div>
 					<div class="search-home1">
-						<input type="text" class = "search-home11" id="search-home" placeholder="플레이어이름 + #KR1"
-							value="">
+						<input type="text" class="search-home11" id="search-home"
+							placeholder="플레이어이름 + #KR1" value="">
 					</div>
 					<div class="searchBoom1">
 						<button id="searchBoom" class="searchBoom11">BOOM</button>
@@ -103,8 +102,20 @@
 		<div class="navMenu">
 			<a href="/kdg">아이템 분석</a>
 		</div>
+		<div class="darkmod_checkbox">
+			<div class="toggle_box">
+				<input type="checkbox" id="toggle" class="darkmod_toggle" hidden>
 
-	
+				<label for="toggle" class="toggleSwitch"> <span
+					class="toggleButton"></span>
+				</label>
+			</div>
+			<div class="TS_name_box">
+				<p>다크모드</p>
+			</div>
+		</div>
+
+
 		<!-- 		<c:if test="${userId != null}">-->
 
 

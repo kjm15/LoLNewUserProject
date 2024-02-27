@@ -41,11 +41,9 @@
 		<div class="navMenuDuo">
 			<a href="/jgh">영혼의Duo</a>
 		</div>
-		
-			<div class="search-contents1">
-				
-			</div>
-	
+
+		<div class="search-contents1"></div>
+
 		<c:choose>
 			<c:when test="${userId != null}">
 				<div class="navbarLogin">
@@ -83,12 +81,13 @@
 			<a href="/">홈</a>
 		</div>
 		<div class="navMenu">
-			<a href="/jhl" class="active">초보자</a>
+			<a href="/jhl" class="active">초보자Tip!</a>
 		</div>
 
 		<div class="navMenu">
 			<a href="/kdg">아이템분석</a>
 		</div>
+
 
 		<!-- 		<c:if test="${userId != null}">-->
 

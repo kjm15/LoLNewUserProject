@@ -21,19 +21,8 @@
 <p id="graph_line" style="visibility: hidden; position: absolute;">top</p>
 <p id="hide_champList" style="visibility: hidden; position: absolute;">O</p>
 
-<!-- 다크모드 헤더로 이동해야지 가운데로 맞춰짐. -->
-<!-- <div class = "darkmod_checkbox"> -->
-<!-- 	<div class = "toggle_box"> -->
-<!-- 		<input type="checkbox" id="toggle" class ="darkmod_toggle" hidden>  -->
-		
-<!-- 		<label for="toggle" class="toggleSwitch"> -->
-<!-- 		  <span class="toggleButton"></span> -->
-<!-- 		</label> -->
-<!-- 	</div> -->
-<!-- 	<div class = "TS_name_box"> -->
-<!-- 		<p>다크모드</p> -->
-<!-- 	</div> -->
-<!-- </div> -->
+<!-- 페이지 가운데로 맞추기 위해서 다크모드 헤더로 이동했습니다. -->
+
 <div class ="itemList_container">
 <div class="comm_left_sideBanner">
 <!-- <div class="sideBanner"> -->
