@@ -1,8 +1,6 @@
 
 
 $(function() {
-
-
 	// 초기 실행: 기본 포지션에 대한 데이터 로드
 	$('.rankSearch span#Top').addClass('active');
 	var defaultPosition = 'Top';

@@ -1,44 +1,41 @@
-#container {
+.championGraphContainer {
 	display: flex;
-	width: 500px;
-	float: left;
-}
+	width : 100%;
 
-#box-left {
-	/*   background: red; */
-	width: 200px;
-	float: left;
-	box-sizing: border-box;
 }
-
-#box-center {
-	text-align: center;
-	/* 	background-color: yellow; */
-	width: 300px;
-/* 	margin: 0 auto; */
-}
-
-#box-right {
-	/*   background: yellow; */
+/* .myImg { */
+/* 	/*   background: red; */ */
+/* /* 	width: 200px; */ */
+/* 	flex-basis: 100px; */
+/* 	float: left; */
 	
-	width: 100px;
-	float: right;
-	text-align: right;
-	box-sizing: border-box;
-}
-#box-side {
-	/*   background: yellow; */
-	
-	width: 50%;
-	float: right;
-	text-align: right;
-	box-sizing: border-box;
-}
 
-#teamrate {
-	/*   background: yellow; */
-	display: flex;
-	width: 500px;
-	top:5000px;
-	float: left;
-}
+/* } */
+/* .box-left { */
+/* 	/*   background: red; */ */
+/* 	width: 200px; */
+/* 	flex-basis: 100px; */
+
+/* } */
+
+/* .box-center { */
+/* 	text-align: center; */
+/* /* 		background-color: yellow; */ */
+/* 	width: 300px; */
+/* /* 	margin: 0 auto; */ */
+/* } */
+
+/* .box-right { */
+/* /* 	  background: pink; */ */
+/* 	flex-basis: 100px; */
+/* 	width: 100px; */
+/* 	float: right; */
+	
+/* } */
+/* .box-side { */
+/* 	/*   background: yellow; */ */
+/* 	flex-basis: 100px; */
+/* 	width: 50%; */
+/* 	float: right; */
+	
+/* } */

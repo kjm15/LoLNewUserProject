@@ -168,4 +168,12 @@
 		championName =
 		#{championName}
 	</select>
+
+	<select id="forGraphInfo">
+		select * from champRankT WHERE
+		champion_name =
+		#{championName}
+	</select>
+
+
 </mapper>

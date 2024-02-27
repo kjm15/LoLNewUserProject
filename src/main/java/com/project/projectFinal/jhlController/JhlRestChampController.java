@@ -2,11 +2,13 @@ package com.project.projectFinal.jhlController;
 
 import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.RestController;
@@ -58,18 +60,26 @@ public class JhlRestChampController {
 //		champService.champUpdate(rankDto);
 //
 //	}
-	
+
 	@PostMapping("/champCounter")
 	public void champCounter(ChampionRankDto rankDto) {
-		
+
 		champService.champCounter(rankDto);
 
 	}
-	
+
 	@PostMapping("/tierDataUpdate")
 	public void tierDataUpdate(ChampionRankDto rankDto) {
-		
+
 		champService.ranktierlistInfo(rankDto);
+
+	}
+
+	@PostMapping("/forGraphInfo")
+	public Map<String, Object> forGraphInfo(String championName) {
+		log.info(championName);
+
+		return champService.forGraphInfo(championName);
 
 	}
 

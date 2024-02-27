@@ -1,18 +1,28 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
+	
+<!-- 	김진문 -->
+<link href="/css/kjm/modal_main.css" rel="stylesheet" type="text/css">
+<script defer src="js/kjm/Note/inqMain.js"></script>
+<%@include file="../kjm/inqMain.jsp"%>
+<%@include file="../kjm/sendInq.jsp"%>
+<%@include file="../kjm/myInq.jsp"%>
+<%@include file="../kjm/inqdetail.jsp"%>
+<!-- 김진문 -->
+
 <footer class="footer-bottom">
-	<center>
-		<h3>DataBoom</h3>
-		<span><font-size :2>장기훈 김동근 김진문 김윤태 송태민 정혜린</font-size></span>
+	<p></p>
+	<c:if test="${userId != null}">
+	<a href=# class="comprehensive-item" id="GoGoGo">고객센터</a>
 
-		<div>인천일보아카데미</div>
-		<div>인천광역시 미추홀구 매소홀로488번길 6-32 태승빌딩 5층</div>
-		<div>copyright</div>
+	<hr>
+	</c:if>
+	<span><font-size :2>장기훈 김동근 김진문 김윤태 송태민 정혜린</font-size></span>
 
-		<div class="navMenu">
-			<a href="/kyt">드래곤</a>
-		</div>
-	</center>
+	<div>인천일보아카데미</div>
+	<div>인천광역시 미추홀구 매소홀로488번길 6-32 태승빌딩 5층</div>
+	<div>copyright DataBoom</div>
+
 	<!-- 			<a href = "/py/main">aitest페이지가기</a> -->
 
 	<!-- 			<a href = "/testboard">송태민 새로운 보드</a> -->

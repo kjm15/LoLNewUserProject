@@ -39,8 +39,6 @@
 		</div>
 	</div>
 
-<input type="button" class="comprehensive-item" id="GoGoGo"
-				value="고객센터">
 
 
 </section>

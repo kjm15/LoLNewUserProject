@@ -271,4 +271,10 @@ public class JhlChampService {
 		return champDao.champTierRank(rankDto);
 	}
 
+	public Map<String, Object> forGraphInfo(String championName) {
+
+		return champDao.forGraphInfo(championName);
+
+	}
+
 }

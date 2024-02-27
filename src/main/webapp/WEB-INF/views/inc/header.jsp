@@ -97,16 +97,14 @@
 			<a href="/">홈</a>
 		</div>
 		<div class="navMenu">
-			<a href="/jhl" class="active">초보자</a>
+			<a href="/jhl" class="active">초보자Tip!</a>
 		</div>
 
 		<div class="navMenu">
-			<a href="/kdg">아이템분석</a>
+			<a href="/kdg">아이템 분석</a>
 		</div>
 
-		<div class="navMenu" class="comprehensive-item">
-			<a id="GoInq" href="#">고객센터</a>
-		</div>
+	
 		<!-- 		<c:if test="${userId != null}">-->
 
 

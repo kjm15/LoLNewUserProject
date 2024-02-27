@@ -320,9 +320,9 @@ function loadingLogoOutput() {
 
 
 
-function chartteam(matchId) {
+function chartGraph(champion_name_kr) {
 	loadingLogoInput()
-	data3 = { "matchIdSolo": matchId }
+	data3 = { "champion_name_kr": champion_name_kr }
 
 	$.ajax({
 		type: 'post',
@@ -860,8 +860,8 @@ function chartteam(matchId) {
 								display: false,
 							},
 							ticks: {
-								autoSkip: true,  // 👈
-								maxTicksLimit: 1 // 👈
+								autoSkip: true,  //
+								maxTicksLimit: 1 // 
 							}
 						}],
 
@@ -871,9 +871,6 @@ function chartteam(matchId) {
 		}
 
 	})
-
-
-
 
 }
 
