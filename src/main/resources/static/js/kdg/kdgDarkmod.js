@@ -21,9 +21,9 @@ $(document).ready(function() {
 			
 			$('.comm_box').css("background-color","#222")
 			
-			$('.navbars').css("background-color","#27282d")			
-			$('.navbarMain1').css("background-color","#2a2c33")				
-			$('.headerItmes').css("background-color","#27282d")			
+//			$('.navbars').css("background-color","#27282d")			
+//			$('.navbarMain1').css("background-color","#2a2c33")				
+//			$('.headerItmes').css("background-color","#27282d")			
 			
 			dkmodnum = 0
 			$('#modNum').html(dkmodnum)
@@ -46,9 +46,9 @@ $(document).ready(function() {
 			
 			$('.comm_box').css("background-color","white")
 			
-			$('.navbars').css("background-color","rgb(120, 173, 252)")	
-			$('.navbarMain1').css("background-color","rgba(27, 65, 221, 0.38)")				
-			$('.headerItmes').css("background-color","rgb(157, 196, 253)")		
+//			$('.navbars').css("background-color","rgb(120, 173, 252)")	
+//			$('.navbarMain1').css("background-color","rgba(27, 65, 221, 0.38)")				
+//			$('.headerItmes').css("background-color","rgb(157, 196, 253)")		
 			
 			dkmodnum = 1
 			$('#modNum').html(dkmodnum)
