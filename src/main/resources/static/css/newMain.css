@@ -16,16 +16,95 @@ a {
 	text-decoration: none;
 }
 
-header{
+header {
 	min-width: 1300px;
 }
 
-footer{
+footer {
 	min-width: 1300px;
 }
+
 .main {
 	min-width: 1300px;
 	height: 100%
+}
+
+.toggleSwitch {
+	width: 60px;
+	height: 30px;
+	display: block;
+	position: absolute;
+	float: right;
+	border-radius: 30px;
+	background-color: #fff;
+	box-shadow: rgba(4, 68, 164, 0.3) 0px 0px 25px;
+	border: 3px solid rgba(4, 68, 164, 0.3);
+	cursor: pointer;
+	margin-top: 5px;
+	margin-left: 5px;
+}
+
+.toggleSwitch .toggleButton {
+	width: 20px;
+	height: 20px;
+	position: absolute;
+	top: 48.7%;
+	left: 4px;
+	transform: translateY(-50%);
+	border-radius: 50%;
+	background: lightblue;
+	float: right;
+}
+
+#toggle:checked ~ .toggleSwitch {
+	background: lightblue;
+}
+
+#toggle:checked ~ .toggleSwitch .toggleButton {
+	left: calc(100% - 25px);
+	background: #fff;
+}
+
+.toggleSwitch, .toggleButton {
+	transition: all 0.2s ease-in;
+}
+
+.darkmod_checkbox {
+	display: flex;
+	align-items: center;
+	/* 	background-color: white; */
+	/* 	top: -46px; */ position : relative;
+	float: right;
+	width: 180px;
+/* 	height: 43px; */
+	/* 	border: 3px solid rgba(0 0 0/ 15%); */
+	z-index: 100;
+/* 	margin-right: 50px; */
+	position: relative
+}
+
+.toggle_box, .TS_name_box {
+	float: left;
+	position: relative;
+}
+
+.toggle_box {
+	width: 65px;
+	height: 43px;
+}
+
+.TS_name_box {
+	font-size: 18px;
+	width: 100px;
+/* 	height: 43px; */
+}
+
+.TS_name_box>p {
+	/* 	margin-top: 6px; */
+	/* 	margin-left: 7px; */
+	margin-bottom: 0px; 
+	width : 80px;
+	color: white;
 }
 
 .navbars {
@@ -67,7 +146,7 @@ footer{
 }
 
 .navMenu {
-	min-width: 100px;
+	min-width: 110px;
 	display: flex;
 	align-items: center;
 	justify-content: center;
@@ -168,7 +247,7 @@ footer{
 }
 
 #search-home {
-	width : 500px;
+	width: 500px;
 	border: none;
 	height: 20px;
 }
@@ -232,18 +311,19 @@ footer{
 	background-color: white;
 	margin-right: 14px;
 }
+
 .searchBoom {
 	width: 100px;
 	justify-content: center;
 	align-items: center;
-	text-align : right;
+	text-align: right;
 	border: none;
 	color: rgb(157, 196, 253);
 	background-color: white;
 	margin-right: 14px;
 	border: none;
-	
 }
+
 .searchBoom11 {
 	width: 100%;
 	height: 20px;
@@ -260,7 +340,7 @@ footer{
 	justify-content: center;
 	align-items: center;
 	min-height: 350px;
-/* 	border: 1px solid rgb(120, 173, 252); */
+	/* 	border: 1px solid rgb(120, 173, 252); */
 }
 
 .footer-bottom {
@@ -361,13 +441,14 @@ footer{
 	font-size: 15px;
 	/* 	text-align: left; */
 }
+
 .navMenuDuo1 {
 	/* 		width : 500px; */
-	width:100%;
+	width: 100%;
 	display: flex;
 	margin: auto;
 	min-width: 100px;
-		justify-content: left;
+	justify-content: left;
 	font-size: 15px;
-		text-align: left;
+	text-align: left;
 }

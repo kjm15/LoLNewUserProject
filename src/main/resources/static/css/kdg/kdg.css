@@ -376,15 +376,6 @@
 	justify-content: center;
 }
 
-/* .comm_left_sideBanner { */
-/* 	display: flex; */
-/* 	width: 50%; */
-/* } */
-
-/* .comm_right_sideBanner { */
-/* 	display: flex; */
-/* 	width: 50%; */
-/* } */
 
 .comm_contents {
 	display: flex;
@@ -567,79 +558,79 @@
 	display: block;
 }
 
-.toggleSwitch {
-	width: 60px;
-	height: 30px;
-	display: block;
-	position: absolute;
-	float: right;
-	border-radius: 30px;
-	background-color: #fff;
-	/*box-shadow: 0 0 16px 3px rgba(0 0 0 / 15%);*/
-	border: 3px solid rgba(0 0 0/ 15%);
-	cursor: pointer;
-	margin-top: 5px;
-	margin-left: 5px;
-}
+/* .toggleSwitch { */
+/* 	width: 60px; */
+/* 	height: 30px; */
+/* 	display: block; */
+/* 	position: absolute; */
+/* 	float: right; */
+/* 	border-radius: 30px; */
+/* 	background-color: #fff; */
+/* 	box-shadow: 0 0 16px 3px rgba(0 0 0 / 15%); */
+/* 	border: 3px solid rgba(0 0 0/ 15%); */
+/* 	cursor: pointer; */
+/* 	margin-top: 5px; */
+/* 	margin-left: 5px; */
+/* } */
 
-.toggleSwitch .toggleButton {
-	width: 20px;
-	height: 20px;
-	position: absolute;
-	top: 48.7%;
-	left: 4px;
-	transform: translateY(-50%);
-	border-radius: 50%;
-	background: lightblue;
-	float: right;
-}
+/* .toggleSwitch .toggleButton { */
+/* 	width: 20px; */
+/* 	height: 20px; */
+/* 	position: absolute; */
+/* 	top: 48.7%; */
+/* 	left: 4px; */
+/* 	transform: translateY(-50%); */
+/* 	border-radius: 50%; */
+/* 	background: lightblue; */
+/* 	float: right; */
+/* } */
 
-#toggle:checked ~ .toggleSwitch {
-	background: lightblue;
-}
+/* #toggle:checked ~ .toggleSwitch { */
+/* 	background: lightblue; */
+/* } */
 
-#toggle:checked ~ .toggleSwitch .toggleButton {
-	left: calc(100% - 25px);
-	background: #fff;
-}
+/* #toggle:checked ~ .toggleSwitch .toggleButton { */
+/* 	left: calc(100% - 25px); */
+/* 	background: #fff; */
+/* } */
 
-.toggleSwitch, .toggleButton {
-	transition: all 0.2s ease-in;
-}
+/* .toggleSwitch, .toggleButton { */
+/* 	transition: all 0.2s ease-in; */
+/* } */
 
-.darkmod_checkbox {
-	background-color: white;
-	top: -46px;
-	position: relative;
-	float: right;
-	width: 145px;
-	height: 43px;
-	border: 3px solid rgba(0 0 0/ 15%);
-	z-index: 100;
-	margin-right: 50px;
-}
+/* .darkmod_checkbox { */
+/* 	background-color: white; */
+/* 	top: -46px; */
+/* 	position: relative; */
+/* 	float: right; */
+/* 	width: 145px; */
+/* 	height: 43px; */
+/* 	border: 3px solid rgba(0 0 0/ 15%); */
+/* 	z-index: 100; */
+/* 	margin-right: 50px; */
+/* } */
 
-.toggle_box, .TS_name_box {
-	float: left;
-	position: relative;
-}
+/* .toggle_box, .TS_name_box { */
+/* 	float: left; */
+/* 	position: relative; */
+/* } */
 
-.toggle_box {
-	width: 65px;
-	height: 43px;
-}
+/* .toggle_box { */
+/* 	width: 65px; */
+/* 	height: 43px; */
+/* } */
 
-.TS_name_box {
-	width: 70px;
-	height: 43px;
-}
+/* .TS_name_box { */
+/* 	width: 70px; */
+/* 	height: 43px; */
+/* } */
 
-.TS_name_box>p {
-	margin-top: 6px;
-	margin-left: 7px;
-	width: 70px;
-	color: black;
-}
+/* .TS_name_box>p { */
+/* 	margin-top: 6px; */
+/* 	margin-left: 7px; */
+/* 	width: 70px; */
+/* 	color: black; */
+/* } */
 
 .comm_champ_line {
 	margin-left: 20%;
@@ -873,7 +864,7 @@
 
 #lineDropdown_btn {
 	position: relative;
-	margin-left: 10px;
+	margin-left: 100px;
 	margin-top: 12px;
 }
 
