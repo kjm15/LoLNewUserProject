@@ -49,111 +49,107 @@ function mainSearch(gameName1) {
 	bbb(data)
 }
 
-function aiCheckTroll(matchId) {
-
+function aiCheckTroll(res1) {
+	console.log(res1)
+	
+	data =
+		{ 'matchId': res1.matchId, 'riotIdGameName': res1.riotIdGameName, 'riotIdTagline': res1.riotIdTagline }
 	console.log("data전송완료/인공지능시작")
 	$.ajax({
+		contentType: 'application/json',
 		type: 'post',
 		url: '/ai/dataToAi',
-		data: { 'matchId': matchId },
+		data: JSON.stringify(data),
 		success: function(res) {
-
-			for (let i in res) {
-
-				if (res[i].queueId == 420) {
-					data = res[i]
-					//					console.log(data)
-
-					$.ajax({
-						contentType: 'application/json',
-						type: 'post',
-						url: '/ai/trollcheck420',
-						data: JSON.stringify(data),
-						success: function(res1) {
-							for (const [key, value] of Object.entries(res1)) {
-								if (res[i].win == 1) { // 게임 : 승리
-									if (value == '패') { //인공지능 지표 : 패
-										str = '<div class="stampLose">평균이하</div>'
-										$('#' + key).html(str);
-									} else if (value == '데이터부족') { //인공지능 지표: 승
-										$('#' + key).html(value);
-									} else { //인공지능 지표: 승
-										str = "승리"
-										$('#' + key).html(str);
-									}
-								} else { // 게임 : 패배
-									if (value == '패') { //인공지능 지표 : 패
-										str = "패배"
-										$('#' + key).html(str);
-									} else if (value == '데이터부족') { //인공지능 지표: 승
-										$('#' + key).html(value);
-									}  else { //인공지능 지표: 승
-										str = '<div class="stampWin">평균이상</div>'
-										$('#' + key).html(str);
-									}
+			console.log(res)
+			if (res.queueId == 420) {
+				data = res
+				//					console.log(data)
+				$.ajax({
+					contentType: 'application/json',
+					type: 'post',
+					url: '/ai/trollcheck420',
+					data: JSON.stringify(data),
+					success: function(res1) {
+						for (const [key, value] of Object.entries(res1)) {
+							if (res.win == 1) { // 게임 : 승리
+								if (value == '패') { //인공지능 지표 : 패
+									str = '<div class="stampLose">평균이하</div>'
+									$('#' + key).html(str);
+								} else if (value == '데이터부족') { //인공지능 지표: 승
+									$('#' + key).html(value);
+								} else { //인공지능 지표: 승
+									str = "승리"
+									$('#' + key).html(str);
+								}
+							} else { // 게임 : 패배
+								if (value == '패') { //인공지능 지표 : 패
+									str = "패배"
+									$('#' + key).html(str);
+								} else if (value == '데이터부족') { //인공지능 지표: 승
+									$('#' + key).html(value);
+								} else { //인공지능 지표: 승
+									str = '<div class="stampWin">평균이상</div>'
+									$('#' + key).html(str);
 								}
 							}
 						}
-					})//ajax끝
-				} else if (res[i].queueId == 450) {
-					data = res[i]
-
-					$.ajax({
-						contentType: 'application/json',
-						type: 'post',
-						url: '/ai/trollcheck450',
-						data: JSON.stringify(data),
-						success: function(res1) {
-							for (const [key, value] of Object.entries(res1)) {
-								if (res[i].win == 1) { // 게임 : 승리
-
-									if (value == '패') { //인공지능 지표 : 패
-
-										str = '<div class="stampLose">평균이하</div>'
-										$('#' + key).html(str);
-
-									} else { //인공지능 지표: 승
-										str = '평균'
-										$('#' + key).html(str);
-									}
-								} else { // 게임 : 패배
-									if (value == '패') { //인공지능 지표 : 패
-
-										str = '평균'
-										$('#' + key).html(str);
-
-									} else { //인공지능 지표: 승
-										str = '<div class="stampWin">평균이상</div>'
-										$('#' + key).html(str);
-									}
-
-
-								}
-							}
-						}
-					})//ajax끝
-				} else {
-					for (let i in res) {
-
-						if (res[i].queueId == 1900) {
-							queue = "우르프"
-						} else if (res[i].queueId == 490) {
-							queue = "빠른대전"
-						} else if (res[i].queueId == 440) {
-							queue = "자유랭크"
-						}
-
-						key = res[i].matchId + res[i].participantId
-
-						str = "<span><font size=2>|" + queue + "| <br>|개발중|</font></span>";
-						$('#' + key).html(str);
-
 					}
+				})//ajax끝
+			} else if (res.queueId == 450) {
+				data = res
+
+				$.ajax({
+					contentType: 'application/json',
+					type: 'post',
+					url: '/ai/trollcheck450',
+					data: JSON.stringify(data),
+					success: function(res1) {
+						for (const [key, value] of Object.entries(res1)) {
+							if (res.win == 1) { // 게임 : 승리
+
+								if (value == '패') { //인공지능 지표 : 패
+
+									str = '<div class="stampLose">평균이하</div>'
+									$('#' + key).html(str);
+
+								} else { //인공지능 지표: 승
+									str = '평균'
+									$('#' + key).html(str);
+								}
+							} else { // 게임 : 패배
+								if (value == '패') { //인공지능 지표 : 패
+
+									str = '평균'
+									$('#' + key).html(str);
+
+								} else { //인공지능 지표: 승
+									str = '<div class="stampWin">평균이상</div>'
+									$('#' + key).html(str);
+								}
+
+
+							}
+						}
+					}
+				})//ajax끝
+			} else {
+				let queue = ''
+				if (res.queueId == 1900) {
+					queue = "우르프"
+				} else if (res.queueId == 490) {
+					queue = "빠른대전"
+				} else if (res.queueId == 440) {
+					queue = "자유랭크"
 				}
-
-
+				key = res.matchId + res.participantId
+				str = "<span><font size=2>|" + queue + "| <br>|개발중|</font></span>";
+				$('#' + key).html(str);
 			}
-		}//for끝
+
+
+		}
+
 
 	})//ajax끝
 }
@@ -376,17 +372,17 @@ function gamebtn(goBtn, matchId) {
 						url: '/summoner/v4/Rank',
 						data: JSON.stringify(data2),
 						success: function(res1) {
-							//							console.log(res1)
+							console.log(res1)
 							//							for (const [key, value] of Object.entries(res1)) {
 							//								$('#' + key).html(value);
 							//
 							//							}
-
+							aiCheckTroll(res1)
 						}
 					})
 				}
 
-				aiCheckTroll(matchId)
+
 			}
 		})
 	}

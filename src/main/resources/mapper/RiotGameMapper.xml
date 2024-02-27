@@ -61,8 +61,10 @@
 
 
 	<select id="sendDataToPy">
-		select * from RiotGameInfoT where matchId =
-		#{matchId}
+		select * from RiotGameInfoT 
+		where matchId = #{matchId} 
+		and riotIdGameName = #{riotIdGameName}
+		and riotIdTagline = #{riotIdTagline};
 	</select>
 
 	<select id="DBRiotGameName">
@@ -73,5 +75,11 @@
 		UPDATE RiotGameInfoT
 		SET tier =	#{tier}
 		WHERE matchId = #{matchId} and riotIdGameName = #{riotIdGameName};
+	</update>
+	
+		<update id="saveAiData">
+		UPDATE RiotGameInfoT
+		SET airesult =	#{key}
+		WHERE matchId = #{matchId} and participantId = #{participantId};
 	</update>
 </mapper>

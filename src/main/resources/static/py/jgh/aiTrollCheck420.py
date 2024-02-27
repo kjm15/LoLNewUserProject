@@ -32,6 +32,7 @@ data = sys.argv[1:]
 
 key = data[0]
 tier = data[1]
+tier = 'silver'
 teamPosition = data[2]
 gameDuration = int(data[3])
 kda = float(data[4])
