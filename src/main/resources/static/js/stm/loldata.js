@@ -50,18 +50,16 @@ function mainSearch(gameName1) {
 }
 
 function aiCheckTroll(res1) {
-	console.log(res1)
-	
-	data =
-		{ 'matchId': res1.matchId, 'riotIdGameName': res1.riotIdGameName, 'riotIdTagline': res1.riotIdTagline }
+//	console.log(res1)
 	console.log("data전송완료/인공지능시작")
 	$.ajax({
 		contentType: 'application/json',
 		type: 'post',
 		url: '/ai/dataToAi',
-		data: JSON.stringify(data),
+		data: JSON.stringify(res1),
 		success: function(res) {
-			console.log(res)
+//			console.log(res)
+			
 			if (res.queueId == 420) {
 				data = res
 				//					console.log(data)
@@ -358,40 +356,28 @@ function gamebtn(goBtn, matchId) {
 	container2.style.display = ((container2.style.display != 'none') ? 'none' : 'block');
 
 	if (line1.style.display == 'block') {
-		console.log(goBtn)
-		console.log(matchId)
+		
+		data = {'matchId': matchId }
+		
 		$.ajax({
 			type: 'post',
 			url: '/summoner/v4/userList',
-			data: { 'matchId': matchId },
+			data: data,
 			success: function(res) {
-
-				console.log(matchId)
-				mm = {}
-				for (i in res) {
-					mm.matchId = matchId
-					res2 = res[i]
-
-					res2['matchId'] = matchId; // res 에 matchId 추가
-
-					data2 = res2
+//				console.log(res)
+				for (let i in res) {
+//					console.log(i)
 					$.ajax({
 						contentType: 'application/json',
 						type: 'post',
 						url: '/summoner/v4/Rank',
-						data: JSON.stringify(data2),
+						data: JSON.stringify(res[i]),
 						success: function(res1) {
-							console.log(res1)
-							//							for (const [key, value] of Object.entries(res1)) {
-							//								$('#' + key).html(value);
-							//
-							//							}
+//							console.log(res1)
 							aiCheckTroll(res1)
 						}
 					})
 				}
-
-
 			}
 		})
 	}

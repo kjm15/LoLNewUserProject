@@ -194,9 +194,14 @@
 
 .itemTeam {
 	/* 	background: #0080ff; */
-	flex: 1;
+	flex: 15%;
 }
-
+.aicheck {
+	/* 	background: #0080ff; */
+	flex: 15%;
+	text-align: right;
+	
+}
 .legend {
 	display: flex;
 	background: rgba(0, 0, 0, 0.04);

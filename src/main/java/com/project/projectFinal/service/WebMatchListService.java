@@ -21,7 +21,7 @@ public class WebMatchListService {
 	String[] ApikeyList = { "RGAPI-f94a4128-cb3b-4303-b92b-0016fa59b5a8", "RGAPI-3a9db266-dbba-4ead-9ec5-93b90d528991",
 			"RGAPI-175e99fa-a692-4cbb-acfb-9410f712f370" }; // 깡통차기 , 씹악질 ,버프싸개
 	private String api_key = null; // 리스트 돌아가면서 들어갈 예정
-	
+
 	@Autowired
 	RiotGameDao riotGameDao;
 
@@ -30,7 +30,7 @@ public class WebMatchListService {
 		apiCount = apiDto.getMatchCnt();
 		String apiKeyTeam = ApikeyList[Integer.valueOf(apiCount) % ApikeyList.length];
 		api_key = apiKeyTeam;
-		System.out.println("getMatchCnt= " + apiDto.getMatchCnt() + " 이번에사용할 api key=" + api_key);
+//		System.out.println("getMatchCnt= " + apiDto.getMatchCnt() + " 이번에사용할 api key=" + api_key);
 		String url = "https://asia.api.riotgames.com/riot/account/v1/accounts/by-riot-id/" + apiDto.getGameName() + "/"
 				+ apiDto.getTagLine() + "?api_key=" + api_key;
 
@@ -70,57 +70,62 @@ public class WebMatchListService {
 
 	private int RankCnt = 0;
 
-	public void SummonerV4(@RequestBody Map<String, String> data) {
-		RankCnt++; // 동근 , 진문
-		String[] SummonerV4_Api_keyList = { "RGAPI-3437c0e1-8256-4aae-b01c-1854a01a3533",
-				"RGAPI-90ac9a4b-b80e-4142-b655-44166b6e9a2a" };
-		String SummonerV4_Api_key = SummonerV4_Api_keyList[RankCnt % SummonerV4_Api_keyList.length];
-//		System.out.println(RankCnt+ SummonerV4_Api_key);
-		String riotIdGameName = data.get("riotIdGameName");
-		String riotIdTagline = data.get("riotIdTagline");
+	public Map<String, Object> SummonerV4(@RequestBody Map<String, Object> data) {
 
-		String url = "https://asia.api.riotgames.com/riot/account/v1/accounts/by-riot-id/" + riotIdGameName + "/"
-				+ riotIdTagline + "?api_key=" + SummonerV4_Api_key;
-		WebClient webClient = WebClient.builder().baseUrl(url).build();
+//		log.info(" ==data {}", data); // 티어값이 있으면 없으면으로 밑에 로직 시작
+		if (data.get("Tier").equals("Tier")) {
+			RankCnt++; // 동근 , 진문
+			String[] SummonerV4_Api_keyList = { "RGAPI-3437c0e1-8256-4aae-b01c-1854a01a3533",
+					"RGAPI-90ac9a4b-b80e-4142-b655-44166b6e9a2a" };
+			String SummonerV4_Api_key = SummonerV4_Api_keyList[RankCnt % SummonerV4_Api_keyList.length];
+//			System.out.println(RankCnt+ SummonerV4_Api_key);
+			String riotIdGameName = String.valueOf(data.get("riotIdGameName"));
+			String riotIdTagline = String.valueOf(data.get("riotIdTagline"));
 
-		RiotApiDto account = webClient.get().uri(uriBuilder -> uriBuilder.build()).retrieve()
-				.bodyToMono(RiotApiDto.class).block();
+			String url = "https://asia.api.riotgames.com/riot/account/v1/accounts/by-riot-id/" + riotIdGameName + "/"
+					+ riotIdTagline + "?api_key=" + SummonerV4_Api_key;
+			WebClient webClient = WebClient.builder().baseUrl(url).build();
 
-		String puuid = account.getPuuid();
+			RiotApiDto account = webClient.get().uri(uriBuilder -> uriBuilder.build()).retrieve()
+					.bodyToMono(RiotApiDto.class).block();
 
-		String url2 = "https://kr.api.riotgames.com/lol/summoner/v4/summoners/by-puuid/" + puuid + "?api_key="
-				+ SummonerV4_Api_key;
-		WebClient webClient2 = WebClient.builder().baseUrl(url2).build();
+			String puuid = account.getPuuid();
 
-		RiotApiDto SummonerId = webClient2.get().uri(uriBuilder -> uriBuilder.build()).retrieve()
-				.bodyToMono(RiotApiDto.class).block();
+			String url2 = "https://kr.api.riotgames.com/lol/summoner/v4/summoners/by-puuid/" + puuid + "?api_key="
+					+ SummonerV4_Api_key;
+			WebClient webClient2 = WebClient.builder().baseUrl(url2).build();
 
-		String url3 = "https://kr.api.riotgames.com/lol/league/v4/entries/by-summoner/" + SummonerId.getId()
-				+ "?api_key=" + SummonerV4_Api_key;
+			RiotApiDto SummonerId = webClient2.get().uri(uriBuilder -> uriBuilder.build()).retrieve()
+					.bodyToMono(RiotApiDto.class).block();
 
-		WebClient webClient3 = WebClient.builder().baseUrl(url3).build();
+			String url3 = "https://kr.api.riotgames.com/lol/league/v4/entries/by-summoner/" + SummonerId.getId()
+					+ "?api_key=" + SummonerV4_Api_key;
 
-		List<Map<String, String>> Tier = webClient3.get().uri(uriBuilder -> uriBuilder.build()).retrieve()
-				.bodyToMono(List.class).block();
+			WebClient webClient3 = WebClient.builder().baseUrl(url3).build();
 
-		if (Tier.size() != 0) {
-			Map<String, String> UPdateTier = Tier.get(0);
-			if (UPdateTier.get("queueType").equals("RANKED_SOLO_5x5")) {
-				String tier = UPdateTier.get("tier");
-				String rank = UPdateTier.get("rank");
-//				System.out.println(data);
-				RiotGameDto rDto = new RiotGameDto();
-				rDto.setRiotIdGameName(data.get("riotIdGameName"));
-				rDto.setRiotIdTagline(data.get("riotIdTagline"));
-				rDto.setMatchId(data.get("matchId"));
-				rDto.setTier(tier);
-				rDto.setRank(rank);
-				System.out.println(rDto);
-				// 티어가 널일 때 업데이트
-				int aaa = riotGameDao.UPdateTier(rDto);
-//				System.out.println(aaa);
+			List<Map<String, String>> Tier = webClient3.get().uri(uriBuilder -> uriBuilder.build()).retrieve()
+					.bodyToMono(List.class).block();
+
+			if (Tier.size() != 0) {
+				Map<String, String> UPdateTier = Tier.get(0);
+				if (UPdateTier.get("queueType").equals("RANKED_SOLO_5x5")) {
+					String tier = UPdateTier.get("tier");
+					String rank = UPdateTier.get("rank");
+//					System.out.println(data);
+					RiotGameDto rDto = new RiotGameDto();
+					rDto.setRiotIdGameName(String.valueOf(data.get("riotIdGameName")));
+					rDto.setRiotIdTagline(String.valueOf(data.get("riotIdTagline")));
+					rDto.setMatchId(String.valueOf(data.get("matchId")));
+					rDto.setTier(tier);
+					rDto.setRank(rank);
+					System.out.println(rDto);
+					// 티어가 널일 때 업데이트
+					return riotGameDao.UPdateTier(rDto);
+				}
 			}
 		}
+		return riotGameDao.forOneData(data);
 
 	}
+
 }

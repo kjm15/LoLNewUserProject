@@ -24,21 +24,14 @@ public class SummonerV4Controller {
 	WebMatchListService webmatchListService;
 
 	@PostMapping("/summoner/v4/userList")
-	public List<Map<String, RiotGameDto>> summonerV4(String matchId) {
-		List<Map<String, RiotGameDto>> RiotGameName = matchListService.DBRiotGameName(matchId); // 티어 없는애만 가져옴
+	public List<Map<String, Object>> summonerV4(String matchId) {
 		
-		System.out.println(RiotGameName.size() + "개의 티어 가지러 감...");
-		
-//		webmatchListService.SummonerV4(RiotGameName);
+		return  matchListService.DBRiotGameName(matchId);
+	}
 
-		
-		return RiotGameName;
-	};
-	
 	@PostMapping("/summoner/v4/Rank")
-	public Map<String, String> summonerV4Rank(@RequestBody Map<String , String> data) {
-//		System.out.println(data);
-		webmatchListService.SummonerV4(data);
-		return data;
+	public Map<String, Object> summonerV4Rank(@RequestBody Map<String, Object> data) {
+
+		return webmatchListService.SummonerV4(data);
 	}
 }

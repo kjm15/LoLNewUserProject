@@ -330,6 +330,7 @@ function showGameTamble(res, data) {
 					<div class=damage>가한피해량</div>
 					<div class=cs>총합cs</div>
 					<div class=itemTeam>아이템</div>
+					<div class=aicheck>AI 트롤판단</div>
 					</div>`
 		let damageToChampions = []
 		for (j in res[i]['info']) {
