@@ -6,6 +6,7 @@
 		insert into
 		NoteTableT(recv_userId,send_userId,n_title,n_message,status)
 		values(#{recv_userId},#{send_userId},#{n_title},#{n_message},#{status})
+
 	</insert>
 
 	<select id="NoteInfo">
@@ -19,6 +20,7 @@
 		DESC
 		limit 10;
 	</select>
+	
 
 	<select id="inqMain">
 		select * from NoteTableT where send_userId= #{userId} order by n_num DESC;

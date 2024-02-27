@@ -3,6 +3,7 @@ package com.project.projectFinal.service;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.HashMap;
+import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
@@ -154,5 +155,11 @@ public class MemberService implements UserDetailsService {
 	public MemberDto myInfo(MemberDto memberDto) {
 		MemberDto mlist = memberDao.myInfo(memberDto);
 		return mlist;
+	}
+
+	public ArrayList<MemberDto> memberload(MemberDto memberDto) {
+		 
+		return memberDao.memberload(memberDto);
+		
 	}
 }

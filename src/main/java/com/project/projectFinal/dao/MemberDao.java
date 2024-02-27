@@ -2,6 +2,7 @@ package com.project.projectFinal.dao;
 
 import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.List;
 
 import org.apache.ibatis.annotations.Mapper;
 
@@ -48,6 +49,8 @@ public interface MemberDao {
 	int changePw(MemberDto memberDto);
 
 	MemberDto myInfo(MemberDto memberDto);
+
+	ArrayList<MemberDto> memberload(MemberDto memberDto);
 
 	
 

@@ -127,6 +127,10 @@
 	<select id="myInfo">
 		select userId ,userPoint, userEmail, userName from memberT where userId = #{userId}
 	</select>
+	
+	<select id ="memberload">
+		select userId from memberT where role = 'USER';
+	</select>
 
 	
 

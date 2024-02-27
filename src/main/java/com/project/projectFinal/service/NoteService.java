@@ -71,4 +71,11 @@ public class NoteService {
 		return inqlist;
 	}
 
+
+	public int sendToallMembers(MemberDto memberDto, NoteDto noteDto) {
+		int result = noteDao.sendToallMembers(memberDto, noteDto);
+		return result;
+	}
+
+
 }
