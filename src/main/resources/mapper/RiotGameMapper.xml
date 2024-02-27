@@ -22,7 +22,8 @@
 		#{assists},#{deaths},#{kda},#{firstBloodKill},#{goldEarned},#{gameEndTimestamp},
 		#{gameStartTimestamp},#{gameDuration},#{totalAllyJungleMinionsKilled},#{totalDamageDealtToChampions},
 		#{totalDamageTaken},#{totalEnemyJungleMinionsKilled},#{totalMinionsKilled},
-		#{wardsKilled},#{wardsPlaced},#{win},default,null,#{totalTimeCCDealt},#{totalTimeSpentDead},#{onMyWayPings},#{enemyVisionPings});
+		#{wardsKilled},#{wardsPlaced},#{win},default,null,#{totalTimeCCDealt},#{totalTimeSpentDead},#{onMyWayPings},#{enemyVisionPings},
+		#{physicalDamageDealtToChampions},#{magicDamageDealtToChampions});
 
 	</insert>
 	<insert id="RiotGameTeams">
