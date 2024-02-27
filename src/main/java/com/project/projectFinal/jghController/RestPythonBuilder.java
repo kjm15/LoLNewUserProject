@@ -38,7 +38,7 @@ public class RestPythonBuilder {
 	@PostMapping("/trollcheck420")
 	public Map<String, Object> trollcheck420(@RequestBody Map<String, Object> aMap, Model model) throws Exception {
 		Map<String, Object> aiReultMap = new HashMap<>();
-		log.info("===myMap : {}", aMap);
+//		log.info("===myMap : {}", aMap);
 		String filePath = "src/main/resources/static/py/jgh/aiTrollCheck420.py";
 		String matchId = (String) aMap.get("matchId");
 		String participantId = String.valueOf(aMap.get("participantId"));
@@ -51,8 +51,7 @@ public class RestPythonBuilder {
 		String goldEarned = String.valueOf(aMap.get("goldEarned"));
 		String championName = String.valueOf(aMap.get("championName"));
 		String airesult = String.valueOf(aMap.get("airesult"));
-		log.info("=== {}", airesult.length());
-		log.info("=== {}", airesult);
+
 		if (tier.equals("Tier")) { // 언랭
 
 			aiReultMap.put("key", "데이터부족");
@@ -63,7 +62,7 @@ public class RestPythonBuilder {
 			aiReultMap.put("캐릭", "championName");
 			aiReultMap.put("matchId", matchId);
 			aiReultMap.put("participantId", participantId);
-			log.info("솔로랭크 결과값 : {}", aiReultMap);
+//			log.info("솔로랭크 결과값 : {}", aiReultMap);
 			matchListService.saveAiData(aiReultMap);
 
 		} else if (airesult.equals("null") ) { // 랭크가 있고 ai결과가 없을때
@@ -85,7 +84,7 @@ public class RestPythonBuilder {
 			aiReultMap = objectMapper.readValue(buffer.toString(), Map.class);
 			aiReultMap.put("matchId", matchId);
 			aiReultMap.put("participantId", participantId);
-			log.info("솔로랭크 결과값 : {}", aiReultMap);
+//			log.info("솔로랭크 결과값 : {}", aiReultMap);
 			matchListService.saveAiData(aiReultMap);
 		} else { // 랭크가 있고 ai결과가 있을때
 
@@ -130,7 +129,7 @@ public class RestPythonBuilder {
 //		log.info("결과값 : {}", buffer.toString());
 		ObjectMapper objectMapper = new ObjectMapper();
 		Map<String, Object> aiReultMap = objectMapper.readValue(buffer.toString(), Map.class);
-		log.info("칼바람 결과값 : {}", aiReultMap);
+//		log.info("칼바람 결과값 : {}", aiReultMap);
 
 		return aiReultMap;
 	}

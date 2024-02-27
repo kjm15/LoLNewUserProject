@@ -30,7 +30,7 @@ public class WebMatchListService {
 		apiCount = apiDto.getMatchCnt();
 		String apiKeyTeam = ApikeyList[Integer.valueOf(apiCount) % ApikeyList.length];
 		api_key = apiKeyTeam;
-		System.out.println("getMatchCnt= " + apiDto.getMatchCnt() + " 이번에사용할 api key=" + api_key);
+//		System.out.println("getMatchCnt= " + apiDto.getMatchCnt() + " 이번에사용할 api key=" + api_key);
 		String url = "https://asia.api.riotgames.com/riot/account/v1/accounts/by-riot-id/" + apiDto.getGameName() + "/"
 				+ apiDto.getTagLine() + "?api_key=" + api_key;
 
@@ -72,7 +72,7 @@ public class WebMatchListService {
 
 	public Map<String, Object> SummonerV4(@RequestBody Map<String, Object> data) {
 
-		log.info(" ==data {}", data); // 티어값이 있으면 없으면으로 밑에 로직 시작
+//		log.info(" ==data {}", data); // 티어값이 있으면 없으면으로 밑에 로직 시작
 		if (data.get("Tier").equals("Tier")) {
 			RankCnt++; // 동근 , 진문
 			String[] SummonerV4_Api_keyList = { "RGAPI-3437c0e1-8256-4aae-b01c-1854a01a3533",

@@ -50,15 +50,15 @@ function mainSearch(gameName1) {
 }
 
 function aiCheckTroll(res1) {
-	console.log(res1)
-//	console.log("data전송완료/인공지능시작")
+//	console.log(res1)
+	console.log("data전송완료/인공지능시작")
 	$.ajax({
 		contentType: 'application/json',
 		type: 'post',
 		url: '/ai/dataToAi',
 		data: JSON.stringify(res1),
 		success: function(res) {
-			console.log(res)
+//			console.log(res)
 			
 			if (res.queueId == 420) {
 				data = res
@@ -354,7 +354,7 @@ function gamebtn(goBtn, matchId) {
 	var container2 = document.getElementById("container2" + goBtn);
 	line1.style.display = ((line1.style.display != 'none') ? 'none' : 'block');
 	container2.style.display = ((container2.style.display != 'none') ? 'none' : 'block');
-	console.log("aa")
+
 	if (line1.style.display == 'block') {
 		
 		data = {'matchId': matchId }
@@ -364,7 +364,7 @@ function gamebtn(goBtn, matchId) {
 			url: '/summoner/v4/userList',
 			data: data,
 			success: function(res) {
-				console.log(res)
+//				console.log(res)
 				for (let i in res) {
 //					console.log(i)
 					$.ajax({
@@ -373,7 +373,7 @@ function gamebtn(goBtn, matchId) {
 						url: '/summoner/v4/Rank',
 						data: JSON.stringify(res[i]),
 						success: function(res1) {
-							console.log(res1)
+//							console.log(res1)
 							aiCheckTroll(res1)
 						}
 					})
