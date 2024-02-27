@@ -2,6 +2,7 @@ package com.project.projectFinal.dao;
 
 import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 import org.apache.ibatis.annotations.Mapper;
 
@@ -28,7 +29,15 @@ public interface JhlChampDao {
 
 	public void saveChampTierRankT(HashMap<String, Object> champTierRankTList);
 
+
 	public List<HashMap<String, Object>> champRank(ChampionRankDto rankDto);
+
+	public List<Map<String, Object>> forGraphInfo(String championName);
+
+	public List<Map<String, Object>> forGraphInfo2(Map<String, String> aMap);
+
+	
+
 
 	public void saveChampCounterT(HashMap<String, Object> champCounterList);
 

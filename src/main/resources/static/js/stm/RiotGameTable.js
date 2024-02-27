@@ -8,6 +8,7 @@ $('a.feellink').click(function(e) //a태그 눌러도 맨위로 안올라감
 let win = 0
 let lose = 0
 function showGameTamble(res, data) {
+	console.log(data)
 	console.log(res)
 	let ccc = ''
 	let str = ''
@@ -28,6 +29,7 @@ function showGameTamble(res, data) {
 	let champimg = ''
 
 	$('.graph1').empty()
+
 	for (let i in res) {
 		for (let j in res[i]['info']) {
 			if (data['gameName'] == res[i]["info"][j]['riotIdGameName'] || data['gameName'] == res[i]["info"][j]['summonerName']) {
@@ -44,22 +46,29 @@ function showGameTamble(res, data) {
 		}
 
 	}
+	if (data['matchCnt'] == 1) { //최신 레벨과 플레이어 아이콘을 위해 저장
+		newprofileIcon = profileIcon
+		newsummonerLevel = summonerLevel
+		newriotIdGameName = riotIdGameName
+	}
 	ccc += `<div class=container333>
 	<div class="stmH">
             <div class="stmHright">
                 <div class="cpicon">
                     <div class = "cpimg">
-	<img width='85' height='85' alt='못 불러옴' src=https://ddragon.leagueoflegends.com/cdn/14.3.1/img/profileicon/${profileIcon}.png>
+	<img width='85' height='85' alt='못 불러옴' src=https://ddragon.leagueoflegends.com/cdn/14.3.1/img/profileicon/${newprofileIcon}.png>
                     </div></div>
-                <div class="uid">${riotIdGameName} </div>
-                <div class="ulevel">${summonerLevel}레벨</div>
+                <div class="uid">${newsummonerLevel} </div>
+                <div class="ulevel">${newriotIdGameName}레벨</div>
             </div>
             <div class="stmHleft">
                 <div class="u-chart"><canvas id="donutChart" width="160px" height="160px"></canvas></div>
             </div>
         </div>
         </div>`
+
 	$('.graph1').append(ccc)
+
 
 	var ctx = document.getElementById('donutChart').getContext('2d');
 	var myChart = new Chart(ctx, {
@@ -356,8 +365,14 @@ function showGameTamble(res, data) {
 				kda = (((kills + assists)) / deaths).toFixed(2)
 			}
 			totalDamageDealtToChampions = res[i]["info"][j]['totalDamageDealtToChampions']
-			bartotalDamageDealtToChampions = (((totalDamageDealtToChampions / highestdamageToChampions) * 99)).toFixed(0)
-
+			bartotalDamageDealtToChampions = ((totalDamageDealtToChampions / highestdamageToChampions) * 99).toFixed(0)
+			physicalDamageDealtToChampions = res[i]["info"][j]['physicalDamageDealtToChampions']
+			magicDamageDealtToChampions = res[i]["info"][j]['magicDamageDealtToChampions']
+			Number(physicalDamageDealtToChampions)
+			Number(magicDamageDealtToChampions)
+			UpbartotalDamageDealtToChampions  = (((physicalDamageDealtToChampions + magicDamageDealtToChampions)/highestdamageToChampions) * 99).toFixed(0)
+//			console.log(physicalDamageDealtToChampions) // 물리
+//			console.log(magicDamageDealtToChampions) // 마법
 			totalCs = res[i]["info"][j]['totalMinionsKilled'] + res[i]["info"][j]['totalAllyJungleMinionsKilled'] + res[i]["info"][j]['totalEnemyJungleMinionsKilled']
 			participantId = res[i]["info"][j]['participantId']
 			if (res[i]['info'][j]['teamId'] == 100) {
@@ -385,7 +400,7 @@ function showGameTamble(res, data) {
 					</div>
 					<div class=damage1>
 
-						<div class=damageAmount></div>
+						<div class=damageAmount style="width: ${UpbartotalDamageDealtToChampions}%;"></div>
 						<div class=damageGraph font-size: 10px; style="width: ${bartotalDamageDealtToChampions}%;">${totalDamageDealtToChampions}</div>
 					</div>
 					<div class=cs1>${totalCs}</div>
@@ -498,7 +513,7 @@ function showGameTamble(res, data) {
 		$('#loadMore').remove()
 		bbb(data)
 	})
-	
+
 }
 
 

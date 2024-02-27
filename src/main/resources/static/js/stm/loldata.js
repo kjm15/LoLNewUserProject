@@ -19,7 +19,7 @@ $('#searchBoom').on("click", function() {
 
 	var result = gameName.search('#');
 	if (result == -1) {
-		tagLine = "#KR1"
+		tagLine = "KR1"
 		location.href = '/stm/' + gameName + "/" + tagLine
 	} else {
 
@@ -198,6 +198,8 @@ function bbb(data) {
 						mm.totalTimeSpentDead = res[i]["info"]['participants'][j]['totalTimeSpentDead']
 						mm.onMyWayPings = res[i]["info"]['participants'][j]['onMyWayPings']
 						mm.enemyVisionPings = res[i]["info"]['participants'][j]['enemyVisionPings']
+						mm.physicalDamageDealtToChampions = res[i]["info"]['participants'][j]['physicalDamageDealtToChampions']
+						mm.magicDamageDealtToChampions = res[i]["info"]['participants'][j]['magicDamageDealtToChampions']
 						mm.teamId = res[i]["info"]['participants'][j]['teamId']
 						mm.win = res[i]["info"]['participants'][j]['win']
 						mm.matchId = res[i]['metadata']['matchId'] // 매치 아이디

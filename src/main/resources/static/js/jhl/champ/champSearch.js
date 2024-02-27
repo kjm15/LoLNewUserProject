@@ -29,7 +29,7 @@ $('#champSearch').on('keyup', function() {
 				var imgSrc = 'https://ddragon.leagueoflegends.com/cdn/14.2.1/img/champion/' + res[i].champion_name + '.png';
 
 				var imgElement = $('<img>').addClass('championImg').attr('src', imgSrc);
-
+				
 				champContainer.append($('<div>').addClass('champImgItem').append($('<div>').addClass('cimgs').append(imgElement)).append($('<span>').addClass('champName').append(res[i].champion_name_kr)));
 
 			}
@@ -78,6 +78,7 @@ function champLine(lineSelect) {
 		url: "/champLineSelect",
 		data: { "line": lineSelect },
 		success: function(res) {
+			
 			var champContainer = $('.champs');
 
 			champContainer.empty();

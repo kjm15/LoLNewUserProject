@@ -126,4 +126,17 @@
 		championName =
 		#{championName}
 	</select>
+
+	<select id="forGraphInfo">
+		select * from champRankT WHERE
+		champion_name =
+		#{championName}
+	</select>
+
+	<select id="forGraphInfo2">
+		select * from champRankT WHERE
+		teamPosition = #{teamPosition}
+		order by pick_rate desc limit 10;
+	</select>
+
 </mapper>

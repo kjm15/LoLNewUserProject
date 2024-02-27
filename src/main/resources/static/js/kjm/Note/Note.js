@@ -49,5 +49,5 @@ function send() {
 //
 
 $(document).ready(function() {
-	document.querySelector("#status").innerText = 처리전
+	document.querySelector("#status").innerText = '처리전'
 })
