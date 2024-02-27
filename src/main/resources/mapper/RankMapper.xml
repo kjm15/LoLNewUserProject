@@ -6,36 +6,20 @@
 	<select id="champRank">
 
 		SELECT *
-		FROM champRankT
-		WHERE teamPosition =
-		#{teamPosition}
-		order by win_total_cnt desc;
-
-	</select>
-	<select id="champTierRank">
-
-		SELECT *
 		FROM champTierRankT
 		WHERE teamPosition =
 		#{teamPosition} and tier =#{tier}
-		order by win_total_cnt desc;
+		order by win_total_cnt desc
+		limit 40;
 
 	</select>
+
 	<select id="laneListInfo">
 
 		SELECT *
 		FROM champListT
 		where line like
 		concat('%',#{teamPosition}, '%')
-
-	</select>
-
-	<select id="rankListTeamPositionInfo">
-
-		SELECT *
-		FROM emerald_rankListT
-		where teamPosition =
-		#{teamPosition} and championId = #{championId}
 
 	</select>
 
@@ -46,6 +30,22 @@
 		WHERE teamPosition =
 		#{teamPosition} AND championId = #{championId}
 	</select>
+	
+	
+	<select id="allChampTierCnt">
+		select count(*) from ${tier}_rankListT where
+		teamPosition =
+		#{teamPosition} ;
+
+	</select>
+	<select id="banChampTierCnt">
+		select count(*)
+		from ${tier}_rankListT
+		where
+		ban_champion_name_kr = #{champion_name_kr} ;
+
+	</select>
+	
 
 	<insert id="saveChampTierRankT">
 
@@ -61,48 +61,6 @@
 
 	</insert>
 
-	<!-- <insert id="saveChampRankT"> -->
-
-
-	<!-- REPLACE into champRankT(teamPosition,champion_name -->
-	<!-- ,champion_name_kr,pick_rate -->
-	<!-- ,win_rate,win_total_cnt -->
-	<!-- ,champion_pick,ban_rate) -->
-
-
-	<!-- values(#{teamPosition},#{champion_name},#{champion_name_kr} -->
-	<!-- ,#{pick_rate},#{win_rate},#{win_total_cnt} -->
-	<!-- ,#{champion_pick},#{ban_rate} ) -->
-
-
-	<!-- </insert> -->
-	<select id="allChampCnt">
-		select count(*) from emerald_rankListT where
-		teamPosition =
-		#{teamPosition} ;
-
-	</select>
-	<select id="banChampCnt">
-		select count(*)
-		from emerald_rankListT
-		where
-		ban_champion_name_kr = #{champion_name_kr} ;
-
-	</select>
-
-	<select id="allChampTierCnt">
-		select count(*) from ${tier}_rankListT where
-		teamPosition =
-		#{teamPosition} ;
-
-	</select>
-	<select id="banChampTierCnt">
-		select count(*)
-		from ${tier}_rankListT
-		where
-		ban_champion_name_kr = #{champion_name_kr} ;
-
-	</select>
 
 	<select id="laneCounterListInfo">
 		SELECT *

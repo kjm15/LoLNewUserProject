@@ -21,20 +21,31 @@
 <p id="graph_line" style="visibility: hidden; position: absolute;">top</p>
 <p id="hide_champList" style="visibility: hidden; position: absolute;">O</p>
 
-
-<div class = "darkmod_checkbox">
-	<div class = "toggle_box">
-		<input type="checkbox" id="toggle" class ="darkmod_toggle" hidden> 
+<!-- 다크모드 헤더로 이동해야지 가운데로 맞춰짐. -->
+<!-- <div class = "darkmod_checkbox"> -->
+<!-- 	<div class = "toggle_box"> -->
+<!-- 		<input type="checkbox" id="toggle" class ="darkmod_toggle" hidden>  -->
 		
-		<label for="toggle" class="toggleSwitch">
-		  <span class="toggleButton"></span>
-		</label>
-	</div>
-	<div class = "TS_name_box">
-		<p>다크모드</p>
-	</div>
-</div>
+<!-- 		<label for="toggle" class="toggleSwitch"> -->
+<!-- 		  <span class="toggleButton"></span> -->
+<!-- 		</label> -->
+<!-- 	</div> -->
+<!-- 	<div class = "TS_name_box"> -->
+<!-- 		<p>다크모드</p> -->
+<!-- 	</div> -->
+<!-- </div> -->
+<div class ="itemList_container">
+<div class="comm_left_sideBanner">
+<!-- <div class="sideBanner"> -->
+<!--   <a data-bs-toggle="modal" href="#exampleModalToggle" onclick='javascript:test()'><img class = "bannerImg" src="../img/kdg/kdgBanner.jpg"></a> -->
+<!--   <span class="txt-label banner_span_txt"> -->
+<!--     <a id = "analysisBtn" class="btn btn-primary banner_to_modalBtn" data-bs-toggle="modal" href="#exampleModalToggle" role="button" style = "width: 150px; margin-left: 26%;" onclick='javascript:test()'>get Item Build</a> -->
+<!--   </span> -->
+<!-- </div> -->
 
+</div>
+<div class ="comm_contents">
+<div class="comm_graph_content">
 <div class = "comm_graph_title">
 	<div class = "comm_title">
 	</div>
@@ -112,14 +123,11 @@
 </div>
 <br>
 <br>
+</div>
 
 <div class="coreItemList_box" style="background-color: lightgray; color: white; width: 1100px; height: 1549px;">
 
 </div>
-
-<div class="sideBanner">
-  <a data-bs-toggle="modal" href="#exampleModalToggle" onclick='javascript:test()'><img class = "bannerImg" src="../img/kdg/kdgBanner.jpg"></a>
-  <span class="txt-label banner_span_txt">
-    <a id = "analysisBtn" class="btn btn-primary banner_to_modalBtn" data-bs-toggle="modal" href="#exampleModalToggle" role="button" style = "width: 150px; margin-left: 26%;" onclick='javascript:test()'>get Item Build</a>
-  </span>
+</div>
+<div class="comm_right_sideBanner"></div>
 </div>
