@@ -28,74 +28,65 @@ public class RestPythonBuilder {
 	MatchListService matchListService;
 
 	@PostMapping("/dataToAi")
-	public List<Map<String, Object>> sendDataToPy(String matchId, Model model) throws Exception {
+	public Map<String, Object> sendDataToPy(@RequestBody Map<String, String> sMap, Model model) throws Exception {
 
-		return matchListService.sendDataToPy(matchId);
+		return matchListService.sendDataToPy(sMap);
 
 	}
-	//데이터받기 급할떄
-	@PostMapping("/getDb")
-	public Map<String, String> getDb(String[] args, String tier, Model model) throws Exception {
-
-		String filePath = "src/main/resources/static/py/jgh/trollcheckdb.py";
-		ProcessBuilder pb = new ProcessBuilder().command("python", filePath, tier);
-		Process p = pb.start();
-		BufferedReader in = new BufferedReader(new InputStreamReader(p.getInputStream()));
-		StringBuilder buffer = new StringBuilder();
-		String line = null;
-		while ((line = in.readLine()) != null) {
-			buffer.append(line);
-		}
-		int exitCode = p.waitFor();
-
-//        System.out.println("Process exit value:"+exitCode);        
-		in.close();
-		ObjectMapper mapper = new ObjectMapper();
-		Map<String, String> map = mapper.readValue(buffer.toString(), Map.class);
-		log.info("결과값 : {}", map);
-		return map;
-	}
-	//솔로랭크
+	// 솔로랭크
 	@PostMapping("/trollcheck420")
 	public Map<String, Object> trollcheck420(@RequestBody Map<String, Object> aMap, Model model) throws Exception {
-
-//		log.info("===myMap : {}", aMap);
+		Map<String, Object> aiReultMap = new HashMap<>();
+		log.info("===myMap : {}", aMap);
 		String filePath = "src/main/resources/static/py/jgh/aiTrollCheck420.py";
 		String matchId = (String) aMap.get("matchId");
-		String participantId = String.valueOf(aMap.get("participantId"));	
+		String participantId = String.valueOf(aMap.get("participantId"));
 		String key = matchId + participantId;
-		String tier = "GOLD";
+		String tier = (String) aMap.get("Tier");
 		String teamPosition = String.valueOf(aMap.get("teamPosition"));
 		String gameDuration = String.valueOf(aMap.get("gameDuration"));
 		String kda = String.valueOf(aMap.get("kda"));
 		String totalDamageDealtToChampions = String.valueOf(aMap.get("totalDamageDealtToChampions"));
 		String goldEarned = String.valueOf(aMap.get("goldEarned"));
 		String championName = String.valueOf(aMap.get("championName"));
-//			log.info(goldEarned);
-//			String participantId = String.valueOf(aMap.get("participantId")) ;
-//			String participantId = String.valueOf(aMap.get("participantId")) ;
 
-		ProcessBuilder pb = new ProcessBuilder().command("python", filePath, 
-				key, tier, teamPosition, gameDuration, kda,
-				totalDamageDealtToChampions, goldEarned,championName // ,
-		);
-		Process p = pb.start();
-		BufferedReader in = new BufferedReader(new InputStreamReader(p.getInputStream()));
-		StringBuilder buffer = new StringBuilder();
-		String line = null;
-		while ((line = in.readLine()) != null) {
-			buffer.append(line);
+		if (tier.equals("Tier")) { // 언랭
+
+			aiReultMap.put(key, "데이터부족");
+			aiReultMap.put("정확도", 1);
+			aiReultMap.put("총데이터길이", 0);
+			aiReultMap.put("구간", "unRanked");
+			aiReultMap.put("캐릭", "championName");
+
+		} else { //랭크있음
+			ProcessBuilder pb = new ProcessBuilder().command("python", filePath, key, tier, teamPosition, gameDuration,
+					kda, totalDamageDealtToChampions, goldEarned, championName // ,
+			);
+			Process p = pb.start();
+			BufferedReader in = new BufferedReader(new InputStreamReader(p.getInputStream()));
+			StringBuilder buffer = new StringBuilder();
+			String line = null;
+			while ((line = in.readLine()) != null) {
+				buffer.append(line);
+			}
+			int exitCode = p.waitFor();
+
+			in.close();
+			ObjectMapper objectMapper = new ObjectMapper();
+
+			aiReultMap = objectMapper.readValue(buffer.toString(), Map.class);
+			log.info("솔로랭크 결과값 : {}", aiReultMap);
+
 		}
-		int exitCode = p.waitFor();
-
-		in.close();
-		ObjectMapper objectMapper = new ObjectMapper();
-		Map<String, Object> aiReultMap = objectMapper.readValue(buffer.toString(), Map.class);
-		log.info("솔로랭크 결과값 : {}", aiReultMap);
-
+		aiReultMap.put("matchId", matchId);
+		aiReultMap.put("participantId", participantId);
+		
+		matchListService.saveAiData(aiReultMap);
+		
 		return aiReultMap;
 	}
-	//칼바람
+
+	// 칼바람
 	@PostMapping("/trollcheck450")
 	public Map<String, Object> trollcheck450(@RequestBody Map<String, Object> aMap, Model model) throws Exception {
 
@@ -113,8 +104,8 @@ public class RestPythonBuilder {
 //			String participantId = String.valueOf(aMap.get("participantId")) ;
 //			String participantId = String.valueOf(aMap.get("participantId")) ;
 
-		ProcessBuilder pb = new ProcessBuilder().command("python", filePath,
-				key, gameDuration, kda,	totalDamageDealtToChampions, goldEarned,championName // ,
+		ProcessBuilder pb = new ProcessBuilder().command("python", filePath, key, gameDuration, kda,
+				totalDamageDealtToChampions, goldEarned, championName // ,
 		);
 		Process p = pb.start();
 		BufferedReader in = new BufferedReader(new InputStreamReader(p.getInputStream()));

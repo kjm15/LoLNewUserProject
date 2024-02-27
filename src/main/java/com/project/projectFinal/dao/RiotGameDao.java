@@ -31,9 +31,11 @@ public interface RiotGameDao {
 
 	List<Map<String, RiotGameDto>> DBRiotGameName(String matchId);
 
-	List<Map<String, Object>> sendDataToPy(String matchId);
+	Map<String, Object> sendDataToPy(Map<String, String> sMap);
 
 	int UPdateTier(RiotGameDto rDto);
+
+	void saveAiData(Map<String, Object> aiReultMap);
 
 
 }

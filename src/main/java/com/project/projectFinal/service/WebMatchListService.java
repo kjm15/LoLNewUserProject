@@ -118,7 +118,7 @@ public class WebMatchListService {
 				System.out.println(rDto);
 				// 티어가 널일 때 업데이트
 				int aaa = riotGameDao.UPdateTier(rDto);
-				System.out.println(aaa);
+//				System.out.println(aaa);
 			}
 		}
 

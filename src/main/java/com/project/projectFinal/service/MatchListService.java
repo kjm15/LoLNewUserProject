@@ -92,14 +92,19 @@ public class MatchListService {
 	}
 	
 //	장기훈
-	public List<Map<String, Object>> sendDataToPy(String matchId) {		
+	public Map<String, Object> sendDataToPy(Map<String, String> sMap) {		
 		
-		return riotGameDao.sendDataToPy(matchId);
+		return riotGameDao.sendDataToPy(sMap);
 	}
 
 	public List<Map<String, RiotGameDto>> DBRiotGameName(String matchId) {
 		List<Map<String, RiotGameDto>> RiotGameName= riotGameDao.DBRiotGameName(matchId);
 		return RiotGameName;
+		
+	}
+
+	public void saveAiData(Map<String, Object> aiReultMap) {
+		riotGameDao.saveAiData(aiReultMap);
 		
 	}
 
