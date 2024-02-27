@@ -78,6 +78,7 @@ function champLine(lineSelect) {
 		url: "/champLineSelect",
 		data: { "line": lineSelect },
 		success: function(res) {
+			
 			var champContainer = $('.champs');
 
 			champContainer.empty();

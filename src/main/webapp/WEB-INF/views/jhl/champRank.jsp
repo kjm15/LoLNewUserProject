@@ -37,7 +37,7 @@
 						<div style="max-width: 300px" id="myChart2"></div>
 					</div>
 					<div class='box-right'>
-						<div style="max-width: 300px" id="myChart3"></div>
+						<div style="max-width: 1000px" id="myChart3"></div>
 					</div>
 					<div class='box-side'></div>
 				</div>

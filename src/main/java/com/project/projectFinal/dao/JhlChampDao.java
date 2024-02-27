@@ -55,7 +55,9 @@ public interface JhlChampDao {
 
 	public List<HashMap<String, Object>> champTierRank(ChampionRankDto rankDto);
 
-	public Map<String, Object> forGraphInfo(String championName);
+	public List<Map<String, Object>> forGraphInfo(String championName);
+
+	public List<Map<String, Object>> forGraphInfo2(Map<String, String> aMap);
 
 	
 
