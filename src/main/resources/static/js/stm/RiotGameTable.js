@@ -366,13 +366,10 @@ function showGameTamble(res, data) {
 			}
 			totalDamageDealtToChampions = res[i]["info"][j]['totalDamageDealtToChampions']
 			bartotalDamageDealtToChampions = ((totalDamageDealtToChampions / highestdamageToChampions) * 99).toFixed(0)
-			physicalDamageDealtToChampions = res[i]["info"][j]['physicalDamageDealtToChampions']
-			magicDamageDealtToChampions = res[i]["info"][j]['magicDamageDealtToChampions']
-			Number(physicalDamageDealtToChampions)
-			Number(magicDamageDealtToChampions)
-			UpbartotalDamageDealtToChampions  = (((physicalDamageDealtToChampions + magicDamageDealtToChampions)/highestdamageToChampions) * 99).toFixed(0)
-//			console.log(physicalDamageDealtToChampions) // 물리
-//			console.log(magicDamageDealtToChampions) // 마법
+			physicalDamageDealtToChampions = ((res[i]["info"][j]['physicalDamageDealtToChampions'] / highestdamageToChampions) * 99).toFixed(0)
+			magicDamageDealtToChampions = ((res[i]["info"][j]['magicDamageDealtToChampions'] / highestdamageToChampions) * 99).toFixed(0)
+
+			console.log(bartotalDamageDealtToChampions)
 			totalCs = res[i]["info"][j]['totalMinionsKilled'] + res[i]["info"][j]['totalAllyJungleMinionsKilled'] + res[i]["info"][j]['totalEnemyJungleMinionsKilled']
 			participantId = res[i]["info"][j]['participantId']
 			if (res[i]['info'][j]['teamId'] == 100) {
@@ -399,10 +396,18 @@ function showGameTamble(res, data) {
 						<div class="kdaCheck">${kda}:1</div>
 					</div>
 					<div class=damage1>
-
-						<div class=damageAmount style="width: ${UpbartotalDamageDealtToChampions}%;"></div>
-						<div class=damageGraph font-size: 10px; style="width: ${bartotalDamageDealtToChampions}%;">${totalDamageDealtToChampions}</div>
+					<div class=damage11>
+						<div class=damageAmountr style="flex-basis: ${physicalDamageDealtToChampions}%; background-Color: #8080c0; "></div>
+						<div class=damageAmountl style="flex-basis: ${magicDamageDealtToChampions}%; background-Color: orange; "></div>
+						
 					</div>
+					
+					<div class=damage111>
+					<div class=damageGraph font-size: 10px; style="width: ${bartotalDamageDealtToChampions}%;">${totalDamageDealtToChampions}</div>
+
+					</div>
+						
+				</div>
 					<div class=cs1>${totalCs}</div>
 					<div class=itemTeamCheck>
 						<div class=teamItem1>`
@@ -447,6 +452,8 @@ function showGameTamble(res, data) {
 			kda = (((kills + assists)) / deaths).toFixed(2)
 			totalDamageDealtToChampions = res[i]["info"][j]['totalDamageDealtToChampions']
 			bartotalDamageDealtToChampions = (((totalDamageDealtToChampions / highestdamageToChampions) * 99)).toFixed(0)
+			physicalDamageDealtToChampions = ((res[i]["info"][j]['physicalDamageDealtToChampions'] / highestdamageToChampions) * 99).toFixed(0)
+			magicDamageDealtToChampions = ((res[i]["info"][j]['magicDamageDealtToChampions'] / highestdamageToChampions) * 99).toFixed(0)
 
 			totalCs = res[i]["info"][j]['totalMinionsKilled'] + res[i]["info"][j]['totalAllyJungleMinionsKilled'] + res[i]["info"][j]['totalEnemyJungleMinionsKilled']
 			participantId = res[i]["info"][j]['participantId']
@@ -473,10 +480,18 @@ function showGameTamble(res, data) {
 						<div class="kdaCheck">${kda}:1</div>
 					</div>
 					<div class=damage1>
-
-						<div class=damageAmount></div>
-						<div class=damageGraph style="width: ${bartotalDamageDealtToChampions}%;">${totalDamageDealtToChampions}</div>
+					<div class=damage11>
+						<div class=damageAmountr style="flex-basis: ${physicalDamageDealtToChampions}%; background-Color: #8080c0;"></div>
+						<div class=damageAmountl style="flex-basis: ${magicDamageDealtToChampions}%; background-Color: orange; "></div>
+						
 					</div>
+					
+					<div class=damage111>
+					<div class=damageGraph font-size: 10px; style="width: ${bartotalDamageDealtToChampions}%;">${totalDamageDealtToChampions}</div>
+
+					</div>
+						
+				</div>
 					<div class=cs1>${totalCs}</div>
 					<div class=itemTeamCheck>
 						<div class=teamItem1>`

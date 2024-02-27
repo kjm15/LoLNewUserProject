@@ -235,9 +235,36 @@
 }
 
 .damage1 {
+
 	/* 	background: #ffff80; */
 	flex-basis: 20%;
 }
+
+.damage11 {
+	display: flex;
+/*	 	background: #ffff80; */
+	flex-basis: 100%;
+	height: 20px;
+}
+.damage111 {
+	display: flex;
+/*	 	background: rgb(128, 255, 255); */
+	flex-basis: 100%;
+}
+
+.damageAmountr {
+	display: flex;
+	/* 	background: #ffff80; */
+/*	flex-basis: 50%;*/
+
+}
+.damageAmountl {
+	display: flex;
+	/* 	background: #ffff80; */
+/*	flex-basis: 50%;*/
+
+}
+
 
 .cs1 {
 	/* 	background: #ff80c0; */
@@ -259,10 +286,7 @@
 	height: 50%;
 }
 
-.damageAmount {
-	 	background: #8080c0; 
-	height: 40%;
-}
+
 
 .damageGraph {
 	background: #80ff80;

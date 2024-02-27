@@ -11,6 +11,7 @@
 
 <!-- <link rel="stylesheet" href="/css/stm/lolDataList.css"type="text/css"> -->
 <link href="/css/stm/recordBoard.css" rel="stylesheet" type="text/css">
+<!-- <link rel="stylesheet" href="css/my_gradient_half_2.css" /> -->
 </head>
 
 
