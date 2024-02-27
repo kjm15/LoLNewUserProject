@@ -18,7 +18,7 @@
 			<div class="contentsItemsChamp">
 				<c:if test="${userId eq 'jhl'}">
 					<div class="rankUpdateBtn">
-						<input type="button" id="jhlRankUpdateBtn" onclick="tierUpdate()"
+						<input type="button" id="jhlRankUpdateBtn" onclick="champUpdate()"
 							value="관리자용업데이트버튼" />
 					</div>
 				</c:if>
@@ -71,8 +71,8 @@
 								<div class="rankItems">
 									<table class="Rankable">
 										<colgroup>
-											<col width="10%">
-											<col width="30%">
+											<col width="13%">
+											<col>
 											<col width="20%">
 											<col width="20%">
 											<col width="20%">

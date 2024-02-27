@@ -59,7 +59,7 @@ function champRank(position, tier) {
 	var tier = document.getElementById("rankSelect").value;
 	$.ajax({
 		type: "post",
-		url: "/champTierRank",
+		url: "/champRank",
 		data: { "teamPosition": position, "tier": tier },
 		success: function(res) {
 

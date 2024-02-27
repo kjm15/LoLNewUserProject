@@ -41,35 +41,22 @@ public class JhlRestChampController {
 		return champService.champListAll();
 	}
 
-//	@PostMapping("/champRank")
-//	public List<HashMap<String, Object>> champRank(ChampionRankDto rankDto) {
-//		return champService.champRank(rankDto);
-//	}
-//	
-	@PostMapping("/champTierRank")
-	public List<HashMap<String, Object>> champTierRank(ChampionRankDto rankDto) {
-		return champService.champTierRank(rankDto);
+	@PostMapping("/champRank")
+	public List<HashMap<String, Object>> champRank(ChampionRankDto rankDto) {
+		return champService.champRank(rankDto);
 	}
 
-//	@PostMapping("/champUpdate")
-//	public void champUpdate(ChampionRankDto rankDto) {
-////		log.info("==={}", rankDto.getTeamPosition());
-//		
-//		champService.champUpdate(rankDto);
-//
-//	}
-	
 	@PostMapping("/champCounter")
 	public void champCounter(ChampionRankDto rankDto) {
-		
+
 		champService.champCounter(rankDto);
 
 	}
-	
-	@PostMapping("/tierDataUpdate")
-	public void tierDataUpdate(ChampionRankDto rankDto) {
-		
-		champService.ranktierlistInfo(rankDto);
+
+	@PostMapping("/champUpdate")
+	public void champUpdate(ChampionRankDto rankDto) {
+
+		champService.champUpdate(rankDto);
 
 	}
 
