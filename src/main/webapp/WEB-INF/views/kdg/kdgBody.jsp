@@ -21,7 +21,7 @@
 <p id="graph_line" style="visibility: hidden; position: absolute;">top</p>
 <p id="hide_champList" style="visibility: hidden; position: absolute;">O</p>
 
-<!-- 페이지 가운데로 맞추기 위해서 다크모드 헤더로 이동했습니다. -->
+<!-- 페이지 가운데로 맞추기 위해서 다크모드 헤더로 이동했습니다.(header.jsp , newMain.css) -->
 
 <div class ="itemList_container">
 <div class="comm_left_sideBanner">
