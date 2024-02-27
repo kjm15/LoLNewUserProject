@@ -1,0 +1,41 @@
+.championGraphContainer {
+	display: flex;
+	width : 100%;
+
+}
+/* .myImg { */
+/* 	/*   background: red; */ */
+/* /* 	width: 200px; */ */
+/* 	flex-basis: 100px; */
+/* 	float: left; */
+	
+
+/* } */
+/* .box-left { */
+/* 	/*   background: red; */ */
+/* 	width: 200px; */
+/* 	flex-basis: 100px; */
+
+/* } */
+
+/* .box-center { */
+/* 	text-align: center; */
+/* /* 		background-color: yellow; */ */
+/* 	width: 300px; */
+/* /* 	margin: 0 auto; */ */
+/* } */
+
+/* .box-right { */
+/* /* 	  background: pink; */ */
+/* 	flex-basis: 100px; */
+/* 	width: 100px; */
+/* 	float: right; */
+	
+/* } */
+/* .box-side { */
+/* 	/*   background: yellow; */ */
+/* 	flex-basis: 100px; */
+/* 	width: 50%; */
+/* 	float: right; */
+	
+/* } */

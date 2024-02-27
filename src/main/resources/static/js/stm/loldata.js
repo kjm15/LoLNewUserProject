@@ -19,7 +19,7 @@ $('#searchBoom').on("click", function() {
 
 	var result = gameName.search('#');
 	if (result == -1) {
-		tagLine = "#KR1"
+		tagLine = "KR1"
 		location.href = '/stm/' + gameName + "/" + tagLine
 	} else {
 

@@ -12,7 +12,7 @@
 <!-- css들어갈자리  -->
 <link href="/css/jhl/champImg.css" rel="stylesheet">
 <link href="/css/jhl/champRank.css" rel="stylesheet">
-
+<link href="/css/jgh/chartRiot.css" rel="stylesheet">
 </head>
 
 <body>
