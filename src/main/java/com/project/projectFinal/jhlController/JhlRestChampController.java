@@ -76,11 +76,12 @@ public class JhlRestChampController {
 	}
 
 	@PostMapping("/forGraphInfo")
-	public Map<String, Object> forGraphInfo(String championName) {
-		log.info(championName);
-
+	public List<Map<String, Object>> forGraphInfo(String championName) {
 		return champService.forGraphInfo(championName);
-
+	}
+	@PostMapping("/forGraphInfo2")
+	public List<Map<String, Object>> forGraphInfo2(@RequestBody Map<String, String> aMap) {
+		return champService.forGraphInfo2(aMap);
 	}
 
 }
