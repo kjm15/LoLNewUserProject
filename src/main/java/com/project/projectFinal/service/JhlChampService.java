@@ -42,14 +42,14 @@ public class JhlChampService {
 		return champDao.champListAll();
 	}
 
-//	public List<HashMap<String, Object>> champRank(ChampionRankDto rankDto) {
-//		return champDao.champRank(rankDto);
-//	}
+	public List<HashMap<String, Object>> champRank(ChampionRankDto rankDto) {
 
+		return champDao.champRank(rankDto);
+	}
+	
 	public void champUpdate(ChampionRankDto rankDto) {
-		List<HashMap<String, Object>> laneChampList = champDao.laneListInfo(rankDto);
 
-		log.info("====초보자페이지 업데이트 시작 : {}", rankDto.getTeamPosition());
+		List<HashMap<String, Object>> laneChampList = champDao.laneListInfo(rankDto);
 
 		for (Map<String, Object> champ : laneChampList) {
 			List<HashMap<String, Object>> cList = new ArrayList<>();
@@ -60,10 +60,11 @@ public class JhlChampService {
 			String teamPosition = rankDto.getTeamPosition(); // 현재 라인
 			int championId = (int) champ.get("championid");
 
-			// cList : 각각의 챔피언 총 리스트
-			cList = champDao.rankListTeamPositionInfo(teamPosition, championId);
+			String tier = (String) rankDto.getTier();
 
-//			log.info("========{}", cList);
+			cList = champDao.ranktierlistInfo(tier, teamPosition, championId);
+
+
 
 			int allCnt = cList.size(); // 한챔피언의 총 길이
 
@@ -73,15 +74,14 @@ public class JhlChampService {
 			double pick_rate = 0;
 			double ban_rate = 0;
 			for (Map<String, Object> a : cList) {
-//				allCnt++;
 
 				if ((int) a.get("win") == 1) {
 					winCnt++;
 				}
 
 			}
-			int allChampCnt = champDao.allChampCnt(teamPosition);
-			int banChampCnt = champDao.banChampCnt(champion_name_kr);
+			int allChampCnt = champDao.allChampTierCnt(tier, teamPosition);
+			int banChampCnt = champDao.banChampTierCnt(tier, champion_name_kr);
 
 			double aa = (double) winCnt;
 			double bb = (double) allCnt;
@@ -99,22 +99,28 @@ public class JhlChampService {
 
 			int win_total_cnt = winCnt;
 
-			HashMap<String, Object> champRankTList = new HashMap<>();
+			HashMap<String, Object> champTierRankTList = new HashMap<>();
 
-			champRankTList.put("teamPosition", teamPosition);
-			champRankTList.put("champion_name", champion_name);
-			champRankTList.put("champion_name_kr", champion_name_kr);
-			champRankTList.put("pick_rate", pick_rate);
-			champRankTList.put("win_rate", win_rate);
-			champRankTList.put("win_total_cnt", win_total_cnt);
-			champRankTList.put("champion_pick", allCnt);
-			champRankTList.put("ban_rate", ban_rate);
-//			log.info("============{}", ban_rate);
-			champDao.saveChampRankT(champRankTList);
+			champTierRankTList.put("teamPosition", teamPosition);
+			champTierRankTList.put("champion_name", champion_name);
+			champTierRankTList.put("champion_name_kr", champion_name_kr);
+			champTierRankTList.put("pick_rate", pick_rate);
+			champTierRankTList.put("win_rate", win_rate);
+			champTierRankTList.put("win_total_cnt", win_total_cnt);
+			champTierRankTList.put("champion_pick", allCnt);
+			champTierRankTList.put("ban_rate", ban_rate);
+			champTierRankTList.put("tier", tier);
+
+			champDao.saveChampTierRankT(champTierRankTList);
+//			log.info("============{}", champTierRankTList);
 		}
 		log.info("====초보자페이지 업데이트 종료 : {}", rankDto.getTeamPosition());
-	}
 
+	}
+	
+
+
+	
 	public void champCounter(ChampionRankDto rankDto) {
 
 		List<HashMap<String, Object>> laneChampCounterList = champDao.laneCounterListInfo(rankDto);
@@ -170,6 +176,8 @@ public class JhlChampService {
 		return champDao.CounterchampList(rankDto);
 
 	}
+
+
 
 	// 수정해야함..
 	public void ranktierlistInfo(ChampionRankDto rankDto) {
@@ -281,5 +289,6 @@ public class JhlChampService {
 		// TODO Auto-generated method stub
 		return champDao.forGraphInfo2(aMap);
 	}
+
 
 }
