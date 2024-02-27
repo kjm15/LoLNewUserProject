@@ -27,6 +27,7 @@
 	${userId }님
 	<br>
 	<a href="/">돌아가기</a>
+	<a id = "memberload" href="/admin/allSendMessage">메시지발송</a>
 
 	<table class="table table-green table-hover" id="modal_wrap">
 
@@ -65,6 +66,7 @@
 
 
 	<script defer src="/js/kjm/Note/NoteModal.js"></script>
+	<script defer src="/js/kjm/Note/inqAdmin.js"></script>
 
 
 

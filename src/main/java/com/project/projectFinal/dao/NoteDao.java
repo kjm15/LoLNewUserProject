@@ -26,6 +26,9 @@ public interface NoteDao {
 
 	ArrayList<NoteDto> adminInq(MemberDto memberDto);
 
+	int sendToallMembers(MemberDto memberDto, NoteDto noteDto);
+
+
 //	int findMsg(NoteDto noteDto);
 
 }

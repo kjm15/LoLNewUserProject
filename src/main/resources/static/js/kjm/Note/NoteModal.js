@@ -18,7 +18,6 @@ modal_wrap.addEventListener("click", e => {
 
 	document.querySelector("#title").innerText = n_title
 	document.querySelector("#senduser").innerText = send_userId
-	document.querySelector("#recvuser").innerText = recv_userId
 	document.querySelector("#date").innerText = n_date
 	document.querySelector("#message").innerText = n_message
 	

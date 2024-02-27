@@ -37,7 +37,6 @@ public class NoteController {
 //	}
 	@PreAuthorize("hasAnyAuthority('ADMIN','INQ-MNG')")
 	@GetMapping("/admin/inq")
-	
 	public String NoteAdmin(HttpSession session, Model model ,MemberDto memberDto) {
 		String userId = (String) session.getAttribute("userId");
 		memberDto.setUserId(userId);
@@ -46,7 +45,12 @@ public class NoteController {
 		log.info("========문의 컨트롤러{}",inqlist);
 		return "admin/inq";
 	}
-	
+	@PreAuthorize("hasAnyAuthority('ADMIN','INQ-MNG')")
+	@GetMapping("/admin/allSendMessage")
+	public String getallSendMessage() {
+
+		return "admin/allSendMessage";
+	}
 	
 	//url수정하라고 하기 ex) /note/send
 	@PostMapping("/send")
@@ -63,4 +67,5 @@ public class NoteController {
 			return "redirect:/Note";
 		
 	}
+	
 }
