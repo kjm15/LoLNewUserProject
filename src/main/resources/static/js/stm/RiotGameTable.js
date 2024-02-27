@@ -172,28 +172,20 @@ function showGameTamble(res, data) {
 				}
 				wardscore = res[i]["info"][j]['wardsKilled'] + res[i]["info"][j]['wardsPlaced']
 				totalCs = res[i]["info"][j]['totalMinionsKilled'] + res[i]["info"][j]['totalAllyJungleMinionsKilled'] + res[i]["info"][j]['totalEnemyJungleMinionsKilled']
+				if (data['gameName'] == res[i]["info"][j]['riotIdGameName'] || data['gameName'] == res[i]["info"][j]['summonerName']) {
 
-				if (res[i]['info'][j]['teamId'] == res[i]['teams'][0]['teamId']) {
-					mykill = (((res[i]["info"][j]['kills'] + res[i]["info"][j]['assists']) / res[i]['teams'][0]['kills']) * 100).toFixed(0)
+					mykill = (((res[i]["info"][j]['kills'] + res[i]["info"][j]['assists']) / res[i]["info"][j]['totalTeamkills']) * 100).toFixed(0)
 
 					if (res[i]['info'][j]['queueId'] != 450) {
-						dragon = res[i]['teams'][0]['dragon']
+						dragon = res[i]["info"][j]['dragon']
 					} else {
 						dragon = '포로간식'
 					}
-				} else if (res[i]['info'][j]['teamId'] == res[i]['teams'][1]['teamId']) {
-					mykill = (((res[i]["info"][j]['kills'] + res[i]["info"][j]['assists']) / res[i]['teams'][1]['kills']) * 100).toFixed(0)
 
-					if (res[i]['info'][j]['queueId'] != 450) {
-						dragon = res[i]['teams'][0]['dragon']
-					} else {
-						dragon = '포로간식'
-					}
+
 				}
 
 			}
-
-
 
 
 			if (data['gameName'] == res[i]["info"][j]['riotIdGameName'] || data['gameName'] == res[i]["info"][j]['summonerName']) {
@@ -369,7 +361,6 @@ function showGameTamble(res, data) {
 			physicalDamageDealtToChampions = ((res[i]["info"][j]['physicalDamageDealtToChampions'] / highestdamageToChampions) * 99).toFixed(0)
 			magicDamageDealtToChampions = ((res[i]["info"][j]['magicDamageDealtToChampions'] / highestdamageToChampions) * 99).toFixed(0)
 
-			console.log(bartotalDamageDealtToChampions)
 			totalCs = res[i]["info"][j]['totalMinionsKilled'] + res[i]["info"][j]['totalAllyJungleMinionsKilled'] + res[i]["info"][j]['totalEnemyJungleMinionsKilled']
 			participantId = res[i]["info"][j]['participantId']
 			if (res[i]['info'][j]['teamId'] == 100) {

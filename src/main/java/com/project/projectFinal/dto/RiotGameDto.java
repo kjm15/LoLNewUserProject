@@ -56,6 +56,6 @@ public class RiotGameDto {
 	private String rank;
 	private int physicalDamageDealtToChampions;
 	private int magicDamageDealtToChampions;
-	
+	private int totalTeamkills;
 	
 }
