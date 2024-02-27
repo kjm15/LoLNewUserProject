@@ -71,13 +71,6 @@ public class JhlRestChampController {
 	public void champUpdate(ChampionRankDto rankDto) {
 
 		champService.champUpdate(rankDto);
-
-	@PostMapping("/tierDataUpdate")
-	public void tierDataUpdate(ChampionRankDto rankDto) {
-
-		champService.ranktierlistInfo(rankDto);
-
-
 	}
 
 	@PostMapping("/forGraphInfo")
