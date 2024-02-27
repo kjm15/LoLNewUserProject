@@ -16,7 +16,13 @@ a {
 	text-decoration: none;
 }
 
+header{
+	min-width: 1300px;
+}
 
+footer{
+	min-width: 1300px;
+}
 .main {
 	min-width: 1300px;
 	height: 100%

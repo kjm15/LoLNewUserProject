@@ -91,6 +91,7 @@ function aiCheckTroll(res1) {
 								} else { //인공지능 지표: 승
 									str = '<div class="stampWin">평균이상</div>'
 									$('#' + key).html(str);
+
 								}
 							}
 						}
@@ -228,7 +229,15 @@ function bbb(data) {
 						mm.item3 = res[i]["info"]['participants'][j]['item3']
 						mm.item4 = res[i]["info"]['participants'][j]['item4']
 						mm.item5 = res[i]["info"]['participants'][j]['item5']
+						for (k in res[i]['info']['teams']) {
+							if (res[i]["info"]['teams'][k]['teamId'] == res[i]["info"]['participants'][j]['teamId']) {
+								mm.totalTeamkills = res[i]["info"]['teams'][k]['objectives']['champion']['kills']
+								mm.dragon = res[i]["info"]['teams'][k]['objectives']['dragon']['kills']
+							}
+
+						}
 						ingamedata.push(mm)
+						//						ingamedata.push(ss)
 
 
 
