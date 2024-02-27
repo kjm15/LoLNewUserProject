@@ -29,13 +29,15 @@ public interface RiotGameDao {
 	int getMatchId(String matchId);
 
 
-	List<Map<String, RiotGameDto>> DBRiotGameName(String matchId);
+	List<Map<String, Object>> DBRiotGameName(String matchId);
 
 	Map<String, Object> sendDataToPy(Map<String, String> sMap);
 
-	int UPdateTier(RiotGameDto rDto);
+	Map<String, Object> UPdateTier(RiotGameDto rDto);
 
 	void saveAiData(Map<String, Object> aiReultMap);
+
+	Map<String, Object> forOneData(Map<String, Object> aMap);
 
 
 }

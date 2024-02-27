@@ -33,6 +33,7 @@ public class RestPythonBuilder {
 		return matchListService.sendDataToPy(sMap);
 
 	}
+
 	// 솔로랭크
 	@PostMapping("/trollcheck420")
 	public Map<String, Object> trollcheck420(@RequestBody Map<String, Object> aMap, Model model) throws Exception {
@@ -49,16 +50,23 @@ public class RestPythonBuilder {
 		String totalDamageDealtToChampions = String.valueOf(aMap.get("totalDamageDealtToChampions"));
 		String goldEarned = String.valueOf(aMap.get("goldEarned"));
 		String championName = String.valueOf(aMap.get("championName"));
-
+		String airesult = String.valueOf(aMap.get("airesult"));
+		log.info("=== {}", airesult.length());
+		log.info("=== {}", airesult);
 		if (tier.equals("Tier")) { // 언랭
 
+			aiReultMap.put("key", "데이터부족");
 			aiReultMap.put(key, "데이터부족");
 			aiReultMap.put("정확도", 1);
 			aiReultMap.put("총데이터길이", 0);
 			aiReultMap.put("구간", "unRanked");
 			aiReultMap.put("캐릭", "championName");
+			aiReultMap.put("matchId", matchId);
+			aiReultMap.put("participantId", participantId);
+			log.info("솔로랭크 결과값 : {}", aiReultMap);
+			matchListService.saveAiData(aiReultMap);
 
-		} else { //랭크있음
+		} else if (airesult.equals("null") ) { // 랭크가 있고 ai결과가 없을때
 			ProcessBuilder pb = new ProcessBuilder().command("python", filePath, key, tier, teamPosition, gameDuration,
 					kda, totalDamageDealtToChampions, goldEarned, championName // ,
 			);
@@ -75,14 +83,16 @@ public class RestPythonBuilder {
 			ObjectMapper objectMapper = new ObjectMapper();
 
 			aiReultMap = objectMapper.readValue(buffer.toString(), Map.class);
+			aiReultMap.put("matchId", matchId);
+			aiReultMap.put("participantId", participantId);
 			log.info("솔로랭크 결과값 : {}", aiReultMap);
+			matchListService.saveAiData(aiReultMap);
+		} else { // 랭크가 있고 ai결과가 있을때
 
+			aiReultMap.put(key, matchListService.forOneData(aMap).get("airesult"));
+		
 		}
-		aiReultMap.put("matchId", matchId);
-		aiReultMap.put("participantId", participantId);
-		
-		matchListService.saveAiData(aiReultMap);
-		
+
 		return aiReultMap;
 	}
 

@@ -61,25 +61,43 @@
 
 
 	<select id="sendDataToPy">
-		select * from RiotGameInfoT 
+		select * from RiotGameInfoT
+		where matchId = #{matchId}
+		and riotIdGameName = #{riotIdGameName}
+		and riotIdTagline =
+		#{riotIdTagline};
+	</select>
+
+	<select id="DBRiotGameName">
+		select * from
+		RiotGameInfoT where matchId = #{matchId};
+	</select>
+	<select id="UPdateTier">
+		UPDATE RiotGameInfoT
+		SET tier = #{tier}
+		WHERE matchId =
+		#{matchId} and riotIdGameName = #{riotIdGameName};
+
+		select * from
+		RiotGameInfoT
 		where matchId = #{matchId} 
 		and riotIdGameName = #{riotIdGameName}
 		and riotIdTagline = #{riotIdTagline};
 	</select>
 
-	<select id="DBRiotGameName">
-		select riotIdGameName , riotIdTagline from
-		RiotGameInfoT where matchId = #{matchId} and tier = 'Tier';
+	<update id="saveAiData">
+		UPDATE RiotGameInfoT
+		SET airesult = #{key}
+		WHERE
+		matchId = #{matchId} and participantId = #{participantId};
+	</update>
+
+	<select id="forOneData">
+		select * from
+		RiotGameInfoT
+		where matchId = #{matchId} and riotIdGameName = #{riotIdGameName}
+		and riotIdTagline =
+		#{riotIdTagline};
 	</select>
-	<update id="UPdateTier">
-		UPDATE RiotGameInfoT
-		SET tier =	#{tier}
-		WHERE matchId = #{matchId} and riotIdGameName = #{riotIdGameName};
-	</update>
-	
-		<update id="saveAiData">
-		UPDATE RiotGameInfoT
-		SET airesult =	#{key}
-		WHERE matchId = #{matchId} and participantId = #{participantId};
-	</update>
+
 </mapper>
