@@ -6,7 +6,6 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
-import org.apache.ibatis.ognl.ASTProject;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -65,7 +64,7 @@ public class RestPythonBuilder {
 //			log.info("솔로랭크 결과값 : {}", aiReultMap);
 			matchListService.saveAiData(aiReultMap);
 
-		} else if (airesult.equals("null") ) { // 랭크가 있고 ai결과가 없을때
+		} else if (airesult.equals("null")) { // 랭크가 있고 ai결과가 없을때
 			ProcessBuilder pb = new ProcessBuilder().command("python", filePath, key, tier, teamPosition, gameDuration,
 					kda, totalDamageDealtToChampions, goldEarned, championName // ,
 			);
@@ -89,9 +88,9 @@ public class RestPythonBuilder {
 		} else { // 랭크가 있고 ai결과가 있을때
 
 			aiReultMap.put(key, matchListService.forOneData(aMap).get("airesult"));
-		
+
 		}
-		aiReultMap.put("champion_name_kr",champion_name_kr );
+		aiReultMap.put("champion_name_kr", champion_name_kr);
 		return aiReultMap;
 	}
 
@@ -113,9 +112,43 @@ public class RestPythonBuilder {
 		String airesult = String.valueOf(aMap.get("airesult"));
 
 		if (airesult.equals("null")) { // ai결과가 없으면
-		ProcessBuilder pb = new ProcessBuilder().command("python", filePath, key, gameDuration, kda,
-				totalDamageDealtToChampions, goldEarned, championName // ,
-		);
+			ProcessBuilder pb = new ProcessBuilder().command("python", filePath, key, gameDuration, kda,
+					totalDamageDealtToChampions, goldEarned, championName // ,
+			);
+			Process p = pb.start();
+			BufferedReader in = new BufferedReader(new InputStreamReader(p.getInputStream()));
+			StringBuilder buffer = new StringBuilder();
+			String line = null;
+			while ((line = in.readLine()) != null) {
+				buffer.append(line);
+			}
+			int exitCode = p.waitFor();
+
+			in.close();
+			ObjectMapper objectMapper = new ObjectMapper();
+			aiReultMap = objectMapper.readValue(buffer.toString(), Map.class);
+
+			aiReultMap.put("matchId", matchId);
+			aiReultMap.put("participantId", participantId);
+//		log.info("칼바람 결과값 : {}", aiReultMap);
+			matchListService.saveAiData(aiReultMap);
+
+		} else {
+
+			aiReultMap.put(key, matchListService.forOneData(aMap).get("airesult"));
+		}
+		aiReultMap.put("champion_name_kr", champion_name_kr);
+
+		return aiReultMap;
+	}
+
+	// 타임라인애니메이팅 insert
+	@PostMapping("/timelineAni")
+	public Map<String, Object> trollcheck450(String matchId, Model model) throws Exception {
+		Map<String, Object> aiReultMap = new HashMap<>();
+//			log.info("===myMap : {}", aMap);
+		String filePath = "src/main/resources/static/py/jgh/timelineAni.py";
+		ProcessBuilder pb = new ProcessBuilder().command("python", filePath, matchId);
 		Process p = pb.start();
 		BufferedReader in = new BufferedReader(new InputStreamReader(p.getInputStream()));
 		StringBuilder buffer = new StringBuilder();
@@ -128,18 +161,18 @@ public class RestPythonBuilder {
 		in.close();
 		ObjectMapper objectMapper = new ObjectMapper();
 		aiReultMap = objectMapper.readValue(buffer.toString(), Map.class);
-		
+
 		aiReultMap.put("matchId", matchId);
-		aiReultMap.put("participantId", participantId);
-//		log.info("칼바람 결과값 : {}", aiReultMap);
+//			log.info("칼바람 결과값 : {}", aiReultMap);
 		matchListService.saveAiData(aiReultMap);
-		
-		}else {
-			
-			aiReultMap.put(key, matchListService.forOneData(aMap).get("airesult"));
-		}
-		aiReultMap.put("champion_name_kr",champion_name_kr );
 
 		return aiReultMap;
+	}
+
+	@PostMapping("/timelineInfo")
+	public List<Map<String, Object>> timelineInfo(String matchId, Model model) throws Exception {
+
+		return matchListService.timelineInfo(matchId);
+
 	}
 }

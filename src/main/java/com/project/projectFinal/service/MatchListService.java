@@ -113,4 +113,9 @@ public class MatchListService {
 
 	}
 
+	public List<Map<String, Object>> timelineInfo(String matchId) {
+		
+		return riotGameDao.timelineInfo(matchId);
+	}
+
 }

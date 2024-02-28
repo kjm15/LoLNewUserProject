@@ -16,6 +16,7 @@ import com.google.gson.Gson;
 import com.project.projectFinal.dto.RiotApiDto;
 import com.project.projectFinal.dto.RiotGameDto;
 import com.project.projectFinal.service.MatchListService;
+import com.project.projectFinal.service.WebClientService;
 
 import lombok.extern.slf4j.Slf4j;
 
@@ -24,17 +25,18 @@ import lombok.extern.slf4j.Slf4j;
 public class RestMatchListController {
 	@Autowired
 	MatchListService matchListService;
+	@Autowired
+	WebClientService webClientService;
 
 	private List<String> matchList; // 검색시 리스트
 	private List<String> MorematchList; // 검색시 리스트
-//	private List<String> moreMatchList; // 더보기
 
 	@PostMapping("/match/list")
 	public List<Map> matchList(RiotApiDto userListDto, Model model) {
 
 		RiotGameDto riotGameDto = new RiotGameDto();
 		String puuid = matchListService.puuId(userListDto);
-	
+
 		userListDto.setPuuid(puuid);
 
 		matchList = matchListService.MatchList(userListDto);
@@ -56,7 +58,9 @@ public class RestMatchListController {
 		}
 
 		if (newApiMatchList.size() != 0) {
+
 			List<Map> MList = matchListService.gamedate(newApiMatchList);
+
 			return MList;
 		}
 
@@ -77,18 +81,7 @@ public class RestMatchListController {
 			for (int j = 0; j < info.size(); j++) {
 				Map RiotInfo = (Map) info.get(j);
 				matchListService.RiotGameInfo(RiotInfo);
-//				System.out.println("인포");
-
 			}
-//			List teams = (List) response.get("teams");
-//			for (int j = 0; j < teams.size(); j++) {
-//				Map RiotTeams = (Map) teams.get(j);
-//				matchListService.RiotGameTeams(RiotTeams);
-////				System.out.println("팀");
-//
-//			}
-
-
 		}
 
 		return "잘됨";
@@ -118,16 +111,17 @@ public class RestMatchListController {
 		for (int i = 0; i < MatchListSelect.size(); i++) {
 			HashMap<String, Object> newGList = new HashMap<>();
 			List<Map<String, RiotGameDto>> infoData = matchListService.RiotGameInfoSelect(MatchListSelect.get(i));
-//			List<Map<String, RiotGameDto>> teamsData = matchListService.RiotGameTeamsSelect(MatchListSelect.get(i));
+			;
+//			Map<String, Object> a = webClientService.getgameTimeline(String.valueOf(infoData.get(0).get("matchId")));
 			String MatchId = MatchListSelect.get(i);
 			newGList.put("info", infoData);
 //			newGList.put("teams", teamsData);
-			newGList.put("MatchId", MatchId);
+			newGList.put("matchId", MatchId);
+//			newGList.put("timelines", a);
 			MList.add(newGList);
 		}
 		MorematchList = matchList;
 		return MList;
 	}
-	
 
 }
