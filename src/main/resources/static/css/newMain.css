@@ -70,12 +70,13 @@ footer {
 }
 
 .darkmod_checkbox {
+		justify-content: right;
 	display: flex;
-	align-items: center;
+	align-items: right;
 	/* 	background-color: white; */
 	/* 	top: -46px; */ position : relative;
 	float: right;
-	width: 180px;
+	width: 43%;
 /* 	height: 43px; */
 	/* 	border: 3px solid rgba(0 0 0/ 15%); */
 	z-index: 100;
@@ -138,8 +139,8 @@ footer {
 
 .headerItmes {
 	display: flex;
-	justify-content: center;
-	align-items: center;
+	justify-content: right;
+	align-items: right;
 	height: 50px;
 	background-color: rgb(157, 196, 253);
 	color: white;

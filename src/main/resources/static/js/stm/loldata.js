@@ -50,7 +50,7 @@ function mainSearch(gameName1) {
 }
 
 function aiCheckTroll(res1) {
-//	console.log(res1)
+	//	console.log(res1)
 	console.log("data전송완료/인공지능시작")
 	$.ajax({
 		contentType: 'application/json',
@@ -58,8 +58,8 @@ function aiCheckTroll(res1) {
 		url: '/ai/dataToAi',
 		data: JSON.stringify(res1),
 		success: function(res) {
-//			console.log(res)
-			
+			//			console.log(res)
+
 			if (res.queueId == 420) {
 				data = res
 				//					console.log(data)
@@ -356,27 +356,34 @@ function gamebtn(goBtn, matchId) {
 	container2.style.display = ((container2.style.display != 'none') ? 'none' : 'block');
 
 	if (line1.style.display == 'block') {
-		
-		data = {'matchId': matchId }
-		
+
+		data = { 'matchId': matchId }
+
 		$.ajax({
 			type: 'post',
 			url: '/summoner/v4/userList',
 			data: data,
 			success: function(res) {
 //				console.log(res)
+//
 				for (let i in res) {
-//					console.log(i)
-					$.ajax({
-						contentType: 'application/json',
-						type: 'post',
-						url: '/summoner/v4/Rank',
-						data: JSON.stringify(res[i]),
-						success: function(res1) {
-//							console.log(res1)
-							aiCheckTroll(res1)
-						}
-					})
+					if (res[i].queueId == 420) { //솔랭인경우
+						$.ajax({
+							contentType: 'application/json',
+							type: 'post',
+							url: '/summoner/v4/Rank',
+							data: JSON.stringify(res[i]),
+							success: function(res1) {
+								//							console.log(res1)
+								aiCheckTroll(res1)
+							}
+						})
+					} else if (res[i].queueId == 450) {
+
+						aiCheckTroll(res[i])
+
+					}
+
 				}
 			}
 		})

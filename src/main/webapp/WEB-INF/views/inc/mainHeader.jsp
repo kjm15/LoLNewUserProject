@@ -87,7 +87,18 @@
 		<div class="navMenu">
 			<a href="/kdg">아이템분석</a>
 		</div>
+		<div class="darkmod_checkbox">
+			<div class="toggle_box">
+				<input type="checkbox" id="toggle" class="darkmod_toggle" hidden>
 
+				<label for="toggle" class="toggleSwitch"> <span
+					class="toggleButton"></span>
+				</label>
+			</div>
+			<div class="TS_name_box">
+				<p>다크모드</p>
+			</div>
+		</div>
 
 		<!-- 		<c:if test="${userId != null}">-->
 
