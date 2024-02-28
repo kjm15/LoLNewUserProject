@@ -28,6 +28,12 @@ public interface NoteDao {
 
 	int sendToallMembers(MemberDto memberDto, NoteDto noteDto);
 
+	int inqAnswer(NoteDto noteDto);
+
+	NoteDto inqDetailView(NoteDto noteDto);
+
+	ArrayList<NoteDto> eventMessage(String userId);
+
 
 //	int findMsg(NoteDto noteDto);
 

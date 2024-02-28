@@ -42,7 +42,7 @@ public class NoteController {
 		memberDto.setUserId(userId);
 		ArrayList<NoteDto> inqlist= noteService.adminInq(memberDto);
 		model.addAttribute("inqlist", inqlist);
-		log.info("========문의 컨트롤러{}",inqlist);
+//		log.info("========문의 컨트롤러{}",inqlist);
 		return "admin/inq";
 	}
 	@PreAuthorize("hasAnyAuthority('ADMIN','INQ-MNG')")
@@ -66,6 +66,14 @@ public class NoteController {
 			noteService.DeleteNote(num);
 			return "redirect:/Note";
 		
+	}
+	
+	@PreAuthorize("hasAnyAuthority('ADMIN','INQ-MNG')")
+	@GetMapping("/admin/inqDetailView")
+	public String inqDetailView(NoteDto noteDto, Model model) {
+		NoteDto dInq = noteService.inqDetailView(noteDto);
+		model.addAttribute("dInq",dInq);
+		return "admin/inqDetailView";
 	}
 	
 }

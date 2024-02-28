@@ -23,6 +23,9 @@
 				<table border="1">
 
 					<thead>
+						<tr style="display: none;">
+							<th>번호</th>
+						</tr>
 						<tr>
 							<th>제목</th>
 							<td id="title"></td>
@@ -34,14 +37,19 @@
 						<tr>
 							<th>날짜</th>
 							<td id="date"></td>
+		
+							
 						</tr>
 						<tr>
 							<th>내용</th>
-							<td class="contents" id="message">
-							</td>
+							<td class="contents" id="message"></td>
 						</tr>
+
 					</thead>
+
 				</table>
+				<button class="answer" id="answer">답변하기</button>
+				
 
 			</div>
 		</div>

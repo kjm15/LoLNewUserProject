@@ -25,6 +25,9 @@
 	<select id="inqMain">
 		select * from NoteTableT where send_userId= #{userId} order by n_num DESC;
 	</select>
+	<select id="eventMessage">
+		select * from NoteTableT where recv_userId= #{userId} order by n_num DESC;
+	</select>
 
 	<delete id="DeleteNote">
 		delete from NoteTableT where n_num = #{n_num}
@@ -35,7 +38,14 @@
 		FULL join memberT
 		where memberT.userId = #{send_userId};
 	</select>
+	
+	<select id="inqDetailView">
+		select * from NoteTableT where n_num = #{n_num};
+	</select>
 
+	<update id="inqAnswer">
+		UPDATE NoteTableT SET n_title = #{n_title}, n_message = #{n_message}, status = #{status} where n_num = #{n_num}
+	</update>
 
 
 </mapper>
