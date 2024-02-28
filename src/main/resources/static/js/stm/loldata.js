@@ -72,7 +72,7 @@ function aiCheckTroll(res1) {
 						for (const [key, value] of Object.entries(res1)) {
 							if (res.win == 1) { // 게임 : 승리
 								if (value == '패') { //인공지능 지표 : 패
-									str = '<div class="stampLose">평균이하</div>'
+									str = '<div class="stampLose"><span tooltip="'+res1.champion_name_kr+'(은/는) 하지 않는것을 추천">평균이하</span></div>'
 									$('#' + key).html(str);
 								} else if (value == '데이터부족') { //인공지능 지표: 승
 									$('#' + key).html(value);
@@ -87,7 +87,7 @@ function aiCheckTroll(res1) {
 								} else if (value == '데이터부족') { //인공지능 지표: 승
 									$('#' + key).html(value);
 								} else { //인공지능 지표: 승
-									str = '<div class="stampWin">평균이상</div>'
+									str = '<div class="stampWin"><span tooltip="'+res1.champion_name_kr+' 챔프의 이해도가 높은 수준">평균이상></span></div>'
 									$('#' + key).html(str);
 
 								}
@@ -104,12 +104,13 @@ function aiCheckTroll(res1) {
 					url: '/ai/trollcheck450',
 					data: JSON.stringify(data),
 					success: function(res1) {
+						console.log(res1)
 						for (const [key, value] of Object.entries(res1)) {
 							if (res.win == 1) { // 게임 : 승리
 
 								if (value == '패') { //인공지능 지표 : 패
 
-									str = '<div class="stampLose">평균이하</div>'
+									str = '<div class="stampLose"><span tooltip="'+res1.champion_name_kr +' 평균 이하의 트롤러">평균이하</span></div>'
 									$('#' + key).html(str);
 
 								} else { //인공지능 지표: 승
@@ -123,7 +124,7 @@ function aiCheckTroll(res1) {
 									$('#' + key).html(str);
 
 								} else { //인공지능 지표: 승
-									str = '<div class="stampWin">평균이상</div>'
+									str = '<div class="stampWin"><span tooltip=" '+res1.champion_name_kr +' 평균 이상의 실력자">평균이상</span>	</div>'
 									$('#' + key).html(str);
 								}
 
