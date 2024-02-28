@@ -72,7 +72,7 @@ function aiCheckTroll(res1) {
 						for (const [key, value] of Object.entries(res1)) {
 							if (res.win == 1) { // 게임 : 승리
 								if (value == '패') { //인공지능 지표 : 패
-									str = '<div class="stampLose"><span tooltip="'+res1.champion_name_kr+'(은/는) 하지 않는것을 추천">평균이하</span></div>'
+									str = '<div class="stampLose"><span tooltip="' + res1.champion_name_kr + '(은/는) 하지 않는것을 추천">평균이하</span></div>'
 									$('#' + key).html(str);
 								} else if (value == '데이터부족') { //인공지능 지표: 승
 									$('#' + key).html(value);
@@ -87,7 +87,7 @@ function aiCheckTroll(res1) {
 								} else if (value == '데이터부족') { //인공지능 지표: 승
 									$('#' + key).html(value);
 								} else { //인공지능 지표: 승
-									str = '<div class="stampWin"><span tooltip="'+res1.champion_name_kr+' 챔프의 이해도가 높은 수준">평균이상></span></div>'
+									str = '<div class="stampWin"><span tooltip="' + res1.champion_name_kr + ' 챔프의 이해도가 높은 수준">평균이상></span></div>'
 									$('#' + key).html(str);
 
 								}
@@ -110,7 +110,7 @@ function aiCheckTroll(res1) {
 
 								if (value == '패') { //인공지능 지표 : 패
 
-									str = '<div class="stampLose"><span tooltip="'+res1.champion_name_kr +' 평균 이하의 트롤러">평균이하</span></div>'
+									str = '<div class="stampLose"><span tooltip="' + res1.champion_name_kr + ' 평균 이하의 트롤러">평균이하</span></div>'
 									$('#' + key).html(str);
 
 								} else { //인공지능 지표: 승
@@ -124,7 +124,7 @@ function aiCheckTroll(res1) {
 									$('#' + key).html(str);
 
 								} else { //인공지능 지표: 승
-									str = '<div class="stampWin"><span tooltip=" '+res1.champion_name_kr +' 평균 이상의 실력자">평균이상</span>	</div>'
+									str = '<div class="stampWin"><span tooltip=" ' + res1.champion_name_kr + ' 평균 이상의 실력자">평균이상</span>	</div>'
 									$('#' + key).html(str);
 								}
 
@@ -158,23 +158,23 @@ function aiCheckTroll(res1) {
 
 //////////////////장기훈/////////////////////////
 
-
+matchId_ai_list = []
 function bbb(data) {
-
+	
 	$.ajax({
 		type: 'post',
 		url: '/match/list',
 		data: data,
-		//		async: true,
 		success: function(res) {
 
-
 			console.log(res)
+			
 			if (res != '') {
 				MList = [];
 				for (let i = 0; i < res.length; i++) {
 					Gamedata = {}; // 한게임당 데이터
 					ingamedata = [];
+
 
 					for (let j = 0; j < res[i]["info"]['participants'].length; j++) {
 						mm = {}
@@ -236,18 +236,7 @@ function bbb(data) {
 
 						}
 						ingamedata.push(mm)
-						//						ingamedata.push(ss)
 
-
-
-
-
-
-						//							ss.matchId = res[i]['metadata']['matchId']
-						//							ss.participantId = res[i]["info"]['participants'][j]['participantId']
-						//							ingameitem.push(ss)
-
-						//						Gamedata.item = ingameitem
 						Gamedata.info = ingamedata
 
 					}
@@ -275,6 +264,8 @@ function bbb(data) {
 					data: data2,
 					//					dataType: 'json',
 					success: function(res) {
+
+
 						console.log(res)
 						aaa(data)
 
@@ -284,6 +275,7 @@ function bbb(data) {
 			} else {
 				aaa(data)
 			}
+
 
 
 		},
@@ -299,7 +291,9 @@ function bbb(data) {
 			console.log(m)
 		}
 
+
 	})
+
 }
 
 function aaa(data) { // data == 검색한 게임 아이디
@@ -308,7 +302,7 @@ function aaa(data) { // data == 검색한 게임 아이디
 		url: '/riot/game',
 
 		success: function(res) {
-
+			console.log(res)
 			showGameTamble(res, data)
 		}
 	})
@@ -365,8 +359,8 @@ function gamebtn(goBtn, matchId) {
 			url: '/summoner/v4/userList',
 			data: data,
 			success: function(res) {
-//				console.log(res)
-//
+				//				console.log(res)
+				//
 				for (let i in res) {
 					if (res[i].queueId == 420) { //솔랭인경우
 						$.ajax({
