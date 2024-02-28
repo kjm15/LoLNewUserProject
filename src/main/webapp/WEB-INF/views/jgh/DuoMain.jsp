@@ -27,13 +27,13 @@
 
 
 				<div class="duoSearch">
-					<div class="position-icon">
-						<div class="icon-img">*</div>
-						<div class="icon-img">*</div>
-						<div class="icon-img">*</div>
-						<div class="icon-img">*</div>
-						<div class="icon-img">*</div>
-					</div>
+<!-- 					<div class="position-icon"> -->
+<!-- 						<div class="icon-img">*</div> -->
+<!-- 						<div class="icon-img">*</div> -->
+<!-- 						<div class="icon-img">*</div> -->
+<!-- 						<div class="icon-img">*</div> -->
+<!-- 						<div class="icon-img">*</div> -->
+<!-- 					</div> -->
 
 					<div>
 						<button id="btn-duoSearch">Duo찾기작성</button>
@@ -45,12 +45,12 @@
 							<colgroup>
 								<col width="5%">
 								<col width="15%">
-								<col width="10%">
-								<col width="10%">
-								<col width="10%">
-								<col width="10%">
+								<col width="15%">
+								<col width="15%">
+								<col width="15%">
+								<col width="15%">
 
-								<col width="25%">
+								<col width="20%">
 								<col width="5%">
 							</colgroup>
 

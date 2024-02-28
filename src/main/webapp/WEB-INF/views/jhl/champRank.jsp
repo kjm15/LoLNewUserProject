@@ -17,19 +17,15 @@
 		<!-- 		<div class="aside left"></div> -->
 		<div class="contentsRank">
 			<div class="contentsItemsChamp">
-				<c:if test="${userId eq 'jhl'}">
-					<div class="rankUpdateBtn">
-						<input type="button" id="jhlRankUpdateBtn" onclick="champUpdate()"
-							value="관리자용업데이트버튼" />
-					</div>
-				</c:if>
 
 				<!-- 				장기훈 -->
 
 
 
-				<div class = championGraphContainer>
-					<div class="myImg"></div>
+				<div class=championGraphContainer>
+					<div class="myImg">
+						
+					</div>
 					<div class='box-left'>
 						<div style="max-width: 300px;" id="myChart1"></div>
 					</div>
@@ -46,6 +42,12 @@
 				<!-- 장기훈 -->
 
 				<div class="rankbanner">배너?</div>
+				<c:if test="${userId eq 'jhl'}">
+					<div class="rankUpdateBtn">
+						<input type="button" id="jhlRankUpdateBtn" onclick="champUpdate()"
+							value="관리자용업데이트버튼" />
+					</div>
+				</c:if>
 				<div class="contentChampRank">
 					<%@include file="champImg.jsp"%>
 					<div class="contentsItem LineRank">
@@ -58,6 +60,8 @@
 									<option value="gold" id="gold">Gold+
 									<option value="platinum" id=platinum>Platinum+
 									<option value="emerald" id="emerald" selected="selected">Emerald+
+
+
 
 
 									

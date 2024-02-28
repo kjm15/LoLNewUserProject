@@ -11,16 +11,20 @@
 <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 </head>
 <body>
+<div class ="containerAll">
+<div class ="contentsXa">
 	<div class="graph1" id='graph1'></div>
 	<%-- 	<canvas id="donutChart" width="100" height="100"></canvas> --%>
 	<div id="puuid">
 		<div class="containerXX">
-			<div class="containerXl"></div>
+<!-- 			<div class="containerXl"></div> -->
 
 
 			<div class="containerXC"></div>
 
 		</div>
+	</div>
+	</div>
 	</div>
 	<%-- 	<%@include file="../inc/footer.jsp"%> --%>
 </body>

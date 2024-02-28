@@ -51,20 +51,27 @@ function showGameTamble(res, data) {
 		newsummonerLevel = summonerLevel
 		newriotIdGameName = riotIdGameName
 	}
-	ccc += `<div class=container333>
+	ccc += `<div class=container333Box>
+	<div class=container333>
 	<div class="stmH">
             <div class="stmHright">
                 <div class="cpicon">
                     <div class = "cpimg">
 	<img width='85' height='85' alt='못 불러옴' src=https://ddragon.leagueoflegends.com/cdn/14.3.1/img/profileicon/${newprofileIcon}.png>
                     </div></div>
-                <div class="uid">${newsummonerLevel} </div>
-                <div class="ulevel">${newriotIdGameName}레벨</div>
+                    <div class="uidLevelBox">
+                <div class="ulevel">${newsummonerLevel} </div>
+                </div>
             </div>
+            <div class="uidBox">
+                <div class="uid">${newriotIdGameName}</div>
+                </div>
             <div class="stmHleft">
                 <div class="u-chart"><canvas id="donutChart" width="160px" height="160px"></canvas></div>
             </div>
         </div>
+        </div>
+        <div class='stmBlank'></div>
         </div>`
 
 	$('.graph1').append(ccc)
@@ -190,16 +197,18 @@ function showGameTamble(res, data) {
 
 			if (data['gameName'] == res[i]["info"][j]['riotIdGameName'] || data['gameName'] == res[i]["info"][j]['summonerName']) {
 				if (res[i]["info"][j]['win'] == '1') {
-					str += `<div class="container1" id = 'container1' style='background-color :#99ccff'>`
+					str += `<div class="container1" id = 'container1'style='background-image:linear-gradient(315deg, #D6E5FC 0%, #BED8FE 74%) '>`
 
 				} else {
-					str += `<div class="container1" id = 'container1' style='background-color :rgba(255, 2, 73, 0.09)'>`
+					str += `<div class="container1" id = 'container1' style='background-image:linear-gradient(315deg, #FFD5F4 0%, #FFB3C8 74%)'>`
 
 				}
+
+
 			}
 		}
 		str += `
-
+				
 				<div class="box-left" >
 
 					<div><span>${queue}</span></div>

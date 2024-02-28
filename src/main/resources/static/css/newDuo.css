@@ -1,5 +1,9 @@
 @charset "UTF-8";
 
+.duoContent {
+	min-width: 1300px;
+}
+
 .duoTitle {
 	display: flex;
 	justify-content: center;
@@ -9,27 +13,29 @@
 	display: flex;
 	min-height: 90vh; /* 필요시 조절 */
 	justify-content: center;
+	margin-top: 150px;
 }
 
 .duoMain {
-	width: 1100px;
+	width: 1084px;
 }
 
 .duoSearch {
 	display: flex;
-	justify-content: space-between;
+	justify-content: flex-end;
 	margin-bottom: 10px;
 }
 
 .position-icon {
-	display:flex;
+	display: flex;
 	align-items: center;
 	background-color: rgba(62, 86, 145, 0.9);
 	width: 200px; /* 사이즈 조절..*/
-	height: 40px;/* 사이즈 조절..*/
+	height: 40px; /* 사이즈 조절..*/
 	color: white;
 }
-.icon-img{
+
+.icon-img {
 	display: flex;
 	justify-content: center;
 	width: 50%;
@@ -55,18 +61,21 @@
 	display: flex;
 	flex-direction: column;
 	align-items: center;
-	border-top: 3px solid rgb(104, 124, 179);
+/* 	border-top: 3px solid rgb(104, 124, 179); */
+	border-top: 3px solid rgb(69, 139, 197);
 	border-radius: 3px;
 	text-align: center;
 }
 
 .DuoTable {
 	width: 100%;
+	border-top: 3px solid rgb(69, 139, 197);
 }
 
 .duo-th {
 	text-align: center;
-	background-color: rgb(104, 124, 179);
+/* 	background-color: rgb(104, 124, 179); */
+	background-color: rgb(69, 139, 197);
 }
 
 .duo-momo {
@@ -93,9 +102,11 @@
 }
 
 .Dtd {
-	background-color: rgba(62, 86, 145, 0.9);
-	height: 60px;
+	/* 	background-color: rgba(62, 86, 145, 0.9); */
+	background-color: rgba(69, 139, 197, 0.70); 
+	height : 60px;
 	border-bottom: 1px solid white;
+	height: 60px;
 }
 
 .duoitems {
@@ -103,39 +114,45 @@
 	color: #f7f7f9;
 }
 
-
 /* 장기훈 드랍다운 */
 .dropbtn {
-  background-color: #ea2129;
-  color: white;
-  padding: 16px;
-  font-size: 16px;
-  border: none;
+/* 	background-color: #ea2129; */
+	background-color: midnightblue;
+	color: white;
+	padding: 16px;
+	font-size: 16px;
+	border: none;
 }
 
 .dropdown {
-  position: relative;
-  display: inline-block;
+	position: relative;
+	display: inline-block;
 }
 
 .dropdown-content {
-  display: none;
-  position: absolute;
-  background-color: #f1f1f1;
-  min-width: 160px;
-  box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
-  z-index: 1;
+	display: none;
+	position: absolute;
+	background-color: #f1f1f1;
+	min-width: 160px;
+	box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2);
+	z-index: 1;
 }
 
 .dropdown-content a {
-  color: black;
-  padding: 12px 16px;
-  text-decoration: none;
-  display: block;
+	color: black;
+	padding: 12px 16px;
+	text-decoration: none;
+	display: block;
 }
 
-.dropdown-content a:hover {background-color: #ddd;}
+.dropdown-content a:hover {
+	background-color: #ddd;
+}
 
-.dropdown:hover .dropdown-content {display: block;}
+.dropdown:hover .dropdown-content {
+	display: block;
+}
 
-.dropdown:hover .dropbtn {background-color: #3e8e41;}
+.dropdown:hover .dropbtn {
+	background-color: #3e8e41;
+}

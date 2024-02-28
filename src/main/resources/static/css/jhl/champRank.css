@@ -1,14 +1,34 @@
+.rankUpdateBtn {
+	display: flex;
+	justify-content: flex-end;
+	margin-right:15px;
+}
+
+/* .w-btn-gra-anim { */
+
+/* } */
 #jhlRankUpdateBtn {
 	border: none;
-	background-color: #8CB9FC;
+	background: linear-gradient(-45deg, #33ccff 0%, #ff99cc 100%);
 	color: white;
+	border-radius: 3px;
+	
+	
+}
+#jhlRankUpdateBtn:hover{
+transform: scale(1.1);	
+
+}
+#jhlRankUpdateBtn:active{
+transform: scale(1.2);	
+
 }
 
 .sc-champTier {
 	text-align: center;
 	height: 60px;
 	border: 1px solid #8CB9FC;
-	border-radius:3px;
+	border-radius: 3px;
 	display: flex;
 	align-items: center;
 	margin: 10px 0px;
@@ -38,7 +58,7 @@
 .rankLine {
 	display: flex;
 	text-align: center;
-	width: 510px;
+	width: 530px;
 	height: 70px;
 	align-items: center;
 	margin-bottom: 1px;
@@ -110,7 +130,8 @@
 	font-size: 15px;
 	font-weight: 300;
 }
-.sc-rth{
+
+.sc-rth {
 	font-size: 14px;
 }
 
