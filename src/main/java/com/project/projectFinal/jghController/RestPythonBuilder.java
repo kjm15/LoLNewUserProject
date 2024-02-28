@@ -51,7 +51,7 @@ public class RestPythonBuilder {
 		String goldEarned = String.valueOf(aMap.get("goldEarned"));
 		String championName = String.valueOf(aMap.get("championName"));
 		String airesult = String.valueOf(aMap.get("airesult"));
-
+		String champion_name_kr = String.valueOf(aMap.get("champion_name_kr"));
 		if (tier.equals("Tier")) { // 언랭
 
 			aiReultMap.put("key", "데이터부족");
@@ -91,14 +91,14 @@ public class RestPythonBuilder {
 			aiReultMap.put(key, matchListService.forOneData(aMap).get("airesult"));
 		
 		}
-
+		aiReultMap.put("champion_name_kr",champion_name_kr );
 		return aiReultMap;
 	}
 
 	// 칼바람
 	@PostMapping("/trollcheck450")
 	public Map<String, Object> trollcheck450(@RequestBody Map<String, Object> aMap, Model model) throws Exception {
-
+		Map<String, Object> aiReultMap = new HashMap<>();
 //		log.info("===myMap : {}", aMap);
 		String filePath = "src/main/resources/static/py/jgh/aiTrollCheck450.py";
 		String matchId = (String) aMap.get("matchId");
@@ -109,10 +109,10 @@ public class RestPythonBuilder {
 		String totalDamageDealtToChampions = String.valueOf(aMap.get("totalDamageDealtToChampions"));
 		String goldEarned = String.valueOf(aMap.get("goldEarned"));
 		String championName = String.valueOf(aMap.get("championName"));
-//			log.info(goldEarned);
-//			String participantId = String.valueOf(aMap.get("participantId")) ;
-//			String participantId = String.valueOf(aMap.get("participantId")) ;
+		String champion_name_kr = String.valueOf(aMap.get("champion_name_kr"));
+		String airesult = String.valueOf(aMap.get("airesult"));
 
+		if (airesult.equals("null")) { // ai결과가 없으면
 		ProcessBuilder pb = new ProcessBuilder().command("python", filePath, key, gameDuration, kda,
 				totalDamageDealtToChampions, goldEarned, championName // ,
 		);
@@ -126,10 +126,19 @@ public class RestPythonBuilder {
 		int exitCode = p.waitFor();
 
 		in.close();
-//		log.info("결과값 : {}", buffer.toString());
 		ObjectMapper objectMapper = new ObjectMapper();
-		Map<String, Object> aiReultMap = objectMapper.readValue(buffer.toString(), Map.class);
+		aiReultMap = objectMapper.readValue(buffer.toString(), Map.class);
+		
+		aiReultMap.put("matchId", matchId);
+		aiReultMap.put("participantId", participantId);
 //		log.info("칼바람 결과값 : {}", aiReultMap);
+		matchListService.saveAiData(aiReultMap);
+		
+		}else {
+			
+			aiReultMap.put(key, matchListService.forOneData(aMap).get("airesult"));
+		}
+		aiReultMap.put("champion_name_kr",champion_name_kr );
 
 		return aiReultMap;
 	}
