@@ -1,41 +1,52 @@
 .championGraphContainer {
 	display: flex;
-	width : 100%;
-
+	width: 100%;
+	height: 250px;
+	justify-content: center;
 }
-/* .myImg { */
-/* 	/*   background: red; */ */
-/* /* 	width: 200px; */ */
-/* 	flex-basis: 100px; */
-/* 	float: left; */
-	
 
-/* } */
-/* .box-left { */
-/* 	/*   background: red; */ */
-/* 	width: 200px; */
-/* 	flex-basis: 100px; */
+.myImg {
+	display: flex;
 
-/* } */
+	align-items: center;
+	margin-bottom: 40px;
+}
+
+.box-left {
+	display: flex;
+	align-items: center;
+	margin-bottom: 40px;
+}
 
 /* .box-center { */
 /* 	text-align: center; */
-/* /* 		background-color: yellow; */ */
+/* /* 		background-color: yellow; */
+*
+/
 /* 	width: 300px; */
-/* /* 	margin: 0 auto; */ */
+/* /* 	margin: 0 auto; */
+ 
+*
+/
 /* } */
 
 /* .box-right { */
-/* /* 	  background: pink; */ */
+/* /* 	  background: pink; */
+ 
+*
+/
 /* 	flex-basis: 100px; */
 /* 	width: 100px; */
 /* 	float: right; */
-	
+
 /* } */
 /* .box-side { */
-/* 	/*   background: yellow; */ */
+/* 	/*   background: yellow; */
+ 
+*
+/
 /* 	flex-basis: 100px; */
 /* 	width: 50%; */
 /* 	float: right; */
-	
+
 /* } */

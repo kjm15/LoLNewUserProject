@@ -16,7 +16,7 @@
 <body>
 	<%@include file="../inc/header.jsp"%>
 	<div class="containerXX">
-		<div class="containerXl"></div>
+<!-- 		<div class="containerXl"></div> -->
 
 
 		<div class="containerXC">
