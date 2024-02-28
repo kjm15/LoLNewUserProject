@@ -50,6 +50,19 @@ public class RestNoteController {
 			return noteService.inqMain(userId);
 		}
 		
+		@PostMapping("/eventMessageinfo")
+		public ArrayList<NoteDto> eventMessage(HttpSession session){
+			String userId = (String) session.getAttribute("userId");
+			return noteService.eventMessage(userId);
+		}
+		
+		//답변하기
+		@PostMapping("/inqAnswer")
+		public int inqAnswer(NoteDto noteDto) {
+			
+			return noteService.inqAnswer(noteDto);
+		}
+		
 		
 		//전체 메시지 발송
 		@PostMapping("/sendToAllMembers")
