@@ -1,0 +1,166 @@
+.modal_wrap {
+	border: 2px solid black;
+	background: #eee;
+	z-index: 1;
+	display: none;
+	text-align: center;
+	font-family: arial;
+	outline: 1px black;
+	position: fixed;
+	top: 100%;
+	left: 100%;
+	transform: translate(-50%, -50%);
+}
+
+.modal_wrap.show-modal {
+	height: 500px;
+	display: block;
+}
+
+.modal_background.show-modal {
+	display: block;
+}
+
+.modal_background {
+	position: absolute;
+	width: 100%;
+	height: 100%;
+	background-color: rgba(0, 0, 0, 0.7);
+	top: 0;
+	left: 0;
+	z-index: 1;
+	display: none;
+}
+
+.modal_close {
+	width: 1%;
+	height: 1%;
+	position: absolute;
+	top: 1%;
+	right: 1%;
+}
+
+/* .modal_wrap .text { */
+/* 	margin-top: 5%; */
+/* 	margin-left: 5%; */
+/* 	margin-right: 5%; */
+/* 	margin-bottom: 5%; */
+/* } */
+.modal_close .closeImg {
+	display: block;
+	width: 100%;
+	height: 100%;
+}
+
+.modal2 {
+	width: 1000px;
+}
+
+.mapimg {
+	float: left;
+	top: 500px;
+	width: 500px;
+	height: 500px;
+}
+
+div.timeLineContents {
+	/* 	display : flex; */
+	justify-content: center;
+	border: solid 1px green;
+	width: 450px;
+	height: 350px;
+	overflow: auto;
+}
+
+.wrap {
+	display: flex;
+}
+
+.left-box {
+	justify-content: left;
+	flex-basis: 500px;
+}
+
+.right-box {
+	display: flex; justify-content : right;
+	flex-basis: 500px;
+	justify-content: right;
+}
+
+.left-box1 {
+	justify-content: left;
+	flex-basis: 10%;
+}
+
+.center-box1 {
+	justify-content: center;
+	flex-basis: 300px;
+}
+
+.right-box1 {
+	justify-content: right;
+	flex-basis: 10%;
+}
+
+.left-box2 {
+	justify-content: left;
+	flex-basis: 50px;
+}
+
+.center-box2 {
+	justify-content: center;
+	flex-basis: 300px;
+	text-align: left;
+	font-size: small;
+}
+
+.center-box22 {
+	justify-content: center;
+	flex-basis: 100px;
+	text-align: left;
+	font-size: small;
+}
+
+.right-box2 {
+	justify-content: right;
+	flex-basis: 25px;
+}
+
+.top-box {
+	width: 100%;
+	height: 30px;
+}
+
+.mid-box {
+	display: flex; width : 100%;
+	height: 250px;
+	width: 100%;
+}
+
+.bottom-box {
+	width: 100%;
+	height: 50px;
+}
+
+#one {
+	
+	position: absolute;
+	background-color: red;
+	width: 20px;
+	height: 20px;
+/* 	 writing-mode: vertical-rl; */
+/* 	 	transform:rotateY( 180deg ); */
+/* 	 	transform:rotate( 180deg ); */
+/* 	 transform: scaleX(-1); */
+/* 	display: block; */
+	border-radius: 50%;
+}
+#two {
+	color : white;
+	position: absolute;
+	background-color:rgba(0, 0, 0, 0.85);
+	width: 250px;
+	height: 25px;
+
+}
+

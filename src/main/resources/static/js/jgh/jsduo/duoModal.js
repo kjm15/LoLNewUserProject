@@ -6,7 +6,6 @@ const modal_background = document.querySelector('.modal_background')
 
 function close() {
 
-	//	$('.accordion-box').empty()
 	modal_wrap.classList.remove('show-modal');
 	modal_background.classList.remove('show-modal');
 }

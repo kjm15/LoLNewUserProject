@@ -547,18 +547,73 @@ function showGameTamble(res, data) {
 		})
 	}
 }
-function aiTimelineAni(matchId) {
 
+//클릭시 타임라인 데이터 가지고 오기 , 모달열림
+timeline_list = []
+function aiTimelineAni(matchId) {
+	timeline_list = []
 	data = { 'matchId': matchId }
 	$.ajax({
 		type: 'post',
 		url: '/ai/timelineInfo',
 		data: data,
 		success: function(res) {
-			console.log(res)
+
+			timeline_list.push(res)
+			console.log(timeline_list)
+			open()
 		}
 	})
 
+}
+
+$('#liveBroadCast').on('click', function() {
+	len = timeline_list[0].length
+	let i = 0
+	$('#liveBroadCast').hide(2000)
+	playShow = setInterval(function() {
+		if (i < len) {
+			showInfoTimeLine(i)
+			i += 1;
+		} else {
+
+			clearInterval(playShow);
+			$('#liveBroadCast').show(2000)
+			console.log("종료")
+		}
+
+	}, 1500);
+
+
+})
+
+function showInfoTimeLine(i) {
+
+	timelinelist = timeline_list[0]
+	//	console.log(timelinelist[i])
+	html1 = timelinelist[i].champion_name_kr + '<span style= "color : skyblue">(킬)</span> vs ' + timelinelist[i].victim + '<span style= "color : red">(죽음)</span> ' 
+		html3 = timelinelist[i].champion_name_kr + '<span style= "color : blue">(킬)</span> vs ' + timelinelist[i].victim + '<span style= "color : red">(죽음)</span> <hr>' 
+
+	html2 = timelinelist[i].now_time + '<hr>'
+	$('.center-box2').prepend(html3)
+	$('.center-box22').prepend(html2)
+
+	x = timelinelist[i].x
+	y = timelinelist[i].y
+
+	x1 = x * 500
+	y1 = y * 500
+	$("#one").css({
+		left: x1 - 5,
+		top: 505 - y1
+	})
+	
+	$("#two").css({
+		left: x1 - 125,
+		top: 480 - y1
+	})
+
+	$('#two').append(html1)
 }
 
 window.addEventListener('click', (e) => {
@@ -574,11 +629,14 @@ window.addEventListener('click', (e) => {
 });
 
 window.addEventListener('mouseover', (e) => {
-	
+
 	if (e.target.className == "damageAmountr" || e.target.className == "damageAmountl") {
-		
+
 		console.log("찾음")
 
 	}
 
 });
+
+
+

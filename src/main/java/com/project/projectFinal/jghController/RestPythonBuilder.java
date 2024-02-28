@@ -146,6 +146,13 @@ public class RestPythonBuilder {
 	@PostMapping("/timelineAni")
 	public Map<String, Object> trollcheck450(String matchId, Model model) throws Exception {
 		Map<String, Object> aiReultMap = new HashMap<>();
+		List<Map<String, Object>> timelineInfo = timelineInfo(matchId);
+		if (timelineInfo.size() != 0) {
+			aiReultMap.put("matchId", matchId);
+			return aiReultMap;
+
+		}
+
 //			log.info("===myMap : {}", aMap);
 		String filePath = "src/main/resources/static/py/jgh/timelineAni.py";
 		ProcessBuilder pb = new ProcessBuilder().command("python", filePath, matchId);
@@ -170,7 +177,7 @@ public class RestPythonBuilder {
 	}
 
 	@PostMapping("/timelineInfo")
-	public List<Map<String, Object>> timelineInfo(String matchId, Model model) throws Exception {
+	public List<Map<String, Object>> timelineInfo(String matchId) throws Exception {
 
 		return matchListService.timelineInfo(matchId);
 
