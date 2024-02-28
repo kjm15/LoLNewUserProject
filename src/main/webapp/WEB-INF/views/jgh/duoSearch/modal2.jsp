@@ -28,19 +28,11 @@
 						id="memoM"></span></br> </br>
 
 					<!--tabA end-->
-					<!--tabB start-->
+				
 				</div>
-<!-- 				<div id="tabB" class="tabcontent" style="display: none;"> -->
 
 
-<!-- 					<h1 class=startSearch> -->
-<!-- 						<a href="javascript:searchLol()">전적검색하기</a> -->
-<!-- 					</h1> -->
-<!-- 					<div id="aaa" align="center"></div> -->
-<!-- 				</div> -->
-				<!--tabB end-->
-
-				<button id="duoParty" class="learn-more">듀오신청하기</button>
+				
 				<button id="duoPartyCancel" style="display: none;">취소하기</button>
 
 			</div>

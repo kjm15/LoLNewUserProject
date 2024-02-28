@@ -33,13 +33,19 @@ def get_matches_timelines(matchid,api_key):
     return timelines
 
 def insert_matches_timeline_mysql(row, conn):
-
+  
     query = (
-        f"INSERT ignore INTO aiTimelineT(matchId,participantId, victim, x, y,now_time,timestamp)"
-        f"VALUES (\'{row.matchId}\',\'{row.participantId}\',\'{row.victim}\',\'{row.x}\', \'{row.y}\', \'{row.now_time}\',  \'{row.timestamp}\' )"
+        f"INSERT ignore INTO aiTimelineT(matchId,champion_name_kr, victim, x, y,now_time,timestamp)"
+        f"VALUES (\'{row.matchId}\',(select champion_name_kr from RiotGameInfoT where matchId = \'{row.matchId}\' and participantId = \'{row.participantId}\'),(select champion_name_kr from RiotGameInfoT where matchId = \'{row.matchId}\' and participantId = \'{row.victim}\'),\'{row.x}\', \'{row.y}\', \'{row.now_time}\',  \'{row.timestamp}\' )"
     )
     sql_execute(conn, query)
-
+def insert_matches_monster_timeline_mysql(row, conn):
+  
+    query = (
+        f"INSERT ignore INTO aiTimelineT(matchId,champion_name_kr, victim, x, y,now_time,timestamp)"
+        f"VALUES (\'{row.matchId}\',(select champion_name_kr from RiotGameInfoT where matchId = \'{row.matchId}\' and participantId = \'{row.participantId}\'),\'{row.victim}\',\'{row.x}\', \'{row.y}\', \'{row.now_time}\',  \'{row.timestamp}\' )"
+    )
+    sql_execute(conn, query)
 
 def sql_execute(conn, query):
     try:
@@ -55,8 +61,8 @@ def sql_execute(conn, query):
 
 timelines = get_matches_timelines(matchId,api_key)
 
-mytime_list = []
-
+mytime_Gamer_list = []
+mytime_monster_list = []
 timlines_list = timelines['info']['frames']
 for i in range(len(timlines_list)): #경기중 i분
     events_list = timlines_list[i]['events']
@@ -84,7 +90,7 @@ for i in range(len(timlines_list)): #경기중 i분
             mynow_dict.append(round(y/15000,2)) 
             mynow_dict.append(str(now_min) + '분' + str(now_second) + '초') 
             mynow_dict.append(timestamp) 
-            mytime_list.append(mynow_dict)
+            mytime_Gamer_list.append(mynow_dict)
 
         if  events_list[j]['type'] == "ELITE_MONSTER_KILL": #드래곤
             mynow_dict = []
@@ -111,7 +117,11 @@ for i in range(len(timlines_list)): #경기중 i분
                 monsterSubType = "공허 유충 처치"    
             if monsterType == "BARON_NASHOR":
                 monsterSubType = "내셔남작(바론) 처치"
+
+            killer = events_list[j]['killerId']
             
+            x = events_list[j]['position']['x']
+            y = events_list[j]['position']['y']
             timestamp = events_list[j]['timestamp']
             now_min = int(timestamp / 1000/60)
             seconds = (timestamp / 1000/60)
@@ -128,15 +138,15 @@ for i in range(len(timlines_list)): #경기중 i분
             mynow_dict.append(round(y/15000,2))
             mynow_dict.append(str(now_min) + '분' + str(now_second) + '초')
             mynow_dict.append(timestamp) 
-            mytime_list.append(mynow_dict)
+            mytime_monster_list.append(mynow_dict)
 
 
-df =pd.DataFrame(mytime_list,columns = ['matchId','participantId','victim','x','y','now_time','timestamp'])
-
+df =pd.DataFrame(mytime_Gamer_list,columns = ['matchId','participantId','victim','x','y','now_time','timestamp'])
+df_monster =pd.DataFrame(mytime_monster_list,columns = ['matchId','participantId','victim','x','y','now_time','timestamp'])
 conn = connect_mysql()
 # 데이터 넣기
 df.apply(lambda x: insert_matches_timeline_mysql(x, conn), axis=1)
-
+df_monster.apply(lambda x: insert_matches_monster_timeline_mysql(x, conn), axis=1)
 # # commit을 통해 데이터 삽입을 완료한 후에 update 실행
 conn.commit()
 conn.close()

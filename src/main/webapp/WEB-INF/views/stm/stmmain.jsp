@@ -11,6 +11,7 @@
 
 <!-- <link rel="stylesheet" href="/css/stm/lolDataList.css"type="text/css"> -->
 <link href="/css/stm/recordBoard.css" rel="stylesheet" type="text/css">
+<link href="/css/ai/aimodal.css" rel="stylesheet" type="text/css">
 <!-- <link rel="stylesheet" href="css/my_gradient_half_2.css" /> -->
 </head>
 
@@ -41,10 +42,12 @@
 
 
 	<%@include file="../stm/lolList.jsp"%>
+	
+	<%@include file="../stm/aimodal.jsp"%>
 	<!-- 유저 정보 jsp -->
 	<%-- <%@include file="../stm/StmUserData.jsp" %> --%>
 	<!-- 전적 리스트 jsp -->
-	<!-- <script defer src ="/js/stm/loldata.js"></script> -->
+	<script defer src ="/js/AI/aimodal.js"></script>
 	<!-- <script defer src="/js/stm/RiotGameTable.js"></script> -->
 	<%-- <%@include file="../inc/footer.jsp"%> --%>
 </body>
