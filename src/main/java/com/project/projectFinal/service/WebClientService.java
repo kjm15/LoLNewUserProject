@@ -22,7 +22,7 @@ public class WebClientService {
 	@Autowired
 	WebDao webdao;
 
-	private String api_key = "RGAPI-e674eb69-7d34-41d9-adfb-e43ad16950ca";
+	private String api_key = "RGAPI-175e99fa-a692-4cbb-acfb-9410f712f370";
 
 	public String getPuuId(String lolId, String tagId) {
 

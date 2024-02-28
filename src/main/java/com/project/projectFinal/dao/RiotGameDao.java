@@ -39,5 +39,7 @@ public interface RiotGameDao {
 
 	Map<String, Object> forOneData(Map<String, Object> aMap);
 
+	List<Map<String, Object>> timelineInfo(String matchId);
+
 
 }

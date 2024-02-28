@@ -8,6 +8,7 @@ $('a.feellink').click(function(e) //a태그 눌러도 맨위로 안올라감
 let win = 0
 let lose = 0
 function showGameTamble(res, data) {
+
 	console.log(data)
 	console.log(res)
 	let ccc = ''
@@ -108,9 +109,8 @@ function showGameTamble(res, data) {
 
 
 	for (let i in res) {
-		let MatchId = res[i]['MatchId']
+		let matchId = res[i]['matchId']
 
-		//		console.log(MatchId)
 
 		sss = Number(i);
 		let goBtn = sss + (data['matchCnt']) * 4
@@ -256,10 +256,21 @@ function showGameTamble(res, data) {
 				</div>
 
 				<div class="box-center2" style="font-size: 13px;">
+				<div class = "box-center2up">
 				킬관여 ${mykill}%<br>
 				시야 점수 ${wardscore}<br>
 				cs ${totalCs}<br>
 				드래곤 ${dragon}
+				</div>
+				<div class = "box-center2down">
+				
+				<a href = "#" style="color : blue;"><input type = "button" id = "${matchId}" value = ai관련test disabled = "disabled" onclick = "aiTimelineAni(\'${matchId}\')"/> </a>
+				
+
+      
+   
+				</div>
+						
 				</div>
 				<div class="box-center3">
 				<div class="blueChamp">`
@@ -319,10 +330,10 @@ function showGameTamble(res, data) {
 		for (j in res[i]['info']) {
 			if (data['gameName'] == res[i]["info"][j]['riotIdGameName'] || data['gameName'] == res[i]["info"][j]['summonerName']) {
 				if (res[i]["info"][j]['win'] == '1') {
-					str += `<div class="box-right" style='background-color :#9ac2e2' id ="gamebtn${goBtn}" onclick ="gamebtn(${goBtn},'${MatchId}')"><a href = 'javascript:;'><p></p><div>더</div><div>보</div><div>기</div><p>∨</p></a></div>`
+					str += `<div class="box-right" style='background-color :#9ac2e2' id ="gamebtn${goBtn}" onclick ="gamebtn(${goBtn},'${matchId}')"><a href = 'javascript:;'><p></p><div>더</div><div>보</div><div>기</div><p>∨</p></a></div>`
 
 				} else {
-					str += `<div class="box-right" style='background-color : rgba(255, 2, 73, 0.18)' id ="gamebtn${goBtn}" onclick ="gamebtn(${goBtn},'${MatchId}')"><a href = 'javascript:;'><p></p><div>더</div><div>보</div><div>기</div><p>∨</p></a></div>`
+					str += `<div class="box-right" style='background-color : rgba(255, 2, 73, 0.18)' id ="gamebtn${goBtn}" onclick ="gamebtn(${goBtn},'${matchId}')"><a href = 'javascript:;'><p></p><div>더</div><div>보</div><div>기</div><p>∨</p></a></div>`
 
 				}
 			}
@@ -423,7 +434,7 @@ function showGameTamble(res, data) {
 
 				str += `</div>
 					</div>
-					<div class = aidetail id = ${MatchId}` + `${participantId}><img width='20' height='20' alt='못 불러옴' src = "/img/loadingimg.gif"></div>
+					<div class = aidetail id = ${matchId}` + `${participantId}><img width='20' height='20' alt='못 불러옴' src = "/img/loadingimg.gif"></div>
 				</div>`
 			}
 		}
@@ -508,32 +519,66 @@ function showGameTamble(res, data) {
 
 				str += `</div>
 					</div>
-					<div class = aidetail id = ${MatchId}` + `${participantId}><img width=20 height='20' alt='못 불러옴' src = "/img/loadingimg.gif"></div>
+					<div class = aidetail id = ${matchId}` + `${participantId}><img width=20 height='20' alt='못 불러옴' src = "/img/loadingimg.gif"></div>
 				</div>`
 			}
 		}
 
-
 		str += `</div>
 		`
 	}
-	str += `
-		<div class="containerXR"></div>
-		<div class='more'><center><button class='loadMore' id = 'loadMore'>더 보기</button></center></div>
-		`
+	let str1 = "<div class='containerXR'></div><div class='more'><center><button class='loadMore' id = 'loadMore'>더 보기</button></center></div>"
+
 
 
 	$('.containerXC').append(str)
+	$('.containerXC').append(str1)
+	for (let i in res) {
+		console.log(i + "번째 파이썬 출발")
+		data = { 'matchId': res[i].matchId }
+		$.ajax({
+			type: 'post',
+			url: '/ai/timelineAni',
+			data: data,
+			success: function(res) {
+				console.log(res.matchId + "파이썬 저장성공")
+				$('#' + res.matchId).prop("disabled", false)
+			}
+		})
+	}
+}
+function aiTimelineAni(matchId) {
 
-
-
-	$("#loadMore").on("click", function() {
-		data['matchCnt']++;
-		$('#loadMore').remove()
-		bbb(data)
+	data = { 'matchId': matchId }
+	$.ajax({
+		type: 'post',
+		url: '/ai/timelineInfo',
+		data: data,
+		success: function(res) {
+			console.log(res)
+		}
 	})
 
 }
 
+window.addEventListener('click', (e) => {
 
+	if (e.target.id == "loadMore") {
 
+		console.log("실행됨");
+		data['matchCnt']++;
+		$('#loadMore').remove()
+		bbb(data)
+	}
+
+});
+
+window.addEventListener('mouseover', (e) => {
+	
+	if (e.target.className == "damageAmountr" || e.target.className == "damageAmountl") {
+		
+		console.log("찾음")
+
+	}
+
+});
