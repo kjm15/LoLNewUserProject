@@ -1,9 +1,13 @@
 //문의하기
 $('#mailsend').on("click", function() {
-	send()
+	
+	//채팅방의 send()메소드와 이름이 같아서 에러발생
+	// send1로 변경 추후에 원하는 메소드 이름으로 변경 요망
+	//장기훈씀
+	send1()
 })
 
-function send() {
+function send1() {
 	let recv_userId = $('#recv_userId').val()
 	let send_userId = $('#send_userId').val()
 	let n_title = $('#n_title').val()
