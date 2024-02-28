@@ -67,7 +67,7 @@ public class NoteService {
 	public ArrayList<NoteDto> adminInq(MemberDto memberDto) {
 		// TODO Auto-generated method stub
 		ArrayList<NoteDto> inqlist = noteDao.adminInq(memberDto);
-		log.info("========문의 서비스{}",inqlist);
+//		log.info("========문의 서비스{}",inqlist);
 		return inqlist;
 	}
 
@@ -75,6 +75,22 @@ public class NoteService {
 	public int sendToallMembers(MemberDto memberDto, NoteDto noteDto) {
 		int result = noteDao.sendToallMembers(memberDto, noteDto);
 		return result;
+	}
+
+	public int inqAnswer(NoteDto noteDto) {
+		// TODO Auto-generated method stub
+		int result = noteDao.inqAnswer(noteDto);
+		return result;
+	}
+
+	public NoteDto inqDetailView(NoteDto noteDto) {
+		NoteDto dInq = noteDao.inqDetailView(noteDto);
+		return dInq;
+	}
+
+	public ArrayList<NoteDto> eventMessage(String userId) {
+		
+		return noteDao.eventMessage(userId);
 	}
 
 

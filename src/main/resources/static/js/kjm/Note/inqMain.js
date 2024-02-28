@@ -8,12 +8,12 @@ const GoInq = document.getElementById("GoInq")
 const inqMain = document.getElementById("inqMain")
 const inqMain2 = document.getElementById("inqMain2")
 const inqMain3 = document.getElementById("inqMain3")
-const myinq = document.getElementById("myinq")
-const myinq2 = document.getElementById("myinq2")
-const myinq3 = document.getElementById("myinq3")
+const eventMessage = document.getElementById("eventMessage")
+const eventMessage2 = document.getElementById("eventMessage2")
+
 const sendinq = document.getElementById("sendinq")
 const sendinq2 = document.getElementById("sendinq2")
-const sendinq3 = document.getElementById("sendinq3")
+
 
 
 	$('#GoGoGo').click(function(){
@@ -47,30 +47,23 @@ $('#inqMain3').on("click", function() {
 	modal1.style.display = "flex"
 
 })
-$('#myinq').on("click", function() {
-	console.log("실행2")
-
+$('#eventMessage').on("click", function() {
+	console.log("실행2-1")
+ 	eventMessageinfo()
 	modal1.style.display = "none"
 	modal3.style.display = "none"
 	modal2.style.display = "flex"
 
 })
-$('#myinq2').on("click", function() {
-	console.log("실행2")
-
+$('#eventMessage2').on("click", function() {
+	console.log("실행2-2")
+	eventMessageinfo()
 	modal1.style.display = "none"
 	modal3.style.display = "none"
 	modal2.style.display = "flex"
 
 })
-$('#myinq3').on("click", function() {
-	console.log("실행2")
 
-	modal1.style.display = "none"
-	modal3.style.display = "none"
-	modal2.style.display = "flex"
-
-})
 $('#sendinq').on("click", function() {
 	console.log("실행3")
 
@@ -87,14 +80,7 @@ $('#sendinq2').on("click", function() {
 	modal3.style.display = "flex"
 
 })
-$('#sendinq3').on("click", function() {
-	console.log("실행3")
 
-	modal1.style.display = "none"
-	modal2.style.display = "none"
-	modal3.style.display = "flex"
-
-})
 
 //닫기버튼
 const closeBtn = modal1.querySelector(".modal-close-area")
@@ -142,6 +128,34 @@ function inqMaininfo() {
                     </tr>`;
 			}
 			document.getElementById("inqbody").innerHTML = str
+		}
+	})
+}
+
+//관리자 메시지
+function eventMessageinfo() {
+
+
+
+	$.ajax({
+
+		type: 'post',
+		url: '/eventMessageinfo',
+
+		
+		success: function(res) {
+			console.log(res)
+			let str = ''
+			for (let i in res) {
+				str += `<tr class="eventMessage">
+                        <td class="n_num" style="display : none;">${res[i].n_num}</td>
+                        <td class="send_userId">${res[i].send_userId}</td>
+                        <td class="n_title">${res[i].n_title}</td>
+                        <td class="n_date">${res[i].n_date}</td>
+                        <td class="n_message" style="display : none;">${res[i].n_message}</td>
+                    </tr>`;
+			}
+			document.getElementById("event_body").innerHTML = str
 		}
 	})
 }

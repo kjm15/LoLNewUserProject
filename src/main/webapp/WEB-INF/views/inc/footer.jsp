@@ -6,7 +6,7 @@
 <script defer src="js/kjm/Note/inqMain.js"></script>
 <%@include file="../kjm/inqMain.jsp"%>
 <%@include file="../kjm/sendInq.jsp"%>
-<%@include file="../kjm/myInq.jsp"%>
+<%@include file="../kjm/eventMessage.jsp"%>
 <%@include file="../kjm/inqdetail.jsp"%>
 <!-- 김진문 -->
 

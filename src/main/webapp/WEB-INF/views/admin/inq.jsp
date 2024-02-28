@@ -19,7 +19,10 @@
 
 <script type="text/javascript"
 	src="https://code.jquery.com/jquery-1.12.4.min.js"></script>
+<script
+	src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
 <link href="/css/kjm/modal2.css" rel="stylesheet" type="text/css">
+<link href="/css/kjm/modal_main.css" rel="stylesheet" type="text/css">
 <!--    css -->
 <title>Insert title here</title>
 </head>
@@ -27,7 +30,7 @@
 	${userId }님
 	<br>
 	<a href="/">돌아가기</a>
-	<a id = "memberload" href="/admin/allSendMessage">메시지발송</a>
+	<a id="memberload" href="/admin/allSendMessage">메시지발송</a>
 
 	<table class="table table-green table-hover" id="modal_wrap">
 
@@ -41,16 +44,15 @@
 		<tbody>
 
 			<c:forEach var="item" items="${inqlist}">
-				</a>
+			
 				<tr class="inqlist" id="inqlist">
 					<td>${item.n_num}</td>
 					<td>${item.send_userId}</td>
-					<td>${item.n_title}</td>
+					<td><a href="inqDetailView?n_num=${item.n_num}"">${item.n_title}</a></td>
 					<td>${item.n_date}</td>
-					<td id = "status">${item.status}</td>
-					<td style="display: none;">${item.recv_userId}</td>
-					<td style="display: none;">${item.n_message}</td>
-					
+					<td id="status">${item.status}</td>
+<%-- 					<td style="display: none;">${item.recv_userId}</td> --%>
+<%-- 					<td style="display: none;">${item.n_message}</td> --%>
 				</tr>
 				<input type="hidden" name="${item.recv_userId}"
 					id="${item.recv_userId}">
@@ -60,8 +62,10 @@
 		</tbody>
 	</table>
 
-	<!-- 메일 보기 -->
-	<%@include file="kjmmodal2.jsp"%>
+<!-- 	<!-- 메일 보기 --> -->
+<%-- 	<%@include file="inqdetail.jsp"%> --%>
+<!-- 	<!-- 	문의 답장 --> -->
+<%-- 	<%@include file="inqAnswer.jsp"%> --%>
 
 
 

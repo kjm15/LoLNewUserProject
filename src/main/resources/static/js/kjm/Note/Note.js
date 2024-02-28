@@ -1,4 +1,4 @@
-//메일 보내기
+//문의하기
 $('#mailsend').on("click", function() {
 	send()
 })
