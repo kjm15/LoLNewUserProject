@@ -5,7 +5,7 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>정혜린</title>
+<title>초보자를 위한 DataBoom</title>
 
 <script type="text/javascript"
 	src="https://code.jquery.com/jquery-1.12.4.min.js"></script>
