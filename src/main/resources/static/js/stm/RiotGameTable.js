@@ -326,12 +326,12 @@ function showGameTamble(res, data) {
 		str += `<div class="container2" id='container2${goBtn}' style='display: none'>
 				<div class="legend">
 					<div class="teamId" style=color:blue;>블루팀(${blueWin})</div>
-					<div class=kda>	kda	</div>
+					<div class=kda>	 <span tooltip="(kill+assist)/death"><a href = "#">kda</a></span>	</div>
 					
-					<div class=damage>가한피해량</div>
-					<div class=cs>총합cs</div>
-					<div class=itemTeam>아이템</div>
-					<div class=aicheck>AI TCS</div>
+					<div class=damage> <span tooltip="상대방에게 가한 (물리+마법)피해"><a href = "#">가한피해량</a></span></div>
+					<div class=cs><span tooltip="게임에서 잡은 미니언의 총 개수"><a href = "#">cs</span></a></div>
+					<div class=itemTeam><span tooltip="최종 구입한 총 아이템"><a href = "#">아이템</span></a></div>
+					<div class=aicheck><span tooltip="인공지능 (Troller Check System)"><a href = "#">AI TCS</a></span></div>
 					</div>`
 		let damageToChampions = []
 		for (j in res[i]['info']) {
@@ -421,10 +421,12 @@ function showGameTamble(res, data) {
 		str += `
 		<div class="legend1">
 					<div class="teamId" style=color:red;>레드팀(${redWin})</div>
-					<div class=kda>kda</div>
-					<div class=damage>가한피해량</div>
-					<div class=cs>총합cs</div>
-					<div class=itemTeam>아이템</div>
+					<div class=kda>	 <span tooltip="(kill+assist)/death"><a href = "#">kda</a></span>	</div>
+					
+					<div class=damage> <span tooltip="상대방에게 가한 (물리+마법)피해"><a href = "#">가한피해량</a></span></div>
+					<div class=cs><span tooltip="게임에서 잡은 미니언의 총 개수"><a href = "#">cs</span></a></div>
+					<div class=itemTeam><span tooltip="최종 구입한 총 아이템"><a href = "#">아이템</span></a></div>
+					<div class=aicheck><span tooltip="인공지능 (Troller Check System)"><a href = "#">AI TCS</a></span></div>
 					</div>`
 
 		for (j in res[i]['info']) {
