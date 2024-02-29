@@ -410,9 +410,9 @@ function showGameTamble(res, data) {
 					</div>
 					<div class=damage1>
 					<div class=damage11>
-						<div class=damageAmountr style="flex-basis: ${physicalDamageDealtToChampions}%; background-Color: #8080c0; "></div>
-						<div class=damageAmountl style="flex-basis: ${magicDamageDealtToChampions}%; background-Color: orange; "></div>
-						
+						<div class=damageAmountr style="flex-basis: ${physicalDamageDealtToChampions}%; background-Color: #8080c0; "  name = '${res[i]["info"][j]['physicalDamageDealtToChampions']}'></div>
+						<div class=damageAmountl style="flex-basis: ${magicDamageDealtToChampions}%; background-Color: orange; "name =  '${res[i]["info"][j]['magicDamageDealtToChampions']}'></div>
+							
 					</div>
 					
 					<div class=damage111>
@@ -496,9 +496,8 @@ function showGameTamble(res, data) {
 					</div>
 					<div class=damage1>
 					<div class=damage11>
-						<div class=damageAmountr style="flex-basis: ${physicalDamageDealtToChampions}%; background-Color: #8080c0;"></div>
-						<div class=damageAmountl style="flex-basis: ${magicDamageDealtToChampions}%; background-Color: orange; "></div>
-						
+						<div class=damageAmountr style="flex-basis: ${physicalDamageDealtToChampions}%; background-Color: #8080c0; "  name = '${res[i]["info"][j]['physicalDamageDealtToChampions']}'></div>
+						<div class=damageAmountl style="flex-basis: ${magicDamageDealtToChampions}%; background-Color: orange; "name =  '${res[i]["info"][j]['magicDamageDealtToChampions']}'></div> 	
 					</div>
 					
 					<div class=damage111>
@@ -593,6 +592,7 @@ function showInfoTimeLine(i) {
 	img = ''
 	timelinelist = timeline_list[0]
 
+
 	championName = timelinelist[i].championName
 	championName1 = timelinelist[i].victim_championName
 	img = "<img width = 18 height = 18 alt = '못불러옴' src = https://ddragon.leagueoflegends.com/cdn/14.3.1/img/champion/" + championName + ".png" + " >"
@@ -600,6 +600,7 @@ function showInfoTimeLine(i) {
 	console.log(img)
 	html1 = img + timelinelist[i].champion_name_kr + '<span style= "color : skyblue">(킬)</span> vs ' + img1 + timelinelist[i].victim + '<span style= "color : red">(죽음)</span> '
 	html3 = img + timelinelist[i].champion_name_kr + '<span style= "color : blue">(킬)</span> vs ' + img1+ timelinelist[i].victim + '<span style= "color : red">(죽음)</span> <hr>'
+
 
 	html2 = timelinelist[i].now_time + '<hr>'
 	$('.center-box2').prepend(html3)
@@ -636,15 +637,20 @@ window.addEventListener('click', (e) => {
 
 });
 
-window.addEventListener('mouseover', (e) => {
-
-	if (e.target.className == "damageAmountr" || e.target.className == "damageAmountl") {
-
-		console.log("찾음")
-
-	}
-
-});
+//window.addEventListener('mouseover', (e) => {
+//
+//	if (e.target.className == "damageAmountr" || e.target.className == "damageAmountl") {
+//
+//		if (e.target.className == "damageAmountr") {
+//			$('.pys-text').css("display","block")
+//		} else if (e.target.className == "damageAmountl") {
+//
+//
+//		}
+//
+//	}
+//
+//});
 
 
 
