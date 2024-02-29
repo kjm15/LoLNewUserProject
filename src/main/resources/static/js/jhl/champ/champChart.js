@@ -44,7 +44,7 @@ function champChartGraph(championName) {
 //			$('#myChart2').append('<canvas id="doughnutChart" width = "250"><canvas>');
 			$('#myChart3').append('<canvas id="bar-chart-horizontal" width = "500px"><canvas>');
 
-			let myImg = "<div class='myChampbox'><div class='mychamp_imgs'><img  alt='못 불러옴' src='https://ddragon.leagueoflegends.com/cdn/14.3.1/img/champion/" + res[0].champion_name + ".png' class= 'champImgs'></div></div>"
+			let myImg = "<div class='myChampbox'><div class='mychamp_imgs'><img  alt='못 불러옴' src='https://ddragon.leagueoflegends.com/cdn/14.3.1/img/champion/" + res[0].champion_name + ".png' class= 'champImgs'></div></div><span>"+res[0].champion_name_kr+"</span>"
 			$('.myImg').html(myImg);
 
 			//총 승률
@@ -235,7 +235,7 @@ function makeHorizontalBar(champion_name, teamPosition) {
 				data: {
 					labels: labels,
 					datasets: [{
-						label: '와드 구입 갯수',
+						label: '픽률',
 						data: values,
 						backgroundColor: [
 							'rgba(255, 99, 132, 0.2)',
@@ -262,7 +262,7 @@ function makeHorizontalBar(champion_name, teamPosition) {
 						}
 					},
 					tooltips: { //튤팁제거
-						enabled: false
+						enabled: true
 					},
 					legend: {
 						display: false
