@@ -535,11 +535,11 @@ function showGameTamble(res, data) {
 	$('.containerXC').append(str1)
 	for (let i in res) {
 		console.log(i + "번째 파이썬 출발")
-		data = { 'matchId': res[i].matchId }
+		data1 = { 'matchId': res[i].matchId }
 		$.ajax({
 			type: 'post',
 			url: '/ai/timelineAni',
-			data: data,
+			data: data1,
 			success: function(res) {
 				console.log(res.matchId + "파이썬 저장성공")
 				$('#' + res.matchId).prop("disabled", false)
@@ -575,6 +575,8 @@ $('#liveBroadCast').on('click', function() {
 		if (i < len) {
 			showInfoTimeLine(i)
 			i += 1;
+		} else if (i == len) {
+			$('#two').html('게임종료')
 		} else {
 
 			clearInterval(playShow);
@@ -582,17 +584,22 @@ $('#liveBroadCast').on('click', function() {
 			console.log("종료")
 		}
 
-	}, 1500);
+	}, 500);
 
 
 })
-
+//라이브시스템 시작
 function showInfoTimeLine(i) {
-
+	img = ''
 	timelinelist = timeline_list[0]
-	//	console.log(timelinelist[i])
-	html1 = timelinelist[i].champion_name_kr + '<span style= "color : skyblue">(킬)</span> vs ' + timelinelist[i].victim + '<span style= "color : red">(죽음)</span> ' 
-		html3 = timelinelist[i].champion_name_kr + '<span style= "color : blue">(킬)</span> vs ' + timelinelist[i].victim + '<span style= "color : red">(죽음)</span> <hr>' 
+
+	championName = timelinelist[i].championName
+	championName1 = timelinelist[i].victim_championName
+	img = "<img width = 18 height = 18 alt = '못불러옴' src = https://ddragon.leagueoflegends.com/cdn/14.3.1/img/champion/" + championName + ".png" + " >"
+	img1 = "<img width = 18 height = 18 alt = '못불러옴' src = https://ddragon.leagueoflegends.com/cdn/14.3.1/img/champion/" + championName1 + ".png" + " >"
+	console.log(img)
+	html1 = img + timelinelist[i].champion_name_kr + '<span style= "color : skyblue">(킬)</span> vs ' + img1 + timelinelist[i].victim + '<span style= "color : red">(죽음)</span> '
+	html3 = img + timelinelist[i].champion_name_kr + '<span style= "color : blue">(킬)</span> vs ' + img1+ timelinelist[i].victim + '<span style= "color : red">(죽음)</span> <hr>'
 
 	html2 = timelinelist[i].now_time + '<hr>'
 	$('.center-box2').prepend(html3)
@@ -607,13 +614,14 @@ function showInfoTimeLine(i) {
 		left: x1 - 5,
 		top: 505 - y1
 	})
-	
+
 	$("#two").css({
 		left: x1 - 125,
 		top: 480 - y1
 	})
-
-	$('#two').append(html1)
+	$('#two').hide(0)
+	$('#two').html(html1)
+	$('#two').show(150)
 }
 
 window.addEventListener('click', (e) => {

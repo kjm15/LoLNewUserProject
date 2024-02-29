@@ -35,15 +35,15 @@ def get_matches_timelines(matchid,api_key):
 def insert_matches_timeline_mysql(row, conn):
   
     query = (
-        f"INSERT ignore INTO aiTimelineT(matchId,champion_name_kr, victim, x, y,now_time,timestamp)"
-        f"VALUES (\'{row.matchId}\',(select champion_name_kr from RiotGameInfoT where matchId = \'{row.matchId}\' and participantId = \'{row.participantId}\'),(select champion_name_kr from RiotGameInfoT where matchId = \'{row.matchId}\' and participantId = \'{row.victim}\'),\'{row.x}\', \'{row.y}\', \'{row.now_time}\',  \'{row.timestamp}\' )"
+        f"INSERT ignore INTO aiTimelineT(matchId,championName,champion_name_kr, victim,victim_championName, x, y,now_time,timestamp)"
+        f"VALUES (\'{row.matchId}\',(select championName from RiotGameInfoT where matchId = \'{row.matchId}\' and participantId = \'{row.participantId}\'),(select champion_name_kr from RiotGameInfoT where matchId = \'{row.matchId}\' and participantId = \'{row.participantId}\'),(select champion_name_kr from RiotGameInfoT where matchId = \'{row.matchId}\' and participantId = \'{row.victim}\'),(select championName from RiotGameInfoT where matchId = \'{row.matchId}\' and participantId = \'{row.victim}\'),\'{row.x}\', \'{row.y}\', \'{row.now_time}\',  \'{row.timestamp}\' )"
     )
     sql_execute(conn, query)
 def insert_matches_monster_timeline_mysql(row, conn):
   
     query = (
-        f"INSERT ignore INTO aiTimelineT(matchId,champion_name_kr, victim, x, y,now_time,timestamp)"
-        f"VALUES (\'{row.matchId}\',(select champion_name_kr from RiotGameInfoT where matchId = \'{row.matchId}\' and participantId = \'{row.participantId}\'),\'{row.victim}\',\'{row.x}\', \'{row.y}\', \'{row.now_time}\',  \'{row.timestamp}\' )"
+        f"INSERT ignore INTO aiTimelineT(matchId,championName,champion_name_kr, victim,victim_championName, x, y,now_time,timestamp)"
+        f"VALUES (\'{row.matchId}\',(select championName from RiotGameInfoT where matchId = \'{row.matchId}\' and participantId = \'{row.participantId}\'),(select champion_name_kr from RiotGameInfoT where matchId = \'{row.matchId}\' and participantId = \'{row.participantId}\'),\'{row.victim}\','monster',\'{row.x}\', \'{row.y}\', \'{row.now_time}\',  \'{row.timestamp}\' )"
     )
     sql_execute(conn, query)
 
