@@ -410,9 +410,9 @@ function showGameTamble(res, data) {
 					</div>
 					<div class=damage1>
 					<div class=damage11>
-						<div class=damageAmountr style="flex-basis: ${physicalDamageDealtToChampions}%; background-Color: #8080c0; "></div>
-						<div class=damageAmountl style="flex-basis: ${magicDamageDealtToChampions}%; background-Color: orange; "></div>
-						
+						<div class=damageAmountr style="flex-basis: ${physicalDamageDealtToChampions}%; background-Color: #8080c0; "  name = '${res[i]["info"][j]['physicalDamageDealtToChampions']}'></div>
+						<div class=damageAmountl style="flex-basis: ${magicDamageDealtToChampions}%; background-Color: orange; "name =  '${res[i]["info"][j]['magicDamageDealtToChampions']}'></div>
+							
 					</div>
 					
 					<div class=damage111>
@@ -496,9 +496,8 @@ function showGameTamble(res, data) {
 					</div>
 					<div class=damage1>
 					<div class=damage11>
-						<div class=damageAmountr style="flex-basis: ${physicalDamageDealtToChampions}%; background-Color: #8080c0;"></div>
-						<div class=damageAmountl style="flex-basis: ${magicDamageDealtToChampions}%; background-Color: orange; "></div>
-						
+						<div class=damageAmountr style="flex-basis: ${physicalDamageDealtToChampions}%; background-Color: #8080c0; "  name = '${res[i]["info"][j]['physicalDamageDealtToChampions']}'></div>
+						<div class=damageAmountl style="flex-basis: ${magicDamageDealtToChampions}%; background-Color: orange; "name =  '${res[i]["info"][j]['magicDamageDealtToChampions']}'></div> 	
 					</div>
 					
 					<div class=damage111>
@@ -591,8 +590,8 @@ function showInfoTimeLine(i) {
 
 	timelinelist = timeline_list[0]
 	//	console.log(timelinelist[i])
-	html1 = timelinelist[i].champion_name_kr + '<span style= "color : skyblue">(킬)</span> vs ' + timelinelist[i].victim + '<span style= "color : red">(죽음)</span> ' 
-		html3 = timelinelist[i].champion_name_kr + '<span style= "color : blue">(킬)</span> vs ' + timelinelist[i].victim + '<span style= "color : red">(죽음)</span> <hr>' 
+	html1 = timelinelist[i].champion_name_kr + '<span style= "color : skyblue">(킬)</span> vs ' + timelinelist[i].victim + '<span style= "color : red">(죽음)</span> '
+	html3 = timelinelist[i].champion_name_kr + '<span style= "color : blue">(킬)</span> vs ' + timelinelist[i].victim + '<span style= "color : red">(죽음)</span> <hr>'
 
 	html2 = timelinelist[i].now_time + '<hr>'
 	$('.center-box2').prepend(html3)
@@ -607,7 +606,7 @@ function showInfoTimeLine(i) {
 		left: x1 - 5,
 		top: 505 - y1
 	})
-	
+
 	$("#two").css({
 		left: x1 - 125,
 		top: 480 - y1
@@ -628,15 +627,20 @@ window.addEventListener('click', (e) => {
 
 });
 
-window.addEventListener('mouseover', (e) => {
-
-	if (e.target.className == "damageAmountr" || e.target.className == "damageAmountl") {
-
-		console.log("찾음")
-
-	}
-
-});
+//window.addEventListener('mouseover', (e) => {
+//
+//	if (e.target.className == "damageAmountr" || e.target.className == "damageAmountl") {
+//
+//		if (e.target.className == "damageAmountr") {
+//			$('.pys-text').css("display","block")
+//		} else if (e.target.className == "damageAmountl") {
+//
+//
+//		}
+//
+//	}
+//
+//});
 
 
 
