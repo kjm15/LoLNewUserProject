@@ -8,7 +8,7 @@ $('a.feellink').click(function(e) //a태그 눌러도 맨위로 안올라감
 let win = 0
 let lose = 0
 function showGameTamble(res, data) {
-
+	moredata = data
 	console.log(data)
 	console.log(res)
 	let ccc = ''
@@ -619,11 +619,11 @@ function showInfoTimeLine(i) {
 window.addEventListener('click', (e) => {
 
 	if (e.target.id == "loadMore") {
-
+		console.log(moredata)
 		console.log("실행됨");
-		data['matchCnt']++;
+		moredata['matchCnt']++;
 		$('#loadMore').remove()
-		bbb(data)
+		bbb(moredata)
 	}
 
 });
