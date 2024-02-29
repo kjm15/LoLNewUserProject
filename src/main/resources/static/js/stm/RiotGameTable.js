@@ -206,21 +206,31 @@ function showGameTamble(res, data) {
 
 
 			}
+
+			if (data['gameName'] == res[i]["info"][j]['riotIdGameName'] || data['gameName'] == res[i]["info"][j]['summonerName']) {
+				if (res[i]["info"][j]['win'] == '1') {
+					str += `<div class='box-column' style='background-color:#75ABFD;width:10px;'></div>
+					<div class="box-left" >
+					<div><span style='font-weight:bold;'>${queue}</span></div>
+					<div><span style='font-size:13px'>${spentTime}</span></div>
+					<div><span style='color:blue;'>${win_lose}</span></div>
+					<div><span style='font-size:13px'>${ingamespentTime}</span></div>
+					</div>`
+
+				} else {
+					str += `<div class='box-column' style='background-color:#FF5E8A;width:10px;'></div>
+					<div class="box-left" >
+					<div><span style='font-weight:bold;'>${queue}</span></div>
+					<div><span style='font-size:13px'>${spentTime}</span></div>
+					<div><span style='color:red;'>${win_lose}</span></div>
+					<div><span style='font-size:13px'>${ingamespentTime}</span></div>
+					</div>`
+
+				}
+			}
 		}
 		str += `
-				
-				<div class="box-left" >
-
-					<div><span>${queue}</span></div>
-					<div>${spentTime}</div>
-					<div>${win_lose}</div>
-					<div style="background-color: skypink;">${ingamespentTime}</div>
-
-
-				</div>
 				<div class="box-center1">
-
-
 					<div class="champSepll">`
 
 		if (champimg == "FiddleSticks") {
@@ -599,7 +609,7 @@ function showInfoTimeLine(i) {
 	img1 = "<img width = 18 height = 18 alt = '못불러옴' src = https://ddragon.leagueoflegends.com/cdn/14.3.1/img/champion/" + championName1 + ".png" + " >"
 	console.log(img)
 	html1 = img + timelinelist[i].champion_name_kr + '<span style= "color : skyblue">(킬)</span> vs ' + img1 + timelinelist[i].victim + '<span style= "color : red">(죽음)</span> '
-	html3 = img + timelinelist[i].champion_name_kr + '<span style= "color : blue">(킬)</span> vs ' + img1+ timelinelist[i].victim + '<span style= "color : red">(죽음)</span> <hr>'
+	html3 = img + timelinelist[i].champion_name_kr + '<span style= "color : blue">(킬)</span> vs ' + img1 + timelinelist[i].victim + '<span style= "color : red">(죽음)</span> <hr>'
 
 	html2 = timelinelist[i].now_time + '<hr>'
 	$('.center-box2').prepend(html3)

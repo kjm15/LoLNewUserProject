@@ -40,7 +40,7 @@ footer {
 	box-shadow: rgba(4, 68, 164, 0.3) 0px 0px 25px;
 	border: 3px solid rgba(4, 68, 164, 0.3);
 	cursor: pointer;
-	margin-top: 5px;
+	margin-top: 7px;
 	margin-left: 5px;
 }
 
@@ -72,11 +72,11 @@ footer {
 .darkmod_checkbox {
 		justify-content: right;
 	display: flex;
-	align-items: right;
-	/* 	background-color: white; */
+	align-items: center;
+/* 		background-color: white; */
 	/* 	top: -46px; */ position : relative;
 	float: right;
-	width: 43%;
+	width: 40%;
 /* 	height: 43px; */
 	/* 	border: 3px solid rgba(0 0 0/ 15%); */
 /* 	z-index: 100; */
@@ -95,8 +95,10 @@ footer {
 }
 
 .TS_name_box {
+	display:flex;
 	font-size: 18px;
-	width: 100px;
+/* 	width: 100px; */
+	align-items: center;
 /* 	height: 43px; */
 }
 
@@ -140,7 +142,7 @@ footer {
 .headerItmes {
 	display: flex;
 	justify-content: right;
-	align-items: right;
+	align-items: center;
 	height: 50px;
 	background-color: rgb(157, 196, 253);
 	color: white;

@@ -41,7 +41,7 @@
 
 				<!-- 장기훈 -->
 
-				<div class="rankbanner">배너?</div>
+<!-- 				<div class="rankbanner">배너?</div> -->
 				<c:if test="${userId eq 'jhl'}">
 					<div class="rankUpdateBtn">
 						<input type="button" id="jhlRankUpdateBtn" onclick="champUpdate()"
