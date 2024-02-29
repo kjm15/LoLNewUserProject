@@ -137,11 +137,7 @@ function energyStart() {
 
 		}, 1000);
 
-	} else {
-
-
-
-	}
+	} 
 }
 
 

@@ -43,7 +43,7 @@ def insert_matches_monster_timeline_mysql(row, conn):
   
     query = (
         f"INSERT ignore INTO aiTimelineT(matchId,championName,champion_name_kr, victim,victim_championName, x, y,now_time,timestamp)"
-        f"VALUES (\'{row.matchId}\',(select championName from RiotGameInfoT where matchId = \'{row.matchId}\' and participantId = \'{row.participantId}\'),(select champion_name_kr from RiotGameInfoT where matchId = \'{row.matchId}\' and participantId = \'{row.participantId}\'),\'{row.victim}\','monster',\'{row.x}\', \'{row.y}\', \'{row.now_time}\',  \'{row.timestamp}\' )"
+        f"VALUES (\'{row.matchId}\',(select championName from RiotGameInfoT where matchId = \'{row.matchId}\' and participantId = \'{row.participantId}\'),(select champion_name_kr from RiotGameInfoT where matchId = \'{row.matchId}\' and participantId = \'{row.participantId}\'),\'{row.victim}\',\'{row.victim_championName}\',\'{row.x}\', \'{row.y}\', \'{row.now_time}\',  \'{row.timestamp}\' )"
     )
     sql_execute(conn, query)
 
@@ -88,7 +88,7 @@ for i in range(len(timlines_list)): #경기중 i분
             mynow_dict.append(victim) 
             mynow_dict.append(round(x/15000,2))
             mynow_dict.append(round(y/15000,2)) 
-            mynow_dict.append(str(now_min) + '분' + str(now_second) + '초') 
+            mynow_dict.append(str(now_min) + ':' + str(now_second)) 
             mynow_dict.append(timestamp) 
             mytime_Gamer_list.append(mynow_dict)
 
@@ -98,24 +98,34 @@ for i in range(len(timlines_list)): #경기중 i분
             monsterType = events_list[j]['monsterType']
             if monsterType == "DRAGON" :
                 if events_list[j]['monsterSubType'] == "CHEMTECH_DRAGON":
+                    victim_championName= "CHEMTECH_DRAGON"
                     monsterSubType = "화학공학 드래곤"
                 elif events_list[j]['monsterSubType'] == "FIRE_DRAGON":
+                    victim_championName= "FIRE_DRAGON"
                     monsterSubType = "화염 드래곤"   
                 elif events_list[j]['monsterSubType'] == "AIR_DRAGON":
+                    victim_championName= "AIR_DRAGON"
                     monsterSubType = "바람 드래곤"
                 elif events_list[j]['monsterSubType'] == "HEXTECH_DRAGON":
+                    victim_championName= "HEXTECH_DRAGON"
                     monsterSubType = "마법공학 드래곤"
                 elif events_list[j]['monsterSubType'] == "EARTH_DRAGON":
+                    victim_championName= "EARTH_DRAGON"
                     monsterSubType = "대지 드래곤"
                 elif events_list[j]['monsterSubType'] == "WATER_DRAGON":
+                    victim_championName= "WATER_DRAGON"
                     monsterSubType = "바다 드래곤"
-                elif events_list[j]['monsterSubType'] == "ELDER_DRAGON":                         
+                elif events_list[j]['monsterSubType'] == "ELDER_DRAGON": 
+                    victim_championName= "ELDER_DRAGON"                        
                     monsterSubType = "장로 드래곤"
             if monsterType == "RIFTHERALD" :
+                victim_championName= "RIFTHERALD"
                 monsterSubType = "협곡의 전령 처치"
             if monsterType == "HORDE":
+                victim_championName= "HORDE"
                 monsterSubType = "공허 유충 처치"    
             if monsterType == "BARON_NASHOR":
+                victim_championName= "BARON_NASHOR"
                 monsterSubType = "내셔남작(바론) 처치"
 
             killer = events_list[j]['killerId']
@@ -133,16 +143,17 @@ for i in range(len(timlines_list)): #경기중 i분
             participantId = killer
             mynow_dict.append(participantId) 
             victim = monsterSubType
-            mynow_dict.append(victim) 
+            mynow_dict.append(victim)
+            mynow_dict.append(monsterType)  
             mynow_dict.append(round(x/15000,2)) 
             mynow_dict.append(round(y/15000,2))
-            mynow_dict.append(str(now_min) + '분' + str(now_second) + '초')
+            mynow_dict.append(str(now_min) + ':' + str(now_second))
             mynow_dict.append(timestamp) 
             mytime_monster_list.append(mynow_dict)
 
 
 df =pd.DataFrame(mytime_Gamer_list,columns = ['matchId','participantId','victim','x','y','now_time','timestamp'])
-df_monster =pd.DataFrame(mytime_monster_list,columns = ['matchId','participantId','victim','x','y','now_time','timestamp'])
+df_monster =pd.DataFrame(mytime_monster_list,columns = ['matchId','participantId','victim','victim_championName','x','y','now_time','timestamp'])
 conn = connect_mysql()
 # 데이터 넣기
 df.apply(lambda x: insert_matches_timeline_mysql(x, conn), axis=1)

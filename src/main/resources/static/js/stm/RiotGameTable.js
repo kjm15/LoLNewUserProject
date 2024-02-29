@@ -264,7 +264,7 @@ function showGameTamble(res, data) {
 				</div>
 				<div class = "box-center2down">
 				
-				<a href = "#" style="color : blue;"><input type = "button" id = "${matchId}" value = ai관련test disabled = "disabled" onclick = "aiTimelineAni(\'${matchId}\')"/> </a>
+				<a href = "#" style="color : blue;"><input type = "button" id = "${matchId}" value = 다시보기(미완,사진넣기) disabled = "disabled" onclick = "aiTimelineAni(\'${matchId}\')"/> </a>
 				
 
       
@@ -568,23 +568,7 @@ function aiTimelineAni(matchId) {
 }
 
 $('#liveBroadCast').on('click', function() {
-	len = timeline_list[0].length
-	let i = 0
-	$('#liveBroadCast').hide(2000)
-	playShow = setInterval(function() {
-		if (i < len) {
-			showInfoTimeLine(i)
-			i += 1;
-		} else if (i == len) {
-			$('#two').html('게임종료')
-		} else {
-
-			clearInterval(playShow);
-			$('#liveBroadCast').show(2000)
-			console.log("종료")
-		}
-
-	}, 500);
+	
 
 
 })
@@ -595,15 +579,15 @@ function showInfoTimeLine(i) {
 
 	championName = timelinelist[i].championName
 	championName1 = timelinelist[i].victim_championName
-	img = "<img width = 18 height = 18 alt = '못불러옴' src = https://ddragon.leagueoflegends.com/cdn/14.3.1/img/champion/" + championName + ".png" + " >"
-	img1 = "<img width = 18 height = 18 alt = '못불러옴' src = https://ddragon.leagueoflegends.com/cdn/14.3.1/img/champion/" + championName1 + ".png" + " >"
-	console.log(img)
-	html1 = img + timelinelist[i].champion_name_kr + '<span style= "color : skyblue">(킬)</span> vs ' + img1 + timelinelist[i].victim + '<span style= "color : red">(죽음)</span> '
-	html3 = img + timelinelist[i].champion_name_kr + '<span style= "color : blue">(킬)</span> vs ' + img1+ timelinelist[i].victim + '<span style= "color : red">(죽음)</span> <hr>'
+	img = "<img width = 18 height = 18 onerror=this.src='/img/object/" + championName + ".png' src = https://ddragon.leagueoflegends.com/cdn/14.3.1/img/champion/" + championName + ".png" + " >"
+	img1 = "<img width = 18 height = 18 onerror=this.src='/img/object/" + championName1 + ".png' src = https://ddragon.leagueoflegends.com/cdn/14.3.1/img/champion/" + championName1 + ".png" + " >"
+
+	html1 = img + timelinelist[i].champion_name_kr + '<span style= "color : skyblue">(킬)</span> -> <span style= "color : red">' + img1 + timelinelist[i].victim + '</span> '
+	html3 = img + timelinelist[i].champion_name_kr + '<span style= "color : blue">(킬)</span> -> <span style= "color : red">' + img1 + timelinelist[i].victim + '</span> <hr>'
 
 	html2 = timelinelist[i].now_time + '<hr>'
 	$('.center-box2').prepend(html3)
-	$('.center-box22').prepend(html2)
+	$('.left-box2').prepend(html2)
 
 	x = timelinelist[i].x
 	y = timelinelist[i].y
@@ -616,7 +600,7 @@ function showInfoTimeLine(i) {
 	})
 
 	$("#two").css({
-		left: x1 - 125,
+		left: x1 - 133,
 		top: 480 - y1
 	})
 	$('#two').hide(0)

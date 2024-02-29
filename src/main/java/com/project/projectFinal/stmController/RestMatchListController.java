@@ -112,12 +112,11 @@ public class RestMatchListController {
 			HashMap<String, Object> newGList = new HashMap<>();
 			List<Map<String, RiotGameDto>> infoData = matchListService.RiotGameInfoSelect(MatchListSelect.get(i));
 			;
-//			Map<String, Object> a = webClientService.getgameTimeline(String.valueOf(infoData.get(0).get("matchId")));
+			Map<String, Object> a = webClientService.getgameTimeline(String.valueOf(infoData.get(0).get("matchId")));
 			String MatchId = MatchListSelect.get(i);
 			newGList.put("info", infoData);
-//			newGList.put("teams", teamsData);
 			newGList.put("matchId", MatchId);
-//			newGList.put("timelines", a);
+			newGList.put("timelines", a);
 			MList.add(newGList);
 		}
 		MorematchList = matchList;

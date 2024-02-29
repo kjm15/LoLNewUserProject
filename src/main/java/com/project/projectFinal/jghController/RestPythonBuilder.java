@@ -61,7 +61,7 @@ public class RestPythonBuilder {
 			aiReultMap.put("캐릭", "championName");
 			aiReultMap.put("matchId", matchId);
 			aiReultMap.put("participantId", participantId);
-//			log.info("솔로랭크 결과값 : {}", aiReultMap);
+			log.info("솔로랭크 결과값 : {}", aiReultMap);
 			matchListService.saveAiData(aiReultMap);
 
 		} else if (airesult.equals("null")) { // 랭크가 있고 ai결과가 없을때
@@ -83,7 +83,7 @@ public class RestPythonBuilder {
 			aiReultMap = objectMapper.readValue(buffer.toString(), Map.class);
 			aiReultMap.put("matchId", matchId);
 			aiReultMap.put("participantId", participantId);
-//			log.info("솔로랭크 결과값 : {}", aiReultMap);
+			log.info("솔로랭크 결과값 : {}", aiReultMap);
 			matchListService.saveAiData(aiReultMap);
 		} else { // 랭크가 있고 ai결과가 있을때
 
@@ -145,6 +145,7 @@ public class RestPythonBuilder {
 	// 타임라인애니메이팅 insert
 	@PostMapping("/timelineAni")
 	public Map<String, Object> trollcheck450(String matchId, Model model) throws Exception {
+
 		Map<String, Object> aiReultMap = new HashMap<>();
 		List<Map<String, Object>> timelineInfo = timelineInfo(matchId);
 		if (timelineInfo.size() != 0) {
@@ -170,10 +171,11 @@ public class RestPythonBuilder {
 		aiReultMap = objectMapper.readValue(buffer.toString(), Map.class);
 
 		aiReultMap.put("matchId", matchId);
-//			log.info("칼바람 결과값 : {}", aiReultMap);
+			log.info("칼바람 결과값 : {}", aiReultMap);
 		matchListService.saveAiData(aiReultMap);
 
 		return aiReultMap;
+		
 	}
 
 	@PostMapping("/timelineInfo")
