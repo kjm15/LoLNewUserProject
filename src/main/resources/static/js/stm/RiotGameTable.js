@@ -206,21 +206,31 @@ function showGameTamble(res, data) {
 
 
 			}
+
+			if (data['gameName'] == res[i]["info"][j]['riotIdGameName'] || data['gameName'] == res[i]["info"][j]['summonerName']) {
+				if (res[i]["info"][j]['win'] == '1') {
+					str += `<div class='box-column' style='background-color:#75ABFD;width:10px;'></div>
+					<div class="box-left" >
+					<div><span style='font-weight:bold;'>${queue}</span></div>
+					<div><span style='font-size:13px'>${spentTime}</span></div>
+					<div><span style='color:blue;'>${win_lose}</span></div>
+					<div><span style='font-size:13px'>${ingamespentTime}</span></div>
+					</div>`
+
+				} else {
+					str += `<div class='box-column' style='background-color:#FF5E8A;width:10px;'></div>
+					<div class="box-left" >
+					<div><span style='font-weight:bold;'>${queue}</span></div>
+					<div><span style='font-size:13px'>${spentTime}</span></div>
+					<div><span style='color:red;'>${win_lose}</span></div>
+					<div><span style='font-size:13px'>${ingamespentTime}</span></div>
+					</div>`
+
+				}
+			}
 		}
 		str += `
-				
-				<div class="box-left" >
-
-					<div><span>${queue}</span></div>
-					<div>${spentTime}</div>
-					<div>${win_lose}</div>
-					<div style="background-color: skypink;">${ingamespentTime}</div>
-
-
-				</div>
 				<div class="box-center1">
-
-
 					<div class="champSepll">`
 
 		if (champimg == "FiddleSticks") {
@@ -410,9 +420,9 @@ function showGameTamble(res, data) {
 					</div>
 					<div class=damage1>
 					<div class=damage11>
-						<div class=damageAmountr style="flex-basis: ${physicalDamageDealtToChampions}%; background-Color: #8080c0; "></div>
-						<div class=damageAmountl style="flex-basis: ${magicDamageDealtToChampions}%; background-Color: orange; "></div>
-						
+						<div class=damageAmountr style="flex-basis: ${physicalDamageDealtToChampions}%; background-Color: #8080c0; "  name = '${res[i]["info"][j]['physicalDamageDealtToChampions']}'></div>
+						<div class=damageAmountl style="flex-basis: ${magicDamageDealtToChampions}%; background-Color: orange; "name =  '${res[i]["info"][j]['magicDamageDealtToChampions']}'></div>
+							
 					</div>
 					
 					<div class=damage111>
@@ -496,9 +506,8 @@ function showGameTamble(res, data) {
 					</div>
 					<div class=damage1>
 					<div class=damage11>
-						<div class=damageAmountr style="flex-basis: ${physicalDamageDealtToChampions}%; background-Color: #8080c0;"></div>
-						<div class=damageAmountl style="flex-basis: ${magicDamageDealtToChampions}%; background-Color: orange; "></div>
-						
+						<div class=damageAmountr style="flex-basis: ${physicalDamageDealtToChampions}%; background-Color: #8080c0; "  name = '${res[i]["info"][j]['physicalDamageDealtToChampions']}'></div>
+						<div class=damageAmountl style="flex-basis: ${magicDamageDealtToChampions}%; background-Color: orange; "name =  '${res[i]["info"][j]['magicDamageDealtToChampions']}'></div> 	
 					</div>
 					
 					<div class=damage111>
@@ -579,6 +588,7 @@ function showInfoTimeLine(i) {
 	timelinelist = timeline_list[0]
 //	html1 = img + '<span style= "color : blue">(킬)</span> -> <span style= "color : red">' + img1 + '</span>'
 
+
 	html2 = timelinelist[i].now_time
 	championName = timelinelist[i].championName
 	championName1 = timelinelist[i].victim_championName
@@ -599,6 +609,7 @@ function showInfoTimeLine(i) {
 						</div>
 					 <div class = showImgDivr></div>
 				</div>`
+
 	$('.center-box2').prepend(html3)
 
 
@@ -633,15 +644,20 @@ window.addEventListener('click', (e) => {
 
 });
 
-window.addEventListener('mouseover', (e) => {
-
-	if (e.target.className == "damageAmountr" || e.target.className == "damageAmountl") {
-
-		console.log("찾음")
-
-	}
-
-});
+//window.addEventListener('mouseover', (e) => {
+//
+//	if (e.target.className == "damageAmountr" || e.target.className == "damageAmountl") {
+//
+//		if (e.target.className == "damageAmountr") {
+//			$('.pys-text').css("display","block")
+//		} else if (e.target.className == "damageAmountl") {
+//
+//
+//		}
+//
+//	}
+//
+//});
 
 
 

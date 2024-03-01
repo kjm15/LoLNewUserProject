@@ -50,8 +50,8 @@
 	justify-content: center;
 	width: 100%;
 	background-image: linear-gradient(315deg, #D6E5FC 0%, #9DC4FD 74%);
-	height: 51px;
-	line-height: 50px;
+	height: 40px;
+	line-height: 40px;
 	padding: 0;
 	border: none;
 	cursor: pointer;
@@ -66,8 +66,8 @@
 .lines img {
 	filter: invert(54%) sepia(6%) saturate(4603%) hue-rotate(211deg)
 		brightness(127%) contrast(106%);
-	width: 25px;
-	height: 25px
+	width: 20px;
+	height: 20px
 }
 
 .contentsItemsChamp {
