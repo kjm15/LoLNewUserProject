@@ -11,31 +11,32 @@
 		<div class="wrap">
 			<div class=left-box>
 				<div class=ltop-box>
-				
-				
+
+
 					<img class=mapimg src="/img/map.png" id='tag'> <span id="one">
 					</span> <span id="two"> </span>
 				</div>
 				<div class=lbottom-box>
 
-					
+
 					<div class="progress-container">
-						<div class="progress-bar" style = "width : 0%; background : rgba(255, 211, 6, 1)" ></div>
+						<div class="progress-bar"
+							style="width: 0%; background: rgba(255, 211, 6, 1)"></div>
 					</div>
-					프로그래스바 들어갈예정
+
 				</div>
 			</div>
 			<div class=right-box>
 				<div class=left-box1></div>
 				<div class=center-box1>
 
-					<br>
+					<h2>리플레이 보기</h2>
 
-					<h1>라이브 방송</h1>
+					<p></p>
 					<div id=timeLineContents class="timeLineContents">
-						<div class=top-box></div>
+						<div class=top-box>시간별 킬 상황</div>
 						<div class=mid-box>
-<!-- 							<div class=center-box22></div> -->
+							<!-- 							<div class=center-box22></div> -->
 							<div class=left-box2></div>
 
 
@@ -47,9 +48,21 @@
 						</div>
 						<div class=bottom-box></div>
 					</div>
+					<p></p>
+					<div class="blueTeamSide">
+						<div class="blueTeamSidel">blue</div>
+						<div class="blueTeamSider"></div>
+						
+					</div>
+					<p></p>
+					<div class="redTeamSide">
+						<div class="redTeamSidel">red</div>
+						<div class="redTeamSider"></div>
+					</div>
 
-					<br> <input type=button value="라이브 스킵하기" id="liveBroadCastSkip" />
-
+					<div class="menu">
+						<input type=button value="라이브 스킵하기" id="liveBroadCastSkip" />
+					</div>
 				</div>
 				<div class=right-box1></div>
 			</div>

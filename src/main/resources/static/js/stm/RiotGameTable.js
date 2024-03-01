@@ -274,11 +274,8 @@ function showGameTamble(res, data) {
 				</div>
 				<div class = "box-center2down">
 				
-				<a href = "#" style="color : blue;"><input type = "button" id = "${matchId}" value = 다시보기(미완,사진넣기) disabled = "disabled" onclick = "aiTimelineAni(\'${matchId}\')"/> </a>
+				<a href = "#" style="color : blue;"><input type = "button" id = "${matchId}" value = 리플레이보기 disabled = "disabled" onclick = "aiTimelineAni(\'${matchId}\')"/> </a>
 				
-
-      
-   
 				</div>
 						
 				</div>
@@ -576,11 +573,6 @@ function aiTimelineAni(matchId) {
 
 }
 
-$('#liveBroadCast').on('click', function() {
-
-
-
-})
 //라이브시스템 시작
 function showInfoTimeLine(i) {
 	img = ''

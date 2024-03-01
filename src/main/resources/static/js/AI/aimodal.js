@@ -8,6 +8,11 @@ const modal_wrap = document.querySelector('.modal_wrap')
 const modal_background = document.querySelector('.modal_background')
 
 function close() {
+	$('.redTeamSider').empty()
+	$('.blueTeamSider').empty()
+	$('#two').html('')	
+	$('.center-box2').empty()
+	$('.left-box2').empty()
 	clearInterval(playShow)
 	modal_wrap.classList.remove('show-modal');
 	modal_background.classList.remove('show-modal');
@@ -18,21 +23,61 @@ $('#liveBroadCastSkip').on('click', function() {
 
 	clearInterval(playShow)
 	$('.center-box2').empty()
-	$('.left-box2').empty()
 	$('#two').html('')
 
 	document.querySelector(".progress-bar").style.width = 100 + "%";
 	$('#two').html('게임종료')
+	$('.center-box2').prepend("<center><strong>==========Game Start==========</strong></center>")
 
+	blueList = []
+	blueList_kr = []
+	redList = []
+	redList_kr = []
 	for (let i in timelinelist) {
 		html2 = timelinelist[i].now_time
-		championName = timelinelist[i].championName
-		championName1 = timelinelist[i].victim_championName
-		champion_name_kr = timelinelist[i].champion_name_kr
-		victim_kr = timelinelist[i].victim
+		//
+		championName1 = timelinelist[i].championName
+		championName1_kr = timelinelist[i].champion_name_kr
+		team1 = timelinelist[i].team1
+		border1 = ''
+		//
+		championName2 = timelinelist[i].victim_championName
+		championName2_kr = timelinelist[i].victim_championName_kr
+		team2 = timelinelist[i].team2
+		border2 = ''
+		//
+		if (team1 == 100) {
+			blueList_kr.push(championName1_kr)
+			blueList.push(championName1)
+			border1 = ' style="border:2px solid; border-color:blue; border-radius: 50%;"  '
+		} else if (team1 == 200) {
+			redList_kr.push(championName2_kr)
+			redList.push(championName1)
+			border1 = ' style="border:2px solid; border-color:red; border-radius: 50%;" '
 
-		img = "<img width = 30 height = 30 onerror=this.src='/img/object/" + championName + ".png' src = https://ddragon.leagueoflegends.com/cdn/14.3.1/img/champion/" + championName + ".png" + " >"
-		img1 = "<img width = 30 height = 30 onerror=this.src='/img/object/" + championName1 + ".png' src = https://ddragon.leagueoflegends.com/cdn/14.3.1/img/champion/" + championName1 + ".png" + " >"
+		} else {
+
+			border1 = ' style="border:2px solid; border-color:green; border-radius: 50%;" '
+
+		}
+		if (team2 == 100) {
+			blueList.push(championName2)
+			border2 = ' style="border:2px solid; border-color:blue; border-radius: 50%;" '
+
+		} else if (team2 == 200) {
+			redList.push(championName2)
+			border2 = ' style="border:2px solid; border-color:red; border-radius: 50%;" '
+
+		} else {
+
+			border2 = ' style="border:2px solid; border-color:green; border-radius: 50%;" '
+
+		}
+
+
+
+		img1 = "<img " + border1 + " width = 30 height = 30 onerror=this.src='/img/object/" + championName1 + ".png' src = 'https://ddragon.leagueoflegends.com/cdn/14.3.1/img/champion/" + championName1 + ".png' >"
+		img2 = "<img " + border2 + "width = 30 height = 30 onerror=this.src='/img/object/" + championName2 + ".png' src = 'https://ddragon.leagueoflegends.com/cdn/14.3.1/img/champion/" + championName2 + ".png' >"
 
 		html3 = `<div class = showImgDiv id = showImg${i} >
 				 	<div class = showImgDivl> 
@@ -40,16 +85,43 @@ $('#liveBroadCastSkip').on('click', function() {
 				 			${html2} 
 				 		</div>
 				 		<div class = showImgDivlr> 
-				 		 <span tooltip= ${champion_name_kr}> <a href = "#"> ${img} </a></span><span style= "color : blue">(킬)</span> -> <span tooltip=${victim_kr}><a href = "#">${img1}</a></span></div>
+				 		 <span tooltip= ${championName1_kr}> <a href = "#"> ${img1} </a></span><span style= "color : blue">	</span> -> <span tooltip=${championName2_kr}><a href = "#">${img2}</a></span></div>
 						</div>
 					 <div class = showImgDivr></div>
 				</div>`
 		$('.center-box2').prepend(html3)
 
 	}
+	$('.center-box2').prepend("<p></p>	")
+	$('.center-box2').prepend("<center><strong>==========Game Set==========</strong></center>")
 
+	const blueListSet = new Set(blueList);
+	const redListSet = new Set(redList);
+	let bList = Array.from(blueListSet)
+	let rList = Array.from(redListSet)
+	const blueListSet_kr = new Set(blueList_kr);
+	const redListSet_kr = new Set(redList_kr);
+	let bList_kr = Array.from(blueListSet_kr)
+	let rList_kr = Array.from(redListSet_kr)
+
+
+	//	console.log(bList)
+	//	console.log(rList)
+	for (let i in bList) {
+		$('.blueTeamSider').append(inputImg(bList[i], bList_kr[i]) + "&nbsp;")
+		$('.redTeamSider').append(inputImg(rList[i], rList_kr[i]) + "&nbsp;")
+		//		console.log(inputImg(bList[i]))
+	}
 
 })
+
+function inputImg(a, b) {
+
+	listImg = " <span tooltip= '" + b + "'><a href = #><img style='border:2px solid; border-color:black; border-radius: 50%;' width = 30 height = 30 src = 'https://ddragon.leagueoflegends.com/cdn/14.3.1/img/champion/" + a + ".png' ></a></span>"
+	return listImg
+
+}
+
 function open() {
 
 	$('#two').html('')
@@ -65,8 +137,7 @@ function open() {
 		top: 505 - y1
 	})
 	$('.wrap').show();
-	$('.center-box2').empty()
-	$('.left-box2').empty()
+
 
 
 
@@ -106,6 +177,9 @@ window.addEventListener('click', (e) => {
 	e.target === modal_background ? close() : false
 	if (e.target.className === 'btn btn-secondary dropdown-toggle show') {
 
+
+
+
 		close()
 	}
 
@@ -121,15 +195,15 @@ progressBar.addEventListener('click', (e) => {
 		console.log("시작할때 색제거")
 	}
 	//오른쪽 포커스
-	
+
 	progressPercent = (e.offsetX / 500) //500은 그림 픽셀
-	console.log(e.offsetX )
+	console.log(e.offsetX)
 	len = timeline_list[0].length
-	document.querySelector(".progress-bar").style.width =  progressPercent * 100 + "%";
+	document.querySelector(".progress-bar").style.width = progressPercent * 100 + "%";
 	i = parseInt(len * progressPercent)
 	id = 'showImg' + i
 	document.getElementById(id).scrollIntoView();
-	
+
 	$('#' + id).css("background-color", "rgba(100, 170, 253, 1)")
 	a = 1
 	let checkPlayBackGroundColor = 0
@@ -178,6 +252,6 @@ progressBar.addEventListener('click', (e) => {
 	$('#two').hide(0)
 	$('#two').html(html1)
 	$('#two').show(150)
-	
+
 });
 ///////////////////////////////////
