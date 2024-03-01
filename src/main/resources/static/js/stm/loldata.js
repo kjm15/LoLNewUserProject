@@ -133,23 +133,18 @@ function aiCheckTroll(res1) {
 						}
 					}
 				})//ajax끝
-			} else {
-				let queue = ''
-				if (res.queueId == 1900) {
-					queue = "우르프"
-				} else if (res.queueId == 490) {
-					queue = "빠른대전"
-				} else if (res.queueId == 440) {
-					queue = "자유랭크"
-				}
-				key = res.matchId + res.participantId
-				str = "<span><font size=2>|" + queue + "| <br>|개발중|</font></span>";
-				$('#' + key).html(str);
+			} else if (res.queueId == 1900) {
+				queue = "우르프"
+
+			} else if (res.queueId == 490) {
+				queue = "빠른대전"
+			} else if (res.queueId == 440) {
+				queue = "자유랭크"
 			}
-
-
+			key = res.matchId + res.participantId
+			str = "<span><font size=2>|" + queue + "| <br>|개발중|</font></span>";
+			$('#' + key).html(str);
 		}
-
 
 	})//ajax끝
 }
@@ -160,7 +155,7 @@ function aiCheckTroll(res1) {
 
 matchId_ai_list = []
 function bbb(data) {
-	
+
 	$.ajax({
 		type: 'post',
 		url: '/match/list',
@@ -168,7 +163,7 @@ function bbb(data) {
 		success: function(res) {
 
 			console.log(res)
-			
+
 			if (res != '') {
 				MList = [];
 				for (let i = 0; i < res.length; i++) {
