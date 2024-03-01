@@ -34,7 +34,7 @@
 
 					<p></p>
 					<div id=timeLineContents class="timeLineContents">
-						<div class=top-box>시간별 킬 상황</div>
+						<div class=top-box>Time for kill</div>
 						<div class=mid-box>
 							<!-- 							<div class=center-box22></div> -->
 							<div class=left-box2></div>
@@ -61,7 +61,9 @@
 					</div>
 
 					<div class="menu">
-						<input type=button value="라이브 스킵하기" id="liveBroadCastSkip" />
+					<input type=button value="리플레이 플레이" id="replayStart" />
+						<input type=button value="스킵/전체보기" id="liveBroadCastSkip" />
+					
 					</div>
 				</div>
 				<div class=right-box1></div>

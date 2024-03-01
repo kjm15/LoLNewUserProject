@@ -9,8 +9,8 @@ let win = 0
 let lose = 0
 function showGameTamble(res, data) {
 	moredata = data
-	console.log(data)
-	console.log(res)
+	//	console.log(data)
+	//	console.log(res)
 	let ccc = ''
 	let str = ''
 	let queue = ''
@@ -540,14 +540,14 @@ function showGameTamble(res, data) {
 	$('.containerXC').append(str)
 	$('.containerXC').append(str1)
 	for (let i in res) {
-		console.log(i + "번째 파이썬 출발")
+		//		console.log(i + "번째 파이썬 출발")
 		data1 = { 'matchId': res[i].matchId }
 		$.ajax({
 			type: 'post',
 			url: '/ai/timelineAni',
 			data: data1,
 			success: function(res) {
-				console.log(res.matchId + "파이썬 저장성공")
+				console.log(res.matchId + "saved")
 				$('#' + res.matchId).prop("disabled", false)
 			}
 		})
@@ -571,57 +571,6 @@ function aiTimelineAni(matchId) {
 		}
 	})
 
-}
-
-//라이브시스템 시작
-function showInfoTimeLine(i) {
-	img = ''
-//	console.log(i)
-	timelinelist = timeline_list[0]
-//	html1 = img + '<span style= "color : blue">(킬)</span> -> <span style= "color : red">' + img1 + '</span>'
-
-
-	html2 = timelinelist[i].now_time
-	championName = timelinelist[i].championName
-	championName1 = timelinelist[i].victim_championName
-	champion_name_kr = timelinelist[i].champion_name_kr
-	victim_kr = timelinelist[i].victim
-
-	img = "<img width = 30 height = 30 onerror=this.src='/img/object/" + championName + ".png' src = https://ddragon.leagueoflegends.com/cdn/14.3.1/img/champion/" + championName + ".png" + " >"
-	img1 = "<img width = 30 height = 30 onerror=this.src='/img/object/" + championName1 + ".png' src = https://ddragon.leagueoflegends.com/cdn/14.3.1/img/champion/" + championName1 + ".png" + " >"
-	html1 = img + '<span style= "color : skyblue">(킬)</span> -> <span style= "color : red">' + img1 + '</span>'
-
-	html3 = `<div class = showImgDiv id = showImg${i} >
-				 	<div class = showImgDivl> 
-				 		<div class = showImgDivll>
-				 			${html2} 
-				 		</div>
-				 		<div class = showImgDivlr> 
-				 		 <span tooltip= ${champion_name_kr}> <a href = "#"> ${img} </a></span><span style= "color : blue">(킬)</span> -> <span tooltip=${victim_kr}><a href = "#">${img1}</a></span></div>
-						</div>
-					 <div class = showImgDivr></div>
-				</div>`
-
-	$('.center-box2').prepend(html3)
-
-
-	x = timelinelist[i].x
-	y = timelinelist[i].y
-
-	x1 = x * 500
-	y1 = y * 500
-	$("#one").css({
-		left: x1 - 5,
-		top: 505 - y1
-	})
-
-	$("#two").css({
-		left: x1 - 80,
-		top: 470 - y1
-	})
-	$('#two').hide(0)
-	$('#two').html(html1)
-	$('#two').show(150)
 }
 
 window.addEventListener('click', (e) => {
