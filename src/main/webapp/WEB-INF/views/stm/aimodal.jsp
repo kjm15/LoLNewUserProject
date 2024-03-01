@@ -35,7 +35,7 @@
 					<div id=timeLineContents class="timeLineContents">
 						<div class=top-box></div>
 						<div class=mid-box>
-							<div class=center-box22></div>
+<!-- 							<div class=center-box22></div> -->
 							<div class=left-box2></div>
 
 
@@ -48,7 +48,7 @@
 						<div class=bottom-box></div>
 					</div>
 
-					<br> <input type=button value="라이브 중지하기" id="liveBroadCast" />
+					<br> <input type=button value="라이브 스킵하기" id="liveBroadCastSkip" />
 
 				</div>
 				<div class=right-box1></div>
