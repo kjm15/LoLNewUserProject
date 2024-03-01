@@ -86,7 +86,7 @@ allkda = win_kda_List+lose_kda_List
 Mean_totalDamageDealtToChampions = win_Mean_totalDamageDealtToChampions + lose_Mean_totalDamageDealtToChampions
 Mean_goldEarned = win_Mean_goldEarned + lose_Mean_goldEarned
 
-tier_data=[[t,g,k]for t ,g,k in zip(Mean_totalDamageDealtToChampions,Mean_goldEarned,allkda)]
+tier_data=[[t,g,k]for t,g,k in zip(Mean_totalDamageDealtToChampions,Mean_goldEarned,allkda)]
 
 #그래프
 # plt.scatter(win_Mean_totalDamageDealtToChampions, win_Mean_goldEarned) 

@@ -32,7 +32,7 @@
 				</div>
 
 
-				
+					<button id="duoParty" class="learn-more">듀오신청하기</button>
 				<button id="duoPartyCancel" style="display: none;">취소하기</button>
 
 			</div>
