@@ -50,7 +50,7 @@ function mainSearch(gameName1) {
 }
 
 function aiCheckTroll(res1) {
-	console.log(res1)
+//	console.log(res1)
 	let queue = ''
 	console.log("data전송완료/인공지능시작")
 	$.ajax({
