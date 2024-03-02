@@ -58,7 +58,7 @@ function showGameTamble(res, data) {
             <div class="stmHright">
                 <div class="cpicon">
                     <div class = "cpimg">
-	<img width='85' height='85' alt='못 불러옴' src=https://ddragon.leagueoflegends.com/cdn/14.3.1/img/profileicon/${newprofileIcon}.png>
+	<img width='85' height='85' alt='못 불러옴' style = "border-radius: 30px;"  src=https://ddragon.leagueoflegends.com/cdn/14.3.1/img/profileicon/${newprofileIcon}.png>
                     </div></div>
                     <div class="uidLevelBox">
                 <div class="ulevel">${newsummonerLevel} </div>
@@ -236,11 +236,11 @@ function showGameTamble(res, data) {
 		if (champimg == "FiddleSticks") {
 			champimg = "Fiddlesticks"
 		}
-		str += `<div class=box-center4><img width='80' height='80'  alt='못 불러옴' src='https://ddragon.leagueoflegends.com/cdn/14.3.1/img/champion/${champimg}.png'></div>
+		str += `<div class=box-center4><img width='80' height='80' style = "border-radius: 35px;"  alt='못 불러옴' src='https://ddragon.leagueoflegends.com/cdn/14.3.1/img/champion/${champimg}.png'></div>
 						<div class=box-center44>
 
-							<div class="spell1"><img width='30' height='30'  alt='못 불러옴' src='https://ddragon.leagueoflegends.com/cdn/14.3.1/img/spell/${spellD}.png'></div>
-							<div class="spell2"><img width='30' height='30'  alt='못 불러옴' src='https://ddragon.leagueoflegends.com/cdn/14.3.1/img/spell/${spellF}.png'></div>
+							<div class="spell1"><img width='30' height='30'  style = "border-radius: 35px;" alt='못 불러옴' src='https://ddragon.leagueoflegends.com/cdn/14.3.1/img/spell/${spellD}.png'></div>
+							<div class="spell2"><img width='30' height='30'  style = "border-radius: 35px;" alt='못 불러옴' src='https://ddragon.leagueoflegends.com/cdn/14.3.1/img/spell/${spellF}.png'></div>
 
 						</div>
 						<div class=box-right4 style="font-size: 13px;">${kills}/${deaths}/${assists}<br>${kda}:1평점</div>
@@ -253,7 +253,7 @@ function showGameTamble(res, data) {
 			if (data['gameName'] == res[i]["info"][j]['riotIdGameName'] || data['gameName'] == res[i]["info"][j]['summonerName']) {
 				for (let k = 0; k < 6; k++) {
 					if (res[i]["info"][j]['item' + k] != 0) {
-						str += `<img width='30' height='30' alt='못 불러옴' src=https://ddragon.leagueoflegends.com/cdn/14.3.1/img/item/${res[i]["info"][j]['item' + k]}.png>&nbsp;&nbsp;`
+						str += `<img width='30' height='30' style = "border-radius: 35px;" alt='못 불러옴' src=https://ddragon.leagueoflegends.com/cdn/14.3.1/img/item/${res[i]["info"][j]['item' + k]}.png>&nbsp;&nbsp;`
 					}
 
 
@@ -270,13 +270,13 @@ function showGameTamble(res, data) {
 				킬관여 ${mykill}%<br>
 				시야 점수 ${wardscore}<br>
 				cs ${totalCs}<br>
-				드래곤 ${dragon}
+				D ${dragon}
 				</div>
 				<div class = "box-center2down" id = ${matchId}>
 				
 					 <img width=40 height=40 src="/img/lodinglogo.gif" alt="리플레이시작버튼">
 				
-				</div>
+				</div>	
 						
 				</div>
 				<div class="box-center3">
@@ -284,17 +284,18 @@ function showGameTamble(res, data) {
 		for (j in res[i]['info']) {
 			if (res[i]['info'][j]['teamId'] == 100) {
 				let riotIdGameName = res[i]['info'][j]['riotIdGameName']
+				let riotIdTagline = res[i]['info'][j]['riotIdTagline']
 				let champimg = res[i]["info"][j]['championName']
 				if (champimg == "FiddleSticks") {
 					champimg = "Fiddlesticks"
 				}
-				if (riotIdGameName.length > 10) {
-					riotIdGameName = riotIdGameName.substr(0, 8) + '...';
+				if (riotIdGameName.length > 5) {
+					riotIdGameName = riotIdGameName.substr(0, 5) + '...';
 				}
 
-				str += `<div style ="text-align: left;"><img width='17' height='17'  alt='못 불러옴' src='https://ddragon.leagueoflegends.com/cdn/14.3.1/img/champion/${champimg}.png'>
+				str += `<div style ="text-align: left;"><img width='17' height='17' style = "border-radius: 30px;" alt='못 불러옴' src='https://ddragon.leagueoflegends.com/cdn/14.3.1/img/champion/${champimg}.png'>
 							
-							${riotIdGameName}
+						<a  href='/stm/${riotIdGameName}/${riotIdTagline}'>	${riotIdGameName}</a>
 							
 							
 								</div>`
@@ -311,16 +312,17 @@ function showGameTamble(res, data) {
 		for (j in res[i]['info']) {
 			if (res[i]['info'][j]['teamId'] == 200) {
 				let riotIdGameName = res[i]['info'][j]['riotIdGameName']
+				let riotIdTagline = res[i]['info'][j]['riotIdGameName']
 				let champimg = res[i]["info"][j]['championName']
 				if (champimg == "FiddleSticks") {
 					champimg = "Fiddlesticks"
 				}
-				if (riotIdGameName.length > 10) {
-					riotIdGameName = riotIdGameName.substr(0, 8) + '...';
+				if (riotIdGameName.length > 5) {
+					riotIdGameName = riotIdGameName.substr(0, 5) + '...';
 				}
-				str += `<div style ="text-align: left;"><img width='17' height='17'  alt='못 불러옴' src='https://ddragon.leagueoflegends.com/cdn/14.3.1/img/champion/${champimg}.png'>
+				str += `<div style ="text-align: left;"><img width='17' height='17'  style = "border-radius: 30px;"  alt='못 불러옴' src='https://ddragon.leagueoflegends.com/cdn/14.3.1/img/champion/${champimg}.png'>
 			
-				${riotIdGameName}
+				<a  href='/stm/${riotIdGameName}/${riotIdTagline}'>	${riotIdGameName}</a>
 			</div>`
 			}
 			if (res[i]["info"][j]['win'] == '1') {
@@ -337,10 +339,10 @@ function showGameTamble(res, data) {
 		for (j in res[i]['info']) {
 			if (data['gameName'] == res[i]["info"][j]['riotIdGameName'] || data['gameName'] == res[i]["info"][j]['summonerName']) {
 				if (res[i]["info"][j]['win'] == '1') {
-					str += `<div class="box-right" style='background-color :#9ac2e2' id ="gamebtn${goBtn}" onclick ="gamebtn(${goBtn},'${matchId}')"><a href = 'javascript:;'><p></p><div>더</div><div>보</div><div>기</div><p>∨</p></a></div>`
+					str += `<a href = ""><div class="box-right" style='background-color :#9ac2e2' id ="gamebtn${goBtn}" onclick ="gamebtn(${goBtn},'${matchId}')"><a href = 'javascript:;'><div class = "box-rightblue">∨</div></a></div>`
 
 				} else {
-					str += `<div class="box-right" style='background-color : rgba(255, 2, 73, 0.18)' id ="gamebtn${goBtn}" onclick ="gamebtn(${goBtn},'${matchId}')"><a href = 'javascript:;'><p></p><div>더</div><div>보</div><div>기</div><p>∨</p></a></div>`
+					str += `<div class="box-right" style='background-color : rgba(255, 2, 73, 0.18)' id ="gamebtn${goBtn}" onclick ="gamebtn(${goBtn},'${matchId}')"><a href = 'javascript:;'><div class = "box-rightred">∨</div></a></div>`
 
 				}
 			}
@@ -397,14 +399,18 @@ function showGameTamble(res, data) {
 				str += `<div class="ct1">
 					<div class="teamId1">
 						
-						<div class=champImgM><div class = 'champaaa'></div><div><img title='${champion_name_kr}' width='30' height='30'  alt='못 불러옴' 
-						src='https://ddragon.leagueoflegends.com/cdn/14.3.1/img/champion/${champimg}.png'></div></div>
+						<div class=champImgM><div class = 'champaaa'></div><div>
+						<span tooltip="${champion_name_kr}">
+						<img title='${champion_name_kr}' width='30' height='30' style = "border-radius: 30px;" alt='못 불러옴' 
+						src='https://ddragon.leagueoflegends.com/cdn/14.3.1/img/champion/${champimg}.png'>
+						</span>
+						</div></div>
 						<div class=spellM>
-							<div class=spellM1>
-								<img width='20' height='20'  alt='못 불러옴' 
+							<div class=c>
+								<img width='20' height='20' style = "border-radius: 30px;" alt='못 불러옴' 
 								src='https://ddragon.leagueoflegends.com/cdn/14.3.1/img/spell/${spellD}.png'>
 							</div>
-							<div class=spellM2><img width='20' height='20'  alt='못 불러옴' 
+							<div class=spellM2><img width='20' height='20'  style = "border-radius: 30px;" alt='못 불러옴' 
 								src='https://ddragon.leagueoflegends.com/cdn/14.3.1/img/spell/${spellF}.png'>
 							</div>
 						</div>
@@ -416,10 +422,12 @@ function showGameTamble(res, data) {
 						<div class="kdaCheck">${kda}:1</div>
 					</div>
 					<div class=damage1>
+					<span tooltip="물리데미지 : ${res[i]["info"][j]['physicalDamageDealtToChampions']} | 마법데미지 : ${res[i]["info"][j]['magicDamageDealtToChampions']}">
 					<div class=damage11>
+					</span>
 						<div class=damageAmountr style="flex-basis: ${physicalDamageDealtToChampions}%; background-Color: #8080c0; "  name = '${res[i]["info"][j]['physicalDamageDealtToChampions']}'></div>
 						<div class=damageAmountl style="flex-basis: ${magicDamageDealtToChampions}%; background-Color: orange; "name =  '${res[i]["info"][j]['magicDamageDealtToChampions']}'></div>
-							
+						
 					</div>
 					
 					<div class=damage111>
@@ -428,13 +436,13 @@ function showGameTamble(res, data) {
 					</div>
 						
 				</div>
-					<div class=cs1>${totalCs}</div>
+					<div class=cs1><div = class = "cs11">${totalCs}</div></div>
 					<div class=itemTeamCheck>
 						<div class=teamItem1>`
 
 				for (let k = 0; k < 6; k++) {
 					if (res[i]["info"][j]['item' + k] != 0) {
-						str += `<img width='20' height='20' alt='못 불러옴' src=https://ddragon.leagueoflegends.com/cdn/14.3.1/img/item/${res[i]["info"][j]['item' + k]}.png>&nbsp;&nbsp;`
+						str += `<img width='20' height='20' style = "border-radius: 30px;" alt='못 불러옴' src=https://ddragon.leagueoflegends.com/cdn/14.3.1/img/item/${res[i]["info"][j]['item' + k]}.png>&nbsp;&nbsp;`
 					}
 				}
 
@@ -484,14 +492,18 @@ function showGameTamble(res, data) {
 				str += `<div class="ct2">
 					<div class="teamId1">
 
-						<div class=champImgM><div class = 'champaaa'></div><div><img title='${champion_name_kr}' width='30' height='30'  alt='못 불러옴' 
-						src='https://ddragon.leagueoflegends.com/cdn/14.3.1/img/champion/${champimg}.png'></div>	</div>
+						<div class=champImgM><div class = 'champaaa'></div><div>
+						<span tooltip="${champion_name_kr}">
+						<img title='${champion_name_kr}' width='30' height='30' style = "border-radius: 30px;"  alt='못 불러옴' 
+						src='https://ddragon.leagueoflegends.com/cdn/14.3.1/img/champion/${champimg}.png'>
+						</span>
+						</div>	</div>
 						<div class=spellM>
 							<div class=spellM1>
-								<img width='20' height='20'  alt='못 불러옴' 
+								<img width='20' height='20'  alt='못 불러옴' style = "border-radius: 30px;" 
 								src='https://ddragon.leagueoflegends.com/cdn/14.3.1/img/spell/${spellD}.png'>
 							</div>
-							<div class=spellM2><img width='20' height='20'  alt='못 불러옴' 
+							<div class=spellM2><img width='20' height='20'  alt='못 불러옴' style = "border-radius: 30px;" 
 								src='https://ddragon.leagueoflegends.com/cdn/14.3.1/img/spell/${spellF}.png'>
 							</div>
 						</div>
@@ -502,7 +514,9 @@ function showGameTamble(res, data) {
 						<div class="kdaCheck">${kda}:1</div>
 					</div>
 					<div class=damage1>
+						<span tooltip="물리데미지 : ${res[i]["info"][j]['physicalDamageDealtToChampions']} | 마법데미지 : ${res[i]["info"][j]['magicDamageDealtToChampions']}">
 					<div class=damage11>
+					</span>
 						<div class=damageAmountr style="flex-basis: ${physicalDamageDealtToChampions}%; background-Color: #8080c0; "  name = '${res[i]["info"][j]['physicalDamageDealtToChampions']}'></div>
 						<div class=damageAmountl style="flex-basis: ${magicDamageDealtToChampions}%; background-Color: orange; "name =  '${res[i]["info"][j]['magicDamageDealtToChampions']}'></div> 	
 					</div>
@@ -513,19 +527,19 @@ function showGameTamble(res, data) {
 					</div>
 						
 				</div>
-					<div class=cs1>${totalCs}</div>
+					<div class=cs1><div class = "cs11">${totalCs}</div></div>
 					<div class=itemTeamCheck>
 						<div class=teamItem1>`
 
 				for (let k = 0; k < 6; k++) {
 					if (res[i]["info"][j]['item' + k] != 0) {
-						str += `<img width='20' height='20' alt='못 불러옴' src=https://ddragon.leagueoflegends.com/cdn/14.3.1/img/item/${res[i]["info"][j]['item' + k]}.png>&nbsp;&nbsp;`
+						str += `<img width='20' height='20' style = "border-radius: 30px;"  alt='못 불러옴' src=https://ddragon.leagueoflegends.com/cdn/14.3.1/img/item/${res[i]["info"][j]['item' + k]}.png>&nbsp;&nbsp;`
 					}
 				}
 
 				str += `</div>
 					</div>
-					<div class = aidetail id = ${matchId}` + `${participantId}><img width=20 height='20' alt='못 불러옴' src = "/img/loadingimg.gif"></div>
+					<div class = aidetail id = ${matchId}` + `${participantId}><img width=20 height='20' style = "border-radius: 30px;"  alt='못 불러옴' src = "/img/loadingimg.gif"></div>
 				</div>`
 			}
 		}
@@ -548,8 +562,8 @@ function showGameTamble(res, data) {
 			data: data1,
 			success: function(res) {
 				console.log(res.matchId + "saved")
-				
-				html = `<a href="javascript:aiTimelineAni(\'${res.matchId}\');"><img width=40 height=40 src="/img/replay.png" alt="리플레이시작버튼"> 리플레이보기</a>`
+
+				html = `<a href="javascript:aiTimelineAni(\'${res.matchId}\');"><img width=80 height=40 src="/img/replay3.png" alt="리플레이시작버튼"> </a>`
 				$('#' + res.matchId).html(html)
 			}
 		})

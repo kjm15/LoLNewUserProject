@@ -26,7 +26,7 @@
 	<link href="/css/jgh/modal.css" rel="stylesheet" type="text/css">
 	<link href="/css/common/roulette.css" rel="stylesheet" type="text/css">
 	<script defer src="/js/aPayment/payment.js"></script>
-	<script defer src="/js/aCommon/roulette.js"></script>
+<!-- 	<script defer src="/js/aCommon/roulette.js"></script> -->
 
 	<script defer src="/js/stm/loldata.js"></script>
 	<script defer src="/js/stm/RiotGameTable.js"></script>
