@@ -30,7 +30,8 @@
 			</div>
 			<p></p>
 			<p></p>
-			<div class="black-box">
+			<div class = flagA>
+				<div class="black-box">
 	
 					<div id="fly-in">  
 					<div><span>팀 이름 </span>DataBoom</div>
@@ -44,8 +45,8 @@
 					<div><span></span> 시작합니다</div>
 					</div>
 	
+				</div>
 			</div>
-
 		</div>
 	</div>
 

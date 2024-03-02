@@ -235,7 +235,7 @@ function open() {
 				`
 
 
-	console.log(map + plusDetail)
+//	console.log(map + plusDetail)
 
 	$('.ltop-box').html(map + plusDetail)
 
