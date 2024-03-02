@@ -220,6 +220,7 @@ function open() {
 
 	$('#two').html('')
 	$('#two').hide()
+	
 	x1 = 0
 	y1 = 500
 	$("#two").css({
