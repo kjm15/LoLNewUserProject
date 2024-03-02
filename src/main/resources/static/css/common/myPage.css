@@ -47,11 +47,24 @@
 }
 
 
-body{
-		background-image: url('https://img1.daumcdn.net/thumb/R1280x0/?scode=mtistory2&fname=https%3A%2F%2Fblog.kakaocdn.net%2Fdn%2FvVkAS%2Fbtq2npLrKGY%2FKZYl8UuKSA1l58waBYpeyk%2Fimg.jpg'); 
-	
-	background-image: no-repeat; 
+body {
+	background-image:
+		url('https://img1.daumcdn.net/thumb/R1280x0/?scode=mtistory2&fname=https%3A%2F%2Fblog.kakaocdn.net%2Fdn%2FvVkAS%2Fbtq2npLrKGY%2FKZYl8UuKSA1l58waBYpeyk%2Fimg.jpg');
+	opacity: 0.9;
+	background-image: no-repeat;
 	background-size: 100% 100%;
+	/* 추가 */
+	position: relative;
+	isolation: isolate;}
+
+/* 추가 */
+body::after {
+  content: '';
+  position: absolute;
+  background: white;
+  z-index: -1;
+  inset: 0;
+  opacity: 0.8	;
 }
 
 .profile {
