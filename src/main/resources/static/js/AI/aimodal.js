@@ -177,8 +177,8 @@ function inputTimeToImg(nowTime, champName) {
 
 			img1 = "<img  " + border1 + " width = 30 height = 30 onerror=this.src='/img/object/" + championName1 + ".png' src = 'https://ddragon.leagueoflegends.com/cdn/14.3.1/img/champion/" + championName1 + ".png' >"
 			img2 = "<img " + border2 + "width = 30 height = 30 onerror=this.src='/img/object/" + championName2 + ".png' src = 'https://ddragon.leagueoflegends.com/cdn/14.3.1/img/champion/" + championName2 + ".png' >"
-
-			html1 = img1 + ' <span  style="color:white"> -></span>' + '<div style = "filter: brightness(50%)">' + img2 + '</div>'
+			versus = '<img class = versus2 src="/img/versus2.png" >'
+			html1 = img1 + versus + '<div style = "filter: brightness(50%)">' + img2 + '</div>'
 			xmark = '<div class = xmark><img width=27 height=27 src="/img/xmark.png" alt="엑스버튼"></div>'
 
 			x = timelinelist[i].x
@@ -193,7 +193,7 @@ function inputTimeToImg(nowTime, champName) {
 
 			$(".two").css({
 				left: x1 - 45,
-				top: 470 - y1
+				top: 490 - y1
 			})
 			$('#two').hide(0)
 			$('.two').html(html1)
@@ -217,6 +217,27 @@ function inputImg(a, b, c) {
 }
 //////////////////////////////////////
 function open() {
+	console.log(timeline_list)
+	let map = ''
+	if (timeline_list[0][0].queueId == 450) {
+		map = '<img class=mapimg src="/img/map2.png" id=tag>'
+
+	} else {
+		map = '<img class=mapimg src="/img/map.png" id=tag>'
+
+	}
+
+	plusDetail = `
+					<div>
+						<div class= "one" id="one"></div>
+						<div class="two" id="two"></div>
+					</div>
+				`
+
+
+	console.log(map + plusDetail)
+
+	$('.ltop-box').html(map + plusDetail)
 
 	$('#two').html('')
 	$('#two').hide()
@@ -225,7 +246,7 @@ function open() {
 	y1 = 500
 	$("#two").css({
 		left: x1 - 133,
-		top: 480 - y1
+		top: 490 - y1
 	})
 
 	$("#one").css({
@@ -309,7 +330,7 @@ progressBar.addEventListener('click', (e) => {
 		skip()
 	}
 	if (removeList.length != 0) {
-	
+
 		for (let i in removeList) {
 
 			$("." + removeList[i]).remove()
@@ -393,8 +414,8 @@ progressBar.addEventListener('click', (e) => {
 
 	img1 = "<img " + border1 + " width = 30 height = 30 onerror=this.src='/img/object/" + championName1 + ".png' src = 'https://ddragon.leagueoflegends.com/cdn/14.3.1/img/champion/" + championName1 + ".png' >"
 	img2 = "<img " + border2 + "width = 30 height = 30 onerror=this.src='/img/object/" + championName2 + ".png' src = 'https://ddragon.leagueoflegends.com/cdn/14.3.1/img/champion/" + championName2 + ".png' >"
-
-	html1 = img1 + ' ->' + img2
+	versus = '<img class = versus2 src="/img/versus2.png" >'
+	html1 = img1 + versus + img2
 	xmark = '<div class = xmark><img width=27 height=27 src="/img/xmark.png" alt="엑스버튼"></div>'
 
 	x = timelinelist[i].x
@@ -409,7 +430,7 @@ progressBar.addEventListener('click', (e) => {
 
 	$("#two").css({
 		left: x1 - 45,
-		top: 470 - y1
+		top: 490 - y1
 	})
 	$('#two').hide(0)
 	$('#two').html(html1)
@@ -493,7 +514,7 @@ function imgClick(team, champName) {
 					 <div class = showImgDivr></div>
 				</div>`
 			$('.center-box2').prepend(html3)
-
+			versus = '<img class = versus2 src="/img/versus2.png" >'
 			html1 = img1 + ' ->' + img2
 			x = timelinelist[i].x
 			y = timelinelist[i].y
@@ -502,7 +523,7 @@ function imgClick(team, champName) {
 			y1 = y * 500
 
 			x2 = x1 - 45
-			y2 = 470 - y1
+			y2 = 490 - y1
 			style = `style = "left: ${x2}px; top: ${y2}px; border: white;
 							color: white;
 							position: absolute;
@@ -599,7 +620,9 @@ function showInfoTimeLine(i) {
 				</div>`
 	$('.center-box2').prepend(html3)
 
-	html1 = img1 + ' <span  style="color:white"> -></span>' + '<div style = "filter: brightness(50%)">' + img2 + '</div>'
+
+	versus = '<img class = versus2 src="/img/versus2.png" >'
+	html1 = img1 + versus + '<div style = "filter: brightness(50%)">' + img2 + '</div>'
 
 	x = timelinelist[i].x
 	y = timelinelist[i].y
@@ -613,7 +636,7 @@ function showInfoTimeLine(i) {
 
 	$("#two").css({
 		left: x1 - 45,
-		top: 470 - y1
+		top: 490 - y1
 	})
 	$('#two').hide()
 	$('#two').html(html1)

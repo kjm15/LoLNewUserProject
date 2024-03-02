@@ -10,7 +10,7 @@
 	src="https://code.jquery.com/jquery-1.12.4.min.js"></script>
 <link href="/css/new/new.css" rel="stylesheet" type="text/css">
 <link href="/css/new/bar.css" rel="stylesheet" type="text/css">
-
+  <link rel="stylesheet" href="css/style.css">
 
 
 
@@ -35,7 +35,7 @@
 
 
 	<!-- js들어갈자리  -->
-	
+	<script defer src="js/star/style.js"></script>
 	<script defer src="js/new/slide.js"></script>
 	<script defer src="js/new/bar.js"></script>
 	<script defer src="js/aCommon/common.js"></script>

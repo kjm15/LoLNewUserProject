@@ -74,10 +74,10 @@ public class MainController {
 		return "stm/stmmain";
 	}
 
-	@GetMapping("/testboard")
+	@GetMapping("/test")
 	public String testboard() {
 	
-		return "stm/recordBoard";
+		return "test";
 	}
 
 	

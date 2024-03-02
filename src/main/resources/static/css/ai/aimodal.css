@@ -1,5 +1,11 @@
 @import url("https://fonts.googleapis.com/css?family=Lato:300");
-
+.versus2{
+	
+	
+	width: 30px;
+	height: 30px;
+	
+}
 .modal_wrap {
 	
 	background: #eee;
@@ -335,7 +341,7 @@ div.timeLineContents {
 }
 
 .xmark{
-	left : 60%;
+	left : 65%;
 	position: absolute;
 	z-index :7;
 	}
