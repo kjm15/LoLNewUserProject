@@ -272,9 +272,9 @@ function showGameTamble(res, data) {
 				cs ${totalCs}<br>
 				드래곤 ${dragon}
 				</div>
-				<div class = "box-center2down">
+				<div class = "box-center2down" id = ${matchId}>
 				
-				<a href = "#" style="color : blue;"><input type = "button" id = "${matchId}" value = 리플레이보기 disabled = "disabled" onclick = "aiTimelineAni(\'${matchId}\')"/> </a>
+					 <img width=40 height=40 src="/img/lodinglogo.gif" alt="리플레이시작버튼">
 				
 				</div>
 						
@@ -548,7 +548,9 @@ function showGameTamble(res, data) {
 			data: data1,
 			success: function(res) {
 				console.log(res.matchId + "saved")
-				$('#' + res.matchId).prop("disabled", false)
+				
+				html = `<a href="javascript:aiTimelineAni(\'${res.matchId}\');"><img width=40 height=40 src="/img/replay.png" alt="리플레이시작버튼"> 리플레이보기</a>`
+				$('#' + res.matchId).html(html)
 			}
 		})
 	}

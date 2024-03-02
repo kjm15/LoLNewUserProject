@@ -272,7 +272,36 @@ to {
 }
 
 /* 4번모달 */
+#payNow{
+	
+	border : 2px solid blue
+	
+}
+        /** 3d 버튼 */
+        .button-3d {
+            background-color: #007BFF;
+            color: white;
+            border: none;
+            padding: 5px 10px;
+            text-align: center;
+            text-decoration: none;
+            display: inline-block;
+            font-size: 16px;
+            margin: 4px 2px;
+            cursor: pointer;
+            border-radius: 4px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            transition: transform 0.2s;
+        }
 
+        .button-3d:hover {
+            transform: translateY(-4px);
+        }
+
+        .button-3d:active {
+            transform: translateY(-1px);
+            box-shadow: 0 1px 2px rgba(0, 0, 0, 0.1);
+        }
 /* The Modal (background) */
 .paymentModal {
 	display: none; /* Hidden by default */
@@ -286,10 +315,85 @@ to {
 	background-color: rgb(0, 0, 0); /* Fallback color */
 	background-color: rgba(0, 0, 0, 0.4); /* Black w/ opacity */
 } /* Modal Content/Box */
-.payment-modal-content {
-	background-color: #fefefe;
-	margin: 15% auto; /* 15% from the top and centered */
-	padding: 20px;
+
+
+.containerPay {
 	border: 1px solid #888;
-	width: 70%; /* Could be more or less, depending on screen size */
+	position: absolute;
+	background-image: url('https://image.ajunews.com/content/image/2019/01/23/20190123091351140547.png'); 
+	background-image: no-repeat; 
+	background-size: 100% 100%;
+
+	top : 20%;
+	left : 40%;
+	height : 400px;
+	width: 300px; 
+	
 }
+
+
+.col-up {
+
+	height: 250px;
+}
+
+.col-down {
+	display : flex;
+	justify-content : center;
+	align-items : center;
+height: 100px;
+}
+.col-down {
+	justify-content : center;
+	align-items : center;
+height: 50px;
+}
+.col-downdown {
+
+	display: flex;
+	justify-content : center;
+	align-items : top;
+	height: 50px;
+	width: 100%	;
+}
+
+@import url('https://fonts.googleapis.com/css2?family=Noto+Sans+KR&display=swap');
+
+select {
+	 text-align-last: center;
+   text-align: center;
+   -ms-text-align-last: center;
+   -moz-text-align-last: center;
+
+
+
+  
+  color: #444;
+  background-color: #fff;
+	width : 150px;
+	height:35px;
+  margin: 0;
+  
+  border: 1px solid #aaa;
+  border-radius: .5em;
+  box-shadow: 0 1px 0 1px rgba(0,0,0,.04);
+}
+
+select:hover {
+  border-color: #888;
+}
+
+select:focus {
+  border-color: #aaa;
+  box-shadow: 0 0 1px 3px rgba(59, 153, 252, .7);
+  box-shadow: 0 0 0 3px -moz-mac-focusring;
+  color: #222;
+  outline: none;
+}
+
+select:disabled {
+  opacity: 0.5;
+}
+
+
+
