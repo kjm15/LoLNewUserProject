@@ -13,8 +13,11 @@
 				<div class=ltop-box>
 
 
-					<img class=mapimg src="/img/map.png" id='tag'> <span id="one">
-					</span> <span id="two"> </span>
+					<img class=mapimg src="/img/map.png" id='tag'>
+					<div>
+						<div class = one id="one"></div>
+						<div class = "two" id="two"></div>	
+					</div>
 				</div>
 				<div class=lbottom-box>
 
@@ -52,7 +55,7 @@
 					<div class="blueTeamSide">
 						<div class="blueTeamSidel">blue</div>
 						<div class="blueTeamSider"></div>
-						
+
 					</div>
 					<p></p>
 					<div class="redTeamSide">
@@ -61,9 +64,9 @@
 					</div>
 
 					<div class="menu">
-					<input type=button value="리플레이 플레이" id="replayStart" />
-						<input type=button value="스킵/전체보기" id="liveBroadCastSkip" />
-					
+						<input type=button value="리플레이 플레이" id="replayStart" /> <input
+							type=button value="스킵/전체보기" id="liveBroadCastSkip" />
+
 					</div>
 				</div>
 				<div class=right-box1></div>
