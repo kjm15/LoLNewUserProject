@@ -13,11 +13,6 @@
 				<div class=ltop-box>
 
 
-					<img class=mapimg src="/img/map.png" id='tag'>
-					<div>
-						<div class = one id="one"></div>
-						<div class = "two" id="two"></div>	
-					</div>
 				</div>
 				<div class=lbottom-box>
 
@@ -35,7 +30,9 @@
 
 					<p></p>
 					<div id=timeLineContents class="timeLineContents">
-						<div class=top-box><Strong> < Time for kill > </Strong></div>
+						<div class=top-box>
+							<Strong> < Time for kill > </Strong>
+						</div>
 						<div class=mid-box>
 							<!-- 							<div class=center-box22></div> -->
 							<div class=left-box2></div>
@@ -60,12 +57,17 @@
 						<div class="redTeamSidel">red</div>
 						<div class="redTeamSider"></div>
 					</div>
-<p></p>
+					<p></p>
 					<div class="menu">
-					
-						<div class = "menur" id="replayStart"><img width='40' height='40' src="/img/playbutton.png" alt="리플레이시작버튼">리플레이 </div>
-						<div class = "menul" id="liveBroadCastSkip"><img width='40' height='40' src="/img/skipbutton.png" alt="스킵버튼">스킵/전체 </div>
-				
+
+						<div class="menur" id="replayStart">
+							<img width='40' height='40' src="/img/playbutton.png"
+								alt="리플레이시작버튼">리플레이
+						</div>
+						<div class="menul" id="liveBroadCastSkip">
+							<img width='40' height='40' src="/img/skipbutton.png" alt="스킵버튼">스킵/전체
+						</div>
+
 
 					</div>
 				</div>
@@ -74,3 +76,4 @@
 
 		</div>
 	</div>
+</div>

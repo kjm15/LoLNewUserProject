@@ -17,6 +17,7 @@
 
 	<hr>
 	</c:if>
+	<a href = "/test" >연습</a>
 	<div class = "movieStart"><span><font-size :2>
 	장기훈 김동근 김진문 김윤태 송태민 정혜린</font-size></span>
 	
