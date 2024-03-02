@@ -309,7 +309,7 @@ progressBar.addEventListener('click', (e) => {
 		skip()
 	}
 	if (removeList.length != 0) {
-
+	
 		for (let i in removeList) {
 
 			$("." + removeList[i]).remove()
