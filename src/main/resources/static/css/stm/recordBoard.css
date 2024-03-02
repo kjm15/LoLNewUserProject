@@ -91,6 +91,9 @@
 
 .box-center2up {
 	/* 	background: #800080; */
+		font-family: 'Jua', sans-serif;
+		
+		font-style: italic;
 	flex-basis: 80%;
 	text-align: center;
 }
@@ -111,11 +114,39 @@
 }
 
 .box-right {
+	position : relative;
+		font-family: 'Jua', sans-serif;
+		color: blue;
+		 font-weight: bold; 
+		font-style: italic;
 	/*	background: rgba(255, 2, 73, 0.18);*/
 	flex-basis: 70px;
 	text-align: center;
 }
-
+.box-rightblue {
+	position : absolute;
+	top : 70%;
+	left : 40%;
+		font-family: 'Jua', sans-serif;
+		color: blue;
+		 font-weight: bold; 
+		font-style: italic;
+	/*	background: rgba(255, 2, 73, 0.18);*/
+	flex-basis: 70px;
+	text-align: center;
+}
+.box-rightred {
+	position : absolute;
+	top : 70%;
+	left : 40%;
+		font-family: 'Jua', sans-serif;
+		color: red;
+		 font-weight: bold; 
+		font-style: italic;
+	/*	background: rgba(255, 2, 73, 0.18);*/
+	flex-basis: 70px;
+	text-align: center;
+}
 .line1 {
 	display: flex;
 	width: 1100px;
@@ -147,6 +178,7 @@
 }
 
 .champSepll {
+	font-family: 'Jua', sans-serif;
 	display: flex;
 	/* 	background: #c0c0c0; */
 	height: 70%;
@@ -167,6 +199,7 @@
 
 .box-center4 {
 	/*	background: #0080c0;*/
+	 
 	flex-basis: 85px;
 	text-align: left;
 }
@@ -191,11 +224,13 @@
 }
 
 .blueChamp {
+	font-family: 'Jua', sans-serif;
 	/* 	background: #ff00ff; */
 	flex-basis: 50%;
 }
 
 .redChamp {
+	font-family: 'Jua', sans-serif;
 	/* 	background: #8080ff; */
 	flex-basis: 50%;
 }
@@ -238,17 +273,22 @@
 
 .aicheck {
 	/* 	background: #0080ff; */
-	flex: 15%;
-	text-align: right;
+	left : 100px;
+	flex: 3%;
+	text-align: center;
 }
 
 .legend {
+	font-weight: bold;
+	font-family: 'Jua', sans-serif;
 	display: flex;
 	background: rgba(0, 0, 0, 0.04);
 	flex-basis: 10%;
 }
 
 .legend1 {
+	font-weight: bold;
+	font-family: 'Jua', sans-serif;
 	display: flex;
 	background: rgba(0, 0, 0, 0.04);
 	flex-basis: 10%;
@@ -280,6 +320,7 @@
 }
 
 .damage1 {
+	font-family : "궁서", "굴림", "sans-serif;";
 	/* 	background: #ffff80; */
 	flex-basis: 20%;
 }
@@ -292,6 +333,7 @@
 }
 
 .damage111 {
+	font-family: 'Jua', sans-serif;
 	display: flex;
 	/*	 	background: rgb(128, 255, 255); */
 	flex-basis: 100%;
@@ -311,6 +353,14 @@
 
 .cs1 {
 	/* 	background: #ff80c0; */
+	font-family: 'Jua', sans-serif;
+	position : relative;
+	flex-basis: 10%;
+}
+.cs11 {
+	/* 	background: #ff80c0; */
+	position : absolute;
+	top : 20%;
 	flex-basis: 10%;
 }
 
@@ -320,12 +370,17 @@
 }
 
 .killDeathAssist {
+	font-family: 'Jua', sans-serif;
 	/* 	background: #ff80c0; */
+	 font-size : 15px;  
 	height: 50%;
 }
 
 .kdaCheck {
 	/* 	background: #80ffff; */
+	font-family: 'Jua', sans-serif;
+	 font-size : 14px;  
+	 font-weight: bold;
 	height: 50%;
 }
 
@@ -341,20 +396,26 @@
 
 .itemTeamCheck {
 	display: flex;
+	position: relative;
 	/* 	background: #0080c0; */
 	text-align: center;
 }
 
 .teamItem1 {
+	position : absolute;
 	width: 250px;
 	/* 	background: #0080c0; */
 	text-align: left;
+	top : 20%;
 }
 
 .aidetail {
+	font-family: 'Jua', sans-serif;
+	position : relative;
 	top: 15px;
-	width: 80px;
-	text-align: center;
+	
+	width: 310px;
+	text-align: right;
 }
 
 .champImgM {
@@ -376,12 +437,12 @@
 
 .spellM1 {
 	/* 	background: #ff80c0; */
-	text-align: right;
+	text-align: left;
 }
 
 .spellM2 {
 	/* 	background: #ff80c0; */
-	text-align: right;
+	text-align: left;
 }
 
 .nickNameM {
@@ -391,6 +452,7 @@
 }
 
 .nickNameMR {
+	font-family: 'Jua', sans-serif;
 	/* 	background: #ff8040; */
 	height: 50px;
 	text-align: center;
@@ -555,7 +617,12 @@
 	animation-fill-mode: forwards;
 	z-index: auto;
 }
-
+.checkFlagStamp{
+	
+	position: absolute;
+	left : 250px;
+	
+}
 .stampWin {
 	/* position: absolute; */
 	height: 30px;
@@ -596,8 +663,11 @@
 	}
 }
 
+
+
 .stampLose {
 	/* position: absolute; */
+	text-align : center;
 	height: 30px;
 	width: 90px;
 	left: 0px;
@@ -617,8 +687,8 @@
 	animation-fill-mode: forwards;
 	z-index: auto;
 }
-
 .stampWin {
+	text-align : center;
 	/* position: absolute; */
 	height: 30px;
 	width: 90px;
@@ -640,55 +710,6 @@
 	z-index: auto;
 }
 
-.damageAmountr[name]:hover::after {
-	content: attr(name);
-	position: relative;
-	top: 80%;
-	right: 50%;
-/*	width: 120px;*/
-/*	height: 80px;*/
-/*	line-height: 80px;*/
-/*	padding: 5px;*/
-	background: yellow;
-/*	font-size: 24px;*/
-/*	border: 1px solid blue;*/
-/*	color: blue;*/
-/*	text-align: center;*/
-/*	z-index: 100;*/
-}
-.damageAmountl[name]:hover::after {
-	content: attr(name);
-	position: relative;
-	top: 80%;
-	right: 50%;
-/*	width: 120px;*/
-/*	height: 80px;*/
-/*	line-height: 80px;*/
-/*	padding: 5px;*/
-	background: yellow;
-/*	font-size: 24px;*/
-/*	border: 1px solid blue;*/
-/*	color: blue;*/
-/*	text-align: center;*/
-/*	z-index: 100;*/
-}
-@-webkit-keyframes pulse {
-	0% {
-		opacity: 0;
-	}
-
-	10% {
-		opacity: .50;
-		transform-origin: 50% 50%;
-		transform: rotate(-2deg) scale(5);
-		transition: all .3s cubic-bezier(0.6, 0.04, 0.98, 0.335);
-	}
-
-	100% {
-		opacity: 1;
-		transform: rotate(-15deg) scale(1);
-	}
-}
 
 /* 튤팁시작 */
 

@@ -7,12 +7,12 @@
 	
 }
 .modal_wrap {
-	
-	background: #eee;
+	font-family: 'Jua', sans-serif;
+/* 	background: #eee; */
 	z-index: 1;
-	display: none;
+/* 	display: none; */
 	text-align: center;
-	font-family: arial;	
+/* 	font-family: arial;	 */
 	position: fixed;
 	top: 100%;
 	left: 100%;
@@ -21,18 +21,19 @@
 
 .modal_wrap.show-modal {
 	height: 550px;
-	display: block;
+/* 	display: block; */
 }
 
 .modal_background.show-modal {
-	display: block;
+/* 	border-color : black; */
+/* 	display: block; */
 }
 
 .modal_background {
 	position: absolute;
 	width: 100%;
 	height: 100%;
-	background-color: rgba(0, 0, 0, 0.7);
+/* 	background-color: rgba(0, 0, 0, 0.7); */
 	top: 0;
 	left: 0;
 	z-index: 1;
@@ -66,7 +67,7 @@
 
 div.timeLineContents {
 	justify-content: center;
-	border: solid 1px green;
+	border: solid 2px green;
 	width: 280px;
 	height: 250px;
 }
@@ -106,6 +107,7 @@ div.timeLineContents {
 }
 
 .center-box1 {
+	font-family: 'Jua', sans-serif;
 	justify-content: center;
 	flex-basis: 280px;
 }
@@ -132,23 +134,36 @@ div.timeLineContents {
 }
 
 .showImgDiv {
+	border-bottom: 1px solid rgba(30, 64, 1, 1);
 	display: flex;
 	justify-content: center;
 	height: 40px;
-	justify-content: center;
 	/* 	flex-basis: 300px; */
 }
 
-.showImgDivr {
-	justify-content: right;
-	flex-basis: 120px;
+.showImgDivr	 {
+	font-family: 'Jua', sans-serif;
+	align-items:center;
+	text-align:center;
+	position: relative;
+	justify-content: center;
+	flex-basis: 130px;
 }
 
+.showImgDivrC	 {
+	top: 25%;
+	left: 0%;
+	position: absolute;
+	justify-content: right;
+	flex-basis: 130px;
+}
 .showImgDivl {
+	 
+	
 	position: relative;
 	display: flex;
 	justify-content: left;
-	flex-basis: 150px;
+	flex-basis: 140px;
 }
 
 .showImgDivlr {
@@ -277,7 +292,7 @@ div.timeLineContents {
 }
 .blueTeamSide {
 	position: relative;
-	border: 1px solid blue;
+	border: 2px solid blue;
 	display: flex;
 	height: 40px;
 	text-align: center;
@@ -301,7 +316,7 @@ div.timeLineContents {
 
 .redTeamSide {
 	position: relative;
-	border: 1px solid red;
+	border: 2px solid red;
 	display: flex;
 	height: 40px;
 }
@@ -322,7 +337,36 @@ div.timeLineContents {
 	width: 20%
 }
 
+
+.status {
+	border : 1px solid #00244d;
+
+	align-items : center;
+	height: 100px;
+}
+.statusUp {
+	border : 1px solid #00244d;
+	position : relative;
+	align-items : center;
+	height: 30px;
+}
+.statusUpUp {
+	position : absolute;
+	top : 10%;
+	left : 41%;
+	align-items : center;
+
+}
+.statusDown {
+	border : 1px solid #00244d;
+
+	align-items : center;
+	height: 70px;
+}
+
+
 .menu {
+	font-family: 'Jua', sans-serif;
 	display : flex;
 	align-items : center;
 	height: 40px;
@@ -339,7 +383,12 @@ div.timeLineContents {
 	align-items : center;
 
 }
+.menulC {
+	justify-content : left;
+	flex-basis : 50%;
+	align-items : center;
 
+}
 .xmark{
 	left : 65%;
 	position: absolute;
@@ -349,16 +398,18 @@ div.timeLineContents {
 
 /* 프로그래스바 컨테이너 디자인 */
 .progress-container {
+	border-style: solid;
 	position: fixed;
 	z-index: 3;
 	width: 500px;
-	height: 30px;
+	height: 46px;
 	background: #ced6d9;
 }
 
 /* 프로그래스바 디자인 */
 .progress-bar {
-	height: 30px;
+	border-color : 1px solid black;
+	height: 40px;
 	background-color: #ff80ff;
 	width: 0%;
 }

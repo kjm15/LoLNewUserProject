@@ -59,6 +59,8 @@ function skip() {
 		team2 = timelinelist[i].team2
 		border2 = ''
 		//
+		killStreakLength = timelinelist[i].killStreakLength
+		//
 		if (team1 == 100) {
 
 			border1 = ' style="border:2px solid; border-color:blue; border-radius: 50%;"  '
@@ -90,7 +92,7 @@ function skip() {
 		img1 = "<img " + border1 + " width = 30 height = 30 onerror=this.src='/img/object/" + championName1 + ".png' src = 'https://ddragon.leagueoflegends.com/cdn/14.3.1/img/champion/" + championName1 + ".png' >"
 		img2 = "<img " + border2 + "width = 30 height = 30 onerror=this.src='/img/object/" + championName2 + ".png' src = 'https://ddragon.leagueoflegends.com/cdn/14.3.1/img/champion/" + championName2 + ".png' >"
 
-		html3 = `<div class = showImgDiv id = showImg${i} >
+		nomal = `<div class = showImgDiv id = showImg${i} >
 				 	<div class = showImgDivl> 
 				 		<div class = showImgDivll>
 				 			${html2} 
@@ -98,9 +100,63 @@ function skip() {
 				 		<div class = showImgDivlr> 
 				 		 <span tooltip= ${championName1_kr}> <a href = "javascript:inputTimeToImg(\'${html2}\',\'${championName1}\')"> ${img1} </a></span><span style= "color : blue">	</span> -> <span tooltip=${championName2_kr}><a href = "javascript:inputTimeToImg(\'${html2}\',\'${championName2}\')">${img2}</a></span></div>
 						</div>
-					 <div class = showImgDivr></div>
-				</div>`
-		$('.center-box2').prepend(html3)
+					 <div class = showImgDivr>
+					  <div class = showImgDivrC>`
+
+		end = `</div></div> </div></div>`
+
+
+		killnomal = `${killStreakLength} 연속 킬`
+		ace = `${killStreakLength}	연속 킬 <span style="color:blue">Ace</span> `
+
+		nice = `${killStreakLength}	연속 킬  <span style="color:red">Amazing</span></div>	`
+
+		object = ""
+
+		if (killStreakLength > 0 && killStreakLength < 3) {
+			$('.center-box2').prepend(nomal + killnomal + end)
+		} else if (killStreakLength >= 3 && killStreakLength < 5) {
+			$('.center-box2').prepend(nomal + ace + end)
+		} else if (killStreakLength >= 5 && killStreakLength <= 100) {
+			$('.center-box2').prepend(nomal + nice + end)
+		} else if (killStreakLength == 101) {
+			object = "화학공학 D 처치"
+			$('.center-box2').prepend(nomal + object + end)
+		} else if (killStreakLength == 102) {
+			object = "화염 D 처치"
+			$('.center-box2').prepend(nomal + object + end)
+		} else if (killStreakLength == 103) {
+			object = "바람 D 처치"
+			$('.center-box2').prepend(nomal + object + end)
+		} else if (killStreakLength == 104) {
+			object = "마법공학D 처치"
+			$('.center-box2').prepend(nomal + object + end)
+		} else if (killStreakLength == 105) {
+			object = "대지 D 처치"
+			$('.center-box2').prepend(nomal + object + end)
+		} else if (killStreakLength == 106) {
+			object = "바다 D 처치"
+			$('.center-box2').prepend(nomal + object + end)
+		} else if (killStreakLength == 107) {
+			object = "장로 D 처치"
+			$('.center-box2').prepend(nomal + object + end)
+		} else if (killStreakLength == 108) {
+			object = "공허 유충 처치"
+			$('.center-box2').prepend(nomal + object + end)
+		} else if (killStreakLength == 109) {
+			object = "협곡의 전령 처치"
+			$('.center-box2').prepend(nomal + object + end)
+		} else if (killStreakLength == 110) {
+			object = "바론 처치"
+			$('.center-box2').prepend(nomal + object + end)
+		} else {
+			$('.center-box2').prepend(nomal + end)
+
+		}
+
+
+
+
 
 	}
 	$('.center-box2').prepend("<p></p>	")
@@ -115,16 +171,18 @@ function skip() {
 		data: dataTeam,
 		success: function(res) {
 			teamList = res
+			blue = ''
+			red = ''
+
 			for (let i in res) {
 				if (res[i].teamId == 100) {
-
-					$('.blueTeamSider').append(inputImg(res[i].championName, res[i].champion_name_kr, 100) + "&nbsp;")
-
+					blue += inputImg(res[i].championName, res[i].champion_name_kr, 100)
 				} else if (res[i].teamId == 200) {
-					$('.redTeamSider').append(inputImg(res[i].championName, res[i].champion_name_kr, 200) + "&nbsp;")
-
+					red += inputImg(res[i].championName, res[i].champion_name_kr, 200) 
 				}
 			}
+			$('.blueTeamSider').html(blue)
+			$('.redTeamSider').html(red)
 		}
 	})
 
@@ -149,6 +207,7 @@ function inputTimeToImg(nowTime, champName) {
 			team2 = timelinelist[i].team2
 			border2 = ''
 			//
+			killStreakLength = timelinelist[i].killStreakLength
 			if (team1 == 100) {
 
 				border1 = ' style="border:2px solid; border-color:blue; border-radius: 50%;"  '
@@ -217,7 +276,7 @@ function inputImg(a, b, c) {
 }
 //////////////////////////////////////
 function open() {
-	console.log(timeline_list)
+	//	console.log(timeline_list)
 	let map = ''
 	if (timeline_list[0][0].queueId == 450) {
 		map = '<img class=mapimg src="/img/map2.png" id=tag>'
@@ -234,8 +293,6 @@ function open() {
 					</div>
 				`
 
-
-//	console.log(map + plusDetail)
 
 	$('.ltop-box').html(map + plusDetail)
 
@@ -297,6 +354,8 @@ function liveReplay() {
 
 		} else if (i == len) {
 			document.querySelector(".progress-bar").style.width = 100 + "%";
+			$('#replayStart').css("visibility", "visible");
+			skip()
 			$('#two').html('게임종료')
 		} else {
 
@@ -330,7 +389,7 @@ progressBar.addEventListener('click', (e) => {
 		skip()
 	}
 	if (removeList.length != 0) {
-
+		skip()
 		for (let i in removeList) {
 
 			$("." + removeList[i]).remove()
@@ -386,6 +445,7 @@ progressBar.addEventListener('click', (e) => {
 	team2 = timelinelist[i].team2
 	border2 = ''
 	//
+	killStreakLength = timelinelist[i].killStreakLength
 	if (team1 == 100) {
 
 		border1 = ' style="border:2px solid; border-color:blue; border-radius: 50%;"  '
@@ -472,6 +532,8 @@ function imgClick(team, champName) {
 			team2 = timelinelist[i].team2
 			border2 = ''
 			//
+			killStreakLength = timelinelist[i].killStreakLength
+
 			if (team1 == 100) {
 
 				border1 = ' style="border:2px solid; border-color:blue; border-radius: 50%;"  '
@@ -503,19 +565,71 @@ function imgClick(team, champName) {
 			img1 = "<img " + border1 + " width = 30 height = 30 onerror=this.src='/img/object/" + championName1 + ".png' src = 'https://ddragon.leagueoflegends.com/cdn/14.3.1/img/champion/" + championName1 + ".png' >"
 			img2 = "<img " + border2 + "width = 30 height = 30 onerror=this.src='/img/object/" + championName2 + ".png' src = 'https://ddragon.leagueoflegends.com/cdn/14.3.1/img/champion/" + championName2 + ".png' >"
 
-			html3 = `<div class = showImgDiv id = showImg${i} >
+			nomal = `<div class = showImgDiv id = showImg${i} >
 				 	<div class = showImgDivl> 
 				 		<div class = showImgDivll>
 				 			${html2} 
 				 		</div>
 				 		<div class = showImgDivlr> 
-				 		 <span tooltip= ${championName1_kr}> <a href="javascript:inputTimeToImg(\'${html2}\',\'${championName1}\');"> ${img1} </a></span>-> <span tooltip=${championName2_kr}> <a href="javascript:inputTimeToImg(\'${html2}\',\'${championName2}\');">${img2}</a></span></div>
+				 		 <span tooltip= ${championName1_kr}> <a href = "javascript:inputTimeToImg(\'${html2}\',\'${championName1}\')"> ${img1} </a></span><span style= "color : blue">	</span> -> <span tooltip=${championName2_kr}><a href = "javascript:inputTimeToImg(\'${html2}\',\'${championName2}\')">${img2}</a></span></div>
 						</div>
-					 <div class = showImgDivr></div>
-				</div>`
-			$('.center-box2').prepend(html3)
+					 <div class = showImgDivr>
+					 <div class = showImgDivrC>`
+
+			end = `</div></div> </div></div>`
+
+
+			killnomal = `${killStreakLength} 연속 킬`
+			ace = `${killStreakLength}	연속 킬 <span style="color:blue">Ace</span> `
+
+			nice = `${killStreakLength}	연속 킬  <span style="color:red">Amazing</span></div>	`
+
+			object = ""
+
+			if (killStreakLength > 0 && killStreakLength < 3) {
+				$('.center-box2').prepend(nomal + killnomal + end)
+			} else if (killStreakLength >= 3 && killStreakLength < 5) {
+				$('.center-box2').prepend(nomal + ace + end)
+			} else if (killStreakLength >= 5 && killStreakLength <= 100) {
+				$('.center-box2').prepend(nomal + nice + end)
+			} else if (killStreakLength == 101) {
+				object = "화학공학 D 처치"
+				$('.center-box2').prepend(nomal + object + end)
+			} else if (killStreakLength == 102) {
+				object = "화염 D 처치"
+				$('.center-box2').prepend(nomal + object + end)
+			} else if (killStreakLength == 103) {
+				object = "바람 D 처치"
+				$('.center-box2').prepend(nomal + object + end)
+			} else if (killStreakLength == 104) {
+				object = "마법공학D 처치"
+				$('.center-box2').prepend(nomal + object + end)
+			} else if (killStreakLength == 105) {
+				object = "대지 D 처치"
+				$('.center-box2').prepend(nomal + object + end)
+			} else if (killStreakLength == 106) {
+				object = "바다 D 처치"
+				$('.center-box2').prepend(nomal + object + end)
+			} else if (killStreakLength == 107) {
+				object = "장로 D 처치"
+				$('.center-box2').prepend(nomal + object + end)
+			} else if (killStreakLength == 108) {
+				object = "공허 유충 처치"
+				$('.center-box2').prepend(nomal + object + end)
+			} else if (killStreakLength == 109) {
+				object = "협곡의 전령 처치"
+				$('.center-box2').prepend(nomal + object + end)
+			} else if (killStreakLength == 110) {
+				object = "바론 처치"
+				$('.center-box2').prepend(nomal + object + end)
+			} else {
+				$('.center-box2').prepend(nomal + end)
+
+			}
+
+
 			versus = '<img class = versus2 src="/img/versus2.png" >'
-			html1 = img1 + ' ->' + img2
+			html1 = img1 + versus + img2
 			x = timelinelist[i].x
 			y = timelinelist[i].y
 
@@ -579,6 +693,8 @@ function showInfoTimeLine(i) {
 	team2 = timelinelist[i].team2
 	border2 = ''
 	//
+	killStreakLength = timelinelist[i].killStreakLength
+
 	if (team1 == 100) {
 
 		border1 = ' style="border:2px solid; border-color:blue; border-radius: 50%;"  '
@@ -608,17 +724,68 @@ function showInfoTimeLine(i) {
 	img1 = "<img " + border1 + " width = 30 height = 30 onerror=this.src='/img/object/" + championName1 + ".png' src = 'https://ddragon.leagueoflegends.com/cdn/14.3.1/img/champion/" + championName1 + ".png' >"
 	img2 = "<img " + border2 + "width = 30 height = 30 onerror=this.src='/img/object/" + championName2 + ".png' src = 'https://ddragon.leagueoflegends.com/cdn/14.3.1/img/champion/" + championName2 + ".png' >"
 
-	html3 = `<div class = showImgDiv id = showImg${i} >
+
+	nomal = `<div class = showImgDiv id = showImg${i} >
 				 	<div class = showImgDivl> 
 				 		<div class = showImgDivll>
 				 			${html2} 
 				 		</div>
 				 		<div class = showImgDivlr> 
-				 		 <span tooltip= ${championName1_kr}>${img1}</span> -> <span tooltip=${championName2_kr}>${img2}</span></div>
+				 		 <span tooltip= ${championName1_kr}> <a href = "javascript:inputTimeToImg(\'${html2}\',\'${championName1}\')"> ${img1} </a></span><span style= "color : blue">	</span> -> <span tooltip=${championName2_kr}><a href = "javascript:inputTimeToImg(\'${html2}\',\'${championName2}\')">${img2}</a></span></div>
 						</div>
-					 <div class = showImgDivr></div>
-				</div>`
-	$('.center-box2').prepend(html3)
+					 <div class = showImgDivr>
+					 <div class = showImgDivrC>`
+
+	end = `<div></div> </div></div>`
+
+
+	killnomal = `${killStreakLength} 연속 킬`
+	ace = `${killStreakLength}	연속 킬 <span style="color:blue">Ace</span> `
+
+	nice = `${killStreakLength}	연속 킬  <span style="color:red">Amazing</span></div>	`
+
+	object = ""
+
+	if (killStreakLength > 0 && killStreakLength < 3) {
+		$('.center-box2').prepend(nomal + killnomal + end)
+	} else if (killStreakLength >= 3 && killStreakLength < 5) {
+		$('.center-box2').prepend(nomal + ace + end)
+	} else if (killStreakLength >= 5 && killStreakLength <= 100) {
+		$('.center-box2').prepend(nomal + nice + end)
+	} else if (killStreakLength == 101) {
+		object = "화학공학 D 처치"
+		$('.center-box2').prepend(nomal + object + end)
+	} else if (killStreakLength == 102) {
+		object = "화염 D 처치"
+		$('.center-box2').prepend(nomal + object + end)
+	} else if (killStreakLength == 103) {
+		object = "바람 D 처치"
+		$('.center-box2').prepend(nomal + object + end)
+	} else if (killStreakLength == 104) {
+		object = "마법공학 D 처치"
+		$('.center-box2').prepend(nomal + object + end)
+	} else if (killStreakLength == 105) {
+		object = "대지 D 처치"
+		$('.center-box2').prepend(nomal + object + end)
+	} else if (killStreakLength == 106) {
+		object = "바다 D 처치"
+		$('.center-box2').prepend(nomal + object + end)
+	} else if (killStreakLength == 107) {
+		object = "장로 D 처치"
+		$('.center-box2').prepend(nomal + object + end)
+	} else if (killStreakLength == 108) {
+		object = "공허 유충 처치"
+		$('.center-box2').prepend(nomal + object + end)
+	} else if (killStreakLength == 109) {
+		object = "협곡의 전령 처치"
+		$('.center-box2').prepend(nomal + object + end)
+	} else if (killStreakLength == 110) {
+		object = "바론 처치"
+		$('.center-box2').prepend(nomal + object + end)
+	} else {
+		$('.center-box2').prepend(nomal + end)
+
+	}
 
 
 	versus = '<img class = versus2 src="/img/versus2.png" >'

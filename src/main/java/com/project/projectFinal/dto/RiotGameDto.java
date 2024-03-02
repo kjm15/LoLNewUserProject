@@ -28,7 +28,7 @@ public class RiotGameDto {
 	private String lane; // 라인
 	private int queueId; // 게임 모드
 	private boolean win; // 승패
-	private int dragon; // 드래곤
+	private int dragon; // D
 	private int totalAllyJungleMinionsKilled; // 모든 정글 몹 킬
 	private int totalDamageDealtToChampions; // 가한 피해량
 	private int totalDamageTaken; // 받은 피해량 

@@ -10,10 +10,7 @@
 	<div class="modal2">
 		<div class="wrap">
 			<div class=left-box>
-				<div class=ltop-box>
-
-
-				</div>
+				<div class=ltop-box></div>
 				<div class=lbottom-box>
 
 
@@ -58,14 +55,28 @@
 						<div class="redTeamSider"></div>
 					</div>
 					<p></p>
+
+					<div class="status">
+						<div class="statusUp">
+							<div class="statusUpUp">Result</div>
+						</div>
+						<div class="statusDown">
+						
+						결과 들어갈 예정
+						
+						</div>
+
+					</div>
 					<div class="menu">
 
 						<div class="menur" id="replayStart">
-							<img width='40' height='40' src="/img/playbutton.png"
-								alt="리플레이시작버튼">리플레이
+							<a href = "#"><img width='30' height='30' src="/img/playbutton.png"
+								alt="리플레이시작버튼">Play
+								</a>
 						</div>
 						<div class="menul" id="liveBroadCastSkip">
-							<img width='40' height='40' src="/img/skipbutton.png" alt="스킵버튼">스킵/전체
+							<a href = "#"><img width='30' height='30' src="/img/skipbutton.png" alt="스킵버튼">Skip/All
+							</a>
 						</div>
 
 

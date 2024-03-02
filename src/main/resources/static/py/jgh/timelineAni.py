@@ -12,7 +12,7 @@ import datetime
 data = sys.argv[1:]
 api_key = 'RGAPI-36ff1947-075a-4441-9e90-df81d5d1cd03'
 matchId = data[0] 
-# matchId = "KR_6968925874"
+# matchId = "KR_6973595010"
 # print(data)
 
 def connect_mysql(db='mydb'):
@@ -43,7 +43,7 @@ def insert_matches_timeline_mysql(row, conn):
             f",(select champion_name_kr from RiotGameInfoT where matchId = \'{row.matchId}\' and participantId = \'{row.victim}\')"
             f",(select teamId from RiotGameInfoT where matchId = \'{row.matchId}\' and participantId = \'{row.victim}\')"
             f",\'{row.x}\', \'{row.y}\', \'{row.now_time}\',  \'{row.timestamp}\'"
-            f",(select queueId from RiotGameInfoT where matchId = \'{row.matchId}\' limit 1)"
+            f",(select queueId from RiotGameInfoT where matchId = \'{row.matchId}\' limit 1),0"
             f")"
         )
     else :
@@ -56,7 +56,7 @@ def insert_matches_timeline_mysql(row, conn):
             f",(select champion_name_kr from RiotGameInfoT where matchId = \'{row.matchId}\' and participantId = \'{row.victim}\')"
             f",(select teamId from RiotGameInfoT where matchId = \'{row.matchId}\' and participantId = \'{row.victim}\')"
             f",\'{row.x}\', \'{row.y}\', \'{row.now_time}\',  \'{row.timestamp}\'"
-            f",(select queueId from RiotGameInfoT where matchId = \'{row.matchId}\' limit 1)"
+            f",(select queueId from RiotGameInfoT where matchId = \'{row.matchId}\' limit 1),\'{row.killStreakLength}\'"
             f")"
         )
         
@@ -71,7 +71,7 @@ def insert_matches_monster_timeline_mysql(row, conn):
             f"INSERT ignore INTO aiTimelineT"
             f" VALUES (\'{row.matchId}\','{championName}','{champion_name_kr}',300,\'{row.victim_championName}\',\'{row.victim}\',300"
             f",\'{row.x}\', \'{row.y}\', \'{row.now_time}\',  \'{row.timestamp}\'"
-            f",(select queueId from RiotGameInfoT where matchId = \'{row.matchId}\' limit 1)"
+            f",(select queueId from RiotGameInfoT where matchId = \'{row.matchId}\' limit 1),\'{row.killStreakLength}\'"
             f")"
         )        
     else :     
@@ -83,7 +83,7 @@ def insert_matches_monster_timeline_mysql(row, conn):
             f",(select teamId from RiotGameInfoT where matchId = \'{row.matchId}\' and participantId = \'{row.participantId}\')"
             f",\'{row.victim_championName}\',\'{row.victim}\',300"          
             f",\'{row.x}\', \'{row.y}\', \'{row.now_time}\',  \'{row.timestamp}\'"
-            f",(select queueId from RiotGameInfoT where matchId = \'{row.matchId}\' limit 1)"
+            f",(select queueId from RiotGameInfoT where matchId = \'{row.matchId}\' limit 1),\'{row.killStreakLength}\'"
             f")"
         )
     sql_execute(conn, query)
@@ -104,6 +104,8 @@ timelines = get_matches_timelines(matchId,api_key)
 
 mytime_Gamer_list = []
 mytime_monster_list = []
+memo_list = []
+
 timlines_list = timelines['info']['frames']
 for i in range(len(timlines_list)): #경기중 i분
     events_list = timlines_list[i]['events']
@@ -134,44 +136,54 @@ for i in range(len(timlines_list)): #경기중 i분
             mynow_dict.append(round(y/15000,2)) 
             mynow_dict.append(str(now_min) + ':' + str(now_second)) 
             mynow_dict.append(timestamp) 
- 
+            mynow_dict.append(events_list[j]['killStreakLength']) 
             mytime_Gamer_list.append(mynow_dict)
 
-        elif events_list[j]['type'] == "ELITE_MONSTER_KILL": #드래곤
+        elif events_list[j]['type'] == "ELITE_MONSTER_KILL": #D
             mynow_dict = []
             monsterSubType = ''
             monsterType = events_list[j]['monsterType']
             if monsterType == "DRAGON" :
                 if events_list[j]['monsterSubType'] == "CHEMTECH_DRAGON":
                     victim_championName= "CHEMTECH_DRAGON"
-                    monsterSubType = "화학공학 드래곤"
+                    monsterSubType = "화학공학 D"
+                    killStreakLength = 101
                 elif events_list[j]['monsterSubType'] == "FIRE_DRAGON":
                     victim_championName= "FIRE_DRAGON"
-                    monsterSubType = "화염 드래곤"   
+                    killStreakLength = 102
+                    monsterSubType = "화염 D"   
                 elif events_list[j]['monsterSubType'] == "AIR_DRAGON":
                     victim_championName= "AIR_DRAGON"
-                    monsterSubType = "바람 드래곤"
+                    monsterSubType = "바람 D"
+                    killStreakLength = 103
                 elif events_list[j]['monsterSubType'] == "HEXTECH_DRAGON":
                     victim_championName= "HEXTECH_DRAGON"
-                    monsterSubType = "마법공학 드래곤"
+                    monsterSubType = "마법공학 D"
+                    killStreakLength = 104
                 elif events_list[j]['monsterSubType'] == "EARTH_DRAGON":
                     victim_championName= "EARTH_DRAGON"
-                    monsterSubType = "대지 드래곤"
+                    monsterSubType = "대지 D"
+                    killStreakLength = 105
                 elif events_list[j]['monsterSubType'] == "WATER_DRAGON":
                     victim_championName= "WATER_DRAGON"
-                    monsterSubType = "바다 드래곤"
+                    monsterSubType = "바다 D"
+                    killStreakLength = 106
                 elif events_list[j]['monsterSubType'] == "ELDER_DRAGON": 
                     victim_championName= "ELDER_DRAGON"                        
-                    monsterSubType = "장로 드래곤"
+                    monsterSubType = "장로 D"
+                    killStreakLength = 107
             if events_list[j]['monsterType'] == "HORDE": 
                 victim_championName= "HORDE"                        
                 monsterSubType = "공허 유충"  
+                killStreakLength = 108
             elif events_list[j]['monsterType'] == "RIFTHERALD": 
                 victim_championName= "RIFTHERALD"                        
                 monsterSubType = "협곡의 전령"  
+                killStreakLength = 109
             elif events_list[j]['monsterType'] == "BARON_NASHOR": 
                 victim_championName= "BARON_NASHOR"                        
-                monsterSubType = "내셔남작(바론)"                                          
+                monsterSubType = "내셔남작(바론)"    
+                killStreakLength = 110                                      
 
             killer = events_list[j]['killerId']
             
@@ -197,11 +209,16 @@ for i in range(len(timlines_list)): #경기중 i분
             mynow_dict.append(round(y/15000,2))
             mynow_dict.append(str(now_min) + ':' + str(now_second))
             mynow_dict.append(timestamp) 
+            mynow_dict.append(killStreakLength) 
+            
             mytime_monster_list.append(mynow_dict)
+  
 
 
-df =pd.DataFrame(mytime_Gamer_list,columns = ['matchId','participantId','victim','x','y','now_time','timestamp'])  
-df_monster =pd.DataFrame(mytime_monster_list,columns = ['matchId','participantId','victim','victim_championName','x','y','now_time','timestamp'])
+
+df =pd.DataFrame(mytime_Gamer_list,columns = ['matchId','participantId','victim','x','y','now_time','timestamp','killStreakLength'])  
+df_monster =pd.DataFrame(mytime_monster_list,columns = ['matchId','participantId','victim','victim_championName','x','y','now_time','timestamp','killStreakLength'])
+
 
 
 conn = connect_mysql()
