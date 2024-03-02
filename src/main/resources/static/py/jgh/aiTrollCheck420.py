@@ -23,19 +23,21 @@ def connect_mysql(db='mydb'):
 conn = connect_mysql()
 cursor = conn.cursor()
 queueId = str(420) #큐아이디
-limit_value = str(500) # 리미트값
+limit_value = str(1000) # 리미트값
 ############################
 
 data = sys.argv[1:]
 
 # print(data)
-
+tier = ''
 key = data[0]
-tier = data[1]
-if tier == 'unRanked':
+tier1 = data[1]
+if tier1 == 'unRanked':
     tier == 'GOLD'
-if tier == 'Tier':
+elif tier1 == 'Tier':
     tier == 'GOLD'   
+else:
+    tier = tier1
 teamPosition = data[2]
 gameDuration = int(data[3])
 kda = float(data[4])

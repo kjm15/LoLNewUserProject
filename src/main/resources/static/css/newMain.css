@@ -111,6 +111,7 @@ footer {
 }
 
 .navbars {
+	font-family: 'Jua', sans-serif;
 	display: flex;
 	background-color: rgb(120, 173, 252);
 	text-align: center;
@@ -140,6 +141,7 @@ footer {
 }
 
 .headerItmes {
+	font-family: 'Jua', sans-serif;
 	display: flex;
 	justify-content: right;
 	align-items: center;
@@ -187,6 +189,7 @@ footer {
 }
 
 .search-contents {
+	
 	/* 		min-height: 20px; */
 	display: flex;
 	justify-content: center;
