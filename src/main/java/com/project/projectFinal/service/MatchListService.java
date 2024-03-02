@@ -118,4 +118,9 @@ public class MatchListService {
 		return riotGameDao.timelineInfo(matchId);
 	}
 
+	public List<Map<String, Object>> teamList(String matchId) {
+		// TODO Auto-generated method stub
+		return riotGameDao.teamList(matchId);
+	}
+
 }

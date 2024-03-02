@@ -184,4 +184,10 @@ public class RestPythonBuilder {
 		return matchListService.timelineInfo(matchId);
 
 	}
+	@PostMapping("/teamList")
+	public List<Map<String, Object>> teamList(String matchId) throws Exception {
+
+		return matchListService.teamList(matchId);
+
+	}	
 }

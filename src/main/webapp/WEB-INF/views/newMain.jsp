@@ -24,7 +24,7 @@
 
 		<%@include file="inc/mainHeader.jsp"%>
 
-
+			
 		<%@include file="aMain/mainDetail.jsp"%>
 
 
@@ -35,9 +35,10 @@
 
 
 	<!-- js들어갈자리  -->
-	<script defer src="js/new/gameNameSearch.js"></script>
+	
 	<script defer src="js/new/slide.js"></script>
 	<script defer src="js/new/bar.js"></script>
+	<script defer src="js/aCommon/common.js"></script>
 <!-- 	<script defer src="js/new/comprehensive.js"></script> -->
 
 

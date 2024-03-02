@@ -50,7 +50,8 @@ function mainSearch(gameName1) {
 }
 
 function aiCheckTroll(res1) {
-	//	console.log(res1)
+	console.log(res1)
+	let queue = ''
 	console.log("data전송완료/인공지능시작")
 	$.ajax({
 		contentType: 'application/json',
@@ -61,6 +62,7 @@ function aiCheckTroll(res1) {
 			//			console.log(res)
 
 			if (res.queueId == 420) {
+
 				data = res
 				//					console.log(data)
 				$.ajax({
@@ -133,17 +135,21 @@ function aiCheckTroll(res1) {
 						}
 					}
 				})//ajax끝
-			} else if (res.queueId == 1900) {
-				queue = "우르프"
 
-			} else if (res.queueId == 490) {
-				queue = "빠른대전"
-			} else if (res.queueId == 440) {
-				queue = "자유랭크"
+			} else {
+				if (res.queueId == 1900) {
+					queue = "우르프"
+				} else if (res.queueId == 490) {
+					queue = "빠른대전"
+				} else if (res.queueId == 440) {
+					queue = "자유랭크"
+				}
+				key = res.matchId + res.participantId
+				str = "<span><font size=2>|" + queue + "|</font></span>";
+				$('#' + key).html(str);
+
 			}
-			key = res.matchId + res.participantId
-			str = "<span><font size=2>|" + queue + "| <br>|개발중|</font></span>";
-			$('#' + key).html(str);
+
 		}
 
 	})//ajax끝
@@ -370,6 +376,9 @@ function gamebtn(goBtn, matchId) {
 						})
 					} else if (res[i].queueId == 450) {
 
+						aiCheckTroll(res[i])
+
+					} else {
 						aiCheckTroll(res[i])
 
 					}

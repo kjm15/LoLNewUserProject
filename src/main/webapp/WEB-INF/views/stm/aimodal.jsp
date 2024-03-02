@@ -33,11 +33,9 @@
 				<div class=left-box1></div>
 				<div class=center-box1>
 
-					<h2>리플레이 보기</h2>
-
 					<p></p>
 					<div id=timeLineContents class="timeLineContents">
-						<div class=top-box>Time for kill</div>
+						<div class=top-box><Strong> < Time for kill > </Strong></div>
 						<div class=mid-box>
 							<!-- 							<div class=center-box22></div> -->
 							<div class=left-box2></div>
@@ -62,10 +60,12 @@
 						<div class="redTeamSidel">red</div>
 						<div class="redTeamSider"></div>
 					</div>
-
+<p></p>
 					<div class="menu">
-						<input type=button value="리플레이 플레이" id="replayStart" /> <input
-							type=button value="스킵/전체보기" id="liveBroadCastSkip" />
+					
+						<div class = "menur" id="replayStart"><img width='40' height='40' src="/img/playbutton.png" alt="리플레이시작버튼">리플레이 </div>
+						<div class = "menul" id="liveBroadCastSkip"><img width='40' height='40' src="/img/skipbutton.png" alt="스킵버튼">스킵/전체 </div>
+				
 
 					</div>
 				</div>
