@@ -100,7 +100,7 @@ function skip() {
 				 			${html2} 
 				 		</div>
 				 		<div class = showImgDivlr> 
-				 		 <span tooltip= ${championName1_kr}> <a href = javascript:inputTimeToImg(\'${html2}\')> ${img1} </a></span><span style= "color : blue">	</span> -> <span tooltip=${championName2_kr}><a href = javascript:inputTimeToImg(\'${html2}\')>${img2}</a></span></div>
+				 		 <span tooltip= ${championName1_kr}> <a href = "javascript:inputTimeToImg(\'${html2}\',\'${championName1}\')"> ${img1} </a></span><span style= "color : blue">	</span> -> <span tooltip=${championName2_kr}><a href = "javascript:inputTimeToImg(\'${html2}\',\'${championName2}\')">${img2}</a></span></div>
 						</div>
 					 <div class = showImgDivr></div>
 				</div>`
@@ -133,12 +133,13 @@ function skip() {
 
 
 ////////////////////////////////////////////////////////////////
-function inputTimeToImg(nowTime) {
+function inputTimeToImg(nowTime, champName) {
 	timelinelist = timeline_list[0]
+	console.log("만드는중")
 	for (let i in timelinelist) {
-
-		if (timelinelist[i].now_time == nowTime) {
-			//			console.log(nowTime)
+		//			console.log(timelinelist[i])
+		if (timelinelist[i].now_time == nowTime && timelinelist[i].championName == champName) {
+			console.log(nowTime)
 			championName1 = timelinelist[i].championName
 			championName1_kr = timelinelist[i].champion_name_kr
 			team1 = timelinelist[i].team1
@@ -171,14 +172,16 @@ function inputTimeToImg(nowTime) {
 
 			} else {
 
-				border2 = ' style="border:2px solid; border-color:green; border-radius: 50%;" '
+				border2 = ' style="border:2px solid; border-color:green; border-radius: 50%;	" '
 
 			}
 
-			img1 = "<img " + border1 + " width = 30 height = 30 onerror=this.src='/img/object/" + championName1 + ".png' src = 'https://ddragon.leagueoflegends.com/cdn/14.3.1/img/champion/" + championName1 + ".png' >"
+			img1 = "<img  " + border1 + " width = 30 height = 30 onerror=this.src='/img/object/" + championName1 + ".png' src = 'https://ddragon.leagueoflegends.com/cdn/14.3.1/img/champion/" + championName1 + ".png' >"
 			img2 = "<img " + border2 + "width = 30 height = 30 onerror=this.src='/img/object/" + championName2 + ".png' src = 'https://ddragon.leagueoflegends.com/cdn/14.3.1/img/champion/" + championName2 + ".png' >"
 
-			html1 = img1 + ' ->' + img2
+			html1 =img1 + ' <span  style="color:white"> -></span>' + img2
+
+
 			x = timelinelist[i].x
 			y = timelinelist[i].y
 
@@ -189,12 +192,12 @@ function inputTimeToImg(nowTime) {
 				top: 505 - y1
 			})
 
-			$("#two").css({
+			$(".two").css({
 				left: x1 - 45,
 				top: 470 - y1
 			})
 			$('#two').hide(0)
-			$('#two').html(html1)
+			$('.two').html(html1)
 			$('#two').show(150)
 
 		}
@@ -216,6 +219,7 @@ function inputImg(a, b, c) {
 function open() {
 
 	$('#two').html('')
+	$('#two').hide()
 	x1 = 0
 	y1 = 500
 	$("#two").css({
@@ -247,8 +251,11 @@ function close() {
 	$('.blueTeamSider').empty()
 	$('#two').html('')
 	$('.center-box2').empty()
+	if (liveStart == 1) {
+		clearInterval(playShow);
 
-	clearInterval(playShow)
+	}
+
 	modal_wrap.classList.remove('show-modal');
 	modal_background.classList.remove('show-modal');
 }
@@ -417,7 +424,7 @@ function imgClick(team, champName) {
 		}
 
 	}
-
+	//	console.log("사진클릭")
 	$('.center-box2').empty()
 	$('.center-box2').prepend("<center><strong>==========Game Start==========</strong></center>")
 
@@ -467,7 +474,7 @@ function imgClick(team, champName) {
 
 			}
 
-
+			console.log("클릭중")
 
 			img1 = "<img " + border1 + " width = 30 height = 30 onerror=this.src='/img/object/" + championName1 + ".png' src = 'https://ddragon.leagueoflegends.com/cdn/14.3.1/img/champion/" + championName1 + ".png' >"
 			img2 = "<img " + border2 + "width = 30 height = 30 onerror=this.src='/img/object/" + championName2 + ".png' src = 'https://ddragon.leagueoflegends.com/cdn/14.3.1/img/champion/" + championName2 + ".png' >"
@@ -478,7 +485,7 @@ function imgClick(team, champName) {
 				 			${html2} 
 				 		</div>
 				 		<div class = showImgDivlr> 
-				 		 <span tooltip= ${championName1_kr}> <a href = javascript : inputTimeToImg(${html2})> ${img1} </a></span><span style= "color : blue">	</span> -> <span tooltip=${championName2_kr}> <a href = javascript : inputTimeToImg(${html2})>${img2}</a></span></div>
+				 		 <span tooltip= ${championName1_kr}> <a href="javascript:inputTimeToImg(\'${html2}\',\'${championName1}\');"> ${img1} </a></span>-> <span tooltip=${championName2_kr}> <a href="javascript:inputTimeToImg(\'${html2}\',\'${championName2}\');">${img2}</a></span></div>
 						</div>
 					 <div class = showImgDivr></div>
 				</div>`
