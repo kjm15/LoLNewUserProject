@@ -1,13 +1,12 @@
 @import url("https://fonts.googleapis.com/css?family=Lato:300");
 
 .modal_wrap {
-	border: 2px solid black;
+	
 	background: #eee;
 	z-index: 1;
 	display: none;
 	text-align: center;
-	font-family: arial;
-	outline: 1px black;
+	font-family: arial;	
 	position: fixed;
 	top: 100%;
 	left: 100%;
@@ -318,9 +317,28 @@ div.timeLineContents {
 }
 
 .menu {
+	display : flex;
+	align-items : center;
 	height: 40px;
 }
+.menur {
+	justify-content : right;
+	flex-basis : 50%;
+	align-items : center;
 
+}
+.menul {
+	justify-content : left;
+	flex-basis : 50%;
+	align-items : center;
+
+}
+
+.xmark{
+	left : 60%;
+	position: absolute;
+	z-index :7;
+	}
 /* 프로그래스바 */
 
 /* 프로그래스바 컨테이너 디자인 */

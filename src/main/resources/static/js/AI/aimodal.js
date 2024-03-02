@@ -7,14 +7,17 @@
 const modal_wrap = document.querySelector('.modal_wrap')
 const modal_background = document.querySelector('.modal_background')
 $('#replayStart').on('click', function() {
+	$('#replayStart').css("visibility", "hidden");
 	$('.center-box2').empty()
 	liveReplay()
 })
 
 //스킵하기
 $('#liveBroadCastSkip').on('click', function() {
+	$('#replayStart').css("visibility", "visible");
 	skip()
 })
+teamList = []
 function skip() {
 	if (liveStart == 1) {
 		clearInterval(playShow);
@@ -42,10 +45,7 @@ function skip() {
 	$('#two').html('게임종료')
 	$('.center-box2').prepend("<center><strong>==========Game Start==========</strong></center>")
 	timelinelist = timeline_list[0]
-	blueList = []
-	blueList_kr = []
-	redList = []
-	redList_kr = []
+
 	for (let i in timelinelist) {
 		html2 = timelinelist[i].now_time
 		//
@@ -60,12 +60,10 @@ function skip() {
 		border2 = ''
 		//
 		if (team1 == 100) {
-			blueList_kr.push(championName1_kr)
-			blueList.push(championName1)
+
 			border1 = ' style="border:2px solid; border-color:blue; border-radius: 50%;"  '
 		} else if (team1 == 200) {
-			redList_kr.push(championName1_kr)
-			redList.push(championName1)
+
 			border1 = ' style="border:2px solid; border-color:red; border-radius: 50%;" '
 
 		} else {
@@ -74,13 +72,11 @@ function skip() {
 
 		}
 		if (team2 == 100) {
-			blueList_kr.push(championName2_kr)
-			blueList.push(championName2)
+
 			border2 = ' style="border:2px solid; border-color:blue; border-radius: 50%;" '
 
 		} else if (team2 == 200) {
-			redList_kr.push(championName2_kr)
-			redList.push(championName2)
+
 			border2 = ' style="border:2px solid; border-color:red; border-radius: 50%;" '
 
 		} else {
@@ -110,24 +106,27 @@ function skip() {
 	$('.center-box2').prepend("<p></p>	")
 	$('.center-box2').prepend("<center><strong>==========Game Set==========</strong></center>")
 
-	const blueListSet = new Set(blueList);
-	const redListSet = new Set(redList);
-	let bList = Array.from(blueListSet)
-	let rList = Array.from(redListSet)
-	const blueListSet_kr = new Set(blueList_kr);
-	const redListSet_kr = new Set(redList_kr);
-	let bList_kr = Array.from(blueListSet_kr)
-	let rList_kr = Array.from(redListSet_kr)
 
 
-	//	console.log(bList_kr)
-	//	console.log(rList_kr)
-	for (let i in bList) {
-		$('.blueTeamSider').append(inputImg(bList[i], bList_kr[i], 100) + "&nbsp;")
-		$('.redTeamSider').append(inputImg(rList[i], rList_kr[i], 200) + "&nbsp;")
-		//		console.log(inputImg(bList[i]))
-	}
+	dataTeam = { 'matchId': timelinelist[0].matchId }
+	$.ajax({
+		type: 'post',
+		url: '/ai/teamList',
+		data: dataTeam,
+		success: function(res) {
+			teamList = res
+			for (let i in res) {
+				if (res[i].teamId == 100) {
 
+					$('.blueTeamSider').append(inputImg(res[i].championName, res[i].champion_name_kr, 100) + "&nbsp;")
+
+				} else if (res[i].teamId == 200) {
+					$('.redTeamSider').append(inputImg(res[i].championName, res[i].champion_name_kr, 200) + "&nbsp;")
+
+				}
+			}
+		}
+	})
 
 }
 
@@ -135,11 +134,11 @@ function skip() {
 ////////////////////////////////////////////////////////////////
 function inputTimeToImg(nowTime, champName) {
 	timelinelist = timeline_list[0]
-	console.log("만드는중")
+	//	console.log("만드는중")
 	for (let i in timelinelist) {
 		//			console.log(timelinelist[i])
 		if (timelinelist[i].now_time == nowTime && timelinelist[i].championName == champName) {
-			console.log(nowTime)
+			//			console.log(nowTime)
 			championName1 = timelinelist[i].championName
 			championName1_kr = timelinelist[i].champion_name_kr
 			team1 = timelinelist[i].team1
@@ -179,8 +178,8 @@ function inputTimeToImg(nowTime, champName) {
 			img1 = "<img  " + border1 + " width = 30 height = 30 onerror=this.src='/img/object/" + championName1 + ".png' src = 'https://ddragon.leagueoflegends.com/cdn/14.3.1/img/champion/" + championName1 + ".png' >"
 			img2 = "<img " + border2 + "width = 30 height = 30 onerror=this.src='/img/object/" + championName2 + ".png' src = 'https://ddragon.leagueoflegends.com/cdn/14.3.1/img/champion/" + championName2 + ".png' >"
 
-			html1 =img1 + ' <span  style="color:white"> -></span>' + img2
-
+			html1 = img1 + ' <span  style="color:white"> -></span>' + '<div style = "filter: brightness(50%)">' + img2 + '</div>'
+			xmark = '<div class = xmark><img width=27 height=27 src="/img/xmark.png" alt="엑스버튼"></div>'
 
 			x = timelinelist[i].x
 			y = timelinelist[i].y
@@ -198,6 +197,7 @@ function inputTimeToImg(nowTime, champName) {
 			})
 			$('#two').hide(0)
 			$('.two').html(html1)
+			$('.two').append(xmark)
 			$('#two').show(150)
 
 		}
@@ -220,7 +220,7 @@ function open() {
 
 	$('#two').html('')
 	$('#two').hide()
-	
+
 	x1 = 0
 	y1 = 500
 	$("#two").css({
@@ -263,7 +263,7 @@ function close() {
 ////////////////////////////////////////////////////////////
 function liveReplay() {
 	liveStart = 1
-	let x = 500
+	let x = 1000
 	let i = 0 //올라가는값
 
 	len = timeline_list[0].length
@@ -302,11 +302,14 @@ let id = ''
 let a = ''
 const progressBar = document.querySelector('.progress-container');
 progressBar.addEventListener('click', (e) => {
+	$('#replayStart').css("visibility", "visible");
 	$('#one').show()
 	$('#two').show()
-
-	if (removeList.length != 0) {
+	if (liveStart == 1) {
 		skip()
+	}
+	if (removeList.length != 0) {
+
 		for (let i in removeList) {
 
 			$("." + removeList[i]).remove()
@@ -316,17 +319,17 @@ progressBar.addEventListener('click', (e) => {
 	if (a != '') {
 		$('#' + id).css("background-color", "")
 		clearInterval(playBackGroundColor);
-		console.log("시작할때 색제거")
+		//		console.log("시작할때 색제거")
 	}
 	//오른쪽 포커스
 
 	progressPercent = (e.offsetX / 500) //500은 그림 픽셀
-	console.log(e.offsetX)
+	//	console.log(e.offsetX)
 	len = timeline_list[0].length
 	document.querySelector(".progress-bar").style.width = progressPercent * 100 + "%";
 	i = parseInt(len * progressPercent)
 	id = 'showImg' + i
-	console.log(id)
+	//	console.log(id)
 	document.getElementById(id).scrollIntoView();
 
 	$('#' + id).css("background-color", "rgba(100, 170, 253, 1)")
@@ -345,7 +348,7 @@ progressBar.addEventListener('click', (e) => {
 		if (checkPlayBackGroundColor == 1) {
 			a = 0
 			checkPlayBackGroundColor = 0
-			console.log("색변경 완료")
+			//			console.log("색변경 완료")
 			clearInterval(playBackGroundColor);
 
 		}
@@ -392,6 +395,8 @@ progressBar.addEventListener('click', (e) => {
 	img2 = "<img " + border2 + "width = 30 height = 30 onerror=this.src='/img/object/" + championName2 + ".png' src = 'https://ddragon.leagueoflegends.com/cdn/14.3.1/img/champion/" + championName2 + ".png' >"
 
 	html1 = img1 + ' ->' + img2
+	xmark = '<div class = xmark><img width=27 height=27 src="/img/xmark.png" alt="엑스버튼"></div>'
+
 	x = timelinelist[i].x
 	y = timelinelist[i].y
 
@@ -408,6 +413,7 @@ progressBar.addEventListener('click', (e) => {
 	})
 	$('#two').hide(0)
 	$('#two').html(html1)
+	$('#two').append(xmark)
 	$('#two').show(150)
 
 });
@@ -446,12 +452,10 @@ function imgClick(team, champName) {
 			border2 = ''
 			//
 			if (team1 == 100) {
-				blueList_kr.push(championName1_kr)
-				blueList.push(championName1)
+
 				border1 = ' style="border:2px solid; border-color:blue; border-radius: 50%;"  '
 			} else if (team1 == 200) {
-				redList_kr.push(championName1_kr)
-				redList.push(championName1)
+
 				border1 = ' style="border:2px solid; border-color:red; border-radius: 50%;" '
 
 			} else {
@@ -460,13 +464,11 @@ function imgClick(team, champName) {
 
 			}
 			if (team2 == 100) {
-				blueList_kr.push(championName2_kr)
-				blueList.push(championName2)
+
 				border2 = ' style="border:2px solid; border-color:blue; border-radius: 50%;" '
 
 			} else if (team2 == 200) {
-				redList_kr.push(championName2_kr)
-				redList.push(championName2)
+
 				border2 = ' style="border:2px solid; border-color:red; border-radius: 50%;" '
 
 			} else {
@@ -475,7 +477,7 @@ function imgClick(team, champName) {
 
 			}
 
-			console.log("클릭중")
+			//			console.log("클릭중")
 
 			img1 = "<img " + border1 + " width = 30 height = 30 onerror=this.src='/img/object/" + championName1 + ".png' src = 'https://ddragon.leagueoflegends.com/cdn/14.3.1/img/champion/" + championName1 + ".png' >"
 			img2 = "<img " + border2 + "width = 30 height = 30 onerror=this.src='/img/object/" + championName2 + ".png' src = 'https://ddragon.leagueoflegends.com/cdn/14.3.1/img/champion/" + championName2 + ".png' >"
@@ -597,7 +599,8 @@ function showInfoTimeLine(i) {
 				</div>`
 	$('.center-box2').prepend(html3)
 
-	html1 = img1 + ' ->' + img2
+	html1 = img1 + ' <span  style="color:white"> -></span>' + '<div style = "filter: brightness(50%)">' + img2 + '</div>'
+
 	x = timelinelist[i].x
 	y = timelinelist[i].y
 
@@ -614,7 +617,7 @@ function showInfoTimeLine(i) {
 	})
 	$('#two').hide()
 	$('#two').html(html1)
-	$('#two').show(100)
+	$('#two').show(20)
 }
 
 

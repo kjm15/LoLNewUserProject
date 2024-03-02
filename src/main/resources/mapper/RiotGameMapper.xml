@@ -108,4 +108,10 @@
 		where matchId = #{matchId}
 		order by timestamp;
 	</select>
+	<select id="teamList">
+		select * from
+		RiotGameInfoT
+		where matchId = #{matchId}
+		order by participantId asc;
+	</select>
 </mapper>

@@ -41,5 +41,7 @@ public interface RiotGameDao {
 
 	List<Map<String, Object>> timelineInfo(String matchId);
 
+	List<Map<String, Object>> teamList(String matchId);
+
 
 }
