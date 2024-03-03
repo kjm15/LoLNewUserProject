@@ -79,54 +79,60 @@ for e in data:
 
 #######################################################################################################################################
 conn.close()
-allkda = win_kda_List+lose_kda_List
-Mean_totalDamageDealtToChampions = win_Mean_totalDamageDealtToChampions + lose_Mean_totalDamageDealtToChampions
-Mean_goldEarned = win_Mean_goldEarned + lose_Mean_goldEarned
+try:
+    allkda = win_kda_List+lose_kda_List
+    Mean_totalDamageDealtToChampions = win_Mean_totalDamageDealtToChampions + lose_Mean_totalDamageDealtToChampions
+    Mean_goldEarned = win_Mean_goldEarned + lose_Mean_goldEarned
 
-tier_data=[[t,g]for t,g in zip(Mean_totalDamageDealtToChampions,Mean_goldEarned)]
+    tier_data=[[t,g]for t,g in zip(Mean_totalDamageDealtToChampions,Mean_goldEarned)]
 
-#그래프
-# plt.scatter(win_Mean_totalDamageDealtToChampions, win_Mean_goldEarned) 
-# plt.scatter(lose_Mean_totalDamageDealtToChampions, lose_Mean_goldEarned)
-# # plt.xlim((0, 2000))
-# plt.xlabel('DAMAGE') 
-# plt.ylabel('GOLD') 
-# plt.show()
+    #그래프
+    # plt.scatter(win_Mean_totalDamageDealtToChampions, win_Mean_goldEarned) 
+    # plt.scatter(lose_Mean_totalDamageDealtToChampions, lose_Mean_goldEarned)
+    # # plt.xlim((0, 2000))
+    # plt.xlabel('DAMAGE') 
+    # plt.ylabel('GOLD') 
+    # plt.show()
 
 
-tier_target=[1]*len(win_kda_List)+[0]*len(lose_kda_List)
-kn = KNeighborsClassifier(n_neighbors=3)
+    tier_target=[1]*len(win_kda_List)+[0]*len(lose_kda_List)
+    kn = KNeighborsClassifier(n_neighbors=3)
 
-kn.fit(tier_data,tier_target)
-a1 = kn.score(tier_data,tier_target)
+    kn.fit(tier_data,tier_target)
+    a1 = kn.score(tier_data,tier_target)
 
-#z-정규화
-mean = np.mean(tier_data, axis=0)
-std = np.std(tier_data, axis=0)
+    #z-정규화
+    mean = np.mean(tier_data, axis=0)
+    std = np.std(tier_data, axis=0)
 
-# print(mean, std)
-train_scaled = (tier_data - mean) / std
+    # print(mean, std)
+    train_scaled = (tier_data - mean) / std
 
-# print(totalDamageDealtToChampions)
-# new = ([totalDamageDealtToChampions, goldEarned] - mean) / std
-new = (tier_my - mean) / std
-#그래프
-# plt.scatter(train_scaled[:, 0], train_scaled[:, 1])
-# plt.scatter(new[0], new[1], marker='^')
-# plt.xlabel('length')
-# plt.ylabel('weight')
-# plt.show()
+    # print(totalDamageDealtToChampions)
+    # new = ([totalDamageDealtToChampions, goldEarned] - mean) / std
+    new = (tier_my - mean) / std
+    #그래프
+    # plt.scatter(train_scaled[:, 0], train_scaled[:, 1])
+    # plt.scatter(new[0], new[1], marker='^')
+    # plt.xlabel('length')
+    # plt.ylabel('weight')
+    # plt.show()
 
-kn.fit(train_scaled, tier_target)
-a1 = kn.score(train_scaled, tier_target) # 1.0
-trans={1:'승', 0:'패'}
-a = trans[kn.predict([new])[0]]
+    kn.fit(train_scaled, tier_target)
+    a1 = kn.score(train_scaled, tier_target) # 1.0
+    trans={1:'승', 0:'패'}
+    a = trans[kn.predict([new])[0]]
 
-if len(tier_target) < 100 : 
+    if len(tier_target) < 100 : 
 
-    data5 = {key:"데이터부족" , "정확도" : a1 , "총데이터길이"  :len(tier_target), '캐릭' : championName, "key":"데이터부족"}
-else :
-    data5 = {key:a , "정확도" : a1 , "총데이터길이"  :len(tier_target), '캐릭' : championName, "key" : a}  
-json_string = json.dumps(data5)
-# print(a, a1)
-print(json_string)
+        data5 = {key:"데이터부족" , "정확도" : a1 , "총데이터길이"  :len(tier_target), '캐릭' : championName, "key":"데이터부족"}
+    else :
+        data5 = {key:a , "정확도" : a1 , "총데이터길이"  :len(tier_target), '캐릭' : championName, "key" : a}  
+    json_string = json.dumps(data5)
+    # print(a, a1)
+    print(json_string)
+except Exception as e:
+    data5 = {key:"에러" , "정확도" : 0 , "총데이터길이"  :0,  '캐릭' : championName, "key" : "에러"}  
+    json_string = json.dumps(data5)
+    # print(a, a1)
+    print(json_string)
