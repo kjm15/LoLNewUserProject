@@ -126,7 +126,7 @@ $(document).ready(function() {
 			$('.resultTr1').css("background-color","rgb(157, 196, 253)")
 			$('.resultTr1').css("color","black")	
 				
-				$('body').css("background-color","white")
+			$('body').css("background-color","white")
 			
 								
 			}
@@ -314,7 +314,7 @@ function choiceTier(b){
 			$('.resultTr1').css("background-color","rgb(157, 196, 253)")
 			$('.resultTr1').css("color","black")	
 				
-				$('body').css("background-color","white")
+			$('body').css("background-color","white")
 			}
 
 		}
@@ -481,7 +481,7 @@ function choiceCore(c){
 			$('.resultTr1').css("background-color","rgb(157, 196, 253)")
 			$('.resultTr1').css("color","black")	
 				
-				$('body').css("background-color","white")
+			$('body').css("background-color","white")
 
 			}
 			

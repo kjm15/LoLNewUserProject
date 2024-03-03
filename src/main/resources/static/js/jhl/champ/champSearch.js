@@ -33,6 +33,13 @@ $('#champSearch').on('keyup', function() {
 				champContainer.append($('<div>').addClass('champImgItem').append($('<div>').addClass('cimgs').append(imgElement)).append($('<span>').addClass('champName').append(res[i].champion_name_kr)));
 
 			}
+			
+			if (modNum == 1){
+
+			$('span').css("color","#ffffff")
+			
+								
+			}
 		}
 	});
 });
@@ -62,6 +69,14 @@ function champImgAll() {
 					.append($('<div>').addClass('cimgs').append(imgElement)).append($('<span>').addClass('champName').append(res[i].champion_name_kr)));
 
 			}
+			
+			if (modNum == 1){
+
+			$('span').css("color","#ffffff")
+			
+								
+			}
+			
 		}
 	});
 
@@ -103,6 +118,14 @@ function champLine(lineSelect) {
                 // 생성한 아이템을 컨테이너에 추가
                 champContainer.append(champImgItem);
 			}
+			
+			if (modNum == 1){
+
+			$('span').css("color","#ffffff")
+			
+								
+			}
+			
 
 		}
 	});
