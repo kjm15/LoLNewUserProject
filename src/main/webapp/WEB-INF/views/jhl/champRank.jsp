@@ -11,7 +11,7 @@
 </head>
 <body>
 	<!-- 	<h3>카운터 챔피언 제대로 구하려면 100만개 데이터 필요...</h3> -->
-
+<p id="modNum" style="visibility: hidden; position: absolute;">1</p>
 
 	<div class="rankContainer">
 		<!-- 		<div class="aside left"></div> -->

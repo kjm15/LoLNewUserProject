@@ -73,6 +73,13 @@ function champRank(position, tier) {
 
 				tableRows += "</tr>";
 			}
+			
+			if (modNum == 1){
+				
+			$('span').css("color","#ffffff")
+			
+								
+			}
 
 			$('.rTableBody').html(tableRows);
 			//			console.log(res);
