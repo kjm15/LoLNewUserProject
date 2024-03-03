@@ -79,7 +79,11 @@ public class MainController {
 	
 		return "test";
 	}
-
+	@GetMapping("/test2")
+	public String testboard2() {
+	
+		return "test2";
+	}
 	
 	
 }
