@@ -50,7 +50,7 @@ function mainSearch(gameName1) {
 }
 
 function aiCheckTroll(res1) {
-//	console.log(res1)
+	//	console.log(res1)
 	let queue = ''
 	console.log("data전송완료/인공지능시작")
 	$.ajax({
@@ -296,14 +296,19 @@ function bbb(data) {
 	})
 
 }
-
+allofList = []
 function aaa(data) { // data == 검색한 게임 아이디
 	$.ajax({
 		type: 'post',
 		url: '/riot/game',
 
 		success: function(res) {
-			console.log(res)
+			//			
+			for (let i in res) {
+
+				allofList.push(res[i])
+			}
+			console.log(allofList)
 			showGameTamble(res, data)
 		}
 	})
@@ -348,45 +353,44 @@ function gamebtn(goBtn, matchId) {
 
 	var line1 = document.getElementById("line1" + goBtn);
 	var container2 = document.getElementById("container2" + goBtn);
-	line1.style.display = ((line1.style.display != 'none') ? 'none' : 'block');
-	container2.style.display = ((container2.style.display != 'none') ? 'none' : 'block');
+	//	line1.style.display = ((line1.style.display != 'none') ? 'none' : 'block');
+	//	container2.style.display = ((container2.style.display != 'none') ? 'none' : 'block');
+	showGameTambleBody(matchId) // 바디부분 만들기
 
-	if (line1.style.display == 'block') {
 
-		data = { 'matchId': matchId }
+	data = { 'matchId': matchId }
 
-		$.ajax({
-			type: 'post',
-			url: '/summoner/v4/userList',
-			data: data,
-			success: function(res) {
-				//				console.log(res)
-				//
-				for (let i in res) {
-					if (res[i].queueId == 420) { //솔랭인경우
-						$.ajax({
-							contentType: 'application/json',
-							type: 'post',
-							url: '/summoner/v4/Rank',
-							data: JSON.stringify(res[i]),
-							success: function(res1) {
-								//							console.log(res1)
-								aiCheckTroll(res1)
-							}
-						})
-					} else if (res[i].queueId == 450) {
+	$.ajax({
+		type: 'post',
+		url: '/summoner/v4/userList',
+		data: data,
+		success: function(res) {
+			//				console.log(res)
+			//
+			for (let i in res) {
+				if (res[i].queueId == 420) { //솔랭인경우
+					$.ajax({
+						contentType: 'application/json',
+						type: 'post',
+						url: '/summoner/v4/Rank',
+						data: JSON.stringify(res[i]),
+						success: function(res1) {
+							//							console.log(res1)
+							aiCheckTroll(res1)
+						}
+					})
+				} else if (res[i].queueId == 450) {
 
-						aiCheckTroll(res[i])
+					aiCheckTroll(res[i])
 
-					} else {
-						aiCheckTroll(res[i])
-
-					}
+				} else {
+					aiCheckTroll(res[i])
 
 				}
-			}
-		})
-	}
 
+			}
+		}
+	})
 }
+
 

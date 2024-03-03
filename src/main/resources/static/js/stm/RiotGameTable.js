@@ -1,6 +1,10 @@
 /**
  * 
  */
+
+
+
+
 $('a.feellink').click(function(e) //a태그 눌러도 맨위로 안올라감
 {
 	e.preventDefault();
@@ -290,15 +294,12 @@ function showGameTamble(res, data) {
 					champimg = "Fiddlesticks"
 				}
 				if (riotIdGameName.length > 5) {
-					riotIdGameName1 = riotIdGameName.substr(0, 5) + '...';
-				}else {
-					riotIdGameName1=riotIdGameName
-					
+					riotIdGameName = riotIdGameName.substr(0, 5) + '...';
 				}
 
 				str += `<div style ="text-align: left;"><img width='17' height='17' style = "border-radius: 30px;" alt='못 불러옴' src='https://ddragon.leagueoflegends.com/cdn/14.3.1/img/champion/${champimg}.png'>
 							
-						<a  href='/stm/${riotIdGameName}/${riotIdTagline}'>	${riotIdGameName1}</a>
+						<a  href='/stm/${riotIdGameName}/${riotIdTagline}'>	${riotIdGameName}</a>
 							
 							
 								</div>`
@@ -321,15 +322,11 @@ function showGameTamble(res, data) {
 					champimg = "Fiddlesticks"
 				}
 				if (riotIdGameName.length > 5) {
-					riotIdGameName1 = riotIdGameName.substr(0, 5) + '...';
-				} else {
-					riotIdGameName1=riotIdGameName
-					
+					riotIdGameName = riotIdGameName.substr(0, 5) + '...';
 				}
-
 				str += `<div style ="text-align: left;"><img width='17' height='17'  style = "border-radius: 30px;"  alt='못 불러옴' src='https://ddragon.leagueoflegends.com/cdn/14.3.1/img/champion/${champimg}.png'>
 			
-				<a  href='/stm/${riotIdGameName}/${riotIdTagline}'>	${riotIdGameName1}</a>
+				<a  href='/stm/${riotIdGameName}/${riotIdTagline}'>	${riotIdGameName}</a>
 			</div>`
 			}
 			if (res[i]["info"][j]['win'] == '1') {
@@ -622,6 +619,5 @@ window.addEventListener('click', (e) => {
 //	}
 //
 //});
-
 
 

@@ -50,6 +50,6 @@
 	<!-- 전적 리스트 jsp -->
 	<script defer src="/js/AI/aimodal.js"></script>
 	<!-- <script defer src="/js/stm/RiotGameTable.js"></script> -->
-	<%-- <%@include file="../inc/footer.jsp"%> --%>
+<%-- 	<%@include file="../inc/footer.jsp"%> --%>
 </body>
 </html>
