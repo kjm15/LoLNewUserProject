@@ -9,8 +9,8 @@ import sys
 import json
 
 data = sys.argv[1:]
-tier = "GOLD"
-tier = data[0]
+tier = "BRONZE"
+
 api_key = 'RGAPI-36ff1947-075a-4441-9e90-df81d5d1cd03'
 num = 3
 

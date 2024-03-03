@@ -378,12 +378,14 @@
 
 
 .comm_contents {
+	font-family: 'Jua', sans-serif;
 	display: flex;
 	flex-direction: column;
 	justify-content: center;
 }
 
 .comm_graph_content{
+	font-family: 'Jua', sans-serif;
 	display: flex;
 	flex-direction:column;
 	justify-content: center;

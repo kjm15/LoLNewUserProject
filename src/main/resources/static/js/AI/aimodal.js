@@ -278,6 +278,12 @@ function inputImg(a, b, c) {
 function open() {
 	//	console.log(timeline_list)
 	let map = ''
+
+	if(timeline_list[0][0] == '' || timeline_list[0][0] == null|| timeline_list[0][0] == undefined|| timeline_list[0][0] == 'undefined'){
+		
+		alert("해당게임은 관전이 불가능한 게임입니다.	")
+		return false;
+	}
 	if (timeline_list[0][0].queueId == 450) {
 		map = '<img class=mapimg src="/img/map2.png" id=tag>'
 

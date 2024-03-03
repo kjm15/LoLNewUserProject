@@ -29,8 +29,14 @@
 <!-- 	<script defer src="/js/aCommon/roulette.js"></script> -->
 
 	<script defer src="/js/stm/loldata.js"></script>
-	<script defer src="/js/stm/RiotGameTable.js"></script>
-
+	<script defer src="/js/stm/RiotGameTable2.js"></script>
+<!-- 폰트 장기훈 -->
+<link href="https://fonts.googleapis.com/css2?family=Jua&display=swap"
+	rel="stylesheet">
+<link
+	href="https://fonts.googleapis.com/css2?family=Rubik+Gemstones&display=swap"
+	rel="stylesheet">
+<!-- 폰트 장기훈 -->
 
 
 	<div class="navbars">

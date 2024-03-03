@@ -320,7 +320,10 @@ div.timeLineContents {
 	display: flex;
 	height: 40px;
 }
-
+.more{
+	
+	font-family: 'Jua', sans-serif;
+}
 .redTeamSider {
 	position: absolute;
 	top: 11%;

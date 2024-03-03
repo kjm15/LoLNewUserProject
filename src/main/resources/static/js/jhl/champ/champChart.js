@@ -1,4 +1,4 @@
-
+champChartGraph('GAREN')
 
 //챔피언 클릭시 차트만들기
 const champImgItem = document.querySelector('.champImgItems');

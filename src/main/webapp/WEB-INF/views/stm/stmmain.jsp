@@ -12,13 +12,7 @@
 <!-- <link rel="stylesheet" href="/css/stm/lolDataList.css"type="text/css"> -->
 <link href="/css/stm/recordBoard.css" rel="stylesheet" type="text/css">
 <link href="/css/ai/aimodal.css" rel="stylesheet" type="text/css">
-<!-- 폰트 장기훈 -->
-<link href="https://fonts.googleapis.com/css2?family=Jua&display=swap"
-	rel="stylesheet">
-<link
-	href="https://fonts.googleapis.com/css2?family=Rubik+Gemstones&display=swap"
-	rel="stylesheet">
-<!-- 폰트 장기훈 -->
+
 <!-- <link rel="stylesheet" href="css/my_gradient_half_2.css" /> -->
 </head>
 
@@ -56,6 +50,6 @@
 	<!-- 전적 리스트 jsp -->
 	<script defer src="/js/AI/aimodal.js"></script>
 	<!-- <script defer src="/js/stm/RiotGameTable.js"></script> -->
-	<%-- <%@include file="../inc/footer.jsp"%> --%>
+<%-- 	<%@include file="../inc/footer.jsp"%> --%>
 </body>
 </html>

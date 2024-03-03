@@ -1,6 +1,10 @@
 /**
  * 
  */
+
+
+
+
 $('a.feellink').click(function(e) //a태그 눌러도 맨위로 안올라감
 {
 	e.preventDefault();
@@ -547,7 +551,12 @@ function showGameTamble(res, data) {
 		str += `</div>
 		`
 	}
-	let str1 = "<div class='containerXR'></div><div class='more'><center><button class='loadMore' id = 'loadMore'>더 보기</button></center></div>"
+	let str1 = `<div class='containerXR'></div><div class='more'>
+					<center>
+						<input type = "button" value = "" id = 'loadMore'class='loadMore'>
+						
+					</center>
+				</div>`
 
 
 
@@ -615,6 +624,5 @@ window.addEventListener('click', (e) => {
 //	}
 //
 //});
-
 
 
