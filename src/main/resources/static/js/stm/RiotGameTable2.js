@@ -46,7 +46,7 @@ function profileCheck(res) {
 		newriotIdGameName = riotIdGameName
 	}
 
-	ccc += `<div class=container333Box>
+	ccc = `<div class=container333Box>
 	<div class=container333>
 	<div class="stmH">
             <div class="stmHright">
@@ -106,25 +106,33 @@ let str1 = ''
 
 let itemstart = ''
 let resMyList = []
+let goBtn = 0
 
+let myriotIdGameName = ''
+let myriotIdTagline = ''
 function showGameTamble(res, data) {
 
 	$('.graph1').empty()
-
+	resMyList = []
 	for (let i in res) {
 		for (let j in res[i]['info']) {
 			if (data['gameName'] == res[i]["info"][j]['riotIdGameName'] || data['gameName'] == res[i]["info"][j]['summonerName']) {
 				resMyList.push(res[i]["info"][j])
+				myriotIdGameName = res[i]["info"][j]['riotIdGameName']
+				myriotIdTagline = res[i]["info"][j]['riotIdTagline']
+
 			}
 		}
 	}
-	//	console.log(resMyList)
 
+
+	//	console.log(resMyList)
+	profileCheck(resMyList[0])
 	for (let i in resMyList) {
-		let goBtn = Number(i) + (data['matchCnt']) * 4
+		goBtn = Number(i) + (data['matchCnt']) * 4
 		Myres = resMyList[i] // 추후에 i 으로 바꾸기
 
-		profileCheck(Myres)
+
 		timecheck(Myres)//몇시간전,몇분게임
 		matchId = Myres.matchId
 		queuecheck(Myres)
@@ -162,7 +170,7 @@ function showGameTamble(res, data) {
 								<div><span style='color:blue;'>${win_lose}</span></div>
 								<div><span style='font-size:13px'>${ingamespentTime}</span></div>
 								</div>`
-			boxright = `<a href = ""><div class="box-right" style='background-color :#9ac2e2' id ="gamebtn${goBtn}" onclick ="gamebtn(${goBtn},'${matchId}')"><a href = 'javascript:;'><div class = "box-rightblue">∨</div></a></div>`
+			boxright = `<div class="box-right" style='background-color :#9ac2e2' id ="gamebtn${goBtn}" onclick ="gamebtn(${goBtn},'${matchId}')"><a href = 'javascript:;'><div class = "box-rightblue">∨</div></a></div>`
 		} else {
 			str = `<div class="container1" id ='${matchId}container1' style='background-image:linear-gradient(315deg, #FFD5F4 0%, #FFB3C8 74%)'>`
 			str1 = `<div class='box-column' style='background-color:#FF5E8A;width:10px;'></div>
@@ -175,7 +183,7 @@ function showGameTamble(res, data) {
 			boxright = `<div class="box-right" style='background-color : rgba(255, 2, 73, 0.18)' id ="gamebtn${goBtn}" onclick ="gamebtn(${goBtn},'${matchId}')"><a href = 'javascript:;'><div class = "box-rightred">∨</div></a></div>`
 
 		}
-
+		//		console.log(boxright)
 		let boxcenter1 = `	<div class="box-center1">
 								<div class="champSepll">
 									<div class="box-center4" id = '${matchId}box-center4'></div>
@@ -202,11 +210,15 @@ function showGameTamble(res, data) {
 								<div class="blueChamp" id = '${matchId}blueChamp'></div>
 								<div class="redChamp" id = '${matchId}redChamp'></div>
 							</div>
-							<div class="box-right">
+								${boxright}
 							</div>
 							`
-
+		line1 = `<div class="line1" id = 'line1${goBtn}' style='display: none'>`
+		container2 = `<div class="container2" id = 'container2${matchId}' style = 'display: none' >`
+		container4 = `<div class="container4" id = 'container4${matchId}' style = 'display: none' >`
+		controller = `<div class = "controller" id = 'controller${matchId}'><div>`
 		$('.containerXC').append(str)
+
 		$('#' + matchId + 'container1').append(str1)
 		$('#' + matchId + 'container1').append(boxcenter1)
 
@@ -230,7 +242,7 @@ function showGameTamble(res, data) {
 
 			if (Myres[itemk] != 0) {
 				itemimg = Myres[itemk]
-				itemstart += '<img width=30 height=30 style = "border-radius: 35px;" alt="못 불러옴" src="https://ddragon.leagueoflegends.com/cdn/14.3.1/img/item/' + itemimg + '.png">&nbsp;&nbsp;'
+				itemstart += '<img width=30 height=30 style = "border-radius: 35px;" alt="못 불러옴" src="https://ddragon.leagueoflegends.com/cdn/14.3.1/img/item/' + itemimg + '.png">&nbsp;&nbsp;&nbsp;'
 			}
 
 		}
@@ -250,9 +262,9 @@ function showGameTamble(res, data) {
 
 		$('#' + matchId).append(boxcenter2down)
 		let bcList = ''
-		let rcList = ''	
+		let rcList = ''
 		for (let i in res) {
-			
+
 			for (j in res[i]['info']) {
 				if (res[i]['info'][j]['teamId'] == 100 && res[i]['matchId'] == matchId) {
 					let riotIdGameName = res[i]['info'][j]['riotIdGameName']
@@ -261,8 +273,8 @@ function showGameTamble(res, data) {
 					if (champimg == "FiddleSticks") {
 						champimg = "Fiddlesticks"
 					}
-					if (riotIdGameName.length > 5) {
-						riotIdGameName1 = riotIdGameName.substr(0, 5) + '...';
+					if (riotIdGameName.length > 10) {
+						riotIdGameName1 = riotIdGameName.substr(0, 10) + '...';
 					} else {
 						riotIdGameName1 = riotIdGameName
 
@@ -280,8 +292,8 @@ function showGameTamble(res, data) {
 					if (champimg == "FiddleSticks") {
 						champimg = "Fiddlesticks"
 					}
-					if (riotIdGameName.length > 5) {
-						riotIdGameName1 = riotIdGameName.substr(0, 5) + '...';
+					if (riotIdGameName.length > 10) {
+						riotIdGameName1 = riotIdGameName.substr(0, 10) + '...';
 					} else {
 						riotIdGameName1 = riotIdGameName
 
@@ -297,9 +309,12 @@ function showGameTamble(res, data) {
 		}
 		$('#' + matchId + 'blueChamp').append(bcList)
 		$('#' + matchId + 'redChamp').append(rcList)
-		$('#' + matchId + 'container1').append(boxright)
-		linecheck = `<div class="line1" id = 'line1${goBtn}' style='display: none'></div>`
-		$('.containerXC').append(linecheck)
+		$('.containerXC').append(line1)
+		$('.containerXC').append(controller)
+
+
+		$('#controller' + matchId).append(container2)
+		$('#controller' + matchId).append(container4)
 
 
 		data1 = { 'matchId': matchId }
@@ -315,7 +330,14 @@ function showGameTamble(res, data) {
 			}
 		})
 	}
-
+	console.log(myriotIdGameName)
+	let more = `<div class='containerXR'></div><div class='more'>
+					<center>
+						<input type = "button" value = "더보기" name = "\'${myriotIdGameName}\'#\'${myriotIdTagline}\'#\'${data['matchCnt']}\'" id = 'loadMore' class='loadMore'>
+						
+					</center>
+				</div>`
+	$('.containerXC').append(more)
 
 
 }
@@ -323,8 +345,12 @@ function showGameTamble(res, data) {
 
 
 function showGameTambleBody(matchId) {
-	let blueChampList = '' //matchId의 블루 리스트
-	let redChampList = ''//matchId의 레드 리스트
+	$('.container2').empty();
+	$('.container4').empty();
+	let blueChampList = [] //matchId의 블루 리스트
+	let redChampList = []//matchId의 레드 리스트
+
+
 	for (let i in allofList) {
 
 		if (matchId == allofList[i]['matchId']) {
@@ -344,221 +370,288 @@ function showGameTambleBody(matchId) {
 			}
 		}
 	}
+	//	console.log(blueChampList)
+
+	makeBodyblue(blueChampList, matchId);
+	makeBodyred(redChampList, matchId);
+
+
+}
+//들어오는 값은 레드리스트
+function makeBodyred(blueChampList, matchId) {
+	//	console.log(blueChampList)
+	teamId = '';
+	if (blueChampList[0]['win'] == '1') {
+		blueWin = '승리'
+	} else {
+		blueWin = '패배'
+	}
+
+	legend = `<div class="legend" id = '${matchId}legend2' ></div>`
+
+	$('#container4' + matchId).append(legend);
+
+	if (blueChampList[0]['teamId'] == 100) {
+		teamId = `<div class="teamId" style=color:blue;>블루팀(${blueWin})</div>`
+	} else {
+		teamId = `<div class="teamId" style=color:red;>레드팀(${blueWin})</div>`
+
+	}
 	//여기서부터 시작
+	champBody = `  
+					${teamId}
+					<div class=kda>	 <span tooltip="(kill+assist)/death"><a href = "#">kda</a></span>	</div>
+
+					<div class=damage> <span tooltip="상대방에게 가한 (물리+마법)피해"><a href = "#">데미지</a></span></div>
+					<div class=cs><span tooltip="게임에서 잡은 미니언의 총 개수"><a href = "#">cs</span></a></div >
+					<div class=itemTeam><span tooltip="최종 구입한 총 아이템"><a href="#">아이템</span></a></div >
+					<div class=aicheck><span tooltip="인공지능 (Troller Check System)"><a href="#">AI TCS</a></span></div>
+					
+				`
+	$('#' + matchId + 'legend2').append(champBody)
+
+	let ct2 = ''
+	for (let i in blueChampList) {
+
+		champion_name_kr = blueChampList[i]['champion_name_kr']
+		championName = blueChampList[i]['championName']
+		spellD = blueChampList[i]['summonerSpellD']
+		spellF = blueChampList[i]['summonerSpellF']
+		kills = blueChampList[i]['kills']
+		deaths = blueChampList[i]['deaths']
+		assists = blueChampList[i]['assists']
+		kda = blueChampList[i]['kda']
+		physicalDamageDealtToChampions = blueChampList[i]['physicalDamageDealtToChampions']
+		magicDamageDealtToChampions = blueChampList[i]['magicDamageDealtToChampions']
+		totalDamageDealtToChampions = parseInt(physicalDamageDealtToChampions) + parseInt(magicDamageDealtToChampions)
+		physicalDamagePercent = ((physicalDamageDealtToChampions / totalDamageDealtToChampions) * 100).toFixed(0)
+		magicDamagePercent = ((magicDamageDealtToChampions / totalDamageDealtToChampions) * 100).toFixed(0)
+		totalMinionsKilled = blueChampList[i]['totalMinionsKilled']
+		participantId = blueChampList[i]['participantId']
+		riotIdGameName = blueChampList[i]['riotIdGameName']
+		riotIdTagline = blueChampList[i]['riotIdTagline']
 
 
+		let OnePersonitem = ''
+		for (let k = 0; k < 6; k++) {
+			if (blueChampList[i]['item' + k] != 0) {
+
+				blueitem = blueChampList[i]['item' + k]
+				OnePersonitem += `<img width='20' height='20' style = "border-radius: 30px;" alt='못 불러옴' src=https://ddragon.leagueoflegends.com/cdn/14.3.1/img/item/${blueitem}.png>&nbsp;`
+			}
+		}
+		if (riotIdGameName.length > 4) {
+			riotIdGameName1 = riotIdGameName.substr(0, 4) + '...';
+		} else {
+			riotIdGameName1 = riotIdGameName
+
+		}
+
+		//		console.log(championName)
+		ct2 += `<div class = 'ct2'>
+					<div class = 'teamId1'>
+						<div class = 'champImgM'>
+							<div class = 'champaaa'></div>
+							<div>
+								<span tooltip = "${champion_name_kr}">
+								<img title="${champion_name_kr}" width='30' height='30' style = "border-radius: 30px;" alt='못 불러옴' src='https://ddragon.leagueoflegends.com/cdn/14.3.1/img/champion/${championName}.png'>
+							</span>
+							</div>
+						</div>
+						<div class = 'spellM'>
+							<div class = 'c'>
+								<img width='20' height='20' style = "border-radius: 30px;" alt='못 불러옴' src='https://ddragon.leagueoflegends.com/cdn/14.3.1/img/spell/${spellD}.png'>
+							</div>
+							<div class = 'spellM2'>
+								<div class=spellM2><img width='20' height='20'  style = "border-radius: 30px;" alt='못 불러옴' src='https://ddragon.leagueoflegends.com/cdn/14.3.1/img/spell/${spellF}.png'>
+							</div>
+						
+						</div>
+					</div>
+						<div class = 'nickNameM'>
+							<div class = 'nickNameML'></div>
+							<a href='/stm/${riotIdGameName}/${riotIdTagline}'>
+								<div class = nickNameMR>${riotIdGameName1}</div>
+								</a>
+							</div>
+						
+						
+					</div>
+					<div class = 'kda1'>
+						<div class = 'killDeathAssist'>${kills}/${deaths}/${assists}</div>
+						<div class = 'kdaCheck'>${kda}:1</div>
+					</div>
+					<div class = 'damage1'>
+						<span tooltip="물리데미지 : ${physicalDamageDealtToChampions} | 마법데미지 : ${magicDamageDealtToChampions}">
+							<div class = "damage11">
+								<div class=damageAmountr style="flex-basis: ${physicalDamagePercent}%; background-Color: #8080c0; "  name = '${physicalDamageDealtToChampions}'></div>
+								<div class=damageAmountl style="flex-basis: ${magicDamagePercent}%; background-Color: orange; "name =  '${magicDamageDealtToChampions}'></div>
+							</div>
+							<div class = "damage111">
+									<div class = "damageGraph" font-size:10px; style="width:100%;"> ${totalDamageDealtToChampions} </div>
+							</div>
+						</span>
+					</div>
+					<div class = 'cs1'>
+						<div class = 'cs11'>
+							${totalMinionsKilled}
+						</div>
+					</div>
+					<div class = 'itemTeamCheck'>
+						<div class = 'teamItem1'>
+								${OnePersonitem}
+						</div>
+					</div>
+					
+					<div class = aidetail id = ${matchId}` + `${participantId}>
+						<img width='20' height='20' alt='못 불러옴' src = "/img/loadingimg.gif"></div>
+					</div>
+				</div>`
+	}
 
 
+	$('#container4' + matchId).append(ct2)
 
 }
 
 
-//				str += `<div class="container2" id='container2${goBtn}' style='display: none'>
-//				<div class="legend">
-//					<div class="teamId" style=color:blue;>블루팀(${blueWin})</div>
-//					<div class=kda>	 <span tooltip="(kill+assist)/death"><a href = "#">kda</a></span>	</div>
-//					
-//					<div class=damage> <span tooltip="상대방에게 가한 (물리+마법)피해"><a href = "#">가한피해량</a></span></div>
-//					<div class=cs><span tooltip="게임에서 잡은 미니언의 총 개수"><a href = "#">cs</span></a></div>
-//					<div class=itemTeam><span tooltip="최종 구입한 총 아이템"><a href = "#">아이템</span></a></div>
-//					<div class=aicheck><span tooltip="인공지능 (Troller Check System)"><a href = "#">AI TCS</a></span></div>
-//					</div>`
-//				let damageToChampions = []
-//				for (j in res[i]['info']) {
-//					damageToChampions.push(res[i]["info"][j]['totalDamageDealtToChampions'])
-//
-//				}
-//				highestdamageToChampions = Math.max(...damageToChampions)
-//				for (j in res[i]['info']) {
-//					champimg = res[i]["info"][j]['championName']
-//					if (champimg == "FiddleSticks") {
-//						champimg = "Fiddlesticks"
-//					}
-//					spellD = res[i]["info"][j]['summonerSpellD']
-//					spellF = res[i]["info"][j]['summonerSpellF']
-//					riotIdGameName = res[i]["info"][j]['riotIdGameName'];
-//					riotIdTagline = res[i]["info"][j]['riotIdTagline'];
-//
-//					champion_name_kr = res[i]["info"][j]['champion_name_kr']
-//					kills = res[i]["info"][j]['kills']
-//					deaths = res[i]["info"][j]['deaths']
-//					assists = res[i]["info"][j]['assists']
-//					if (deaths == 0) {
-//						kda = 'perfect';
-//					} else {
-//						kda = (((kills + assists)) / deaths).toFixed(2)
-//					}
-//					totalDamageDealtToChampions = res[i]["info"][j]['totalDamageDealtToChampions']
-//					bartotalDamageDealtToChampions = ((totalDamageDealtToChampions / highestdamageToChampions) * 99).toFixed(0)
-//					physicalDamageDealtToChampions = ((res[i]["info"][j]['physicalDamageDealtToChampions'] / highestdamageToChampions) * 99).toFixed(0)
-//					magicDamageDealtToChampions = ((res[i]["info"][j]['magicDamageDealtToChampions'] / highestdamageToChampions) * 99).toFixed(0)
-//
-//					totalCs = res[i]["info"][j]['totalMinionsKilled'] + res[i]["info"][j]['totalAllyJungleMinionsKilled'] + res[i]["info"][j]['totalEnemyJungleMinionsKilled']
-//					participantId = res[i]["info"][j]['participantId']
-//					if (res[i]['info'][j]['teamId'] == 100) {
-//
-//						str += `<div class="ct1">
-//					<div class="teamId1">
-//						
-//						<div class=champImgM><div class = 'champaaa'></div><div>
-//						<span tooltip="${champion_name_kr}">
-//						<img title='${champion_name_kr}' width='30' height='30' style = "border-radius: 30px;" alt='못 불러옴' 
-//						src='https://ddragon.leagueoflegends.com/cdn/14.3.1/img/champion/${champimg}.png'>
-//						</span>
-//						</div></div>
-//						<div class=spellM>
-//							<div class=c>
-//								<img width='20' height='20' style = "border-radius: 30px;" alt='못 불러옴' 
-//								src='https://ddragon.leagueoflegends.com/cdn/14.3.1/img/spell/${spellD}.png'>
-//							</div>
-//							<div class=spellM2><img width='20' height='20'  style = "border-radius: 30px;" alt='못 불러옴' 
-//								src='https://ddragon.leagueoflegends.com/cdn/14.3.1/img/spell/${spellF}.png'>
-//							</div>
-//						</div>
-//						<div class=nickNameM><div class = nickNameML></div><a  href='/stm/${riotIdGameName}/${riotIdTagline}'><div class = nickNameMR>${riotIdGameName}</div></a></div>
-//						
-//					</div>
-//					<div class=kda1>
-//						<div class=killDeathAssist>${kills}/${deaths}/${assists}</div>
-//						<div class="kdaCheck">${kda}:1</div>
-//					</div>
-//					<div class=damage1>
-//					<span tooltip="물리데미지 : ${res[i]["info"][j]['physicalDamageDealtToChampions']} | 마법데미지 : ${res[i]["info"][j]['magicDamageDealtToChampions']}">
-//					<div class=damage11>
-//					</span>
-//						<div class=damageAmountr style="flex-basis: ${physicalDamageDealtToChampions}%; background-Color: #8080c0; "  name = '${res[i]["info"][j]['physicalDamageDealtToChampions']}'></div>
-//						<div class=damageAmountl style="flex-basis: ${magicDamageDealtToChampions}%; background-Color: orange; "name =  '${res[i]["info"][j]['magicDamageDealtToChampions']}'></div>
-//						
-//					</div>
-//					
-//					<div class=damage111>
-//					<div class=damageGraph font-size: 10px; style="width: ${bartotalDamageDealtToChampions}%;">${totalDamageDealtToChampions}</div>
-//
-//					</div>
-//						
-//				</div>
-//					<div class=cs1><div = class = "cs11">${totalCs}</div></div>
-//					<div class=itemTeamCheck>
-//						<div class=teamItem1>`
-//
-//						for (let k = 0; k < 6; k++) {
-//							if (res[i]["info"][j]['item' + k] != 0) {
-//								str += `<img width='20' height='20' style = "border-radius: 30px;" alt='못 불러옴' src=https://ddragon.leagueoflegends.com/cdn/14.3.1/img/item/${res[i]["info"][j]['item' + k]}.png>&nbsp;&nbsp;`
-//							}
-//						}
-//
-//
-//						str += `</div>
-//					</div>
-//					<div class = aidetail id = ${matchId}` + `${participantId}><img width='20' height='20' alt='못 불러옴' src = "/img/loadingimg.gif"></div>
-//				</div>`
-//					}
-//				}
-//				str += `
-//		<div class="legend1">
-//					<div class="teamId" style=color:red;>레드팀(${redWin})</div>
-//					<div class=kda>	 <span tooltip="(kill+assist)/death"><a href = "#">kda</a></span>	</div>
-//					
-//					<div class=damage> <span tooltip="상대방에게 가한 (물리+마법)피해"><a href = "#">가한피해량</a></span></div>
-//					<div class=cs><span tooltip="게임에서 잡은 미니언의 총 개수"><a href = "#">cs</span></a></div>
-//					<div class=itemTeam><span tooltip="최종 구입한 총 아이템"><a href = "#">아이템</span></a></div>
-//					<div class=aicheck><span tooltip="인공지능 (Troller Check System)"><a href = "#">AI TCS</a></span></div>
-//					</div>`
-//
-//				for (j in res[i]['info']) {
-//					//			console.log(res[i]['info'])
-//
-//
-//					champimg = res[i]["info"][j]['championName']
-//					if (champimg == "FiddleSticks") {
-//						champimg = "Fiddlesticks"
-//					}
-//					spellD = res[i]["info"][j]['summonerSpellD']
-//					spellF = res[i]["info"][j]['summonerSpellF']
-//					riotIdGameName = res[i]["info"][j]['riotIdGameName']
-//					champion_name_kr = res[i]["info"][j]['champion_name_kr']
-//					kills = res[i]["info"][j]['kills']
-//					deaths = res[i]["info"][j]['deaths']
-//					assists = res[i]["info"][j]['assists']
-//					kda = (((kills + assists)) / deaths).toFixed(2)
-//					totalDamageDealtToChampions = res[i]["info"][j]['totalDamageDealtToChampions']
-//					bartotalDamageDealtToChampions = (((totalDamageDealtToChampions / highestdamageToChampions) * 99)).toFixed(0)
-//					physicalDamageDealtToChampions = ((res[i]["info"][j]['physicalDamageDealtToChampions'] / highestdamageToChampions) * 99).toFixed(0)
-//					magicDamageDealtToChampions = ((res[i]["info"][j]['magicDamageDealtToChampions'] / highestdamageToChampions) * 99).toFixed(0)
-//
-//					totalCs = res[i]["info"][j]['totalMinionsKilled'] + res[i]["info"][j]['totalAllyJungleMinionsKilled'] + res[i]["info"][j]['totalEnemyJungleMinionsKilled']
-//					participantId = res[i]["info"][j]['participantId']
-//					if (res[i]['info'][j]['teamId'] == 200) {
-//
-//						str += `<div class="ct2">
-//					<div class="teamId1">
-//
-//						<div class=champImgM><div class = 'champaaa'></div><div>
-//						<span tooltip="${champion_name_kr}">
-//						<img title='${champion_name_kr}' width='30' height='30' style = "border-radius: 30px;"  alt='못 불러옴' 
-//						src='https://ddragon.leagueoflegends.com/cdn/14.3.1/img/champion/${champimg}.png'>
-//						</span>
-//						</div>	</div>
-//						<div class=spellM>
-//							<div class=spellM1>
-//								<img width='20' height='20'  alt='못 불러옴' style = "border-radius: 30px;" 
-//								src='https://ddragon.leagueoflegends.com/cdn/14.3.1/img/spell/${spellD}.png'>
-//							</div>
-//							<div class=spellM2><img width='20' height='20'  alt='못 불러옴' style = "border-radius: 30px;" 
-//								src='https://ddragon.leagueoflegends.com/cdn/14.3.1/img/spell/${spellF}.png'>
-//							</div>
-//						</div>
-//						<div class=nickNameM><div class = nickNameML></div><a  href='/stm/${riotIdGameName}/${riotIdTagline}'><div class = nickNameMR>${riotIdGameName}</div></a></div>
-//					</div>
-//					<div class=kda1>
-//						<div class=killDeathAssist>${kills}/${deaths}/${assists}</div>
-//						<div class="kdaCheck">${kda}:1</div>
-//					</div>
-//					<div class=damage1>
-//						<span tooltip="물리데미지 : ${res[i]["info"][j]['physicalDamageDealtToChampions']} | 마법데미지 : ${res[i]["info"][j]['magicDamageDealtToChampions']}">
-//					<div class=damage11>
-//					</span>
-//						<div class=damageAmountr style="flex-basis: ${physicalDamageDealtToChampions}%; background-Color: #8080c0; "  name = '${res[i]["info"][j]['physicalDamageDealtToChampions']}'></div>
-//						<div class=damageAmountl style="flex-basis: ${magicDamageDealtToChampions}%; background-Color: orange; "name =  '${res[i]["info"][j]['magicDamageDealtToChampions']}'></div> 	
-//					</div>
-//					
-//					<div class=damage111>
-//					<div class=damageGraph font-size: 10px; style="width: ${bartotalDamageDealtToChampions}%;">${totalDamageDealtToChampions}</div>
-//
-//					</div>
-//						
-//				</div>
-//					<div class=cs1><div class = "cs11">${totalCs}</div></div>
-//					<div class=itemTeamCheck>
-//						<div class=teamItem1>`
-//
-//						for (let k = 0; k < 6; k++) {
-//							if (res[i]["info"][j]['item' + k] != 0) {
-//								str += `<img width='20' height='20' style = "border-radius: 30px;"  alt='못 불러옴' src=https://ddragon.leagueoflegends.com/cdn/14.3.1/img/item/${res[i]["info"][j]['item' + k]}.png>&nbsp;&nbsp;`
-//							}
-//						}
-//
-//						str += `</div>
-//					</div>
-//					<div class = aidetail id = ${matchId}` + `${participantId}><img width=20 height='20' style = "border-radius: 30px;"  alt='못 불러옴' src = "/img/loadingimg.gif"></div>
-//				</div>`
-//					}
-//				}
-//
-//				str += `</div>
-//		`
-//				$('.containerXC').append(str)
-//			}
-//			let str1 = "<div class='containerXR'></div><div class='more'><center><button class='loadMore' id = 'loadMore'>더 보기</button></center></div>"
-//
-//			$('.containerXC').append(str1)
-//
-//
+function makeBodyblue(blueChampList, matchId) {
+	//	console.log(blueChampList)
+	teamId = '';
+	if (blueChampList[0]['win'] == '1') {
+		blueWin = '승리'
+	} else {
+		blueWin = '패배'
+	}
 
-//		}
+	legend = `<div class="legend" id = '${matchId}legend' ></div>`
+
+	$('#container2' + matchId).append(legend);
+
+	if (blueChampList[0]['teamId'] == 100) {
+		teamId = `<div class="teamId" style=color:blue;>블루팀(${blueWin})</div>`
+	} else {
+		teamId = `<div class="teamId" style=color:red;>레드팀(${blueWin})</div>`
+
+	}
+	//여기서부터 시작
+	champBody = `  
+					${teamId}
+					<div class=kda>	 <span tooltip="(kill+assist)/death"><a href = "#">kda</a></span>	</div>
+
+					<div class=damage> <span tooltip="상대방에게 가한 (물리+마법)피해"><a href = "#">데미지</a></span></div>
+					<div class=cs><span tooltip="게임에서 잡은 미니언의 총 개수"><a href = "#">cs</span></a></div >
+					<div class=itemTeam><span tooltip="최종 구입한 총 아이템"><a href="#">아이템</span></a></div >
+					<div class=aicheck><span tooltip="인공지능 (Troller Check System)"><a href="#">AI TCS</a></span></div>
+					
+				`
+	$('#' + matchId + 'legend').append(champBody)
+
+	let ct1 = ''
+	for (let i in blueChampList) {
+
+		champion_name_kr = blueChampList[i]['champion_name_kr']
+		championName = blueChampList[i]['championName']
+		spellD = blueChampList[i]['summonerSpellD']
+		spellF = blueChampList[i]['summonerSpellF']
+		kills = blueChampList[i]['kills']
+		deaths = blueChampList[i]['deaths']
+		assists = blueChampList[i]['assists']
+		kda = blueChampList[i]['kda']
+		physicalDamageDealtToChampions = blueChampList[i]['physicalDamageDealtToChampions']
+		magicDamageDealtToChampions = blueChampList[i]['magicDamageDealtToChampions']
+		totalDamageDealtToChampions = parseInt(physicalDamageDealtToChampions) + parseInt(magicDamageDealtToChampions)
 
 
+		physicalDamagePercent = ((physicalDamageDealtToChampions / totalDamageDealtToChampions) * 100).toFixed(0)
+		magicDamagePercent = ((magicDamageDealtToChampions / totalDamageDealtToChampions) * 100).toFixed(0)
+		totalMinionsKilled = blueChampList[i]['totalMinionsKilled']
+		participantId = blueChampList[i]['participantId']
+		riotIdGameName = blueChampList[i]['riotIdGameName']
+		riotIdTagline = blueChampList[i]['riotIdTagline']
 
+
+		let OnePersonitem = ''
+		for (let k = 0; k < 6; k++) {
+			if (blueChampList[i]['item' + k] != 0) {
+
+				blueitem = blueChampList[i]['item' + k]
+				OnePersonitem += `<img width='20' height='20' style = "border-radius: 30px;" alt='못 불러옴' src=https://ddragon.leagueoflegends.com/cdn/14.3.1/img/item/${blueitem}.png>&nbsp;`
+			}
+		}
+		if (riotIdGameName.length > 4) {
+			riotIdGameName1 = riotIdGameName.substr(0, 4) + '...';
+		} else {
+			riotIdGameName1 = riotIdGameName
+
+		}
+
+		//		console.log(championName)
+		ct1 += `<div class = 'ct1'>
+					<div class = 'teamId1'>
+						<div class = 'champImgM'>
+							<div class = 'champaaa'></div>
+							<div>
+								<span tooltip = "${champion_name_kr}">
+								<img title="${champion_name_kr}" width='30' height='30' style = "border-radius: 30px;" alt='못 불러옴' src='https://ddragon.leagueoflegends.com/cdn/14.3.1/img/champion/${championName}.png'>
+							</span>
+							</div>
+						</div>
+						<div class = 'spellM'>
+							<div class = 'c'>
+								<img width='20' height='20' style = "border-radius: 30px;" alt='못 불러옴' src='https://ddragon.leagueoflegends.com/cdn/14.3.1/img/spell/${spellD}.png'>
+							</div>
+							<div class = 'spellM2'>
+								<div class=spellM2><img width='20' height='20'  style = "border-radius: 30px;" alt='못 불러옴' src='https://ddragon.leagueoflegends.com/cdn/14.3.1/img/spell/${spellF}.png'>
+							</div>
+						
+						</div>
+					</div>
+						<div class = 'nickNameM'>
+							<div class = 'nickNameML'></div>
+							<a href='/stm/${riotIdGameName}/${riotIdTagline}'>
+								<div class = nickNameMR>${riotIdGameName1}</div>
+								</a>
+							</div>
+						
+						
+					</div>
+					<div class = 'kda1'>
+						<div class = 'killDeathAssist'>${kills}/${deaths}/${assists}</div>
+						<div class = 'kdaCheck'>${kda}:1</div>
+					</div>
+					<div class = 'damage1'>
+						<span tooltip="물리데미지 : ${physicalDamageDealtToChampions} | 마법데미지 : ${magicDamageDealtToChampions}">
+							<div class = "damage11">
+								<div class=damageAmountr style="flex-basis: ${physicalDamagePercent}%; background-Color: #8080c0; "  name = '${physicalDamageDealtToChampions}'></div>
+								<div class=damageAmountl style="flex-basis: ${magicDamagePercent}%; background-Color: orange; "name =  '${magicDamageDealtToChampions}'></div>
+
+							</div>
+							<div class = "damage111">
+									<div class = "damageGraph" font-size:10px; style="width:100%;"> ${totalDamageDealtToChampions} </div>
+							</div>
+						</span>
+					</div>
+					<div class = 'cs1'>
+						<div class = 'cs11'>
+							${totalMinionsKilled}
+						</div>
+					</div>
+					<div class = 'itemTeamCheck'>
+						<div class = 'teamItem1'>
+								${OnePersonitem}
+						</div>
+					</div>
+					
+					<div class = aidetail id = ${matchId}` + `${participantId}>
+						<img width='20' height='20' alt='못 불러옴' src = "/img/loadingimg.gif"></div>
+					</div>
+				</div>`
+	}
+
+
+	$('#container2' + matchId).append(ct1)
+}
 
 //클릭시 타임라인 데이터 가지고 오기 , 모달열림
 timeline_list = []
@@ -582,11 +675,22 @@ function aiTimelineAni(matchId) {
 window.addEventListener('click', (e) => {
 
 	if (e.target.id == "loadMore") {
-		console.log(moredata)
-		console.log("실행됨");
-		moredata['matchCnt']++;
+		var riotid = $('#loadMore').attr('name');
+
+
+
+		var gameId = riotid.split('#');
+		let gameName = gameId[0].replace(/\'/gi, "") // 아이디
+		let tagLine = gameId[1].replace(/\'/gi, "") // 태그
+		let matchCnt = parseInt(gameId[2].replace(/\'/gi, ""))
+		//		
+
+		// 태그
+		matchCnt++;
+		data = { 'gameName': gameName, 'tagLine': tagLine, 'matchCnt': matchCnt }
+		//		console.log(data)
 		$('#loadMore').remove()
-		bbb(moredata)
+		bbb(data)
 	}
 
 });
@@ -638,10 +742,10 @@ function queuecheck(res) {
 }
 function win_losecheck(res) {
 	if (res.win == '0') {
-		win_lose = '다시하기'
+		win_lose = '패배'
 	} else if (res.win == '1') {
 		win_lose = '승리'
 	} else if (spendTime < 5) {
-		win_lose = '패배'
+		win_lose = '다시하기'
 	}
 }

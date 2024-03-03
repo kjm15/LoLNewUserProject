@@ -161,14 +161,14 @@ function aiCheckTroll(res1) {
 
 matchId_ai_list = []
 function bbb(data) {
-
+//	console.log(data)
 	$.ajax({
 		type: 'post',
 		url: '/match/list',
 		data: data,
 		success: function(res) {
 
-			console.log(res)
+			//			console.log(res)
 
 			if (res != '') {
 				MList = [];
@@ -265,20 +265,14 @@ function bbb(data) {
 					data: data2,
 					//					dataType: 'json',
 					success: function(res) {
-
-
 						console.log(res)
 						aaa(data)
-
 					}
 				})
 
 			} else {
 				aaa(data)
 			}
-
-
-
 		},
 		error: function(jqXHR, textStatus, errorThrown) {
 			console.log(jqXHR);  //응답 메시지
@@ -291,8 +285,6 @@ function bbb(data) {
 			}
 			console.log(m)
 		}
-
-
 	})
 
 }
@@ -308,7 +300,7 @@ function aaa(data) { // data == 검색한 게임 아이디
 
 				allofList.push(res[i])
 			}
-			console.log(allofList)
+			//			console.log(allofList)
 			showGameTamble(res, data)
 		}
 	})
@@ -330,20 +322,8 @@ function searchbtn1() {
 }
 
 function summonerV4(res) {
-	console.log(res)
+
 	let temp = JSON.stringify(res)
-	console.log(temp)
-	//	$.ajax({
-	//		type: 'post',
-	//		url: '/summoner/v4',
-	//		data: { 'riotIdGameName': riotIdGameName, 'riotIdTagline': riotIdTagline },
-	//		
-	////				data2 = { 'Mlist': temp }
-	//		success: function(res) {
-	//			console.log(res)
-	//
-	//		}
-	//	})
 
 }
 
@@ -352,45 +332,47 @@ function summonerV4(res) {
 function gamebtn(goBtn, matchId) {
 
 	var line1 = document.getElementById("line1" + goBtn);
-	var container2 = document.getElementById("container2" + goBtn);
-	//	line1.style.display = ((line1.style.display != 'none') ? 'none' : 'block');
-	//	container2.style.display = ((container2.style.display != 'none') ? 'none' : 'block');
+	var container2 = document.getElementById("container2" + matchId);
+	var container4 = document.getElementById("container4" + matchId);
+	line1.style.display = ((line1.style.display != 'none') ? 'none' : 'block');
+	container2.style.display = ((container2.style.display != 'none') ? 'none' : 'block');
+	container4.style.display = ((container4.style.display != 'none') ? 'none' : 'block');
 	showGameTambleBody(matchId) // 바디부분 만들기
 
-
-	data = { 'matchId': matchId }
-
-	$.ajax({
-		type: 'post',
-		url: '/summoner/v4/userList',
-		data: data,
-		success: function(res) {
-			//				console.log(res)
-			//
-			for (let i in res) {
-				if (res[i].queueId == 420) { //솔랭인경우
-					$.ajax({
-						contentType: 'application/json',
-						type: 'post',
-						url: '/summoner/v4/Rank',
-						data: JSON.stringify(res[i]),
-						success: function(res1) {
-							//							console.log(res1)
-							aiCheckTroll(res1)
-						}
-					})
-				} else if (res[i].queueId == 450) {
-
-					aiCheckTroll(res[i])
-
-				} else {
-					aiCheckTroll(res[i])
-
-				}
-
-			}
-		}
-	})
+	//  완료 되면 다시 켜기
+	//	data = { 'matchId': matchId }
+	//
+	//	$.ajax({
+	//		type: 'post',
+	//		url: '/summoner/v4/userList',
+	//		data: data,
+	//		success: function(res) {
+	//			//				console.log(res)
+	//			//
+	//			for (let i in res) {
+	//				if (res[i].queueId == 420) { //솔랭인경우
+	//					$.ajax({
+	//						contentType: 'application/json',
+	//						type: 'post',
+	//						url: '/summoner/v4/Rank',
+	//						data: JSON.stringify(res[i]),
+	//						success: function(res1) {
+	//							//							console.log(res1)
+	//							aiCheckTroll(res1)
+	//						}
+	//					})
+	//				} else if (res[i].queueId == 450) {
+	//
+	//					aiCheckTroll(res[i])
+	//
+	//				} else {
+	//					aiCheckTroll(res[i])
+	//
+	//				}
+	//
+	//			}
+	//		}
+	//	})
 }
 
 
