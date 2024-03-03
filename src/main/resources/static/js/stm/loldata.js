@@ -77,7 +77,7 @@ function aiCheckTroll(res1) {
 									str = '<div class = checkFlagStamp><div class="stampLose"><span tooltip="' + res1.champion_name_kr + '(은/는) 하지 않는것을 추천">평균이하</span></div></div>'
 									$('#' + key).html(str);
 								} else if (value == '데이터부족') { //인공지능 지표: 승
-									$('#' + key).html(value);
+									$('#' + key).html("평균");
 								} else { //인공지능 지표: 승
 									str = "승리"
 									$('#' + key).html(str);
@@ -87,7 +87,7 @@ function aiCheckTroll(res1) {
 									str = "패배"
 									$('#' + key).html(str);
 								} else if (value == '데이터부족') { //인공지능 지표: 승
-									$('#' + key).html(value);
+									$('#' + key).html("평균");
 								} else { //인공지능 지표: 승
 									str = '<div class = checkFlagStamp><div class="stampWin"><span tooltip="' + res1.champion_name_kr + ' 챔프의 이해도가 높은 수준">평균이상</span></div></div>'
 									$('#' + key).html(str);
@@ -95,6 +95,9 @@ function aiCheckTroll(res1) {
 								}
 							}
 						}
+					}, error: function(error) {
+						$('#' + key).html("평균");
+
 					}
 				})//ajax끝
 			} else if (res.queueId == 450) {
@@ -106,13 +109,13 @@ function aiCheckTroll(res1) {
 					url: '/ai/trollcheck450',
 					data: JSON.stringify(data),
 					success: function(res1) {
-						console.log(res1)
+//						console.log(res1)
 						for (const [key, value] of Object.entries(res1)) {
 							if (res.win == 1) { // 게임 : 승리
 
 								if (value == '패') { //인공지능 지표 : 패
 
-									str = '<div class="stampLose"><span tooltip="' + res1.champion_name_kr + ' 평균 이하의 트롤러">평균이하</span></div>'
+									str = '<div class = checkFlagStamp><div class="stampLose"><span tooltip="' + res1.champion_name_kr + ' 평균 이하의 트롤러">평균이하</span></div></div>'
 									$('#' + key).html(str);
 
 								} else { //인공지능 지표: 승
@@ -126,13 +129,16 @@ function aiCheckTroll(res1) {
 									$('#' + key).html(str);
 
 								} else { //인공지능 지표: 승
-									str = '<div class="stampWin"><span tooltip=" ' + res1.champion_name_kr + ' 평균 이상의 실력자">평균이상</span>	</div>'
+									str = '<div class = checkFlagStamp><div class="stampWin"><span tooltip=" ' + res1.champion_name_kr + ' 평균 이상의 실력자">평균이상</span></div>	</div>'
 									$('#' + key).html(str);
 								}
 
 
 							}
 						}
+					}, error: function(error) {
+						$('#' + key).html("평균");
+
 					}
 				})//ajax끝
 
@@ -161,7 +167,7 @@ function aiCheckTroll(res1) {
 
 matchId_ai_list = []
 function bbb(data) {
-//	console.log(data)
+	//	console.log(data)
 	$.ajax({
 		type: 'post',
 		url: '/match/list',
@@ -339,40 +345,40 @@ function gamebtn(goBtn, matchId) {
 	container4.style.display = ((container4.style.display != 'none') ? 'none' : 'block');
 	showGameTambleBody(matchId) // 바디부분 만들기
 
-	//  완료 되면 다시 켜기
-	//	data = { 'matchId': matchId }
-	//
-	//	$.ajax({
-	//		type: 'post',
-	//		url: '/summoner/v4/userList',
-	//		data: data,
-	//		success: function(res) {
-	//			//				console.log(res)
-	//			//
-	//			for (let i in res) {
-	//				if (res[i].queueId == 420) { //솔랭인경우
-	//					$.ajax({
-	//						contentType: 'application/json',
-	//						type: 'post',
-	//						url: '/summoner/v4/Rank',
-	//						data: JSON.stringify(res[i]),
-	//						success: function(res1) {
-	//							//							console.log(res1)
-	//							aiCheckTroll(res1)
-	//						}
-	//					})
-	//				} else if (res[i].queueId == 450) {
-	//
-	//					aiCheckTroll(res[i])
-	//
-	//				} else {
-	//					aiCheckTroll(res[i])
-	//
-	//				}
-	//
-	//			}
-	//		}
-	//	})
+	//	  완료 되면 다시 켜기
+	data = { 'matchId': matchId }
+
+	$.ajax({
+		type: 'post',
+		url: '/summoner/v4/userList',
+		data: data,
+		success: function(res) {
+			//				console.log(res)
+			//
+			for (let i in res) {
+				if (res[i].queueId == 420) { //솔랭인경우
+					$.ajax({
+						contentType: 'application/json',
+						type: 'post',
+						url: '/summoner/v4/Rank',
+						data: JSON.stringify(res[i]),
+						success: function(res1) {
+							//							console.log(res1)
+							aiCheckTroll(res1)
+						}
+					})
+				} else if (res[i].queueId == 450) {
+
+					aiCheckTroll(res[i])
+
+				} else {
+					aiCheckTroll(res[i])
+
+				}
+
+			}
+		}
+	})
 }
 
 

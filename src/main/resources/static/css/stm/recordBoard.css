@@ -634,15 +634,17 @@
 	z-index: auto;
 }
 .checkFlagStamp{
-	
+	z-index : 2;
 	position: absolute;
-	left : 250px;
+	left : 170px;
+	top : -10px;
 	
 }
 .stampWin {
 	/* position: absolute; */
+	
 	height: 30px;
-	width: 90px;
+	width: 70px;
 	left: 0px;
 	top: 0px;
 	border-radius: 10px;
@@ -685,7 +687,7 @@
 	/* position: absolute; */
 	text-align : center;
 	height: 30px;
-	width: 90px;
+	width: 70px;
 	left: 0px;
 	top: 0px;
 	border-radius: 10px;

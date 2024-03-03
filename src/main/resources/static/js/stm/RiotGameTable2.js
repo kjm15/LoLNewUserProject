@@ -330,7 +330,7 @@ function showGameTamble(res, data) {
 			}
 		})
 	}
-	console.log(myriotIdGameName)
+//	console.log(myriotIdGameName)
 	let more = `<div class='containerXR'></div><div class='more'>
 					<center>
 						<input type = "button" value = "더보기" name = "\'${myriotIdGameName}\'#\'${myriotIdTagline}\'#\'${data['matchCnt']}\'" id = 'loadMore' class='loadMore'>

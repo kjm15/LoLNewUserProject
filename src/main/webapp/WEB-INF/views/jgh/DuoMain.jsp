@@ -20,7 +20,8 @@
 
 	<div class="duoContent">
 		<div class="duoTitle">
-			<h1>롤 듀오 찾기</h1>
+		
+				<h1>영혼의 Duo</h1>
 		</div>
 		<div class="duoContainer">
 			<div class="duoMain">
