@@ -40,7 +40,6 @@ function duoMainInfo() {
 				<div class="dropdown">
 				  <button class="dropbtn">....</button>
 				  <div class="dropdown-content">
-				    <a href="#">수정</a>
 				    <a href="javascript:deleteDuo(${res[i].rCnt})">삭제</a>
 				
 				  </div>

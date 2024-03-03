@@ -2,7 +2,7 @@
 	pageEncoding="UTF-8"%>
 
 
-<h1 id="hello" class="chatthead"></h1>
+<h1 id="hello"></h1>
 <div class='scroll'>
 	<div id='chatt'>
 

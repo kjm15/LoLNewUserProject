@@ -1,12 +1,39 @@
 @charset "UTF-8";
 
 .duoContent {
+	position: relative;
 	min-width: 1300px;
 }
 
+body {
+	background-image:
+		url('https://whatisyourlolbti.netlify.app/img/kdaseries.jpg');
+	opacity: 1;
+	background-image: no-repeat;
+	background-size: 130% 100%;
+	background-position : -300px ;/* x축 y축 */
+	/* 추가 */
+	position: relative;
+	isolation: isolate;}
+
+/* 추가 */
+body::after {
+  content: '';
+  position: absolute;
+  background: white;
+  z-index: -1;
+  inset: 0;
+  opacity: 0.4	;
+}
 .duoTitle {
+	position: absolute;
+	top: -10%;
+	left: 45%;
+	text-align: bottom;
+	font-family: 'Jua', sans-serif;
 	display: flex;
 	justify-content: center;
+	text-align: bottom
 }
 
 .duoContainer {
@@ -17,6 +44,7 @@
 }
 
 .duoMain {
+	font-family: 'Jua', sans-serif;
 	width: 1084px;
 }
 
@@ -61,7 +89,7 @@
 	display: flex;
 	flex-direction: column;
 	align-items: center;
-/* 	border-top: 3px solid rgb(104, 124, 179); */
+	/* 	border-top: 3px solid rgb(104, 124, 179); */
 	border-top: 3px solid rgb(69, 139, 197);
 	border-radius: 3px;
 	text-align: center;
@@ -74,7 +102,7 @@
 
 .duo-th {
 	text-align: center;
-/* 	background-color: rgb(104, 124, 179); */
+	/* 	background-color: rgb(104, 124, 179); */
 	background-color: rgb(69, 139, 197);
 }
 
@@ -103,8 +131,8 @@
 
 .Dtd {
 	/* 	background-color: rgba(62, 86, 145, 0.9); */
-	background-color: rgba(69, 139, 197, 0.70); 
-	height : 60px;
+	background-color: rgba(69, 139, 197, 0.70);
+	height: 60px;
 	border-bottom: 1px solid white;
 	height: 60px;
 }
@@ -116,7 +144,7 @@
 
 /* 장기훈 드랍다운 */
 .dropbtn {
-/* 	background-color: #ea2129; */
+	/* 	background-color: #ea2129; */
 	background-color: midnightblue;
 	color: white;
 	padding: 16px;
@@ -125,8 +153,10 @@
 }
 
 .dropdown {
+	border-radius: 20px;
 	position: relative;
 	display: inline-block;
+	position: relative;
 }
 
 .dropdown-content {

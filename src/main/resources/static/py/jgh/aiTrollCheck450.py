@@ -23,7 +23,7 @@ def connect_mysql(db='mydb'):
 conn = connect_mysql()
 cursor = conn.cursor()
 queueId = str(450) #큐아이디
-limit_value = str(500) # 리미트값
+limit_value = str(100) # 리미트값
 ############################
 
 data = sys.argv[1:]

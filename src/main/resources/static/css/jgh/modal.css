@@ -13,6 +13,8 @@
 }
 
 .modal_wrap.show-modal {
+	border-radius : 20px;
+	font-family: 'Jua', sans-serif;
 	display: block;
 }
 
@@ -53,12 +55,12 @@
 }
 
 .duoPartyChatt {
-	border: 2px solid black;
+	border: 3px solid black;
 	background: #eee;
 	z-index: 2;
 	text-align: center;
 	font-family: arial;
-	outline: dashed 2px black;
+	
 	position: fixed;
 	top: 90%;
 	left: 90%;
@@ -131,7 +133,8 @@ to {
 }
 
 /* 사이드바 */
-.side-bar{                              
+.side-bar{ 
+	font-family: 'Jua', sans-serif;
     background-color: lightgray;
     position: absolute;
     top:0;
@@ -231,6 +234,7 @@ to {
 }
 
 #modal .modal-window {
+	font-family: 'Jua', sans-serif;
 	background: rgba(69, 139, 197, 0.70);
 	box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.37);
 	backdrop-filter: blur(13.5px);
