@@ -43,7 +43,7 @@ def insert_matches_timeline_mysql(row, conn):
             f",(select champion_name_kr from RiotGameInfoT where matchId = \'{row.matchId}\' and participantId = \'{row.victim}\')"
             f",(select teamId from RiotGameInfoT where matchId = \'{row.matchId}\' and participantId = \'{row.victim}\')"
             f",\'{row.x}\', \'{row.y}\', \'{row.now_time}\',  \'{row.timestamp}\'"
-            f",(select queueId from RiotGameInfoT where matchId = \'{row.matchId}\' limit 1),0"
+            f",(select queueId from RiotGameInfoT where matchId = \'{row.matchId}\' limit 1),0,\'{row.minPerGold}\'"
             f")"
         )
     else :
@@ -56,7 +56,7 @@ def insert_matches_timeline_mysql(row, conn):
             f",(select champion_name_kr from RiotGameInfoT where matchId = \'{row.matchId}\' and participantId = \'{row.victim}\')"
             f",(select teamId from RiotGameInfoT where matchId = \'{row.matchId}\' and participantId = \'{row.victim}\')"
             f",\'{row.x}\', \'{row.y}\', \'{row.now_time}\',  \'{row.timestamp}\'"
-            f",(select queueId from RiotGameInfoT where matchId = \'{row.matchId}\' limit 1),\'{row.killStreakLength}\'"
+            f",(select queueId from RiotGameInfoT where matchId = \'{row.matchId}\' limit 1),\'{row.killStreakLength}\',\'{row.minPerGold}\'"
             f")"
         )
         
@@ -71,7 +71,7 @@ def insert_matches_monster_timeline_mysql(row, conn):
             f"INSERT ignore INTO aiTimelineT"
             f" VALUES (\'{row.matchId}\','{championName}','{champion_name_kr}',300,\'{row.victim_championName}\',\'{row.victim}\',300"
             f",\'{row.x}\', \'{row.y}\', \'{row.now_time}\',  \'{row.timestamp}\'"
-            f",(select queueId from RiotGameInfoT where matchId = \'{row.matchId}\' limit 1),\'{row.killStreakLength}\'"
+            f",(select queueId from RiotGameInfoT where matchId = \'{row.matchId}\' limit 1),\'{row.killStreakLength}\',\'{row.minPerGold}\'"
             f")"
         )        
     else :     
@@ -83,7 +83,7 @@ def insert_matches_monster_timeline_mysql(row, conn):
             f",(select teamId from RiotGameInfoT where matchId = \'{row.matchId}\' and participantId = \'{row.participantId}\')"
             f",\'{row.victim_championName}\',\'{row.victim}\',300"          
             f",\'{row.x}\', \'{row.y}\', \'{row.now_time}\',  \'{row.timestamp}\'"
-            f",(select queueId from RiotGameInfoT where matchId = \'{row.matchId}\' limit 1),\'{row.killStreakLength}\'"
+            f",(select queueId from RiotGameInfoT where matchId = \'{row.matchId}\' limit 1),\'{row.killStreakLength}\',\'{row.minPerGold}\'"
             f")"
         )
     sql_execute(conn, query)
@@ -100,16 +100,63 @@ def sql_execute(conn, query):
         cursor.close()
 
 
+
+
 timelines = get_matches_timelines(matchId,api_key)
 
 mytime_Gamer_list = []
 mytime_monster_list = []
 memo_list = []
+participantFrames_List = []
 
+allxGold = ''
+allyGold = ''
 timlines_list = timelines['info']['frames']
+now_gold = 0
+minPerGold = ''
+teamId = 0
+def minPerGoldCheck(i):
+
+    xGold = 0 # 1~5
+    yGold = 0 # 6~10
+    participantFrameslist = timlines_list[i]['participantFrames']
+
+    teamPositionX = timlines_list[0]['participantFrames']['1']['position']['x']
+    if teamPositionX > 5000:
+        teamId = 200 #1~5 이 레드
+
+
+
+    else :
+        teamId = 100 #1~5 이 블루
+
+
+
+    for h in range(len(participantFrameslist)) :
+        h = h + 1
+        if h <= 5 :
+            h = f'{h}'
+            now_gold = participantFrameslist[h]['totalGold']
+            xGold += xGold + now_gold
+        
+        else :
+            h = f'{h}'
+            now_gold = participantFrameslist[h]['totalGold']
+            yGold += yGold + now_gold
+        
+        
+        tGold = xGold+yGold    
+    if teamId == 100 : 
+        minPerGold = str(int(xGold / tGold * 100)) + ":"+str(100-int(xGold / tGold * 100))
+    else : 
+        minPerGold = str(100-int(xGold / tGold * 100))+ ":" + str(int(xGold / tGold * 100))
+    return minPerGold
+
 for i in range(len(timlines_list)): #경기중 i분
+
     events_list = timlines_list[i]['events']
     for j in range(len(events_list)): #i분중의 j번째의 이벤트
+
         if events_list[j]['type'] == "CHAMPION_KILL":
             mynow_dict = []
             killer = events_list[j]['killerId']
@@ -126,7 +173,7 @@ for i in range(len(timlines_list)): #경기중 i분
             if  now_second < 10 : # 10보다 작은수
                 now_second= '0' + str(now_second)
 
-
+            
 
             mynow_dict.append(matchId)    
             participantId = killer
@@ -137,6 +184,9 @@ for i in range(len(timlines_list)): #경기중 i분
             mynow_dict.append(str(now_min) + ':' + str(now_second)) 
             mynow_dict.append(timestamp) 
             mynow_dict.append(events_list[j]['killStreakLength']) 
+
+            mynow_dict.append(minPerGoldCheck(now_min+1)) 
+  
             mytime_Gamer_list.append(mynow_dict)
 
         elif events_list[j]['type'] == "ELITE_MONSTER_KILL": #D
@@ -210,14 +260,15 @@ for i in range(len(timlines_list)): #경기중 i분
             mynow_dict.append(str(now_min) + ':' + str(now_second))
             mynow_dict.append(timestamp) 
             mynow_dict.append(killStreakLength) 
-            
+            mynow_dict.append(minPerGoldCheck(now_min+1))  
+
             mytime_monster_list.append(mynow_dict)
   
 
 
 
-df =pd.DataFrame(mytime_Gamer_list,columns = ['matchId','participantId','victim','x','y','now_time','timestamp','killStreakLength'])  
-df_monster =pd.DataFrame(mytime_monster_list,columns = ['matchId','participantId','victim','victim_championName','x','y','now_time','timestamp','killStreakLength'])
+df =pd.DataFrame(mytime_Gamer_list,columns = ['matchId','participantId','victim','x','y','now_time','timestamp','killStreakLength','minPerGold'])  
+df_monster =pd.DataFrame(mytime_monster_list,columns = ['matchId','participantId','victim','victim_championName','x','y','now_time','timestamp','killStreakLength','minPerGold'])
 
 
 

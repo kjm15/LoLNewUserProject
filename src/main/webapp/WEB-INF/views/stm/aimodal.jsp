@@ -58,25 +58,29 @@
 
 					<div class="status">
 						<div class="statusUp">
-							<div class="statusUpUp">Result</div>
+							<div class="statusUpUp">Gold Result</div>
 						</div>
 						<div class="statusDown">
-						
-						결과 들어갈 예정
-						
+							<div class="forMoveBar">
+								<div class="goldProgress-bar">
+									<div class="goldProgress"></div>
+								</div>
+								<div class = moveGold>
+									<div class = nowGold id = "nowGold"></div>
+								</div>
+							</div>
 						</div>
 
 					</div>
 					<div class="menu">
 
 						<div class="menur" id="replayStart">
-							<a href = "#"><img width='30' height='30' src="/img/playbutton.png"
-								alt="리플레이시작버튼">Play
-								</a>
+							<a href="#"><img width='30' height='30'
+								src="/img/playbutton.png" alt="리플레이시작버튼">Play </a>
 						</div>
 						<div class="menul" id="liveBroadCastSkip">
-							<a href = "#"><img width='30' height='30' src="/img/skipbutton.png" alt="스킵버튼">Skip/All
-							</a>
+							<a href="#"><img width='30' height='30'
+								src="/img/skipbutton.png" alt="스킵버튼">Skip/All </a>
 						</div>
 
 
@@ -88,3 +92,4 @@
 		</div>
 	</div>
 </div>
+

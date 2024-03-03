@@ -356,13 +356,13 @@ div.timeLineContents {
 .statusUpUp {
 	position : absolute;
 	top : 10%;
-	left : 41%;
+	left : 37%;
 	align-items : center;
 
 }
 .statusDown {
 	border : 1px solid #00244d;
-
+	position : relative;
 	align-items : center;
 	height: 70px;
 }

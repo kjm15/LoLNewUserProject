@@ -305,7 +305,7 @@ function aaa(data) { // data == 검색한 게임 아이디
 
 				allofList.push(res[i])
 			}
-			//			console.log(allofList)
+						console.log(allofList)
 			showGameTamble(res, data)
 		}
 	})

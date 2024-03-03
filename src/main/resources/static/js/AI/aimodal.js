@@ -8,6 +8,8 @@ const modal_wrap = document.querySelector('.modal_wrap')
 const modal_background = document.querySelector('.modal_background')
 $('#replayStart').on('click', function() {
 	$('#replayStart').css("visibility", "hidden");
+
+
 	$('.center-box2').empty()
 	liveReplay()
 })
@@ -17,6 +19,47 @@ $('#liveBroadCastSkip').on('click', function() {
 	$('#replayStart').css("visibility", "visible");
 	skip()
 })
+//실시간 골드량 분석기
+percent = 0
+function liveGoldCheck(i) {
+	let value1 = 0
+	let minPerGold = timeline_list[0][i - 1]['minPerGold']
+	let minPerGold1 = minPerGold.replace(/\"/gi, "")
+	var champ12345678910Gold = minPerGold1.split(':');
+	let champ12345Gold = champ12345678910Gold[0] // 아이디
+//	console.log(champ12345Gold)
+	//	if (i = 1) {
+	//
+	//		value1 = champ12345Gold - 50
+	//	}
+	//	value1
+	//	len = timeline_list[0].length
+	//	var nowPercent = $(".goldProgress").css("width");
+
+	$('.goldProgress').width(champ12345Gold + '%')
+
+	$('#nowGold').html(minPerGold1) 
+	//	const barAnimation = setInterval(() => {
+
+	//		$('.goldProgress').width(champ12345Gold + '%')
+	//		if (i == len) {
+	//
+	//			clearInterval(barAnimation)
+	//		} else if (nowPercent == champ12345Gold) {
+	//			clearInterval(barAnimation)
+	//
+	//		} else if (nowPercent > champ12345Gold) {
+	//
+	//			percent--
+	//
+	//		} else {
+	//			percent++
+	//
+	//		}
+	//	}, 10)
+}
+
+///
 teamList = []
 function skip() {
 	if (liveStart == 1) {
@@ -178,7 +221,7 @@ function skip() {
 				if (res[i].teamId == 100) {
 					blue += inputImg(res[i].championName, res[i].champion_name_kr, 100)
 				} else if (res[i].teamId == 200) {
-					red += inputImg(res[i].championName, res[i].champion_name_kr, 200) 
+					red += inputImg(res[i].championName, res[i].champion_name_kr, 200)
 				}
 			}
 			$('.blueTeamSider').html(blue)
@@ -279,8 +322,8 @@ function open() {
 	//	console.log(timeline_list)
 	let map = ''
 
-	if(timeline_list[0][0] == '' || timeline_list[0][0] == null|| timeline_list[0][0] == undefined|| timeline_list[0][0] == 'undefined'){
-		
+	if (timeline_list[0][0] == '' || timeline_list[0][0] == null || timeline_list[0][0] == undefined || timeline_list[0][0] == 'undefined') {
+
 		alert("해당게임은 관전이 불가능한 게임입니다.	")
 		return false;
 	}
@@ -358,6 +401,10 @@ function liveReplay() {
 			document.querySelector(".progress-bar").style.width = i / len * 100 + "%";
 			i += 1;
 
+			liveGoldCheck(i)
+
+
+
 		} else if (i == len) {
 			document.querySelector(".progress-bar").style.width = 100 + "%";
 			$('#replayStart').css("visibility", "visible");
@@ -414,6 +461,7 @@ progressBar.addEventListener('click', (e) => {
 	len = timeline_list[0].length
 	document.querySelector(".progress-bar").style.width = progressPercent * 100 + "%";
 	i = parseInt(len * progressPercent)
+	liveGoldCheck(i)
 	id = 'showImg' + i
 	//	console.log(id)
 	document.getElementById(id).scrollIntoView();

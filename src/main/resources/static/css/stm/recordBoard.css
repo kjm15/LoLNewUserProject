@@ -106,8 +106,7 @@
 .box-center2up {
 	/* 	background: #800080; */
 		font-family: 'Jua', sans-serif;
-		
-		font-style: italic;
+	font-size : 14px;
 	flex-basis: 80%;
 	text-align: center;
 }

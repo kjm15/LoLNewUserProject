@@ -258,7 +258,7 @@ function showGameTamble(res, data) {
 						`
 		$('#' + matchId + 'center2up').append(boxcenter2up)
 
-		boxcenter2down = `<a href="javascript:aiTimelineAni(\'${matchId}\');"><img width=80 height=40 src="/img/replay3.png" alt="리플레이시작버튼"> </a>`
+		boxcenter2down = `<a href="javascript:aiTimelineAni(\'${matchId}\');"><img width=40 height=40 src="/img/lodinglogo.gif" alt="리플레이시작버튼"> </a>`
 
 		$('#' + matchId).append(boxcenter2down)
 		let bcList = ''

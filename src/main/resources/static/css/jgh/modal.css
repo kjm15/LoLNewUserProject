@@ -13,12 +13,14 @@
 }
 
 .modal_wrap.show-modal {
+	z-index : 4;
 	border-radius : 20px;
 	font-family: 'Jua', sans-serif;
 	display: block;
 }
 
 .modal_background.show-modal {
+	z-index : 3;
 	display: block;
 }
 
