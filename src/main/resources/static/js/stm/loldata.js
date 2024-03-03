@@ -79,13 +79,12 @@ function aiCheckTroll(res1) {
 								} else if (value == '데이터부족') { //인공지능 지표: 승
 									$('#' + key).html("평균");
 								} else { //인공지능 지표: 승
-									str = "승리"
-									$('#' + key).html(str);
+									
+									$('#' + key).html("평균");
 								}
 							} else { // 게임 : 패배
 								if (value == '패') { //인공지능 지표 : 패
-									str = "패배"
-									$('#' + key).html(str);
+									$('#' + key).html("평균");
 								} else if (value == '데이터부족') { //인공지능 지표: 승
 									$('#' + key).html("평균");
 								} else { //인공지능 지표: 승
@@ -119,14 +118,14 @@ function aiCheckTroll(res1) {
 									$('#' + key).html(str);
 
 								} else { //인공지능 지표: 승
-									str = '평균'
-									$('#' + key).html(str);
+									
+									$('#' + key).html('평균');
 								}
 							} else { // 게임 : 패배
 								if (value == '패') { //인공지능 지표 : 패
 
 									str = '평균'
-									$('#' + key).html(str);
+									$('#' + key).html('평균');
 
 								} else { //인공지능 지표: 승
 									str = '<div class = checkFlagStamp><div class="stampWin"><span tooltip=" ' + res1.champion_name_kr + ' 평균 이상의 실력자">평균이상</span></div>	</div>'
