@@ -16,6 +16,8 @@
 <link href="/css/newDuo.css" rel="stylesheet">
 </head>
 <body>
+<p id="modNum" style="visibility: hidden; position: absolute;">1</p>
+
 	<%@include file="../inc/header.jsp"%>
 
 	<div class="duoContent">
@@ -100,6 +102,7 @@
 	<!-- 	//글작성자 -->
 	<input type="hidden" value="" id="hostId" />
 	<!-- js들어갈자리  -->
+	<script defer src="../js/kdg/kdgDarkmod.js"></script>
 	<script defer src="js/jgh/jsduo/duoPort.js"></script>
 	<script defer src="/js/jgh/jsduo/duoChatting.js"></script>
 	<script defer src="/js/jgh/jsduo/duoDeleteSave.js"></script>
