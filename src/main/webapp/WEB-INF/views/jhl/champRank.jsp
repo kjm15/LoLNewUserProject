@@ -23,6 +23,7 @@
 
 
 				<div class=championGraphContainer>
+				<div class =championGraphContent>
 					<div class="myImg">
 						
 					</div>
@@ -36,6 +37,7 @@
 						<div style="max-width: 1000px" id="myChart3"></div>
 					</div>
 					<div class='box-side'></div>
+					</div>
 				</div>
 
 

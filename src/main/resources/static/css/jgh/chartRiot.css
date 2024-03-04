@@ -6,8 +6,11 @@
 	border: 1px solid #8CB9FC;
 	border-radius: 1px;
 	padding: 5px;
+/* 	background-color: white; */
 }
-
+.championGraphContent{
+	display: flex;
+}
 .myImg {
 	display: flex;
 	align-items: center;
@@ -20,24 +23,31 @@
 	align-items: center;
 	margin-bottom: 40px;
 }
-
+.myChampsNameBox{
+	border-radius:5px;
+	background-color: #8CB9FC;
+	
+	padding: 3px 8px 3px 8px;
+	display:flex;
+	justify-content: center;
+	margin-top : -7px;
+}
+.myChampsName{
+	color:white;
+}
 /* .box-center { */
 /* 	text-align: center; */
 /* /* 		background-color: yellow; */
-*
-/
+
 /* 	width: 300px; */
 /* /* 	margin: 0 auto; */
- 
-*
-/
+
 /* } */
 
 /* .box-right { */
 /* /* 	  background: pink; */
  
-*
-/
+
 /* 	flex-basis: 100px; */
 /* 	width: 100px; */
 /* 	float: right; */
@@ -46,8 +56,7 @@
 /* .box-side { */
 /* 	/*   background: yellow; */
  
-*
-/
+
 /* 	flex-basis: 100px; */
 /* 	width: 50%; */
 /* 	float: right; */

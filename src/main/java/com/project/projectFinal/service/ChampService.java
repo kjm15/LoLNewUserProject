@@ -11,7 +11,7 @@ import java.util.Objects;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import com.project.projectFinal.dao.JhlChampDao;
+import com.project.projectFinal.dao.ChampDao;
 import com.project.projectFinal.dto.ChampionImageDto;
 import com.project.projectFinal.dto.ChampionRankDto;
 
@@ -19,10 +19,10 @@ import lombok.extern.slf4j.Slf4j;
 
 @Service
 @Slf4j
-public class JhlChampService {
+public class ChampService {
 
 	@Autowired
-	JhlChampDao champDao;
+	ChampDao champDao;
 
 	public List<HashMap<String, String>> championList() {
 
