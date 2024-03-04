@@ -67,7 +67,7 @@ public class MainController {
 	@GetMapping(value = { "/stm/{gameName}/{tagLine}", "/stm" })
 	public String searchRiotGameId(@PathVariable(required = false) String gameName,
 			@PathVariable(required = false) String tagLine, Model model) {
-		log.info("=={}", gameName);
+//		log.info("=={}", gameName);
 
 		model.addAttribute("gameName", gameName + "#" + tagLine);
 

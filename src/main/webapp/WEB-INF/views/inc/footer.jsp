@@ -2,6 +2,7 @@
 	pageEncoding="UTF-8"%>
 	
 <!-- 	김진문 -->
+
 <link href="/css/kjm/modal_main.css" rel="stylesheet" type="text/css">
 <script defer src="js/kjm/Note/inqMain.js"></script>
 <%@include file="../kjm/inqMain.jsp"%>

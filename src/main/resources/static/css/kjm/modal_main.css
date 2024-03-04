@@ -95,6 +95,8 @@
 	padding : 10px;
 }
 .modal1-window {
+	
+	font-family: 'Jua', sans-serif;
 	background : white;
 	box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.22);
 	backdrop-filter: none;
@@ -106,6 +108,7 @@
 	padding : 10px;
 }
 .modal2-window {
+	font-family: 'Jua', sans-serif;
 	background : white;
 	box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.22);
 	backdrop-filter: none;
@@ -117,6 +120,7 @@
 	padding : 10px;
 }
 .modal3-window {
+	font-family: 'Jua', sans-serif;
 	background : #e3f2fd;
 	box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.22);
 	backdrop-filter: none;
@@ -129,6 +133,7 @@
 }
 
 .modal4-window {
+	font-family: 'Jua', sans-serif;
 	background : #e3f2fd;
 	box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.22);
 	backdrop-filter: none;

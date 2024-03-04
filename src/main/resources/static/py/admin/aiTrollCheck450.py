@@ -22,28 +22,20 @@ def connect_mysql(db='mydb'):
     return conn
 conn = connect_mysql()
 cursor = conn.cursor()
-queueId = str(420) #큐아이디
+queueId = str(450) #큐아이디
 limit_value = str(100) # 리미트값
 ############################
 
 data = sys.argv[1:]
 
 # print(data)
-tier = ''
+
 key = data[0]
-tier1 = data[1]
-if tier1 == 'unRanked':
-    tier == 'GOLD'
-elif tier1 == 'Tier':
-    tier == 'GOLD'   
-else:
-    tier = tier1
-teamPosition = data[2]
-gameDuration = int(data[3])
-kda = float(data[4])
-totalDamageDealtToChampions = int(int(data[5])/gameDuration) 
-goldEarned = int(int(data[6])/gameDuration)
-championName = data[7]
+gameDuration = int(data[1])
+kda = float(data[2])
+totalDamageDealtToChampions = int(int(data[3])/gameDuration) 
+goldEarned = int(int(data[4])/gameDuration)
+championName = data[5]
 # print(championName)
 # print(gameDuration)
 # key= '123'
@@ -53,10 +45,10 @@ championName = data[7]
 # goldEarned = 600
 # teamPosition = 'TOP'
 # championName = 'Rumble' #캐릭터
-tier_my = [totalDamageDealtToChampions,goldEarned,kda]
+tier_my = [totalDamageDealtToChampions,goldEarned]
 #졌을때 평균 구하기######################################################################################################################################
 
-query = "select win,gameDuration,kda,totalDamageDealtToChampions,goldEarned from riottvT where tier = '" +tier+ "' and teamPosition = '" +teamPosition+ "' and championName = '" +championName+ "' and queueId = '" +queueId+ "' limit " + limit_value #질때의 kda
+query = "select win,gameDuration,kda,totalDamageDealtToChampions,goldEarned from riottvT where championName = '" +championName+ "' and queueId = '" +queueId+ "' limit " + limit_value #질때의 kda
 cursor.execute(query)
 result = cursor.fetchall()
 data = list(result)
@@ -87,26 +79,22 @@ for e in data:
 
 #######################################################################################################################################
 conn.close()
-
 try:
     allkda = win_kda_List+lose_kda_List
     Mean_totalDamageDealtToChampions = win_Mean_totalDamageDealtToChampions + lose_Mean_totalDamageDealtToChampions
     Mean_goldEarned = win_Mean_goldEarned + lose_Mean_goldEarned
 
-    tier_data=[[t,g,k]for t,g,k in zip(Mean_totalDamageDealtToChampions,Mean_goldEarned,allkda)]
+    tier_data=[[t,g]for t,g in zip(Mean_totalDamageDealtToChampions,Mean_goldEarned)]
 
     #그래프
     # plt.scatter(win_Mean_totalDamageDealtToChampions, win_Mean_goldEarned) 
     # plt.scatter(lose_Mean_totalDamageDealtToChampions, lose_Mean_goldEarned)
     # # plt.xlim((0, 2000))
+    # plt.title(championName + '정규화 전')
     # plt.xlabel('DAMAGE') 
     # plt.ylabel('GOLD') 
     # plt.show()
 
-    graph1 = {'1' : win_Mean_totalDamageDealtToChampions,
-                '2' : win_Mean_goldEarned,
-                '3' : lose_Mean_totalDamageDealtToChampions,
-                '4' : lose_Mean_goldEarned}
 
     tier_target=[1]*len(win_kda_List)+[0]*len(lose_kda_List)
     kn = KNeighborsClassifier(n_neighbors=3)
@@ -125,30 +113,28 @@ try:
     # new = ([totalDamageDealtToChampions, goldEarned] - mean) / std
     new = (tier_my - mean) / std
     #그래프
-    # plt.scatter(train_scaled[:, 0], train_scaled[:, 1])
-    # plt.scatter(new[0], new[1], marker='^')
-    # plt.xlabel('length')
-    # plt.ylabel('weight')
-    # plt.show()
+    plt.scatter(train_scaled[:, 0], train_scaled[:, 1])
+    plt.scatter(new[0], new[1], marker='^')
+    plt.title(championName)
+    plt.xlabel('DAMAGE')
+    plt.ylabel('GOLD')
+    plt.show()
 
     kn.fit(train_scaled, tier_target)
     a1 = kn.score(train_scaled, tier_target) # 1.0
     trans={1:'승', 0:'패'}
     a = trans[kn.predict([new])[0]]
 
-    graph1_string = json.dumps(graph1)
-    if len(tier_target) < 25 : 
+    if len(tier_target) < 100 : 
 
-        data5 = {key:"데이터부족" , "정확도" : a1 , "총데이터길이"  :len(tier_target), '구간' : tier , '캐릭' : championName , "key":"데이터부족" }
+        data5 = {key:"데이터부족" , "정확도" : a1 , "총데이터길이"  :len(tier_target), '캐릭' : championName, "key":"데이터부족"}
     else :
-        data5 = {key:a , "정확도" : a1 , "총데이터길이"  :len(tier_target), '구간' : tier , '캐릭' : championName, "key" : a}  
-    
-
+        data5 = {key:a , "정확도" : a1 , "총데이터길이"  :len(tier_target), '캐릭' : championName, "key" : a}  
     json_string = json.dumps(data5)
     # print(a, a1)
     print(json_string)
 except Exception as e:
-    data5 = {key:"에러" , "정확도" : 0 , "총데이터길이"  :0, '구간' : tier , '캐릭' : championName, "key" : "에러" }  
+    data5 = {key:"에러" , "정확도" : 0 , "총데이터길이"  :0,  '캐릭' : championName, "key" : "에러"}  
     json_string = json.dumps(data5)
     # print(a, a1)
     print(json_string)
