@@ -46,6 +46,7 @@
 }
 
 .graph1 {
+		font-family: 'Jua', sans-serif;
 	display: flex;
 	justify-content: center;
 	margin-bottom: 50px;
@@ -851,3 +852,24 @@
 }
 
 /* 튤팁끝 */
+
+.jb-text-tm {
+	padding: 15px 20px;
+	background-color: #444444;
+	border-radius: 5px;
+	color: #ffffff;
+	position: absolute;
+	display: none;
+	width: 250px;
+	text-align: left;
+	left: 22%;
+	font-size: 12px;
+}
+
+.jb-title-tm:hover+.jb-text-tm {
+	display: block;
+}
+
+.item_name_tt-tm, .price_tt-tm {
+	color: #C8AA6E;
+}

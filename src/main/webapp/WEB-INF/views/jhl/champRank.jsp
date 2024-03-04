@@ -77,23 +77,23 @@
 						<div class="rankTable">
 							<div class="rankLine">
 								<div class="rankSearch ranklineBtn">
-									<span id="Top" onclick="champRank('Top')"><img
+									<span id = "Top" class="Top" onclick="champRank('Top')"><img
 										src="/img/jhl/positionImg/Position_Plat-Top.png">탑</span>
 								</div>
 								<div class="rankSearch">
-									<span id="jug" onclick="champRank('jug')"><img
+									<span id = "jug" class="jug" onclick="champRank('jug')"><img
 										src="/img/jhl/positionImg/Position_Plat-Jungle.png">정글</span>
 								</div>
 								<div class="rankSearch">
-									<span id="mid" onclick="champRank('mid')"><img
+									<span id = "mid" class="mid" onclick="champRank('mid')"><img
 										src="/img/jhl/positionImg/Position_Plat-Mid.png">미들</span>
 								</div>
 								<div class="rankSearch">
-									<span id="adc" onclick="champRank('adc')"><img
+									<span id = "adc" class="adc" onclick="champRank('adc')"><img
 										src="/img/jhl/positionImg/Position_Plat-Bot.png">바텀</span>
 								</div>
 								<div class="rankSearch">
-									<span id="sup" onclick="champRank('sup')"><img
+									<span id = "sup" class="sup" onclick="champRank('sup')"><img
 										src="/img/jhl/positionImg/Position_Plat-Support.png">서폿</span>
 								</div>
 

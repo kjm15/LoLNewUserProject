@@ -23,16 +23,23 @@
 
 <!-- 페이지 가운데로 맞추기 위해서 다크모드 헤더로 이동했습니다.(header.jsp , newMain.css) -->
 
-<div class ="itemList_container">
 <div class="comm_left_sideBanner">
-<!-- <div class="sideBanner"> -->
-<!--   <a data-bs-toggle="modal" href="#exampleModalToggle" onclick='javascript:test()'><img class = "bannerImg" src="../img/kdg/kdgBanner.jpg"></a> -->
-<!--   <span class="txt-label banner_span_txt"> -->
-<!--     <a id = "analysisBtn" class="btn btn-primary banner_to_modalBtn" data-bs-toggle="modal" href="#exampleModalToggle" role="button" style = "width: 150px; margin-left: 26%;" onclick='javascript:test()'>get Item Build</a> -->
-<!--   </span> -->
-<!-- </div> -->
-
+	<div class="sideBannerL">
+	  <a data-bs-toggle="modal" href="#exampleModalToggle" onclick='javascript:test()'><img class = "bannerImg" src="../img/kdg/kdgBanner.jpg"></a>
+	  <span class="txt-label banner_span_txt">
+	    <a id = "analysisBtn" class="btn btn-primary banner_to_modalBtn" data-bs-toggle="modal" href="#exampleModalToggle" role="button" style = "width: 150px; margin-left: 28.3%;" onclick='javascript:test()'>get Item Build</a>
+	  </span>
+	</div>
 </div>
+<div class="comm_right_sideBanner">
+	<div class="sideBannerR">
+	  <a data-bs-toggle="modal" href="#exampleModalToggle" onclick='javascript:test()'><img class = "bannerImg" src="../img/kdg/kdgBanner.jpg"></a>
+	  <span class="txt-label banner_span_txt">
+	    <a id = "analysisBtn" class="btn btn-primary banner_to_modalBtn" data-bs-toggle="modal" href="#exampleModalToggle" role="button" style = "width: 150px; margin-left: 28.3%;" onclick='javascript:test()'>get Item Build</a>
+	  </span>
+	</div>
+</div>
+<div class ="itemList_container">
 <div class ="comm_contents">
 <div class="comm_graph_content">
 <div class = "comm_graph_title">

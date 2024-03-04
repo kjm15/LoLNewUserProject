@@ -46,5 +46,11 @@ public class itemService {
 		
 	}
 
+	public List<itemToolTipDto> allItemTT(int itemId) {
+		
+		return id.allItemTT(itemId);
+		
+	}
+
 	
 }

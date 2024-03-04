@@ -13,6 +13,7 @@
 <link href="/css/jhl/champImg.css" rel="stylesheet">
 <link href="/css/jhl/champRank.css" rel="stylesheet">
 <link href="/css/jgh/chartRiot.css" rel="stylesheet">
+
 </head>
 
 <body>
@@ -22,14 +23,13 @@
 	<%@include file="champRank.jsp"%>
 	<%@include file="../inc/footer.jsp"%>
 
-
 	<!-- js들어갈자리  -->
 	<script defer src="js/jhl/champ/champSearch.js"></script>
+	<script defer src="js/kdg/kdgDarkmod.js"></script>
 	<script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.9.4/Chart.min.js"></script>
 	<script src="https://cdn.jsdelivr.net/npm/chart.js@2.9.4/dist/Chart.min.js"></script>
 	<script src="https://cdn.jsdelivr.net/npm/chartjs-plugin-datalabels@0.7.0"></script>
-	<!-- kdg darkmod js 들어갈 곳 -->
-	<script defer src="../js/kdg/kdgDarkmod.js"></script>
+	
 
 </body>
 

@@ -352,6 +352,7 @@ footer {
 }
 
 .footer-bottom {
+	font-family: 'Jua', sans-serif;
 	background-color: rgb(120, 173, 252);
 	color: white;
 }
