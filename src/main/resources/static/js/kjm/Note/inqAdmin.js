@@ -89,13 +89,12 @@ function inqAnswer() {
 	}
 
 	data = {
+		'status': status,
 		'n_num': n_num,
-		//		'recv_userId': recv_userId,
-		//		'send_userId': send_userId,
 		'n_date': n_date,
 		'n_title': n_title,
 		'n_message': n_message,
-		'status': status
+		
 	}
 	console.log("test");
 
