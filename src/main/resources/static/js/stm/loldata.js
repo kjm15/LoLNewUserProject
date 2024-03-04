@@ -6,7 +6,7 @@ $(document).ready(function() {
 
 	document.getElementById('search-home').value = ''
 	mainStart()
-
+	
 })
 let cnt = 0;
 $('#searchBoom').on("click", function() {
@@ -34,10 +34,11 @@ $('#searchBoom').on("click", function() {
 function mainStart() {
 
 	let gameName = $('#gameName').val()
-
+	
 	if (gameName != '') {
 		mainSearch(gameName)
 	}
+
 }
 function mainSearch(gameName1) {
 	cnt++;
@@ -59,7 +60,7 @@ function aiCheckTroll(res1) {
 		url: '/ai/dataToAi',
 		data: JSON.stringify(res1),
 		success: function(res) {
-			//			console.log(res)
+//						console.log(res)
 
 			if (res.queueId == 420) {
 
@@ -71,6 +72,8 @@ function aiCheckTroll(res1) {
 					url: '/ai/trollcheck420',
 					data: JSON.stringify(data),
 					success: function(res1) {
+						
+					
 						for (const [key, value] of Object.entries(res1)) {
 							if (res.win == 1) { // 게임 : 승리
 								if (value == '패') { //인공지능 지표 : 패

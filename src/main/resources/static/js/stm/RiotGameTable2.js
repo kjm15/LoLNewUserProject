@@ -70,6 +70,10 @@ function profileCheck(res) {
         </div>`
 
 	$('.graph1').append(ccc)
+
+
+
+
 }
 
 

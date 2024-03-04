@@ -14,6 +14,8 @@
 <link href="/css/ai/aimodal.css" rel="stylesheet" type="text/css">
 <link href="/css/ai/bargraphGold.css" rel="stylesheet" type="text/css">
 <!-- <link rel="stylesheet" href="css/my_gradient_half_2.css" /> -->
+
+
 </head>
 
 
@@ -22,7 +24,7 @@
 
 
 <body>
-<p id="modNum" style="visibility: hidden; position: absolute;">1</p>
+	<p id="modNum" style="visibility: hidden; position: absolute;">1</p>
 
 	<%@include file="../inc/header.jsp"%>
 
@@ -41,9 +43,6 @@
 
 
 
-
-
-
 	<%@include file="../stm/lolList.jsp"%>
 
 	<%@include file="../stm/aimodal.jsp"%>
@@ -52,8 +51,9 @@
 	<!-- 전적 리스트 jsp -->
 	<script defer src="/js/ai/bargraphGold.js"></script>
 	<script defer src="/js/AI/aimodal.js"></script>
+	<script defer src="/js/AI/main.js"></script>
 	<script defer src="/js/kdg/kdgDarkmod.js"></script>
-	
+
 	<!-- <script defer src="/js/stm/RiotGameTable.js"></script> -->
 	<%-- 	<%@include file="../inc/footer.jsp"%> --%>
 </body>
