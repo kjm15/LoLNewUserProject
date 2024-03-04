@@ -1,6 +1,6 @@
 $(document).ready(function() {
 	$(".darkmod_toggle").click(function() {
-		
+	
 		modNum = $('#modNum').text();
 		
 		if (modNum == 1){ // 다그코드 on
@@ -85,3 +85,10 @@ $(document).ready(function() {
 
 	})
 })
+
+
+	
+		function dkMode(){
+			
+			
+		}
