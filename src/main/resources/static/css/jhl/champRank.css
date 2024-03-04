@@ -171,3 +171,23 @@ transform: scale(1.2);
 .rate_p {
 	opacity: 0.8;
 }
+
+
+
+* {
+	cursor: url(../../img/normal.png) 2 2, auto;
+}
+
+body::-webkit-scrollbar {
+	width: 8px;
+}
+
+body::-webkit-scrollbar-thumb {
+	height: 3px;
+	background: #785A28;
+	border-radius: 15px;
+}
+
+body::-webkit-scrollbar-track {
+	background: rgba(33, 122, 244, .1);
+}

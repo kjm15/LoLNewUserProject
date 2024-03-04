@@ -75,7 +75,15 @@ public class kdgRestController {
 		
 		int itemId = iTTDto.getItemId();
 		return is.itemToolTip(itemId);
-
+		
+	}
+	
+	@PostMapping("/allItemTT")
+	public List<itemToolTipDto> allItemTT(itemToolTipDto iTTDto) {
+		
+		int itemId = iTTDto.getItemId();
+		return is.allItemTT(itemId);
+		
 	}
 	
 	@PostMapping("/itemInfo")
