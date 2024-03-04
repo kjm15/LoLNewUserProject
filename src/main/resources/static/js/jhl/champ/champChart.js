@@ -26,7 +26,7 @@ function champChartGraph(championName) {
 		url: '/forGraphInfo',
 		data: data,
 		success: function(res) {
-
+			
 			console.log(res)
 
 			for (let i in res) {
@@ -52,7 +52,8 @@ function champChartGraph(championName) {
 			let lose_rate = 100 - res[0].win_rate
 			let wl_rate_list = [win_rate, lose_rate]
 			Chart.pluginService.register({
-				beforeDraw: function(chart) {
+				beforeDraw: function(chart) {					
+					
 					if (chart.config.options.elements.center) {
 						// Get ctx from string
 						var ctx = chart.chart.ctx;
@@ -134,46 +135,50 @@ function champChartGraph(championName) {
 					}
 				}
 			});
+
 			var config = {
-				type: 'doughnut',
-				data: {
-					labels: ['승리', '패배'],
-					datasets: [{
-						data: wl_rate_list,
-
-						backgroundColor: [
-							'rgba(255, 99, 132, 0.2)',
-							'rgba(54, 162, 235, 0.2)'
-							//							'rgba(255, 206, 86, 0.2)',
-							//							'rgba(75, 192, 192, 0.2)',
-							//							'rgba(255, 159, 64, 0.2)'
-						], borderColor: [
-							'rgba(255, 99, 132, 1)',
-							'rgba(54, 162, 235, 1)'
-							//							'rgba(255, 206, 86, 1)',
-							//							'rgba(75, 192, 192, 1)',
-							//							'rgba(255, 159, 64, 1)'
-						]
-					}]
-				},
-				options: {
-					responsive: false,
-					maintainAspectRatio: false, //x축 반으로 줄임
-					cutoutPercentage: 70,
-					elements: {
-						center: {
-							text: win_rate.toFixed(2) + "%",
-							color: '#FF6384', // Default is #000000
-							fontStyle: 'Arial', // Default is Arial
-							sidePadding: 20, // Default is 20 (as a percentage)
-							minFontSize: 20, // Default is 20 (in px), set to false and text will not wrap.
-							lineHeight: 10 // Default is 25 (in px), used for when text wraps
-
-
+					type: 'doughnut',
+					data: {
+						labels: ['승리', '패배'],
+						datasets: [{
+							data: wl_rate_list,
+	
+							backgroundColor: [
+								'rgba(255, 99, 132, 0.2)',
+								'rgba(54, 162, 235, 0.2)'
+								//							'rgba(255, 206, 86, 0.2)',
+								//							'rgba(75, 192, 192, 0.2)',
+								//							'rgba(255, 159, 64, 0.2)'
+							], borderColor: [
+								'rgba(255, 99, 132, 1)',
+								'rgba(54, 162, 235, 1)'
+								//							'rgba(255, 206, 86, 1)',
+								//							'rgba(75, 192, 192, 1)',
+								//							'rgba(255, 159, 64, 1)'
+							]
+						}]
+					},
+					
+					options: {
+						responsive: false,
+						maintainAspectRatio: false, //x축 반으로 줄임
+						cutoutPercentage: 70,
+						elements: {
+							center: {
+								text: win_rate.toFixed(2) + "%",
+								color: '#FF6384', // Default is #000000
+								fontStyle: 'Arial', // Default is Arial
+								sidePadding: 20, // Default is 20 (as a percentage)
+								minFontSize: 20, // Default is 20 (in px), set to false and text will not wrap.
+								lineHeight: 10 // Default is 25 (in px), used for when text wraps
+	
+	
+							}
 						}
 					}
-				}
-			};
+
+				};
+			
 
 			var ctx = document.getElementById("winDoughnutChart").getContext("2d");
 			var myChart = new Chart(ctx, config);
@@ -249,8 +254,8 @@ function makeHorizontalBar(champion_name, teamPosition) {
 							'rgba(255, 206, 86, 1)',
 							'rgba(75, 192, 192, 1)',
 							'rgba(255, 159, 64, 1)'
-						],
-						borderWidth: 2
+						], borderWidth: 2
+						
 					}]
 				},
 				options: {
@@ -290,7 +295,7 @@ function makeHorizontalBar(champion_name, teamPosition) {
 								autoSkip: true,  //
 								maxTicksLimit: 1 // 
 							}
-						}],
+						}]
 
 					}
 				}

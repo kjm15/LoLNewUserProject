@@ -20,4 +20,6 @@ public interface itemDao {
 
 	public List<HashMap<String, itemInfoDto>> itemInfo(itemInfoDto iIDto);
 
+	public List<itemToolTipDto> allItemTT(int itemId);
+
 }

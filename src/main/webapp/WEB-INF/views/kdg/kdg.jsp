@@ -15,8 +15,6 @@
 <script defer src="../js/kdg/champion/champRank.js"></script>
 <!-- champ rank js 들어갈곳 -->
 <script defer src="../js/kdg/champion/champToolTip.js"></script>
-<!-- banner js 들어갈 곳 -->
-<script defer src="../js/kdg/kdgBanner.js"></script>
 <!-- kdg darkmod js 들어갈 곳 -->
 <script defer src="../js/kdg/kdgDarkmod.js"></script>
 <!-- GoogleChart js 들어갈 곳 -->
@@ -27,6 +25,8 @@
 <script defer src="../js/kdg/item/itemToolTip.js" /></script>
 <!-- lineToolTip js 들어갈 곳 -->
 <script defer src="../js/kdg/lineToolTip.js" /></script>
+<!-- banner js 들어갈 곳 -->
+<script defer src="../js/kdg/kdgBanner.js"></script>
 <!-- itemBuild js 들어갈 곳 -->
 <script defer src="../js/kdg/item/itemBuild.js" /></script>
 

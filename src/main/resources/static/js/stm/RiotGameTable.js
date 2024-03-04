@@ -446,7 +446,7 @@ function showGameTamble(res, data) {
 
 				for (let k = 0; k < 6; k++) {
 					if (res[i]["info"][j]['item' + k] != 0) {
-						str += `<img width='20' height='20' style = "border-radius: 30px;" alt='못 불러옴' src=https://ddragon.leagueoflegends.com/cdn/14.3.1/img/item/${res[i]["info"][j]['item' + k]}.png>&nbsp;&nbsp;`
+						str += `<img id = "${res[i]["info"][j]['item' + k]}" width='20' height='20' style = "border-radius: 30px;" alt='못 불러옴' src="https://ddragon.leagueoflegends.com/cdn/14.3.1/img/item/${res[i]["info"][j]['item' + k]}.png" onmouseover="javascript:allItemTT(this.id)">&nbsp;&nbsp;`
 					}
 				}
 

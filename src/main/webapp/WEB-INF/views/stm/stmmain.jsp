@@ -22,7 +22,8 @@
 
 
 <body>
-<p id="modNum" style="visibility: hidden; position: absolute;">1</p>
+	<p id="modNum" style="visibility: hidden; position: absolute;">1</p>
+
 
 	<%@include file="../inc/header.jsp"%>
 
@@ -47,13 +48,15 @@
 	<%@include file="../stm/lolList.jsp"%>
 
 	<%@include file="../stm/aimodal.jsp"%>
+	
 	<!-- 유저 정보 jsp -->
 	<%-- <%@include file="../stm/StmUserData.jsp" %> --%>
 	<!-- 전적 리스트 jsp -->
 	<script defer src="/js/ai/bargraphGold.js"></script>
 	<script defer src="/js/AI/aimodal.js"></script>
 	<script defer src="/js/kdg/kdgDarkmod.js"></script>
-	
+	<script defer src="/js/kdg/item/allItemTT.js"></script>
+
 	<!-- <script defer src="/js/stm/RiotGameTable.js"></script> -->
 	<%-- 	<%@include file="../inc/footer.jsp"%> --%>
 </body>
