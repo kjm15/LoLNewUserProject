@@ -75,7 +75,6 @@ body::after {
 	color: white;
 	width: 150px;
 	height: 40px;
-	border: 3px solid rgb(120, 173, 252);
 	border-radius: 3px;
 }
 
@@ -89,15 +88,12 @@ body::after {
 	display: flex;
 	flex-direction: column;
 	align-items: center;
-	/* 	border-top: 3px solid rgb(104, 124, 179); */
-	border-top: 3px solid rgb(69, 139, 197);
 	border-radius: 3px;
 	text-align: center;
 }
 
 .DuoTable {
 	width: 100%;
-	border-top: 3px solid rgb(69, 139, 197);
 }
 
 .duo-th {
@@ -108,7 +104,6 @@ body::after {
 
 .duo-momo {
 	display: flex;
-	border: 1px solid rgb(203, 223, 254);
 	border-radius: 3px;
 	width: 186px;
 	background-color: rgba(157, 196, 253, 0.7);
@@ -140,6 +135,9 @@ body::after {
 .duoitems {
 	font-size: 13px;
 	color: #f7f7f9;
+	
+	height: 30px;
+    padding-top: 5px;
 }
 
 /* 장기훈 드랍다운 */
@@ -185,4 +183,23 @@ body::after {
 
 .dropdown:hover .dropbtn {
 	background-color: #3e8e41;
+}
+
+
+* {
+	cursor: url(../../img/normal.png) 2 2, auto;
+}
+
+body::-webkit-scrollbar {
+	width: 8px;
+}
+
+body::-webkit-scrollbar-thumb {
+	height: 3px;
+	background: #785A28;
+	border-radius: 15px;
+}
+
+body::-webkit-scrollbar-track {
+	background: rgba(33, 122, 244, .1);
 }

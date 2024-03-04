@@ -246,7 +246,7 @@ function showGameTamble(res, data) {
 
 			if (Myres[itemk] != 0) {
 				itemimg = Myres[itemk]
-				itemstart += '<img width=30 height=30 style = "border-radius: 35px;" alt="못 불러옴" src="https://ddragon.leagueoflegends.com/cdn/14.3.1/img/item/' + itemimg + '.png">&nbsp;&nbsp;&nbsp;'
+				itemstart += '<img id = "'+ itemimg +'" class = "jb-title-tm" width=30 height=30 style = "border-radius: 35px;" alt="못 불러옴" src="https://ddragon.leagueoflegends.com/cdn/14.3.1/img/item/' + itemimg + '.png" onmouseover="javascript:allItemTT(this.id)"><p class = "jb-text-tm"></p>&nbsp;&nbsp;&nbsp;'
 			}
 
 		}

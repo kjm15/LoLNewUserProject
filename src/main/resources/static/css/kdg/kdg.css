@@ -510,15 +510,34 @@
 	width: 310px;
 }
 
-.sideBanner {
+.sideBannerL {
 	position: absolute;
 	margin-left: 1.5%;
-	width: 319px;
-	height: 656px;
-	top: 50px;
+    width: 18.3%;
+    height: 70%;
+	top: 529px;
 	color: #ffffff;
 	border: 1px solid black;
 	background-color: white;
+}
+
+.sideBannerR {
+	position: absolute;
+	margin-left: 80.5%;
+    width: 18.3%;
+    height: 70%;
+	top: 529px;
+	color: #ffffff;
+	border: 1px solid black;
+	background-color: white;
+}
+
+.fix{
+	
+	position:fixed;_position:absolute;
+	top:5%;
+	z-index:100
+
 }
 
 .txt-label {
@@ -527,8 +546,8 @@
 }
 
 .bannerImg {
-	width: 317px;
-	height: 615px;
+    width: 100%;
+    height: 94%;
 }
 
 .itemBuild-direction {

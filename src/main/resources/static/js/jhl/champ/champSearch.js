@@ -34,11 +34,13 @@ $('#champSearch').on('keyup', function() {
 
 			}
 			
-			if (modNum == 1){
+			modNum = $('#modNum').text()
 
-			$('span').css("color","#ffffff")
-			
-								
+			if (modNum == 0) {
+
+				$('span').css("color", "#ffffff")
+
+
 			}
 		}
 	});
@@ -70,11 +72,13 @@ function champImgAll() {
 
 			}
 			
-			if (modNum == 1){
+			modNum = $('#modNum').text()
 
-			$('span').css("color","#ffffff")
-			
-								
+			if (modNum == 0) {
+
+				$('span').css("color", "#ffffff")
+
+
 			}
 			
 		}
@@ -119,11 +123,13 @@ function champLine(lineSelect) {
                 champContainer.append(champImgItem);
 			}
 			
-			if (modNum == 1){
+			modNum = $('#modNum').text()
 
-			$('span').css("color","#ffffff")
-			
-								
+			if (modNum == 0) {
+
+				$('span').css("color", "#ffffff")
+
+
 			}
 			
 
