@@ -46,6 +46,7 @@
 }
 
 .graph1 {
+		font-family: 'Jua', sans-serif;
 	display: flex;
 	justify-content: center;
 	margin-bottom: 50px;
