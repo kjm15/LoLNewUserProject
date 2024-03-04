@@ -8,7 +8,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 
-import com.project.projectFinal.service.JhlChampService;
+import com.project.projectFinal.service.ChampService;
 
 import lombok.extern.slf4j.Slf4j;
 
@@ -18,7 +18,7 @@ import lombok.extern.slf4j.Slf4j;
 public class JhlChampController {
 
 	@Autowired
-	JhlChampService champService;
+	ChampService champService;
 
 	@GetMapping("/jhl")
 	public String jhl(Model model) {

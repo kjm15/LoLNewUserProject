@@ -26,20 +26,19 @@ $('#champSearch').on('keyup', function() {
 			champContainer.empty();
 
 			for (let i = 0; i < res.length; i++) {
+				let champName = res[i].champion_name_kr
+				let Name = res[i].champion_name
 				var imgSrc = 'https://ddragon.leagueoflegends.com/cdn/14.2.1/img/champion/' + res[i].champion_name + '.png';
 
-				var imgElement = $('<img>').addClass('championImg').attr('src', imgSrc);
-				
-				champContainer.append($('<div>').addClass('champImgItem').append($('<div>').addClass('cimgs').append(imgElement)).append($('<span>').addClass('champName').append(res[i].champion_name_kr)));
+				// 이미지 엘리먼트 동적으로 생성
+				var imgElement = $('<img>').addClass('championImg').attr('src', imgSrc).attr('id', Name);
+
+				// 생성된 이미지 엘리먼트를 컨테이너에 추가
+				champContainer.append($('<div>').addClass('champImgItem').append($('<span>').addClass('tooltiptext tooltip-top').append(champName))
+					.append($('<div>').addClass('cimgs').append(imgElement)).append($('<span>').addClass('champName').append(res[i].champion_name_kr)));
 
 			}
 			
-			if (modNum == 1){
-
-			$('span').css("color","#ffffff")
-			
-								
-			}
 		}
 	});
 });
@@ -70,12 +69,7 @@ function champImgAll() {
 
 			}
 			
-			if (modNum == 1){
-
-			$('span').css("color","#ffffff")
 			
-								
-			}
 			
 		}
 	});
@@ -119,13 +113,7 @@ function champLine(lineSelect) {
                 champContainer.append(champImgItem);
 			}
 			
-			if (modNum == 1){
-
-			$('span').css("color","#ffffff")
-			
-								
-			}
-			
+		
 
 		}
 	});

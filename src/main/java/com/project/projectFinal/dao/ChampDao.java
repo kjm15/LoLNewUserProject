@@ -10,7 +10,7 @@ import com.project.projectFinal.dto.ChampionImageDto;
 import com.project.projectFinal.dto.ChampionRankDto;
 
 @Mapper
-public interface JhlChampDao {
+public interface ChampDao {
 	public List<HashMap<String, String>> championList();
 
 	public List<HashMap<String, String>> champSearch(ChampionImageDto champDto);
