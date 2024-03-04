@@ -1,0 +1,117 @@
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.project.projectFinal.dao.RiotGameDao">
+	<insert id="RiotGameInfo">
+		insert into RiotGameInfoT
+		<!-- (matchId,championName,champion_name_kr,riotIdGameName,riotIdTagline,summonerName,summonerLevel,profileIcon,participantId,queueId, -->
+		<!-- teamId,item0,item1,item2,item3,item4,item5,summoner1Id,summoner2Id,summonerSpellD,summonerSpellF,lane,kills,assists,deaths,kda,firstBloodKill, -->
+		<!-- gameEndTimestamp,gameStartTimestamp,totalAllyJungleMinionsKilled,totalDamageDealtToChampions,totalDamageTaken,totalEnemyJungleMinionsKilled, -->
+		<!-- totalMinionsKilled,wardsKilled,wardsPlaced,win) -->
+		values
+		(#{matchId},#{championName},
+		(select champion_name_kr from
+		champListT where champion_name =
+		#{championName}),
+		#{riotIdGameName},
+		#{riotIdTagline},#{summonerName},#{summonerLevel},#{profileIcon},#{participantId},#{queueId},#{teamId},
+		#{item0},#{item1},#{item2},#{item3},#{item4},#{item5},#{summoner1Id},#{summoner2Id},
+		(select spellName from RiotGameSpellT where summonerId =
+		#{summoner1Id}),(select spellName from RiotGameSpellT where summonerId
+		= #{summoner2Id}),
+		#{teamPosition},#{kills},
+		#{assists},#{deaths},#{kda},#{firstBloodKill},#{goldEarned},#{gameEndTimestamp},
+		#{gameStartTimestamp},#{gameDuration},#{totalAllyJungleMinionsKilled},#{totalDamageDealtToChampions},
+		#{totalDamageTaken},#{totalEnemyJungleMinionsKilled},#{totalMinionsKilled},
+		#{wardsKilled},#{wardsPlaced},#{win},default,null,#{totalTimeCCDealt},#{totalTimeSpentDead},#{onMyWayPings},#{enemyVisionPings},
+		#{physicalDamageDealtToChampions},#{magicDamageDealtToChampions},#{totalTeamkills},null,#{dragon});
+
+	</insert>
+	<insert id="RiotGameTeams">
+		insert into RiotGameTeamsT values
+		(#{matchId},#{teamId},#{kills},#{dragon});
+	</insert>
+	<!-- <insert id="RiotGameBans"> -->
+	<!-- insert into RiotGameBansT values -->
+	<!-- (#{matchId},#{championId},#{pickTurn},#{teamId}); -->
+	<!-- </insert> -->
+	<select id="RiotGameInfoSelect">
+		select * from RiotGameInfoT where matchId =
+		#{matchId} order by participantId asc;
+	</select>
+	<select id="RiotGameTeamsSelect">
+		select * from RiotGameTeamsT where matchId =
+		#{matchId}
+	</select>
+	<!-- <select id="RiotGameBansSelect"> -->
+	<!-- select * from RiotGameBansT where matchId = -->
+	<!-- #{matchId} -->
+	<!-- </select> -->
+	<select id="DBRiotGameMatchSelect">
+		select matchId from RiotGameInfoT where
+		riotIdGameName =#{gameName};
+	</select>
+	<select id="DbriotGameData">
+		select * from RiotGameInfoT where matchId =
+		#{matchId}
+	</select>
+	<select id="getMatchId">
+		select count(*) from RiotGameInfoT where matchId =
+		#{matchId}
+	</select>
+
+
+	<select id="sendDataToPy">
+		select * from RiotGameInfoT
+		where matchId = #{matchId}
+		and riotIdGameName = #{riotIdGameName}
+		and riotIdTagline =
+		#{riotIdTagline};
+	</select>
+
+	<select id="DBRiotGameName">
+		select * from
+		RiotGameInfoT where matchId =
+		#{matchId};
+	</select>
+	<select id="UPdateTier">
+		UPDATE RiotGameInfoT
+		SET tier = #{tier}
+		WHERE matchId =
+		#{matchId} and riotIdGameName = #{riotIdGameName};
+
+		select * from
+		RiotGameInfoT
+		where matchId = #{matchId}
+		and riotIdGameName = #{riotIdGameName}
+		and riotIdTagline =
+		#{riotIdTagline};
+	</select>
+
+	<update id="saveAiData">
+		UPDATE RiotGameInfoT
+		SET airesult = #{key}
+		WHERE
+		matchId = #{matchId} and participantId = #{participantId};
+	</update>
+
+	<select id="forOneData">
+		select * from
+		RiotGameInfoT
+		where matchId = #{matchId}
+		and riotIdGameName = #{riotIdGameName}
+		and riotIdTagline =
+		#{riotIdTagline};
+	</select>
+	<select id="timelineInfo">
+		select * from
+		aiTimelineT
+		where matchId = #{matchId}
+		order by timestamp;
+	</select>
+	<select id="teamList">
+		select * from
+		RiotGameInfoT
+		where matchId = #{matchId}
+		order by participantId asc;
+	</select>
+</mapper>

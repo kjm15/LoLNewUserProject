@@ -22,6 +22,8 @@
 
 
 <body>
+<p id="modNum" style="visibility: hidden; position: absolute;">1</p>
+
 	<%@include file="../inc/header.jsp"%>
 
 	<!-- <div class="searchbox"> -->
@@ -50,6 +52,8 @@
 	<!-- 전적 리스트 jsp -->
 	<script defer src="/js/ai/bargraphGold.js"></script>
 	<script defer src="/js/AI/aimodal.js"></script>
+	<script defer src="/js/kdg/kdgDarkmod.js"></script>
+	
 	<!-- <script defer src="/js/stm/RiotGameTable.js"></script> -->
 	<%-- 	<%@include file="../inc/footer.jsp"%> --%>
 </body>

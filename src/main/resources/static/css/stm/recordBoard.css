@@ -260,17 +260,17 @@
 
 .teamId {
 	/* 	background: #ff80ff; */
-	flex-basis: 30%;
+	flex-basis: 28%;
 }
 
 .kda {
 	/* 	background: #808000; */
-	flex-basis: 10%;
+	flex-basis: 12%;
 }
 
 .damage {
 	/* 	background: #800000; */
-	flex-basis: 13.3%;
+	flex-basis: 13.5%;
 }
 
 .cs {

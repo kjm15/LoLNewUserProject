@@ -400,7 +400,7 @@ function makeBodyred(blueChampList, matchId) {
 	//여기서부터 시작
 	champBody = `  
 					${teamId}
-					<div class=kda>	 <span tooltip="(kill+assist)/death"><a href = "#">kda</a></span>	</div>
+					<div class=kda>	 <span tooltip="(kill+assist)/death"><a href = "#">KDA</a></span>	</div>
 
 					<div class=damage> <span tooltip="상대방에게 가한 (물리+마법)피해"><a href = "#">데미지</a></span></div>
 					<div class=cs><span tooltip="게임에서 잡은 미니언의 총 개수"><a href = "#">cs</span></a></div >
@@ -537,7 +537,7 @@ function makeBodyblue(blueChampList, matchId) {
 	//여기서부터 시작
 	champBody = `  
 					${teamId}
-					<div class=kda>	 <span tooltip="(kill+assist)/death"><a href = "#">kda</a></span>	</div>
+					<div class=kda>	 <span tooltip="(kill+assist)/death"><a href = "#">KDA</a></span>	</div>
 
 					<div class=damage> <span tooltip="상대방에게 가한 (물리+마법)피해"><a href = "#">데미지</a></span></div>
 					<div class=cs><span tooltip="게임에서 잡은 미니언의 총 개수"><a href = "#">cs</span></a></div >

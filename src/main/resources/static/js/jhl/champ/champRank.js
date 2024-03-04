@@ -73,18 +73,18 @@ function champRank(position, tier) {
 
 				tableRows += "</tr>";
 			}
-			
-			if (modNum == 1){
-				
-			$('span').css("color","#ffffff")
-			
-								
-			}
+
 
 			$('.rTableBody').html(tableRows);
 			//			console.log(res);
 			//			console.log(a);
 
+			if (modNum == 1) {
+
+				$('span').css("color", "#ffffff")
+
+
+			}
 		}
 	});
 
@@ -93,11 +93,11 @@ function champRank(position, tier) {
 $('.rankSearch span').on('click', function() {
 	$('.rankSearch span').removeClass('active');
 	$(this).addClass('active');
-
 	// 추가: 클릭한 포지션에 따라 데이터 갱신
 	var selectedPosition = $(this).attr('id');
 	var selectedTier = document.getElementById("rankSelect").value;
 	champRank(selectedPosition, selectedTier);
+
 
 });
 
@@ -105,4 +105,6 @@ $('.rankSearch span').on('click', function() {
 $(document).on('click', '.rankLine>div', function() {
 	$(this).addClass('ranklineBtn');
 	$(this).siblings().removeClass('ranklineBtn');
+
+
 });

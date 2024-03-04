@@ -17,7 +17,7 @@
 </head>
 
 <body>
-
+<p id="modNum" style="visibility: hidden; position: absolute;">1</p>
 	<div class="main">
 
 
@@ -33,7 +33,7 @@
 
 	</div>
 
-
+<script defer src="../js/kdg/kdgDarkmod.js"></script>
 	<!-- js들어갈자리  -->
 	<script defer src="js/star/style.js"></script>
 	<script defer src="js/new/slide.js"></script>
