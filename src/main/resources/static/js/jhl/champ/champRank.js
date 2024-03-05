@@ -15,6 +15,7 @@ function tierSelect() {
 	var selectedPosition = document.querySelector('.rankSearch span.active').id;
 	var selectedTier = document.getElementById("rankSelect").value;
 	champRank(selectedPosition, selectedTier)
+
 }
 function champRank(position, tier) {
 	var tier = document.getElementById("rankSelect").value;
@@ -41,7 +42,7 @@ function champRank(position, tier) {
 			$('.rTableBody').html(tableRows);
 			//			console.log(res);
 			//			console.log(a);
-			
+
 			modNum = $('#modNum').text()
 
 
@@ -53,12 +54,12 @@ function champRank(position, tier) {
 			//
 			//			}
 
-			if (modNum == 0) {
-
-				$('span').css("color", "#ffffff")
-
-
-			}
+			//			if (modNum == 0) {
+			//
+			//				$('span').css("color", "#ffffff")
+			//
+			//
+			//			}
 
 		}
 	});
@@ -73,47 +74,43 @@ $('.rankSearch span').on('click', function() {
 	var selectedTier = document.getElementById("rankSelect").value;
 	champRank(selectedPosition, selectedTier);
 
-
 });
 
 
 $(document).on('click', '.rankLine>div', function() {
-
-
-	
-	var modnum = $('#modNum').text()
-	console.log(modnum)
+	//	var modnum = $('#modNum').text()
+	//	console.log(modnum)
 
 
 	$(this).addClass('ranklineBtn');
 	$(this).siblings().removeClass('ranklineBtn');
-	
 
 
-//	if(modnum == 0){
-//		
-//		console.log(modnum)
-//		
-//		$('.rankSearch').css("background-image","linear-gradient(#ffffff, #2a2c33 0%, #222 94%)")
-//		$('.rankSearch').css("color","white")
-//		
-//		
-//	} else if(modnum == 1){
-//		
-//		console.log(modnum)
-//		
-//		console.log("들어왔어요~")		
-//		
-//		$('.rankSearch').css("background-image","linear-gradient(315deg, #D6E5FC 0%, #9DC4FD 74%)")
-//		$('#top').css("color","white")
-//		$('#jug').css("color","white")
-//		$('#mid').css("color","white")
-//		$('#adc').css("color","white")
-//		$('#sup').css("color","white")
-//		
-//	}
 
-	
+	//	if(modnum == 0){
+	//		
+	//		console.log(modnum)
+	//		
+	//		$('.rankSearch').css("background-image","linear-gradient(#ffffff, #2a2c33 0%, #222 94%)")
+	//		$('.rankSearch').css("color","white")
+	//		
+	//		
+	//	} else if(modnum == 1){
+	//		
+	//		console.log(modnum)
+	//		
+	//		console.log("들어왔어요~")		
+	//		
+	//		$('.rankSearch').css("background-image","linear-gradient(315deg, #D6E5FC 0%, #9DC4FD 74%)")
+	//		$('#top').css("color","white")
+	//		$('#jug').css("color","white")
+	//		$('#mid').css("color","white")
+	//		$('#adc').css("color","white")
+	//		$('#sup').css("color","white")
+	//		
+	//	}
+
+
 
 
 });

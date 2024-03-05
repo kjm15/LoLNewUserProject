@@ -74,7 +74,7 @@
 							</div>
 						</div>
 
-						<div class="rankTable">
+						<div class="rankTableBox">
 							<div class="rankLine">
 								<div class="rankSearch ranklineBtn">
 									<span id = "Top" class="Top" onclick="champRank('Top')"><img
@@ -100,7 +100,7 @@
 							</div>
 							<div class="lineRank">
 								<div class="rankItems">
-									<table class="Rankable">
+									<table class="rankTable">
 										<colgroup>
 											<col width="13%">
 											<col>
