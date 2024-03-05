@@ -58,7 +58,7 @@
 
 
 							<div class="pline6">
-								<p>비밀번호 변경</p>
+								<a href="/member/MyChangePw">비밀번호 변경</a>
 							</div>
 						</div>
 

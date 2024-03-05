@@ -15,7 +15,7 @@ function sendMessage() {
 	let status = $('#status').val()
 	
 	 // 입력 필드가 비어 있는지 검사
-	    if (!n_title || !n_message) {
+	    if (!n_title || !n_message ) {
         alert("메일 전송 실패");
         return;
     }

@@ -33,7 +33,7 @@ public class RestNoteController {
 	   public int mailsend(NoteDto noteDto,HttpSession session,MemberDto memberDto) {
 		   String userId = (String) session.getAttribute("userId");
 		   memberDto.setUserId(userId);
-		   log.info("========noteDto입니다.={}",noteDto);
+//		   log.info("========noteDto입니다.={}",noteDto);
 		   return noteService.mailsend(noteDto);
 	   }
 	   
@@ -59,7 +59,7 @@ public class RestNoteController {
 		//답변하기
 		@PostMapping("/inqAnswer")
 		public int inqAnswer(NoteDto noteDto) {
-			
+			log.info("========{}",noteDto);
 			return noteService.inqAnswer(noteDto);
 		}
 		

@@ -14,6 +14,7 @@ modal_wrap.addEventListener("click", e => {
 	let n_date = tr[rowIndex].getElementsByTagName("td")[3].textContent
 	let recv_userId = tr[rowIndex].getElementsByTagName("td")[5].textContent
 	let n_message = tr[rowIndex].getElementsByTagName("td")[6].innerText
+//	let status = tr[rowIndex].getElementsByTagName("td")[7].innerText
 	console.log(n_title)
 
 	document.querySelector("#num").innerText = n_num
@@ -25,6 +26,7 @@ modal_wrap.addEventListener("click", e => {
 	document.querySelector("#n_message").value = n_message
 	document.querySelector("#n_num").value = n_num
 	document.querySelector("#n_title").value = "re:"+n_title
+	
 
 
 })
@@ -33,6 +35,7 @@ $('#answer').on("click", function() {
 	modal0.style.display = "flex";	
 	modal.style.display = "none"
 	document.querySelector('#n_date').value= new Date().toISOString().slice(0, 10);
+	document.querySelector("#status").value= "답변완료"
 	console.log("쳌")
 })
 //
