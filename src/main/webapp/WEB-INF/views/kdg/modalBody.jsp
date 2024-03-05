@@ -6,7 +6,7 @@
   <div class="modal-dialog modal-dialog-centered">
     <div class="modal-content" style = "width: 700px;">
       <div class="modal-header">
-        <h5 class="modal-title" id="exampleModalToggleLabel">챔피언을 선택해보세요.</h5>
+        <h5 class="modal-title-dg" id="exampleModalToggleLabel">챔피언을 선택해보세요.</h5>
         <button type="button" id="closeBtn" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
       </div>
       <div class="modal-body" style = "background-color: #3C3C41;">
