@@ -27,7 +27,7 @@
 	<link href="/css/common/roulette.css" rel="stylesheet" type="text/css">
 	<script defer src="/js/aPayment/payment.js"></script>
 <!-- 	<script defer src="/js/aCommon/roulette.js"></script> -->
-
+	<script defer src="/js/aCommon/common.js"></script>
 	<script defer src="/js/stm/loldata.js"></script>
 	<script defer src="/js/stm/RiotGameTable2.js"></script>
 <!-- 폰트 장기훈 -->
@@ -57,7 +57,7 @@
 					</div>
 					<div class="search-home1">
 						<input type="text" class="search-home11" id="search-home"
-							placeholder="플레이어이름 + #KR1" value="">
+							placeholder="플레이어이름 + #KR1" value=""  onkeypress = "GotoSearch()"	>
 					</div>
 					<div class="searchBoom1">
 						<button id="searchBoom" class="searchBoom11">BOOM</button>

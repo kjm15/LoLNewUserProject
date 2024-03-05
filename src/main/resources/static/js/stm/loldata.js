@@ -18,18 +18,18 @@ $(document).ready(function() {
 function logolodingImg() {
 	if (cnt == 1) {
 
-		console.log("처음:")
-//		$.ajax({
-//			//		
-//			type: 'post',
-//			url: '/ai/trollcheck420',
-//			success: function(res1) {
-//
-//
-//			}
-//
-//
-//		})
+//		console.log("처음:")
+		//		$.ajax({
+		//			//		
+		//			type: 'post',
+		//			url: '/ai/trollcheck420',
+		//			success: function(res1) {
+		//
+		//
+		//			}
+		//
+		//
+		//		})
 
 	}
 
@@ -68,6 +68,11 @@ $('#searchBoom').on("click", function() {
 	}
 
 })
+
+
+
+
+
 
 function mainStart() {
 
