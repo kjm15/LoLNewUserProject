@@ -62,6 +62,19 @@ $(document).ready(function() {
 			$('#btn-duoSearch').css("background-color","rgb(52, 58, 64)")
 			$('.duo-momo').css("background-color","rgb(52, 58, 64)")
 			
+//			전적검색
+			$('.uid').css("color","white")
+			$('.kda_tm').css("color","black")
+			$('.dmg_tm').css("color","black")
+			$('.minion_tm').css("color","black")
+			$('.pchit_tm').css("color","black")
+			$('.ai_tm').css("color","black")
+			$('.queuety_tm').css("color","black")
+			$('.stime-tm').css("color","black")
+			$('.winlose-tm').css("color","black")
+			$('.igstime-tm').css("color","black")
+			$('.damageGraph').css("color","black")
+			
 			
 			dkmodnum = 0
 			$('#modNum').html(dkmodnum)
@@ -131,6 +144,19 @@ $(document).ready(function() {
 			$('.duoTr').css("background-color","rgba(69, 139, 197, 0.70)")
 			$('#btn-duoSearch').css("background-color","rgb(120, 173, 252)")
 			$('.duo-momo').css("background-color","rgba(157, 196, 253, 0.7)")
+
+//			전적검색
+			$('.uid').css("color","white")
+			$('.kda_tm').css("color","black")
+			$('.dmg_tm').css("color","black")
+			$('.minion_tm').css("color","black")
+			$('.pchit_tm').css("color","black")
+			$('.ai_tm').css("color","black")
+			$('.queuety_tm').css("color","black")
+			$('.stime-tm').css("color","black")
+			$('.winlose-tm').css("color","black")
+			$('.igstime-tm').css("color","black")
+			$('.damageGraph').css("color","black")
 			
 			dkmodnum = 1
 			$('#modNum').html(dkmodnum)
