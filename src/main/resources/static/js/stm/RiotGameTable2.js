@@ -1,30 +1,31 @@
-
-//var ctx = document.getElementById('donutChart').getContext('2d');
-//	var myChart = new Chart(ctx, {
-//		type: 'doughnut',
-//		data: {
-//			labels: ['승리', '패배'],
-//			datasets: [{
-//				//				label: '승리',
-//				data: [win, lose], // 승리와 패배 데이터
-//				backgroundColor: [
-//					'rgba(75, 192, 192, 0.2)',
-//					'rgba(255, 99, 132, 0.2)'
-//				],
-//				borderColor: [
-//					'rgba(75, 192, 192, 1)',
-//					'rgba(255, 99, 132, 1)'
-//				],
-//				borderWidth: 1
-//			}]
-//		},
-//		options: {
-//			responsive: false,
-//			legend: {
-//				position: 'bottom', // 범례 위치
-//			},
-//		}
-//	});
+function showgraph(win,lose) {
+	var ctx = document.getElementById('donutChart').getContext('2d');
+	var myChart = new Chart(ctx, {
+		type: 'doughnut',
+		data: {
+			labels: ['승리', '패배'],
+			datasets: [{
+				//				label: '승리',
+				data: [win, lose], // 승리와 패배 데이터
+				backgroundColor: [
+					'rgba(75, 192, 192, 0.2)',
+					'rgba(255, 99, 132, 0.2)'
+				],
+				borderColor: [
+					'rgba(75, 192, 192, 1)',
+					'rgba(255, 99, 132, 1)'
+				],
+				borderWidth: 1
+			}]
+		},
+		options: {
+			responsive: false,
+			legend: {
+				position: 'bottom', // 범례 위치
+			},
+		}
+	});
+}
 
 function profileCheck(res) {
 
@@ -32,11 +33,11 @@ function profileCheck(res) {
 	profileIcon = res.profileIcon
 	summonerLevel = res.summonerLevel
 	riotIdGameName = res.riotIdGameName
-	if (res['win'] == '1') {
-		win += 1
-	} else {
-		lose += 1
-	}
+//	if (res['win'] == '1') {
+//		win += 1
+//	} else {
+//		lose += 1
+//	}
 
 
 
@@ -124,14 +125,21 @@ function showGameTamble(res, data) {
 				resMyList.push(res[i]["info"][j])
 				myriotIdGameName = res[i]["info"][j]['riotIdGameName']
 				myriotIdTagline = res[i]["info"][j]['riotIdTagline']
+				if(res[i]['info'][j]['win']=='1'){
+					win += 1
+				}else{
+					lose +=1
+				}
 
 			}
+			
 		}
 	}
 
 
 	//	console.log(resMyList)
 	profileCheck(resMyList[0])
+	showgraph(win,lose)
 	for (let i in resMyList) {
 		goBtn = Number(i) + (data['matchCnt']) * 4
 		Myres = resMyList[i] // 추후에 i 으로 바꾸기
@@ -217,7 +225,7 @@ function showGameTamble(res, data) {
 								${boxright}
 							</div>
 							`
-		line1 = `<div class="line1" id = 'line1${goBtn}' style='display: none'>`
+		//		line1 = `<div class="line1" id = 'line1${goBtn}' style='display: none'>`
 		container2 = `<div class="container2" id = 'container2${matchId}' style = 'display: none' >`
 		container4 = `<div class="container4" id = 'container4${matchId}' style = 'display: none' >`
 		controller = `<div class = "controller" id = 'controller${matchId}'><div>`
@@ -246,7 +254,7 @@ function showGameTamble(res, data) {
 
 			if (Myres[itemk] != 0) {
 				itemimg = Myres[itemk]
-				itemstart += '<img id = "'+ itemimg +'" class = "jb-title-tm" width=30 height=30 style = "border-radius: 35px;" alt="못 불러옴" src="https://ddragon.leagueoflegends.com/cdn/14.3.1/img/item/' + itemimg + '.png" onmouseover="javascript:allItemTT(this.id)"><p class = "jb-text-tm"></p>&nbsp;&nbsp;&nbsp;'
+				itemstart += '<img id = "' + itemimg + '" class = "jb-title-tm" width=30 height=30 style = "border-radius: 35px;" alt="못 불러옴" src="https://ddragon.leagueoflegends.com/cdn/14.3.1/img/item/' + itemimg + '.png" onmouseover="javascript:allItemTT(this.id)"><p class = "jb-text-tm"></p>&nbsp;&nbsp;&nbsp;'
 			}
 
 		}
@@ -313,7 +321,7 @@ function showGameTamble(res, data) {
 		}
 		$('#' + matchId + 'blueChamp').append(bcList)
 		$('#' + matchId + 'redChamp').append(rcList)
-		$('.containerXC').append(line1)
+		//		$('.containerXC').append(line1)
 		$('.containerXC').append(controller)
 
 
@@ -334,7 +342,7 @@ function showGameTamble(res, data) {
 			}
 		})
 	}
-//	console.log(myriotIdGameName)
+	//	console.log(myriotIdGameName)
 	let more = `<div class='containerXR'></div><div class='more'>
 					<center>
 						<input type = "button" value = "더보기" name = "\'${myriotIdGameName}\'#\'${myriotIdTagline}\'#\'${data['matchCnt']}\'" id = 'loadMore' class='loadMore'>
@@ -349,8 +357,8 @@ function showGameTamble(res, data) {
 
 
 function showGameTambleBody(matchId) {
-	$('.container2').empty();
-	$('.container4').empty();
+	console.log(matchId)
+
 	let blueChampList = [] //matchId의 블루 리스트
 	let redChampList = []//matchId의 레드 리스트
 
@@ -695,6 +703,11 @@ window.addEventListener('click', (e) => {
 		//		console.log(data)
 		$('#loadMore').remove()
 		bbb(data)
+	}
+
+	if (e.target.className == 'box-right') {
+
+		console.log(e.target.className)
 	}
 
 });

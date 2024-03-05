@@ -6,7 +6,7 @@ $(document).ready(function() {
 
 	document.getElementById('search-home').value = ''
 	mainStart()
-	
+
 })
 let cnt = 0;
 $('#searchBoom').on("click", function() {
@@ -34,7 +34,7 @@ $('#searchBoom').on("click", function() {
 function mainStart() {
 
 	let gameName = $('#gameName').val()
-	
+
 	if (gameName != '') {
 		mainSearch(gameName)
 	}
@@ -60,7 +60,7 @@ function aiCheckTroll(res1) {
 		url: '/ai/dataToAi',
 		data: JSON.stringify(res1),
 		success: function(res) {
-//						console.log(res)
+			//						console.log(res)
 
 			if (res.queueId == 420) {
 
@@ -72,8 +72,8 @@ function aiCheckTroll(res1) {
 					url: '/ai/trollcheck420',
 					data: JSON.stringify(data),
 					success: function(res1) {
-						
-					
+
+
 						for (const [key, value] of Object.entries(res1)) {
 							if (res.win == 1) { // 게임 : 승리
 								if (value == '패') { //인공지능 지표 : 패
@@ -82,7 +82,7 @@ function aiCheckTroll(res1) {
 								} else if (value == '데이터부족') { //인공지능 지표: 승
 									$('#' + key).html("평균");
 								} else { //인공지능 지표: 승
-									
+
 									$('#' + key).html("평균");
 								}
 							} else { // 게임 : 패배
@@ -111,7 +111,7 @@ function aiCheckTroll(res1) {
 					url: '/ai/trollcheck450',
 					data: JSON.stringify(data),
 					success: function(res1) {
-//						console.log(res1)
+						//						console.log(res1)
 						for (const [key, value] of Object.entries(res1)) {
 							if (res.win == 1) { // 게임 : 승리
 
@@ -121,7 +121,7 @@ function aiCheckTroll(res1) {
 									$('#' + key).html(str);
 
 								} else { //인공지능 지표: 승
-									
+
 									$('#' + key).html('평균');
 								}
 							} else { // 게임 : 패배
@@ -308,7 +308,7 @@ function aaa(data) { // data == 검색한 게임 아이디
 
 				allofList.push(res[i])
 			}
-						console.log(allofList)
+			console.log(allofList)
 			showGameTamble(res, data)
 		}
 	})
@@ -336,16 +336,37 @@ function summonerV4(res) {
 }
 
 
-
+newmatchId = ''
 function gamebtn(goBtn, matchId) {
-
-	var line1 = document.getElementById("line1" + goBtn);
+	if (matchId == newmatchId) {
+		$('.controller').empty();
+		newmatchId = ''
+		return false;
+	}
+	newmatchId = matchId
+	$('.controller').empty();
+	container2 = `<div class="container2" id = 'container2${matchId}' style = 'display: none' >`
+	container4 = `<div class="container4" id = 'container4${matchId}' style = 'display: none' >`
+	$('#controller' + matchId).append(container2)
+	$('#controller' + matchId).append(container4)
+	console.log(goBtn, matchId)
+	//	var line1 = document.getElementById("line1" + goBtn);
 	var container2 = document.getElementById("container2" + matchId);
 	var container4 = document.getElementById("container4" + matchId);
-	line1.style.display = ((line1.style.display != 'none') ? 'none' : 'block');
+	//	line1.style.display = ((line1.style.display != 'none') ? 'none' : 'block');
 	container2.style.display = ((container2.style.display != 'none') ? 'none' : 'block');
 	container4.style.display = ((container4.style.display != 'none') ? 'none' : 'block');
+
+
+
 	showGameTambleBody(matchId) // 바디부분 만들기
+
+
+	
+
+
+
+
 
 	//	  완료 되면 다시 켜기
 	data = { 'matchId': matchId }
