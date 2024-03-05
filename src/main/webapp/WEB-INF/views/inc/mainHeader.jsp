@@ -24,9 +24,13 @@
 	<link href="/css/newMain.css" rel="stylesheet">
 
 	<link href="/css/jgh/modal.css" rel="stylesheet" type="text/css">
+	<!-- 장기훈 결제하기 시스템 -->
 	<script defer src="/js/aPayment/payment.js"></script>
-
+	<!-- 장기훈 검색에 엔터쳐도 가능하게 만듬 -->
 	<script defer src="/js/aCommon/common.js"></script>
+	<!-- 장기훈 관리자로 로그인시 관리자 페이지 -->
+	<script defer src="/js/admin/info.js"></script>
+	<!-- 롤검색  -->
 	<script defer src="/js/stm/loldata.js"></script>
 	<script defer src="/js/stm/RiotGameTable2.js"></script>
 	<!-- 폰트 장기훈 -->
@@ -49,20 +53,41 @@
 
 		<div class="search-contents1"></div>
 
+
+		 
 		<c:choose>
-			<c:when test="${userId != null}">
+			<c:when test="${userId == 'pay'}">
 				<div class="navbarLogin">
-					<!-- 					<div class="navChoice"> -->
-					<%-- 						<span>${userId}님 접속중</span> --%>
-					<!-- 					</div> -->
 					<div class="navChoice">
 						<a href="/member/mypage">${userId}님</a>
 					</div>
-					<!-- 					<div class="navChoice"> -->
-					<!-- 						<a href="/Note">메일함</a> -->
-					<!-- 					</div> -->
+					<div class="navChoice" id="modal_test">
+						<a href="javascript:openModal()">메니저</a>
+					</div>
+					<div class="navChoice">
+						<a href="/member/logout">로그아웃</a>
+					</div>
+				</div>
+			</c:when>
 
-					<!-- 					 <div id="app"></div> -->
+			<c:when test="${userId == 'admin'}">
+				<div class="navbarLogin">
+					<div class="navChoice">
+						<a href="/member/mypage">${userId}님</a>
+					</div>
+					<div class="navChoice" id="modal_test">
+						<a href="javascript:openModal()">총관리자</a>
+					</div>
+					<div class="navChoice">
+						<a href="/member/logout">로그아웃</a>
+					</div>
+				</div>
+			</c:when>
+			<c:when test="${userId != null}">
+				<div class="navbarLogin">
+					<div class="navChoice">
+						<a href="/member/mypage">${userId}님</a>
+					</div>
 					<div class="navChoice" id="modal_test">
 						<a href="javascript:openModal()">결제하기</a>
 					</div>
@@ -77,6 +102,8 @@
 				</div>
 			</c:otherwise>
 		</c:choose>
+
+
 
 
 	</div>

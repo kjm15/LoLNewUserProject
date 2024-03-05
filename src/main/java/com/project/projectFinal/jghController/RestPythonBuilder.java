@@ -50,6 +50,10 @@ public class RestPythonBuilder {
 			log.info("admin 인공지능 접속");
 			filePath = "src/main/resources/static/py/admin/aiTrollCheck420.py";
 
+		} else {
+			log.info("일반 인공지능 접속");
+			filePath = "src/main/resources/static/py/jgh/aiTrollCheck420.py";
+
 		}
 
 		String matchId = (String) aMap.get("matchId");
@@ -121,6 +125,10 @@ public class RestPythonBuilder {
 		} else if (userId.equals("admin")) {
 			log.info("admin 인공지능 접속");
 			filePath = "src/main/resources/static/py/admin/aiTrollCheck450.py";
+
+		} else {
+			log.info("일반 인공지능 접속");
+			filePath = "src/main/resources/static/py/jgh/aiTrollCheck420.py";
 
 		}
 
