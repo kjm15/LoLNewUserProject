@@ -16,7 +16,7 @@ import org.springframework.web.bind.annotation.RestController;
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.project.projectFinal.dto.ChampionImageDto;
 import com.project.projectFinal.dto.ChampionRankDto;
-import com.project.projectFinal.service.JhlChampService;
+import com.project.projectFinal.service.ChampService;
 
 import lombok.extern.slf4j.Slf4j;
 
@@ -25,7 +25,7 @@ import lombok.extern.slf4j.Slf4j;
 public class JhlRestChampController {
 
 	@Autowired
-	JhlChampService champService;
+	ChampService champService;
 
 	@PostMapping("/champSearch")
 	public List<HashMap<String, String>> champSearch(ChampionImageDto champDto) {
@@ -47,16 +47,6 @@ public class JhlRestChampController {
 	public List<HashMap<String, Object>> champRank(ChampionRankDto rankDto) {
 		return champService.champRank(rankDto);
 	}
-
-
-
-//	@PostMapping("/champUpdate")
-//	public void champUpdate(ChampionRankDto rankDto) {
-////		log.info("==={}", rankDto.getTeamPosition());
-//		
-//		champService.champUpdate(rankDto);
-//
-//	}
 
 
 	@PostMapping("/champCounter")

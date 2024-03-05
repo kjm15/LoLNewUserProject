@@ -102,7 +102,7 @@
 			<a href="/">홈</a>
 		</div>
 		<div class="navMenu">
-			<a href="/jhl" class="active">초보자Tip!</a>
+			<a href="/jhl">초보자Tip!</a>
 		</div>
 
 		<div class="navMenu">
