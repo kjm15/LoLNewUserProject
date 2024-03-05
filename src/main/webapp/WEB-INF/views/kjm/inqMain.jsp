@@ -21,7 +21,7 @@
 
 			<div class="inqnav">
 				<input type="button" class="inq-nav-item" id="inqMain" value="문의내역">
-				<input type="button" class="inq-nav-item" id="eventMessage" value="메시지함">
+				<input type="button" class="inq-nav-item" id="eventMessage" value="안내사항">
 				<input type="button" class="inq-nav-item" id="sendinq" value="문의하기">
 			</div>
 
@@ -35,7 +35,6 @@
 						<th class ="n_date">날짜</th>
 						<th class = "status">상태</th>
 						<th class ="send_userId" style ="display : none;">보낸사람<th>
-						<input type="hidden" id="userId" value="${userId }">
 					<tr>
 					<tbody id ="inqbody">
 
