@@ -50,9 +50,8 @@
 					<td>${item.send_userId}</td>
 					<td>${item.n_title}</td>
 					<td>${item.n_date}</td>
-					<td id="status">${item.status}</td>
+					<td>${item.status}</td>
 					<td style="display: none;">${item.recv_userId}</td>
-					<td style="display: none;">${item.n_message}</td>
 				</tr>
 				<input type="hidden" name="${item.recv_userId}"
 					id="${item.recv_userId}">

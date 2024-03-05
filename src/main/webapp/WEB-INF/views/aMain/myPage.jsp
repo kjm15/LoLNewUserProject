@@ -43,6 +43,7 @@
 <link href="/css/jgh/modal.css" rel="stylesheet" type="text/css">
 <script defer src="/js/aPayment/payment.js"></script>
 <script defer src="/js/aCommon/roulette.js"></script>
+<script defer src="/js/kjm/myPg.js"></script>
 <script
 	src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
 
