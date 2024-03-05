@@ -7,7 +7,6 @@ import java.util.List;
 import java.util.Map;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
@@ -40,21 +39,11 @@ public class RestPythonBuilder {
 	public Map<String, Object> trollcheck420(@RequestBody Map<String, Object> aMap, Model model,
 			HttpSession httpSession) throws Exception {
 		Map<String, Object> aiReultMap = new HashMap<>();
-//		log.info("===myMap : {}", aMap);
-		String userId = (String) httpSession.getAttribute("userId");
-		String filePath = "";
-		if (userId == null) {
-			log.info("일반 인공지능 접속");
-			filePath = "src/main/resources/static/py/jgh/aiTrollCheck420.py";
-		} else if (userId.equals("admin")) {
-			log.info("admin 인공지능 접속");
-			filePath = "src/main/resources/static/py/admin/aiTrollCheck420.py";
+		log.info("===myMap : {}", aMap);
+//		String userId = (String) httpSession.getAttribute("userId");
 
-		} else {
-			log.info("일반 인공지능 접속");
-			filePath = "src/main/resources/static/py/jgh/aiTrollCheck420.py";
-
-		}
+		log.info("일반 인공지능 접속");
+		String filePath = "src/main/resources/static/py/aiModelSave/aiModel420/aiModelCheck.py";
 
 		String matchId = (String) aMap.get("matchId");
 		String participantId = String.valueOf(aMap.get("participantId"));
@@ -67,15 +56,16 @@ public class RestPythonBuilder {
 		String goldEarned = String.valueOf(aMap.get("goldEarned"));
 		String championName = String.valueOf(aMap.get("championName"));
 		String airesult = String.valueOf(aMap.get("airesult"));
+		log.info(airesult);
 		String champion_name_kr = String.valueOf(aMap.get("champion_name_kr"));
+//		String queueId = String.valueOf(aMap.get("queueId"));
+
 		if (tier.equals("Tier")) { // 언랭
 
 			aiReultMap.put("key", "데이터부족");
 			aiReultMap.put(key, "데이터부족");
-			aiReultMap.put("정확도", 1);
-			aiReultMap.put("총데이터길이", 0);
 			aiReultMap.put("구간", "unRanked");
-			aiReultMap.put("캐릭", "championName");
+			aiReultMap.put("캐릭", championName);
 			aiReultMap.put("matchId", matchId);
 			aiReultMap.put("participantId", participantId);
 			log.info("솔로랭크 결과값 : {}", aiReultMap);
@@ -83,7 +73,7 @@ public class RestPythonBuilder {
 
 		} else if (airesult.equals("null")) { // 랭크가 있고 ai결과가 없을때
 			ProcessBuilder pb = new ProcessBuilder().command("python", filePath, key, tier, teamPosition, gameDuration,
-					kda, totalDamageDealtToChampions, goldEarned, championName // ,
+					kda, totalDamageDealtToChampions, goldEarned, championName, "420"	 // ,
 			);
 			Process p = pb.start();
 			BufferedReader in = new BufferedReader(new InputStreamReader(p.getInputStream()));
@@ -96,12 +86,15 @@ public class RestPythonBuilder {
 
 			in.close();
 			ObjectMapper objectMapper = new ObjectMapper();
+			if (buffer.toString() != null) {
+				aiReultMap = objectMapper.readValue(buffer.toString(), Map.class);
+				aiReultMap.put("matchId", matchId);
+				aiReultMap.put("participantId", participantId);
+				log.info("솔로랭크 결과값 : {}", aiReultMap);
+				matchListService.saveAiData(aiReultMap);
 
-			aiReultMap = objectMapper.readValue(buffer.toString(), Map.class);
-			aiReultMap.put("matchId", matchId);
-			aiReultMap.put("participantId", participantId);
-			log.info("솔로랭크 결과값 : {}", aiReultMap);
-			matchListService.saveAiData(aiReultMap);
+			}
+
 		} else { // 랭크가 있고 ai결과가 있을때
 
 			aiReultMap.put(key, matchListService.forOneData(aMap).get("airesult"));
@@ -221,6 +214,29 @@ public class RestPythonBuilder {
 	public List<Map<String, Object>> teamList(String matchId) throws Exception {
 
 		return matchListService.teamList(matchId);
+
+	}
+
+	// ai모델 저장하기 >> 모델검색으로 바뀔예정
+	@PostMapping("/aiModelSaveData")
+	public String aiModelSaveData() throws Exception {
+		log.info("데이터시작");
+		String filePath = "src/main/resources/static/py/aiModelSave/aiModelSave.py";
+
+		ProcessBuilder pb = new ProcessBuilder().command("python", filePath);
+		Process p = pb.start();
+		BufferedReader in = new BufferedReader(new InputStreamReader(p.getInputStream()));
+		StringBuilder buffer = new StringBuilder();
+		String line = null;
+		while ((line = in.readLine()) != null) {
+			buffer.append(line);
+		}
+		int exitCode = p.waitFor();
+
+		in.close();
+		String aa = buffer.toString();
+		log.info(aa);
+		return aa;
 
 	}
 }

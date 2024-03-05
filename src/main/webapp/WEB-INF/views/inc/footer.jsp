@@ -30,9 +30,12 @@
 	<div>인천광역시 미추홀구 매소홀로488번길 6-32 태승빌딩 5층</div>
 	<div>copyright DataBoom</div>
 
+
+
 	<!-- 			<a href = "/py/main">aitest페이지가기</a> -->
 
 	<!-- 			<a href = "/testboard">송태민 새로운 보드</a> -->
+	<script defer src="/js/ai/main.js"></script>
 </footer>
 
 

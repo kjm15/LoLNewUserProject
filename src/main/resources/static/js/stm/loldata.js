@@ -103,12 +103,12 @@ function aiCheckTroll(res1) {
 		url: '/ai/dataToAi',
 		data: JSON.stringify(res1),
 		success: function(res) {
-			//						console.log(res)
+									console.log(res)
 
 			if (res.queueId == 420) {
 
 				data = res
-				//					console.log(data)
+									console.log(data)
 				$.ajax({
 					contentType: 'application/json',
 					type: 'post',
@@ -183,7 +183,7 @@ function aiCheckTroll(res1) {
 						}
 					}, error: function(error) {
 						$('#' + key).html("평균");
-
+						console.log(error)
 					}
 				})//ajax끝
 
