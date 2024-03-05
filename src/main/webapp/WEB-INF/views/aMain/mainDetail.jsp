@@ -21,7 +21,7 @@
 					</div>
 					<div class = "search-home">
 						<center><input type="text" id="search-home" placeholder="플레이어이름 + #KR1"
-							value="동정팔이소년#KR1"></center>
+							value="동정팔이소년#KR1"  onkeypress = "GotoSearch()"/></center>
 					</div>
 					<div class="searchBoom">
 						<button id="searchBoom">BOOM</button>
