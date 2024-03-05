@@ -675,6 +675,13 @@ function makeBodyblue(blueChampList, matchId) {
 //클릭시 타임라인 데이터 가지고 오기 , 모달열림
 timeline_list = []
 function aiTimelineAni(matchId) {
+	
+	userId = $('#userId').val();
+	console.log(userId)
+	if(userId == ''){
+		alert("로그인 후 이용 가능합니다.")
+		return false;
+	}
 	timeline_list = []
 	data = { 'matchId': matchId }
 	$.ajax({
