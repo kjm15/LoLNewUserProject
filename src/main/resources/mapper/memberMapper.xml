@@ -131,7 +131,12 @@
 	<select id ="memberload">
 		select userId from memberT where role = 'USER';
 	</select>
+	
+	<select id = "InfoChange">
+		select userPw from memberT where userId = #{userId};
+	</select>
 
+	
 	
 
 	

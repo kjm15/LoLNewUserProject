@@ -14,9 +14,9 @@
 
 			<div class="modal0-content" id="modal0-body">
 				<input type="hidden" name="n_num" id="n_num" value=""> 
-				<input type="hidden" name="status" id="status" value="답변완료"> 
+				<input type="text" name="status" id="status" value=""> 
 					<input type="hidden" name="n_date" id="n_date" value="">
-					 <input type="hidden" name="n_title" id="n_title" value="">
+					 <input type="text" name="n_title" id="n_title" value="">
 
 				<textarea rows="6" cols="80" name="n_message" id="n_message" >
 				

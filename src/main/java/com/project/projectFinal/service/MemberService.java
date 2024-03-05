@@ -99,57 +99,58 @@ public class MemberService implements UserDetailsService {
 		return memberDao.memberTable();
 
 	}
-	//룰렛 횟수 저장
+
+	// 룰렛 횟수 저장
 	@Transactional
 	public MemberDto addRoulette(MemberDto memberDto) throws CustomException {
 
-		
-		MemberDto mDto =  memberDao.addRoulette(memberDto);
+		MemberDto mDto = memberDao.addRoulette(memberDto);
 		if (memberDto.getUserId().equals("")) {
 			throw new CustomException("비회원입니다.");
 		}
 //		if(mDto.getRouletteCount() > 4) {
 //			throw new CustomException("수량초과입니다.");
 //		}
-		
+
 		return mDto;
 
 	}
 
 	public MemberDto rouletteInfo(MemberDto memberDto) {
-	
-		return  memberDao.rouletteInfo(memberDto);
-		
+
+		return memberDao.rouletteInfo(memberDto);
+
 	}
 
 	public MemberDto minusRoulette(MemberDto memberDto) {
-		return  memberDao.minusRoulette(memberDto);
+		return memberDao.minusRoulette(memberDto);
 	}
 
 	public MemberDto findId(MemberDto memberDto) {
-		log.info("=====서비스={}",memberDto);
+		log.info("=====서비스={}", memberDto);
 		return memberDao.findId(memberDto);
-		
+
 	}
 
 	public boolean findPw(MemberDto memberDto) {
 		boolean findPw = memberDao.findPw(memberDto);
-		if(findPw) {
+		if (findPw) {
 			return findPw;
-		}else {
+		} else {
 			return false;
 		}
-		
+
 	}
+
 	public int changePw(MemberDto memberDto) {
 		MemberDto mDto = new MemberDto();
 		mDto.setUserId(memberDto.getUserId());
 		mDto.setUserPw(passwordEncoder.encode(memberDto.getUserPw()));
-		log.info("==mdto = {}",mDto);
+		log.info("==mdto = {}", mDto);
 		int result = memberDao.changePw(mDto);
-		log.info("====비밀번호변경=={}",result);
+		log.info("====비밀번호변경=={}", result);
 		return result;
-		
+
 	}
 
 	public MemberDto myInfo(MemberDto memberDto) {
@@ -158,8 +159,21 @@ public class MemberService implements UserDetailsService {
 	}
 
 	public ArrayList<MemberDto> memberload(MemberDto memberDto) {
-		 
+
 		return memberDao.memberload(memberDto);
-		
+
+	}
+
+	public boolean InfoChange(MemberDto memberDto) {
+		String dbPw = memberDao.InfoChange(memberDto);
+		String inputPw = memberDto.getUserPw();
+		log.info("==========dbpw{}", dbPw);
+		boolean InfoChange = (passwordEncoder.matches(inputPw, dbPw));
+		log.info("==========dbpw{}", InfoChange);
+		if (InfoChange) {
+			return InfoChange;
+		} else {
+			return false;
+		}
 	}
 }

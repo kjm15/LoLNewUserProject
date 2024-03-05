@@ -8,10 +8,10 @@
 </head>
 <body>
 <div class = "container" style = "width: 300px; height: 200px; margin : 20% 0% 20% 42%;">
-	<form action="/member/mypage" method="post" >
+	<form action="/member/ChangeInfo" method="post" >
 						 <input type="hidden" id="userId"
-							name="username"> <label for="password">패스워드</label> <input
-							type="password" id="userPw" name="password"> <input
+							name="userId" value="${userId}"><br> <label for="password">패스워드</label> <input
+							type="password" id="userPw" name="userPw"> <input
 							type="submit" value="비밀번호확인" style ="display : none; ">
 					</form>
 </div>

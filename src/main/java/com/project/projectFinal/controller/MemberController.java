@@ -1,6 +1,7 @@
 package com.project.projectFinal.controller;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.security.core.userdetails.UserDetails;
@@ -22,6 +23,7 @@ import lombok.extern.slf4j.Slf4j;
 @Controller
 @Slf4j
 @RequestMapping("/member")
+
 public class MemberController {
 
 	@Autowired
@@ -44,7 +46,17 @@ public class MemberController {
 		
 		return "aMain/passwordChk";
 	}
+	@GetMapping("/ChangeInfo")
+	public String ChangeInfo() {
+		
+		return "aMain/ChangeInfo";
+	}
+	@PreAuthorize("hasAnyAuthority('USER')")
+	@GetMapping("/MyChangePw")
+	public String MyChangePw() {
 	
+		return "aMain/changePw";
+	}
 	
 	@GetMapping("/mypage")
 	public String mypage(Model model, HttpSession session, MemberDto memberDto) {
@@ -113,6 +125,24 @@ public class MemberController {
 		memberService.changePw(memberDto);
 	
 		return "redirect:/member/login";
+	}
+	
+	@PostMapping("/ChangeInfo")
+	public String InfoChange(MemberDto memberDto, Model model) {
+		
+		boolean InfoChange = memberService.InfoChange(memberDto);
+		log.info("==========컨{}",memberDto);
+		if(InfoChange) {
+//			String userId = (String) session.getAttribute("userId");
+//			memberDto.setUserId(userId);
+			MemberDto mlist = memberService.myInfo(memberDto);
+			model.addAttribute("mlist", mlist);
+		return "aMain/ChangeInfo";
+		
+		}
+		else {
+			return "redirect:/member/passwordcheck";
+		}
 	}
 	
 	
