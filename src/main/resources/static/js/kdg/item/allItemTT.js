@@ -1,7 +1,9 @@
 function allItemTT(a){
 	
+	var itemId = a.split("_")[0]
+	
 	data = {
-		"itemId" : a
+		"itemId" : itemId
 	}
 	$.ajax({
 	type : "POST",
@@ -10,7 +12,6 @@ function allItemTT(a){
 	success : function(res) {
 		
 		list = ['공격력', '주문력', '방어력', '마법', '스킬', '이동', '기본', '물리', '체력', '마나', '치명타', '생명력', '공격', '방어구', '강인함']
-		console.log(list)
 		
 		var cnt = 0;
 		 		
@@ -139,7 +140,7 @@ function allItemTT(a){
 			}			
 		}
 		
-		price = "<span class = 'price_tt-tm'>가격 : "+ res[0].totalGold+"G ("+res[0].sellGold+")</span>"
+		price = "<br><span class = 'price_tt-tm'>가격 : "+ res[0].totalGold+"G ("+res[0].sellGold+")</span>"
 		
 		$('.jb-text-tm').html(item_name);
 		$('.jb-text-tm').append(str);
