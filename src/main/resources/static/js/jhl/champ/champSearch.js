@@ -42,13 +42,17 @@ $('#champSearch').on('keyup', function() {
 			
 			modNum = $('#modNum').text()
 
-			if (modNum == 0) {
-
-				$('span').css("color", "#ffffff")
-
-
-
-			}
+//			if (modNum == 0) {
+//
+//				$('span').css("color", "#ffffff")
+//
+//			}
+//			
+//			if (modNum == 1) {
+//
+//				$('span').css("color", "#212529")
+//
+//			}
 			
 		}
 	});
@@ -137,15 +141,15 @@ function champLine(lineSelect) {
 			
 
 		
-
-			modNum = $('#modNum').text()
-
-			if (modNum == 0) {
-
-				$('span').css("color", "#ffffff")
-
-
-			}
+//
+//			modNum = $('#modNum').text()
+//
+//			if (modNum == 0) {
+//
+//				$('span').css("color", "#ffffff")
+//
+//
+//			}
 			
 
 

@@ -5,7 +5,7 @@ $(document).ready(function() {
 
 
 		if (modNum == 1) { // 다그코드 on
-						$('span').css("color","#ffffff")
+			$('span').css("color", "#ffffff")
 
 			//			아이템 분석
 
@@ -48,7 +48,12 @@ $(document).ready(function() {
 			$('.rankTable').css('color', 'white')
 			$('.champs').css('color', 'white')
 			$('.sc-rk-title').css('color', 'white')
+			$('.activerank').css('color', '#8CB9FC')
 			$('.myChampsNameBox').css("background-color", "#2a2c33")
+			$('.tableColumns').css("color", "white")
+
+
+
 			//			$('.champNum').css("color","white")
 			//			$('.rankChampName').css("color","white")
 			//			$('.rate_vp').css("color","white")
@@ -56,7 +61,7 @@ $(document).ready(function() {
 
 			//			$('.search_c').css("background-color","white")
 
-			$('.lines').css("background-image", "linear-gradient(#ffffff, #2a2c33 0%, #222 94%)")
+			$('.lines').css("background-image", "linear-gradient(315deg, #40404d 0%, #2a2c33 94%)")
 
 
 
@@ -71,7 +76,7 @@ $(document).ready(function() {
 			$('#modNum').html(dkmodnum)
 
 		} else if (modNum == 0) { // 다크모드 off
-						$('span').css("color","#212529")
+			$('span').css("color", "#212529")
 
 			$('.tableMainTr').css("background-color", "rgba(27, 65, 221, 0.58)")
 			$('.tableMainTr').css("color", "black")
@@ -109,21 +114,23 @@ $(document).ready(function() {
 			$('.champs').css('color', '#212529')
 			$('.sc-rk-title').css('color', '#212529')
 			$('.myChampsNameBox').css("background-color", "#8CB9FC")
+			$('.tableColumns').css("color", "#212529")
+			$('.myChampsName').css("color", "white")
 			//			$('.champNum').css("color","black")
 			//			$('.rankChampName').css("color","black")
 			//			$('.rate_vp').css("color","black")
 			//			$('.champName').css("color","black")
 
-//			$('.search_c').css("background-color", "white")
+			//			$('.search_c').css("background-color", "white")
 
 			$('.lines').css("background-image", "linear-gradient(315deg, #D6E5FC 0%, #9DC4FD 74%)")
 
 
-			$('.Top').css("color", "#ffffff")
-			$('.jug').css("color", "#ffffff")
-			$('.mid').css("color", "#ffffff")
-			$('.adc').css("color", "#ffffff")
-			$('.sup').css("color", "#ffffff")
+			$('.rankLineSelect').css("color", "#ffffff")
+			//						$('.jug').css("color", "#ffffff")
+			//						$('.mid').css("color", "#ffffff")
+			//						$('.adc').css("color", "#ffffff")
+			//						$('.sup').css("color", "#ffffff")
 			//			듀오
 			$('.duo-no').css("color", "#ffffff")
 			$('.duo-name').css("color", "#ffffff")

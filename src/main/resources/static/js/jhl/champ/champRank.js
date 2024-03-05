@@ -2,7 +2,7 @@
 
 $(function() {
 	// 초기 실행: 기본 포지션에 대한 데이터 로드
-	$('.rankSearch span#Top').addClass('active');
+	$('.rankSearch span#Top').addClass('activeRank');
 	var defaultPosition = 'Top';
 	var defaultTier = 'emerald';
 	champRank(defaultPosition, defaultTier);
@@ -12,7 +12,7 @@ $(function() {
 
 
 function tierSelect() {
-	var selectedPosition = document.querySelector('.rankSearch span.active').id;
+	var selectedPosition = document.querySelector('.rankSearch span.activeRank').id;
 	var selectedTier = document.getElementById("rankSelect").value;
 	champRank(selectedPosition, selectedTier)
 
@@ -43,23 +43,23 @@ function champRank(position, tier) {
 			//			console.log(res);
 			//			console.log(a);
 
-			modNum = $('#modNum').text()
+//			modNum = $('#modNum').text()
 
 
-			//			if (modNum == 1) {
-			//
-			////				$('span').css("color", "#ffffff")
-			////				$('.ranklineBtn span').css("color","#8CB9FC")
-			//
-			//
-			//			}
-
-			//			if (modNum == 0) {
-			//
-			//				$('span').css("color", "#ffffff")
-			//
-			//
-			//			}
+//						if (modNum == 1) {
+//			
+////							$('span').css("color", "#212529")
+////							$('.ranklineBtn .activeRank').css("color","#8CB9FC")
+//			
+//			
+//						}
+//
+//						if (modNum == 0) {
+//			
+////							$('span').css("color", "#212529")
+//			
+//			
+//						}
 
 		}
 	});
@@ -67,8 +67,8 @@ function champRank(position, tier) {
 }
 
 $('.rankSearch span').on('click', function() {
-	$('.rankSearch span').removeClass('active');
-	$(this).addClass('active');
+	$('.rankSearch span').removeClass('activeRank');
+	$(this).addClass('activeRank');
 	// 추가: 클릭한 포지션에 따라 데이터 갱신
 	var selectedPosition = $(this).attr('id');
 	var selectedTier = document.getElementById("rankSelect").value;

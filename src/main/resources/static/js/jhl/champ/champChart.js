@@ -162,7 +162,7 @@ function champChartGraph(championName) {
 					options: {
 						responsive: false,
 						maintainAspectRatio: false, //x축 반으로 줄임
-						cutoutPercentage: 70,
+						cutoutPercentage: 74,
 						elements: {
 							center: {
 								text: win_rate.toFixed(2) + "%",
