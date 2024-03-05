@@ -15,7 +15,7 @@
 
 			<div class="inqnav">
 				<input type="button" class="inq-nav-item" id="inqMain2" value="문의내역">
-				<input type="button" class="inq-nav-item" id="eventMessage2" value="메시지함">
+				<input type="button" class="inq-nav-item" id="eventMessage2" value="안내사항">
 				<input type="button" class="inq-nav-item" id="sendinq2" value="문의하기">
 			</div>
 
