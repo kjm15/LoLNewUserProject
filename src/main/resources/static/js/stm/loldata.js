@@ -5,9 +5,47 @@
 $(document).ready(function() {
 
 	document.getElementById('search-home').value = ''
+
+
+
+
+
 	mainStart()
+	logolodingImg()
 
 })
+
+function logolodingImg() {
+	if (cnt == 1) {
+
+		console.log("처음:")
+//		$.ajax({
+//			//		
+//			type: 'post',
+//			url: '/ai/trollcheck420',
+//			success: function(res1) {
+//
+//
+//			}
+//
+//
+//		})
+
+	}
+
+
+
+}
+
+
+
+
+
+
+
+
+
+
 let cnt = 0;
 $('#searchBoom').on("click", function() {
 
@@ -362,7 +400,7 @@ function gamebtn(goBtn, matchId) {
 	showGameTambleBody(matchId) // 바디부분 만들기
 
 
-	
+
 
 
 

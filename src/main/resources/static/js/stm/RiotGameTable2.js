@@ -67,7 +67,7 @@ function profileCheck(res) {
             </div>
         </div>
         </div>
-        <div class='stmBlank'></div>
+        <div class='stmBlank'><img width=70 height = 70 src = "/img/lodinglogo.gif" alt = "로고" > </div>
         </div>`
 
 	$('.graph1').append(ccc)
