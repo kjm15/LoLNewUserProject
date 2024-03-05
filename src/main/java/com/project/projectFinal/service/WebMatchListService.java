@@ -30,7 +30,7 @@ public class WebMatchListService {
 		apiCount = apiDto.getMatchCnt();
 		String apiKeyTeam = ApikeyList[Integer.valueOf(apiCount) % ApikeyList.length];
 		api_key = apiKeyTeam;
-		log.info(apiKeyTeam);
+//		log.info(apiKeyTeam);
 //		System.out.println("getMatchCnt= " + apiDto.getMatchCnt() + " 이번에사용할 api key=" + api_key);
 		String url = "https://asia.api.riotgames.com/riot/account/v1/accounts/by-riot-id/" + apiDto.getGameName() + "/"
 				+ apiDto.getTagLine() + "?api_key=" + api_key;
