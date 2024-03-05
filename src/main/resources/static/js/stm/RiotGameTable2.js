@@ -1,30 +1,31 @@
-
-//var ctx = document.getElementById('donutChart').getContext('2d');
-//	var myChart = new Chart(ctx, {
-//		type: 'doughnut',
-//		data: {
-//			labels: ['승리', '패배'],
-//			datasets: [{
-//				//				label: '승리',
-//				data: [win, lose], // 승리와 패배 데이터
-//				backgroundColor: [
-//					'rgba(75, 192, 192, 0.2)',
-//					'rgba(255, 99, 132, 0.2)'
-//				],
-//				borderColor: [
-//					'rgba(75, 192, 192, 1)',
-//					'rgba(255, 99, 132, 1)'
-//				],
-//				borderWidth: 1
-//			}]
-//		},
-//		options: {
-//			responsive: false,
-//			legend: {
-//				position: 'bottom', // 범례 위치
-//			},
-//		}
-//	});
+function showgraph(win,lose) {
+	var ctx = document.getElementById('donutChart').getContext('2d');
+	var myChart = new Chart(ctx, {
+		type: 'doughnut',
+		data: {
+			labels: ['승리', '패배'],
+			datasets: [{
+				//				label: '승리',
+				data: [win, lose], // 승리와 패배 데이터
+				backgroundColor: [
+					'rgba(75, 192, 192, 0.2)',
+					'rgba(255, 99, 132, 0.2)'
+				],
+				borderColor: [
+					'rgba(75, 192, 192, 1)',
+					'rgba(255, 99, 132, 1)'
+				],
+				borderWidth: 1
+			}]
+		},
+		options: {
+			responsive: false,
+			legend: {
+				position: 'bottom', // 범례 위치
+			},
+		}
+	});
+}
 
 function profileCheck(res) {
 
@@ -32,11 +33,11 @@ function profileCheck(res) {
 	profileIcon = res.profileIcon
 	summonerLevel = res.summonerLevel
 	riotIdGameName = res.riotIdGameName
-	if (res['win'] == '1') {
-		win += 1
-	} else {
-		lose += 1
-	}
+//	if (res['win'] == '1') {
+//		win += 1
+//	} else {
+//		lose += 1
+//	}
 
 
 
@@ -124,14 +125,21 @@ function showGameTamble(res, data) {
 				resMyList.push(res[i]["info"][j])
 				myriotIdGameName = res[i]["info"][j]['riotIdGameName']
 				myriotIdTagline = res[i]["info"][j]['riotIdTagline']
+				if(res[i]['info'][j]['win']=='1'){
+					win += 1
+				}else{
+					lose +=1
+				}
 
 			}
+			
 		}
 	}
 
 
 	//	console.log(resMyList)
 	profileCheck(resMyList[0])
+	showgraph(win,lose)
 	for (let i in resMyList) {
 		goBtn = Number(i) + (data['matchCnt']) * 4
 		Myres = resMyList[i] // 추후에 i 으로 바꾸기
@@ -169,10 +177,10 @@ function showGameTamble(res, data) {
 			str = `<div class="container1" id = '${matchId}container1' style='background-image:linear-gradient(315deg, #D6E5FC 0%, #BED8FE 74%) '>`
 			str1 = `<div class='box-column' style='background-color:#75ABFD;width:10px;'></div>
 								<div class="box-left" >
-								<div><span style='font-weight:bold;'>${queue}</span></div>
-								<div><span style='font-size:13px'>${spentTime}</span></div>
-								<div><span style='color:blue;'>${win_lose}</span></div>
-								<div><span style='font-size:13px'>${ingamespentTime}</span></div>
+								<div><span class="queuety_tm" style='font-weight:bold;'>${queue}</span></div>
+								<div><span class="stime-tm" style='font-size:13px'>${spentTime}</span></div>
+								<div><span class="winlose-tm" style='color:blue;'>${win_lose}</span></div>
+								<div><span class="igstime-tm" style='font-size:13px'>${ingamespentTime}</span></div>
 								</div>`
 			boxright = `<div class="box-right" style='background-color :#9ac2e2' id ="gamebtn${goBtn}" onclick ="gamebtn(${goBtn},'${matchId}')"><a href = 'javascript:;'><div class = "box-rightblue">∨</div></a></div>`
 		} else {
@@ -217,7 +225,7 @@ function showGameTamble(res, data) {
 								${boxright}
 							</div>
 							`
-		line1 = `<div class="line1" id = 'line1${goBtn}' style='display: none'>`
+		//		line1 = `<div class="line1" id = 'line1${goBtn}' style='display: none'>`
 		container2 = `<div class="container2" id = 'container2${matchId}' style = 'display: none' >`
 		container4 = `<div class="container4" id = 'container4${matchId}' style = 'display: none' >`
 		controller = `<div class = "controller" id = 'controller${matchId}'><div>`
@@ -246,7 +254,9 @@ function showGameTamble(res, data) {
 
 			if (Myres[itemk] != 0) {
 				itemimg = Myres[itemk]
-				itemstart += '<img id = "'+ itemimg +'" class = "jb-title-tm" width=30 height=30 style = "border-radius: 35px;" alt="못 불러옴" src="https://ddragon.leagueoflegends.com/cdn/14.3.1/img/item/' + itemimg + '.png" onmouseover="javascript:allItemTT(this.id)"><p class = "jb-text-tm"></p>&nbsp;&nbsp;&nbsp;'
+
+				itemstart += '<img id = "'+ itemimg +'_'+ matchId +'" class = "jb-title-tm" width=30 height=30 style = "border-radius: 35px;" alt="못 불러옴" src="https://ddragon.leagueoflegends.com/cdn/14.3.1/img/item/' + itemimg + '.png" onmouseover="javascript:allItemTT(this.id)"><p class = "jb-text-tm"></p>&nbsp;&nbsp;&nbsp;'
+
 			}
 
 		}
@@ -313,7 +323,7 @@ function showGameTamble(res, data) {
 		}
 		$('#' + matchId + 'blueChamp').append(bcList)
 		$('#' + matchId + 'redChamp').append(rcList)
-		$('.containerXC').append(line1)
+		//		$('.containerXC').append(line1)
 		$('.containerXC').append(controller)
 
 
@@ -334,7 +344,7 @@ function showGameTamble(res, data) {
 			}
 		})
 	}
-//	console.log(myriotIdGameName)
+	//	console.log(myriotIdGameName)
 	let more = `<div class='containerXR'></div><div class='more'>
 					<center>
 						<input type = "button" value = "더보기" name = "\'${myriotIdGameName}\'#\'${myriotIdTagline}\'#\'${data['matchCnt']}\'" id = 'loadMore' class='loadMore'>
@@ -342,15 +352,20 @@ function showGameTamble(res, data) {
 					</center>
 				</div>`
 	$('.containerXC').append(more)
-
+	
+	modNum = $('#modNum').text()
+	
+	if(modNum == 0){
+		$('.uid').css("color","white")
+	}
 
 }
 
 
 
 function showGameTambleBody(matchId) {
-	$('.container2').empty();
-	$('.container4').empty();
+	console.log(matchId)
+
 	let blueChampList = [] //matchId의 블루 리스트
 	let redChampList = []//matchId의 레드 리스트
 
@@ -404,12 +419,12 @@ function makeBodyred(blueChampList, matchId) {
 	//여기서부터 시작
 	champBody = `  
 					${teamId}
-					<div class=kda>	 <span tooltip="(kill+assist)/death"><a href = "#">KDA</a></span>	</div>
+					<div class=kda>	 <span class = "kda_tm" tooltip="(kill+assist)/death"><a href = "#">KDA</a></span>	</div>
 
-					<div class=damage> <span tooltip="상대방에게 가한 (물리+마법)피해"><a href = "#">데미지</a></span></div>
-					<div class=cs><span tooltip="게임에서 잡은 미니언의 총 개수"><a href = "#">cs</span></a></div >
-					<div class=itemTeam><span tooltip="최종 구입한 총 아이템"><a href="#">아이템</span></a></div >
-					<div class=aicheck><span tooltip="인공지능 (Troller Check System)"><a href="#">AI TCS</a></span></div>
+					<div class=damage> <span class = "dmg_tm" tooltip="상대방에게 가한 (물리+마법)피해"><a href = "#">데미지</a></span></div>
+					<div class=cs><span class = "minion_tm" tooltip="게임에서 잡은 미니언의 총 개수"><a href = "#">cs</span></a></div >
+					<div class=itemTeam><span class = "pchit_tm" tooltip="최종 구입한 총 아이템"><a href="#">아이템</span></a></div >
+					<div class=aicheck><span class = "ai_tm" tooltip="인공지능 (Troller Check System)"><a href="#">AI TCS</a></span></div>
 					
 				`
 	$('#' + matchId + 'legend2').append(champBody)
@@ -541,12 +556,12 @@ function makeBodyblue(blueChampList, matchId) {
 	//여기서부터 시작
 	champBody = `  
 					${teamId}
-					<div class=kda>	 <span tooltip="(kill+assist)/death"><a href = "#">KDA</a></span>	</div>
+					<div class=kda>	 <span class = "kda_tm" tooltip="(kill+assist)/death"><a href = "#">KDA</a></span>	</div>
 
-					<div class=damage> <span tooltip="상대방에게 가한 (물리+마법)피해"><a href = "#">데미지</a></span></div>
-					<div class=cs><span tooltip="게임에서 잡은 미니언의 총 개수"><a href = "#">cs</span></a></div >
-					<div class=itemTeam><span tooltip="최종 구입한 총 아이템"><a href="#">아이템</span></a></div >
-					<div class=aicheck><span tooltip="인공지능 (Troller Check System)"><a href="#">AI TCS</a></span></div>
+					<div class=damage> <span class = "dmg_tm" tooltip="상대방에게 가한 (물리+마법)피해"><a href = "#">데미지</a></span></div>
+					<div class=cs><span class = "minion_tm" tooltip="게임에서 잡은 미니언의 총 개수"><a href = "#">cs</span></a></div >
+					<div class=itemTeam><span class = "pchit_tm" tooltip="최종 구입한 총 아이템"><a href="#">아이템</span></a></div >
+					<div class=aicheck><span class = "ai_tm" tooltip="인공지능 (Troller Check System)"><a href="#">AI TCS</a></span></div>
 					
 				`
 	$('#' + matchId + 'legend').append(champBody)
@@ -695,6 +710,11 @@ window.addEventListener('click', (e) => {
 		//		console.log(data)
 		$('#loadMore').remove()
 		bbb(data)
+	}
+
+	if (e.target.className == 'box-right') {
+
+		console.log(e.target.className)
 	}
 
 });
