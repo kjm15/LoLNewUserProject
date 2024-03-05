@@ -54,7 +54,7 @@ $(document).ready(function() {
 			$('.search_c').css("background-color","white")
 			
 			$('.lines').css("background-image","linear-gradient(#ffffff, #2a2c33 0%, #222 94%)")
-			
+			$('.myChampsNameBox').css("background-color","#2a2c33")
 			
 
 //			듀오
@@ -124,13 +124,11 @@ $(document).ready(function() {
 			$('.search_c').css("background-color","white")
 			
 			$('.lines').css("background-image","linear-gradient(315deg, #D6E5FC 0%, #9DC4FD 74%)")
-					
 			
-			$('.Top').css("color","#ffffff")
-			$('.jug').css("color","#ffffff")
-			$('.mid').css("color","#ffffff")
-			$('.adc').css("color","#ffffff")
-			$('.sup').css("color","#ffffff")
+			$('.rankLineSelect').css("color","#ffffff")
+			$('.myChampsName').css("color","#ffffff")
+			$('.myChampsNameBox').css("background-color","#8CB9FC")
+
 			
 //			듀오
 			$('.duo-no').css("color","#ffffff")
