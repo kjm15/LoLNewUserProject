@@ -23,7 +23,8 @@
 									${mlist.userName}
 								</div>
 								<div class="pline2-2">
-									<button type="button" class="changebutton" id = "changeId">수정</button>
+									<button type="button" class="changebutton" id = "changeName">수정</button>
+									<button type="button" class="changebutton2" id = "changeName2" disabled>수정완료</button>
 								</div>
 							</div>
 
@@ -58,8 +59,10 @@
 
 							<div class="pline6">
 								<!-- 								<a href="/member/MyChangePw">비밀번호 변경</a> -->
-								<button type="button" class="myPgCpw" id="myPgCpw">비밀번호
+								<button type="button" class="myPgCpw" id="myPgCpw" >비밀번호
 									변경</button>
+								<button type="button" class="myPgCpw" id="myPgCpw2" disabled>새 비밀번호로
+									변경</button>	
 							</div>
 						</div>
 
@@ -79,7 +82,8 @@
 							<div class="agree-to-receivetop" id="phoneText">휴대전화</div>
 							<div class="agree-to-receivebot">
 								<div class="agree-to-receivebotl">
-									<div class="phoneimg" id="current-pw"></div>
+									<div class="phoneimg" id="current-pw">
+									<input type = "hidden" name = "userId" id = "userId" value = "${userId}"></div>
 								</div>
 								<div class="agree-to-receivebotm"></div>
 								<div class="agree-to-receivebotr">
