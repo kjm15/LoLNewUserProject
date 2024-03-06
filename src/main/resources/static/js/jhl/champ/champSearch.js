@@ -39,21 +39,24 @@ $('#champSearch').on('keyup', function() {
 					.append($('<div>').addClass('cimgs').append(imgElement)).append($('<span>').addClass('champName').append(res[i].champion_name_kr)));
 
 			}
-			
-			modNum = $('#modNum').text()
 
+//			modNum = $('#modNum').text()
+//
 //			if (modNum == 0) {
 //
 //				$('span').css("color", "#ffffff")
+//				$('.tooltiptext').css("background-color", "#2a2c33")
+//				$('.tooltiptext').css("border", "1px solid #2a2c33")
 //
 //			}
-//			
-//			if (modNum == 1) {
+//
+//			else if (modNum == 1) {
 //
 //				$('span').css("color", "#212529")
-//
+//				$('.tooltiptext').css("background-color", "#8CB9FC")
+//				$('.tooltiptext').css("border", "1px solid rgb(120, 173, 252)")
 //			}
-			
+
 		}
 	});
 });
@@ -83,20 +86,28 @@ function champImgAll() {
 					.append($('<div>').addClass('cimgs').append(imgElement)).append($('<span>').addClass('champName').append(res[i].champion_name_kr)));
 
 			}
-			
 
-			
+
+
 
 			modNum = $('#modNum').text()
 
-			if (modNum == 0) {
+//			if (modNum == 0) {
+//
+////				$('span').css("color", "#ffffff")
+//				$('.tooltiptext').css("background-color", "#2a2c33")
+//				$('.tooltiptext').css("border", "1px solid #2a2c33")
+//
+//			}
+//			else if (modNum == 1) {
+//
+////				$('span').css("color", "#212529")
+//				$('.tooltiptext').css("background-color", "#8CB9FC")
+//				$('.tooltiptext').css("color", "white")
+//				$('.tooltiptext').css("border", "1px solid rgb(120, 173, 252)")
+//			}
 
-				$('span').css("color", "#ffffff")
 
-
-			}
-
-			
 		}
 	});
 
@@ -113,7 +124,7 @@ function champLine(lineSelect) {
 		url: "/champLineSelect",
 		data: { "line": lineSelect },
 		success: function(res) {
-			
+
 			var champContainer = $('.champs');
 
 			champContainer.empty();
@@ -122,35 +133,44 @@ function champLine(lineSelect) {
 				let champName = res[i].champion_name_kr
 				let Name = res[i].champion_name
 				var imgSrc = 'https://ddragon.leagueoflegends.com/cdn/14.2.1/img/champion/' + res[i].champion_name + '.png';
-				 var imgElement = $('<img>')
-                    .addClass('championImg')
-                    .attr('src', imgSrc)
-                    .attr('id', Name)
-//                    .click(function () {
-//                        openModal(championName); // 클릭 시 모달 열기
-//                    });
-				 // 챔피언 이미지 아이템 생성
-                var champImgItem = $('<div>').addClass('champImgItem')
-                    .append($('<span>').addClass('tooltiptext tooltip-top').append(champName))
-                    .append($('<div>').addClass('cimgs').append(imgElement))
-                    .append($('<span>').addClass('champName').append(res[i].champion_name_kr));
+				var imgElement = $('<img>')
+					.addClass('championImg')
+					.attr('src', imgSrc)
+					.attr('id', Name)
+				//                    .click(function () {
+				//                        openModal(championName); // 클릭 시 모달 열기
+				//                    });
+				// 챔피언 이미지 아이템 생성
+				var champImgItem = $('<div>').addClass('champImgItem')
+					.append($('<span>').addClass('tooltiptext tooltip-top').append(champName))
+					.append($('<div>').addClass('cimgs').append(imgElement))
+					.append($('<span>').addClass('champName').append(res[i].champion_name_kr));
 
-                // 생성한 아이템을 컨테이너에 추가
-                champContainer.append(champImgItem);
+				// 생성한 아이템을 컨테이너에 추가
+				champContainer.append(champImgItem);
 			}
-			
 
-		
+
+
+
+			modNum = $('#modNum').text()
 //
-//			modNum = $('#modNum').text()
-//
-//			if (modNum == 0) {
+			if (modNum == 0) {
 //
 //				$('span').css("color", "#ffffff")
+				$('.tooltiptext').css("background-color", "#2a2c33")
+				$('.tooltiptext').css("border", "1px solid #2a2c33")
 //
 //
-//			}
-			
+			}
+			else if (modNum == 1) {
+//
+//				$('span').css("color", "#212529")
+				$('.tooltiptext').css("background-color", "#8CB9FC")
+				$('.tooltiptext').css("color", "white")
+				$('.tooltiptext').css("border", "1px solid rgb(120, 173, 252)")
+			}
+
 
 
 		}

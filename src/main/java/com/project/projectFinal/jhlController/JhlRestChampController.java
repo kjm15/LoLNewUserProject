@@ -49,12 +49,12 @@ public class JhlRestChampController {
 	}
 
 
-	@PostMapping("/champCounter")
-	public void champCounter(ChampionRankDto rankDto) {
-
-		champService.champCounter(rankDto);
-
-	}
+//	@PostMapping("/champCounter")
+//	public void champCounter(ChampionRankDto rankDto) {
+//
+//		champService.champCounter(rankDto);
+//
+//	}
 
 
 	@PostMapping("/champUpdate")
