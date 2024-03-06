@@ -101,33 +101,84 @@ function profileCheck(res) {
 	}
 
 	ccc = `<div class=container333Box>
-	<div class=container333>
-	<div class="stmH">
+		<div class=container333>
+		<div class="stmH">
+			<div class = "sample"></div>
             <div class="stmHright">
                 <div class="cpicon">
                     <div class = "cpimg">
-	<img width='85' height='85' alt='못 불러옴' style = "border-radius: 30px;"  src=https://ddragon.leagueoflegends.com/cdn/14.3.1/img/profileicon/${newprofileIcon}.png>
-                    </div></div>
-                    <div class="uidLevelBox">
-                <div class="ulevel">${newsummonerLevel} </div>
-                </div>
+						<img width='85' height='85' alt='못 불러옴' style = "border-radius: 30px;"  src=https://ddragon.leagueoflegends.com/cdn/14.3.1/img/profileicon/${newprofileIcon}.png>
+                    </div>
+                    	
+                     		
+                      
+                         <div class="uidLevelBox">
+              				  <div class="ulevel">${newsummonerLevel} </div>
+                		</div>
+                		<div class "cpimgB">
+                			<img width=180 height=180 src="/img/tier/challenger.png" alt="티어">
+                		</div>
+                	
+                			 <div class="uid">${newriotIdGameName}</div>
+                		
+                		
+                    
+                    </div>
+               
             </div>
-            <div class="uidBox">
-                <div class="uid">${newriotIdGameName}</div>
-                </div>
+           
+            <div class="stmHCenter">
+            
+           		<div class = "stmHCenterT">
+           		제목 들어갈자리
+           		</div>
+            	<div class = "stmHCenterB">
+            	내용들어 갈자리
+            	</div>
+            </div>
+               
             <div class="stmHleft">
                 <div class="u-chart"><canvas id="donutChart" width="160px" height="160px"></canvas></div>
             </div>
         </div>
         </div>
-        <div class='stmBlank'><canvas id="LaneChart" width="593" height="198"></canvas></div>
+        <div class='stmBlank'>
+        	<div class='stmBlankT'>
+        	제목들어갈자리
+        	</div>
+        	<div class='stmBlankB'>
+	        	<div class = 'stmBlankM'>
+		        	<div class = 'stmBlankG'>
+		        		<div class = 'stmBlankGT'>1</div>
+						<div class = 'stmBlankGB'>1</div>
+		        	
+		        	</div>
+		        	<div class = 'stmBlankG'>
+		        		<div class = 'stmBlankGT'>2</div>
+						<div class = 'stmBlankGB'>2</div>	
+		        	</div>
+		        	<div class = 'stmBlankG'>
+		        		<div class = 'stmBlankGT'>3</div>
+						<div class = 'stmBlankGB'>3</div>
+		        	</div>
+		        	<div class = 'stmBlankG'>
+		        		<div class = 'stmBlankGT'>4</div>
+						<div class = 'stmBlankGB'>4</div>
+		        	</div>
+		        	<div class = 'stmBlankG'>
+		        		<div class = 'stmBlankGT'>5</div>
+						<div class = 'stmBlankGB'>5</div>
+		        	</div>
+	        	</div>
+        	</div>
+        </div>
         </div>`
 
 	$('.graph1').append(ccc)
 
 
 }
-
+//<canvas id="LaneChart" width="593" height="198"></canvas> //stmBlank안에 들어갈 구글chart.js
 
 $('a.feellink').click(function(e) //a태그 눌러도 맨위로 안올라감
 {
@@ -191,7 +242,7 @@ function showGameTamble(res, data) {
 	//	console.log(resMyList)
 	profileCheck(resMyList[0])
 	showgraph(win, lose)
-	logolodingImg()
+//	logolodingImg()
 	//	if (data['matchCnt'] == 1) {
 	//	logolodingImg()
 	//	}
@@ -418,7 +469,7 @@ function showGameTamble(res, data) {
 
 
 function showGameTambleBody(matchId) {
-//	console.log(matchId)
+	//	console.log(matchId)
 
 	let blueChampList = [] //matchId의 블루 리스트
 	let redChampList = []//matchId의 레드 리스트
@@ -734,8 +785,8 @@ function aiTimelineAni(matchId) {
 
 	userId = $('#userId').val();
 
-//	console.log(userId)
-	if(userId == ''){
+	//	console.log(userId)
+	if (userId == '') {
 
 		alert("로그인 후 이용 가능합니다.")
 		return false;
@@ -779,7 +830,7 @@ window.addEventListener('click', (e) => {
 
 	if (e.target.className == 'box-right') {
 
-//		console.log(e.target.className)
+		//		console.log(e.target.className)
 	}
 
 });
