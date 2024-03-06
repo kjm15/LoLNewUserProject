@@ -364,7 +364,7 @@ function showGameTamble(res, data) {
 
 
 function showGameTambleBody(matchId) {
-	console.log(matchId)
+//	console.log(matchId)
 
 	let blueChampList = [] //matchId의 블루 리스트
 	let redChampList = []//matchId의 레드 리스트
@@ -721,7 +721,7 @@ window.addEventListener('click', (e) => {
 
 	if (e.target.className == 'box-right') {
 
-		console.log(e.target.className)
+//		console.log(e.target.className)
 	}
 
 });

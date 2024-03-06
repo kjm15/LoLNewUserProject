@@ -103,12 +103,12 @@ function aiCheckTroll(res1) {
 		url: '/ai/dataToAi',
 		data: JSON.stringify(res1),
 		success: function(res) {
-									console.log(res)
-
+//									console.log(res)
+//
 			if (res.queueId == 420) {
 
 				data = res
-									console.log(data)
+//									console.log(data)
 				$.ajax({
 					contentType: 'application/json',
 					type: 'post',
@@ -116,7 +116,7 @@ function aiCheckTroll(res1) {
 					data: JSON.stringify(data),
 					success: function(res1) {
 
-
+						console.log(res1)
 						for (const [key, value] of Object.entries(res1)) {
 							if (res.win == 1) { // 게임 : 승리
 								if (value == '패') { //인공지능 지표 : 패
@@ -141,7 +141,8 @@ function aiCheckTroll(res1) {
 							}
 						}
 					}, error: function(error) {
-						$('#' + key).html("평균");
+						console.log(data)
+						$('#' + data.matchId + data.participantId).html("평균");
 
 					}
 				})//ajax끝
@@ -392,7 +393,7 @@ function gamebtn(goBtn, matchId) {
 	container4 = `<div class="container4" id = 'container4${matchId}' style = 'display: none' >`
 	$('#controller' + matchId).append(container2)
 	$('#controller' + matchId).append(container4)
-	console.log(goBtn, matchId)
+//	console.log(goBtn, matchId)
 	//	var line1 = document.getElementById("line1" + goBtn);
 	var container2 = document.getElementById("container2" + matchId);
 	var container4 = document.getElementById("container4" + matchId);

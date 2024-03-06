@@ -6,54 +6,43 @@ import matplotlib.pyplot as plt
 import json
 from sklearn.neighbors import KNeighborsClassifier
 from sklearn.preprocessing import minmax_scale
-import requests
-import pymysql
-import random
 from tqdm import tqdm
 import time
 import math
 import joblib
+#빅데이터전용
+import pickle 
 
-#받은 데이터
 
 data = sys.argv[1:]
-tier = ''
 key = data[0]
-tier1 = data[1]
-if tier1 == 'unRanked':
-    tier == 'GOLD'
-elif tier1 == 'Tier':
-    tier == 'GOLD'   
-else:
-    tier = tier1
+tier = data[1]
 teamPosition = data[2]
 gameDuration = int(data[3])
 kda = float(data[4])
 totalDamageDealtToChampions = int(int(data[5])/gameDuration) 
 goldEarned = int(int(data[6])/gameDuration)
 championName = data[7]
-queueId = int(data[8])
+queueId = str(data[8])
 tier_my = [totalDamageDealtToChampions,goldEarned,kda]
+mean = np.mean(tier_my, axis=0)
+std = np.std(tier_my, axis=0)
 
-try:
-    ####
-    str1 = f'./aiModel420/{queueId}_{tier}_{teamPosition}_{championName}.pkl'
+new = (tier_my - mean) / std
 
-    loaded_model = joblib.load(str1)
+str1 ='src/main/resources/static/py/aiModelSave/aiModel420/'+ queueId+'_'+tier+'_'+teamPosition+'_'+championName+'.pkl'
+# str2 = './'+queueId+'_'+tier+'_'+teamPosition+ '_' + championName+'.pickle'
+# with open(str2,'rb') as f:
+#     loaded_model = pickle.load(f)
+# str2 = './420_BRONZE_JUNGLE_LeeSin.pkl'	
+loaded_model = joblib.load(str1)
 
-    #z-정규화
-    mean = np.mean(tier_my, axis=0)
-    std = np.std(tier_my, axis=0)
+trans={1:'승', 0:'패'}
+a = trans[loaded_model.predict([new])[0]]
 
-    new = (tier_my - mean) / std
 
-    trans={1:'승', 0:'패'}
-    a = trans[loaded_model.predict([new])[0]]
 
-    data5 = {key:a  , '구간' : tier , '캐릭' : championName, "key" : a}  
-    json_string = json.dumps(queueId)
-    print(json_string)
-except Exception as e:
-    data5 = {key:a , '구간' : tier , '캐릭' : championName, "key" : e }  
-    json_string = json.dumps(data5)
-    print(json_string)
+data5 = {key:a  , '티어' : tier , '캐릭' : championName, "key" : a}  
+json_string = json.dumps(data5 , default=str)
+print(json_string)
+

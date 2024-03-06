@@ -6,6 +6,8 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
+import javax.print.DocFlavor.STRING;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -14,6 +16,8 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
+import com.google.gson.Gson;
+import com.google.gson.GsonBuilder;
 import com.project.projectFinal.service.MatchListService;
 
 import jakarta.servlet.http.HttpSession;
@@ -39,10 +43,7 @@ public class RestPythonBuilder {
 	public Map<String, Object> trollcheck420(@RequestBody Map<String, Object> aMap, Model model,
 			HttpSession httpSession) throws Exception {
 		Map<String, Object> aiReultMap = new HashMap<>();
-		log.info("===myMap : {}", aMap);
-//		String userId = (String) httpSession.getAttribute("userId");
 
-		log.info("일반 인공지능 접속");
 		String filePath = "src/main/resources/static/py/aiModelSave/aiModel420/aiModelCheck.py";
 
 		String matchId = (String) aMap.get("matchId");
@@ -56,50 +57,33 @@ public class RestPythonBuilder {
 		String goldEarned = String.valueOf(aMap.get("goldEarned"));
 		String championName = String.valueOf(aMap.get("championName"));
 		String airesult = String.valueOf(aMap.get("airesult"));
-		log.info(airesult);
 		String champion_name_kr = String.valueOf(aMap.get("champion_name_kr"));
-//		String queueId = String.valueOf(aMap.get("queueId"));
-
-		if (tier.equals("Tier")) { // 언랭
-
-			aiReultMap.put("key", "데이터부족");
-			aiReultMap.put(key, "데이터부족");
-			aiReultMap.put("구간", "unRanked");
-			aiReultMap.put("캐릭", championName);
-			aiReultMap.put("matchId", matchId);
-			aiReultMap.put("participantId", participantId);
-			log.info("솔로랭크 결과값 : {}", aiReultMap);
-			matchListService.saveAiData(aiReultMap);
-
-		} else if (airesult.equals("null")) { // 랭크가 있고 ai결과가 없을때
-			ProcessBuilder pb = new ProcessBuilder().command("python", filePath, key, tier, teamPosition, gameDuration,
-					kda, totalDamageDealtToChampions, goldEarned, championName, "420"	 // ,
-			);
-			Process p = pb.start();
-			BufferedReader in = new BufferedReader(new InputStreamReader(p.getInputStream()));
-			StringBuilder buffer = new StringBuilder();
-			String line = null;
-			while ((line = in.readLine()) != null) {
-				buffer.append(line);
-			}
-			int exitCode = p.waitFor();
-
-			in.close();
-			ObjectMapper objectMapper = new ObjectMapper();
-			if (buffer.toString() != null) {
-				aiReultMap = objectMapper.readValue(buffer.toString(), Map.class);
-				aiReultMap.put("matchId", matchId);
-				aiReultMap.put("participantId", participantId);
-				log.info("솔로랭크 결과값 : {}", aiReultMap);
-				matchListService.saveAiData(aiReultMap);
-
-			}
-
-		} else { // 랭크가 있고 ai결과가 있을때
-
-			aiReultMap.put(key, matchListService.forOneData(aMap).get("airesult"));
-
+		String queueId = String.valueOf(aMap.get("queueId"));
+		
+		ProcessBuilder pb = new ProcessBuilder().command("python", filePath, key, tier, teamPosition, gameDuration, kda,
+				totalDamageDealtToChampions, goldEarned, championName, queueId // ,
+		);
+		Process p = pb.start();
+		BufferedReader in = new BufferedReader(new InputStreamReader(p.getInputStream()));
+		StringBuilder buffer = new StringBuilder();
+		String line = null;
+		while ((line = in.readLine()) != null) {
+			buffer.append(line);
 		}
+		int exitCode = p.waitFor();
+
+		in.close();
+		Gson gson = new GsonBuilder().create();
+		Map<String, Object> bMap = gson.fromJson(buffer.toString(), Map.class);
+		log.info(buffer.toString());
+//		String bMap = gson.fromJson(buffer.toString(), String.class);
+
+		log.info("솔로랭크 결과값 : {}", bMap);
+
+		aiReultMap.put("matchId", matchId);
+		aiReultMap.put("participantId", participantId);
+		
+		matchListService.saveAiData(aiReultMap);
 		aiReultMap.put("champion_name_kr", champion_name_kr);
 		return aiReultMap;
 	}
@@ -138,7 +122,7 @@ public class RestPythonBuilder {
 
 		if (airesult.equals("null")) { // ai결과가 없으면
 			ProcessBuilder pb = new ProcessBuilder().command("python", filePath, key, gameDuration, kda,
-					totalDamageDealtToChampions, goldEarned, championName // ,
+					totalDamageDealtToChampions, goldEarned, championName
 			);
 			Process p = pb.start();
 			BufferedReader in = new BufferedReader(new InputStreamReader(p.getInputStream()));
