@@ -26,13 +26,12 @@ function showgraph(win, lose) {
 		}
 	});
 }
-
+let TOP = 0
+let JUNGLE = 0
+let MIDDLE = 0
+let BOTTOM = 0
+let UTILITY = 0
 function LaneChart(res) {
-	let TOP = 0
-	let JUNGLE = 0
-	let MIDDLE = 0
-	let BOTTOM = 0
-	let UTILITY = 0
 	console.log(res)
 	for (i in res) {
 		if (res[i]['teamPosition'] == 'TOP') {
@@ -47,49 +46,60 @@ function LaneChart(res) {
 			UTILITY += 1
 		}
 	}
-	const data = {
-		labels: ['탑', '정글', '미드', '원딜', '서폿'],
-		datasets: [{
-			label: '라인 별 선호도',
-			data: [TOP, JUNGLE, MIDDLE, BOTTOM, UTILITY], // 각 항목에 해당하는 값
-			backgroundColor: [
-				'rgba(255, 99, 132, 0.2)',
-				'rgba(54, 162, 235, 0.2)',
-				'rgba(255, 206, 86, 0.2)',
-				'rgba(75, 192, 192, 0.2)',
-				'rgba(153, 102, 255, 0.2)',
-			],
-			borderColor: [
-				'rgba(255, 99, 132, 1)',
-				'rgba(54, 162, 235, 1)',
-				'rgba(255, 206, 86, 1)',
-				'rgba(75, 192, 192, 1)',
-				'rgba(153, 102, 255, 1)',
-			],
-			borderWidth: 1
-		}]
-	};
 
-	// 옵션 설정
-	const options = {
-		responsive: false,
-		scales: {
-			y: {
-				beginAtZero: true
-			}
-		}
-	};
-
-	// 막대 그래프 생성
-	const ctx = document.getElementById('LaneChart').getContext('2d');
-	const myChart = new Chart(ctx, {
-		type: 'bar',
-		data: data,
-		options: options
-	});
+	//	const data = {
+	//		labels: ['탑', '정글', '미드', '원딜', '서폿'],
+	//		datasets: [{
+	//			label: '라인 별 선호도',
+	//			data: [TOP, JUNGLE, MIDDLE, BOTTOM, UTILITY], // 각 항목에 해당하는 값
+	//			backgroundColor: [
+	//				'rgba(255, 99, 132, 0.2)',
+	//				'rgba(54, 162, 235, 0.2)',
+	//				'rgba(255, 206, 86, 0.2)',
+	//				'rgba(75, 192, 192, 0.2)',
+	//				'rgba(153, 102, 255, 0.2)',
+	//			],
+	//			borderColor: [
+	//				'rgba(255, 99, 132, 1)',
+	//				'rgba(54, 162, 235, 1)',
+	//				'rgba(255, 206, 86, 1)',
+	//				'rgba(75, 192, 192, 1)',
+	//				'rgba(153, 102, 255, 1)',
+	//			],
+	//			borderWidth: 1
+	//		}]
+	//	};
+	//
+	//	// 옵션 설정
+	//	const options = {
+	//		responsive: false,
+	//		scales: {
+	//			y: {
+	//				beginAtZero: true
+	//			}
+	//		}
+	//	};
+	//
+	//	// 막대 그래프 생성
+	//	const ctx = document.getElementById('LaneChart').getContext('2d');
+	//	const myChart = new Chart(ctx, {
+	//		type: 'bar',
+	//		data: data,
+	//		options: options
+	//	});
 }
 
 function profileCheck(res) {
+	barTOP = TOP*4
+	barJUNGLE = JUNGLE*4
+	barMIDDLE = MIDDLE*4
+	barBOTTOM = BOTTOM*4
+	barUTILITY = UTILITY*4
+	console.log(barTOP)
+	console.log(barJUNGLE)
+	console.log(barMIDDLE)
+	console.log(barBOTTOM)
+	console.log(barUTILITY)
 	profileIcon = res.profileIcon
 	summonerLevel = res.summonerLevel
 	riotIdGameName = res.riotIdGameName
@@ -130,10 +140,10 @@ function profileCheck(res) {
             <div class="stmHCenter">
             
            		<div class = "stmHCenterT">
-           		제목 들어갈자리
+           		플레이한 챔피언(최근 20게임)
            		</div>
             	<div class = "stmHCenterB">
-            	내용들어 갈자리
+            	내용 들어갈 자리
             	</div>
             </div>
                
@@ -144,30 +154,33 @@ function profileCheck(res) {
         </div>
         <div class='stmBlank'>
         	<div class='stmBlankT'>
-        	제목들어갈자리
+        	선호 포지션(랭크)
         	</div>
         	<div class='stmBlankB'>
 	        	<div class = 'stmBlankM'>
-		        	<div class = 'stmBlankG'>
-		        		<div class = 'stmBlankGT'>1</div>
-						<div class = 'stmBlankGB'>1</div>
-		        	
+		        	<div class = 'stmBlankG'> 
+		        		<div class = 'stmBlankGTM' style='height: 100%;'>1</div>
+		        		
+						<div class = 'stmBlankGB'><img src='/img/top.png' style='width: 20px; height: 20px;'></div>
+		        		<div class = "stmBlankGTMM">
+		        				<div class = 'stmBlankGT' style='background-color : orange;'>1</div>
+		        			</div>	
 		        	</div>
 		        	<div class = 'stmBlankG'>
-		        		<div class = 'stmBlankGT'>2</div>
-						<div class = 'stmBlankGB'>2</div>	
+		        		<div class = 'stmBlankGT' style='background-color : #0080ff; height: 80%;'>2</div>
+						<div class = 'stmBlankGB'><img src='/img/top.png' style='width: 20px; height: 20px;'></div>	
 		        	</div>
 		        	<div class = 'stmBlankG'>
 		        		<div class = 'stmBlankGT'>3</div>
-						<div class = 'stmBlankGB'>3</div>
+						<div class = 'stmBlankGB'><img src='/img/top.png' style='width: 20px; height: 20px;'></div>
 		        	</div>
 		        	<div class = 'stmBlankG'>
 		        		<div class = 'stmBlankGT'>4</div>
-						<div class = 'stmBlankGB'>4</div>
+						<div class = 'stmBlankGB'><img src='/img/top.png' style='width: 20px; height: 20px;'></div>
 		        	</div>
 		        	<div class = 'stmBlankG'>
 		        		<div class = 'stmBlankGT'>5</div>
-						<div class = 'stmBlankGB'>5</div>
+						<div class = 'stmBlankGB'><img src='/img/top.png' style='width: 20px; height: 20px;'></div>
 		        	</div>
 	        	</div>
         	</div>
@@ -242,7 +255,7 @@ function showGameTamble(res, data) {
 	//	console.log(resMyList)
 	profileCheck(resMyList[0])
 	showgraph(win, lose)
-//	logolodingImg()
+	//	logolodingImg()
 	//	if (data['matchCnt'] == 1) {
 	//	logolodingImg()
 	//	}
