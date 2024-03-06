@@ -9,7 +9,7 @@ $(document).ready(function() {
 
 
 
-
+	logolodingImg()
 	mainStart()
 
 })
@@ -18,26 +18,26 @@ function logolodingImg() {
 
 
 
-		let gameName1 = $('#gameName').val()
-		var gameId = gameName1.split('#');
-		let gameName = gameId[0]
-		console.log(gameName)
-		data3 = { 'gameName': gameName }
-		$.ajax({
-			type: 'post',
-			url: '/lane/prefer',
-			data: data3,
-			success: function(res) {
-				LaneChart(res)
+	let gameName1 = $('#gameName').val()
+	var gameId = gameName1.split('#');
+	let gameName = gameId[0]
+	console.log(gameName)
+	data3 = { 'gameName': gameName }
+	$.ajax({
+		type: 'post',
+		url: '/lane/prefer',
+		data: data3,
+		success: function(res) {
+			LaneChart(res)
 
-			}
-
-
-		})
+		}
 
 
+	})
 
-	
+
+
+
 
 }
 
@@ -105,12 +105,12 @@ function aiCheckTroll(res1) {
 		url: '/ai/dataToAi',
 		data: JSON.stringify(res1),
 		success: function(res) {
-//									console.log(res)
-//
+			//									console.log(res)
+			//
 			if (res.queueId == 420) {
 
 				data = res
-//									console.log(data)
+				//									console.log(data)
 				$.ajax({
 					contentType: 'application/json',
 					type: 'post',
@@ -396,7 +396,7 @@ function gamebtn(goBtn, matchId) {
 	container4 = `<div class="container4" id = 'container4${matchId}' style = 'display: none' >`
 	$('#controller' + matchId).append(container2)
 	$('#controller' + matchId).append(container4)
-//	console.log(goBtn, matchId)
+	//	console.log(goBtn, matchId)
 	//	var line1 = document.getElementById("line1" + goBtn);
 	var container2 = document.getElementById("container2" + matchId);
 	var container4 = document.getElementById("container4" + matchId);
