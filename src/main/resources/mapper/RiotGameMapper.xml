@@ -116,7 +116,14 @@
 		order by participantId asc;
 	</select>
 	<select id="LanePrefer">
-		select teamPosition from RiotGameInfoT where riotIdGameName = #{gameName}
+		select teamPosition from RiotGameInfoT where
+		riotIdGameName = #{gameName}
+		limit 0,19;
+	</select>
+	<select id="championPrefer">
+		select championName, kda, win from RiotGameInfoT
+		where riotIdGameName =
+		#{gameName}
 		limit 0,19;
 	</select>
 </mapper>

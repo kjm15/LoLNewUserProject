@@ -28,6 +28,7 @@ function logolodingImg() {
 		url: '/lane/prefer',
 		data: data3,
 		success: function(res) {
+			console.log(res)
 			LaneChart(res)
 
 		}

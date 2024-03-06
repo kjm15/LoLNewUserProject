@@ -122,9 +122,18 @@ public class RestMatchListController {
 		MorematchList = matchList;
 		return MList;
 	}
+
 	@PostMapping("/lane/prefer")
-	public List<Map<String, Object>> LanePrefer(String gameName) {
-		return matchListService.LanePrefer(gameName);
+	public ArrayList<HashMap<String, Object>> LanePrefer(String gameName) {
+		ArrayList<HashMap<String, Object>> MList = new ArrayList<>();
+		HashMap<String, Object> newGList = new HashMap<>();
+		List<Map<String, Object>> championPrefer = matchListService.championPrefer(gameName);
+		List<Map<String, Object>> LanePrefer = matchListService.LanePrefer(gameName);
+		newGList.put("championPrefer", championPrefer);
+		newGList.put("LanePrefer", LanePrefer);
+		System.out.println(newGList);
+		MList.add(newGList);
+		 return MList;
 	}
 
 }
