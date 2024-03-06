@@ -18,7 +18,7 @@
 					<input type="hidden" name="n_date" id="n_date" value="">
 					 <input type="text" name="n_title" id="n_title" value="">
 
-				<textarea rows="6" cols="80" name="n_message" id="n_message" >
+				<textarea rows="6" cols="80" name="inqAnswer" id="inqAnswer" >
 				
 				
 

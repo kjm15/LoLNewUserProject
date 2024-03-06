@@ -418,7 +418,7 @@ function showGameTamble(res, data) {
 
 
 function showGameTambleBody(matchId) {
-	console.log(matchId)
+//	console.log(matchId)
 
 	let blueChampList = [] //matchId의 블루 리스트
 	let redChampList = []//matchId의 레드 리스트
@@ -733,8 +733,10 @@ timeline_list = []
 function aiTimelineAni(matchId) {
 
 	userId = $('#userId').val();
-	console.log(userId)
-	if (userId == '') {
+
+//	console.log(userId)
+	if(userId == ''){
+
 		alert("로그인 후 이용 가능합니다.")
 		return false;
 	}
@@ -777,7 +779,7 @@ window.addEventListener('click', (e) => {
 
 	if (e.target.className == 'box-right') {
 
-		console.log(e.target.className)
+//		console.log(e.target.className)
 	}
 
 });

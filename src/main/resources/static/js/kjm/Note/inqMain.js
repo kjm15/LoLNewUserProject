@@ -125,6 +125,7 @@ function inqMaininfo() {
                         <td class="status">${res[i].status}</td>
                         <td class="send_userId" style="display : none;">${res[i].send_userId}</td>
                         <td class="n_message" style="display : none;">${res[i].n_message}</td>
+                        <td class="inqAnswer" style="display : none;">${res[i].inqAnswer}</td>
                     </tr>`;
 			}
 			document.getElementById("inqbody").innerHTML = str
@@ -174,13 +175,20 @@ modal1_wrap.addEventListener("click", e => {
 	var table = document.getElementById("modal1_wrap")
 	var tr = table.getElementsByTagName("tr");
 	let n_title = tr[rowIndex].getElementsByTagName("td")[1].textContent
+	let n_date = tr[rowIndex].getElementsByTagName("td")[2].textContent
+	let status = tr[rowIndex].getElementsByTagName("td")[3].textContent
 	let n_message = tr[rowIndex].getElementsByTagName("td")[5].textContent
+	let inqAnswer = tr[rowIndex].getElementsByTagName("td")[6].textContent
 
 //	console.log(n_title)
 
 	document.querySelector("#title").innerText = n_title
 	document.querySelector("#message").innerText = n_message
-	document.querySelector("#date").innerText = n_date
+	document.querySelector("#datetime").innerText = n_date
+	document.querySelector("#sta").innerText = status
+	document.querySelector("#answer").innerText = inqAnswer
+	
+	
 
 })
 //function inqMaininfo() {

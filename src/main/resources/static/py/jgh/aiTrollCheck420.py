@@ -87,7 +87,6 @@ for e in data:
 
 #######################################################################################################################################
 conn.close()
-
 try:
     allkda = win_kda_List+lose_kda_List
     Mean_totalDamageDealtToChampions = win_Mean_totalDamageDealtToChampions + lose_Mean_totalDamageDealtToChampions
@@ -103,10 +102,6 @@ try:
     # plt.ylabel('GOLD') 
     # plt.show()
 
-    graph1 = {'1' : win_Mean_totalDamageDealtToChampions,
-                '2' : win_Mean_goldEarned,
-                '3' : lose_Mean_totalDamageDealtToChampions,
-                '4' : lose_Mean_goldEarned}
 
     tier_target=[1]*len(win_kda_List)+[0]*len(lose_kda_List)
     kn = KNeighborsClassifier(n_neighbors=3)
@@ -136,14 +131,11 @@ try:
     trans={1:'승', 0:'패'}
     a = trans[kn.predict([new])[0]]
 
-    graph1_string = json.dumps(graph1)
-    if len(tier_target) < 25 : 
+    if len(tier_target) < 50 : 
 
-        data5 = {key:"데이터부족" , "정확도" : a1 , "총데이터길이"  :len(tier_target), '구간' : tier , '캐릭' : championName , "key":"데이터부족" }
+        data5 = {key:"데이터부족" , "정확도" : a1 , "총데이터길이"  :len(tier_target), '구간' : tier , '캐릭' : championName , "key":"데이터부족"}
     else :
         data5 = {key:a , "정확도" : a1 , "총데이터길이"  :len(tier_target), '구간' : tier , '캐릭' : championName, "key" : a}  
-    
-
     json_string = json.dumps(data5)
     # print(a, a1)
     print(json_string)

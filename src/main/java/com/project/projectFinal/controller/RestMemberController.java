@@ -53,6 +53,18 @@ public class RestMemberController {
 		return memberService.minusRoulette(memberDto);
 
 	}
+	@PostMapping("/changePw")
+	public int changePw(MemberDto memberDto) {
+//		log.info("==========={}",memberDto);	
+		return memberService.changePw(memberDto);
+		
+	}
+	@PostMapping("/changeInfo")
+	public int changeInfo(MemberDto memberDto) {
+//		log.info("==========={}",memberDto);	
+		return memberService.changeInfo(memberDto);
+		
+	}
 	
 
 }

@@ -52,7 +52,9 @@ public interface MemberDao {
 
 	ArrayList<MemberDto> memberload(MemberDto memberDto);
 
-	String InfoChange(MemberDto memberDto);
+//	String InfoChange(MemberDto memberDto);
+
+	int changeInfo(MemberDto memberDto);
 
 	
 

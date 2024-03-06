@@ -26,17 +26,21 @@
 	<link href="/css/jgh/modal.css" rel="stylesheet" type="text/css">
 	<link href="/css/common/roulette.css" rel="stylesheet" type="text/css">
 	<script defer src="/js/aPayment/payment.js"></script>
-<!-- 	<script defer src="/js/aCommon/roulette.js"></script> -->
-
+	<!-- 	<script defer src="/js/aCommon/roulette.js"></script> -->
+	<!--  장기훈 검색에 엔터쳐도 가능하게 만듬 -->
+	<script defer src="/js/aCommon/common.js"></script>
+	<!-- 관리자로 로그인시 관리자 페이지 -->
+	<script defer src="/js/admin/info.js"></script>
+	<!-- 롤 검색 관련 -->
 	<script defer src="/js/stm/loldata.js"></script>
 	<script defer src="/js/stm/RiotGameTable2.js"></script>
-<!-- 폰트 장기훈 -->
-<link href="https://fonts.googleapis.com/css2?family=Jua&display=swap"
-	rel="stylesheet">
-<link
-	href="https://fonts.googleapis.com/css2?family=Rubik+Gemstones&display=swap"
-	rel="stylesheet">
-<!-- 폰트 장기훈 -->
+	<!-- 폰트 장기훈 -->
+	<link href="https://fonts.googleapis.com/css2?family=Jua&display=swap"
+		rel="stylesheet">
+	<link
+		href="https://fonts.googleapis.com/css2?family=Rubik+Gemstones&display=swap"
+		rel="stylesheet">
+	<!-- 폰트 장기훈 -->
 
 
 	<div class="navbars">
@@ -46,7 +50,7 @@
 		<div class="navMenuDuo">
 			<a href="/jgh">영혼의Duo</a>
 		</div>
-		<c:if test="${searchbox == null}">
+	<c:if test="${searchbox == null}">
 			<div class="search-contents1">
 				<div class="search-itmes1">
 					<div class="sc-dataBoom">
@@ -57,7 +61,7 @@
 					</div>
 					<div class="search-home1">
 						<input type="text" class="search-home11" id="search-home"
-							placeholder="플레이어이름 + #KR1" value="">
+							placeholder="플레이어이름 + #KR1" value="" onkeypress="GotoSearch()">
 					</div>
 					<div class="searchBoom1">
 						<button id="searchBoom" class="searchBoom11">BOOM</button>
@@ -66,19 +70,38 @@
 			</div>
 		</c:if>
 		<c:choose>
-			<c:when test="${userId != null}">
+			<c:when test="${userId == 'pay'}">
 				<div class="navbarLogin">
-					<!-- 					<div class="navChoice"> -->
-					<%-- 						<span>${userId}님 접속중</span> --%>
-					<!-- 					</div> -->
 					<div class="navChoice">
 						<a href="/member/mypage">${userId}님</a>
 					</div>
-					<!-- 					<div class="navChoice"> -->
-					<!-- 						<a href="/Note">메일함</a> -->
-					<!-- 					</div> -->
+					<div class="navChoice" id="modal_test">
+						<a href="javascript:openModal()">메니저</a>
+					</div>
+					<div class="navChoice">
+						<a href="/member/logout">로그아웃</a>
+					</div>
+				</div>
+			</c:when>
 
-					<!-- 					 <div id="app"></div> -->
+			<c:when test="${userId == 'admin'}">
+				<div class="navbarLogin">
+					<div class="navChoice">
+						<a href="/member/mypage">${userId}님</a>
+					</div>
+					<div class="navChoice" id="modal_test">
+						<a href="javascript:openModal()">총관리자</a>
+					</div>
+					<div class="navChoice">
+						<a href="/member/logout">로그아웃</a>
+					</div>
+				</div>
+			</c:when>
+			<c:when test="${userId != null}">
+				<div class="navbarLogin">
+					<div class="navChoice">
+						<a href="/member/mypage">${userId}님</a>
+					</div>
 					<div class="navChoice" id="modal_test">
 						<a href="javascript:openModal()">결제하기</a>
 					</div>
@@ -94,7 +117,8 @@
 			</c:otherwise>
 		</c:choose>
 
-
+	
+		
 	</div>
 
 	<div class="headerItmes">

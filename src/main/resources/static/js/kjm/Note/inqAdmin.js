@@ -77,11 +77,11 @@ function inqAnswer() {
 	let n_num = $('#n_num').val()
 	let n_date = $('#n_date').val()
 	let n_title = $('#n_title').val()
-	let n_message = $('#n_message').val()
+	let inqAnswer = $('#inqAnswer').val()
 	let status = $('#status').val()
 
 	// 입력 필드가 비어 있는지 검사
-	if (!n_title || !n_message || status) {
+	if (!n_title || !inqAnswer) {
 		alert("빈칸이 있습니다.");
 		return;
 	}
@@ -91,7 +91,7 @@ function inqAnswer() {
 		'n_num': n_num,
 		'n_date': n_date,
 		'n_title': n_title,
-		'n_message': n_message,
+		'inqAnswer': inqAnswer,
 		
 	}
 	console.log("test");
@@ -109,7 +109,7 @@ function inqAnswer() {
 				modal0.style.display = "none"
 
 			} else {
-				alert("답변 전송 실패")
+				alert("전송 실패")
 				console.log("hi")
 			}
 

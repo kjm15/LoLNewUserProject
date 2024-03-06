@@ -164,16 +164,22 @@ public class MemberService implements UserDetailsService {
 
 	}
 
-	public boolean InfoChange(MemberDto memberDto) {
-		String dbPw = memberDao.InfoChange(memberDto);
-		String inputPw = memberDto.getUserPw();
-		log.info("==========dbpw{}", dbPw);
-		boolean InfoChange = (passwordEncoder.matches(inputPw, dbPw));
-		log.info("==========dbpw{}", InfoChange);
-		if (InfoChange) {
-			return InfoChange;
-		} else {
-			return false;
-		}
+//	public boolean InfoChange(MemberDto memberDto) {
+//		String dbPw = memberDao.InfoChange(memberDto);
+//		String inputPw = memberDto.getUserPw();
+//		log.info("==========dbpw{}", dbPw);
+//		boolean InfoChange = (passwordEncoder.matches(inputPw, dbPw));
+//		log.info("==========dbpw{}", InfoChange);
+//		if (InfoChange) {
+//			return InfoChange;
+//		} else {
+//			return false;
+//		}
+//	}
+
+	public int changeInfo(MemberDto memberDto) {
+		int result = memberDao.changeInfo(memberDto);
+//		log.info("====이릅변경=={}", result);
+		return result;
 	}
 }
