@@ -44,7 +44,7 @@ public class RestPythonBuilder {
 			HttpSession httpSession) throws Exception {
 		Map<String, Object> aiReultMap = new HashMap<>();
 
-		String filePath = "src/main/resources/static/py/aiModelSave/aiModel420/aiModelCheck.py";
+		String filePath = "src/main/resources/static/py/aiModelSave/aiModelCheck.py";
 
 		String matchId = (String) aMap.get("matchId");
 		String participantId = String.valueOf(aMap.get("participantId"));
@@ -80,12 +80,12 @@ public class RestPythonBuilder {
 
 		log.info("솔로랭크 결과값 : {}", bMap);
 
-		aiReultMap.put("matchId", matchId);
-		aiReultMap.put("participantId", participantId);
+		bMap.put("matchId", matchId);
+		bMap.put("participantId", participantId);
 		
-		matchListService.saveAiData(aiReultMap);
-		aiReultMap.put("champion_name_kr", champion_name_kr);
-		return aiReultMap;
+		matchListService.saveAiData(bMap);
+		bMap.put("champion_name_kr", champion_name_kr);
+		return bMap;
 	}
 
 	// 칼바람

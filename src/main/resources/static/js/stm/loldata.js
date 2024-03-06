@@ -157,7 +157,7 @@ function aiCheckTroll(res1) {
 					url: '/ai/trollcheck450',
 					data: JSON.stringify(data),
 					success: function(res1) {
-						//						console.log(res1)
+												console.log(res1)
 						for (const [key, value] of Object.entries(res1)) {
 							if (res.win == 1) { // 게임 : 승리
 
@@ -407,13 +407,6 @@ function gamebtn(goBtn, matchId) {
 
 
 	showGameTambleBody(matchId) // 바디부분 만들기
-
-
-
-
-
-
-
 
 	//	  완료 되면 다시 켜기
 	data = { 'matchId': matchId }
