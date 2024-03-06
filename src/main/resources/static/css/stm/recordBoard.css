@@ -47,11 +47,13 @@
 }
 
 .graph1 {
+	
 	font-family: 'Jua', sans-serif;
 	display: flex;
 	justify-content: center;
 	margin-bottom: 50px;
 	/* 	height: 200px; */
+	
 }
 
 .container1 {
@@ -489,12 +491,32 @@
 }
 
 .container333Box {
+	position : relative;
+	opacity: 0.9;
+		background-image: no-repeat;
+	background-size: 100% 100%;
 	display: flex;
 	width: 1100px;
-	border: 1px solid rgb(157, 196, 253);
+	border: 2px solid rgb(157, 196, 253);
 	height: 200px;
+	z-index: 1;
+	
+	
 }
-
+.container333Box::after {
+		background-image:
+		url('https://image.fmkorea.com/files/attach/new3/20231027/14339012/47592066/6326463056/b1f95fd55a45869d983ef93f1974136d.jpg');	
+		background-image: no-repeat;
+		background-position :0% 20%;
+	content: '';
+	position: absolute;
+/* 	background: #494949; */
+	z-index: -1;
+/* 	inset: 0; */
+	opacity: 0.5;
+	  width: 100%;
+  height: 100%;
+}
 .container333 {
 	width: 1100px;
 	display: flex;
@@ -525,18 +547,24 @@
 }
 
 .stmBlank {
-	background-color: pink;
+/* 	background-color: pink; */
 	position: relative;
 	width: 60%;
 	height: 100%;
 }
 
 .stmBlankT {
-
+	position : relative;
 	width: 100%;
 	height: 30%;
 }
-
+.stmBlankTM {
+	top : 40%;
+	text-align : center;
+	position : absolute;
+	width: 100%;
+	height: 30%;
+}
 .stmBlankB {
 
 	width: 100%;
@@ -551,6 +579,7 @@
 }
 
 .stmBlankG {
+	background-color:transparent;
 	text-align : center;
 	position : relative;
 
@@ -558,6 +587,8 @@
 	height: 135px;
 }
 .stmBlankGtop {
+  border-top-left-radius: 50px;
+    border-top-right-radius: 50px;
 	position : absolute;
 	display : flex;
 	left : 35%;
@@ -572,45 +603,61 @@
 }
 
 .stmBlankGTM {
-	background-color: red;
+	  border-top-left-radius: 50px;
+    border-top-right-radius: 50px;
+	background-color: rgba(60, 192, 255, 0.7);;
 	width: 30%;
 	height: 100%;
 
 }
 .stmBlankGTM1 {
+	  border-top-left-radius: 50px;
+    border-top-right-radius: 50px;
 	position:absolute;
-	background-color: #d0d0d0;
+	background-color:rgba(0, 0, 0, 0.7);
+
 	left : 0%;
 	width: 30%;
 	height: 30%;
 }
 .stmBlankGTM2 {
+	  border-top-left-radius: 50px;
+    border-top-right-radius: 50px;
 	position:absolute;
-	background-color: #d0d0d0;
+	background-color:rgba(0, 0, 0, 0.7);
+
 	left : 0%;
 	width: 30%;
 	height: 10%;
 }
 
 .stmBlankGTM3 {
+	  border-top-left-radius: 50px;
+    border-top-right-radius: 50px;
 	position:absolute;
-	background-color: #d0d0d0;
+	background-color:rgba(0, 0, 0, 0.7);
+
 	left : 0%;
 	width: 30%;
 	height: 80%;
 }
 
 .stmBlankGTM4 {
+	  border-top-left-radius: 50px;
+    border-top-right-radius: 50px;
 	position:absolute;
-	background-color: #d0d0d0;
+	background-color:rgba(0, 0, 0, 0.7);
+
 	left : 0%;
 	width: 30%;
 	height: 70%;
 }
 
 .stmBlankGTM5 {
+		   border-top-left-radius: 50px;
+    border-top-right-radius: 50px;
 	position:absolute;
-	background-color: #d0d0d0;
+	background-color:rgba(0, 0, 0, 0.7);
 	left : 0%;
 	width: 30%;
 	height: 10%;
@@ -624,7 +671,7 @@
 }
 
 .stmBlankM {
-	background-color: white;
+/* 	background-color: white; */
 
 	/* 	좌우이동 */
 
@@ -748,15 +795,17 @@
 .stmHCenter {
 	position: relative;
 	/* 	background-color : skyblue; */
-	width: 50%;
+	width: 40%;
 	height: 100%;
 	/* 	float: right; */
 
 }
 
 .stmHCenterT {
-
+	position:absolute;
 	/* 	background-color : skyblue; */
+	top : 13%;
+	left : 14%;
 	width: 100%;
 	height: 30%;
 	/* 	float: right; */
@@ -764,10 +813,12 @@
 }
 
 .stmHCenterB {
-
+	position:absolute;
+	left : 20%;
+	top : 30%;
 	/* 	background-color : skyblue; */
 	width: 100%;
-	height: 70%;
+	height: 50%;
 	/* 	float: right; */
 
 }
@@ -919,6 +970,15 @@
 	animation-fill-mode: forwards;
 	z-index: auto;
 }
+
+   
+
+
+
+
+
+
+
 
 
 /* 튤팁시작 */

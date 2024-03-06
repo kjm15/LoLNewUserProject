@@ -1,32 +1,6 @@
 
-function showgraph(win, lose) {
-	var ctx = document.getElementById('donutChart').getContext('2d');
-	var myChart = new Chart(ctx, {
-		type: 'doughnut',
-		data: {
-			labels: ['승리', '패배'],
-			datasets: [{
-				//				label: '승리',
-				data: [win, lose], // 승리와 패배 데이터
-				backgroundColor: [
-					'rgba(75, 192, 192, 0.2)',
-					'rgba(255, 99, 132, 0.2)'
-				],
-				borderColor: [
-					'rgba(75, 192, 192, 1)',
-					'rgba(255, 99, 132, 1)'
-				],
-				borderWidth: 1
-			}]
-		},
-		options: {
-			responsive: false,
-			legend: {
-				position: 'bottom', // 범례 위치
-			},
-		}
-	});
-}
+
+
 let TOP = 0
 let JUNGLE = 0
 let MIDDLE = 0
@@ -62,11 +36,11 @@ function LaneChart(res) {
 		console.log(key, val)
 	}
 	arr.sort((a, b) => b[1] - a[1])
-	
-	arr.slice(0,3)
+
+	arr.slice(0, 3)
 
 
-	console.log(arr.slice(0,3))
+	console.log(arr.slice(0, 3))
 
 
 
@@ -156,57 +130,59 @@ function profileCheck(res) {
         </div>
         <div class='stmBlank'>
         	<div class='stmBlankT'>
-        	선호 포지션(랭크)
+        		<div class='stmBlankTM' >
+        			선호 포지션(랭크)
+        		</div>
         	</div>
         	<div class='stmBlankB'>
 	        	<div class = 'stmBlankM'>
-		        	<div class = 'stmBlankG'> 
+		        	<div class = 'stmBlankG' tooltip = '${TOP}'> 
 		        		<div class = 'stmBlankGtop'>
 		        			<div class = 'stmBlankGTM'></div>
-			        		<div class = 'stmBlankGTM1'></div>
+			        		<div class = 'stmBlankGTM1' ></div>
 		        		</div>
-		        		<div class = 'stmBlankGbottom'>
+		        		<div class = 'stmBlankGbottom'  tooltip="탑" >
 		        			<img src='/img/top.png' style='width: 20px; height: 20px;'>
 		        		</div>
 		        	
 		        	</div>	
-			       	      	<div class = 'stmBlankG'> 
+			       	      	<div class = 'stmBlankG' tooltip = '${JUNGLE}'> 
 		        		<div class = 'stmBlankGtop'>
 		        			<div class = 'stmBlankGTM'></div>
 			        		<div class = 'stmBlankGTM2'></div>
 		        		</div>
-		        		<div class = 'stmBlankGbottom'>
-		        			<img src='/img/jug.png' style='width: 20px; height: 20px;'>
+		        		<div class = 'stmBlankGbottom' tooltip="정글">
+		        			<img  src='/img/jug.png' style='width: 20px; height: 20px;'>
 		        		</div>
 		        	
 		        	</div>
-		        	      	<div class = 'stmBlankG'> 
+		        	      	<div class = 'stmBlankG' tooltip = '${MIDDLE}'> 
 		        		<div class = 'stmBlankGtop'>
 		        			<div class = 'stmBlankGTM'></div>
 			        		<div class = 'stmBlankGTM3'></div>
 		        		</div>
-		        		<div class = 'stmBlankGbottom'>
-		        			<img src='/img/mid.png' style='width: 20px; height: 20px;'>
+		        		<div class = 'stmBlankGbottom' tooltip="미드">
+		        			<img  src='/img/mid.png' style='width: 20px; height: 20px;'>
 		        		</div>
 		        	
 		        	</div>
-		        	      	<div class = 'stmBlankG'> 
+		        	      	<div class = 'stmBlankG' tooltip = '${BOTTOM}'> 
 		        		<div class = 'stmBlankGtop'>
 		        			<div class = 'stmBlankGTM'></div>
 			        		<div class = 'stmBlankGTM4'></div>
 		        		</div>
-		        		<div class = 'stmBlankGbottom'>
-		        			<img src='/img/adc.png' style='width: 20px; height: 20px;'>
+		        		<div class = 'stmBlankGbottom'tooltip="원딜">
+		        			<img  src='/img/adc.png' style='width: 20px; height: 20px;'>
 		        		</div>
 		        	
 		        	</div>
-		        	      	<div class = 'stmBlankG'> 
+		        	      	<div class = 'stmBlankG' tooltip = '${UTILITY}'> 
 		        		<div class = 'stmBlankGtop'>
 		        			<div class = 'stmBlankGTM'></div>
 			        		<div class = 'stmBlankGTM5'></div>
 		        		</div>
-		        		<div class = 'stmBlankGbottom'>
-		        			<img src='/img/sup.png' style='width: 20px; height: 20px;'>
+		        		<div class = 'stmBlankGbottom' tooltip="서폿">
+		        			<img  src='/img/sup.png' style='width: 20px; height: 20px;'>
 		        		</div>
 		        	
 		        	</div>
@@ -291,8 +267,9 @@ function showGameTamble(res, data) {
 		goBtn = Number(i) + (data['matchCnt']) * 4
 		Myres = resMyList[i] // 추후에 i 으로 바꾸기
 
-
+//		console.log(Myres)
 		timecheck(Myres)//몇시간전,몇분게임
+		champion_name_kr = Myres.champion_name_kr
 		matchId = Myres.matchId
 		queuecheck(Myres)
 		win_losecheck(Myres)
@@ -329,7 +306,7 @@ function showGameTamble(res, data) {
 								<div><span class="winlose-tm" style='color:blue;'>${win_lose}</span></div>
 								<div><span class="igstime-tm" style='font-size:13px'>${ingamespentTime}</span></div>
 								</div>`
-			boxright = `<div class="box-right" style='background-color :#9ac2e2' id ="gamebtn${goBtn}" onclick ="gamebtn(${goBtn},'${matchId}')"><a href = 'javascript:;'><div class = "box-rightblue">∨</div></a></div>`
+			boxright = `<div tooltip="click! more Detail!" class="box-right" style='background-color :#9ac2e2' id ="gamebtn${goBtn}" onclick ="gamebtn(${goBtn},'${matchId}')"><a href = 'javascript:;'><div class = "box-rightblue">∨</div></a></div>`
 		} else {
 			str = `<div class="container1" id ='${matchId}container1' style='background-image:linear-gradient(315deg, #FFD5F4 0%, #FFB3C8 74%)'>`
 			str1 = `<div class='box-column' style='background-color:#FF5E8A;width:10px;'></div>
@@ -339,13 +316,13 @@ function showGameTamble(res, data) {
 											<div><span style='color:red;'>${win_lose}</span></div>
 											<div><span style='font-size:13px'>${ingamespentTime}</span></div>
 											</div>`
-			boxright = `<div class="box-right" style='background-color : rgba(255, 2, 73, 0.18)' id ="gamebtn${goBtn}" onclick ="gamebtn(${goBtn},'${matchId}')"><a href = 'javascript:;'><div class = "box-rightred">∨</div></a></div>`
+			boxright = `<div tooltip="click! more Detail!" class="box-right" style='background-color : rgba(255, 2, 73, 0.18)' id ="gamebtn${goBtn}" onclick ="gamebtn(${goBtn},'${matchId}')"><a href = 'javascript:;'><div class = "box-rightred">∨</div></a></div>`
 
 		}
 		//		console.log(boxright)
 		let boxcenter1 = `	<div class="box-center1">
 								<div class="champSepll">
-									<div class="box-center4" id = '${matchId}box-center4'></div>
+									<div class="box-center4" tooltip="${champion_name_kr}" id = '${matchId}box-center4'></div>
 									
 									<div class="box-center44">
 										<div class="spell1" id = '${matchId}spell1'></div>
@@ -486,13 +463,13 @@ function showGameTamble(res, data) {
 			success: function(res) {
 				console.log(res.matchId + "saved")
 
-				html = `<a href="javascript:aiTimelineAni(\'${res.matchId}\');"><img width=80 height=40 src="/img/replay3.png" alt="리플레이시작버튼"> </a>`
+				html = `<div  tooltip="리플레이는 회원만 가능합니다." ><a href="javascript:aiTimelineAni(\'${res.matchId}\');"><img width=80 height=40 src="/img/replay3.png" alt="리플레이시작버튼"> </a></div>`
 				$('#' + res.matchId).html(html)
 			}
 		})
 	}
 	//	console.log(myriotIdGameName)
-	let more = `<div class='containerXR'></div><div class='more'>
+	let more = `<div class='containerXR'></div><div class='more'  tooltip="추가 정보 더보기" >
 					<center>
 						<input type = "button" value = "더보기" name = "\'${myriotIdGameName}\'#\'${myriotIdTagline}\'#\'${data['matchCnt']}\'" id = 'loadMore' class='loadMore'>
 						
