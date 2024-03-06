@@ -27,7 +27,6 @@
 <title>Insert title here</title>
 </head>
 <body>
-	${userId }님
 	<br>
 	<a href="/">돌아가기</a>
 	<a id="memberload" href="/admin/allSendMessage">메시지발송</a>
@@ -51,6 +50,7 @@
 					<td>${item.n_title}</td>
 					<td>${item.n_date}</td>
 					<td>${item.status}</td>
+					<td style="display: none;">${item.n_message}</td>
 					<td style="display: none;">${item.recv_userId}</td>
 				</tr>
 				<input type="hidden" name="${item.recv_userId}"

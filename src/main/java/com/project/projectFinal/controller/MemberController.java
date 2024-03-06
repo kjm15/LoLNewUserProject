@@ -83,20 +83,9 @@ public class MemberController {
 
 	}
 
-	@GetMapping("/findId")
+	@GetMapping("/findIdT")
 	public String fId() {
-		return "aMain/findId";
-	}
-
-	@PostMapping("/findId")
-	public String findId(@RequestParam String userEmail, MemberDto memberDto, Model model) {
-		log.info("=====컨트롤러상={}", memberDto);
-		memberDto.setUserEmail(userEmail);
-		MemberDto id = memberService.findId(memberDto);
-		model.addAttribute("memberDto", id);
-		log.info("=====컨트롤러={}", memberDto);
-		
-		return "aMain/findIdresult";
+		return "aMain/findIdT";
 	}
 	
 	@GetMapping("/findPw")
@@ -116,6 +105,19 @@ public class MemberController {
 		}else {
 			return "aMain/findPw";
 		}
+	}
+	
+	@PostMapping("/changePw2")
+	public String changePw2(MemberDto memberDto) {
+//		log.info("==========={}",memberDto);	
+		int result = memberService.changePw2(memberDto);
+		if(result ==1) {
+			return "redirect:/member/login";
+		}else {
+			return "redirect:/member/changePw";
+		}
+		
+		
 	}
 	
 	

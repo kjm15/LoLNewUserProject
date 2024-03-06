@@ -24,7 +24,7 @@
 								</div>
 								<div class="pline2-2">
 									<button type="button" class="changebutton" id = "changeName">수정</button>
-									<button type="button" class="changebutton2" id = "changeName2" disabled>수정완료</button>
+									<button type="button" class="changebutton2" id = "changeName2">수정완료</button>
 								</div>
 							</div>
 

@@ -59,5 +59,15 @@
 .contents{
 	width : 300px;
 	height : 200px;
-	border: 1px solid black;
 }
+.sendUser{
+	width : 80px;
+}
+.answerBtn{
+	top : 50px;
+	border: 1px solid white;
+	background: none;
+	color : white;
+	position: relative;
+}
+

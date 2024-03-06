@@ -12,14 +12,15 @@ modal_wrap.addEventListener("click", e => {
 	let send_userId = tr[rowIndex].getElementsByTagName("td")[1].textContent
 	let n_title = tr[rowIndex].getElementsByTagName("td")[2].textContent
 	let n_date = tr[rowIndex].getElementsByTagName("td")[3].textContent
-	let recv_userId = tr[rowIndex].getElementsByTagName("td")[5].textContent
-//	let status = tr[rowIndex].getElementsByTagName("td")[7].innerText
+	let recv_userId = tr[rowIndex].getElementsByTagName("td")[6].textContent
+	let n_message = tr[rowIndex].getElementsByTagName("td")[5].innerText
 	console.log(n_title)
 
 	document.querySelector("#num").innerText = n_num
 	document.querySelector("#title").innerText = n_title
 	document.querySelector("#senduser").innerText = send_userId
 	document.querySelector("#date").innerText = n_date
+	document.querySelector("#message").innerText = n_message
 
 	document.querySelector("#n_num").value = n_num
 	document.querySelector("#n_title").value = "re:"+n_title

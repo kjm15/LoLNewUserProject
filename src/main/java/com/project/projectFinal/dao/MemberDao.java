@@ -56,6 +56,8 @@ public interface MemberDao {
 
 	int changeInfo(MemberDto memberDto);
 
+	int changePw2(MemberDto mDto);
+
 	
 
 
