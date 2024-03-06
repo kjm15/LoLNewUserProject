@@ -128,14 +128,14 @@
 <!-- 	</select> -->
 
 	<select id="forGraphInfo">
-		select * from champRankT WHERE
+		select * from champTierRankT WHERE
 		champion_name =
 		#{championName}
 	</select>
 
 	<select id="forGraphInfo2">
-		select * from champRankT WHERE
-		teamPosition = #{teamPosition}
+		select * from champTierRankT WHERE
+		teamPosition = #{teamPosition} and tier=#{tier}
 		order by pick_rate desc limit 10;
 	</select>
 

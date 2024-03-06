@@ -1,43 +1,77 @@
 .championGraphContainer {
 	display: flex;
 	width: 100%;
-	height: 250px;
+	height: 290px;
 	justify-content: center;
 	border: 1px solid #8CB9FC;
 	border-radius: 1px;
 	padding: 5px;
-/* 	background-color: white; */
+	/* 	background-color: white; */
 }
-.championGraphContent{
+
+.championGraphContent {
 	display: flex;
 }
+
 .myImg {
 	display: flex;
 	align-items: center;
-	margin-top: 40px;
+	margin-top: 72px;
 	flex-direction: column;
-	margin-left:10px;
+	margin-left: 10px;
 }
 
 .box-left {
 	display: flex;
+	flex-direction: column;
 	align-items: center;
-	margin-bottom: 40px;
-}
-.myChampsNameBox{
-	border-radius:5px;
-	background-color: #8CB9FC;
+	margin-top: 44px;
 	
-	padding: 3px 8px 3px 8px;
-	display:flex;
-	justify-content: center;
-	margin-top : -7px;
 }
-.myChampsName{
-	color:white;
+
+.box-leftSelect {
+	margin-left: 46px;
+}
+
+.myChampsNameBox {
+	border-radius: 5px;
+	background-color: #8CB9FC;
+	padding: 3px 8px 3px 8px;
+	display: flex;
+	justify-content: center;
+	margin-top: -7px;
+}
+
+.myChampsName {
+	color: white;
+}
+
+.box-right-contents {
+	display: flex;
+	justify-content: center;
+	margin-left:56px;
+}
+
+.topPick10 {
+	margin-top: 5px;
+	margin-right: 5px;
+}
+
+.box-right2 {
+	display: flex;
+	justify-content: center;
+	margin-bottom: 10px;
 }
 
 #ChampGraphPosition {
+	width: 110px;
+	height: 30px;
+	font-size: 14px;
+	border: 1px solid rgba(4, 68, 164, 0.6);
+	border-radius: 3px;
+}
+
+#ChampGraphPick {
 	width: 110px;
 	height: 30px;
 	font-size: 14px;
@@ -55,7 +89,6 @@
 
 /* .box-right { */
 /* /* 	  background: pink; */
- 
 
 /* 	flex-basis: 100px; */
 /* 	width: 100px; */
@@ -64,7 +97,6 @@
 /* } */
 /* .box-side { */
 /* 	/*   background: yellow; */
- 
 
 /* 	flex-basis: 100px; */
 /* 	width: 50%; */
