@@ -25,7 +25,7 @@ public interface ChampDao {
 
 	public int allChampTierCnt(String tier, String teamPosition);
 
-	public int banChampTierCnt(String tier,String champion_name_kr);
+	public int banChampTierCnt(String tier, String champion_name_kr);
 
 	public void saveChampTierRankT(HashMap<String, Object> champTierRankTList);
 
@@ -46,5 +46,7 @@ public interface ChampDao {
 	public List<HashMap<String, Object>> laneCounterListInfo(ChampionRankDto rankDto);
 
 	public List<HashMap<String, Object>> rankListInfo(String teamPosition, int championId);
+
+;
 
 }

@@ -45,15 +45,17 @@ $(document).ready(function() {
 			
 			$('.tooltiptext').css("background-color","#2a2c33")
 			$('.tooltiptext').css("border","1px solid #2a2c33")
-			
+			$('.champs').css("color","white")
 			$('.champNum').css("color","white")
 			$('.rankChampName').css("color","white")
 			$('.rate_vp').css("color","white")
 			$('.champName').css("color","white")
+			$('.rankTable').css("color","white")
 			
 			$('.search_c').css("background-color","white")
 			
 			$('.lines').css("background-image","linear-gradient(#ffffff, #2a2c33 0%, #222 94%)")
+			$('.rankSearch').css("background-image", "linear-gradient(rgb(255, 255, 255),rgb(42, 44, 51) 0%, rgb(34, 34, 34) 94%)")
 			$('.myChampsNameBox').css("background-color","#2a2c33")
 			
 
@@ -115,15 +117,17 @@ $(document).ready(function() {
 			
 			$('.tooltiptext').css("background-color","#8CB9FC")
 			$('.tooltiptext').css("border","1px solid rgb(120, 173, 252)")
-			
-			$('.champNum').css("color","black")
+			$('.tooltiptext').css("color","white")
+			$('.champs').css("color","black")
+//			$('.champNum').css("color","black")
 			$('.rankChampName').css("color","black")
 			$('.rate_vp').css("color","black")
 			$('.champName').css("color","black")
-			
+			$('.rankTable').css("color","black")
 			$('.search_c').css("background-color","white")
 			
 			$('.lines').css("background-image","linear-gradient(315deg, #D6E5FC 0%, #9DC4FD 74%)")
+			$('.rankSearch').css("background-image", "linear-gradient(315deg, #D6E5FC 0%, #9DC4FD 74%)")
 			
 			$('.rankLineSelect').css("color","#ffffff")
 			$('.myChampsName').css("color","#ffffff")

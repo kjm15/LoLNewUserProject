@@ -28,7 +28,7 @@
 						
 					</div>
 					<div class='box-left'>
-						<div style="max-width: 300px;" id="myChart1"></div>
+						<div style="max-width: 230px;" id="myChart1"></div>
 					</div>
 					<div class='box-center'>
 <!-- 						<div style="max-width: 300px" id="myChart2"></div> -->

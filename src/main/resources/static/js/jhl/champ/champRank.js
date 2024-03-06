@@ -43,17 +43,18 @@ function champRank(position, tier) {
 			//			console.log(res);
 			//			console.log(a);
 
-//			modNum = $('#modNum').text()
+			modNum = $('#modNum').text()
 
 
-//						if (modNum == 1) {
+						if (modNum == 0) {
 //			
 ////							$('span').css("color", "#212529")
-////							$('.ranklineBtn .activeRank').css("color","#8CB9FC")
+//							$('.ranklineBtn .activeRank').css("color","#8CB9FC")
+							$('.rankSearch').css("background-image", "linear-gradient(rgb(255, 255, 255),rgb(42, 44, 51) 0%, rgb(34, 34, 34) 94%)")
 //			
 //			
-//						}
-//
+						}
+
 //						if (modNum == 0) {
 //			
 ////							$('span').css("color", "#212529")
@@ -87,15 +88,14 @@ $(document).on('click', '.rankLine>div', function() {
 
 
 
-	//	if(modnum == 0){
+//		if(modnum == 0){
 	//		
 	//		console.log(modnum)
-	//		
-	//		$('.rankSearch').css("background-image","linear-gradient(#ffffff, #2a2c33 0%, #222 94%)")
-	//		$('.rankSearch').css("color","white")
+//			$('.rankSearch').css("color","white")
 	//		
 	//		
-	//	} else if(modnum == 1){
+//		}
+	// else if(modnum == 1){
 	//		
 	//		console.log(modnum)
 	//		
