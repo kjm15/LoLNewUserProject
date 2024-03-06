@@ -132,9 +132,11 @@
 		select userId from memberT where role = 'USER';
 	</select>
 	
-	<select id = "InfoChange">
-		select userPw from memberT where userId = #{userId};
-	</select>
+	<update id = "changeInfo">
+		update memberT set userName = #{userName} where userId = #{userId};
+	</update>
+	
+	
 
 	
 	

@@ -119,31 +119,25 @@ public class MemberController {
 	}
 	
 	
-	@PostMapping("/changePw")
-	public String changePw(MemberDto memberDto) {
-		log.info("==========={}",memberDto);
-		memberService.changePw(memberDto);
+
 	
-		return "redirect:/member/login";
-	}
-	
-	@PostMapping("/ChangeInfo")
-	public String InfoChange(MemberDto memberDto, Model model) {
-		
-		boolean InfoChange = memberService.InfoChange(memberDto);
-		log.info("==========컨{}",memberDto);
-		if(InfoChange) {
-//			String userId = (String) session.getAttribute("userId");
-//			memberDto.setUserId(userId);
-			MemberDto mlist = memberService.myInfo(memberDto);
-			model.addAttribute("mlist", mlist);
-		return "aMain/ChangeInfo";
-		
-		}
-		else {
-			return "redirect:/member/passwordcheck";
-		}
-	}
-	
-	
+//	@PostMapping("/ChangeInfo")
+//	public String InfoChange(MemberDto memberDto, Model model) {
+//		
+//		boolean InfoChange = memberService.InfoChange(memberDto);
+//		log.info("==========컨{}",memberDto);
+//		if(InfoChange) {
+////			String userId = (String) session.getAttribute("userId");
+////			memberDto.setUserId(userId);
+//			MemberDto mlist = memberService.myInfo(memberDto);
+//			model.addAttribute("mlist", mlist);
+//		return "aMain/ChangeInfo";
+//		
+//		}
+//		else {
+//			return "redirect:/member/passwordcheck";
+//		}
+//	}
+//	
+//	
 }

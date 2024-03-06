@@ -97,6 +97,15 @@ body::after {
 	background: none;
 	border: none;
 }
+.changebutton2 {
+	width: 100px;
+	height: 30px;
+	position: relative;
+	font-size: 20px;
+	color: white;
+	background: none;
+	border: none;
+}
 
 .myPgCpw {
 	color: white;
@@ -247,6 +256,22 @@ body::after {
 	width: 100%;
 	height: 80px;
 	border: 5px solid white;
+	border-radius: 1%;
+	background-color: rgba(158, 200, 255, 1);
+}
+.agree-to-receive2 {
+	width: 100%;
+	height: 85px;
+	border: 5px solid white;
+	border-bottom : none;
+	border-radius: 1%;
+	background-color: rgba(158, 200, 255, 1);
+}
+.agree-to-receive3 {
+	width: 100%;
+	height: 85px;
+	border: 5px solid white;
+	border-top : none;
 	border-radius: 1%;
 	background-color: rgba(158, 200, 255, 1);
 }
@@ -469,4 +494,7 @@ body::after {
 	left: 34px;
 	background: #fff;
 	box-shadow: 1px 2px 3px rgba(158, 200, 255, 1);
+}
+.pwConfirm{
+	position: absolute;	
 }
