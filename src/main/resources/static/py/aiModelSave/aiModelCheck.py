@@ -29,20 +29,26 @@ mean = np.mean(tier_my, axis=0)
 std = np.std(tier_my, axis=0)
 
 new = (tier_my - mean) / std
+try : 
+    str1 ='src/main/resources/static/py/aiModelSave/aiModel420/'+ queueId+'_'+tier+'_'+teamPosition+'_'+championName+'.pkl'
+    # str2 = './'+queueId+'_'+tier+'_'+teamPosition+ '_' + championName+'.pickle'
+    # with open(str2,'rb') as f:
+    #     loaded_model = pickle.load(f)
+    # str2 = './420_BRONZE_JUNGLE_LeeSin.pkl'	
+    loaded_model = joblib.load(str1)
 
-str1 ='src/main/resources/static/py/aiModelSave/aiModel420/'+ queueId+'_'+tier+'_'+teamPosition+'_'+championName+'.pkl'
-# str2 = './'+queueId+'_'+tier+'_'+teamPosition+ '_' + championName+'.pickle'
-# with open(str2,'rb') as f:
-#     loaded_model = pickle.load(f)
-# str2 = './420_BRONZE_JUNGLE_LeeSin.pkl'	
-loaded_model = joblib.load(str1)
-
-trans={1:'승', 0:'패'}
-a = trans[loaded_model.predict([new])[0]]
+    trans={1:'승', 0:'패'}
+    a = trans[loaded_model.predict([new])[0]]
 
 
 
-data5 = {key:a  , '티어' : tier , '캐릭' : championName, "key" : a}  
-json_string = json.dumps(data5 , default=str)
-print(json_string)
+    data5 = {key:a  , '티어' : tier , '캐릭' : championName, "key" : a}  
+    json_string = json.dumps(data5 , default=str)
+    print(json_string)
+except Exception as e :
+    
+    data5 = {key:a  , '티어' : tier , '캐릭' : championName, "key" : a}  
+    json_string = json.dumps(data5 , default=str)
+    print(json_string)
+
 
