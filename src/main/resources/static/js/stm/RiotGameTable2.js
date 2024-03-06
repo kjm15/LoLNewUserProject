@@ -1,4 +1,4 @@
-function showgraph(win,lose) {
+function showgraph(win, lose) {
 	var ctx = document.getElementById('donutChart').getContext('2d');
 	var myChart = new Chart(ctx, {
 		type: 'doughnut',
@@ -27,19 +27,72 @@ function showgraph(win,lose) {
 	});
 }
 
+function LaneChart(res) {
+	let TOP = 0
+	let JUNGLE = 0
+	let MIDDLE = 0
+	let BOTTOM = 0
+	let UTILITY = 0
+	console.log(res)
+	for (i in res) {
+		if (res[i]['teamPosition'] == 'TOP') {
+			TOP += 1
+		} else if (res[i]['teamPosition'] == 'JUNGLE') {
+			JUNGLE += 1
+		} else if (res[i]['teamPosition'] == 'MIDDLE') {
+			MIDDLE += 1
+		} else if (res[i]['teamPosition'] == 'BOTTOM') {
+			BOTTOM += 1
+		} else if (res[i]['teamPosition'] == 'UTILITY') {
+			UTILITY += 1
+		}
+	}
+	const data = {
+		labels: ['탑', '정글', '미드', '원딜', '서폿'],
+		datasets: [{
+			label: '라인 별 선호도',
+			data: [TOP, JUNGLE, MIDDLE, BOTTOM, UTILITY], // 각 항목에 해당하는 값
+			backgroundColor: [
+				'rgba(255, 99, 132, 0.2)',
+				'rgba(54, 162, 235, 0.2)',
+				'rgba(255, 206, 86, 0.2)',
+				'rgba(75, 192, 192, 0.2)',
+				'rgba(153, 102, 255, 0.2)',
+			],
+			borderColor: [
+				'rgba(255, 99, 132, 1)',
+				'rgba(54, 162, 235, 1)',
+				'rgba(255, 206, 86, 1)',
+				'rgba(75, 192, 192, 1)',
+				'rgba(153, 102, 255, 1)',
+			],
+			borderWidth: 1
+		}]
+	};
+
+	// 옵션 설정
+	const options = {
+		responsive: false,
+		scales: {
+			y: {
+				beginAtZero: true
+			}
+		}
+	};
+
+	// 막대 그래프 생성
+	const ctx = document.getElementById('LaneChart').getContext('2d');
+	const myChart = new Chart(ctx, {
+		type: 'bar',
+		data: data,
+		options: options
+	});
+}
+
 function profileCheck(res) {
-
-
 	profileIcon = res.profileIcon
 	summonerLevel = res.summonerLevel
 	riotIdGameName = res.riotIdGameName
-//	if (res['win'] == '1') {
-//		win += 1
-//	} else {
-//		lose += 1
-//	}
-
-
 
 	if (data['matchCnt'] == 1) { //최신 레벨과 플레이어 아이콘을 위해 저장
 		newprofileIcon = profileIcon
@@ -67,12 +120,10 @@ function profileCheck(res) {
             </div>
         </div>
         </div>
-        <div class='stmBlank'><img width=70 height = 70 src = "/img/lodinglogo.gif" alt = "로고" > </div>
+        <div class='stmBlank'><canvas id="LaneChart" width="593" height="198"></canvas></div>
         </div>`
 
 	$('.graph1').append(ccc)
-
-
 
 
 }
@@ -116,7 +167,7 @@ let goBtn = 0
 let myriotIdGameName = ''
 let myriotIdTagline = ''
 function showGameTamble(res, data) {
-
+	console.log(data)
 	$('.graph1').empty()
 	resMyList = []
 	for (let i in res) {
@@ -125,21 +176,25 @@ function showGameTamble(res, data) {
 				resMyList.push(res[i]["info"][j])
 				myriotIdGameName = res[i]["info"][j]['riotIdGameName']
 				myriotIdTagline = res[i]["info"][j]['riotIdTagline']
-				if(res[i]['info'][j]['win']=='1'){
+				if (res[i]['info'][j]['win'] == '1') {
 					win += 1
-				}else{
-					lose +=1
+				} else {
+					lose += 1
 				}
 
 			}
-			
+
 		}
 	}
 
 
 	//	console.log(resMyList)
 	profileCheck(resMyList[0])
-	showgraph(win,lose)
+	showgraph(win, lose)
+	logolodingImg()
+	//	if (data['matchCnt'] == 1) {
+	//	logolodingImg()
+	//	}
 	for (let i in resMyList) {
 		goBtn = Number(i) + (data['matchCnt']) * 4
 		Myres = resMyList[i] // 추후에 i 으로 바꾸기
@@ -255,7 +310,7 @@ function showGameTamble(res, data) {
 			if (Myres[itemk] != 0) {
 				itemimg = Myres[itemk]
 
-				itemstart += '<img id = "'+ itemimg +'_'+ matchId +'" class = "jb-title-tm" width=30 height=30 style = "border-radius: 35px;" alt="못 불러옴" src="https://ddragon.leagueoflegends.com/cdn/14.3.1/img/item/' + itemimg + '.png" onmouseover="javascript:allItemTT(this.id)"><p class = "jb-text-tm"></p>&nbsp;&nbsp;&nbsp;'
+				itemstart += '<img id = "' + itemimg + '_' + matchId + '" class = "jb-title-tm" width=30 height=30 style = "border-radius: 35px;" alt="못 불러옴" src="https://ddragon.leagueoflegends.com/cdn/14.3.1/img/item/' + itemimg + '.png" onmouseover="javascript:allItemTT(this.id)"><p class = "jb-text-tm"></p>&nbsp;&nbsp;&nbsp;'
 
 			}
 
@@ -352,15 +407,14 @@ function showGameTamble(res, data) {
 					</center>
 				</div>`
 	$('.containerXC').append(more)
-	
+
 	modNum = $('#modNum').text()
-	
-	if(modNum == 0){
-		$('.uid').css("color","white")
+
+	if (modNum == 0) {
+		$('.uid').css("color", "white")
 	}
 
 }
-
 
 
 function showGameTambleBody(matchId) {
@@ -553,6 +607,7 @@ function makeBodyblue(blueChampList, matchId) {
 		teamId = `<div class="teamId" style=color:red;>레드팀(${blueWin})</div>`
 
 	}
+
 	//여기서부터 시작
 	champBody = `  
 					${teamId}
@@ -670,15 +725,18 @@ function makeBodyblue(blueChampList, matchId) {
 
 
 	$('#container2' + matchId).append(ct1)
+
 }
 
 //클릭시 타임라인 데이터 가지고 오기 , 모달열림
 timeline_list = []
 function aiTimelineAni(matchId) {
-	
+
 	userId = $('#userId').val();
+
 //	console.log(userId)
 	if(userId == ''){
+
 		alert("로그인 후 이용 가능합니다.")
 		return false;
 	}

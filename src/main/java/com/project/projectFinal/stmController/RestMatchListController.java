@@ -122,5 +122,9 @@ public class RestMatchListController {
 		MorematchList = matchList;
 		return MList;
 	}
+	@PostMapping("/lane/prefer")
+	public List<Map<String, Object>> LanePrefer(String gameName) {
+		return matchListService.LanePrefer(gameName);
+	}
 
 }
