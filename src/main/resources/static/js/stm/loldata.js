@@ -35,15 +35,7 @@ function logolodingImg() {
 
 	})
 
-
-
-
-
 }
-
-
-
-
 
 
 
@@ -122,21 +114,40 @@ function aiCheckTroll(res1) {
 						for (const [key, value] of Object.entries(res1)) {
 							if (res.win == 1) { // 게임 : 승리
 								if (value == '패') { //인공지능 지표 : 패
-									str = '<div class = checkFlagStamp><div class="stampLose"><span tooltip="' + res1.champion_name_kr + '(은/는) 하지 않는것을 추천">평균이하</span></div></div>'
+
+									
+									randomListWin = ['이판은 이겼지만 당신은 졌습니다.', '이런, 이런 빨리 다음게임으로 도망치세요', ' 상대가 너무 강력했군요! ','팀에 기여량이 적습니다.',
+													'당신만 놀았군요','놀지말고 딜하세요','잠재적 범죄자']
+									
+									commentLoseGame = randomListWin[Math.floor(Math.random() * randomListWin.length)]
+									str = '<div class = checkFlagStamp><div class="stampLose"><span tooltip="' + commentLoseGame + '">평균이하</span></div></div>'
+
+
 									$('#' + key).html(str);
 								} else if (value == '데이터부족') { //인공지능 지표: 승
 									$('#' + key).html("평균");
 								} else { //인공지능 지표: 승
-
 									$('#' + key).html("평균");
+
 								}
+							} else if (res1['key'] == '에러') {
+								
+								$('#' + key).html("평균");
+
+
 							} else { // 게임 : 패배
 								if (value == '패') { //인공지능 지표 : 패
 									$('#' + key).html("평균");
 								} else if (value == '데이터부족') { //인공지능 지표: 승
 									$('#' + key).html("평균");
 								} else { //인공지능 지표: 승
-									str = '<div class = checkFlagStamp><div class="stampWin"><span tooltip="' + res1.champion_name_kr + ' 챔프의 이해도가 높은 수준">평균이상</span></div></div>'
+										
+									
+									randomListWin = ['이 팀에 유일하게 빛나는 소환사 입니다.', '당신은 올라갈 자격이 있습니다.', '아쉽게 졌지만 당신은 이겼습니다.'
+													,'5 명예를 받을 자격이 충분합니다.', '이 실력이면 다음 티어는 금방!','당신에게 부족한건 팀운뿐...']
+									commentLoseGame = randomListWin[Math.floor(Math.random() * randomListWin.length)]
+									str = '<div class = checkFlagStamp><div class="stampWin"><span tooltip="' + commentLoseGame + '">평균이상</span></div></div>'
+
 									$('#' + key).html(str);
 
 								}
@@ -157,7 +168,7 @@ function aiCheckTroll(res1) {
 					url: '/ai/trollcheck450',
 					data: JSON.stringify(data),
 					success: function(res1) {
-												console.log(res1)
+						console.log(res1)
 						for (const [key, value] of Object.entries(res1)) {
 							if (res.win == 1) { // 게임 : 승리
 

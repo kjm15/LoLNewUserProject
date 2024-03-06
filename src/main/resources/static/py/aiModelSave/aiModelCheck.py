@@ -46,8 +46,7 @@ try :
     json_string = json.dumps(data5 , default=str)
     print(json_string)
 except Exception as e :
-    
-    data5 = {key:a  , '티어' : tier , '캐릭' : championName, "key" : a}  
+    data5 = {key:'에러'  , '티어' : tier , '캐릭' : championName, "key" : '에러'}  
     json_string = json.dumps(data5 , default=str)
     print(json_string)
 
