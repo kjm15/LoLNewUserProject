@@ -1,3 +1,4 @@
+
 function showgraph(win, lose) {
 	var ctx = document.getElementById('donutChart').getContext('2d');
 	var myChart = new Chart(ctx, {
@@ -90,11 +91,11 @@ function LaneChart(res) {
 }
 
 function profileCheck(res) {
-	barTOP = TOP*4
-	barJUNGLE = JUNGLE*4
-	barMIDDLE = MIDDLE*4
-	barBOTTOM = BOTTOM*4
-	barUTILITY = UTILITY*4
+	barTOP = TOP * 4
+	barJUNGLE = JUNGLE * 4
+	barMIDDLE = MIDDLE * 4
+	barBOTTOM = BOTTOM * 4
+	barUTILITY = UTILITY * 4
 	console.log(barTOP)
 	console.log(barJUNGLE)
 	console.log(barMIDDLE)
@@ -159,28 +160,54 @@ function profileCheck(res) {
         	<div class='stmBlankB'>
 	        	<div class = 'stmBlankM'>
 		        	<div class = 'stmBlankG'> 
-		        		<div class = 'stmBlankGTM' style='height: 100%;'>1</div>
-		        		
-						<div class = 'stmBlankGB'><img src='/img/top.png' style='width: 20px; height: 20px;'></div>
-		        		<div class = "stmBlankGTMM">
-		        				<div class = 'stmBlankGT' style='background-color : orange;'>1</div>
-		        			</div>	
+		        		<div class = 'stmBlankGtop'>
+		        			<div class = 'stmBlankGTM'>빨간색</div>
+			        		<div class = 'stmBlankGTM1'>회색</div>
+		        		</div>
+		        		<div class = 'stmBlankGbottom'>
+		        			<img src='/img/top.png' style='width: 20px; height: 20px;'>
+		        		</div>
+		        	
+		        	</div>	
+			       	      	<div class = 'stmBlankG'> 
+		        		<div class = 'stmBlankGtop'>
+		        			<div class = 'stmBlankGTM'>1</div>
+			        		<div class = 'stmBlankGTM2'>1</div>
+		        		</div>
+		        		<div class = 'stmBlankGbottom'>
+		        			<img src='/img/top.png' style='width: 20px; height: 20px;'>
+		        		</div>
+		        	
 		        	</div>
-		        	<div class = 'stmBlankG'>
-		        		<div class = 'stmBlankGT' style='background-color : #0080ff; height: 80%;'>2</div>
-						<div class = 'stmBlankGB'><img src='/img/top.png' style='width: 20px; height: 20px;'></div>	
+		        	      	<div class = 'stmBlankG'> 
+		        		<div class = 'stmBlankGtop'>
+		        			<div class = 'stmBlankGTM'>1</div>
+			        		<div class = 'stmBlankGTM3'>1</div>
+		        		</div>
+		        		<div class = 'stmBlankGbottom'>
+		        			<img src='/img/top.png' style='width: 20px; height: 20px;'>
+		        		</div>
+		        	
 		        	</div>
-		        	<div class = 'stmBlankG'>
-		        		<div class = 'stmBlankGT'>3</div>
-						<div class = 'stmBlankGB'><img src='/img/top.png' style='width: 20px; height: 20px;'></div>
+		        	      	<div class = 'stmBlankG'> 
+		        		<div class = 'stmBlankGtop'>
+		        			<div class = 'stmBlankGTM'>1</div>
+			        		<div class = 'stmBlankGTM4'>1</div>
+		        		</div>
+		        		<div class = 'stmBlankGbottom'>
+		        			<img src='/img/top.png' style='width: 20px; height: 20px;'>
+		        		</div>
+		        	
 		        	</div>
-		        	<div class = 'stmBlankG'>
-		        		<div class = 'stmBlankGT'>4</div>
-						<div class = 'stmBlankGB'><img src='/img/top.png' style='width: 20px; height: 20px;'></div>
-		        	</div>
-		        	<div class = 'stmBlankG'>
-		        		<div class = 'stmBlankGT'>5</div>
-						<div class = 'stmBlankGB'><img src='/img/top.png' style='width: 20px; height: 20px;'></div>
+		        	      	<div class = 'stmBlankG'> 
+		        		<div class = 'stmBlankGtop'>
+		        			<div class = 'stmBlankGTM'>1</div>
+			        		<div class = 'stmBlankGTM5'>1</div>
+		        		</div>
+		        		<div class = 'stmBlankGbottom'>
+		        			<img src='/img/top.png' style='width: 20px; height: 20px;'>
+		        		</div>
+		        	
 		        	</div>
 	        	</div>
         	</div>
@@ -478,6 +505,7 @@ function showGameTamble(res, data) {
 		$('.uid').css("color", "white")
 	}
 
+	$('.stmBlankGTM5').css("height", '90%')
 }
 
 
@@ -902,3 +930,5 @@ function win_losecheck(res) {
 		win_lose = '다시하기'
 	}
 }
+
+
