@@ -9,7 +9,6 @@
 	align-items: center;
 	justify-content: center;
 	background: rgba(255, 255, 255, 0.25);
-	box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.37);
 	backdrop-filter: blur(1.5px);
 	-webkit-backdrop-filter: blur(1.5px);
 	border-radius: 10px;
@@ -17,14 +16,14 @@
 }
 
 #modal .modal-window {
-	background: rgba(71, 74, 89, 0.9);
+	background: white;
 	box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.22);
 	backdrop-filter: blur(13.5px);
 	-webkit-backdrop-filter: blur(13.5px);
 	border-radius: 10px;
 	border: 1px solid rgba(255, 255, 255, 0.18);
-	width: 700px;
-	height: 500px;
+	width: 300px;
+	height: 200px;
 	position: relative;
 	top: -100px;
 	padding: 10px;
@@ -53,22 +52,19 @@
 #modal .content {
 	margin-top: 20px;
 	padding: 0px 10px;
-	text-shadow: 1px 1px 2px gray;
-	color: white;
+	color: black;
+	font-weight : 800;
+	text-align : center;
 }
-.contents{
-	width : 300px;
-	height : 200px;
-	border: 1px solid black;
-}
+
 /* ---이메일 내용--- */
-.div_email{
-    font-family: '돋움',Dotum,AppleGothic,sans-serif;
-    font-size: 17px;
-    position: relative;
-    padding: 20px 0 16px 19px;
-    border-top: 1px solid #f4f4f4;
-}
+/* .div_email{ */
+/*     font-family: '돋움',Dotum,AppleGothic,sans-serif; */
+/*     font-size: 17px; */
+/*     position: relative; */
+/*     padding: 20px 0 16px 19px; */
+/*     border-top: 1px solid #f4f4f4; */
+/* } */
 .emailNm{
     margin: 0;
     padding: 0;

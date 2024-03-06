@@ -89,8 +89,8 @@
 	backdrop-filter: none;
 	border-radius: 10px;
 	border: 1px solid rgba(255, 255, 255, 0.18);
-	width: 1000px;
-	height: 800px;
+	width: 700px;
+	height: 400px;
 	position: relative;
 	padding : 10px;
 }
@@ -169,8 +169,8 @@
 .modal0-content {
 	margin-top: 20px;
 	padding: 0px 10px;
-	text-shadow: 1px 1px 2px gray;
-	color: white;
+	text-shadow: 1px 1px 2px black;
+	color: black;
 }
 .modal3-content {
 	margin-top: 20px;
@@ -178,15 +178,69 @@
 	text-shadow: 1px 1px 2px gray;
 	color: white;
 /* 	width: 500px; */
-	border : 1px solid black;
+	border : none;
 }
 .modal4-content {
 	margin-top: 20px;
 	padding: 0px 10px;
-	text-shadow: 1px 1px 2px gray;
-	color: white;
-/* 	width: 500px; */
-	border : 1px solid black;
+	color: black;
+	border : none;
 }
 
-
+.thead{
+	width : 60px;
+	height : 20px;
+}
+.thead-title{
+	position: relative;
+	top : 10px;
+}
+.thead-message{
+	position: relative;
+	height : 150px;
+	top : 15px;
+}
+.thead-answer{
+	position: relative;
+	height : 150px;
+	top : 20px;
+}
+.title{
+	position: relative;
+	top : 10px;
+}
+.message{
+	position: relative;
+	top : 15px;
+}
+.answer{
+	position: relative;
+	top : 20px;
+}
+.titleArea{
+	font-size : 25px;
+	position: relative;
+}
+.messageArea{
+	position: relative;
+}
+.inqTitle{
+	width : 680px;
+	height : 40px;
+	font-size : 20px;
+	border: 1px solid #e5e5e5;
+}
+.inqMessage{
+	border: 1px solid #e5e5e5;
+}
+.AnserTitle{
+	font-size : 25px;
+	color: black;
+}
+.inqAnswer{
+	border : 1px solid #e5e5e5;
+}
+.inqAnswerBtn{
+	background : none;
+	border : 1px solid #e5e5e5;
+}

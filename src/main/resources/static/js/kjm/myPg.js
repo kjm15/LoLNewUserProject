@@ -115,7 +115,7 @@ $('#userName').on("keyup", function() {
 	}
 })
 
-$('#changeId2').on("click", function() {
+$('#changeName2').on("click", function() {
 	infoChange();
 })
 function infoChange() {

@@ -8,8 +8,15 @@
 <title>아이디 찾기</title>
 </head>
 <body>
-<h1>가입하신 아이디는</h1>
-<h1>${memberDto.userId}</h1>
-<h1>입니다.</h1>
+<div id="modal" class="modal-overlay">
+		<div class="modal-window">
+
+			<div class="close-area">X</div>
+			<div class="content" id="mbody">
+
+				
+			</div>
+		</div>
+	</div>
 </body>
 </html>

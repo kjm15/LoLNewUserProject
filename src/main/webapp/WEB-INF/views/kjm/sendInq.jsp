@@ -16,11 +16,16 @@
 				<input type="hidden" name="send_userId" id="send_userId" value ="${userId }">
 				<input type="hidden" name="recv_userId" id="recv_userId" value ="admin">
 				<input type="hidden" name="status" id="status" value ="문의중">
+				<div class = "titleArea">
+				Title<br><input type="text" class ="inqTitle" name="n_title" id="n_title"><br>
+				</div>
+				<div class = "messageArea">
+				Message<br></div>
+				<textarea rows="10" cols="80" class ="inqMessage" name="n_message" id="n_message" placeholder="관련없는 내용일시 삭제됩니다."></textarea><br>
 				
-				제목<input type="text" name="n_title" id="n_title"><br>
-				<textarea rows="6" cols="35" name="n_message" id="n_message"></textarea>
-				<button type="button" class="btn btn-primary" id="mailsend">보내기</button>
-				<input type="button" class="inq-nav-item" id="inqMain3" value="돌아가기">
+				<button type="button" class="inq-nav-item" id="inqMain3">돌아가기</button>
+				<button type="button" class="inq-nav-item" id="mailsend">보내기</button>
+				
 
 			</div>
 		</div>

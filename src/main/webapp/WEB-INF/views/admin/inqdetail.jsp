@@ -14,13 +14,15 @@
 	<div id="modal" class="modal-overlay">
 		<div class="modal-window">
 			<div class="title">
-				<h2>DataBoom</h2>
-			</div>
 			<div class="close-area">X</div>
+				<h2>DataBoom</h2>
+				<br><br>
+			</div>
+			
 			<div class="content">
 
 
-				<table border="1">
+				<table>
 
 					<thead>
 						<tr style="display: none;">
@@ -32,7 +34,7 @@
 							<td id="title"></td>
 						</tr>
 						<tr>
-							<th>보낸사람</th>
+							<th class = "sendUser">보낸사람</th>
 							<td id="senduser"></td>
 						</tr>
 						<tr>
@@ -49,7 +51,7 @@
 					</thead>
 
 				</table>
-				<button class="answer" id="answer">답변하기</button>
+				<button class="answerBtn" id="answer">답변하기</button>
 				
 
 			</div>

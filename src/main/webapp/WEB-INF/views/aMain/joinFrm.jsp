@@ -44,24 +44,24 @@
 						
 						<label for="userName">이름</label>
 					
-						<input type="text" id="userName" name="userName" placeholder="이름">
+						<input type="text" id="userName" name="userName" placeholder="">
 
 
 						<label for="userId">아이디</label>
-						<input type="text" id="userId" name="userId" placeholder="아이디">
+						<input type="text" id="userId" name="userId" placeholder="">
 						<span id="checkId"></span>
 						<label for="userPw">패스워드</label>
 					
 	
 						<input type="password" id="userPw" name="userPw"
-							placeholder="패스워드"> <span id="checkPw"></span>
+							placeholder=""> <span id="checkPw"></span>
 
 
 					
 						<div id="mail_input" name="mail_input">
 							<label for="email" id="mailTxt">이메일을 입력해주세요</label> 
-								<input type="text" name="userEmail" id="userEmail" placeholder="이메일">
-							<button type="button" id="sendBtn" name="sendBtn"
+								<input type="text" name="userEmail" id="userEmail" placeholder="">
+							<button type="button" class = emailBtn id="sendBtn" name="sendBtn"
 								onclick="sendNumber()" disabled="disabled">인증번호</button>
 						</div>
 						<br>

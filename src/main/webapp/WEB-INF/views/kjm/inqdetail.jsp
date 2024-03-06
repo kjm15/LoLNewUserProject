@@ -23,23 +23,23 @@
 						<td id="num"></td>
 					</tr>
 					<tr>
-						<th>등록일</th>
-						<td id="datetime"></td>
-						<th>처리상태</th>
-						<td id="sta"></td>
+						<th class ="thead">등록일</th>
+						<td class ="datetime" id="datetime"></td>
+						<th class ="thead">처리상태</th>
+						<td class ="sta" id="sta"></td>
 					</tr>
 					<tr>
-						<th>제목</th>
-						<td id="title"></td>
+						<th class ="thead-title">제목</th>
+						<td class ="title" id="title"></td>
 					</tr>
 
 					<tr>
-						<th>내용</th>
-						<td class="icontents" id="message"></td>
+						<th class ="thead-message">내용</th>
+						<td class="message" id="message"></td>
 					</tr>
 					<tr>
-						<th>답변</th>
-						<td id="answer"></td>
+						<th class ="thead-answer">답변</th>
+						<td class ="answer" id="answer"></td>
 					</tr>
 				</table>
 			</div>

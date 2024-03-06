@@ -42,7 +42,7 @@
 				<div class="eula">By logging in you agree to the ridiculously
 					long terms that you didn't bother to read</div>
 						 <input
-							type="button" id = "membermain" value="메인으로">
+							type="button" class ="returnMain" id = "membermain" value="메인으로">
 			</div>
 			<div class="right">
 <!-- 		시큐리시 시스템으로 인해 id의 name = username , pw의 name = password로 고정 -->
@@ -62,7 +62,7 @@
 	</div>
 
 	<!-- 아이디 찾기 -->
-	<%@include file="findId.jsp"%>
+<%-- 	<%@include file="findId.jsp"%> --%>
 	<!-- 비밀번호 찾기 -->
 
 

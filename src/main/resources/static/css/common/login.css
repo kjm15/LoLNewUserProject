@@ -55,9 +55,10 @@ body {
 .left {
 	background: white;
 	height: calc(100% - 40px);
-	top: 20px;
+	bottom : 100px;
 	position: relative;
-	width: 50%;
+	width: 450px;
+	height: 550px;
 }
 
 @media ( max-width : 767px) {
@@ -84,11 +85,13 @@ body {
 }
 
 .right {
-	background: #474A59;
-	box-shadow: 0px 0px 40px 16px rgba(0, 0, 0, 0.22);
-	color: #F1F1F2;
-	position: relative;
-	width: 50%;
+    background: gray;
+    box-shadow: 0px 0px 40px 16px rgba(0, 0, 0, 0.22);
+    color: #F1F1F2;
+    position: relative;
+    width: 500px;
+    height: 600px;
+    bottom : 120px;
 }
 
 @media ( max-width : 767px) {
@@ -118,7 +121,7 @@ path {
 }
 
 label {
-	color: #c2c2c5;
+	color: white;
 	display: block;
 	font-size: 14px;
 	height: 16px;
@@ -160,4 +163,15 @@ input::-moz-focus-inner {
 	font-size: 20px;
 	height: 30px;
 	line-height: 30px;
+}
+.emailBtn{
+	color : white;
+	border : 2px solid white;
+	border-radius: 10%;
+	background : none;
+}
+.returnMain{
+	color : black;
+	font-size : 30px;
+	font-weight: 700;
 }

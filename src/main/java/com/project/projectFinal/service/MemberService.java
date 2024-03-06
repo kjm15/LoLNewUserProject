@@ -182,4 +182,15 @@ public class MemberService implements UserDetailsService {
 //		log.info("====이릅변경=={}", result);
 		return result;
 	}
+
+		public int changePw2(MemberDto memberDto) {
+		MemberDto mDto = new MemberDto();
+		mDto.setUserId(memberDto.getUserId());
+		mDto.setUserPw(passwordEncoder.encode(memberDto.getUserPw()));
+		log.info("==mdto = {}", mDto);
+		int result = memberDao.changePw2(mDto);
+		log.info("====비밀번호변경=={}", result);
+		return result;
+
+	}
 }
