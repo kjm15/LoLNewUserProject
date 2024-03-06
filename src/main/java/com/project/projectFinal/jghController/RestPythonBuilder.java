@@ -6,8 +6,6 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
-import javax.print.DocFlavor.STRING;
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -40,12 +38,19 @@ public class RestPythonBuilder {
 
 	// 솔로랭크
 	@PostMapping("/trollcheck420")
-	public Map<String, Object> trollcheck420(@RequestBody Map<String, Object> aMap, Model model,
-			HttpSession httpSession) throws Exception {
-		Map<String, Object> aiReultMap = new HashMap<>();
-
-		String filePath = "src/main/resources/static/py/aiModelSave/aiModelCheck.py";
-
+	public Map<String, Object> trollcheck420(@RequestBody Map<String, Object> aMap, Model model, HttpSession session)
+			throws Exception {
+		Map<String, Object> bMap = new HashMap<>();
+		String filePath = "";
+		String userId = (String) session.getAttribute("userId");
+		if (userId == null) {
+			filePath = "src/main/resources/static/py/aiModelSave/aiModelCheck.py";	
+		} else if(userId.equals("admin")){
+			filePath = "src/main/resources/static/py/admin/aiTrollCheck420.py";
+			
+		} else {
+			filePath = "src/main/resources/static/py/aiModelSave/aiModelCheck.py";
+		}
 		String matchId = (String) aMap.get("matchId");
 		String participantId = String.valueOf(aMap.get("participantId"));
 		String key = matchId + participantId;
@@ -59,7 +64,7 @@ public class RestPythonBuilder {
 		String airesult = String.valueOf(aMap.get("airesult"));
 		String champion_name_kr = String.valueOf(aMap.get("champion_name_kr"));
 		String queueId = String.valueOf(aMap.get("queueId"));
-		
+
 		ProcessBuilder pb = new ProcessBuilder().command("python", filePath, key, tier, teamPosition, gameDuration, kda,
 				totalDamageDealtToChampions, goldEarned, championName, queueId // ,
 		);
@@ -74,17 +79,18 @@ public class RestPythonBuilder {
 
 		in.close();
 		Gson gson = new GsonBuilder().create();
-		Map<String, Object> bMap = gson.fromJson(buffer.toString(), Map.class);
-		log.info(buffer.toString());
+
+		bMap = gson.fromJson(buffer.toString(), Map.class);
 //		String bMap = gson.fromJson(buffer.toString(), String.class);
 
 		log.info("솔로랭크 결과값 : {}", bMap);
 
 		bMap.put("matchId", matchId);
 		bMap.put("participantId", participantId);
-		
+
 		matchListService.saveAiData(bMap);
 		bMap.put("champion_name_kr", champion_name_kr);
+
 		return bMap;
 	}
 
@@ -122,8 +128,7 @@ public class RestPythonBuilder {
 
 		if (airesult.equals("null")) { // ai결과가 없으면
 			ProcessBuilder pb = new ProcessBuilder().command("python", filePath, key, gameDuration, kda,
-					totalDamageDealtToChampions, goldEarned, championName
-			);
+					totalDamageDealtToChampions, goldEarned, championName);
 			Process p = pb.start();
 			BufferedReader in = new BufferedReader(new InputStreamReader(p.getInputStream()));
 			StringBuilder buffer = new StringBuilder();

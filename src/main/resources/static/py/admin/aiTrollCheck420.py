@@ -96,13 +96,13 @@ try:
     tier_data=[[t,g,k]for t,g,k in zip(Mean_totalDamageDealtToChampions,Mean_goldEarned,allkda)]
 
     #그래프
-    # plt.scatter(win_Mean_totalDamageDealtToChampions, win_Mean_goldEarned) 
-    # plt.scatter(lose_Mean_totalDamageDealtToChampions, lose_Mean_goldEarned)
-    # # plt.xlim((0, 2000))
-    # plt.title(championName)
-    # plt.xlabel('DAMAGE') 
-    # plt.ylabel('GOLD') 
-    # plt.show()
+    plt.scatter(win_Mean_totalDamageDealtToChampions, win_Mean_goldEarned) 
+    plt.scatter(lose_Mean_totalDamageDealtToChampions, lose_Mean_goldEarned)
+    # plt.xlim((0, 2000))
+    plt.title(championName)
+    plt.xlabel('DAMAGE') 
+    plt.ylabel('GOLD') 
+    plt.show()
 
 
     tier_target=[1]*len(win_kda_List)+[0]*len(lose_kda_List)
