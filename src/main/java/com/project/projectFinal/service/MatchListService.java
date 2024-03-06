@@ -128,4 +128,9 @@ public class MatchListService {
 		
 	}
 
+	public List<Map<String, Object>> championPrefer(String gameName) {
+		return riotGameDao.championPrefer(gameName);
+		
+	}
+
 }

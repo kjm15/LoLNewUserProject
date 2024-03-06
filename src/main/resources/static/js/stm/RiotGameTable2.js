@@ -33,74 +33,68 @@ let MIDDLE = 0
 let BOTTOM = 0
 let UTILITY = 0
 function LaneChart(res) {
-	console.log(res)
-	for (i in res) {
-		if (res[i]['teamPosition'] == 'TOP') {
+	//	console.log(res[0]['LanePrefer'])
+	for (i in res[0]['LanePrefer']) {
+		//		console.log(res[0]['LanePrefer'][i])
+		if (res[0]['LanePrefer'][i]['teamPosition'] == 'TOP') {
 			TOP += 1
-		} else if (res[i]['teamPosition'] == 'JUNGLE') {
+		} else if (res[0]['LanePrefer'][i]['teamPosition'] == 'JUNGLE') {
 			JUNGLE += 1
-		} else if (res[i]['teamPosition'] == 'MIDDLE') {
+		} else if (res[0]['LanePrefer'][i]['teamPosition'] == 'MIDDLE') {
 			MIDDLE += 1
-		} else if (res[i]['teamPosition'] == 'BOTTOM') {
+		} else if (res[0]['LanePrefer'][i]['teamPosition'] == 'BOTTOM') {
 			BOTTOM += 1
-		} else if (res[i]['teamPosition'] == 'UTILITY') {
+		} else if (res[0]['LanePrefer'][i]['teamPosition'] == 'UTILITY') {
 			UTILITY += 1
 		}
 	}
 
-	//	const data = {
-	//		labels: ['탑', '정글', '미드', '원딜', '서폿'],
-	//		datasets: [{
-	//			label: '라인 별 선호도',
-	//			data: [TOP, JUNGLE, MIDDLE, BOTTOM, UTILITY], // 각 항목에 해당하는 값
-	//			backgroundColor: [
-	//				'rgba(255, 99, 132, 0.2)',
-	//				'rgba(54, 162, 235, 0.2)',
-	//				'rgba(255, 206, 86, 0.2)',
-	//				'rgba(75, 192, 192, 0.2)',
-	//				'rgba(153, 102, 255, 0.2)',
-	//			],
-	//			borderColor: [
-	//				'rgba(255, 99, 132, 1)',
-	//				'rgba(54, 162, 235, 1)',
-	//				'rgba(255, 206, 86, 1)',
-	//				'rgba(75, 192, 192, 1)',
-	//				'rgba(153, 102, 255, 1)',
-	//			],
-	//			borderWidth: 1
-	//		}]
-	//	};
-	//
-	//	// 옵션 설정
-	//	const options = {
-	//		responsive: false,
-	//		scales: {
-	//			y: {
-	//				beginAtZero: true
-	//			}
-	//		}
-	//	};
-	//
-	//	// 막대 그래프 생성
-	//	const ctx = document.getElementById('LaneChart').getContext('2d');
-	//	const myChart = new Chart(ctx, {
-	//		type: 'bar',
-	//		data: data,
-	//		options: options
-	//	});
+	const array = [];
+	for (i in res[0]['championPrefer']) {
+
+		array.push(res[0]['championPrefer'][i])
+	}
+
+	let test = getElCount(array);
+	const arr = [];
+	for (const [key, val] of Object.entries(test[0])) {
+		arr.push([key, val])
+		console.log(key, val)
+	}
+	arr.sort((a, b) => b[1] - a[1])
+	
+	arr.slice(0,3)
+
+
+	console.log(arr.slice(0,3))
+
+
+
+
+
 }
 
+
+function getElCount(arr) {
+	//	console.log(arr)
+	i = 0
+	let result = {}
+	let kda = {}
+	let win = {}
+	for (const el of arr) {
+		result[el['championName']] = (result[el['championName']] || 0) + 1;
+		kda[el['championName']] = (kda[el['championName']] || 0) + Number(el['kda']);
+		win[el['championName']] = (win[el['championName']] || 0) + Number(el['win']);
+	}
+
+	return [result, kda, win];
+}
+
+
 function profileCheck(res) {
-	barTOP = TOP * 4
-	barJUNGLE = JUNGLE * 4
-	barMIDDLE = MIDDLE * 4
-	barBOTTOM = BOTTOM * 4
-	barUTILITY = UTILITY * 4
-	console.log(barTOP)
-	console.log(barJUNGLE)
-	console.log(barMIDDLE)
-	console.log(barBOTTOM)
-	console.log(barUTILITY)
+	console.log(res)
+
+
 	profileIcon = res.profileIcon
 	summonerLevel = res.summonerLevel
 	riotIdGameName = res.riotIdGameName
@@ -109,6 +103,11 @@ function profileCheck(res) {
 		newprofileIcon = profileIcon
 		newsummonerLevel = summonerLevel
 		newriotIdGameName = riotIdGameName
+		if (res.Tier != "Tier") {
+			TierIcon = res.Tier.toLowerCase()
+		} else {
+			TierIcon = "gold"
+		}
 	}
 
 	ccc = `<div class=container333Box>
@@ -127,7 +126,7 @@ function profileCheck(res) {
               				  <div class="ulevel">${newsummonerLevel} </div>
                 		</div>
                 		<div class "cpimgB">
-                			<img width=180 height=180 src="/img/tier/challenger.png" alt="티어">
+                			<img width=180 height=180 src="/img/tier/${TierIcon}.png" alt="티어">
                 		</div>
                 	
                 			 <div class="uid">${newriotIdGameName}</div>
@@ -144,7 +143,9 @@ function profileCheck(res) {
            		플레이한 챔피언(최근 20게임)
            		</div>
             	<div class = "stmHCenterB">
-            	내용 들어갈 자리
+            	<img src='/img/adc.png' style='width: 20px; height: 20px;'> (1승 2패) 1.25평점 <br>
+            	<img src='/img/adc.png' style='width: 20px; height: 20px;'> (1승 2패) 1.25평점 <br>
+            	<img src='/img/adc.png' style='width: 20px; height: 20px;'> (1승 2패) 1.25평점 <br>
             	</div>
             </div>
                
@@ -161,8 +162,8 @@ function profileCheck(res) {
 	        	<div class = 'stmBlankM'>
 		        	<div class = 'stmBlankG'> 
 		        		<div class = 'stmBlankGtop'>
-		        			<div class = 'stmBlankGTM'>빨간색</div>
-			        		<div class = 'stmBlankGTM1'>회색</div>
+		        			<div class = 'stmBlankGTM'></div>
+			        		<div class = 'stmBlankGTM1'></div>
 		        		</div>
 		        		<div class = 'stmBlankGbottom'>
 		        			<img src='/img/top.png' style='width: 20px; height: 20px;'>
@@ -171,41 +172,41 @@ function profileCheck(res) {
 		        	</div>	
 			       	      	<div class = 'stmBlankG'> 
 		        		<div class = 'stmBlankGtop'>
-		        			<div class = 'stmBlankGTM'>1</div>
-			        		<div class = 'stmBlankGTM2'>1</div>
+		        			<div class = 'stmBlankGTM'></div>
+			        		<div class = 'stmBlankGTM2'></div>
 		        		</div>
 		        		<div class = 'stmBlankGbottom'>
-		        			<img src='/img/top.png' style='width: 20px; height: 20px;'>
+		        			<img src='/img/jug.png' style='width: 20px; height: 20px;'>
 		        		</div>
 		        	
 		        	</div>
 		        	      	<div class = 'stmBlankG'> 
 		        		<div class = 'stmBlankGtop'>
-		        			<div class = 'stmBlankGTM'>1</div>
-			        		<div class = 'stmBlankGTM3'>1</div>
+		        			<div class = 'stmBlankGTM'></div>
+			        		<div class = 'stmBlankGTM3'></div>
 		        		</div>
 		        		<div class = 'stmBlankGbottom'>
-		        			<img src='/img/top.png' style='width: 20px; height: 20px;'>
+		        			<img src='/img/mid.png' style='width: 20px; height: 20px;'>
 		        		</div>
 		        	
 		        	</div>
 		        	      	<div class = 'stmBlankG'> 
 		        		<div class = 'stmBlankGtop'>
-		        			<div class = 'stmBlankGTM'>1</div>
-			        		<div class = 'stmBlankGTM4'>1</div>
+		        			<div class = 'stmBlankGTM'></div>
+			        		<div class = 'stmBlankGTM4'></div>
 		        		</div>
 		        		<div class = 'stmBlankGbottom'>
-		        			<img src='/img/top.png' style='width: 20px; height: 20px;'>
+		        			<img src='/img/adc.png' style='width: 20px; height: 20px;'>
 		        		</div>
 		        	
 		        	</div>
 		        	      	<div class = 'stmBlankG'> 
 		        		<div class = 'stmBlankGtop'>
-		        			<div class = 'stmBlankGTM'>1</div>
-			        		<div class = 'stmBlankGTM5'>1</div>
+		        			<div class = 'stmBlankGTM'></div>
+			        		<div class = 'stmBlankGTM5'></div>
 		        		</div>
 		        		<div class = 'stmBlankGbottom'>
-		        			<img src='/img/top.png' style='width: 20px; height: 20px;'>
+		        			<img src='/img/sup.png' style='width: 20px; height: 20px;'>
 		        		</div>
 		        	
 		        	</div>
@@ -504,8 +505,18 @@ function showGameTamble(res, data) {
 	if (modNum == 0) {
 		$('.uid').css("color", "white")
 	}
+	console.log(TOP)
+	barT = 100 - (TOP * 5)
+	barJ = 100 - (JUNGLE * 5)
+	barM = 100 - (MIDDLE * 5)
+	barB = 100 - (BOTTOM * 5)
+	barU = 100 - (UTILITY * 5)
+	$('.stmBlankGTM1').css("height", barT + "%")
+	$('.stmBlankGTM2').css("height", barJ + "%")
+	$('.stmBlankGTM3').css("height", barM + "%")
+	$('.stmBlankGTM4').css("height", barB + "%")
+	$('.stmBlankGTM5').css("height", barU + "%")
 
-	$('.stmBlankGTM5').css("height", '90%')
 }
 
 
