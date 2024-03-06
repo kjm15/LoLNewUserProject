@@ -82,7 +82,8 @@
 		select * from
 		RiotGameInfoT
 		where matchId = #{matchId}
-		and riotIdGameName = #{riotIdGameName}
+		and riotIdGameName =
+		#{riotIdGameName}
 		and riotIdTagline =
 		#{riotIdTagline};
 	</select>
@@ -113,5 +114,9 @@
 		RiotGameInfoT
 		where matchId = #{matchId}
 		order by participantId asc;
+	</select>
+	<select id="LanePrefer">
+		select teamPosition from RiotGameInfoT where riotIdGameName = #{gameName}
+		limit 0,19;
 	</select>
 </mapper>

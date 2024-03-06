@@ -123,4 +123,9 @@ public class MatchListService {
 		return riotGameDao.teamList(matchId);
 	}
 
+	public List<Map<String, Object>> LanePrefer(String gameName) {
+		return riotGameDao.LanePrefer(gameName);
+		
+	}
+
 }

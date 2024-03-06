@@ -11,33 +11,34 @@ $(document).ready(function() {
 
 
 	mainStart()
-	logolodingImg()
 
 })
 
 function logolodingImg() {
-	if (cnt == 1) {
-
-		console.log("처음:")
-//		$.ajax({
-//			//		
-//			type: 'post',
-//			url: '/ai/trollcheck420',
-//			success: function(res1) {
-//
-//
-//			}
-//
-//
-//		})
-
-	}
 
 
+		let gameName1 = $('#gameName').val()
+		var gameId = gameName1.split('#');
+		let gameName = gameId[0]
+		console.log(gameName)
+		data3 = { 'gameName': gameName }
+		$.ajax({
+			type: 'post',
+			url: '/lane/prefer',
+			data: data3,
+			success: function(res) {
+				LaneChart(res)
+
+			}
+
+
+		})
+
+
+
+	
 
 }
-
-
 
 
 
@@ -348,6 +349,7 @@ function aaa(data) { // data == 검색한 게임 아이디
 			}
 			console.log(allofList)
 			showGameTamble(res, data)
+
 		}
 	})
 }
@@ -417,6 +419,7 @@ function gamebtn(goBtn, matchId) {
 			//				console.log(res)
 			//
 			for (let i in res) {
+				//				console.log(res[i])
 				if (res[i].queueId == 420) { //솔랭인경우
 					$.ajax({
 						contentType: 'application/json',

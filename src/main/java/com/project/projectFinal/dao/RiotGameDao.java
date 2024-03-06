@@ -43,5 +43,7 @@ public interface RiotGameDao {
 
 	List<Map<String, Object>> teamList(String matchId);
 
+	List<Map<String, Object>> LanePrefer(String gameName);
+
 
 }
