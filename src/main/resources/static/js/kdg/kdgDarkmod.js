@@ -51,7 +51,7 @@ $(document).ready(function() {
 			$('.rate_vp').css("color","white")
 			$('.champName').css("color","white")
 			$('.rankTable').css("color","white")
-			
+			$('.topPick10').css("color","white")
 			$('.search_c').css("background-color","white")
 			
 			$('.lines').css("background-image","linear-gradient(#ffffff, #2a2c33 0%, #222 94%)")
@@ -125,6 +125,7 @@ $(document).ready(function() {
 			$('.champName').css("color","black")
 			$('.rankTable').css("color","black")
 			$('.search_c').css("background-color","white")
+			$('.topPick10').css("color","black")
 			
 			$('.lines').css("background-image","linear-gradient(315deg, #D6E5FC 0%, #9DC4FD 74%)")
 			$('.rankSearch').css("background-image", "linear-gradient(315deg, #D6E5FC 0%, #9DC4FD 74%)")
