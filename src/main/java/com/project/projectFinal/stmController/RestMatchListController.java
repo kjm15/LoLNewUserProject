@@ -8,6 +8,7 @@ import java.util.Map;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.fasterxml.jackson.core.JsonProcessingException;
@@ -112,11 +113,11 @@ public class RestMatchListController {
 			HashMap<String, Object> newGList = new HashMap<>();
 			List<Map<String, RiotGameDto>> infoData = matchListService.RiotGameInfoSelect(MatchListSelect.get(i));
 			;
-			Map<String, Object> a = webClientService.getgameTimeline(String.valueOf(infoData.get(0).get("matchId")));
+//			Map<String, Object> a = webClientService.getgameTimeline(String.valueOf(infoData.get(0).get("matchId")));
 			String MatchId = MatchListSelect.get(i);
 			newGList.put("info", infoData);
 			newGList.put("matchId", MatchId);
-			newGList.put("timelines", a);
+//			newGList.put("timelines", a);
 			MList.add(newGList);
 		}
 		MorematchList = matchList;
@@ -137,9 +138,21 @@ public class RestMatchListController {
 	}
 
 	@PostMapping("/GameMode/Search")
-	public ArrayList<HashMap<String, Object>> GameModeSearch(RiotApiDto gameDto) {
-//		System.out.println(gameDto);
-		ArrayList<HashMap<String, Object>> MList = matchListService.GameModeSearch(gameDto);
-		return MList;
+	public List<Map<String, Object>> GameModeSearch(@RequestBody Map<String, Object> qMap) {
+		log.info("==qMap: {}", qMap);
+
+		List<Map<String, Object>> MList = new ArrayList<>();
+		Integer[] qList = { 0, 420, 440, 450, 490, 1900 }; // queueId 증가에 따라 추가요망
+
+		for (int queueId : qList) {
+			if ((Integer) qMap.get("queueId") == queueId) {
+
+				log.info("queueId : {}", queueId);
+
+			}
+
+		}
+
+		return matchListService.GameModeSearch(qMap);
 	}
 }
