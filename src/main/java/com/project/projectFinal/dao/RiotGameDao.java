@@ -5,6 +5,7 @@ import java.util.Map;
 
 import org.apache.ibatis.annotations.Mapper;
 
+import com.project.projectFinal.dto.RiotApiDto;
 import com.project.projectFinal.dto.RiotGameDto;
 
 @Mapper
@@ -46,6 +47,12 @@ public interface RiotGameDao {
 	List<Map<String, Object>> LanePrefer(String gameName);
 
 	List<Map<String, Object>> championPrefer(String gameName);
+
+	List<Map<String, Object>> RiotGameInfoSelectALL(RiotApiDto gameDto);
+
+	List<Map<String, Object>> RiotGameInfoSelectRank(RiotApiDto gameDto);
+
+	List<Map<String, Object>> RiotGameInfoSelectAram(RiotApiDto gameDto);
 
 
 }

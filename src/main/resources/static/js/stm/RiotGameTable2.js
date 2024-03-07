@@ -220,9 +220,9 @@ function profileCheck(res) {
 				  </div>
 				  <div class="GoPart">
 				   <ul class="menu2">
-				    <li class = "sampletest"><a href="javascript:reload(0)">전체</a></li>
-				    <li class = "sampletest"><a href="javascript:reload(420)">랭크</a></li>
-				    <li class = "sampletest"><a href="javascript:reload(440)">칼바람</a></li>
+				    <li class = "sampletest"><a href="javascript:reload('${data['gameName']}','${data['tagLine']}',${data['matchCnt']},0)">전체</a></li>
+				    <li class = "sampletest"><a href="javascript:reload('${data['gameName']}','${data['tagLine']}',${data['matchCnt']},420)">랭크</a></li>
+				    <li class = "sampletest"><a href="javascript:reload('${data['gameName']}','${data['tagLine']}',${data['matchCnt']},450)">칼바람</a></li>
 				    
 				    </ul>
 				  </div>
@@ -281,12 +281,14 @@ let graphCnt = 0
 let graphwin = 0
 let graphlose = 0
 function showGameTamble(res, data) {
+	console.log(res)
 	console.log(data)
 	$('.graph1').empty()
 	resMyList = []
 	for (let i in res) {
 		for (let j in res[i]['info']) {
 			if (data['gameName'] == res[i]["info"][j]['riotIdGameName'] || data['gameName'] == res[i]["info"][j]['summonerName']) {
+				console.log(res[i]["info"][j]['riotIdGameName'])
 				resMyList.push(res[i]["info"][j])
 				myriotIdGameName = res[i]["info"][j]['riotIdGameName']
 				myriotIdTagline = res[i]["info"][j]['riotIdTagline']

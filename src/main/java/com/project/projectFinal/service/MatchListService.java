@@ -1,6 +1,7 @@
 package com.project.projectFinal.service;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
@@ -61,10 +62,10 @@ public class MatchListService {
 		return riotGameDao.RiotGameInfoSelect(matchId);
 	}
 
-	public List<Map<String, RiotGameDto>> RiotGameTeamsSelect(String matchId) {
-		return riotGameDao.RiotGameTeamsSelect(matchId);
-
-	}
+//	public List<Map<String, RiotGameDto>> RiotGameTeamsSelect(String matchId) {
+//		return riotGameDao.RiotGameTeamsSelect(matchId);
+//
+//	}
 
 //	public List<Map<String, RiotGameDto>> RiotGameBansSelect(String matchId) {
 //		return riotGameDao.RiotGameBansSelect(matchId);
@@ -114,7 +115,7 @@ public class MatchListService {
 	}
 
 	public List<Map<String, Object>> timelineInfo(String matchId) {
-		
+
 		return riotGameDao.timelineInfo(matchId);
 	}
 
@@ -125,12 +126,55 @@ public class MatchListService {
 
 	public List<Map<String, Object>> LanePrefer(String gameName) {
 		return riotGameDao.LanePrefer(gameName);
-		
+
 	}
 
 	public List<Map<String, Object>> championPrefer(String gameName) {
 		return riotGameDao.championPrefer(gameName);
+
+	}
+
+	public ArrayList<HashMap<String, Object>> GameModeSearch(RiotApiDto gameDto) {
+		ArrayList<HashMap<String, Object>> GameModeList = new ArrayList<>();
+		if (gameDto.getQueueId() == 0) {
+			
+			List<Map<String, Object>> MList = riotGameDao.RiotGameInfoSelectALL(gameDto);
+
+			for (int i = 0; i < MList.size(); i++) {
+				HashMap<String, Object> newGList = new HashMap<>();
+				List<Map<String, RiotGameDto>> infoData = riotGameDao
+						.RiotGameInfoSelect((String) MList.get(i).get("matchId"));
+				newGList.put("info", infoData);
+				GameModeList.add(newGList);
+			}
+			return GameModeList;
+		} else if (gameDto.getQueueId() == 420) {
+			
+			List<Map<String, Object>> MList = riotGameDao.RiotGameInfoSelectRank(gameDto);
+
+			for (int i = 0; i < MList.size(); i++) {
+				HashMap<String, Object> newGList = new HashMap<>();
+				List<Map<String, RiotGameDto>> infoData = riotGameDao
+						.RiotGameInfoSelect((String) MList.get(i).get("matchId"));
+				newGList.put("info", infoData);
+				GameModeList.add(newGList);
+			}
+			return GameModeList;
+		} else if (gameDto.getQueueId() == 450) {
+
+			List<Map<String, Object>> MList = riotGameDao.RiotGameInfoSelectAram(gameDto);
+
+			for (int i = 0; i < MList.size(); i++) {
+				HashMap<String, Object> newGList = new HashMap<>();
+				List<Map<String, RiotGameDto>> infoData = riotGameDao
+						.RiotGameInfoSelect((String) MList.get(i).get("matchId"));
+				newGList.put("info", infoData);
+				GameModeList.add(newGList);
+			}
+			return GameModeList;
+		}
 		
+		return null;
 	}
 
 }

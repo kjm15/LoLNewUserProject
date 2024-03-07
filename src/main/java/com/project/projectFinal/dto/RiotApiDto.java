@@ -19,7 +19,7 @@ public class RiotApiDto {
 	private String tagLine; // 라이엇 태그
 	private JSONObject matches;
 	private JSONObject timeline;
-
+	private int queueId;
 	private List<RiotApiDto> gameId;
 	private List<String> matchId; // 매치 아이디
 
