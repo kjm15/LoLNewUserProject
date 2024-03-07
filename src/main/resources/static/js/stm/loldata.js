@@ -28,12 +28,10 @@ function logolodingImg() {
 		url: '/lane/prefer',
 		data: data3,
 		success: function(res) {
-//			console.log(res)
+			console.log(res)
 			LaneChart(res)
-			
+
 		}
-
-
 	})
 
 }
@@ -588,4 +586,17 @@ function gamebtn(goBtn, matchId) {
 	})
 }
 
-
+function goTier(data) {
+	console.log(data)
+	let gameName = data['gameName'] // 아이디
+	let tagLine = data['tagLine'] // 태그
+	data = { 'gameName': gameName, 'tagLine': tagLine }
+	$.ajax({
+		type: 'post',
+		url: '/summoner/v4/Search',
+		data: data,
+		success: function(res) {
+			console.log(res)
+		}
+	})
+}

@@ -129,4 +129,40 @@ public class WebMatchListService {
 
 	}
 
+	public String SearchUser(String gameName, String tagLine) {
+		String UserApi_key = "RGAPI-175e99fa-a692-4cbb-acfb-9410f712f370";
+
+		String url = "https://asia.api.riotgames.com/riot/account/v1/accounts/by-riot-id/" + gameName + "/" + tagLine
+				+ "?api_key=" + UserApi_key;
+
+		WebClient webClient = WebClient.builder().baseUrl(url).build();
+
+		RiotApiDto response = webClient.get().uri(uriBuilder -> uriBuilder.build()).retrieve()
+				.bodyToMono(RiotApiDto.class).block();
+/////////////////////////////////////////
+		String url2 = "https://kr.api.riotgames.com/lol/summoner/v4/summoners/by-puuid/" + response.getPuuid()
+				+ "?api_key=" + UserApi_key;
+		WebClient webClient2 = WebClient.builder().baseUrl(url2).build();
+
+		RiotApiDto response2 = webClient2.get().uri(uriBuilder -> uriBuilder.build()).retrieve()
+				.bodyToMono(RiotApiDto.class).block();
+////////////////////////////////////////////
+		String url3 = "https://kr.api.riotgames.com/lol/league/v4/entries/by-summoner/"+response2.getId()+"?api_key="+UserApi_key;
+		
+		WebClient webClient3 = WebClient.builder().baseUrl(url3).build();
+
+		List<Map<String, Object>> response3 = webClient3.get().uri(uriBuilder -> uriBuilder.build()).retrieve()
+				.bodyToMono(List.class).block();
+		
+		Map<String, Object> UPdateTier = response3.get(0);
+		if (response3.size() != 0) {
+			if (UPdateTier.get("queueType").equals("RANKED_SOLO_5x5")) {
+				String tier = (String) UPdateTier.get("tier");
+				return tier;
+			}
+		}
+		return "bronze";
+		
+	}
+
 }

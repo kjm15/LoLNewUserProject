@@ -131,7 +131,7 @@ public class RestMatchListController {
 		List<Map<String, Object>> LanePrefer = matchListService.LanePrefer(gameName);
 		newGList.put("championPrefer", championPrefer);
 		newGList.put("LanePrefer", LanePrefer);
-		System.out.println(newGList);
+//		System.out.println(newGList);
 		MList.add(newGList);
 		 return MList;
 	}

@@ -543,7 +543,11 @@ function showGameTamble(res, data) {
 	$('.stmBlankGTM3').css("height", barM + "%")
 	$('.stmBlankGTM4').css("height", barB + "%")
 	$('.stmBlankGTM5').css("height", barU + "%")
-
+	
+	if(data['matchCnt']==1){
+		goTier(data)
+		
+	}
 }
 
 
