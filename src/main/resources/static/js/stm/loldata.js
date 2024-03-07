@@ -50,7 +50,7 @@ function showgraph(win, lose) {
 				var centerConfig = chart.config.options.elements.center;
 				var fontStyle = centerConfig.fontStyle || 'Arial';
 				var txt = centerConfig.text;
-				var color = centerConfig.color || '#00d0f4;';
+				var color = centerConfig.color || 'rgba(53, 32, 132, 1)';
 				var maxFontSize = centerConfig.maxFontSize || 75;
 				var sidePadding = centerConfig.sidePadding || 20;
 				var sidePaddingCalculated = (sidePadding / 100) * (chart.innerRadius * 2)
@@ -151,7 +151,7 @@ function showgraph(win, lose) {
 			elements: {
 				center: {
 					text: winLoseList[0] + "win", // <<여기가 가운데 글씨들어가는곳
-					color: 'rgba(54, 162, 235, 1)', // Default is #000000
+					color: 'rgba(53, 32, 132, 0.73)', // Default is #000000
 					fontStyle: 'Arial', // Default is Arial
 					sidePadding: 20, // Default is 20 (as a percentage)
 					minFontSize: 20, // Default is 20 (in px), set to false and text will not wrap.

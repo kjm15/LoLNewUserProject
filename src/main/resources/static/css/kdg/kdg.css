@@ -938,7 +938,7 @@ ul li a {
   padding: 20px 20px;
   position: relative;
   font-size: 15px;
-  top : 10px;
+  top : 11px;
 }
 ul li a::after {
   content: '';
@@ -949,7 +949,7 @@ ul li a::after {
 }
 .menu2 li a::after {
   border-radius : 20px;
-	top : 16%;
+	top : 18%;
   width: 0%;
   height: 65%;
   background: #01143c;
