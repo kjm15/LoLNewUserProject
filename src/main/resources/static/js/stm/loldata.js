@@ -599,6 +599,18 @@ function goTier(data) {
 	})
 }
 
-function reload(i){
-	console.log(i)
+function reload(gameName, tagLine, matchCnt, queueId) {
+	console.log(gameName, tagLine, matchCnt, queueId)
+	data2 = {'gameName': gameName, 'tagLine': tagLine, 'matchCnt':matchCnt}
+	data4 = { 'gameName': gameName, 'tagLine': tagLine, 'queueId': queueId }
+	$.ajax({
+		type: 'post',
+		url: '/GameMode/Search',
+		data: data4,
+		success: function(res) {
+			console.log(res)
+			showGameTamble(res,data2)
+		}
+	})
+
 }

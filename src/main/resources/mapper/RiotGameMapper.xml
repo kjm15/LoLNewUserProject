@@ -126,4 +126,20 @@
 		#{gameName} and queueId = 420
 		limit 0,19;
 	</select>
+
+	<select id="RiotGameInfoSelectALL">
+		select matchId from RiotGameInfoT where
+		riotIdGameName = #{gameName} limit 0,3;
+	</select>
+
+	<select id="RiotGameInfoSelectRank">
+		select matchId from RiotGameInfoT where
+		riotIdGameName =#{gameName} and (queueId = 420 or queueId = 440) limit	0,3;
+	</select>
+
+	<select id="RiotGameInfoSelectAram">
+		select matchId from RiotGameInfoT where
+		riotIdGameName = #{gameName} and queueId =
+		450 limit 0,3;
+	</select>
 </mapper>

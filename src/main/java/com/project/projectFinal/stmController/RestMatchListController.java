@@ -133,7 +133,13 @@ public class RestMatchListController {
 		newGList.put("LanePrefer", LanePrefer);
 //		System.out.println(newGList);
 		MList.add(newGList);
-		 return MList;
+		return MList;
 	}
 
+	@PostMapping("/GameMode/Search")
+	public ArrayList<HashMap<String, Object>> GameModeSearch(RiotApiDto gameDto) {
+//		System.out.println(gameDto);
+		ArrayList<HashMap<String, Object>> MList = matchListService.GameModeSearch(gameDto);
+		return MList;
+	}
 }
