@@ -20,6 +20,12 @@
 			<img id = "enemyChamp" onclick="javascript:champ(this.id)" src = "../img/champ.jpg"></img>
 		</div>
 				<div id= "line">
+					<div class="img" id="allimg">
+						<img id="all" class="positionICN" src="../img/all.png"
+							name="all" onclick="line(this.id)">
+
+					</div>
+					
 					<div class="img" id="topimg">
 						<img id="top" class="positionICN" src="../img/top.png"
 							name="top" onclick="line(this.id)">
@@ -43,11 +49,6 @@
 					<div class="img" id="supimg">
 						<img id="sup" class="positionICN" src="../img/sup.png"
 							name="sup" onclick="line(this.id)">
-
-					</div>
-					<div class="img" id="allimg">
-						<img id="all" class="positionICN" src="../img/all.png"
-							name="all" onclick="line(this.id)">
 
 					</div>
 				</div>

@@ -199,25 +199,32 @@ function choiceTierModal(a){
 
 function test(){
 	
-		$('#hide_champList').html("O")
+	$('#hide_champList').html("O")
+	
+	$('#clickBtn').hide()
+	$('#reSelectBtn').hide()
+	$('#itemBuild').hide()
+	$('#itemBuild').empty()
+	$('#selectTier_modal').hide()
+	$('#champList').hide()
+	
+	str = "챔피언을 선택해보세요."
+	$('#exampleModalToggleLabel').html(str);
+	
+	$('#myChampName').empty()
+	$('#enemyChampName').empty()
+	
+	str1 = "<img id = 'myChamp' onclick='javascript:champ(this.id)' src = '../img/champ.jpg'>"
+	$('#myChampion').html(str1)
+	
+	str2 = "<img id = 'enemyChamp' onclick='javascript:champ(this.id)' src = '../img/champ.jpg'>"
+	$('#enemyChampion').html(str2)
+	
 		
-		$('#clickBtn').hide()
-		$('#reSelectBtn').hide()
-		$('#itemBuild').hide()
-		$('#itemBuild').empty()
-		$('#selectTier_modal').hide()
-		$('#champList').hide()
-		
-		str = "챔피언을 선택해보세요."
-		$('#exampleModalToggleLabel').html(str);
-		
-		$('#myChampName').empty()
-		$('#enemyChampName').empty()
-		
-		str1 = "<img id = 'myChamp' onclick='javascript:champ(this.id)' src = '../img/champ.jpg'>"
-		$('#myChampion').html(str1)
-		
-		str2 = "<img id = 'enemyChamp' onclick='javascript:champ(this.id)' src = '../img/champ.jpg'>"
-		$('#enemyChampion').html(str2)
-		
+}
+
+function nologin(){
+	
+	alert('로그인 후 이용해주세요.')
+	
 }
