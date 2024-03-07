@@ -6,6 +6,7 @@ let JUNGLE = 0
 let MIDDLE = 0
 let BOTTOM = 0
 let UTILITY = 0
+let IMGarr = []
 function LaneChart(res) {
 	//	console.log(res[0]['LanePrefer'])
 	for (i in res[0]['LanePrefer']) {
@@ -30,17 +31,35 @@ function LaneChart(res) {
 	}
 
 	let test = getElCount(array);
-	const arr = [];
-	for (const [key, val] of Object.entries(test[0])) {
-		arr.push([key, val])
-		console.log(key, val)
+	let arr = [];
+	// 0 판수 1 KDA 2 승패
+	for (i in test) {
+		for (const [key, val] of Object.entries(test[i])) {
+			if (i == 0) { // 첫 리스트 생성
+				arr.push([key, val]) // 판수
+			} else { // 리스트 키 값 중복시 더하기
+				for (j in arr) {
+					if (arr[j][0] == key) {
+						arr[j].push(val)
+					}
+				}
+			}
+
+
+		}
 	}
+
+
+
+
+	console.log(arr)
+
 	arr.sort((a, b) => b[1] - a[1])
 
 	arr.slice(0, 3)
 
-
 	console.log(arr.slice(0, 3))
+	IMGarr = arr.slice(0, 3);
 
 
 
@@ -66,7 +85,7 @@ function getElCount(arr) {
 
 
 function profileCheck(res) {
-	console.log(res)
+	//	console.log(IMGarr)
 
 
 	profileIcon = res.profileIcon
@@ -114,12 +133,10 @@ function profileCheck(res) {
             <div class="stmHCenter">
             
            		<div class = "stmHCenterT">
-           		플레이한 챔피언(최근 20게임)
+           		
            		</div>
             	<div class = "stmHCenterB">
-            	<img src='/img/adc.png' style='width: 20px; height: 20px;'> (1승 2패) 1.25평점 <br>
-            	<img src='/img/adc.png' style='width: 20px; height: 20px;'> (1승 2패) 1.25평점 <br>
-            	<img src='/img/adc.png' style='width: 20px; height: 20px;'> (1승 2패) 1.25평점 <br>
+            	
             	</div>
             </div>
                
@@ -234,6 +251,10 @@ let goBtn = 0
 
 let myriotIdGameName = ''
 let myriotIdTagline = ''
+
+let graphCnt = 0
+let graphwin = 0
+let graphlose = 0
 function showGameTamble(res, data) {
 	console.log(data)
 	$('.graph1').empty()
@@ -244,11 +265,11 @@ function showGameTamble(res, data) {
 				resMyList.push(res[i]["info"][j])
 				myriotIdGameName = res[i]["info"][j]['riotIdGameName']
 				myriotIdTagline = res[i]["info"][j]['riotIdTagline']
-				if (res[i]['info'][j]['win'] == '1') {
-					win += 1
-				} else {
-					lose += 1
-				}
+				//				if (res[i]['info'][j]['win'] == '1') {
+				//					win += 1
+				//				} else {
+				//					lose += 1
+				//				}
 
 			}
 
@@ -256,18 +277,47 @@ function showGameTamble(res, data) {
 	}
 
 
-	//	console.log(resMyList)
+
 	profileCheck(resMyList[0])
-	showgraph(win, lose)
-	//	logolodingImg()
-	//	if (data['matchCnt'] == 1) {
-	//	logolodingImg()
-	//	}
+	console.log(IMGarr)
+	graphwin = 0
+	graphlose = 0
+	graphCnt = 0
+	for (i in IMGarr) {
+
+		win = IMGarr[i][3]
+		lose = IMGarr[i][1] - IMGarr[i][3]
+		kda = (IMGarr[i][2] / IMGarr[i][1]).toFixed(2)
+
+		str = `<img style='width: 20px; height: 20px;' src='https://ddragon.leagueoflegends.com/cdn/14.3.1/img/champion/${IMGarr[i][0]}.png'>
+		 (${win}승 ${lose}패) ${kda} :평점 <br>
+		`
+		$(".stmHCenterB").append(str)
+		graphwin += win
+		graphlose += lose
+		graphCnt += IMGarr[i][1]
+	}
+	str = `플레이한 챔피언(최근 솔로랭크${graphCnt}게임)`
+	$(".stmHCenterT").append(str)
+
+
+	//	console.log(win)
+	showgraph(graphwin, graphlose)
+
+
+
+
+
+
+
+
+
+
 	for (let i in resMyList) {
 		goBtn = Number(i) + (data['matchCnt']) * 4
 		Myres = resMyList[i] // 추후에 i 으로 바꾸기
 
-//		console.log(Myres)
+		//		console.log(Myres)
 		timecheck(Myres)//몇시간전,몇분게임
 		champion_name_kr = Myres.champion_name_kr
 		matchId = Myres.matchId
