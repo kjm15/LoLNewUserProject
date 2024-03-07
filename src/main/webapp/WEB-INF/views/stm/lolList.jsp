@@ -26,10 +26,11 @@
 		
 	 
 	</div>
-	<%-- 	<canvas id="donutChart" width="100" height="100"></canvas> --%>
+	<div class = "contetnsCheckA">
+
+	</div>
 	<div id="puuid">
 		<div class="containerXX">
-<!-- 			<div class="containerXl"></div> -->
 
 
 			<div class="containerXC"></div>
