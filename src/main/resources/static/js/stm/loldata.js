@@ -598,3 +598,7 @@ function goTier(data) {
 		}
 	})
 }
+
+function reload(i){
+	console.log(i)
+}

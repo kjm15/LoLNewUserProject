@@ -220,11 +220,10 @@ function profileCheck(res) {
 				  </div>
 				  <div class="GoPart">
 				   <ul class="menu2">
-				    <li class = "sampletest"><a href="#">전체</a></li>
-				    <li class = "sampletest"><a href="#">솔로랭크</a></li>
-				    <li class = "sampletest"><a href="#">자유랭크</a></li>
-				    <li class = "sampletest"><a href="#">칼바람나락</a></li>
-				    <li class = "sampletest"><a href="#">이벤트매치</a></li>
+				    <li class = "sampletest"><a href="javascript:reload(0)">전체</a></li>
+				    <li class = "sampletest"><a href="javascript:reload(420)">랭크</a></li>
+				    <li class = "sampletest"><a href="javascript:reload(440)">칼바람</a></li>
+				    
 				    </ul>
 				  </div>
 				  	
