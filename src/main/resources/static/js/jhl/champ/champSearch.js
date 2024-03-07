@@ -73,7 +73,7 @@ function champImgAll() {
 			champContainer.empty();
 
 			for (let i = 0; i < res.length; i++) {
-				// let champName = '카운터 챔피언 정보 넣어볼 예정'
+
 				let champName = res[i].champion_name_kr
 				let Name = res[i].champion_name
 				var imgSrc = 'https://ddragon.leagueoflegends.com/cdn/14.2.1/img/champion/' + res[i].champion_name + '.png';

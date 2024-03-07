@@ -155,7 +155,7 @@ function showgraph(win, lose) {
 			elements: {
 				center: {
 					text: winLoseList[0] + "win", // <<여기가 가운데 글씨들어가는곳
-					color: '#FF6384', // Default is #000000
+					color: 'rgba(54, 162, 235, 1)', // Default is #000000
 					fontStyle: 'Arial', // Default is Arial
 					sidePadding: 20, // Default is 20 (as a percentage)
 					minFontSize: 20, // Default is 20 (in px), set to false and text will not wrap.

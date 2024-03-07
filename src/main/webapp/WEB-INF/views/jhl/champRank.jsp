@@ -50,7 +50,7 @@
 				<c:if test="${userId eq 'jhl'}">
 					<div class="rankUpdateBtn">
 						<input type="button" id="jhlRankUpdateBtn" onclick="champUpdate()"
-							value="관리자용업데이트버튼" />
+							value="챔피언업데이트버튼" />
 					</div>
 				</c:if>
 				<div class="contentChampRank">

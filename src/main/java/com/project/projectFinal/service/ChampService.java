@@ -170,7 +170,7 @@ public class ChampService {
 			champTierRankTList.put("champion_pick", allCnt);
 			champTierRankTList.put("ban_rate", ban_rate);
 			champTierRankTList.put("tier", tier);
-//			log.info("============{}", ban_rate);
+
 			champDao.saveChampTierRankT(champTierRankTList);
 			log.info("============{}", champTierRankTList);
 		}
