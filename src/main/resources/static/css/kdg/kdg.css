@@ -372,7 +372,7 @@
 .itemList_container {
 	display: flex;
 	flex-direction: row; 
-	min-width: 1300px;	
+	min-width: 1100px;	
 	justify-content: center;
 }
 
@@ -507,6 +507,7 @@
 }
 
 .dropdown {
+	top :500px;
 	width: 310px;
 }
 
@@ -912,4 +913,238 @@
 
 .modal_talbel_tr {
 	height: 49px;
+}
+
+
+/*  장기훈 추가 css */
+@font-face {
+  font-family: 'Recipekorea';
+  src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_2001@1.1/Recipekorea.woff') format('woff');
+  font-weight: normal;
+  font-style: normal;
+}
+a, a:link {
+ 
+  text-decoration: none;
+  font-family: 'Jua', sans-serif;
+}
+ul {
+  list-style: none;
+  display: flex;
+  justify-content: center;
+}
+ul li a {
+/*   display: block; */
+  padding: 20px 20px;
+  position: relative;
+  font-size: 15px;
+  top : 10px;
+}
+ul li a::after {
+  content: '';
+  display: block;
+  position: absolute;
+  bottom: 0;
+  z-index: -1;
+}
+.menu2 li a::after {
+  border-radius : 20px;
+	top : 16%;
+  width: 0%;
+  height: 65%;
+  background: #01143c;
+  left: 10%;
+}
+ul li a:hover::after {
+  width: 100%;
+  left: 0;
+  transition: all .1s;
+}
+.menu2 li a:hover{
+  color: #fff;
+}
+.menu2 {
+
+	align-items : left;
+	height : 100%;
+	position: absolute;
+	width: 100%;
+	
+	
+}
+.GoPart {	
+	color : white;
+	width:100%;
+	position: relative;
+}
+
+
+.contentsCheckM {
+	border-radius : 30px;
+position : relative;
+	
+	background-size: 100% 100%;
+	display: flex;
+	width: 1100px;
+	
+	height: 50px;
+	z-index: 1;
+	/* 	height: 200px; */}
+.contentsCheckS {
+	position : relative;
+	display : flex;
+	border-radius : 20px;
+	background-color : rgba(6, 2, 115, 0.65);
+	border: 2px solid rgb(157, 196, 253);
+	width: 100%;
+	
+}
+
+.contetnsCheckT{	
+		
+	
+	height : 50px;
+	/* 	height: 200px; */
+	
+}
+
+
+.contetnsCheckA{
+	position : relative;
+	display: flex;
+	width: 100%;
+	height : 100%;
+	align-items: center;
+	justify-content: center;
+	margin-bottom: 10px;
+	margin-top: 25px;
+	/* 	height: 200px; */}
+
+.contetnsCheckB{
+	width : 100%;
+	height : 50px;
+
+
+	/* 	height: 200px; */
+	
+}
+.contetnsCheckB{
+	width : 100%;
+	height : 50px;
+
+
+	/* 	height: 200px; */
+	
+}
+.sampletest{
+	position : relative;
+width :10%;
+	color : white;	
+}
+.sampletestTier{
+width :10%;
+	color : white;	
+}
+
+.sampletest1{
+	width :60%;
+	height : 50px;
+	
+
+	/* 	height: 200px; */
+	
+}
+
+.sampletest2{
+	line-height : 45px;
+	width :15%;
+	height : 50px;
+	
+
+	/* 	height: 200px; */
+	
+}
+.dropDown {
+
+    display: inline-block;
+ 
+    width: 140px;
+}
+.dropDown:hover .subMenu {
+	opacity : 0;
+	animation: 0.3s linear  fadeIn;
+	animation-fill-mode : forwards;
+/* 	-webkit-transition: 0.3s ease; */
+/*   -webkit-transform: translate(0, -420px); */
+/*           transform: translate(0, -420px); */
+/*     display: none; */
+}
+/*
+.dropDown:hover {} 까지만 하면
+.dropDown 자체의 디자인을 변경하게 된다.
+.dropDown:hover 뒤에 무엇이든 이어지면 명령을 수행하는 역할이 된다.
+즉, 자식요소를 어떻게 할지 변경하는 정의하는 의미라고 생각하면 된다.
+*/
+
+.dropDown-btn {
+		
+    /*부모의 길이를 상속 받음, 유동적 길이 변경 가능*/
+    width: inherit;
+    padding: 10px;
+    font-size: 18px;
+	background-color : transparent;
+    border: none; 
+    outline: none; /*버튼 클릭 시 음영효과 제거*/
+    cursor: pointer;
+    color: #ffffff;
+}
+
+.subMenu {
+	
+	opacity : 0;
+	height : 365px;
+	text-align : center;
+	background-color: rgba(0, 41, 120, 1);
+/*     display: none;  */
+    width: 152px;
+    border: 1px solid #eee;
+    box-shadow: 0 0 10px rgba(0,0,0,0.17);
+}
+
+.subMenu a {
+	height: 50px;
+	
+	width : 150px;
+    display: block; /*a 태그는 가로배치 이므로 세로배치로 변경*/
+    padding: 7px;
+/*     text-align: center; */
+}
+
+.subMenu a:hover {
+
+/* 	top : 20%; */
+
+	width : 150px;
+	background-color: skyblue;
+}
+
+@keyframes fadeIn {
+  0% {
+    opacity: 0;
+    
+    
+  }
+  100% {
+    opacity: 1;
+  }
+}
+@keyframes fadeOut {
+  0% {
+    opacity: 1;
+    
+    
+  }
+  100% {
+    opacity: 0;
+  }
 }

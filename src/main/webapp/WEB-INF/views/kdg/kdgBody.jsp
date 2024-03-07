@@ -26,46 +26,48 @@
 
 
 
-<c:if test="${userId != null}">
-	<div class="comm_left_sideBanner">
-		<div class="sideBannerL">
-		  <a data-bs-toggle="modal" href="#exampleModalToggle" onclick='javascript:test()'><img class = "bannerImg" src="../img/kdg/kdgBanner.jpg"></a>
-		  <span class="txt-label banner_span_txt">
-		    <a id = "analysisBtn" class="btn btn-primary banner_to_modalBtn" data-bs-toggle="modal" href="#exampleModalToggle" role="button" style = "width: 150px; margin-left: 28.3%;" onclick='javascript:test()'>get Item Build</a>
-		  </span>
-		</div>
-	</div>
-	<div class="comm_right_sideBanner">
-		<div class="sideBannerR">
-		  <a data-bs-toggle="modal" href="#exampleModalToggle" onclick='javascript:test()'><img class = "bannerImg" src="../img/kdg/kdgBanner.jpg"></a>
-		  <span class="txt-label banner_span_txt">
-		    <a id = "analysisBtn" class="btn btn-primary banner_to_modalBtn" data-bs-toggle="modal" href="#exampleModalToggle" role="button" style = "width: 150px; margin-left: 28.3%;" onclick='javascript:test()'>get Item Build</a>
-		  </span>
-		</div>
-	</div>
-</c:if>
-<c:if test="${userId == null}">
-	<div class="comm_left_sideBanner">
-		<div class="sideBannerL">
-		  <a onclick='javascript:nologin'><img class = "bannerImg" src="../img/kdg/kdgBanner.jpg"></a>
-		  <span class="txt-label banner_span_txt">
-		    <a id = "analysisBtn" class="btn btn-primary banner_to_modalBtn" role="button" style = "width: 150px; margin-left: 28.3%;" onclick='javascript:nologin()'>get Item Build</a>
-		  </span>
-		</div>
-	</div>
-	<div class="comm_right_sideBanner">
-		<div class="sideBannerR">
-		  <a onclick='javascript:nologin()'><img class = "bannerImg" src="../img/kdg/kdgBanner.jpg"></a>
-		  <span class="txt-label banner_span_txt">
-		    <a id = "analysisBtn" class="btn btn-primary banner_to_modalBtn" role="button" style = "width: 150px; margin-left: 28.3%;" onclick='javascript:nologin()'>get Item Build</a>
-		  </span>
-		</div>
-	</div>
-</c:if>
+<%-- <c:if test="${userId != null}"> --%>
+<!-- 	<div class="comm_left_sideBanner"> -->
+<!-- 		<div class="sideBannerL"> -->
+<!-- 		  <a data-bs-toggle="modal" href="#exampleModalToggle" onclick='javascript:test()'><img class = "bannerImg" src="../img/kdg/kdgBanner.jpg"></a> -->
+<!-- 		  <span class="txt-label banner_span_txt"> -->
+<!-- 		    <a id = "analysisBtn" class="btn btn-primary banner_to_modalBtn" data-bs-toggle="modal" href="#exampleModalToggle" role="button" style = "width: 150px; margin-left: 28.3%;" onclick='javascript:test()'>get Item Build</a> -->
+<!-- 		  </span> -->
+<!-- 		</div> -->
+<!-- 	</div> -->
+<!-- 	<div class="comm_right_sideBanner"> -->
+<!-- 		<div class="sideBannerR"> -->
+<!-- 		  <a data-bs-toggle="modal" href="#exampleModalToggle" onclick='javascript:test()'><img class = "bannerImg" src="../img/kdg/kdgBanner.jpg"></a> -->
+<!-- 		  <span class="txt-label banner_span_txt"> -->
+<!-- 		    <a id = "analysisBtn" class="btn btn-primary banner_to_modalBtn" data-bs-toggle="modal" href="#exampleModalToggle" role="button" style = "width: 150px; margin-left: 28.3%;" onclick='javascript:test()'>get Item Build</a> -->
+<!-- 		  </span> -->
+<!-- 		</div> -->
+<!-- 	</div> -->
+<%-- </c:if> --%>
+<%-- <c:if test="${userId == null}"> --%>
+<!-- 	<div class="comm_left_sideBanner"> -->
+<!-- 		<div class="sideBannerL"> -->
+<!-- 		  <a onclick='javascript:nologin'><img class = "bannerImg" src="../img/kdg/kdgBanner.jpg"></a> -->
+<!-- 		  <span class="txt-label banner_span_txt"> -->
+<!-- 		    <a id = "analysisBtn" class="btn btn-primary banner_to_modalBtn" role="button" style = "width: 150px; margin-left: 28.3%;" onclick='javascript:nologin()'>get Item Build</a> -->
+<!-- 		  </span> -->
+<!-- 		</div> -->
+<!-- 	</div> -->
+<!-- 	<div class="comm_right_sideBanner"> -->
+<!-- 		<div class="sideBannerR"> -->
+<!-- 		  <a onclick='javascript:nologin()'><img class = "bannerImg" src="../img/kdg/kdgBanner.jpg"></a> -->
+<!-- 		  <span class="txt-label banner_span_txt"> -->
+<!-- 		    <a id = "analysisBtn" class="btn btn-primary banner_to_modalBtn" role="button" style = "width: 150px; margin-left: 28.3%;" onclick='javascript:nologin()'>get Item Build</a> -->
+<!-- 		  </span> -->
+<!-- 		</div> -->
+<!-- 	</div> -->
+<%-- </c:if> --%>
 <div class ="itemList_container">
 <div class ="comm_contents">
 <div class="comm_graph_content">
+
 <div class = "comm_graph_title">
+
 	<div class = "comm_title">
 	</div>
 	
@@ -144,7 +146,53 @@
 <br>
 </div>
 
-<div class="coreItemList_box" style="background-color: lightgray; color: white; width: 1100px; height: 1549px;">
+
+		<div class = contentsCheckM>
+			<div class = contentsCheckS>
+				 	
+				  <div class = "contentsDetailL">
+					
+				  </div>
+				  <div class="GoPart">
+				   <ul class="menu2" >
+				
+				    <li class = "sampletest">
+				    <div class="dropDown">
+				   
+				    <button class="dropDown-btn" 	>전체티어</button>
+				     <div class = "closeDownDrop">
+				  	  <div class="subMenu">
+				           <div><a name = "tierClose" href="javascript:startMakeTable('iron',1)"><img src="../img/tier/iron.png" style="width: 40px; height: 40px;">아이언</a>
+				         </div>  
+				        <div> <a name = "tierClose" href="javascript:startMakeTable('bronze',1)"><img src="../img/tier/bronze.png" style="width: 40px; height: 40px;">브론즈</a>  </div>  
+				         <div>  <a name = "tierClose" href="javascript:startMakeTable('silver',1)"><img src="../img/tier/silver.png" style="width: 40px; height: 40px;">실버</a>  </div>  
+				         <div>  <a name = "tierClose" href="javascript:startMakeTable('gold',1)"><img src="../img/tier/gold.png" style="width: 40px; height: 40px;">골드</a>  </div>  
+				         <div>  <a name = "tierClose" href="javascript:startMakeTable('platinum',1)"><img src="../img/tier/PLATINUM.png" style="width: 40px; height: 40px;">플래티넘</a>  </div>  
+				         <div>  <a name = "tierClose" href="javascript:startMakeTable('emerald',1)"><img src="../img/tier/emerald.png" style="width: 40px; height: 40px;">에메랄드</a>  </div>  
+				         <div>  <a name = "tierClose" href="javascript:startMakeTable('diamond',1)"><img src="../img/tier/diamond.png" style="width: 40px; height: 40px;">다이아몬드</a>  </div>  
+				       </div>
+				    </div>
+				 	</div>   
+				    
+				    </li>
+					
+				    <li class = "sampletest"><a href="javascript:choiceTier1(1)">[1]코어</a></li>
+					<li class="sampletest"><a href="javascript:choiceTier1(2)">[2]코어</a></li>
+					<li class="sampletest"><a href="javascript:choiceTier1(3)">[3]코어</a></li>
+					
+				    <li class = "sampletest1"></li>
+				    <li class = "sampletest2">version : 14.01	</li>
+				    </ul>
+				  </div>
+				  	
+				  <div class = "contentsDetailR">
+				
+				  </div> 
+			</div>
+		</div>
+		<div style = "height: 5px;"></div>
+		
+<div class="coreItemList_box" style=" color: white; width: 1100px; height: 1549px;">
 
 </div>
 </div>
