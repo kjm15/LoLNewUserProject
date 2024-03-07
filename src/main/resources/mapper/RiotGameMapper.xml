@@ -82,10 +82,8 @@
 		select * from
 		RiotGameInfoT
 		where matchId = #{matchId}
-		and riotIdGameName =
-		#{riotIdGameName}
-		and riotIdTagline =
-		#{riotIdTagline};
+		and riotIdGameName = #{riotIdGameName}
+		and riotIdTagline = #{riotIdTagline};
 	</select>
 
 	<update id="saveAiData">
@@ -127,19 +125,22 @@
 		limit 0,19;
 	</select>
 
-	<select id="RiotGameInfoSelectALL">
-		select matchId from RiotGameInfoT where
-		riotIdGameName = #{gameName} limit 0,3;
-	</select>
-
 	<select id="RiotGameInfoSelectRank">
-		select matchId from RiotGameInfoT where
-		riotIdGameName =#{gameName} and (queueId = 420 or queueId = 440) limit	0,3;
+		select matchId 
+		from RiotGameInfoT 
+		where riotIdGameName =#{gameName} 
+		order by matchId desc 
+		limit #{matchCnt}, 3;
 	</select>
 
-	<select id="RiotGameInfoSelectAram">
-		select matchId from RiotGameInfoT where
-		riotIdGameName = #{gameName} and queueId =
-		450 limit 0,3;
+	<select id="RiotGameInfoSelectQueueId">
+		select matchId 
+		from RiotGameInfoT 
+		where riotIdGameName = #{gameName} and queueId = #{queueId}  
+		order by matchId desc 
+		limit #{matchCnt}, 3;
 	</select>
-</mapper>
+	
+	
+	
+</mapper>	

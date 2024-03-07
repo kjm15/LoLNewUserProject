@@ -134,47 +134,31 @@ public class MatchListService {
 
 	}
 
-	public ArrayList<HashMap<String, Object>> GameModeSearch(RiotApiDto gameDto) {
-		ArrayList<HashMap<String, Object>> GameModeList = new ArrayList<>();
-		if (gameDto.getQueueId() == 0) {
-			
-			List<Map<String, Object>> MList = riotGameDao.RiotGameInfoSelectALL(gameDto);
+	public List<Map<String, Object>> GameModeSearch(Map<String, Object> qMap) {
+		List<String> macthIdList = new ArrayList<>();
+		List<Map<String, Object>> mList = new ArrayList<>();
+		int queueId = (Integer) qMap.get("queueId");
 
-			for (int i = 0; i < MList.size(); i++) {
-				HashMap<String, Object> newGList = new HashMap<>();
-				List<Map<String, RiotGameDto>> infoData = riotGameDao
-						.RiotGameInfoSelect((String) MList.get(i).get("matchId"));
-				newGList.put("info", infoData);
-				GameModeList.add(newGList);
-			}
-			return GameModeList;
-		} else if (gameDto.getQueueId() == 420) {
-			
-			List<Map<String, Object>> MList = riotGameDao.RiotGameInfoSelectRank(gameDto);
+		// 1 . 해당 조건에 맞는 리스트 3개를 가지고옴
+		if (queueId == 0) {
 
-			for (int i = 0; i < MList.size(); i++) {
-				HashMap<String, Object> newGList = new HashMap<>();
-				List<Map<String, RiotGameDto>> infoData = riotGameDao
-						.RiotGameInfoSelect((String) MList.get(i).get("matchId"));
-				newGList.put("info", infoData);
-				GameModeList.add(newGList);
-			}
-			return GameModeList;
-		} else if (gameDto.getQueueId() == 450) {
+			macthIdList = riotGameDao.RiotGameInfoSelectRank(qMap);
 
-			List<Map<String, Object>> MList = riotGameDao.RiotGameInfoSelectAram(gameDto);
+		} else {
 
-			for (int i = 0; i < MList.size(); i++) {
-				HashMap<String, Object> newGList = new HashMap<>();
-				List<Map<String, RiotGameDto>> infoData = riotGameDao
-						.RiotGameInfoSelect((String) MList.get(i).get("matchId"));
-				newGList.put("info", infoData);
-				GameModeList.add(newGList);
-			}
-			return GameModeList;
+			macthIdList = riotGameDao.RiotGameInfoSelectQueueId(qMap);
 		}
-		
-		return null;
+		// 2. 그 리스트 3개를 기존 형식에 맞춰서 가지고 감
+		for (String matchId : macthIdList) {
+			// 3 기존에 있는 메서드를 활용하여 데이터를 가지고옴
+			Map<String, Object> addmathIdMap = new HashMap<>();
+			//4. 기존형식과 동일하게 만들어줌
+			addmathIdMap.put("info", riotGameDao.DBRiotGameName(matchId));
+			addmathIdMap.put("matchId", matchId);
+			mList.add(addmathIdMap);
+		}
+
+		return mList;
 	}
 
 }

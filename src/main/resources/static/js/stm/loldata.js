@@ -34,8 +34,9 @@ function logolodingImg() {
 
 }
 function showgraph(win, lose) {
-	console.log(win)
-	console.log(lose)
+	//		console.log(win)
+	//		console.log(lose)
+
 
 	winLoseList = [win, lose]
 	winLoseListKor = ["승리", "패배"]
@@ -210,7 +211,7 @@ function mainSearch(gameName1) {
 	var gameId = gameName1.split('#');
 	let gameName = gameId[0] // 아이디
 	let tagLine = gameId[1] // 태그
-	let matchCnt = cnt;
+	matchCnt = cnt;
 	data = { 'gameName': gameName, 'tagLine': tagLine, 'matchCnt': matchCnt }
 	bbb(data)
 }
@@ -354,7 +355,7 @@ function aiCheckTroll(res1) {
 
 matchId_ai_list = []
 function bbb(data) {
-	//	console.log(data)
+	console.log(data)
 	$.ajax({
 		type: 'post',
 		url: '/match/list',
@@ -489,12 +490,7 @@ function aaa(data) { // data == 검색한 게임 아이디
 
 		success: function(res) {
 			//			
-			for (let i in res) {
-
-				allofList.push(res[i])
-			}
-			console.log(allofList)
-			showGameTamble(res, data)
+			showGameTamble(res)
 
 		}
 	})
@@ -585,7 +581,7 @@ function gamebtn(goBtn, matchId) {
 }
 
 function goTier(data) {
-	console.log(data)
+	//	console.log(data)
 	let gameName = data['gameName'] // 아이디
 	let tagLine = data['tagLine'] // 태그
 	data = { 'gameName': gameName, 'tagLine': tagLine }
@@ -594,23 +590,48 @@ function goTier(data) {
 		url: '/summoner/v4/Search',
 		data: data,
 		success: function(res) {
-			console.log(res)
+			//			console.log(res)
 		}
 	})
 }
 
-function reload(gameName, tagLine, matchCnt, queueId) {
-	console.log(gameName, tagLine, matchCnt, queueId)
-	data2 = {'gameName': gameName, 'tagLine': tagLine, 'matchCnt':matchCnt}
-	data4 = { 'gameName': gameName, 'tagLine': tagLine, 'queueId': queueId }
+function reload(gameName, tagLine, q, i) {
+	nowStatus = ''
+	queueId = q
+console.log(matchCnt)
+	if (i == 1) {
+	
+		$('.containerXC').empty()
+		
+		matchCnt = i
+	}
+	
+	
+	//	console.log(gameName, tagLine, matchCnt, queueId)
+	data = { 'gameName': gameName, 'tagLine': tagLine, 'queueId': queueId, "matchCnt": matchCnt-1 }
+
+	console.log(data)
 	$.ajax({
+		contentType: 'application/json',
 		type: 'post',
 		url: '/GameMode/Search',
-		data: data4,
+		data: JSON.stringify(data),
 		success: function(res) {
 			console.log(res)
-			showGameTamble(res,data2)
+			if (res.length == 0) {
+
+				alert("최근 전적 데이터를 조회할수 없습니다.")
+
+			} else {
+				showGameTamble(res)
+			}
+
 		}
 	})
+
+
+
+
+
 
 }

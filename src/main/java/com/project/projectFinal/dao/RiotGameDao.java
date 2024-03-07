@@ -48,11 +48,12 @@ public interface RiotGameDao {
 
 	List<Map<String, Object>> championPrefer(String gameName);
 
-	List<Map<String, Object>> RiotGameInfoSelectALL(RiotApiDto gameDto);
 
-	List<Map<String, Object>> RiotGameInfoSelectRank(RiotApiDto gameDto);
+	List<String> RiotGameInfoSelectRank(Map<String, Object> qMap);
 
-	List<Map<String, Object>> RiotGameInfoSelectAram(RiotApiDto gameDto);
+	List<String> RiotGameInfoSelectQueueId(Map<String, Object> qMap);
+
+	List<Map<String, Object>> rInfo(Map<String, Object> qMap);
 
 
 }

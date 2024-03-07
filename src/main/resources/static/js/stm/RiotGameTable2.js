@@ -52,17 +52,14 @@ function LaneChart(res) {
 
 
 
-	console.log(arr)
-
+	//	console.log(arr)
+	//
 	arr.sort((a, b) => b[1] - a[1])
 
 	arr.slice(0, 3)
 
-	console.log(arr.slice(0, 3))
+	//	console.log(arr.slice(0, 3))
 	IMGarr = arr.slice(0, 3);
-
-
-
 
 
 }
@@ -83,14 +80,33 @@ function getElCount(arr) {
 	return [result, kda, win];
 }
 
-
+let profileIcon = ''
+let summonerLevel = ''
+let riotIdGameName = ''
 function profileCheck(res) {
-	//	console.log(IMGarr)
 
 
-	profileIcon = res.profileIcon
-	summonerLevel = res.summonerLevel
-	riotIdGameName = res.riotIdGameName
+	//	console.log(res)
+	if (res == undefined) {
+
+
+
+	} else if (res['profileIcon'] != undefined) {
+		profileIcon = res['profileIcon']
+		summonerLevel = res.summonerLevel
+		riotIdGameName = res.riotIdGameName
+	} else {
+
+
+		profileIcon = res[0]['info']['profileIcon']
+		summonerLevel = res.summonerLevel
+		riotIdGameName = res.riotIdGameName
+
+	}
+
+
+
+
 
 	if (data['matchCnt'] == 1) { //최신 레벨과 플레이어 아이콘을 위해 저장
 		newprofileIcon = profileIcon
@@ -209,7 +225,7 @@ function profileCheck(res) {
         </div>`
 
 	$('.graph1').append(ccc)
-	
+
 	contentsCheckBox = `
 	
 		<div class = contentsCheckM>
@@ -220,10 +236,13 @@ function profileCheck(res) {
 				  </div>
 				  <div class="GoPart">
 				   <ul class="menu2">
-				    <li class = "sampletest"><a href="javascript:reload('${data['gameName']}','${data['tagLine']}',${data['matchCnt']},0)">전체</a></li>
-				    <li class = "sampletest"><a href="javascript:reload('${data['gameName']}','${data['tagLine']}',${data['matchCnt']},420)">랭크</a></li>
-				    <li class = "sampletest"><a href="javascript:reload('${data['gameName']}','${data['tagLine']}',${data['matchCnt']},450)">칼바람</a></li>
-				    
+				    <li class = "sampletest"><a href="/stm/${gameName}/${tagLine}">전체</a></li>
+				    <li class = "sampletest"><a href="javascript:reload('${gameName}','${tagLine}',420,1)">솔로랭크</a></li>
+				     <li class = "sampletest"><a href="javascript:reload('${gameName}','${tagLine}',440,1)">자유랭크</a></li>
+				    <li class = "sampletest"><a href="javascript:reload('${gameName}','${tagLine}',450,1)">칼바람</a></li>
+				    <li class = "sampletest"><a href="javascript:reload('${gameName}','${tagLine}',1900,1)">우르프</a></li>
+				  
+				   
 				    </ul>
 				  </div>
 				  	
@@ -234,7 +253,7 @@ function profileCheck(res) {
 		</div>
 		
 		`
-	
+
 	$('.contetnsCheckA').html(contentsCheckBox)
 }
 //<canvas id="LaneChart" width="593" height="198"></canvas> //stmBlank안에 들어갈 구글chart.js
@@ -280,33 +299,41 @@ let myriotIdTagline = ''
 let graphCnt = 0
 let graphwin = 0
 let graphlose = 0
-function showGameTamble(res, data) {
-	console.log(res)
-	console.log(data)
+
+let gameName = ''
+let tagLine = ''
+let matchCnt = 1
+let queueId = 0
+let nowStatus = 'ALL'
+function showGameTamble(res) {
+
+	//
 	$('.graph1').empty()
 	resMyList = []
 	for (let i in res) {
 		for (let j in res[i]['info']) {
 			if (data['gameName'] == res[i]["info"][j]['riotIdGameName'] || data['gameName'] == res[i]["info"][j]['summonerName']) {
-				console.log(res[i]["info"][j]['riotIdGameName'])
+				//				console.log(res[i]["info"][j]['riotIdGameName'])
 				resMyList.push(res[i]["info"][j])
 				myriotIdGameName = res[i]["info"][j]['riotIdGameName']
+				gameName = res[i]["info"][j]['riotIdGameName']
 				myriotIdTagline = res[i]["info"][j]['riotIdTagline']
-				//				if (res[i]['info'][j]['win'] == '1') {
-				//					win += 1
-				//				} else {
-				//					lose += 1
-				//				}
+				tagLine = res[i]["info"][j]['riotIdTagline']
+				if (res[i]['info'][j]['win'] == '1') {
+					win += 1
+				} else {
+					lose += 1
+				}
 
 			}
 
 		}
 	}
 
-
-
 	profileCheck(resMyList[0])
-	console.log(IMGarr)
+	//	console.log(resMyList[0])
+
+	//	console.log(IMGarr)
 	graphwin = 0
 	graphlose = 0
 	graphCnt = 0
@@ -329,7 +356,7 @@ function showGameTamble(res, data) {
 
 
 	//	console.log(win)
-	showgraph(graphwin, graphlose)
+
 
 
 
@@ -546,12 +573,29 @@ function showGameTamble(res, data) {
 		})
 	}
 	//	console.log(myriotIdGameName)
-	let more = `<div class='containerXR'></div><div class='more'  tooltip="추가 정보 더보기" >
+	gameName = myriotIdGameName
+	tagLine = myriotIdTagline
+	matchCnt
+	console.log(matchCnt)
+	let more = ''
+	if (nowStatus == 'ALL') {
+		more = `<div class='containerXR'></div><div class='more'  tooltip="추가 정보 더보기" >
 					<center>
-						<input type = "button" value = "더보기" name = "\'${myriotIdGameName}\'#\'${myriotIdTagline}\'#\'${data['matchCnt']}\'" id = 'loadMore' class='loadMore' 	style = 'border: 2px solid rgb(157, 196, 253);    border-radius: 20px;'	>
+						<input type = "button" value = "더보기"  id = 'loadMore' class='loadMore' 	style = 'border: 2px solid rgb(157, 196, 253);    border-radius: 20px;'	>
 						
 					</center>
 				</div>`
+	} else {
+
+		more = `<div class='containerXR'></div><div class='more'  tooltip="추가 정보 더보기" >
+					<center>
+						<input type = "button" value = "더보기"  id = 'loadMore1' class='loadMore' 	style = 'border: 2px solid rgb(157, 196, 253);    border-radius: 20px;'	>
+						
+					</center>
+				</div>`
+	}
+
+
 	$('.containerXC').append(more)
 
 	modNum = $('#modNum').text()
@@ -559,7 +603,7 @@ function showGameTamble(res, data) {
 	if (modNum == 0) {
 		$('.uid').css("color", "white")
 	}
-	console.log(TOP)
+	//	console.log(TOP)
 	barT = 100 - (TOP * 5)
 	barJ = 100 - (JUNGLE * 5)
 	barM = 100 - (MIDDLE * 5)
@@ -570,11 +614,12 @@ function showGameTamble(res, data) {
 	$('.stmBlankGTM3').css("height", barM + "%")
 	$('.stmBlankGTM4').css("height", barB + "%")
 	$('.stmBlankGTM5').css("height", barU + "%")
-	
-	if(data['matchCnt']==1){
+
+	if (data['matchCnt'] == 1) {
 		goTier(data)
-		
+
 	}
+	showgraph(graphwin, graphlose)
 }
 
 
@@ -920,27 +965,23 @@ function aiTimelineAni(matchId) {
 window.addEventListener('click', (e) => {
 
 	if (e.target.id == "loadMore") {
-		var riotid = $('#loadMore').attr('name');
-
-
-
-		var gameId = riotid.split('#');
-		let gameName = gameId[0].replace(/\'/gi, "") // 아이디
-		let tagLine = gameId[1].replace(/\'/gi, "") // 태그
-		let matchCnt = parseInt(gameId[2].replace(/\'/gi, ""))
-		//		
 
 		// 태그
 		matchCnt++;
 		data = { 'gameName': gameName, 'tagLine': tagLine, 'matchCnt': matchCnt }
-		//		console.log(data)
-		$('#loadMore').remove()
+
+		console.log(data)
+		$('.more').remove()
+		$('.containerXR').remove()
+
 		bbb(data)
-	}
+	} else if (e.target.id == "loadMore1") {
 
-	if (e.target.className == 'box-right') {
-
-		//		console.log(e.target.className)
+		matchCnt++;
+		$('.more').remove()
+		$('.containerXR').remove()
+		console.log(gameName, tagLine, queueId, matchCnt)
+		reload(gameName, tagLine, queueId, matchCnt)
 	}
 
 });
