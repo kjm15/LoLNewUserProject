@@ -123,7 +123,7 @@
 	<select id="championPrefer">
 		select championName, kda, win from RiotGameInfoT
 		where riotIdGameName =
-		#{gameName}
+		#{gameName} and queueId = 420
 		limit 0,19;
 	</select>
 </mapper>

@@ -25,8 +25,8 @@ public class SummonerV4Controller {
 
 	@PostMapping("/summoner/v4/userList")
 	public List<Map<String, Object>> summonerV4(String matchId) {
-		
-		return  matchListService.DBRiotGameName(matchId);
+
+		return matchListService.DBRiotGameName(matchId);
 	}
 
 	@PostMapping("/summoner/v4/Rank")
@@ -34,7 +34,11 @@ public class SummonerV4Controller {
 
 		return webmatchListService.SummonerV4(data);
 	}
-	
 
-	
+	@PostMapping("/summoner/v4/Search")
+	public String SearchUser(String gameName, String tagLine) {
+
+		return webmatchListService.SearchUser(gameName, tagLine);
+	}
+
 }
