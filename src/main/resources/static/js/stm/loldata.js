@@ -16,8 +16,6 @@ $(document).ready(function() {
 
 function logolodingImg() {
 
-
-
 	let gameName1 = $('#gameName').val()
 	var gameId = gameName1.split('#');
 	let gameName = gameId[0]

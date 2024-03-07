@@ -192,8 +192,34 @@ function profileCheck(res) {
         </div>`
 
 	$('.graph1').append(ccc)
-
-
+	
+	contentsCheckBox = `
+	
+		<div class = contentsCheckM>
+			<div class = contentsCheckS>
+				 	
+				  <div class = "contentsDetailL">
+					
+				  </div>
+				  <div class="GoPart">
+				   <ul class="menu2">
+				    <li class = "sampletest"><a href="#">전체</a></li>
+				    <li class = "sampletest"><a href="#">솔로랭크</a></li>
+				    <li class = "sampletest"><a href="#">자유랭크</a></li>
+				    <li class = "sampletest"><a href="#">칼바람나락</a></li>
+				    <li class = "sampletest"><a href="#">이벤트매치</a></li>
+				    </ul>
+				  </div>
+				  	
+				  <div class = "contentsDetailR">
+				
+				  </div> 
+			</div>
+		</div>
+		
+		`
+	
+	$('.contetnsCheckA').html(contentsCheckBox)
 }
 //<canvas id="LaneChart" width="593" height="198"></canvas> //stmBlank안에 들어갈 구글chart.js
 
