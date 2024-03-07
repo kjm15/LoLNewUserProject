@@ -110,7 +110,7 @@ function profileCheck(res) {
             <div class="stmHright">
                 <div class="cpicon">
                     <div class = "cpimg">
-						<img width='85' height='85' alt='못 불러옴' style = "border-radius: 30px;"  src=https://ddragon.leagueoflegends.com/cdn/14.3.1/img/profileicon/${newprofileIcon}.png>
+						<img width='130' height='130' alt='못 불러옴' style = "border-radius: 30px;"  src=https://ddragon.leagueoflegends.com/cdn/14.3.1/img/profileicon/${newprofileIcon}.png>
                     </div>
                     	
                      		
@@ -119,7 +119,7 @@ function profileCheck(res) {
               				  <div class="ulevel">${newsummonerLevel} </div>
                 		</div>
                 		<div class "cpimgB">
-                			<img width=180 height=180 src="/img/tier/${TierIcon}.png" alt="티어">
+                			<img width=300 height=300 src="/img/tier/${TierIcon}.png" alt="티어">
                 		</div>
                 	
                 			 <div class="uid">${newriotIdGameName}</div>
@@ -141,7 +141,7 @@ function profileCheck(res) {
             </div>
                
             <div class="stmHleft">
-                <div class="u-chart"><canvas id="donutChart" width="160px" height="160px"></canvas></div>
+                <div class="u-chart"><canvas id="donutChart" ></canvas></div>
             </div>
         </div>
         </div>
@@ -316,8 +316,8 @@ function showGameTamble(res, data) {
 		lose = IMGarr[i][1] - IMGarr[i][3]
 		kda = (IMGarr[i][2] / IMGarr[i][1]).toFixed(2)
 
-		str = `<img style='width: 20px; height: 20px;' src='https://ddragon.leagueoflegends.com/cdn/14.3.1/img/champion/${IMGarr[i][0]}.png'>
-		 (${win}승 ${lose}패) ${kda} :평점 <br>
+		str = `<div class = "champeAndKda"><img style='width: 50px; height: 50px;' src='https://ddragon.leagueoflegends.com/cdn/14.3.1/img/champion/${IMGarr[i][0]}.png'>
+		<div class = "champeAndKdaKor"> (${win}승 ${lose}패) ${kda} :평점 </div></div><br>
 		`
 		$(".stmHCenterB").append(str)
 		graphwin += win
@@ -548,7 +548,7 @@ function showGameTamble(res, data) {
 	//	console.log(myriotIdGameName)
 	let more = `<div class='containerXR'></div><div class='more'  tooltip="추가 정보 더보기" >
 					<center>
-						<input type = "button" value = "더보기" name = "\'${myriotIdGameName}\'#\'${myriotIdTagline}\'#\'${data['matchCnt']}\'" id = 'loadMore' class='loadMore'>
+						<input type = "button" value = "더보기" name = "\'${myriotIdGameName}\'#\'${myriotIdTagline}\'#\'${data['matchCnt']}\'" id = 'loadMore' class='loadMore' 	style = 'border: 2px solid rgb(157, 196, 253);    border-radius: 20px;'	>
 						
 					</center>
 				</div>`

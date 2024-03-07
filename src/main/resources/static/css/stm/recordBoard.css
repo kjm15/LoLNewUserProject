@@ -701,6 +701,9 @@ ul li a:hover::after {
 
 /*한판당 4%*/
 .stmHright {
+	position:absolute;
+	top : 10%;
+	left : -5%;
 	z-index: 2;
 	width: 25%;
 
@@ -719,7 +722,7 @@ ul li a:hover::after {
 .stmBlankT {
 	position : relative;
 	width: 100%;
-	height: 30%;
+	height: 20%;
 }
 .stmBlankTM {
 	top : 40%;
@@ -727,17 +730,19 @@ ul li a:hover::after {
 	position : absolute;
 	width: 100%;
 	height: 30%;
+	font-size: 20px;
+	
 }
 .stmBlankB {
 
 	width: 100%;
-	height: 50%;
+	height: 80%;
 }
 
 .sample {
 	/* 	background-color : skyblue; */
 
-	width: 5%;
+	width: 30%;
 	height: 100%;
 }
 
@@ -747,7 +752,7 @@ ul li a:hover::after {
 	position : relative;
 
 	width: 20%;
-	height: 135px;
+	height: 300px;
 }
 .stmBlankGtop {
   border-top-left-radius: 50px;
@@ -837,7 +842,7 @@ ul li a:hover::after {
 /* 	background-color: white; */
 
 	/* 	좌우이동 */
-
+	height : 100%;
 	display: flex;
 
 }
@@ -861,8 +866,8 @@ ul li a:hover::after {
 .cpimg {
 	position: absolute;
 	width: 100%;
-	height: 70%;
-	left: 4.5%;
+	height: 80%;
+	left: 40%;
 	top: 5px;
 	/*    position: relative; */
 	/* 	float: right; */
@@ -873,9 +878,9 @@ ul li a:hover::after {
 }
 
 .uidLevelBox {
-
-	width: 50px;
-	left: 50px;
+	height : 30px;
+	width: 100px;
+	left: 85px;
 	transform: translateX(17px);
 	align-items: center;
 	justify-content: center;
@@ -883,16 +888,18 @@ ul li a:hover::after {
 	background-color: rgb(157, 196, 253);
 	border-radius: 3px;
 	color: white;
-	top: 74px;
+	top: 130px;
 }
 
 
 .uid {
 	position: absolute;
-	top: 85%;
-	left: -34%;
+	top: 75%;
+	left:0%;
 	width: 300px;
 	height: 30%;
+	font-size: 30px;
+	color : white;
 	/* 	text-align: center; */
 	/* 	float: right; */
 	/*    border : 1px solid black; */
@@ -914,9 +921,10 @@ ul li a:hover::after {
 
 /* } */
 .cpimgB {
-	position: relative;
+	position: absolute;
 	width: 100%;
 	height: 50px;
+	top : 50%;	
 	/* 	text-align: center; */
 	/* 	float: right; */
 	/*    border : 1px solid black; */
@@ -935,6 +943,9 @@ ul li a:hover::after {
 }
 
 .u-chart {
+	position: absolute;
+	top : 40%;
+	left : -20%	;
 	/* 	width: 150px; */
 	/* 	height: 150px; */
 	/* 	position: relative; */
@@ -944,12 +955,15 @@ ul li a:hover::after {
 }
 
 .stmH {
+	position : relative;
 	width: 100%;
 	display: flex;
 }
 
 .stmHleft {
+	position : relative;
 	width: 30%;
+
 	/* 	height: 100%; */
 	/* 	float: right; */
 
@@ -965,12 +979,13 @@ ul li a:hover::after {
 }
 
 .stmHCenterT {
+	font-size : 20px;
 	position:absolute;
 	/* 	background-color : skyblue; */
-	top : 13%;
+	top : 7%;
 	left : 14%;
-	width: 100%;
-	height: 30%;
+	width: 120%;
+	height: 50%;
 	/* 	float: right; */
 
 }
@@ -978,13 +993,25 @@ ul li a:hover::after {
 .stmHCenterB {
 	position:absolute;
 	left : 20%;
-	top : 30%;
+	top : 20%;
 	/* 	background-color : skyblue; */
-	width: 100%;
-	height: 50%;
+	width: 500px;
+	height: 100%;
 	/* 	float: right; */
-
+font-size: 20px;
 }
+.champeAndKda{
+	
+	border-radius : 20px;
+	display: flex;
+}
+.champeAndKdaKor{
+	
+	line-height: 50px;
+	font-size : 20px;
+}
+
+
 
 .stmHCenterM {
 	position: absolute;
@@ -1006,6 +1033,8 @@ ul li a:hover::after {
 }
 
 .loadMore {
+	
+
 	width: 100%;
 	height: 35px;
 	border: none;

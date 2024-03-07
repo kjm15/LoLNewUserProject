@@ -26,17 +26,17 @@
 					<div class=championGraphContent>
 						<div class="myImg"></div>
 						<div class='box-left'>
-							<div class="box-leftSelect" ></div>
+							<div class="box-leftSelect"></div>
 							<div style="max-width: 230px;" id="myChart1"></div>
 						</div>
-<!-- 						<div class='box-center'> -->
-<!-- 													<div style="max-width: 300px" id="myChart2"></div> -->
-<!-- 						</div> -->
+						<!-- 						<div class='box-center'> -->
+						<!-- 													<div style="max-width: 300px" id="myChart2"></div> -->
+						<!-- 						</div> -->
 						<div class='box-right'>
-						<div class='box-right-contents'>
-						<div class='topPick10'>픽률TOP10</div>
-						<div class='box-right2'></div>
-						</div>
+							<div class='box-right-contents'>
+								<div class='topPick10'>픽률TOP10</div>
+								<div class='box-right2'></div>
+							</div>
 							<div style="max-width: 1000px" id="myChart3"></div>
 						</div>
 						<div class='box-side'></div>
@@ -53,6 +53,33 @@
 							value="챔피언업데이트버튼" />
 					</div>
 				</c:if>
+
+				<div class = "widthTest">
+				
+				</div>
+					<!-- 				장기훈 -->
+					<div class=contentsCheckM>
+						<div class=contentsCheckS>
+
+							<div class="contentsDetailL"></div>
+							<div class="GoPart">
+								<ul class="menu2">
+									<li class="sampletest"><a href="javascript:reload(},0)">전체</a></li>
+									<li class="sampletest"><a href="javascript:reload(},0)">전체</a></li>
+									<li class="sampletest"><a href="javascript:reload(},0)">전체</a></li>
+								</ul>
+							</div>
+
+							<div class="contentsDetailR"></div>
+						</div>
+					
+
+
+
+
+
+					<!-- 				장기훈 -->
+				</div>
 				<div class="contentChampRank">
 					<%@include file="champImg.jsp"%>
 					<div class="contentsItem LineRank">
@@ -65,6 +92,7 @@
 									<option value="gold" id="gold">Gold+
 									<option value="platinum" id=platinum>Platinum+
 									<option value="emerald" id="emerald" selected="selected">Emerald+
+
 
 
 
