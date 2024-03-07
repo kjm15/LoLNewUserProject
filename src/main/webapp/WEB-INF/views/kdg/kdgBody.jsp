@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <meta charset="UTF-8">    
 <title>아이템 분석</title>
 
@@ -23,22 +24,44 @@
 
 <!-- 페이지 가운데로 맞추기 위해서 다크모드 헤더로 이동했습니다.(header.jsp , newMain.css) -->
 
-<div class="comm_left_sideBanner">
-	<div class="sideBannerL">
-	  <a data-bs-toggle="modal" href="#exampleModalToggle" onclick='javascript:test()'><img class = "bannerImg" src="../img/kdg/kdgBanner.jpg"></a>
-	  <span class="txt-label banner_span_txt">
-	    <a id = "analysisBtn" class="btn btn-primary banner_to_modalBtn" data-bs-toggle="modal" href="#exampleModalToggle" role="button" style = "width: 150px; margin-left: 28.3%;" onclick='javascript:test()'>get Item Build</a>
-	  </span>
+
+
+<c:if test="${userId != null}">
+	<div class="comm_left_sideBanner">
+		<div class="sideBannerL">
+		  <a data-bs-toggle="modal" href="#exampleModalToggle" onclick='javascript:test()'><img class = "bannerImg" src="../img/kdg/kdgBanner.jpg"></a>
+		  <span class="txt-label banner_span_txt">
+		    <a id = "analysisBtn" class="btn btn-primary banner_to_modalBtn" data-bs-toggle="modal" href="#exampleModalToggle" role="button" style = "width: 150px; margin-left: 28.3%;" onclick='javascript:test()'>get Item Build</a>
+		  </span>
+		</div>
 	</div>
-</div>
-<div class="comm_right_sideBanner">
-	<div class="sideBannerR">
-	  <a data-bs-toggle="modal" href="#exampleModalToggle" onclick='javascript:test()'><img class = "bannerImg" src="../img/kdg/kdgBanner.jpg"></a>
-	  <span class="txt-label banner_span_txt">
-	    <a id = "analysisBtn" class="btn btn-primary banner_to_modalBtn" data-bs-toggle="modal" href="#exampleModalToggle" role="button" style = "width: 150px; margin-left: 28.3%;" onclick='javascript:test()'>get Item Build</a>
-	  </span>
+	<div class="comm_right_sideBanner">
+		<div class="sideBannerR">
+		  <a data-bs-toggle="modal" href="#exampleModalToggle" onclick='javascript:test()'><img class = "bannerImg" src="../img/kdg/kdgBanner.jpg"></a>
+		  <span class="txt-label banner_span_txt">
+		    <a id = "analysisBtn" class="btn btn-primary banner_to_modalBtn" data-bs-toggle="modal" href="#exampleModalToggle" role="button" style = "width: 150px; margin-left: 28.3%;" onclick='javascript:test()'>get Item Build</a>
+		  </span>
+		</div>
 	</div>
-</div>
+</c:if>
+<c:if test="${userId == null}">
+	<div class="comm_left_sideBanner">
+		<div class="sideBannerL">
+		  <a onclick='javascript:nologin'><img class = "bannerImg" src="../img/kdg/kdgBanner.jpg"></a>
+		  <span class="txt-label banner_span_txt">
+		    <a id = "analysisBtn" class="btn btn-primary banner_to_modalBtn" role="button" style = "width: 150px; margin-left: 28.3%;" onclick='javascript:nologin()'>get Item Build</a>
+		  </span>
+		</div>
+	</div>
+	<div class="comm_right_sideBanner">
+		<div class="sideBannerR">
+		  <a onclick='javascript:nologin()'><img class = "bannerImg" src="../img/kdg/kdgBanner.jpg"></a>
+		  <span class="txt-label banner_span_txt">
+		    <a id = "analysisBtn" class="btn btn-primary banner_to_modalBtn" role="button" style = "width: 150px; margin-left: 28.3%;" onclick='javascript:nologin()'>get Item Build</a>
+		  </span>
+		</div>
+	</div>
+</c:if>
 <div class ="itemList_container">
 <div class ="comm_contents">
 <div class="comm_graph_content">
