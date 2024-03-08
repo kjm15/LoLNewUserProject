@@ -73,6 +73,14 @@ public class MainController {
 
 		return "stm/stmmain";
 	}
+	@GetMapping(value ={"/searchError/{gameName}/{tagLine}","/searchError"})
+	public String error(@PathVariable(required = false) String gameName,
+			@PathVariable(required = false) String tagLine, Model model) {
+	
+		return "stm/error";
+	}
+	
+	
 
 	@GetMapping("/test")
 	public String testboard() {
@@ -84,6 +92,8 @@ public class MainController {
 	
 		return "test2";
 	}
+	
+	
 	
 	
 }

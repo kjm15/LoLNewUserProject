@@ -140,19 +140,14 @@ public class MatchListService {
 		int queueId = (Integer) qMap.get("queueId");
 
 		// 1 . 해당 조건에 맞는 리스트 3개를 가지고옴
-		if (queueId == 0) {
 
-			macthIdList = riotGameDao.RiotGameInfoSelectRank(qMap);
+		macthIdList = riotGameDao.RiotGameInfoSelectQueueId(qMap);
 
-		} else {
-
-			macthIdList = riotGameDao.RiotGameInfoSelectQueueId(qMap);
-		}
 		// 2. 그 리스트 3개를 기존 형식에 맞춰서 가지고 감
 		for (String matchId : macthIdList) {
 			// 3 기존에 있는 메서드를 활용하여 데이터를 가지고옴
 			Map<String, Object> addmathIdMap = new HashMap<>();
-			//4. 기존형식과 동일하게 만들어줌
+			// 4. 기존형식과 동일하게 만들어줌
 			addmathIdMap.put("info", riotGameDao.DBRiotGameName(matchId));
 			addmathIdMap.put("matchId", matchId);
 			mList.add(addmathIdMap);

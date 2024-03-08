@@ -86,32 +86,16 @@ let riotIdGameName = ''
 function profileCheck(res) {
 
 
-	//	console.log(res)
-	if (res == undefined) {
-
-
-
-	} else if (res['profileIcon'] != undefined) {
-		profileIcon = res['profileIcon']
-		summonerLevel = res.summonerLevel
-		riotIdGameName = res.riotIdGameName
-	} else {
-
-
-		profileIcon = res[0]['info']['profileIcon']
-		summonerLevel = res.summonerLevel
-		riotIdGameName = res.riotIdGameName
-
-	}
-
-
-
+	profileIcon = res.profileIcon
+	summonerLevel = res.summonerLevel
+	riotIdGameName = res.riotIdGameName
 
 
 	if (data['matchCnt'] == 1) { //최신 레벨과 플레이어 아이콘을 위해 저장
 		newprofileIcon = profileIcon
 		newsummonerLevel = summonerLevel
-		newriotIdGameName = riotIdGameName
+		newriotIdGameName = riotIdGameNames
+
 		if (res.Tier != "Tier") {
 			TierIcon = res.Tier.toLowerCase()
 		} else {
@@ -306,17 +290,31 @@ let matchCnt = 1
 let queueId = 0
 let nowStatus = 'ALL'
 function showGameTamble(res) {
+	//	console.log(gameName)
 
-	//
+
 	$('.graph1').empty()
 	resMyList = []
 	for (let i in res) {
 		for (let j in res[i]['info']) {
-			if (data['gameName'] == res[i]["info"][j]['riotIdGameName'] || data['gameName'] == res[i]["info"][j]['summonerName']) {
-				//				console.log(res[i]["info"][j]['riotIdGameName'])
+
+			resGameNamer = res[i]["info"][j]['riotIdGameName']
+			resGameNamerSo = res[i]["info"][j]['riotIdGameName'].toUpperCase();
+			gameNameSo = gameName.toUpperCase();//소문자
+
+			gameNameList = [resGameNamerSo]
+
+			if (gameNameList.includes(gameNameSo)) {
+				console.log("찾음")
+				console.log(gameName)
+				console.log(res[i]["info"][j]['riotIdGameName'])
+
+
 				resMyList.push(res[i]["info"][j])
+
 				myriotIdGameName = res[i]["info"][j]['riotIdGameName']
-				gameName = res[i]["info"][j]['riotIdGameName']
+
+				riotIdGameNames = res[i]["info"][j]['riotIdGameName']
 				myriotIdTagline = res[i]["info"][j]['riotIdTagline']
 				tagLine = res[i]["info"][j]['riotIdTagline']
 				if (res[i]['info'][j]['win'] == '1') {
@@ -325,12 +323,19 @@ function showGameTamble(res) {
 					lose += 1
 				}
 
+
 			}
 
 		}
 	}
+	if (resMyList[0].length == 0) { //혹시 모를 에러를 위한 에러페이지전용
 
-	profileCheck(resMyList[0])
+		location.href = '/searchError'
+	} else {
+		profileCheck(resMyList[0])
+
+	}
+
 	//	console.log(resMyList[0])
 
 	//	console.log(IMGarr)
@@ -589,6 +594,8 @@ function showGameTamble(res) {
 
 		more = `<div class='containerXR'></div><div class='more'  tooltip="추가 정보 더보기" >
 					<center>
+				
+				
 						<input type = "button" value = "더보기"  id = 'loadMore1' class='loadMore' 	style = 'border: 2px solid rgb(157, 196, 253);    border-radius: 20px;'	>
 						
 					</center>
@@ -597,7 +604,7 @@ function showGameTamble(res) {
 
 
 	$('.containerXC').append(more)
-
+	$(".loadMore").focus();
 	modNum = $('#modNum').text()
 
 	if (modNum == 0) {
@@ -624,7 +631,7 @@ function showGameTamble(res) {
 
 
 function showGameTambleBody(matchId) {
-	//	console.log(matchId)
+	console.log(matchId)
 
 	let blueChampList = [] //matchId의 블루 리스트
 	let redChampList = []//matchId의 레드 리스트
@@ -649,7 +656,7 @@ function showGameTambleBody(matchId) {
 			}
 		}
 	}
-	//	console.log(blueChampList)
+	console.log(blueChampList)
 
 	makeBodyblue(blueChampList, matchId);
 	makeBodyred(redChampList, matchId);
@@ -658,8 +665,9 @@ function showGameTambleBody(matchId) {
 }
 //들어오는 값은 레드리스트
 function makeBodyred(blueChampList, matchId) {
-	//	console.log(blueChampList)
+	console.log(blueChampList)
 	teamId = '';
+	//	console.log(blueChampList)
 	if (blueChampList[0]['win'] == '1') {
 		blueWin = '승리'
 	} else {

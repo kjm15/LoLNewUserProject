@@ -209,8 +209,8 @@ function mainStart() {
 function mainSearch(gameName1) {
 	cnt++;
 	var gameId = gameName1.split('#');
-	let gameName = gameId[0] // 아이디
-	let tagLine = gameId[1] // 태그
+	gameName = gameId[0] // 아이디
+	tagLine = gameId[1] // 태그
 	matchCnt = cnt;
 	data = { 'gameName': gameName, 'tagLine': tagLine, 'matchCnt': matchCnt }
 	bbb(data)
@@ -355,16 +355,16 @@ function aiCheckTroll(res1) {
 
 matchId_ai_list = []
 function bbb(data) {
-	console.log(data)
+	//	console.log(data)
 	$.ajax({
 		type: 'post',
 		url: '/match/list',
 		data: data,
 		success: function(res) {
 
-			//			console.log(res)
+//			console.log(res)
 
-			if (res != '') {
+			if (res.length != 0) {
 				MList = [];
 				for (let i = 0; i < res.length; i++) {
 					Gamedata = {}; // 한게임당 데이터
@@ -467,6 +467,12 @@ function bbb(data) {
 			} else {
 				aaa(data)
 			}
+
+
+			//		
+
+
+
 		},
 		error: function(jqXHR, textStatus, errorThrown) {
 			console.log(jqXHR);  //응답 메시지
@@ -481,15 +487,23 @@ function bbb(data) {
 		}
 	})
 
+
 }
 allofList = []
 function aaa(data) { // data == 검색한 게임 아이디
+
+
+
+
+	console.log(data)
 	$.ajax({
 		type: 'post',
 		url: '/riot/game',
 
 		success: function(res) {
-			//			
+			
+			console.log(res)
+			allofList = res
 			showGameTamble(res)
 
 		}
@@ -596,19 +610,21 @@ function goTier(data) {
 }
 
 function reload(gameName, tagLine, q, i) {
+	//	aaa(data)
+	console.log(data)
 	nowStatus = ''
 	queueId = q
-console.log(matchCnt)
+	console.log(matchCnt)
 	if (i == 1) {
-	
+		console.log("들어옴")
 		$('.containerXC').empty()
-		
-		matchCnt = i
+
+		matchCnt = 1
 	}
-	
-	
+
+
 	//	console.log(gameName, tagLine, matchCnt, queueId)
-	data = { 'gameName': gameName, 'tagLine': tagLine, 'queueId': queueId, "matchCnt": matchCnt-1 }
+	data = { 'gameName': gameName, 'tagLine': tagLine, 'queueId': queueId, "matchCnt": (matchCnt - 1) * 3 }
 
 	console.log(data)
 	$.ajax({
