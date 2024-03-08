@@ -2,11 +2,17 @@ champChartGraph('GAREN')
 
 //챔피언 클릭시 차트만들기
 const champImgItem = document.querySelector('.champImgItems');
+//const chartContainer = document.querySelector('.championGraphContainer');
 champImgItem.addEventListener('click', (e) => {
 
 	console.log(e.target.id)
 	champChartGraph(e.target.id)
+	//	chartContainer.scrollIntoView({ behavior: 'smooth' });
 
+	window.scrollTo({
+		top: 0,
+		behavior: 'smooth',
+	});
 	//차트만들기 시작
 
 })
@@ -24,7 +30,15 @@ function champChartGraph(championName) {
 		url: '/forGraphInfo',
 		data: data,
 		success: function(res) {
-			console.log(res);
+			
+			let championDiv = document.querySelector('.championGraphContainer');
+			championDiv.style.backgroundImage = `url(img/jhl/summoner.png)`;
+			championDiv.style.backgroundSize ='cover'
+//			championDiv.style.opacity = 0.8;
+			championDiv.style.backgroundColor = 'rgba(255, 255, 255, 1)'
+
+//			console.log(championDiv);
+
 			let btn = "<select id='ChampGraphPosition' name='ChampGraphPosition'>";
 			res.forEach((item, index) => {
 				btn += `<option value='${index}'>${item.teamPosition}&${item.tier}</option>`;
@@ -178,7 +192,7 @@ function createDonutChart(dataForChart) {
 			labels: ['승리', '패배'],
 			datasets: [{
 				data: [dataForChart.win_rate, 100 - dataForChart.win_rate],
-				backgroundColor: ['rgba(54, 162, 235, 0.2)', 'rgba(255, 99, 132, 0.2)'],
+				backgroundColor: ['rgba(192, 230, 255, 1)', 'rgba(255, 210, 220, 1)'], //불투명도 사용안해야지 다크모드시 편한듯.
 				borderColor: ['rgba(54, 162, 235, 1)', 'rgba(255, 99, 132, 1)'],
 			}]
 		},
@@ -193,7 +207,7 @@ function createDonutChart(dataForChart) {
 			elements: {
 				center: {
 					text: `${dataForChart.win_rate.toFixed(2)}%`,
-					color: 'rgba(54, 162, 235, 0.2)',
+					color: 'rgba(54, 162, 235, 1)',
 					fontStyle: 'Arial',
 					sidePadding: 35,
 					minFontSize: 17,
@@ -227,8 +241,8 @@ function makeHorizontalBar(champion_name, teamPosition, tier) {
 
 			// 기존 차트 삭제
 			if (myChart) {
-                myChart.destroy();
-            }
+				myChart.destroy();
+			}
 			///수평바
 			let championNameList = []
 			let championImgList = []
@@ -274,17 +288,28 @@ function makeHorizontalBar(champion_name, teamPosition, tier) {
 						label: '픽률',
 						data: values,
 						backgroundColor: [ // 막대 배경색 지정
-							'rgba(255, 99, 132, 0.2)',
-							'rgba(54, 162, 235, 0.2)',
-							'rgba(255, 206, 86, 0.2)',
-							'rgba(75, 192, 192, 0.2)',
-							'rgba(255, 159, 64, 0.2)'
+							'rgba(255, 183, 183, 1)',
+							'rgba(165, 214, 255, 1)',
+							'rgba(255, 231, 162, 1)',
+							'rgba(146, 220, 220, 1)',
+							'rgba(255, 184, 148, 1)',
+							'rgba(228, 228, 228, 1)',
+							'rgba(228, 228, 228, 1)',
+							'rgba(228, 228, 228, 1)',
+							'rgba(228, 228, 228, 1)',
+							'rgba(228, 228, 228, 1)'
+
 						], borderColor: [ // 막대 테두리 색상 지정
 							'rgba(255, 99, 132, 1)',
 							'rgba(54, 162, 235, 1)',
-							'rgba(255, 206, 86, 1)',
+							'rgba(255, 188, 0, 1)',
 							'rgba(75, 192, 192, 1)',
-							'rgba(255, 159, 64, 1)'
+							'rgba(255, 119, 51, 1)',
+							'rgba(178, 178, 178, 1)',
+							'rgba(178, 178, 178, 1)',
+							'rgba(178, 178, 178, 1)',
+							'rgba(178, 178, 178, 1)',
+							'rgba(178, 178, 178, 1)'
 						], borderWidth: 2 //막대 테두리 넓이 
 
 					}]
