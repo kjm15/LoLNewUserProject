@@ -5,7 +5,7 @@
 $(document).ready(function() {
 
 	document.getElementById('search-home').value = ''
-
+	
 	logolodingImg()
 	mainStart()
 
@@ -612,15 +612,6 @@ function reload(gameName, tagLine, q, i) {
 		success: function(res) {
 			//			console.log(res)
 			if (res.length == 0) {
-
-				more = `<div class='containerXR'></div><div class='more'  tooltip="추가 정보 더보기" >
-							<center>
-										
-								<input type = "button" value = "더보기"  id = 'loadMore1' class='loadMore' onclick = "update(\'${gameName}\', \'${tagLine}\')" style = 'border: 2px solid rgb(157, 196, 253);    border-radius: 20px;'	>
-								
-							</center>
-						</div>`
-				$('.containerXC').append(more)
 				update(gameName, tagLine)
 				matchCnt--;
 				alert("이전 데이터를 업데이트 중 입니다.")

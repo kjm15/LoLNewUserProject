@@ -62,6 +62,10 @@
 <!-- 		</div> -->
 <!-- 	</div> -->
 <%-- </c:if> --%>
+<div class = "rankContainer">
+<div class = "contentsRank">
+
+<div class = "contentsItemsChamp">
 <div class ="itemList_container">
 <div class ="comm_contents">
 <div class="comm_graph_content">
@@ -198,3 +202,5 @@
 </div>
 <div class="comm_right_sideBanner"></div>
 </div>
+<div class = "moveContainerR"></div>
+</div></div></div>

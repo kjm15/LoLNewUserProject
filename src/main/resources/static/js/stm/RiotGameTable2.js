@@ -102,6 +102,8 @@ function profileCheck(res) {
 			TierIcon = "gold"
 		}
 	}
+	
+	imgStr = `https://ddragon.leagueoflegends.com/cdn/img/champion/splash/${championName}_0.jpg`
 
 	ccc = `<div class=container333Box>
 		<div class=container333>
@@ -110,7 +112,7 @@ function profileCheck(res) {
             <div class="stmHright">
                 <div class="cpicon">
                     <div class = "cpimg">
-						<img width='130' height='130' alt='못 불러옴' style = "border-radius: 30px;"  src=https://ddragon.leagueoflegends.com/cdn/14.3.1/img/profileicon/${newprofileIcon}.png>
+						<img width='130' height='130' onerror="this.src= '${imgStr}';"; style = "border-radius: 30px;"  src=https://ddragon.leagueoflegends.com/cdn/14.3.1/img/profileicon/${newprofileIcon}.png>
                     </div>
                     	
                      		
@@ -315,8 +317,8 @@ let queueId = 0
 let nowStatus = 'ALL'
 
 function showGameTamble(res) {
-	
-//	console.log(res)
+
+	//	console.log(res)
 
 	$('.graph1').empty()
 	resMyList = []
@@ -588,28 +590,6 @@ function showGameTamble(res) {
 	gameName = myriotIdGameName
 	tagLine = myriotIdTagline
 
-	let more = ''
-	if (nowStatus == 'ALL') {
-		more = `<div class='containerXR'></div><div class='more'  tooltip="추가 정보 더보기" >
-					<center>
-						<input type = "button" value = "더보기"  id = 'loadMore' class='loadMore' 	style = 'border: 2px solid rgb(157, 196, 253);    border-radius: 20px;'	>
-						
-					</center>
-				</div>`
-	} else {
-
-		more = `<div class='containerXR'></div><div class='more'  tooltip="추가 정보 더보기" >
-					<center>
-				
-				
-						<input type = "button" value = "더보기"  id = 'loadMore1' class='loadMore' 	style = 'border: 2px solid rgb(157, 196, 253);    border-radius: 20px;'	>
-						
-					</center>
-				</div>`
-	}
-
-
-	$('.containerXC').append(more)
 	$(".loadMore").focus();
 	modNum = $('#modNum').text()
 
@@ -806,6 +786,7 @@ function makeBodyred(blueChampList, matchId) {
 
 
 	$('#container4' + matchId).append(ct2)
+	$('#loadMore1').show()
 
 }
 
@@ -985,16 +966,14 @@ window.addEventListener('click', (e) => {
 		// 태그
 		matchCnt++;
 		data = { 'gameName': gameName, 'tagLine': tagLine, 'matchCnt': matchCnt }
-
 		console.log(data)
-		$('.more').remove()
+		
 		$('.containerXR').remove()
 
 		bbb(data)
 	} else if (e.target.id == "loadMore1") {
-	
+
 		matchCnt++;
-		$('.more').remove()
 		$('.containerXR').remove()
 		console.log(gameName, tagLine, queueId, matchCnt)
 		reload(gameName, tagLine, queueId, matchCnt)
