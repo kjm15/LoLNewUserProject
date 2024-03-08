@@ -24,7 +24,8 @@
 		#{totalDamageTaken},#{totalEnemyJungleMinionsKilled},#{totalMinionsKilled},
 		#{wardsKilled},#{wardsPlaced},#{win},default,null,#{totalTimeCCDealt},#{totalTimeSpentDead},#{onMyWayPings},#{enemyVisionPings},
 		#{physicalDamageDealtToChampions},#{magicDamageDealtToChampions},
-		#{totalTeamkills},null,#{dragon},(select queueId_kor from QueueIdT where queueId = #{queueId}));
+		#{totalTeamkills},null,#{dragon},(select queueId_kor from QueueIdT
+		where queueId = #{queueId}));
 
 	</insert>
 	<insert id="RiotGameTeams">
@@ -83,7 +84,8 @@
 		select * from
 		RiotGameInfoT
 		where matchId = #{matchId}
-		and riotIdGameName = #{riotIdGameName}
+		and riotIdGameName =
+		#{riotIdGameName}
 		and riotIdTagline = #{riotIdTagline};
 	</select>
 
@@ -127,26 +129,31 @@
 	</select>
 
 	<select id="RiotGameInfoSelectRank">
-		select matchId 
-		from RiotGameInfoT 
-		where riotIdGameName =#{gameName} 
-		order by matchId desc 
+		select matchId
+		from RiotGameInfoT
+		where riotIdGameName =#{gameName}
+		order by matchId desc
 		limit #{matchCnt}, 3;
 	</select>
 
 	<select id="RiotGameInfoSelectQueueId">
-		select matchId 
-		from RiotGameInfoT 
-		where riotIdGameName = #{gameName} and queueId = #{queueId}  
-		order by matchId desc 
+		select matchId
+		from RiotGameInfoT
+		where riotIdGameName = #{gameName} and queueId = #{queueId}
+		order by matchId desc
 		limit #{matchCnt}, 3;
 	</select>
-		<select id="findPartOfQueuId">
+	<select id="findPartOfQueuId">
 		select queueId,queueId_kor
-		from RiotGameInfoT 
+		from RiotGameInfoT
 		where riotIdGameName = #{riotIdGameName}
 		group by queueId,queueId_kor;
 	</select>
-	
-	
+
+	<select id="nowMatchListCnt">
+		select matchId
+		from RiotGameInfoT
+		where riotIdGameName = #{gameName}
+		group by matchId;
+	</select>
 </mapper>	

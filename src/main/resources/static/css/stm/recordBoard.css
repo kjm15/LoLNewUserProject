@@ -406,7 +406,7 @@ ul li a:hover::after {
 	/* 	background: #ff00ff; */
 	flex-basis: 50%;
 	font-size: 14px;
-	padding: 3px;
+	padding: 8px;
 	
 }
 
@@ -415,8 +415,8 @@ ul li a:hover::after {
 	/* 	background: #8080ff; */
 	flex-basis: 50%;
 	font-size: 14px;
-	padding: 3px;
 	color : black;
+	padding: 8px;
 }
 
 .itemNo {

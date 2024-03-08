@@ -57,5 +57,7 @@ public interface RiotGameDao {
 
 	List<Map<String, Object>> findPartOfQueuId(String riotIdGameName);
 
+	List<Map<String, Object>> nowMatchListCnt(Map<String, Object> uMap);
 
+	
 }
