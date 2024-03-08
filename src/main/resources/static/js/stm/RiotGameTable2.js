@@ -96,13 +96,11 @@ function profileCheck(res) {
 		newsummonerLevel = summonerLevel
 		newriotIdGameName = riotIdGameNames
 
-		if (res.Tier != "Tier") {
-			TierIcon = res.Tier.toLowerCase()
-		} else {
-			TierIcon = "gold"
-		}
+
 	}
-	
+
+
+
 	imgStr = `https://ddragon.leagueoflegends.com/cdn/img/champion/splash/${championName}_0.jpg`
 
 	ccc = `<div class=container333Box>
@@ -120,12 +118,10 @@ function profileCheck(res) {
                          <div class="uidLevelBox">
               				  <div class="ulevel">${newsummonerLevel} </div>
                 		</div>
-                		<div class "cpimgB">
-                			<img width=300 height=300 src="/img/tier/${TierIcon}.png" alt="티어">
-                		</div>
                 	
-                			 <div class="uid">${newriotIdGameName}</div>
-                		
+                	
+                		<div class="uid">${newriotIdGameName}</div>
+                		<div class="imimim"><div class = cpimgb><img width=300 height=300  src = "/img/effect/tierCome.gif" alt = "빛효과""></div></div>
                 		
                     
                     </div>
@@ -232,11 +228,6 @@ function profileCheck(res) {
 	ch.style.backgroundImage = "no-repeat";
 	ch.style.backgroundImage = "url(" + imgStr + ")";
 
-
-
-
-
-
 	contentsCheckBox = `
 	
 		<div class = contentsCheckM>
@@ -316,9 +307,8 @@ let matchCnt = 1
 let queueId = 0
 let nowStatus = 'ALL'
 
+let tier = ''
 function showGameTamble(res) {
-
-	//	console.log(res)
 
 	$('.graph1').empty()
 	resMyList = []
@@ -326,6 +316,7 @@ function showGameTamble(res) {
 		for (let j in res[i]['info']) {
 
 			resGameNamer = res[i]["info"][j]['riotIdGameName']
+			//			console.log(resGameNamer, i , j)
 			resGameNamerSo = res[i]["info"][j]['riotIdGameName'].toUpperCase();
 			gameNameSo = gameName.toUpperCase();//소문자
 
@@ -470,10 +461,10 @@ function showGameTamble(res) {
 								${boxright}
 							</div>
 							`
-		container2 = `<div class="container2" id = 'container2${matchId}' style = 'display: none' >`
-		container4 = `<div class="container4" id = 'container4${matchId}' style = 'display: none' >`
+		container2 = `<div class="container2" id = 'container2${matchId}' >`
+		container4 = `<div class="container4" id = 'container4${matchId}' >`
 		controller = `<div class = "controller" id = 'controller${matchId}'><div>`
-		$('.containerXC').append(str)
+		$('.containerXCF').append(str)
 
 		$('#' + matchId + 'container1').append(str1)
 		$('#' + matchId + 'container1').append(boxcenter1)
@@ -567,11 +558,11 @@ function showGameTamble(res) {
 		}
 		$('#' + matchId + 'blueChamp').append(bcList)
 		$('#' + matchId + 'redChamp').append(rcList)
-		$('.containerXC').append(controller)
+		$('.containerXCF').append(controller)
 
-
-		$('#controller' + matchId).append(container2)
-		$('#controller' + matchId).append(container4)
+		//
+		//		$('#controller' + matchId).append(container2)
+		//		$('#controller' + matchId).append(container4)
 
 
 		data1 = { 'matchId': matchId }
@@ -607,13 +598,17 @@ function showGameTamble(res) {
 	$('.stmBlankGTM4').css("height", barB + "%")
 	$('.stmBlankGTM5').css("height", barU + "%")
 
-	if (data['matchCnt'] == 1) {
-		goTier(data)
 
-	}
 	showgraph(graphwin, graphlose)
 
 	findPartOfQueuId()
+
+
+	if (nowStatus == 'ALL' && matchCnt == 1) {
+		buttonS = `	<input type="button" value="더보기" id = "loadMore" class='loadMore' style='border: 2px solid rgb(157, 196, 253); border-radius: 20px; display: block'>`
+		$('.more').append(buttonS)
+	}
+
 
 }
 
@@ -786,7 +781,7 @@ function makeBodyred(blueChampList, matchId) {
 
 
 	$('#container4' + matchId).append(ct2)
-	$('#loadMore1').show()
+
 
 }
 
@@ -961,24 +956,34 @@ function aiTimelineAni(matchId) {
 
 window.addEventListener('click', (e) => {
 
+	console.log(e.target.className)
+
 	if (e.target.id == "loadMore") {
 
 		// 태그
 		matchCnt++;
 		data = { 'gameName': gameName, 'tagLine': tagLine, 'matchCnt': matchCnt }
 		console.log(data)
-		
+
 		$('.containerXR').remove()
 
 		bbb(data)
+
 	} else if (e.target.id == "loadMore1") {
 
 		matchCnt++;
 		$('.containerXR').remove()
 		console.log(gameName, tagLine, queueId, matchCnt)
 		reload(gameName, tagLine, queueId, matchCnt)
+		$('.loadMore').focus()
 	}
 
+	if (e.target.className == 'loadMore') {
+		console.log("들어옴")
+
+		setTimeout(function() { window.scrollTo(0, document.body.scrollHeight); }, 1000);
+
+	}
 });
 
 

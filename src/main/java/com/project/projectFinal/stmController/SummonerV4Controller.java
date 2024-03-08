@@ -40,7 +40,7 @@ public class SummonerV4Controller {
 	}
 
 	@PostMapping("/summoner/v4/Search")
-	public String SearchUser(String gameName, String tagLine) {
+	public List<Map<String, Object>> SearchUser(String gameName, String tagLine) {
 
 		return webmatchListService.SearchUser(gameName, tagLine);
 	}

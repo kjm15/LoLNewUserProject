@@ -32,19 +32,21 @@
 				<div class="containerXX">
 
 
-					<div class="containerXC"></div>
-					<div class='more' tooltip="추가 정보 더보기">
-						<center>
+					<div class="containerXC">
+						<div class="containerXCF"></div>
 
 
-							<input type="button" value="더보기" id='loadMore1' class='loadMore'
-								style='border: 2px solid rgb(157, 196, 253); border-radius: 20px; display : none'>
 
-						</center>
 
+						<div class='more' tooltip="추가 정보 더보기">
+
+
+						</div>
 					</div>
+
 				</div>
 			</div>
+
 		</div>
 
 		<%-- 	<%@include file="../inc/footer.jsp"%> --%>

@@ -4,11 +4,38 @@
 
 $(document).ready(function() {
 
+	//url에 있는 파라미터 값으로 게임 아이디 태그 잡음
+	let pathname = window.location.pathname
+
+
+	dName = decodeURI(pathname)
+	console.log(dName);
+
+	let replaced_str = dName.replace("/stm", '');// 기본 로컬호스트삭제
+	let replaced_str1 = replaced_str.replace("%20", ''); //사이띄기 삭제
+	var gameId = replaced_str1.split('/'); // 배열로 변경
+	let gameName = gameId[1] // 아이디
+	let tagLine = gameId[2] // 태그
+	console.log(gameName);
+	///////////////////////////////
+	window.scrollTo(0, 0); //스크롤 상단위치 들어오자마자
 	document.getElementById('search-home').value = ''
-	
+
+
+
+	// 동기싫
+	goTier(gameName, tagLine)
 	logolodingImg()
 	mainStart()
 
+	setTimeout(function() {
+		aastr = "<img width=300 height=300 src='/img/tier/" + tier + ".png'	 alt='티어''>"
+		//		console.log(aastr)
+		//		$('.imimim').fadeIn(1000)
+		$('.imimim').fadeOut()
+		$('.imimim').html(aastr)
+		$('.imimim').fadeIn(3000)
+	}, 2000);
 })
 
 function logolodingImg() {
@@ -208,6 +235,7 @@ function mainSearch(gameName1) {
 	matchCnt = cnt;
 	data = { 'gameName': gameName, 'tagLine': tagLine, 'matchCnt': matchCnt }
 	bbb(data)
+
 }
 
 function aiCheckTroll(res1) {
@@ -487,9 +515,15 @@ function aaa(data) { // data == 검색한 게임 아이디
 		url: '/riot/game',
 
 		success: function(res) {
+			for (let i in res) {
 
-			allofList = res
+				allofList.push(res[i])
+			}
+
+			console.log(allofList)
 			showGameTamble(res)
+
+
 
 		}
 	})
@@ -518,23 +552,37 @@ function summonerV4(res) {
 
 newmatchId = ''
 function gamebtn(goBtn, matchId) {
-	if (matchId == newmatchId) {
-		$('.controller').empty();
-		newmatchId = ''
-		return false;
-	}
+	//	if (matchId == newmatchId) {
+	//		$('.controller').empty();
+	//		newmatchId = ''
+	//		return false;
+	//	}
+
+	//	var controller = document.getElementsByClassName("controller");
+	//	controller.style.display = ((controller.style.display != 'none') ? 'none' : 'block');
+
+
 	newmatchId = matchId
-	$('.controller').empty();
-	container2 = `<div class="container2" id = 'container2${matchId}' style = 'display: none' >`
-	container4 = `<div class="container4" id = 'container4${matchId}' style = 'display: none' >`
-	$('#controller' + matchId).append(container2)
-	$('#controller' + matchId).append(container4)
-	var container2 = document.getElementById("container2" + matchId);
-	var container4 = document.getElementById("container4" + matchId);
-	container2.style.display = ((container2.style.display != 'none') ? 'none' : 'block');
-	container4.style.display = ((container4.style.display != 'none') ? 'none' : 'block');
 
+	a = $('#controller' + matchId).css("height")
 
+	if (a == '280px') { //닫힘
+		$('#controller' + matchId).css("height", "10px")
+		$('#controller' + matchId).css("display", "block")
+		$('#controller' + matchId).empty();
+	} else { //열림
+		$('#controller' + matchId).css("height", "280px")
+		$('#controller' + matchId).css("display", "block")
+		$('#controller' + matchId).css("display", "flex")
+		$('#controller' + matchId).css("gap", "8px")
+		container2 = `<div class="container2" id = 'container2${matchId}' >`
+		container4 = `<div class="container4" id = 'container4${matchId}' >`
+		$('#controller' + matchId).append(container2)
+		$('#controller' + matchId).append(container4)
+
+	}
+
+	console.log(a)
 
 	showGameTambleBody(matchId) // 바디부분 만들기
 
@@ -556,15 +604,15 @@ function gamebtn(goBtn, matchId) {
 						url: '/summoner/v4/Rank',
 						data: JSON.stringify(res[i]),
 						success: function(res1) {
-							aiCheckTroll(res1)
+							//							aiCheckTroll(res1)
 						}
 					})
 				} else if (res[i].queueId == 450) {
 
-					aiCheckTroll(res[i])
+					//					aiCheckTroll(res[i])
 
 				} else {
-					aiCheckTroll(res[i])
+					//					aiCheckTroll(res[i])
 
 				}
 
@@ -573,17 +621,25 @@ function gamebtn(goBtn, matchId) {
 	})
 }
 
-function goTier(data) {
+function goTier(gameName, tagLine) {
 
-	let gameName = data['gameName'] // 아이디
-	let tagLine = data['tagLine'] // 태그
 	data = { 'gameName': gameName, 'tagLine': tagLine }
 	$.ajax({
 		type: 'post',
 		url: '/summoner/v4/Search',
 		data: data,
 		success: function(res) {
+			console.log(res)
+			//			let tier = ''w
+			if (res.lenght != 0) {
 
+				tier = res[0].tier.toLowerCase();
+
+			} else {
+
+				tier = 'gold'
+
+			}
 		}
 	})
 }
@@ -596,7 +652,10 @@ function reload(gameName, tagLine, q, i) {
 	queueId = q
 	//	console.log(matchCnt)
 	if (i == 1) { // 처음으로 
-		$('.containerXC').empty()
+		$('.more').empty()
+		buttonS = `	<input type="button" value="더보기" id = "loadMore1" class='loadMore' style='border: 2px solid rgb(157, 196, 253); border-radius: 20px; display: block'>`
+		$('.more').append(buttonS)
+		$('.containerXCF').empty()
 		allofList = []
 		matchCnt = 1
 	}
@@ -611,6 +670,10 @@ function reload(gameName, tagLine, q, i) {
 		data: JSON.stringify(data),
 		success: function(res) {
 			//			console.log(res)
+			for (let i in res) {
+				allofList.push(res[i])
+			}
+
 			if (res.length == 0) {
 				update(gameName, tagLine)
 				matchCnt--;
@@ -618,7 +681,7 @@ function reload(gameName, tagLine, q, i) {
 
 			} else {
 
-				allofList = res
+				//				
 				showGameTamble(res)
 
 			}
@@ -764,7 +827,7 @@ function updateSave(res) { //업데이트 저장문구
 		console.log(MList)
 		let temp = JSON.stringify(MList)
 		data2 = { 'Mlist': temp }
-
+		console.log(MList)
 		$.ajax({
 			type: 'post',
 			url: '/upDate/saveData',
@@ -776,4 +839,5 @@ function updateSave(res) { //업데이트 저장문구
 		})
 	}
 }
+
 ////////////////////롤 업데이트 종료//////////////////
