@@ -34,7 +34,7 @@ public class RestMatchListController {
 
 	@PostMapping("/match/list")
 	public List<Map> matchList(RiotApiDto userListDto, Model model) {
-
+		List<Map> MList  = new ArrayList<>();
 		RiotGameDto riotGameDto = new RiotGameDto();
 		String puuid = matchListService.puuId(userListDto);
 
@@ -45,7 +45,7 @@ public class RestMatchListController {
 		List<String> DbMatchList = matchListService.DBRiotGameMatchSelect(userListDto.getGameName());
 		if (DbMatchList.size() == 0) { // 만약 디비에 저장 데이터가 없을경우 바로 api 가기
 
-			List<Map> MList = matchListService.gamedate(matchList);
+			MList = matchListService.gamedate(matchList);
 
 			return MList;
 		}
@@ -60,12 +60,11 @@ public class RestMatchListController {
 
 		if (newApiMatchList.size() != 0) {
 
-			List<Map> MList = matchListService.gamedate(newApiMatchList);
+			MList = matchListService.gamedate(newApiMatchList);
 
-			return MList;
 		}
 
-		return null;
+		return MList;
 
 	}
 
@@ -142,7 +141,7 @@ public class RestMatchListController {
 		log.info("==qMap: {}", qMap);
 
 		List<Map<String, Object>> MList = new ArrayList<>();
-		Integer[] qList = { 0, 420, 440, 450, 490, 1900 }; // queueId 증가에 따라 추가요망
+		Integer[] qList = {420, 440, 450, 490, 1900 }; // queueId 증가에 따라 추가요망
 
 		for (int queueId : qList) {
 			if ((Integer) qMap.get("queueId") == queueId) {
