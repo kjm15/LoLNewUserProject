@@ -9,44 +9,44 @@
 <script type="text/javascript"
 	src="https://code.jquery.com/jquery-1.12.4.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
-	<script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.9.4/Chart.min.js"></script>
-	<script src="https://cdn.jsdelivr.net/npm/chart.js@2.9.4/dist/Chart.min.js"></script>
+<script
+	src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.9.4/Chart.min.js"></script>
+<script
+	src="https://cdn.jsdelivr.net/npm/chart.js@2.9.4/dist/Chart.min.js"></script>
 
 </head>
 <body>
-<input type = "hidden" id = "graphCheck1" value = '1'  />
-<input type = "hidden" id = "graphCheck2" value = '1'  />
-<input type = "hidden" id = "graphCheck3" value = '1'  />
-<input type = "hidden" id = "graphCheck4" value = '1'  />
+	<input type="hidden" id="graphCheck1" value='1' />
+	<input type="hidden" id="graphCheck2" value='1' />
+	<input type="hidden" id="graphCheck3" value='1' />
+	<input type="hidden" id="graphCheck4" value='1' />
 
 
-<div class ="containerAll">
-<div class ="contentsXa">
-	<div class="graph1" id='graph1'>
-		
-	 
-	</div>
-	<div class = 'contetnsCheckT'></div>
-	<div class = "contetnsCheckA">
+	<div class="containerAll">
+		<div class="contentsXa">
+			<div class="graph1" id='graph1'></div>
+			<div class='contetnsCheckT'></div>
+			<div class="contetnsCheckA"></div>
 
-	</div>
-
-	<div id="puuid">
-		<div class="containerXX">
+			<div id="puuid">
+				<div class="containerXX">
 
 
-			<div class="containerXC">
-				
-			
-			
-			
+					<div class="containerXC"></div>
+					<div class='more' tooltip="추가 정보 더보기">
+						<center>
+
+
+							<input type="button" value="더보기" id='loadMore1' class='loadMore'
+								style='border: 2px solid rgb(157, 196, 253); border-radius: 20px; display : none'>
+
+						</center>
+
+					</div>
+				</div>
 			</div>
-
 		</div>
-	</div>
-	</div>
-	</div>
-	  
-	<%-- 	<%@include file="../inc/footer.jsp"%> --%>
+
+		<%-- 	<%@include file="../inc/footer.jsp"%> --%>
 </body>
 </html>
