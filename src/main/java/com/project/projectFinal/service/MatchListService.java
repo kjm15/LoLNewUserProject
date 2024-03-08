@@ -156,4 +156,9 @@ public class MatchListService {
 		return mList;
 	}
 
+	public List<Map<String, Object>> findPartOfQueuId(String riotIdGameName) {
+
+		return riotGameDao.findPartOfQueuId(riotIdGameName);
+	}
+
 }

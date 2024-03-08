@@ -89,7 +89,7 @@ function profileCheck(res) {
 	profileIcon = res.profileIcon
 	summonerLevel = res.summonerLevel
 	riotIdGameName = res.riotIdGameName
-
+	championName = res.championName
 
 	if (data['matchCnt'] == 1) { //최신 레벨과 플레이어 아이콘을 위해 저장
 		newprofileIcon = profileIcon
@@ -210,6 +210,31 @@ function profileCheck(res) {
 
 	$('.graph1').append(ccc)
 
+
+
+	championName
+	imgStr = `https://ddragon.leagueoflegends.com/cdn/img/champion/splash/${championName}_0.jpg`
+	//
+	var Pa = document.querySelector('.container333Box');
+	var ch = document.createElement('div'); // 가상 요소 생성
+	ch.classList.add('img');
+	Pa.appendChild(ch); // 가상 요소를 실제 요소에
+
+	ch.style.width = "100%";
+	ch.style.height = "100%";
+	ch.style.opacity = 0.6;
+	ch.style.zIndex = -1;
+	ch.style.position = "absolute";
+	//	ch.style.backgroundSize = "cover";
+	ch.style.backgroundPosition = "30% 10%";
+	ch.style.backgroundImage = "no-repeat";
+	ch.style.backgroundImage = "url(" + imgStr + ")";
+
+
+
+
+
+
 	contentsCheckBox = `
 	
 		<div class = contentsCheckM>
@@ -221,10 +246,7 @@ function profileCheck(res) {
 				  <div class="GoPart">
 				   <ul class="menu2">
 				    <li class = "sampletest"><a href="/stm/${gameName}/${tagLine}">전체</a></li>
-				    <li class = "sampletest"><a href="javascript:reload('${gameName}','${tagLine}',420,1)">솔로랭크</a></li>
-				     <li class = "sampletest"><a href="javascript:reload('${gameName}','${tagLine}',440,1)">자유랭크</a></li>
-				    <li class = "sampletest"><a href="javascript:reload('${gameName}','${tagLine}',450,1)">칼바람</a></li>
-				    <li class = "sampletest"><a href="javascript:reload('${gameName}','${tagLine}',1900,1)">우르프</a></li>
+				  
 				  
 				   
 				    </ul>
@@ -305,10 +327,10 @@ function showGameTamble(res) {
 			gameNameList = [resGameNamerSo]
 
 			if (gameNameList.includes(gameNameSo)) {
-				console.log("찾음")
-				console.log(gameName)
-				console.log(res[i]["info"][j]['riotIdGameName'])
-
+				//				console.log("찾음")
+				//				console.log(gameName)
+				//				console.log(res[i]["info"][j]['riotIdGameName'])
+				//
 
 				resMyList.push(res[i]["info"][j])
 
@@ -359,19 +381,6 @@ function showGameTamble(res) {
 	str = `플레이한 챔피언(최근 솔로랭크${graphCnt}게임)`
 	$(".stmHCenterT").append(str)
 
-
-	//	console.log(win)
-
-
-
-
-
-
-
-
-
-
-
 	for (let i in resMyList) {
 		goBtn = Number(i) + (data['matchCnt']) * 4
 		Myres = resMyList[i] // 추후에 i 으로 바꾸기
@@ -403,8 +412,6 @@ function showGameTamble(res) {
 
 		mykill = (((kills + assists) / Myres.totalTeamkills) * 100).toFixed(0)
 
-
-
 		if (Myres.win == 1) {
 
 			str = `<div class="container1" id = '${matchId}container1' style='background-image:linear-gradient(315deg, #D6E5FC 0%, #BED8FE 74%) '>`
@@ -428,7 +435,7 @@ function showGameTamble(res) {
 			boxright = `<div tooltip="click! more Detail!" class="box-right" style='background-color : rgba(255, 2, 73, 0.18)' id ="gamebtn${goBtn}" onclick ="gamebtn(${goBtn},'${matchId}')"><a href = 'javascript:;'><div class = "box-rightred">∨</div></a></div>`
 
 		}
-		//		console.log(boxright)
+
 		let boxcenter1 = `	<div class="box-center1">
 								<div class="champSepll">
 									<div class="box-center4" tooltip="${champion_name_kr}" id = '${matchId}box-center4'></div>
@@ -458,7 +465,6 @@ function showGameTamble(res) {
 								${boxright}
 							</div>
 							`
-		//		line1 = `<div class="line1" id = 'line1${goBtn}' style='display: none'>`
 		container2 = `<div class="container2" id = 'container2${matchId}' style = 'display: none' >`
 		container4 = `<div class="container4" id = 'container4${matchId}' style = 'display: none' >`
 		controller = `<div class = "controller" id = 'controller${matchId}'><div>`
@@ -556,7 +562,6 @@ function showGameTamble(res) {
 		}
 		$('#' + matchId + 'blueChamp').append(bcList)
 		$('#' + matchId + 'redChamp').append(rcList)
-		//		$('.containerXC').append(line1)
 		$('.containerXC').append(controller)
 
 
@@ -577,11 +582,9 @@ function showGameTamble(res) {
 			}
 		})
 	}
-	//	console.log(myriotIdGameName)
 	gameName = myriotIdGameName
 	tagLine = myriotIdTagline
-	matchCnt
-	console.log(matchCnt)
+
 	let more = ''
 	if (nowStatus == 'ALL') {
 		more = `<div class='containerXR'></div><div class='more'  tooltip="추가 정보 더보기" >
@@ -610,7 +613,6 @@ function showGameTamble(res) {
 	if (modNum == 0) {
 		$('.uid').css("color", "white")
 	}
-	//	console.log(TOP)
 	barT = 100 - (TOP * 5)
 	barJ = 100 - (JUNGLE * 5)
 	barM = 100 - (MIDDLE * 5)
@@ -627,6 +629,9 @@ function showGameTamble(res) {
 
 	}
 	showgraph(graphwin, graphlose)
+
+	findPartOfQueuId()
+	
 }
 
 
@@ -985,6 +990,9 @@ window.addEventListener('click', (e) => {
 		bbb(data)
 	} else if (e.target.id == "loadMore1") {
 
+
+
+
 		matchCnt++;
 		$('.more').remove()
 		$('.containerXR').remove()
@@ -1044,9 +1052,9 @@ function win_losecheck(res) {
 		win_lose = '패배'
 	} else if (res.win == '1') {
 		win_lose = '승리'
-	} else if (spendTime < 5) {
+	}
+
+	if (spendTime < 5) {
 		win_lose = '다시하기'
 	}
 }
-
-

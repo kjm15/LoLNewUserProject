@@ -14,7 +14,7 @@ champImgItem.addEventListener('click', (e) => {
 horizontalBarlist = []
 function champChartGraph(championName) {
 	if (championName === '') {
-		alert('잘못눌렀습니다. 챔피언을 눌러주세요');
+	
 		return false;
 	}
 

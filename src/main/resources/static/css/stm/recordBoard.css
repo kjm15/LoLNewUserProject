@@ -601,7 +601,7 @@ ul li a:hover::after {
 	font-family: 'Jua', sans-serif;
 	position: relative;
 	top: 10px;
-	left: -20px;
+	left: -15px;
 	width: 320px;
 	text-align: right;
 }
@@ -666,22 +666,20 @@ ul li a:hover::after {
 	
 	
 }
-.container333Box::after {
-		background-image:
-		url('https://image.fmkorea.com/files/attach/new3/20231027/14339012/47592066/6326463056/b1f95fd55a45869d983ef93f1974136d.jpg');	
-		background-image: no-repeat;
-		background-position :0% 20%;
-	content: '';
-	position: absolute;
-/* 	background: #494949; */
-	z-index: -1;
-/* 	inset: 0; */
-	opacity: 0.5;
-	  width: 100%;
-  height: 100%;
-}
+/* .container333Box::after  { */
+/* 	background-image: no-repeat; */
+/* 	background-position: 0% 20%; */
+/* 	content: ''; */
+/* 	background-size: cover; */
+/* 	position: absolute; */
+/* 	z-index: -1; */
+/* 	opacity: 0.5; */
+/* 	width: 100%; */
+/* 	height: 100%; */
+/* } */
 .container333 {
 	width: 1100px;
+	height : 100%;
 	display: flex;
 	/* 	justify-content: center; */
 	padding: 20px 0px 0px 20px;

@@ -55,5 +55,7 @@ public interface RiotGameDao {
 
 	List<Map<String, Object>> rInfo(Map<String, Object> qMap);
 
+	List<Map<String, Object>> findPartOfQueuId(String riotIdGameName);
+
 
 }
