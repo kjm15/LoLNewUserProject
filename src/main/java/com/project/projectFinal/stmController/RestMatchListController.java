@@ -34,7 +34,7 @@ public class RestMatchListController {
 
 	@PostMapping("/match/list")
 	public List<Map> matchList(RiotApiDto userListDto, Model model) {
-		List<Map> MList  = new ArrayList<>();
+		List<Map> MList = new ArrayList<>();
 		RiotGameDto riotGameDto = new RiotGameDto();
 		String puuid = matchListService.puuId(userListDto);
 
@@ -141,17 +141,21 @@ public class RestMatchListController {
 		log.info("==qMap: {}", qMap);
 
 		List<Map<String, Object>> MList = new ArrayList<>();
-		Integer[] qList = {420, 440, 450, 490, 1900 }; // queueId 증가에 따라 추가요망
+		Integer[] qList = { 420, 440, 450, 490, 1900 }; // queueId 증가에 따라 추가요망
 
 		for (int queueId : qList) {
 			if ((Integer) qMap.get("queueId") == queueId) {
 
 				log.info("queueId : {}", queueId);
-
 			}
-
 		}
-
 		return matchListService.GameModeSearch(qMap);
 	}
+
+	@PostMapping("/GameMode/queuId")
+	public List<Map<String, Object>> findPartOfQueuId(String riotIdGameName) {
+
+		return matchListService.findPartOfQueuId(riotIdGameName);
+	}
+
 }

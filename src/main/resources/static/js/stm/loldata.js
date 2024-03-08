@@ -6,9 +6,6 @@ $(document).ready(function() {
 
 	document.getElementById('search-home').value = ''
 
-
-
-
 	logolodingImg()
 	mainStart()
 
@@ -34,9 +31,6 @@ function logolodingImg() {
 
 }
 function showgraph(win, lose) {
-	//		console.log(win)
-	//		console.log(lose)
-
 
 	winLoseList = [win, lose]
 	winLoseListKor = ["승리", "패배"]
@@ -332,14 +326,14 @@ function aiCheckTroll(res1) {
 
 			} else {
 				if (res.queueId == 1900) {
-					queue = "우르프"
+					queue = "URF"
 				} else if (res.queueId == 490) {
 					queue = "빠른대전"
 				} else if (res.queueId == 440) {
 					queue = "자유랭크"
 				}
 				key = res.matchId + res.participantId
-				str = "<span><font size=2>|" + queue + "|</font></span>";
+				str = "<span tooltip = '개발중입니다.'><font size=2><a href = '#'> |" + queue + "|<br></a></font></span>";
 				$('#' + key).html(str);
 
 			}
@@ -362,7 +356,7 @@ function bbb(data) {
 		data: data,
 		success: function(res) {
 
-//			console.log(res)
+			console.log(res)
 
 			if (res.length != 0) {
 				MList = [];
@@ -459,7 +453,7 @@ function bbb(data) {
 					data: data2,
 					//					dataType: 'json',
 					success: function(res) {
-						console.log(res)
+						//						console.log(res)
 						aaa(data)
 					}
 				})
@@ -467,11 +461,6 @@ function bbb(data) {
 			} else {
 				aaa(data)
 			}
-
-
-			//		
-
-
 
 		},
 		error: function(jqXHR, textStatus, errorThrown) {
@@ -492,17 +481,13 @@ function bbb(data) {
 allofList = []
 function aaa(data) { // data == 검색한 게임 아이디
 
-
-
-
 	console.log(data)
 	$.ajax({
 		type: 'post',
 		url: '/riot/game',
 
 		success: function(res) {
-			
-			console.log(res)
+
 			allofList = res
 			showGameTamble(res)
 
@@ -522,7 +507,6 @@ function searchbtn1() {
 	let tagLine = gameId[1] // 태그
 	//	data = { 'gameName': gameName, 'tagLine': tagLine }
 	location.href = '/stm/' + gameName + '/' + tagLine
-	//	bbb(data)
 }
 
 function summonerV4(res) {
@@ -545,11 +529,8 @@ function gamebtn(goBtn, matchId) {
 	container4 = `<div class="container4" id = 'container4${matchId}' style = 'display: none' >`
 	$('#controller' + matchId).append(container2)
 	$('#controller' + matchId).append(container4)
-	//	console.log(goBtn, matchId)
-	//	var line1 = document.getElementById("line1" + goBtn);
 	var container2 = document.getElementById("container2" + matchId);
 	var container4 = document.getElementById("container4" + matchId);
-	//	line1.style.display = ((line1.style.display != 'none') ? 'none' : 'block');
 	container2.style.display = ((container2.style.display != 'none') ? 'none' : 'block');
 	container4.style.display = ((container4.style.display != 'none') ? 'none' : 'block');
 
@@ -565,10 +546,9 @@ function gamebtn(goBtn, matchId) {
 		url: '/summoner/v4/userList',
 		data: data,
 		success: function(res) {
-			//				console.log(res)
-			//
+
 			for (let i in res) {
-				//				console.log(res[i])
+
 				if (res[i].queueId == 420) { //솔랭인경우
 					$.ajax({
 						contentType: 'application/json',
@@ -576,7 +556,6 @@ function gamebtn(goBtn, matchId) {
 						url: '/summoner/v4/Rank',
 						data: JSON.stringify(res[i]),
 						success: function(res1) {
-							//							console.log(res1)
 							aiCheckTroll(res1)
 						}
 					})
@@ -595,7 +574,7 @@ function gamebtn(goBtn, matchId) {
 }
 
 function goTier(data) {
-	//	console.log(data)
+
 	let gameName = data['gameName'] // 아이디
 	let tagLine = data['tagLine'] // 태그
 	data = { 'gameName': gameName, 'tagLine': tagLine }
@@ -604,26 +583,24 @@ function goTier(data) {
 		url: '/summoner/v4/Search',
 		data: data,
 		success: function(res) {
-			//			console.log(res)
+
 		}
 	})
 }
 
+
 function reload(gameName, tagLine, q, i) {
-	//	aaa(data)
+
 	console.log(data)
 	nowStatus = ''
 	queueId = q
 	console.log(matchCnt)
-	if (i == 1) {
-		console.log("들어옴")
+	if (i == 1) { // 처음으로 
 		$('.containerXC').empty()
-
+		allofList = []
 		matchCnt = 1
 	}
 
-
-	//	console.log(gameName, tagLine, matchCnt, queueId)
 	data = { 'gameName': gameName, 'tagLine': tagLine, 'queueId': queueId, "matchCnt": (matchCnt - 1) * 3 }
 
 	console.log(data)
@@ -636,18 +613,55 @@ function reload(gameName, tagLine, q, i) {
 			console.log(res)
 			if (res.length == 0) {
 
+
+				more = `<div class='containerXR'></div><div class='more'  tooltip="추가 정보 더보기" >
+					<center>
+				
+				
+						<input type = "button" value = "더보기"  id = 'loadMore1' class='loadMore' 	style = 'border: 2px solid rgb(157, 196, 253);    border-radius: 20px;'	>
+						
+					</center>
+				</div>`
+				$('.containerXC').append(more)
+
 				alert("최근 전적 데이터를 조회할수 없습니다.")
 
 			} else {
+				allofList = res
 				showGameTamble(res)
+
+
+
 			}
 
 		}
 	})
 
+}
+
+checkPartQueueId = [] // 지금 가지고 있는 Q아이디
+function findPartOfQueuId() {
+
+	$.ajax({
+
+		type: 'post',
+		url: '/GameMode/queuId',
+		data: { 'riotIdGameName': gameName },
+		success: function(res) {
+			checkPartQueueId = res
+			console.log(res)
+
+			for (let i in checkPartQueueId) {
+				queueId_kor = checkPartQueueId[i]['queueId_kor']
+				queueId1 = checkPartQueueId[i]['queueId']
+
+				queueIdButton = `<li class = "sampletest"><a href="javascript:reload('${gameName}','${tagLine}',${queueId1},1)">${queueId_kor}</a></li>`
+				$('.menu2').append(queueIdButton)
+
+			}
 
 
 
-
-
+		}
+	})
 }
