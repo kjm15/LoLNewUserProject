@@ -374,7 +374,7 @@
 	flex-direction: row; 
 	min-width: 1100px;	
 	justify-content: center;
-	margin-left: 150px;
+	margin-left: 100px;
 }
 
 
@@ -497,6 +497,7 @@
 	text-align: left;
 	left: 22%;
 	font-size: 12px;
+	z-index: 5;
 }
 
 .jb-title:hover+.jb-text {
