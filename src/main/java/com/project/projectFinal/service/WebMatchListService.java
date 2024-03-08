@@ -147,13 +147,14 @@ public class WebMatchListService {
 		RiotApiDto response2 = webClient2.get().uri(uriBuilder -> uriBuilder.build()).retrieve()
 				.bodyToMono(RiotApiDto.class).block();
 ////////////////////////////////////////////
-		String url3 = "https://kr.api.riotgames.com/lol/league/v4/entries/by-summoner/"+response2.getId()+"?api_key="+UserApi_key;
-		
+		String url3 = "https://kr.api.riotgames.com/lol/league/v4/entries/by-summoner/" + response2.getId()
+				+ "?api_key=" + UserApi_key;
+
 		WebClient webClient3 = WebClient.builder().baseUrl(url3).build();
 
 		List<Map<String, Object>> response3 = webClient3.get().uri(uriBuilder -> uriBuilder.build()).retrieve()
 				.bodyToMono(List.class).block();
-		
+
 		Map<String, Object> UPdateTier = response3.get(0);
 		if (response3.size() != 0) {
 			if (UPdateTier.get("queueType").equals("RANKED_SOLO_5x5")) {
@@ -162,7 +163,24 @@ public class WebMatchListService {
 			}
 		}
 		return "bronze";
-		
+
+	}
+
+	public List<String> MatchList(Map<String, Object> uMap) {
+		log.info("=={}",uMap);
+		int count1 = (Integer) uMap.get("needCnt");
+		String count = String.valueOf(count1); 
+		String puuId =  (String) uMap.get("puuid");
+		String url = "https://asia.api.riotgames.com/lol/match/v5/matches/by-puuid/" + puuId
+				+ "/ids?start=0&count=" + count + "&api_key=" + api_key;
+
+		WebClient webClient = WebClient.builder().baseUrl(url).build();
+
+		List<String> response = webClient.get().uri(uriBuilder -> uriBuilder.build()).retrieve().bodyToMono(List.class)
+				.block();
+
+		return response;
+
 	}
 
 }

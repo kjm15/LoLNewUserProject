@@ -33,15 +33,15 @@ public class RestMatchListController {
 	private List<String> MorematchList; // 검색시 리스트
 
 	@PostMapping("/match/list")
-	public List<Map> matchList(RiotApiDto userListDto, Model model) {
-		List<Map> MList = new ArrayList<>();
+	public List<Map<String, Object>> matchList(RiotApiDto userListDto, Model model) {
+		List<Map<String, Object>> MList = new ArrayList<>();
 		RiotGameDto riotGameDto = new RiotGameDto();
 		String puuid = matchListService.puuId(userListDto);
 
 		userListDto.setPuuid(puuid);
 
 		matchList = matchListService.MatchList(userListDto);
-
+		log.info("=={}", matchList);
 		List<String> DbMatchList = matchListService.DBRiotGameMatchSelect(userListDto.getGameName());
 		if (DbMatchList.size() == 0) { // 만약 디비에 저장 데이터가 없을경우 바로 api 가기
 
@@ -158,4 +158,58 @@ public class RestMatchListController {
 		return matchListService.findPartOfQueuId(riotIdGameName);
 	}
 
+	@PostMapping("/GameMode/update")
+	public List<Map<String, Object>> UserUpdate(@RequestBody Map<String, Object> uMap, Model model) {
+		List<Map<String, Object>> MList = new ArrayList<>();
+		List<Map<String, Object>> wishList = new ArrayList<>();
+
+		List<String> needList = new ArrayList<>();
+		RiotApiDto userListDto = new RiotApiDto();
+		String gameName = (String) uMap.get("gameName");
+		String tagLine = (String) uMap.get("tagLine");
+
+		userListDto.setGameName(gameName);
+		userListDto.setTagLine(tagLine);
+		String puuid = matchListService.puuId(userListDto);
+
+		log.info(puuid);
+		uMap.put("puuid", puuid);
+		List<Map<String, Object>> matchCntList = matchListService.nowMatchListCnt(uMap);
+		log.info("===={}", matchCntList);
+		int needCnt = matchCntList.size() + 3;
+		uMap.put("needCnt", needCnt);
+
+		needList = matchListService.MatchList(uMap);
+
+		for (int i = needList.size() - 1; i > needList.size() - 4; i--) {
+
+			String matchId = needList.get(i);
+
+			Map<String, Object> updateMap = webClientService.getgameinfo(matchId);
+			wishList.add(updateMap);
+
+		}
+
+		return wishList;
+	}
+
+	@PostMapping("/upDate/saveData")
+	public String saveData(String Mlist) {
+		RiotGameDto riotGameDto = new RiotGameDto();
+		Gson gson = new Gson();
+		ArrayList<HashMap<String, ArrayList<HashMap<String, String>>>> map1 = gson.fromJson(Mlist, ArrayList.class);
+
+		int res = 0;
+		for (int i = 0; i < map1.size(); i++) {
+			Map response = map1.get(i);
+			List info = (List) response.get("info");
+			for (int j = 0; j < info.size(); j++) {
+				Map RiotInfo = (Map) info.get(j);
+				matchListService.RiotGameInfo(RiotInfo);
+			}
+		}
+
+		return "업데이트저장성공";
+
+	}
 }

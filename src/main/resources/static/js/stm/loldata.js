@@ -16,14 +16,14 @@ function logolodingImg() {
 	let gameName1 = $('#gameName').val()
 	var gameId = gameName1.split('#');
 	let gameName = gameId[0]
-	console.log(gameName)
+	//	console.log(gameName)
 	data3 = { 'gameName': gameName }
 	$.ajax({
 		type: 'post',
 		url: '/lane/prefer',
 		data: data3,
 		success: function(res) {
-			console.log(res)
+			//			console.log(res)
 			LaneChart(res)
 
 		}
@@ -356,7 +356,7 @@ function bbb(data) {
 		data: data,
 		success: function(res) {
 
-			console.log(res)
+			//			console.log(res)
 
 			if (res.length != 0) {
 				MList = [];
@@ -475,13 +475,13 @@ function bbb(data) {
 			console.log(m)
 		}
 	})
-
-
 }
+
+
 allofList = []
 function aaa(data) { // data == 검색한 게임 아이디
 
-	console.log(data)
+	//	console.log(data)
 	$.ajax({
 		type: 'post',
 		url: '/riot/game',
@@ -591,10 +591,10 @@ function goTier(data) {
 
 function reload(gameName, tagLine, q, i) {
 
-	console.log(data)
+	//	console.log(data)
 	nowStatus = ''
 	queueId = q
-	console.log(matchCnt)
+	//	console.log(matchCnt)
 	if (i == 1) { // 처음으로 
 		$('.containerXC').empty()
 		allofList = []
@@ -610,27 +610,25 @@ function reload(gameName, tagLine, q, i) {
 		url: '/GameMode/Search',
 		data: JSON.stringify(data),
 		success: function(res) {
-			console.log(res)
+			//			console.log(res)
 			if (res.length == 0) {
 
-
 				more = `<div class='containerXR'></div><div class='more'  tooltip="추가 정보 더보기" >
-					<center>
-				
-				
-						<input type = "button" value = "더보기"  id = 'loadMore1' class='loadMore' 	style = 'border: 2px solid rgb(157, 196, 253);    border-radius: 20px;'	>
-						
-					</center>
-				</div>`
+							<center>
+										
+								<input type = "button" value = "더보기"  id = 'loadMore1' class='loadMore' onclick = "update(\'${gameName}\', \'${tagLine}\')" style = 'border: 2px solid rgb(157, 196, 253);    border-radius: 20px;'	>
+								
+							</center>
+						</div>`
 				$('.containerXC').append(more)
-
-				alert("최근 전적 데이터를 조회할수 없습니다.")
+				update(gameName, tagLine)
+				matchCnt--;
+				alert("이전 데이터를 업데이트 중 입니다.")
 
 			} else {
+
 				allofList = res
 				showGameTamble(res)
-
-
 
 			}
 
@@ -649,7 +647,7 @@ function findPartOfQueuId() {
 		data: { 'riotIdGameName': gameName },
 		success: function(res) {
 			checkPartQueueId = res
-			console.log(res)
+			//			console.log(res)
 
 			for (let i in checkPartQueueId) {
 				queueId_kor = checkPartQueueId[i]['queueId_kor']
@@ -665,3 +663,126 @@ function findPartOfQueuId() {
 		}
 	})
 }
+
+////////////////////롤 업데이트 시작//////////////////
+function update(gameName, tagLine) {
+	console.log("업데이트 시작...")
+	data = { 'gameName': gameName, 'tagLine': tagLine }
+
+	$.ajax({
+		contentType: 'application/json',
+		type: 'post',
+		url: '/GameMode/update',
+		data: JSON.stringify(data),
+		success: function(res) {
+			console.log(res)
+			updateSave(res)
+
+		}
+	})
+}
+
+function updateSave(res) { //업데이트 저장문구
+	console.log(data)
+
+	if (res.length != 0) {
+		MList = [];
+		for (let i = 0; i < res.length; i++) {
+			Gamedata = {}; // 한게임당 데이터
+			ingamedata = [];
+
+
+			for (let j = 0; j < res[i]["info"]['participants'].length; j++) {
+				mm = {}
+
+				mm.riotIdGameName = res[i]["info"]['participants'][j]['riotIdGameName']//닉네임
+				mm.riotIdTagline = res[i]["info"]['participants'][j]['riotIdTagline'] // 태그
+				mm.summonerName = res[i]["info"]['participants'][j]['summonerName']
+				mm.summonerLevel = res[i]["info"]['participants'][j]['summonerLevel']
+				mm.profileIcon = res[i]["info"]['participants'][j]['profileIcon']
+				mm.championName = res[i]["info"]['participants'][j]['championName']//챔피언 아이디
+				mm.participantId = res[i]["info"]['participants'][j]['participantId'] // 플레이어 고유 인덱스
+				mm.summoner1Id = res[i]["info"]['participants'][j]['summoner1Id']//스펠 D
+				mm.summoner2Id = res[i]["info"]['participants'][j]['summoner2Id']//스펠 F 화면에 출력 가능할 떄 할 것
+				mm.goldEarned = res[i]["info"]['participants'][j]['goldEarned']
+				//						mm.puuid =res[i]["info"]['participants'][j]['puuid']
+				mm.totalTimeCCDealt = res[i]["info"]['participants'][j]['totalTimeCCDealt']
+				mm.totalTimeSpentDead = res[i]["info"]['participants'][j]['totalTimeSpentDead']
+				mm.onMyWayPings = res[i]["info"]['participants'][j]['onMyWayPings']
+				mm.enemyVisionPings = res[i]["info"]['participants'][j]['enemyVisionPings']
+				mm.physicalDamageDealtToChampions = res[i]["info"]['participants'][j]['physicalDamageDealtToChampions']
+				mm.magicDamageDealtToChampions = res[i]["info"]['participants'][j]['magicDamageDealtToChampions']
+				mm.teamId = res[i]["info"]['participants'][j]['teamId']
+				mm.win = res[i]["info"]['participants'][j]['win']
+				mm.matchId = res[i]['metadata']['matchId'] // 매치 아이디
+				mm.queueId = res[i]["info"]['queueId'] // 게임 모드
+				mm.firstBloodKill = res[i]["info"]['participants'][j]['firstBloodKill']
+				mm.kills = res[i]["info"]['participants'][j]['kills']
+				mm.deaths = res[i]["info"]['participants'][j]['deaths']
+				mm.assists = res[i]["info"]['participants'][j]['assists']
+				if (res[i]["info"]['participants'][j]['deaths'] == 0) {
+					mm.kda = (res[i]["info"]['participants'][j]['kills'] + res[i]["info"]['participants'][j]['assists'])
+
+				} else {
+					mm.kda = (((res[i]["info"]['participants'][j]['kills'] + res[i]["info"]['participants'][j]['assists'])) / res[i]["info"]['participants'][j]['deaths']).toFixed(2)
+				}
+
+				mm.teamPosition = res[i]["info"]['participants'][j]['teamPosition']
+				mm.totalDamageDealtToChampions = res[i]["info"]['participants'][j]['totalDamageDealtToChampions']
+				mm.totalDamageTaken = res[i]["info"]['participants'][j]['totalDamageTaken']
+				mm.totalMinionsKilled = res[i]["info"]['participants'][j]['totalMinionsKilled'] // 미니언 킬
+				mm.totalAllyJungleMinionsKilled = res[i]["info"]['participants'][j]['totalAllyJungleMinionsKilled'] // 토탈 정글몹 킬
+				mm.totalEnemyJungleMinionsKilled = res[i]["info"]['participants'][j]['totalEnemyJungleMinionsKilled'] //상대 정글몹 킬
+				mm.wardsKilled = res[i]["info"]['participants'][j]['wardsKilled'] // 와드 킬
+				mm.wardsPlaced = res[i]["info"]['participants'][j]['wardsPlaced'] // 시야점수
+				mm.gameStartTimestamp = res[i]["info"]['gameStartTimestamp']
+				mm.gameEndTimestamp = res[i]["info"]['gameEndTimestamp']
+				mm.gameDuration = (res[i]["info"]['gameDuration'] / 60).toFixed(0)
+				mm.item0 = res[i]["info"]['participants'][j]['item0']
+				mm.item1 = res[i]["info"]['participants'][j]['item1']
+				mm.item2 = res[i]["info"]['participants'][j]['item2']
+				mm.item3 = res[i]["info"]['participants'][j]['item3']
+				mm.item4 = res[i]["info"]['participants'][j]['item4']
+				mm.item5 = res[i]["info"]['participants'][j]['item5']
+				for (k in res[i]['info']['teams']) {
+					if (res[i]["info"]['teams'][k]['teamId'] == res[i]["info"]['participants'][j]['teamId']) {
+						mm.totalTeamkills = res[i]["info"]['teams'][k]['objectives']['champion']['kills']
+						mm.dragon = res[i]["info"]['teams'][k]['objectives']['dragon']['kills']
+					}
+
+				}
+				ingamedata.push(mm)
+
+				Gamedata.info = ingamedata
+
+			}
+			ingameteam = [];
+
+			for (j = 0; j < 2; j++) {
+				mm = {}
+				mm.matchId = res[i]['metadata']['matchId']
+				mm.teamId = res[i]["info"]['teams'][j]['teamId']
+				mm.dragon = res[i]["info"]['teams'][j]['objectives']['dragon']['kills']
+				mm.kills = res[i]["info"]['teams'][j]['objectives']['champion']['kills']
+
+				ingameteam.push(mm)
+				Gamedata.teams = ingameteam
+			}
+			MList.push(Gamedata)
+		}
+		console.log(MList)
+		let temp = JSON.stringify(MList)
+		data2 = { 'Mlist': temp }
+
+		$.ajax({
+			type: 'post',
+			url: '/upDate/saveData',
+			data: data2,
+			success: function(res) {
+				console.log(res)
+
+			}
+		})
+	}
+}
+////////////////////롤 업데이트 종료//////////////////

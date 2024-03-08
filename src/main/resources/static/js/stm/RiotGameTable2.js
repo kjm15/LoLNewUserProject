@@ -245,9 +245,7 @@ function profileCheck(res) {
 				  </div>
 				  <div class="GoPart">
 				   <ul class="menu2">
-				    <li class = "sampletest"><a href="/stm/${gameName}/${tagLine}">전체</a></li>
-				  
-				  
+					    <li class = "sampletest"><a href="/stm/${gameName}/${tagLine}">최신 업데이트</a></li>				  
 				   
 				    </ul>
 				  </div>
@@ -262,6 +260,10 @@ function profileCheck(res) {
 
 	$('.contetnsCheckA').html(contentsCheckBox)
 }
+
+
+
+
 //<canvas id="LaneChart" width="593" height="198"></canvas> //stmBlank안에 들어갈 구글chart.js
 
 $('a.feellink').click(function(e) //a태그 눌러도 맨위로 안올라감
@@ -311,9 +313,10 @@ let tagLine = ''
 let matchCnt = 1
 let queueId = 0
 let nowStatus = 'ALL'
-function showGameTamble(res) {
-	//	console.log(gameName)
 
+function showGameTamble(res) {
+	
+//	console.log(res)
 
 	$('.graph1').empty()
 	resMyList = []
@@ -631,7 +634,7 @@ function showGameTamble(res) {
 	showgraph(graphwin, graphlose)
 
 	findPartOfQueuId()
-	
+
 }
 
 
@@ -989,10 +992,7 @@ window.addEventListener('click', (e) => {
 
 		bbb(data)
 	} else if (e.target.id == "loadMore1") {
-
-
-
-
+	
 		matchCnt++;
 		$('.more').remove()
 		$('.containerXR').remove()
@@ -1001,6 +1001,7 @@ window.addEventListener('click', (e) => {
 	}
 
 });
+
 
 function timecheck(res) {
 

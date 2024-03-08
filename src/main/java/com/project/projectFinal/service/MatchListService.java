@@ -33,8 +33,8 @@ public class MatchListService {
 
 	}
 
-	public List<Map> gamedate(List<String> matchList) {
-		List<Map> MList = new ArrayList<>();
+	public List<Map<String, Object>> gamedate(List<String> matchList) {
+		List<Map<String, Object>> MList = new ArrayList<>();
 //		System.out.println(matchList);
 		for (String i : matchList) {
 			Map gMap = webmatchListService.gamedate(i);
@@ -159,6 +159,16 @@ public class MatchListService {
 	public List<Map<String, Object>> findPartOfQueuId(String riotIdGameName) {
 
 		return riotGameDao.findPartOfQueuId(riotIdGameName);
+	}
+
+	public List<Map<String, Object>> nowMatchListCnt(Map<String, Object> uMap) {
+		// TODO Auto-generated method stub
+		return riotGameDao.nowMatchListCnt(uMap);
+	}
+
+	public List<String> MatchList(Map<String, Object> uMap) {
+		
+		return webmatchListService.MatchList(uMap);
 	}
 
 }
