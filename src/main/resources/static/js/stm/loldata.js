@@ -40,19 +40,19 @@ $(document).ready(function() {
 
 		$('.imimim').html(aastr)
 
-	},1800);
-		setTimeout(function() {
+	}, 1800);
+	setTimeout(function() {
 		aastr = "<img width=300 height=300 src='/img/effect/ef2.gif' alt='티어이펙트''>"
 
 		$('.imimim').html(aastr)
 
-	},1600);
-//	setTimeout(function() {
-//		aastr = "<img width=300 height=300 src='/img/effect/ef3.gif' alt='티어이펙트''>"
-//
-//		$('.imimim').html(aastr)
-//
-//	},1900);
+	}, 1600);
+	//	setTimeout(function() {
+	//		aastr = "<img width=300 height=300 src='/img/effect/ef3.gif' alt='티어이펙트''>"
+	//
+	//		$('.imimim').html(aastr)
+	//
+	//	},1900);
 
 
 
@@ -640,15 +640,15 @@ function gamebtn(goBtn, matchId) {
 						url: '/summoner/v4/Rank',
 						data: JSON.stringify(res[i]),
 						success: function(res1) {
-							//							aiCheckTroll(res1)
+							aiCheckTroll(res1)
 						}
 					})
 				} else if (res[i].queueId == 450) {
 
-					//					aiCheckTroll(res[i])
+					aiCheckTroll(res[i])
 
 				} else {
-					//					aiCheckTroll(res[i])
+					aiCheckTroll(res[i])
 
 				}
 

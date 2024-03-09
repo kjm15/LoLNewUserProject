@@ -1,4 +1,4 @@
-function allItemTT(a){
+function allItemTT1(a){
 	
 	var itemId = a.split("_")[0]
 	
