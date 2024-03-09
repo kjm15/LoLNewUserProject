@@ -644,14 +644,14 @@ function goTier(gameName, tagLine) {
 		data: data,
 		async: true,
 		success: function(res) {
-			console.log(res)
+			//			console.log(res)
 			//			let tier = ''w
-			if (res.lenght != 0) {
+			console.log(res)
+			if (res.length != 0) {
 
 				tier = res[0].tier.toLowerCase();
 
 			} else {
-
 				tier = 'gold'
 
 			}
@@ -689,7 +689,7 @@ function reload(gameName, tagLine, q) { //무조건 처음에 뜨는 메소드 :
 			}
 			showGameTamble(res)
 			update(gameName, tagLine)
-//			window.scrollTo(0, 0);
+			//			window.scrollTo(0, 0);
 
 			$('#loadMore').show()
 			aastr = "<img width=300 height=300 src='/img/tier/" + tier + ".png'	 alt='티어''>"
@@ -853,7 +853,7 @@ function updateSave(res) { //업데이트 저장문구
 				console.log(res)
 				//저장완료
 				//				infoData()
-				console.log(nowStatus + " 로딩 완료")
+				//				console.log(nowStatus + " 로딩 완료")
 
 			}
 		})
