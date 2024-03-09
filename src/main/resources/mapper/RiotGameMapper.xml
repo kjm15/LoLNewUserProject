@@ -144,7 +144,7 @@
 		= #{gameName} and queueId = #{queueId}
 		order by matchId desc
 		limit
-		#{matchCnt}, 3;
+		#{matchCnt}, 10;
 	</select>
 	<select id="findPartOfQueuId">
 		select queueId,queueId_kor
@@ -167,7 +167,7 @@
 		where riotIdGameName = #{gameName}
 		group by matchId 
 		order by matchId desc
-		limit #{matchCnt}, 10;
+		limit #{matchCnt}, 3;
 	</select>
 	<select id="infoData">
 		select *

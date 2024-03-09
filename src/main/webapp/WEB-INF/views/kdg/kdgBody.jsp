@@ -150,7 +150,7 @@
 <br>
 </div>
 
-
+	<div class = contetnsCheckA>
 		<div class = contentsCheckM>
 			<div class = contentsCheckS>
 				 	
@@ -193,6 +193,7 @@
 				
 				  </div> 
 			</div>
+		</div>
 		</div>
 		<div style = "height: 5px;"></div>
 		

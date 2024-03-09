@@ -58,6 +58,7 @@
 				
 				</div>
 					<!-- 				장기훈 -->
+					<div class = "contetnsCheckA">
 					<div class=contentsCheckM>
 						<div class=contentsCheckS>
 
@@ -72,7 +73,7 @@
 
 							<div class="contentsDetailR"></div>
 						</div>
-					
+					</div>
 
 
 

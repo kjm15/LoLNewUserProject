@@ -3,7 +3,7 @@
  */
 
 $(document).ready(function() {
-
+	$('#loadMore').hide()
 	//url에 있는 파라미터 값으로 게임 아이디 태그 잡음
 	let pathname = window.location.pathname
 
@@ -48,6 +48,7 @@ $(document).ready(function() {
 		document.getElementById('loadMore').value = "더보기";
 
 	}, 4000);
+
 })
 
 
@@ -661,13 +662,16 @@ function goTier(gameName, tagLine) {
 
 function reload(gameName, tagLine, q) { //무조건 처음에 뜨는 메소드 :전체,솔랭,등
 
+
+
+	$('#loadMore').hide()
 	nowStatus = queueChange(q)
 	queueId = q
 
 	$('.containerXCF').empty()
 	allofList = []
 	matchCnt = 1
-	window.scrollTo(0, 0);
+	window.scrollTo(0, 500);
 
 
 	data = { 'gameName': gameName, 'tagLine': tagLine, 'queueId': queueId, "matchCnt": (matchCnt - 1) * 3 }
@@ -685,7 +689,11 @@ function reload(gameName, tagLine, q) { //무조건 처음에 뜨는 메소드 :
 			}
 			showGameTamble(res)
 			update(gameName, tagLine)
+//			window.scrollTo(0, 0);
 
+			$('#loadMore').show()
+			aastr = "<img width=300 height=300 src='/img/tier/" + tier + ".png'	 alt='티어''>"
+			$('.imimim').html(aastr)
 		}
 	})
 
@@ -831,11 +839,10 @@ function updateSave(res) { //업데이트 저장문구
 			}
 			MList.push(Gamedata)
 		}
-		//		console.log(MList)
+
 		let temp = JSON.stringify(MList)
 		data2 = { 'Mlist': temp }
-		//		console.log("아래의 데이터를 저장중입니다...")
-		//		console.log(MList)
+
 
 		$.ajax({
 			type: 'post',
@@ -847,73 +854,13 @@ function updateSave(res) { //업데이트 저장문구
 				//저장완료
 				//				infoData()
 				console.log(nowStatus + " 로딩 완료")
+
 			}
 		})
 	}
 }
 
 
-
-function infoData() {
-	console.log(nowStatus + "데이터를 불러오는중입니다...")
-	queueId = queuecheckInt(nowStatus)
-	if (matchCnt == 1) {
-
-		$('.containerXR').remove()
-
-	}
-
-
-	if (nowStatus == "ALL") {
-
-		limitmatchCnt = (matchCnt - 1) * 3
-		console.log(limitmatchCnt)
-		data = { 'matchCnt': limitmatchCnt, 'gameName': gameName }
-
-		$.ajax({
-			contentType: 'application/json',
-			type: 'post',
-			url: '/upDate/infoData',
-			data: JSON.stringify(data),
-			success: function(res) {
-				console.log(res)
-				for (let i in res) {
-					allofList.push(res[i])
-				}
-				showGameTamble(res)
-			}
-		})
-	} else if (nowStatus == "솔로랭크") {
-
-		data = { 'gameName': gameName, 'tagLine': tagLine, 'queueId': queueId, "matchCnt": (matchCnt - 1) * 3 }
-
-
-	} else if (nowStatus == "자유랭크") {
-
-
-
-
-	}
-	else if (nowStatus == "빠른대전") {
-
-
-
-
-	}
-	else if (nowStatus == "칼바람") {
-
-
-
-
-	} else if (nowStatus == "우르프") {
-
-
-
-
-	}
-
-	matchCnt++;
-}
 
 //$('#loadMore').on("click", function() {
 //
@@ -936,6 +883,7 @@ function clickOnLoadMore(int) {
 
 	}, 6000);
 
+
 	console.log(nowStatus)
 	document.getElementById('loadMore').disabled = true;
 
@@ -944,7 +892,7 @@ function clickOnLoadMore(int) {
 
 	$('.loadMore').focus()
 
-	window.scrollTo(0, 99999);
+
 
 }
 

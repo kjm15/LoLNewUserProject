@@ -253,8 +253,9 @@ function profileCheck(res) {
 				  </div>
 				  	
 				  <div class = "contentsDetailR">
+				  <ul class="menu3">
 									    <li class = "sampletest"><a href="/stm/${gameName}/${tagLine}">최신 업데이트</a></li>				  
-
+					</ul>
 				  </div> 
 			</div>
 		</div>
@@ -615,7 +616,7 @@ function showGameTamble(res) {
 	showgraph(graphwin, graphlose)
 
 	findPartOfQueuId()
-
+		$('#loadMore').show()
 }
 
 
@@ -649,7 +650,7 @@ function showGameTambleBody(matchId) {
 
 	makeBodyblue(blueChampList, matchId);
 	makeBodyred(redChampList, matchId);
-
+	
 
 }
 //들어오는 값은 레드리스트
