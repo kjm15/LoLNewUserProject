@@ -86,7 +86,7 @@ let riotIdGameName = ''
 
 function profileCheck(res) {
 
-console.log(res)
+//console.log(res)
 
 	profileIcon = res.profileIcon
 	summonerLevel = res.summonerLevel
