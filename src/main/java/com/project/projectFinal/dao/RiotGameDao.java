@@ -65,5 +65,9 @@ public interface RiotGameDao {
 
 	List<String> infoDataAll(Map<String, Object> qMap);
 
+	List<String> infoDataCnt(Map<String, Object> iMap);
+
+	List<String> infoDataAllCnt(Map<String, Object> iMap);
+
 	
 }

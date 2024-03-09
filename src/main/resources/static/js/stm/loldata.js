@@ -666,9 +666,7 @@ function goTier(gameName, tagLine) {
 		data: data,
 		async: true,
 		success: function(res) {
-			//			console.log(res)
-			//			let tier = ''w
-			//			console.log(res)
+
 			if (res.length != 0) {
 
 				tier = res[0].tier.toLowerCase();
@@ -865,17 +863,12 @@ function updateSave(res) { //업데이트 저장문구
 		let temp = JSON.stringify(MList)
 		data2 = { 'Mlist': temp }
 
-
 		$.ajax({
 			type: 'post',
 			url: '/upDate/saveData',
 			data: data2,
 			success: function(res) {
 				console.log("Save Succeded")
-				//				console.log(res)
-				//저장완료
-				//				infoData()
-				//				console.log(nowStatus + " 로딩 완료")
 
 			}
 		})
@@ -884,12 +877,21 @@ function updateSave(res) { //업데이트 저장문구
 
 
 
-//$('#loadMore').on("click", function() {
-//
-//
-//})
-
 function clickOnLoadMore(int) {
+
+
+
+	update(gameName, tagLine)
+	if (allofList.length < 10) {
+
+		alert("현제 페이지가 마지막 페이지입니다.")
+		return false;
+	}
+	//로직 1. 더보기를 누르면 matchCnt값을 증가시켜 기존보다 10개 많은 matchId값을 가지고오게한다.
+	//	2. 그 시간 안에 사용자가 더 클릭하지 못하게 setInterval함수로 막아둔다.
+	//	3. 받은 값을 중복제거 시켜 view에 뿌려준다.
+
+	matchCnt++;
 	int = 6;
 	let timerId = setInterval(() => {
 
@@ -905,19 +907,71 @@ function clickOnLoadMore(int) {
 
 	}, 6000);
 
-
-	//	console.log(nowStatus)
 	document.getElementById('loadMore').disabled = true;
 
 	$('.containerXR').remove()
 
+	queueId = queuecheckInt(nowStatus)
 
-	$('.loadMore').focus()
+	window.scrollTo(0, 99999);
 
+	/// 데이터 이동 시작///
+	if (nowStatus == 0) {
 
+		data = { 'gameName': gameName, 'tagLine': tagLine, 'queueId': queueId, "matchCnt": (matchCnt - 1) * 10 }
 
+	} else {
+		data = { 'gameName': gameName, 'tagLine': tagLine, 'queueId': queueId, "matchCnt": (matchCnt) * 10 }
+
+	}
+
+	//	console.log("ajax실행 시작")
+	let needMatchIdList = []
+	$.ajax({
+		contentType: 'application/json',
+		type: 'post',
+		url: '/upDate/infoMatchId',
+		async: false, // ajax실행이 완료될때까지 밑으로 안내려감
+		data: JSON.stringify(data),
+		success: function(res) {	//res : 원하는 matchId수만큼 들어있음
+
+			let MatchIdList1 = []
+			allofList.forEach(i => { MatchIdList1.push(i['matchId']) })
+			needMatchIdList = res.filter(x => !MatchIdList1.includes(x))
+			//			console.log(needMatchIdList)
+			//			console.log("ajax실행 완료")
+		}
+	})
+
+	//	console.log("ajax실행 전부 되기전에는 안내려움")
+
+	data = { 'needList': needMatchIdList }
+	console.log(data)
+	let testList = []
+	$.ajax({
+		contentType: 'application/json',
+		type: 'post',
+		url: '/upDate/infoData',
+		data: JSON.stringify(data),
+		async: false,//ajax실행이 완료될때까지 밑으로 안내려감
+		success: function(res) {
+			//			console.log(res)
+			//			console.log("ajax실행중")
+			testList = res
+			allofList = allofList.concat(res) // 다음 비교를 위해 allofList의 수를 합쳐줌
+			//	console.log(ac8)
+			//			console.log("ajax실행 완료")
+
+		}
+	})
+	if (testList.length == 0) {
+
+		alert("데이터가 없거나 로딩중입니다. ")
+	}
+	//	console.log("만들기 시작")
+	//	console.log(testList)
+	showGameTamble(testList)
 }
-
 
 
 
