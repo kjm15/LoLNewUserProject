@@ -129,7 +129,7 @@ public class WebMatchListService {
 
 	}
 
-	public String SearchUser(String gameName, String tagLine) {
+	public List<Map<String, Object>> SearchUser(String gameName, String tagLine) {
 		String UserApi_key = "RGAPI-175e99fa-a692-4cbb-acfb-9410f712f370";
 
 		String url = "https://asia.api.riotgames.com/riot/account/v1/accounts/by-riot-id/" + gameName + "/" + tagLine
@@ -154,25 +154,18 @@ public class WebMatchListService {
 
 		List<Map<String, Object>> response3 = webClient3.get().uri(uriBuilder -> uriBuilder.build()).retrieve()
 				.bodyToMono(List.class).block();
-
-		Map<String, Object> UPdateTier = response3.get(0);
-		if (response3.size() != 0) {
-			if (UPdateTier.get("queueType").equals("RANKED_SOLO_5x5")) {
-				String tier = (String) UPdateTier.get("tier");
-				return tier;
-			}
-		}
-		return "bronze";
+//		log.info("==response3 : {}", response3);
+		return response3;
 
 	}
 
 	public List<String> MatchList(Map<String, Object> uMap) {
-		log.info("=={}",uMap);
+//		log.info("=={}", uMap);
 		int count1 = (Integer) uMap.get("needCnt");
-		String count = String.valueOf(count1); 
-		String puuId =  (String) uMap.get("puuid");
-		String url = "https://asia.api.riotgames.com/lol/match/v5/matches/by-puuid/" + puuId
-				+ "/ids?start=0&count=" + count + "&api_key=" + api_key;
+		String count = String.valueOf(count1);
+		String puuId = (String) uMap.get("puuid");
+		String url = "https://asia.api.riotgames.com/lol/match/v5/matches/by-puuid/" + puuId + "/ids?start=0&count="
+				+ count	 + "&api_key=" + api_key;
 
 		WebClient webClient = WebClient.builder().baseUrl(url).build();
 

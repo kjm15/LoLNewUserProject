@@ -147,9 +147,19 @@ public class RestMatchListController {
 			if ((Integer) qMap.get("queueId") == queueId) {
 
 				log.info("queueId : {}", queueId);
+				return matchListService.GameModeSearch(qMap);
 			}
+
+		}
+		if ((Integer) qMap.get("queueId") == 0) {
+
+			return matchListService.infoDataAll(qMap);
+
+//			return 
+
 		}
 		return matchListService.GameModeSearch(qMap);
+
 	}
 
 	@PostMapping("/GameMode/queuId")
@@ -171,13 +181,20 @@ public class RestMatchListController {
 		userListDto.setGameName(gameName);
 		userListDto.setTagLine(tagLine);
 		String puuid = matchListService.puuId(userListDto);
-
-		log.info(puuid);
-		uMap.put("puuid", puuid);
 		List<Map<String, Object>> matchCntList = matchListService.nowMatchListCnt(uMap);
-		log.info("===={}", matchCntList);
+
 		int needCnt = matchCntList.size() + 3;
+
+		if (needCnt > 100) {
+			needCnt = 100;
+
+		}
+
+		uMap.put("puuid", puuid);
 		uMap.put("needCnt", needCnt);
+
+		log.info("=== {}", puuid);
+		log.info("====matchCntList {}", needCnt);
 
 		needList = matchListService.MatchList(uMap);
 
@@ -210,6 +227,27 @@ public class RestMatchListController {
 		}
 
 		return "업데이트저장성공";
+
+	}
+
+	@PostMapping("/upDate/infoData")
+	public List<Map<String, Object>> infoData(@RequestBody Map<String, Object> iMap) {
+
+		List<Map<String, Object>> MList = new ArrayList<>();
+
+//		
+
+		List<Map<String, Object>> matchCntList = matchListService.matchIdList(iMap);
+		for (Map<String, Object> kMap : matchCntList) {
+			Map<String, Object> matchInfoMap = new HashMap<>();
+			matchInfoMap.put("info", matchListService.infoData(kMap));
+			matchInfoMap.put("matchId", (String) kMap.get("matchId"));
+			MList.add(matchInfoMap);
+
+		}
+		log.info("===MList : {}", MList);
+
+		return MList;
 
 	}
 }

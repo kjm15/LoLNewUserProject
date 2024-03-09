@@ -83,6 +83,7 @@ function getElCount(arr) {
 let profileIcon = ''
 let summonerLevel = ''
 let riotIdGameName = ''
+
 function profileCheck(res) {
 
 
@@ -96,13 +97,12 @@ function profileCheck(res) {
 		newsummonerLevel = summonerLevel
 		newriotIdGameName = riotIdGameNames
 
-		if (res.Tier != "Tier") {
-			TierIcon = res.Tier.toLowerCase()
-		} else {
-			TierIcon = "gold"
-		}
 	}
-	
+
+
+
+	goTier(gameName, tagLine)
+
 	imgStr = `https://ddragon.leagueoflegends.com/cdn/img/champion/splash/${championName}_0.jpg`
 
 	ccc = `<div class=container333Box>
@@ -115,17 +115,15 @@ function profileCheck(res) {
 						<img width='130' height='130' onerror="this.src= '${imgStr}';"; style = "border-radius: 30px;"  src=https://ddragon.leagueoflegends.com/cdn/14.3.1/img/profileicon/${newprofileIcon}.png>
                     </div>
                     	
-                     		
+
                       
                          <div class="uidLevelBox">
               				  <div class="ulevel">${newsummonerLevel} </div>
                 		</div>
-                		<div class "cpimgB">
-                			<img width=300 height=300 src="/img/tier/${TierIcon}.png" alt="티어">
-                		</div>
+                	                     		                		<div class="imimim"><img width=300 height=300 src='/img/tier/${tier}.png' alt='티어''></div>
+
                 	
-                			 <div class="uid">${newriotIdGameName}</div>
-                		
+                		<div class="uid">${newriotIdGameName}</div>
                 		
                     
                     </div>
@@ -211,7 +209,14 @@ function profileCheck(res) {
         </div>`
 
 	$('.graph1').append(ccc)
+	if (nowStatus == "ALL") {
 
+		lightEffect = `<div class = cpimgb><img width=300 height=300  src = "/img/effect/tierCome.gif" alt = "빛효과""></div>`
+		$('.imimim').html(lightEffect)
+	} else {
+		lightEffect = `<img width=300 height=300 src='/img/tier/${tier}.png' alt='티어''>`
+		$('.imimim').html(lightEffect)
+	}
 
 
 	championName
@@ -232,11 +237,6 @@ function profileCheck(res) {
 	ch.style.backgroundImage = "no-repeat";
 	ch.style.backgroundImage = "url(" + imgStr + ")";
 
-
-
-
-
-
 	contentsCheckBox = `
 	
 		<div class = contentsCheckM>
@@ -247,13 +247,15 @@ function profileCheck(res) {
 				  </div>
 				  <div class="GoPart">
 				   <ul class="menu2">
-					    <li class = "sampletest"><a href="/stm/${gameName}/${tagLine}">최신 업데이트</a></li>				  
-				   
+				   					    <li class = "sampletest"><a href="javascript:reload(\'${gameName}\',\'${tagLine}\',0)">전체</a></li>				  
+
 				    </ul>
 				  </div>
 				  	
 				  <div class = "contentsDetailR">
-				
+				  <ul class="menu3">
+									    <li class = "sampletest"><a href="/stm/${gameName}/${tagLine}">최신 업데이트</a></li>				  
+					</ul>
 				  </div> 
 			</div>
 		</div>
@@ -316,25 +318,27 @@ let matchCnt = 1
 let queueId = 0
 let nowStatus = 'ALL'
 
+let tier = ''
 function showGameTamble(res) {
+	console.log(res)
 
-	//	console.log(res)
 
 	$('.graph1').empty()
 	resMyList = []
 	for (let i in res) {
 		for (let j in res[i]['info']) {
 
-			resGameNamer = res[i]["info"][j]['riotIdGameName']
-			resGameNamerSo = res[i]["info"][j]['riotIdGameName'].toUpperCase();
-			gameNameSo = gameName.toUpperCase();//소문자
+			resGameNamer = res[i]["info"][j]['riotIdGameName'] // 검색된 아이디
+			//			console.log(resGameNamer, i , j)
+			resGameNamerSo = res[i]["info"][j]['riotIdGameName'].toLowerCase(); //검색된 아이디의 소문자
+			gameNameSo = gameName.toLowerCase();;//검색한 아이디의 소문자
 
-			gameNameList = [resGameNamerSo]
+			gameNameList = [resGameNamerSo, resGameNamer]
 
 			if (gameNameList.includes(gameNameSo)) {
-				//				console.log("찾음")
-				//				console.log(gameName)
-				//				console.log(res[i]["info"][j]['riotIdGameName'])
+				//								console.log("찾음")
+				//								console.log(gameName)
+				//								console.log(res[i]["info"][j]['riotIdGameName'])
 				//
 
 				resMyList.push(res[i]["info"][j])
@@ -355,16 +359,17 @@ function showGameTamble(res) {
 
 		}
 	}
-	if (resMyList[0].length == 0) { //혹시 모를 에러를 위한 에러페이지전용
+	console.log(resMyList[0])
+	//	if (resMyList[0].length == 0) { //혹시 모를 에러를 위한 에러페이지전용
+	//
+	//		location.href = '/searchError'
+	//	} else {
+	profileCheck(resMyList[0])
 
-		location.href = '/searchError'
-	} else {
-		profileCheck(resMyList[0])
+	//	}
 
-	}
 
-	//	console.log(resMyList[0])
-
+	//console.log(allOfList)
 	//	console.log(IMGarr)
 	graphwin = 0
 	graphlose = 0
@@ -470,10 +475,10 @@ function showGameTamble(res) {
 								${boxright}
 							</div>
 							`
-		container2 = `<div class="container2" id = 'container2${matchId}' style = 'display: none' >`
-		container4 = `<div class="container4" id = 'container4${matchId}' style = 'display: none' >`
+		container2 = `<div class="container2" id = 'container2${matchId}' >`
+		container4 = `<div class="container4" id = 'container4${matchId}' >`
 		controller = `<div class = "controller" id = 'controller${matchId}'><div>`
-		$('.containerXC').append(str)
+		$('.containerXCF').append(str)
 
 		$('#' + matchId + 'container1').append(str1)
 		$('#' + matchId + 'container1').append(boxcenter1)
@@ -567,11 +572,11 @@ function showGameTamble(res) {
 		}
 		$('#' + matchId + 'blueChamp').append(bcList)
 		$('#' + matchId + 'redChamp').append(rcList)
-		$('.containerXC').append(controller)
+		$('.containerXCF').append(controller)
 
-
-		$('#controller' + matchId).append(container2)
-		$('#controller' + matchId).append(container4)
+		//
+		//		$('#controller' + matchId).append(container2)
+		//		$('#controller' + matchId).append(container4)
 
 
 		data1 = { 'matchId': matchId }
@@ -580,7 +585,7 @@ function showGameTamble(res) {
 			url: '/ai/timelineAni',
 			data: data1,
 			success: function(res) {
-				console.log(res.matchId + "saved")
+				//				console.log(res.matchId + "saved")
 
 				html = `<div  tooltip="리플레이는 회원만 가능합니다." ><a href="javascript:aiTimelineAni(\'${res.matchId}\');"><img width=80 height=40 src="/img/replay3.png" alt="리플레이시작버튼"> </a></div>`
 				$('#' + res.matchId).html(html)
@@ -607,14 +612,11 @@ function showGameTamble(res) {
 	$('.stmBlankGTM4').css("height", barB + "%")
 	$('.stmBlankGTM5').css("height", barU + "%")
 
-	if (data['matchCnt'] == 1) {
-		goTier(data)
 
-	}
 	showgraph(graphwin, graphlose)
 
 	findPartOfQueuId()
-
+		$('#loadMore').show()
 }
 
 
@@ -648,7 +650,7 @@ function showGameTambleBody(matchId) {
 
 	makeBodyblue(blueChampList, matchId);
 	makeBodyred(redChampList, matchId);
-
+	
 
 }
 //들어오는 값은 레드리스트
@@ -786,7 +788,7 @@ function makeBodyred(blueChampList, matchId) {
 
 
 	$('#container4' + matchId).append(ct2)
-	$('#loadMore1').show()
+
 
 }
 
@@ -959,27 +961,16 @@ function aiTimelineAni(matchId) {
 
 }
 
-window.addEventListener('click', (e) => {
+//window.addEventListener('click', (e) => {
+//	
+//	console.log(nowStatus)
+//
+//	if (e.target.id == "loadMore") {
+//
+//	}
+//});
 
-	if (e.target.id == "loadMore") {
 
-		// 태그
-		matchCnt++;
-		data = { 'gameName': gameName, 'tagLine': tagLine, 'matchCnt': matchCnt }
-		console.log(data)
-		
-		$('.containerXR').remove()
-
-		bbb(data)
-	} else if (e.target.id == "loadMore1") {
-
-		matchCnt++;
-		$('.containerXR').remove()
-		console.log(gameName, tagLine, queueId, matchCnt)
-		reload(gameName, tagLine, queueId, matchCnt)
-	}
-
-});
 
 
 function timecheck(res) {
@@ -1027,6 +1018,45 @@ function queuecheck(res) {
 	}
 
 }
+function queuecheckInt(queue) {
+
+	if (queue = "ALL") {
+		queueId = 0
+	} else if (queue = "솔로랭크") {
+
+		queueId = 420
+	} else if (queue = "칼바람") {
+		queueId = 450
+	} else if (queue = "빠른대전") {
+		queueId = 490
+	} else if (queue = "자유랭크") {
+		queueId = 440
+	} else if (queue = "우르프") {
+		queueId = 1900
+	}
+	return queueId
+
+}
+function queueChange(queueId) {
+
+	dragon = '포로간식'
+	if (queueId == 450) {
+		queue = "칼바람"
+	} else if (queueId == 490) {
+		queue = "빠른대전"
+	} else if (queueId == 420) {
+		queue = "솔로랭크"
+	} else if (queueId == 440) {
+		queue = "자유랭크"
+	} else if (queueId == 1900) {
+		queue = "우르프"
+	} else if (queueId == 0) {
+		queue = "ALL"
+	}
+	return queue
+}
+
+
 function win_losecheck(res) {
 	if (res.win == '0') {
 		win_lose = '패배'

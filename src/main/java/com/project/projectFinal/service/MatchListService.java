@@ -167,8 +167,39 @@ public class MatchListService {
 	}
 
 	public List<String> MatchList(Map<String, Object> uMap) {
-		
+
 		return webmatchListService.MatchList(uMap);
+	}
+
+	public List<Map<String, Object>> infoData(Map<String, Object> iMap) {
+		// TODO Auto-generated method stub
+		return riotGameDao.infoData(iMap);
+	}
+
+	public List<Map<String, Object>> matchIdList(Map<String, Object> iMap) {
+		// TODO Auto-generated method stub
+		return riotGameDao.matchIdList(iMap);
+	}
+
+	public List<Map<String, Object>> infoDataAll(Map<String, Object> qMap) {
+		List<String> macthIdList = new ArrayList<>();
+		List<Map<String, Object>> mList = new ArrayList<>();
+	
+
+		// 1 . 해당 조건에 맞는 리스트 3개를 가지고옴
+
+		macthIdList = riotGameDao.infoDataAll(qMap);
+
+		// 2. 그 리스트 3개를 기존 형식에 맞춰서 가지고 감
+		for (String matchId : macthIdList) {
+			// 3 기존에 있는 메서드를 활용하여 데이터를 가지고옴
+			Map<String, Object> addmathIdMap = new HashMap<>();
+			// 4. 기존형식과 동일하게 만들어줌
+			addmathIdMap.put("info", riotGameDao.DBRiotGameName(matchId));
+			addmathIdMap.put("matchId", matchId);
+			mList.add(addmathIdMap);
+		}
+		return mList;
 	}
 
 }

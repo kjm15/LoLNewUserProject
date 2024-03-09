@@ -59,5 +59,11 @@ public interface RiotGameDao {
 
 	List<Map<String, Object>> nowMatchListCnt(Map<String, Object> uMap);
 
+	List<Map<String, Object>> infoData(Map<String, Object> iMap);
+
+	List<Map<String, Object>> matchIdList(Map<String, Object> iMap);
+
+	List<String> infoDataAll(Map<String, Object> qMap);
+
 	
 }
