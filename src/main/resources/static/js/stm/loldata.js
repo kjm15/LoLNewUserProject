@@ -3,6 +3,7 @@
  */
 
 $(document).ready(function() {
+	console.log("New Client Join")
 	$('#loadMore').hide()
 	//url에 있는 파라미터 값으로 게임 아이디 태그 잡음
 	let pathname = window.location.pathname
@@ -19,7 +20,7 @@ $(document).ready(function() {
 
 
 
-	console.log(gameName);
+	console.log("|GameId : " + gameName + "|-" + "|Tag : " + tagLine + "|");
 	///////////////////////////////
 	window.scrollTo(0, 0); //스크롤 상단위치 들어오자마자
 	document.getElementById('search-home').value = ''
@@ -33,7 +34,28 @@ $(document).ready(function() {
 
 		$('.imimim').html(aastr)
 
-	}, 3000);
+	}, 2000);
+	setTimeout(function() {
+		aastr = "<img width=300 height=300 src='/img/effect/ef1.gif' alt='티어이펙트''>"
+
+		$('.imimim').html(aastr)
+
+	},1800);
+		setTimeout(function() {
+		aastr = "<img width=300 height=300 src='/img/effect/ef2.gif' alt='티어이펙트''>"
+
+		$('.imimim').html(aastr)
+
+	},1600);
+//	setTimeout(function() {
+//		aastr = "<img width=300 height=300 src='/img/effect/ef3.gif' alt='티어이펙트''>"
+//
+//		$('.imimim').html(aastr)
+//
+//	},1900);
+
+
+
 	int = 4;
 	let timerId = setInterval(() => {
 
@@ -535,8 +557,8 @@ function aaa() { // data == 검색한 게임 아이디
 
 				allofList.push(res[i])
 			}
-			console.log(res)
-			console.log(allofList)
+			//			console.log(res)
+			//			console.log(allofList)
 			showGameTamble(res)
 
 		}
@@ -646,7 +668,7 @@ function goTier(gameName, tagLine) {
 		success: function(res) {
 			//			console.log(res)
 			//			let tier = ''w
-			console.log(res)
+			//			console.log(res)
 			if (res.length != 0) {
 
 				tier = res[0].tier.toLowerCase();
@@ -683,7 +705,7 @@ function reload(gameName, tagLine, q) { //무조건 처음에 뜨는 메소드 :
 		url: '/GameMode/Search',
 		data: JSON.stringify(data),
 		success: function(res) {
-			console.log(res)
+			//			console.log(res)
 			for (let i in res) {
 				allofList.push(res[i])
 			}
@@ -728,16 +750,16 @@ function findPartOfQueuId() {
 
 ////////////////////롤 업데이트 시작//////////////////
 function update(gameName, tagLine) {
-	console.log("업데이트 시작...")
+	//	console.log("업데이트 시작...")
 	data = { 'gameName': gameName, 'tagLine': tagLine }
-	console.log(data)
+	//	console.log(data)
 	$.ajax({
 		contentType: 'application/json',
 		type: 'post',
 		url: '/GameMode/update',
 		data: JSON.stringify(data),
 		success: function(res) {
-			console.log(res)
+			//			console.log(res)
 
 			if (res[0]['API']) {
 
@@ -753,7 +775,7 @@ function update(gameName, tagLine) {
 
 function updateSave(res) { //업데이트 저장문구
 	//	console.log(data)
-	console.log("새로운 데이터를 받는중...")
+	console.log("New Data input..")
 	if (res.length != 0) {
 		MList = [];
 		for (let i = 0; i < res.length; i++) {
@@ -849,8 +871,8 @@ function updateSave(res) { //업데이트 저장문구
 			url: '/upDate/saveData',
 			data: data2,
 			success: function(res) {
-				console.log("데이터 저장완료...")
-				console.log(res)
+				console.log("Save Succeded")
+				//				console.log(res)
 				//저장완료
 				//				infoData()
 				//				console.log(nowStatus + " 로딩 완료")
@@ -884,7 +906,7 @@ function clickOnLoadMore(int) {
 	}, 6000);
 
 
-	console.log(nowStatus)
+	//	console.log(nowStatus)
 	document.getElementById('loadMore').disabled = true;
 
 	$('.containerXR').remove()

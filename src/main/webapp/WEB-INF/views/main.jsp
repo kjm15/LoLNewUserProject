@@ -19,7 +19,6 @@
 <%@include file="aMain/mainDetail.jsp" %>
 </div>
 <%@include file="inc/footer.jsp" %>
-
 <!-- js들어갈자리  -->
 <!-- <script src="js/main.js"/> -->
 

@@ -14,7 +14,11 @@
 </head>
 
 <body>
+<link href="/css/stm/recordBoard.css" rel="stylesheet" type="text/css">
+	
+연습
 
+<div class = "janggi"></div>
 	
 Copy
 <!-- HTML -->
