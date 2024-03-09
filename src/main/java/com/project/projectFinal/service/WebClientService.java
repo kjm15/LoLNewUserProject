@@ -22,10 +22,15 @@ public class WebClientService {
 	@Autowired
 	WebDao webdao;
 
-	private String api_key = "RGAPI-175e99fa-a692-4cbb-acfb-9410f712f370";
+	private String[] api_keyList = { "RGAPI-c6320d0e-7590-4ec7-9e0b-d4ae0f1f775a",
+			"RGAPI-9c64dc62-e93a-48f3-9080-14ab007cd6e3", "RGAPI-3437c0e1-8256-4aae-b01c-1854a01a3533",
+			"RGAPI-f94a4128-cb3b-4303-b92b-0016fa59b5a8", "RGAPI-3a9db266-dbba-4ead-9ec5-93b90d528991",
+			"RGAPI-175e99fa-a692-4cbb-acfb-9410f712f370" };
+	private int cnt = 1;
 
 	public String getPuuId(String lolId, String tagId) {
 
+		String api_key = api_keyList[cnt%6];
 		String url = "https://asia.api.riotgames.com/riot/account/v1/accounts/by-riot-id/" + lolId + "/" + tagId
 				+ "?api_key=" + api_key;
 		// webClient 기본 설정
@@ -48,15 +53,15 @@ public class WebClientService {
 
 	public ArrayList<String> getgameid(String puuid, String count) {
 
-		// 가지고 올 경기 수 << 추후에 늘리기
-		String[] ApikeyList = { "RGAPI-e674eb69-7d34-41d9-adfb-e43ad16950ca",
+		// 가지고 올 경기 수 << 추후에 늘리기 // 깡통차기 , 씹악질 ,버프싸개
+//		String[] ApikeyList = { "RGAPI-c6320d0e-7590-4ec7-9e0b-d4ae0f1f775a",
+//				"RGAPI-9c64dc62-e93a-48f3-9080-14ab007cd6e3", "RGAPI-3437c0e1-8256-4aae-b01c-1854a01a3533",
+//				"RGAPI-f94a4128-cb3b-4303-b92b-0016fa59b5a8", "RGAPI-3a9db266-dbba-4ead-9ec5-93b90d528991",
+//				"RGAPI-175e99fa-a692-4cbb-acfb-9410f712f370" };
 
-				"RGAPI-c6320d0e-7590-4ec7-9e0b-d4ae0f1f775a", "RGAPI-9c64dc62-e93a-48f3-9080-14ab007cd6e3",
-				"RGAPI-3437c0e1-8256-4aae-b01c-1854a01a3533" };
-
-		String apiKeyTeam = ApikeyList[Integer.valueOf(count) % ApikeyList.length];
-
-//		log.info(apiKeyTeam);
+		String api_key = api_keyList[cnt%6];
+//		cnt++;
+		log.info(api_key);
 
 		String url = "https://asia.api.riotgames.com/lol/match/v5/matches/by-puuid/" + puuid + "/ids?start=0&count="
 				+ count + "&api_key=" + api_key;
@@ -73,7 +78,9 @@ public class WebClientService {
 	}
 
 	public Map getgameinfo(String matchId) { // 매치id를 통해서 데이터를 받음
-
+		cnt++;
+		String api_key = api_keyList[cnt%6];
+		
 		String url = "https://asia.api.riotgames.com/lol/match/v5/matches/" + matchId + "?api_key=" + api_key;
 		// webClient 기본 설정
 
@@ -91,7 +98,9 @@ public class WebClientService {
 	}
 
 	public Map getgameTimeline(String matchId) {
-
+		
+		cnt++;
+		String api_key = api_keyList[cnt%6];
 		String url = "https://asia.api.riotgames.com/lol/match/v5/matches/" + matchId + "/timeline?api_key=" + api_key;
 
 		WebClient webClient = WebClient.builder()
@@ -176,15 +185,15 @@ public class WebClientService {
 		ArrayList<String> newmList = new ArrayList<>(); // 뒤에 3개만
 
 		for (int i = mList.size() - 1; mList.size() - riotApiDto.getMatchIdCnt() <= i; i--) {
-		
+
 			newmList.add(mList.get(i));
 		}
-	
+
 		ArrayList<String> dbList = webdao.matchIdRecent(riotApiDto);
-		log.info("==dbList{}",newmList);
-		log.info("==dbList{}",dbList);
+		log.info("==dbList{}", newmList);
+		log.info("==dbList{}", dbList);
 		newmList.removeAll(dbList);
-		log.info("==dbList{}",newmList);
+		log.info("==dbList{}", newmList);
 		List<Map<String, Object>> findList = new ArrayList<>();
 		if (mList.size() != 0) {// 3개다 같지 않다.
 
@@ -205,7 +214,7 @@ public class WebClientService {
 	}
 
 	public List<Map<String, Object>> forGraphInfo(RiotApiDto riotApiDto) {
-	
+
 		return webdao.forGraphInfo(riotApiDto);
 	}
 

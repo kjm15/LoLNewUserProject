@@ -154,18 +154,18 @@ public class WebMatchListService {
 
 		List<Map<String, Object>> response3 = webClient3.get().uri(uriBuilder -> uriBuilder.build()).retrieve()
 				.bodyToMono(List.class).block();
-		log.info("==response3 : {}", response3);
+//		log.info("==response3 : {}", response3);
 		return response3;
 
 	}
 
 	public List<String> MatchList(Map<String, Object> uMap) {
-		log.info("=={}", uMap);
+//		log.info("=={}", uMap);
 		int count1 = (Integer) uMap.get("needCnt");
 		String count = String.valueOf(count1);
 		String puuId = (String) uMap.get("puuid");
 		String url = "https://asia.api.riotgames.com/lol/match/v5/matches/by-puuid/" + puuId + "/ids?start=0&count="
-				+ count + "&api_key=" + api_key;
+				+ count	 + "&api_key=" + api_key;
 
 		WebClient webClient = WebClient.builder().baseUrl(url).build();
 

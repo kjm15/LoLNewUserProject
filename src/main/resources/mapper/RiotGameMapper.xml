@@ -2,7 +2,7 @@
 
 <mapper namespace="com.project.projectFinal.dao.RiotGameDao">
 	<insert id="RiotGameInfo">
-		insert into RiotGameInfoT
+		insert ignore into RiotGameInfoT
 		<!-- (matchId,championName,champion_name_kr,riotIdGameName,riotIdTagline,summonerName,summonerLevel,profileIcon,participantId,queueId, -->
 		<!-- teamId,item0,item1,item2,item3,item4,item5,summoner1Id,summoner2Id,summonerSpellD,summonerSpellF,lane,kills,assists,deaths,kda,firstBloodKill, -->
 		<!-- gameEndTimestamp,gameStartTimestamp,totalAllyJungleMinionsKilled,totalDamageDealtToChampions,totalDamageTaken,totalEnemyJungleMinionsKilled, -->
@@ -131,7 +131,8 @@
 	<select id="RiotGameInfoSelectRank">
 		select matchId
 		from RiotGameInfoT
-		where riotIdGameName =#{gameName}
+		where riotIdGameName
+		=#{gameName}
 		order by matchId desc
 		limit #{matchCnt}, 3;
 	</select>
@@ -139,14 +140,17 @@
 	<select id="RiotGameInfoSelectQueueId">
 		select matchId
 		from RiotGameInfoT
-		where riotIdGameName = #{gameName} and queueId = #{queueId}
+		where riotIdGameName
+		= #{gameName} and queueId = #{queueId}
 		order by matchId desc
-		limit #{matchCnt}, 3;
+		limit
+		#{matchCnt}, 3;
 	</select>
 	<select id="findPartOfQueuId">
 		select queueId,queueId_kor
 		from RiotGameInfoT
-		where riotIdGameName = #{riotIdGameName}
+		where
+		riotIdGameName = #{riotIdGameName}
 		group by queueId,queueId_kor;
 	</select>
 
@@ -154,6 +158,29 @@
 		select matchId
 		from RiotGameInfoT
 		where riotIdGameName = #{gameName}
-		group by matchId;
+		group by matchId
+		order by matchId desc;
 	</select>
+	<select id="matchIdList">
+		select *
+		from RiotGameInfoT
+		where riotIdGameName = #{gameName}
+		group by matchId 
+		order by matchId desc
+		limit #{matchCnt}, 10;
+	</select>
+	<select id="infoData">
+		select *
+		from RiotGameInfoT
+		where matchId = #{matchId}
+		order by participantId ;
+	</select>
+		<select id="infoDataAll">
+		select matchId
+		from RiotGameInfoT
+		where riotIdGameName = #{gameName}
+		order by matchId desc
+		limit 0, 10;
+	</select>
+
 </mapper>	

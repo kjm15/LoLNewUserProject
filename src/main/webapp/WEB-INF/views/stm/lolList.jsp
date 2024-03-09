@@ -40,7 +40,7 @@
 
 						<div class='more' tooltip="추가 정보 더보기">
 
-
+							<input type="button"  value="4초 뒤에 가능합니다." onclick="clickOnLoadMore(6)" disabled  id = "loadMore" class='loadMore' style='border: 2px solid rgb(157, 196, 253); border-radius: 20px; '>
 						</div>
 					</div>
 

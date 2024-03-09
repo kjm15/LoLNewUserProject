@@ -9,34 +9,50 @@ $(document).ready(function() {
 
 
 	dName = decodeURI(pathname)
-	console.log(dName);
+	//	console.log(dName);
 
 	let replaced_str = dName.replace("/stm", '');// 기본 로컬호스트삭제
 	let replaced_str1 = replaced_str.replace("%20", ''); //사이띄기 삭제
 	var gameId = replaced_str1.split('/'); // 배열로 변경
 	let gameName = gameId[1] // 아이디
 	let tagLine = gameId[2] // 태그
+
+
+
 	console.log(gameName);
 	///////////////////////////////
 	window.scrollTo(0, 0); //스크롤 상단위치 들어오자마자
 	document.getElementById('search-home').value = ''
 
 
-
-	// 동기싫
-	goTier(gameName, tagLine)
 	logolodingImg()
 	mainStart()
 
 	setTimeout(function() {
 		aastr = "<img width=300 height=300 src='/img/tier/" + tier + ".png'	 alt='티어''>"
-		//		console.log(aastr)
-		//		$('.imimim').fadeIn(1000)
-		$('.imimim').fadeOut()
+
 		$('.imimim').html(aastr)
-		$('.imimim').fadeIn(3000)
-	}, 2000);
+
+	}, 3000);
+	int = 4;
+	let timerId = setInterval(() => {
+
+		int--;
+		document.getElementById('loadMore').value = int + "초 뒤에 가능합니다."
+
+	}, 1000);
+	setTimeout(() => {
+
+		clearInterval(timerId);
+		document.getElementById('loadMore').disabled = false;
+		document.getElementById('loadMore').value = "더보기";
+
+	}, 4000);
 })
+
+
+
+
 
 function logolodingImg() {
 
@@ -482,12 +498,12 @@ function bbb(data) {
 					//					dataType: 'json',
 					success: function(res) {
 						//						console.log(res)
-						aaa(data)
+						aaa()
 					}
 				})
 
 			} else {
-				aaa(data)
+				aaa()
 			}
 
 		},
@@ -507,9 +523,8 @@ function bbb(data) {
 
 
 allofList = []
-function aaa(data) { // data == 검색한 게임 아이디
+function aaa() { // data == 검색한 게임 아이디
 
-	//	console.log(data)
 	$.ajax({
 		type: 'post',
 		url: '/riot/game',
@@ -519,11 +534,9 @@ function aaa(data) { // data == 검색한 게임 아이디
 
 				allofList.push(res[i])
 			}
-
+			console.log(res)
 			console.log(allofList)
 			showGameTamble(res)
-
-
 
 		}
 	})
@@ -582,7 +595,7 @@ function gamebtn(goBtn, matchId) {
 
 	}
 
-	console.log(a)
+	//	console.log(a)
 
 	showGameTambleBody(matchId) // 바디부분 만들기
 
@@ -628,6 +641,7 @@ function goTier(gameName, tagLine) {
 		type: 'post',
 		url: '/summoner/v4/Search',
 		data: data,
+		async: true,
 		success: function(res) {
 			console.log(res)
 			//			let tier = ''w
@@ -645,46 +659,32 @@ function goTier(gameName, tagLine) {
 }
 
 
-function reload(gameName, tagLine, q, i) {
+function reload(gameName, tagLine, q) { //무조건 처음에 뜨는 메소드 :전체,솔랭,등
 
-	//	console.log(data)
-	nowStatus = ''
+	nowStatus = queueChange(q)
 	queueId = q
-	//	console.log(matchCnt)
-	if (i == 1) { // 처음으로 
-		$('.more').empty()
-		buttonS = `	<input type="button" value="더보기" id = "loadMore1" class='loadMore' style='border: 2px solid rgb(157, 196, 253); border-radius: 20px; display: block'>`
-		$('.more').append(buttonS)
-		$('.containerXCF').empty()
-		allofList = []
-		matchCnt = 1
-	}
+
+	$('.containerXCF').empty()
+	allofList = []
+	matchCnt = 1
+	window.scrollTo(0, 0);
+
 
 	data = { 'gameName': gameName, 'tagLine': tagLine, 'queueId': queueId, "matchCnt": (matchCnt - 1) * 3 }
 
-	console.log(data)
+
 	$.ajax({
 		contentType: 'application/json',
 		type: 'post',
 		url: '/GameMode/Search',
 		data: JSON.stringify(data),
 		success: function(res) {
-			//			console.log(res)
+			console.log(res)
 			for (let i in res) {
 				allofList.push(res[i])
 			}
-
-			if (res.length == 0) {
-				update(gameName, tagLine)
-				matchCnt--;
-				alert("이전 데이터를 업데이트 중 입니다.")
-
-			} else {
-
-				//				
-				showGameTamble(res)
-
-			}
+			showGameTamble(res)
+			update(gameName, tagLine)
 
 		}
 	})
@@ -707,7 +707,7 @@ function findPartOfQueuId() {
 				queueId_kor = checkPartQueueId[i]['queueId_kor']
 				queueId1 = checkPartQueueId[i]['queueId']
 
-				queueIdButton = `<li class = "sampletest"><a href="javascript:reload('${gameName}','${tagLine}',${queueId1},1)">${queueId_kor}</a></li>`
+				queueIdButton = `<li class = "sampletest"><a href="javascript:reload('${gameName}','${tagLine}',${queueId1})">${queueId_kor}</a></li>`
 				$('.menu2').append(queueIdButton)
 
 			}
@@ -722,7 +722,7 @@ function findPartOfQueuId() {
 function update(gameName, tagLine) {
 	console.log("업데이트 시작...")
 	data = { 'gameName': gameName, 'tagLine': tagLine }
-
+	console.log(data)
 	$.ajax({
 		contentType: 'application/json',
 		type: 'post',
@@ -730,6 +730,13 @@ function update(gameName, tagLine) {
 		data: JSON.stringify(data),
 		success: function(res) {
 			console.log(res)
+
+			if (res[0]['API']) {
+
+				console.log("API/matchId/100개이상/자동종료	")
+				return false;
+			}
+
 			updateSave(res)
 
 		}
@@ -737,8 +744,8 @@ function update(gameName, tagLine) {
 }
 
 function updateSave(res) { //업데이트 저장문구
-	console.log(data)
-
+	//	console.log(data)
+	console.log("새로운 데이터를 받는중...")
 	if (res.length != 0) {
 		MList = [];
 		for (let i = 0; i < res.length; i++) {
@@ -824,20 +831,124 @@ function updateSave(res) { //업데이트 저장문구
 			}
 			MList.push(Gamedata)
 		}
-		console.log(MList)
+		//		console.log(MList)
 		let temp = JSON.stringify(MList)
 		data2 = { 'Mlist': temp }
-		console.log(MList)
+		//		console.log("아래의 데이터를 저장중입니다...")
+		//		console.log(MList)
+
 		$.ajax({
 			type: 'post',
 			url: '/upDate/saveData',
 			data: data2,
 			success: function(res) {
+				console.log("데이터 저장완료...")
 				console.log(res)
-
+				//저장완료
+				//				infoData()
+				console.log(nowStatus + " 로딩 완료")
 			}
 		})
 	}
 }
+
+
+
+function infoData() {
+	console.log(nowStatus + "데이터를 불러오는중입니다...")
+	queueId = queuecheckInt(nowStatus)
+	if (matchCnt == 1) {
+
+		$('.containerXR').remove()
+
+	}
+
+
+	if (nowStatus == "ALL") {
+
+		limitmatchCnt = (matchCnt - 1) * 3
+		console.log(limitmatchCnt)
+		data = { 'matchCnt': limitmatchCnt, 'gameName': gameName }
+
+		$.ajax({
+			contentType: 'application/json',
+			type: 'post',
+			url: '/upDate/infoData',
+			data: JSON.stringify(data),
+			success: function(res) {
+				console.log(res)
+				for (let i in res) {
+					allofList.push(res[i])
+				}
+				showGameTamble(res)
+			}
+		})
+	} else if (nowStatus == "솔로랭크") {
+
+		data = { 'gameName': gameName, 'tagLine': tagLine, 'queueId': queueId, "matchCnt": (matchCnt - 1) * 3 }
+
+
+	} else if (nowStatus == "자유랭크") {
+
+
+
+
+	}
+	else if (nowStatus == "빠른대전") {
+
+
+
+
+	}
+	else if (nowStatus == "칼바람") {
+
+
+
+
+	} else if (nowStatus == "우르프") {
+
+
+
+
+	}
+
+	matchCnt++;
+}
+
+//$('#loadMore').on("click", function() {
+//
+//
+//})
+
+function clickOnLoadMore(int) {
+	int = 6;
+	let timerId = setInterval(() => {
+
+		int--;
+		document.getElementById('loadMore').value = int + "초 뒤에 가능합니다."
+
+	}, 1000);
+	setTimeout(() => {
+
+		clearInterval(timerId);
+		document.getElementById('loadMore').disabled = false;
+		document.getElementById('loadMore').value = "더보기";
+
+	}, 6000);
+
+	console.log(nowStatus)
+	document.getElementById('loadMore').disabled = true;
+
+	$('.containerXR').remove()
+
+
+	$('.loadMore').focus()
+
+	window.scrollTo(0, 99999);
+
+}
+
+
+
 
 ////////////////////롤 업데이트 종료//////////////////
