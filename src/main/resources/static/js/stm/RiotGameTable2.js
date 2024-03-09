@@ -120,7 +120,7 @@ function profileCheck(res) {
                          <div class="uidLevelBox">
               				  <div class="ulevel">${newsummonerLevel} </div>
                 		</div>
-                	                     		                		<div class="imimim"><img width=300 height=300 src='/img/tier/${tier}.png' alt='티어''></div>
+                	    <div class="imimim"><div class = cpimgb><img width=300 height=300  src = "/img/effect/tierCome.gif" alt = "빛효과""></div></div>
 
                 	
                 		<div class="uid">${newriotIdGameName}</div>
@@ -320,7 +320,7 @@ let nowStatus = 'ALL'
 
 let tier = ''
 function showGameTamble(res) {
-	console.log(res)
+	//	console.log(res)
 
 
 	$('.graph1').empty()
@@ -359,7 +359,7 @@ function showGameTamble(res) {
 
 		}
 	}
-	console.log(resMyList[0])
+	//	console.log(resMyList[0])
 	//	if (resMyList[0].length == 0) { //혹시 모를 에러를 위한 에러페이지전용
 	//
 	//		location.href = '/searchError'
@@ -422,11 +422,14 @@ function showGameTamble(res) {
 
 		mykill = (((kills + assists) / Myres.totalTeamkills) * 100).toFixed(0)
 
-		if (Myres.win == 1) {
 
+
+		if (Myres.win == 1) {
 			str = `<div class="container1" id = '${matchId}container1' style='background-image:linear-gradient(315deg, #D6E5FC 0%, #BED8FE 74%) '>`
+
 			str1 = `<div class='box-column' style='background-color:#75ABFD;width:10px;'></div>
-								<div class="box-left" >
+
+				<div class="box-left" >
 								<div><span class="queuety_tm" style='font-weight:bold;'>${queue}</span></div>
 								<div><span class="stime-tm" style='font-size:13px'>${spentTime}</span></div>
 								<div><span class="winlose-tm" style='color:blue;'>${win_lose}</span></div>
@@ -454,7 +457,7 @@ function showGameTamble(res) {
 										<div class="spell1" id = '${matchId}spell1'></div>
 										<div class="spell2" id = '${matchId}spell2'></div>
 									</div>
-									<div class="box-right4" style="font-size: 13px;" id = '${matchId}boxright4'>
+									<div class="box-right4"  id = '${matchId}boxright4'>
 									</div>
 								</div>
 								
@@ -480,6 +483,11 @@ function showGameTamble(res) {
 		controller = `<div class = "controller" id = 'controller${matchId}'><div>`
 		$('.containerXCF').append(str)
 
+
+		//		$(".box-right").css("background-image","linear-gradient(315deg, #D6E5FC 0%, #BED8FE 74%)")
+		//		$(".box-right").css("background-image","linear-gradient(315deg, #D6E5FC 0%, #BED8FE 74%)")
+
+
 		$('#' + matchId + 'container1').append(str1)
 		$('#' + matchId + 'container1').append(boxcenter1)
 
@@ -495,7 +503,20 @@ function showGameTamble(res) {
 		boxright4 = `${kills}/${deaths}/${assists}<br>${kda}:1평점`
 
 		$('#' + matchId + 'boxright4').append(boxright4)
+		//////특수효과 시작 /////////
+		if (kda > 4) { //테두리 불꽃
 
+			$('#' + matchId + 'container1').css("border-image-source", "url(/img/effect/b2.gif)")
+			$('#' + matchId + 'boxright4').css("color", "red")
+			$('#' + matchId + 'boxright4').css("font-weight", "bold")
+			$('#' + matchId + 'container1').css({
+				"background-image": "url(/img/effect/back1.jpg)",
+				"background-repeat": "no-repeat",
+				"background-position": "center center",
+				"background-size": "1200px 700px"
+			});
+		}
+		//////특수효과 끝/////////
 		let itemstart = ''
 		for (let k = 0; k < 6; k++) {
 
@@ -616,7 +637,7 @@ function showGameTamble(res) {
 	showgraph(graphwin, graphlose)
 
 	findPartOfQueuId()
-		$('#loadMore').show()
+	$('#loadMore').show()
 }
 
 
@@ -650,7 +671,7 @@ function showGameTambleBody(matchId) {
 
 	makeBodyblue(blueChampList, matchId);
 	makeBodyred(redChampList, matchId);
-	
+
 
 }
 //들어오는 값은 레드리스트
