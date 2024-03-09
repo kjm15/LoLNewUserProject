@@ -510,7 +510,7 @@ function bbb(data) {
 					}
 					MList.push(Gamedata)
 				}
-				console.log(MList)
+				//				console.log(MList)
 				let temp = JSON.stringify(MList)
 				data2 = { 'Mlist': temp }
 
@@ -681,7 +681,6 @@ function goTier(gameName, tagLine) {
 
 
 function reload(gameName, tagLine, q) { //무조건 처음에 뜨는 메소드 :전체,솔랭,등
-
 
 
 	$('#loadMore').hide()
@@ -875,18 +874,36 @@ function updateSave(res) { //업데이트 저장문구
 	}
 }
 
+//고정바
+$(window).scroll(
+	function() {
+
+//		console.log($(window).scrollTop())
+		if ($(window).scrollTop() > 524) {
+			$('.contentsCheckM').addClass('fix');
+
+
+		} else {
+			$('.contentsCheckM').removeClass("fix");
+
+		}
+	}
+);
+
+
+
+
 
 
 function clickOnLoadMore(int) {
-
-
-
+	document.getElementById('loadMore').value = "5초 뒤에 가능합니다."
+	document.getElementById('loadMore').disabled = false;
 	update(gameName, tagLine)
-	if (allofList.length < 10) {
-
-		alert("현제 페이지가 마지막 페이지입니다.")
-		return false;
-	}
+	//	if (allofList.length < 10) {
+	//
+	//		alert("현제 페이지가 마지막 페이지입니다.")
+	//		return false;
+	//	}
 	//로직 1. 더보기를 누르면 matchCnt값을 증가시켜 기존보다 10개 많은 matchId값을 가지고오게한다.
 	//	2. 그 시간 안에 사용자가 더 클릭하지 못하게 setInterval함수로 막아둔다.
 	//	3. 받은 값을 중복제거 시켜 view에 뿌려준다.
@@ -913,7 +930,7 @@ function clickOnLoadMore(int) {
 
 	queueId = queuecheckInt(nowStatus)
 
-	window.scrollTo(0, 99999);
+
 
 	/// 데이터 이동 시작///
 	if (nowStatus == 0) {
@@ -946,7 +963,7 @@ function clickOnLoadMore(int) {
 	//	console.log("ajax실행 전부 되기전에는 안내려움")
 
 	data = { 'needList': needMatchIdList }
-	console.log(data)
+	//	console.log(data)
 	let testList = []
 	$.ajax({
 		contentType: 'application/json',
@@ -967,10 +984,12 @@ function clickOnLoadMore(int) {
 	if (testList.length == 0) {
 
 		alert("데이터가 없거나 로딩중입니다. ")
+		return false;
 	}
 	//	console.log("만들기 시작")
 	//	console.log(testList)
 	showGameTamble(testList)
+	window.scrollTo(0, 99999);
 }
 
 
