@@ -182,5 +182,18 @@
 		order by matchId desc
 		limit 0, 10;
 	</select>
-
+	<select id="infoDataCnt">
+		select matchId
+		from RiotGameInfoT
+		where riotIdGameName = #{gameName} and queueId = #{queueId}
+		order by matchId desc
+		limit 0,#{matchCnt};
+	</select>
+		<select id="infoDataAllCnt">
+		select matchId
+		from RiotGameInfoT
+		where riotIdGameName = #{gameName}
+		order by matchId desc
+		limit 0,#{matchCnt};
+	</select>
 </mapper>	

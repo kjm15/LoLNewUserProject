@@ -138,7 +138,7 @@ public class RestMatchListController {
 
 	@PostMapping("/GameMode/Search")
 	public List<Map<String, Object>> GameModeSearch(@RequestBody Map<String, Object> qMap) {
-		log.info("==qMap: {}", qMap);
+//		log.info("==qMap: {}", qMap);
 
 		List<Map<String, Object>> MList = new ArrayList<>();
 		Integer[] qList = { 420, 440, 450, 490, 1900 }; // queueId 증가에 따라 추가요망
@@ -146,7 +146,7 @@ public class RestMatchListController {
 		for (int queueId : qList) {
 			if ((Integer) qMap.get("queueId") == queueId) {
 
-				log.info("queueId : {}", queueId);
+//				log.info("queueId : {}", queueId);
 				return matchListService.GameModeSearch(qMap);
 			}
 
@@ -193,8 +193,8 @@ public class RestMatchListController {
 		uMap.put("puuid", puuid);
 		uMap.put("needCnt", needCnt);
 
-		log.info("=== {}", puuid);
-		log.info("====matchCntList {}", needCnt);
+//		log.info("=== {}", puuid);
+//		log.info("====matchCntList {}", needCnt);
 
 		needList = matchListService.MatchList(uMap);
 
@@ -230,24 +230,32 @@ public class RestMatchListController {
 
 	}
 
+	@PostMapping("/upDate/infoMatchId")
+	public List<String> infoMatchId(@RequestBody Map<String, Object> iMap) {
+		if ((Integer) iMap.get("queueId") == 0) {
+
+		return matchListService.infoDataAllCnt(iMap);
+		}
+		return matchListService.infoDataCnt(iMap);
+
+	}
+
 	@PostMapping("/upDate/infoData")
 	public List<Map<String, Object>> infoData(@RequestBody Map<String, Object> iMap) {
+		List<Map<String, Object>> wishList = new ArrayList<>();
+		
+		List<String> nList = (List) iMap.get("needList");
 
-		List<Map<String, Object>> MList = new ArrayList<>();
+		for (String matchId : nList) {
+//			log.info(matchId);
+			Map<String, Object> newMap = new HashMap<>();
+			newMap.put("info", matchListService.DBRiotGameName(matchId));
+			newMap.put("matchId", matchId);
 
-//		
-
-		List<Map<String, Object>> matchCntList = matchListService.matchIdList(iMap);
-		for (Map<String, Object> kMap : matchCntList) {
-			Map<String, Object> matchInfoMap = new HashMap<>();
-			matchInfoMap.put("info", matchListService.infoData(kMap));
-			matchInfoMap.put("matchId", (String) kMap.get("matchId"));
-			MList.add(matchInfoMap);
-
+			wishList.add(newMap);
 		}
-		log.info("===MList : {}", MList);
-
-		return MList;
+//			
+		return wishList;
 
 	}
 }

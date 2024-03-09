@@ -86,6 +86,7 @@ let riotIdGameName = ''
 
 function profileCheck(res) {
 
+console.log(res)
 
 	profileIcon = res.profileIcon
 	summonerLevel = res.summonerLevel
@@ -1040,19 +1041,18 @@ function queuecheck(res) {
 
 }
 function queuecheckInt(queue) {
-
-	if (queue = "ALL") {
+	console.log(queue)
+	if (queue == "ALL") {
 		queueId = 0
-	} else if (queue = "솔로랭크") {
-
+	} else if (queue == "솔로랭크") {
 		queueId = 420
-	} else if (queue = "칼바람") {
+	} else if (queue == "칼바람") {
 		queueId = 450
-	} else if (queue = "빠른대전") {
+	} else if (queue == "빠른대전") {
 		queueId = 490
-	} else if (queue = "자유랭크") {
+	} else if (queue == "자유랭크") {
 		queueId = 440
-	} else if (queue = "우르프") {
+	} else if (queue == "우르프") {
 		queueId = 1900
 	}
 	return queueId
@@ -1060,7 +1060,6 @@ function queuecheckInt(queue) {
 }
 function queueChange(queueId) {
 
-	dragon = '포로간식'
 	if (queueId == 450) {
 		queue = "칼바람"
 	} else if (queueId == 490) {
