@@ -228,7 +228,7 @@ ul li a:hover::after {
   transition: all .1s;
 }
 .menu2 li a:hover{
-  color: gba(255, 227, 181, 1);
+   color: rgba(73, 174, 255, 1);
 }
 .menu2 {
 	align-items : left;
