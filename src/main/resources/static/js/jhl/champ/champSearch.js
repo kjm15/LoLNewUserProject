@@ -2,7 +2,9 @@
  * 
  */
 $(function() {
-
+//	$('.Summoner-sc').addClass('sn-ck')
+//	$(this).removeClass('sn-ck')
+//
 	champImgAll();
 });
 
