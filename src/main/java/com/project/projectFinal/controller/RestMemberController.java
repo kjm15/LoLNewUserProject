@@ -78,7 +78,10 @@ public class RestMemberController {
 		return memberService.changeInfo(memberDto);
 		
 	}
-	
+	@PostMapping("/findPw/emailCheck")
+	public int emailCheck(MemberDto memberDto) {
+		return memberService.emailCheck(memberDto);
+	}
 	
 
 }

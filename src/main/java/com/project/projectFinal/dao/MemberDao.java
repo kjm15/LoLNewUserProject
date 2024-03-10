@@ -58,6 +58,8 @@ public interface MemberDao {
 
 	int changePw2(MemberDto mDto);
 
+	int emailcheck(MemberDto memberDto);
+
 	
 
 

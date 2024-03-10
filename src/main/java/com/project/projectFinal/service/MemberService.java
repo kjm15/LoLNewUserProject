@@ -193,4 +193,10 @@ public class MemberService implements UserDetailsService {
 		return result;
 
 	}
+
+		public int emailCheck(MemberDto memberDto) {
+			int result = memberDao.emailcheck(memberDto);
+			log.info("==========={}",result);
+			return result;
+		}
 }
