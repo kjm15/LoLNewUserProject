@@ -104,8 +104,8 @@ public class MatchListService {
 
 	}
 
-	public void saveAiData(Map<String, Object> aiReultMap) {
-		riotGameDao.saveAiData(aiReultMap);
+	public HashMap<String, Object> saveAiData(Map<String, Object> aiReultMap) {
+		return riotGameDao.saveAiData(aiReultMap);
 
 	}
 
@@ -204,8 +204,8 @@ public class MatchListService {
 	public List<Map<String, Object>> matchIdCntList(Map<String, Object> iMap) {
 		List<String> macthIdList = new ArrayList<>();
 		List<Map<String, Object>> mList = new ArrayList<>();
-		//10개의 matchId가 들어옴
-		
+		// 10개의 matchId가 들어옴
+
 		// 2. 그 리스트 3개를 기존 형식에 맞춰서 가지고 감
 		for (String matchId : macthIdList) {
 			// 3 기존에 있는 메서드를 활용하여 데이터를 가지고옴
@@ -220,21 +220,18 @@ public class MatchListService {
 	}
 
 	public List<String> infoDataCnt(Map<String, Object> iMap) {
-	
-		
-		return riotGameDao.infoDataCnt(iMap); 
+
+		return riotGameDao.infoDataCnt(iMap);
 	}
 
 	public List<String> infoDataAllCnt(Map<String, Object> iMap) {
 		// TODO Auto-generated method stub
-		return riotGameDao.infoDataAllCnt(iMap); 
+		return riotGameDao.infoDataAllCnt(iMap);
 	}
 
-	public Map<String, Object> findAiData(Map<String, Object> aMap) {
+	public HashMap<String, Object> findAiData(Map<String, Object> aMap) {
 		// TODO Auto-generated method stub
-		return riotGameDao.findAiData(aMap); 
+		return riotGameDao.findAiData(aMap);
 	}
-
-
 
 }

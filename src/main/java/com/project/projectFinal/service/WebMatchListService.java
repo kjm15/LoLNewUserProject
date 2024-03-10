@@ -75,7 +75,7 @@ public class WebMatchListService {
 	public Map<String, Object> SummonerV4(@RequestBody Map<String, Object> data) {
 		try {
 
-			log.info(" ==data {}", data); // 티어값이 있으면 없으면으로 밑에 로직 시작
+//			log.info(" ==data {}", data); // 티어값이 있으면 없으면으로 밑에 로직 시작
 			if (data.get("Tier").equals("Tier")) {
 				RankCnt++; // 동근 , 진문
 				String[] SummonerV4_Api_keyList = { "RGAPI-3437c0e1-8256-4aae-b01c-1854a01a3533",
