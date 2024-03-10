@@ -210,19 +210,19 @@ function profileCheck(res) {
         </div>`
 
 	$('.graph1').append(ccc)
-	
+
 	setTimeout(function() {
-		
+
 		uid = `<div class="uid">${newriotIdGameName}</div>`
 		$('.cpicon').prepend(uid)
 		$('.uid').hide()
 		$('.uid').fadeIn(1000)
 
-	},1500);
+	}, 1500);
 
 
 
-	
+
 	if (nowStatus == "ALL") {
 
 		lightEffect = `<div class = cpimgb><img width=300 height=300  src = "/img/effect/tierCome.gif" alt = "빛효과""></div>`
@@ -417,9 +417,7 @@ function showGameTamble(res) {
 		win_losecheck(Myres)
 
 		champimg = Myres.championName
-		if (champimg == "FiddleSticks") {
-			champimg = "Fiddlesticks"
-		}
+
 		spellD = Myres.summonerSpellD
 		spellF = Myres.summonerSpellF
 		kills = Myres.kills
@@ -436,7 +434,9 @@ function showGameTamble(res) {
 
 		mykill = (((kills + assists) / Myres.totalTeamkills) * 100).toFixed(0)
 
-
+		if (champimg == "FiddleSticks") {
+			champimg = "Fiddlesticks"
+		}
 
 		if (Myres.win == 1) {
 			str = `<div class="container1" id = '${matchId}container1' style='background-image:linear-gradient(315deg, #D6E5FC 0%, #BED8FE 74%) '>`
