@@ -300,7 +300,7 @@ ul li a {
   padding: 20px 20px;
   position: relative;
   font-size: 15px;
-  top : 10px;
+  top : 12px;
 }
 ul li a::after {
   content: '';
@@ -375,6 +375,5 @@ ul li a:hover::after {
 	
 }
 .widthTest{
-	
-	height: 108px;	
+	height: 52px;	
 }

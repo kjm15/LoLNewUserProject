@@ -41,7 +41,7 @@
 		rel="stylesheet">
 	<!-- 폰트 장기훈 -->
 
-
+	<script defer src="js/header.js"></script>
 
 	<div class="navbars">
 		<div class="navbarMain">
@@ -110,14 +110,14 @@
 
 	<div class="headerItmes">
 		<div class="navMenu home">
-			<a href="/">홈</a>
+			<a href="/" class="nM-select">홈</a>
 		</div>
 		<div class="navMenu">
-			<a href="/jhl" class="active">초보자Tip!</a>
+			<a href="/jhl" class="nM-select">초보자Tip!</a>
 		</div>
 
 		<div class="navMenu">
-			<a href="/kdg">아이템분석</a>
+			<a href="/kdg"class="nM-select">아이템 분석</a>
 		</div>
 		<div class="darkmod_checkbox">
 			<div class="toggle_box">

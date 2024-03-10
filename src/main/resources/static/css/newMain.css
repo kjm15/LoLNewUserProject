@@ -139,7 +139,9 @@ footer {
 	display: flex;
 	margin: 5px;
 }
-
+.nM-select{
+	width: 100%;
+}
 .headerItmes {
 	font-family: 'Jua', sans-serif;
 	display: flex;

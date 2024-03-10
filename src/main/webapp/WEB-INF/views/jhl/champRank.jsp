@@ -39,7 +39,7 @@
 							</div>
 							<div style="max-width: 1000px" id="myChart3"></div>
 						</div>
-						<div class='box-side'></div>
+<!-- 						<div class='box-side'></div> -->
 					</div>
 				</div>
 
@@ -65,9 +65,9 @@
 							<div class="contentsDetailL"></div>
 							<div class="GoPart">
 								<ul class="menu2">
-									<li class="sampletest"><a href="javascript:reload(},0)">전체</a></li>
-									<li class="sampletest"><a href="javascript:reload(},0)">전체</a></li>
-									<li class="sampletest"><a href="javascript:reload(},0)">전체</a></li>
+									<li class="sampletest"><a href="/jhl" class='Summoner-sc'>소환사의협곡</a></li>
+<!-- 									<li class="sampletest"><a href="javascript:reload(},0)">전체</a></li> -->
+<!-- 									<li class="sampletest"><a href="javascript:reload(},0)">전체</a></li> -->
 								</ul>
 							</div>
 
