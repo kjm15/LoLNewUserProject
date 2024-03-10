@@ -31,11 +31,11 @@ function champChartGraph(championName) {
 		data: data,
 		success: function(res) {
 			
-			let championDiv = document.querySelector('.championGraphContainer');
-			championDiv.style.backgroundImage = `url(img/jhl/summoner.png)`;
-			championDiv.style.backgroundSize ='cover'
-//			championDiv.style.opacity = 0.8;
-			championDiv.style.backgroundColor = 'rgba(255, 255, 255, 1)'
+//			let championDiv = document.querySelector('.championGraphContainer');
+//			championDiv.style.backgroundImage = `url(img/jhl/summoner.png)`;
+//			championDiv.style.backgroundSize ='cover'
+////			championDiv.style.opacity = 0.8;
+//			championDiv.style.backgroundColor = 'rgba(255, 255, 255, 1)'
 
 //			console.log(championDiv);
 
