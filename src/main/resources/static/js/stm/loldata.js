@@ -281,14 +281,14 @@ function dbCheckInfo(res1) {
 function aiCheckTroll(res1) {
 	//		console.log(res1)
 	let queue = ''
-	console.log("data전송완료/인공지능시작")
+	console.log("ai판독중...")
 	$.ajax({
 		contentType: 'application/json',
 		type: 'post',
 		url: '/ai/dataToAi',
 		data: JSON.stringify(res1),
 		success: function(res) {
-			console.log(res)
+			//			console.log(res)
 
 			if (res.queueId == 420) {
 
@@ -300,7 +300,7 @@ function aiCheckTroll(res1) {
 					data: JSON.stringify(res),
 					success: function(infoData) {
 
-						console.log(infoData)
+						//						console.log(infoData)
 						matchId = infoData['matchId']
 						participantId = infoData['participantId']
 						tier = infoData['tier']
@@ -314,15 +314,19 @@ function aiCheckTroll(res1) {
 
 
 						} else if (rankingS > 0) {
-							console.log("0")
-							userLevelKoList = ["평범", "고수", "초고수", "전설", "신"]
+							//							console.log("0")
+							userLevelKoList = ["평범", "고수", "초고수", "전설", "영웅", "신"]
 							userTier = infoData.tier
-							userLevel = userLevelKoList[rankingS]
-							console.log(userLevel)
-							if (rankingS > 4) {
+							if (rankingS > 5) {
 
-								rankingS = 4
+								rankingS = 5
 							}
+
+
+							userLevel = userLevelKoList[rankingS]
+
+							//							console.log(userLevel)
+
 
 							str = `<div class = checkFlagStamp>
 											
@@ -337,11 +341,15 @@ function aiCheckTroll(res1) {
 								  </div>`
 
 							$('#' + matchId + participantId).html(str);
+//							if (rankingS >= 5) {
+//
+////								$('#' + matchId + participantId).css("color", "red")
+//							}
 
 						}
 						//ai판결시작
 						else if (res.win == 1) { // 게임 : 승리 
-							console.log("1")
+							//							console.log("1")
 							if (key == '패') { //인공지능 지표 : 패
 
 								win = 'AI판결 : 팀빨로 승리해습니다.'
@@ -354,7 +362,7 @@ function aiCheckTroll(res1) {
 
 							}
 						} else if (res.win == 0) { // 게임 : 패배
-							console.log("2")
+							//							console.log("2")
 							if (key == '패') { //인공지능 지표 : 패
 								$('#' + matchId + participantId).html("평균");
 							} else if (key == '승' && accuracy > -1) { //인공지능 지표: 승

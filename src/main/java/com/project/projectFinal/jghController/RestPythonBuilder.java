@@ -89,7 +89,7 @@ public class RestPythonBuilder {
 
 		bMap = gson.fromJson(buffer.toString(), HashMap.class);
 
-		log.info("솔로랭크 결과값 : {}", bMap);
+//		log.info("솔로랭크 결과값 : {}", bMap);
 
 		if (bMap == null) { // 언랭인경우 에러 방지
 			bMap = new HashMap<>();

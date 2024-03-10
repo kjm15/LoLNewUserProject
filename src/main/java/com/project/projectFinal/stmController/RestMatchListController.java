@@ -41,7 +41,7 @@ public class RestMatchListController {
 		userListDto.setPuuid(puuid);
 
 		matchList = matchListService.MatchList(userListDto);
-		log.info("=={}", matchList);
+//		log.info("=={}", matchList);
 		List<String> DbMatchList = matchListService.DBRiotGameMatchSelect(userListDto.getGameName());
 		if (DbMatchList.size() == 0) { // 만약 디비에 저장 데이터가 없을경우 바로 api 가기
 

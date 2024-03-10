@@ -1191,15 +1191,17 @@ ul li a:hover::after {
 	top: 0px;
 	border-radius: 10px;
 	position: relative;
-	background-color: #8080ff;
+	background: linear-gradient(to right, #2bc0e4, #eaecc6);
+
 	-webkit-animation-name: pulse;
 	animation-name: pulse;
 	animation-delay: 0s;
 	-webkit-animation-delay: 0s;
 	-webkit-animation-duration: 0.5s;
 	text-algin: justify;
-	/*   animation-duration: 0.5s; */
+
 	opacity: 0;
+	color : rgba(80, 38, 7, 1);
 	-webkit-animation-fill-mode: forwards;
 	animation-fill-mode: forwards;
 	z-index: auto;
