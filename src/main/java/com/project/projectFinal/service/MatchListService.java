@@ -230,4 +230,11 @@ public class MatchListService {
 		return riotGameDao.infoDataAllCnt(iMap); 
 	}
 
+	public Map<String, Object> findAiData(Map<String, Object> aMap) {
+		// TODO Auto-generated method stub
+		return riotGameDao.findAiData(aMap); 
+	}
+
+
+
 }

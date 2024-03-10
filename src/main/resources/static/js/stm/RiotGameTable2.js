@@ -86,7 +86,7 @@ let riotIdGameName = ''
 
 function profileCheck(res) {
 
-//console.log(res)
+	//console.log(res)
 
 	profileIcon = res.profileIcon
 	summonerLevel = res.summonerLevel
@@ -124,7 +124,7 @@ function profileCheck(res) {
                 	    <div class="imimim"><div class = cpimgb><img width=300 height=300  src = "/img/effect/tierCome.gif" alt = "빛효과""></div></div>
 
                 	
-                		<div class="uid">${newriotIdGameName}</div>
+                		
                 		
                     
                     </div>
@@ -160,7 +160,7 @@ function profileCheck(res) {
 			        		<div class = 'stmBlankGTM1' ></div>
 		        		</div>
 		        		<div class = 'stmBlankGbottom'  tooltip="탑" >
-		        			<img src='/img/top.png' style='width: 20px; height: 20px;'>
+		        			<img src='/img/top.png' style='width: 20px; height: 20px; border : 1px soild white'>
 		        		</div>
 		        	
 		        	</div>	
@@ -210,6 +210,19 @@ function profileCheck(res) {
         </div>`
 
 	$('.graph1').append(ccc)
+	
+	setTimeout(function() {
+		
+		uid = `<div class="uid">${newriotIdGameName}</div>`
+		$('.cpicon').prepend(uid)
+		$('.uid').hide()
+		$('.uid').fadeIn(1000)
+
+	},1500);
+
+
+
+	
 	if (nowStatus == "ALL") {
 
 		lightEffect = `<div class = cpimgb><img width=300 height=300  src = "/img/effect/tierCome.gif" alt = "빛효과""></div>`
@@ -381,15 +394,15 @@ function showGameTamble(res) {
 		lose = IMGarr[i][1] - IMGarr[i][3]
 		kda = (IMGarr[i][2] / IMGarr[i][1]).toFixed(2)
 
-		str = `<div class = "champeAndKda"><img style='width: 50px; height: 50px;' src='https://ddragon.leagueoflegends.com/cdn/14.3.1/img/champion/${IMGarr[i][0]}.png'>
-		<div class = "champeAndKdaKor"> (${win}승 ${lose}패) ${kda} :평점 </div></div><br>
+		str = `<div class = "champeAndKda"><img style='width: 50px; height: 50px; border-radius : 50%; border : 1px solid ' src='https://ddragon.leagueoflegends.com/cdn/14.3.1/img/champion/${IMGarr[i][0]}.png'>
+		<div class = "champeAndKdaKor">&ensp; (${win}승 ${lose}패) ${kda} :평점 </div></div><br>
 		`
 		$(".stmHCenterB").append(str)
 		graphwin += win
 		graphlose += lose
 		graphCnt += IMGarr[i][1]
 	}
-	str = `플레이한 챔피언(최근 솔로랭크${graphCnt}게임)`
+	str = `	최근 솔로랭크${graphCnt}게임)`
 	$(".stmHCenterT").append(str)
 
 	for (let i in resMyList) {
@@ -514,7 +527,7 @@ function showGameTamble(res) {
 				"background-image": "url(/img/effect/back1.jpg)",
 				"background-repeat": "no-repeat",
 				"background-position": "center center",
-				"background-size": "1200px 700px"
+				"background-size": "1500px 700px"
 			});
 		}
 		//////특수효과 끝/////////

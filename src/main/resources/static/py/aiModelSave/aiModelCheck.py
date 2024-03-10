@@ -12,7 +12,7 @@ import math
 import joblib
 #빅데이터전용
 import pickle 
-
+from sklearn.datasets import fetch_openml
 
 data = sys.argv[1:]
 key = data[0]
@@ -24,30 +24,104 @@ totalDamageDealtToChampions = int(int(data[5])/gameDuration)
 goldEarned = int(int(data[6])/gameDuration)
 championName = data[7]
 queueId = str(data[8])
+matchId = data[9]
 tier_my = [totalDamageDealtToChampions,goldEarned,kda]
 mean = np.mean(tier_my, axis=0)
 std = np.std(tier_my, axis=0)
 
 new = (tier_my - mean) / std
-try : 
-    str1 ='src/main/resources/static/py/aiModelSave/aiModel420/'+ queueId+'_'+tier+'_'+teamPosition+'_'+championName+'.pkl'
-    # str2 = './'+queueId+'_'+tier+'_'+teamPosition+ '_' + championName+'.pickle'
-    # with open(str2,'rb') as f:
-    #     loaded_model = pickle.load(f)
-    # str2 = './420_BRONZE_JUNGLE_LeeSin.pkl'	
-    loaded_model = joblib.load(str1)
+ 
+str1 ='src/main/resources/static/py/aiModelSave/aiModel420/'+ queueId+'_'+tier+'_'+championName+'.pkl'
+# str2 = './'+queueId+'_'+tier+'_'+teamPosition+ '_' + championName+'.pickle'
+# with open(str2,'rb') as f:
+#     loaded_model = pickle.load(f)
+# str2 = './420_BRONZE_JUNGLE_LeeSin.pkl'	
+data = joblib.load(str1)
 
+   
+lose_gameDuration_List = []
+lose_kda_List = []
+lose_Mean_totalDamageDealtToChampions = []
+lose_Mean_goldEarned = []
+
+win_gameDuration_List = []
+win_kda_List = []
+win_Mean_totalDamageDealtToChampions = []
+win_Mean_goldEarned = []
+
+for e in data:
+    win,gameDuration,kda,totalDamageDealtToChampions,goldEarned = e
+    if win == 'False':
+        lose_gameDuration_List.append(gameDuration)
+        lose_kda_List.append(kda)
+        lose_Mean_totalDamageDealtToChampions.append(int(totalDamageDealtToChampions/gameDuration))
+        lose_Mean_goldEarned.append(int(goldEarned/gameDuration))
+    elif win == 'True' :
+        win_gameDuration_List.append(gameDuration)
+        win_kda_List.append(kda)
+        win_Mean_totalDamageDealtToChampions.append(int(totalDamageDealtToChampions/gameDuration))
+        win_Mean_goldEarned.append(int(goldEarned/gameDuration))
+# print(win_gameDuration_List)
+
+#######################################################################################################################################
+
+
+try:
+    allkda = win_kda_List+lose_kda_List
+    Mean_totalDamageDealtToChampions = win_Mean_totalDamageDealtToChampions + lose_Mean_totalDamageDealtToChampions
+    Mean_goldEarned = win_Mean_goldEarned + lose_Mean_goldEarned
+
+    tier_data=[[t,g,k]for t,g,k in zip(Mean_totalDamageDealtToChampions,Mean_goldEarned,allkda)]
+
+    #그래프
+    # plt.scatter(win_Mean_totalDamageDealtToChampions, win_Mean_goldEarned) 
+    # plt.scatter(lose_Mean_totalDamageDealtToChampions, lose_Mean_goldEarned)
+    # # plt.xlim((0, 2000))
+    # plt.title(championName)
+    # plt.xlabel('DAMAGE') 
+    # plt.ylabel('GOLD') 
+    # plt.show()
+
+
+    tier_target=[1]*len(win_kda_List)+[0]*len(lose_kda_List)
+    kn = KNeighborsClassifier(n_neighbors=3)
+
+    kn.fit(tier_data,tier_target)
+    a1 = kn.score(tier_data,tier_target)
+
+
+
+    #z-정규화
+    mean = np.mean(tier_data, axis=0)
+    std = np.std(tier_data, axis=0)
+
+    # print(mean, std)
+    train_scaled = (tier_data - mean) / std
+
+    # print(totalDamageDealtToChampions)
+    # new = ([totalDamageDealtToChampions, goldEarned] - mean) / std
+    new = (tier_my - mean) / std
+    #그래프
+    # plt.scatter(train_scaled[:, 0], train_scaled[:, 1])
+    # plt.scatter(new[0], new[1], marker='^')
+    # plt.title(championName)
+    # plt.xlabel('length')
+    # plt.ylabel('weight')
+    # plt.show()
+
+    kn.fit(train_scaled, tier_target)
+    a1 = kn.score(train_scaled, tier_target) # 1.0
     trans={1:'승', 0:'패'}
-    a = trans[loaded_model.predict([new])[0]]
+    a = trans[kn.predict([new])[0]]
 
+    if len(tier_target) < 50 : 
 
-
-    data5 = {key:a  , '티어' : tier , '캐릭' : championName, "key" : a}  
-    json_string = json.dumps(data5 , default=str)
+        data5 = {'matchId': matchId, key:"데이터부족" , "accuracy" : a1 , "length"  :len(tier_target), 'tier' : tier , 'championName' : championName , "key":"데이터부족"}
+    else :
+        data5 = {'matchId': matchId, key:a , "accuracy" : a1 , "length"  :len(tier_target), 'tier' : tier , 'championName' : championName, "key" : a}  
+    json_string = json.dumps(data5)
     print(json_string)
-except Exception as e :
-    data5 = {key:'에러'  , '티어' : tier , '캐릭' : championName, "key" : '에러'}  
-    json_string = json.dumps(data5 , default=str)
+except Exception as e:
+    data5 = {'matchId': matchId, key:"에러" , "accuracy" : 0 , "length"  :0, 'tier' : tier , 'championName' : championName, "key" : "비주류챔프"}  
+    json_string = json.dumps(data5)
     print(json_string)
-
-

@@ -89,12 +89,7 @@
 		and riotIdTagline = #{riotIdTagline};
 	</select>
 
-	<update id="saveAiData">
-		UPDATE RiotGameInfoT
-		SET airesult = #{key}
-		WHERE
-		matchId = #{matchId} and participantId = #{participantId};
-	</update>
+	
 
 	<select id="forOneData">
 		select * from
@@ -195,5 +190,15 @@
 		where riotIdGameName = #{gameName}
 		order by matchId desc
 		limit 0,#{matchCnt};
+	</select>
+	<insert id="saveAiData">
+		insert ignore into  airesultT
+		values(#{matchId},#{participantId},#{key},#{championName},#{tier},#{length},#{accuracy})	
+	</insert>
+	
+		<select id="findAiData">
+		select *
+		from airesultT
+		where matchId = #{matchId} and participantId = #{participantId} ;
 	</select>
 </mapper>	
