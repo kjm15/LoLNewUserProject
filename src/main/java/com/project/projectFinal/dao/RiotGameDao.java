@@ -1,5 +1,6 @@
 package com.project.projectFinal.dao;
 
+import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
@@ -36,7 +37,7 @@ public interface RiotGameDao {
 
 	Map<String, Object> UPdateTier(RiotGameDto rDto);
 
-	void saveAiData(Map<String, Object> aiReultMap);
+	HashMap<String, Object> saveAiData(Map<String, Object> aiReultMap);
 
 	Map<String, Object> forOneData(Map<String, Object> aMap);
 
@@ -69,7 +70,7 @@ public interface RiotGameDao {
 
 	List<String> infoDataAllCnt(Map<String, Object> iMap);
 
-	Map<String, Object> findAiData(Map<String, Object> aMap);
+	HashMap<String, Object> findAiData(Map<String, Object> aMap);
 
 	
 }

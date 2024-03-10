@@ -48,12 +48,12 @@ $(document).ready(function() {
 		$('.imimim').html(aastr)
 
 	}, 1600);
-	//	setTimeout(function() {
-	//		aastr = "<img width=300 height=300 src='/img/effect/ef3.gif' alt='티어이펙트''>"
-	//
-	//		$('.imimim').html(aastr)
-	//
-	//	}, 1400);
+	//		setTimeout(function() {
+	//			aastr = "<img width=300 height=300 src='/img/effect/starEffect.gif' alt='티어이펙트''>"
+	//	
+	//			$('.imimim').append(aastr)
+	//	
+	//		}, 2000);
 
 
 	int = 4;
@@ -209,7 +209,7 @@ function showgraph(win, lose) {
 			elements: {
 				center: {
 					text: winLoseList[0] + "win", // <<여기가 가운데 글씨들어가는곳
-					color: 'rgba(53, 32, 132, 0.73)', // Default is #000000
+					color: 'white', // Default is #000000
 					fontStyle: 'Arial', // Default is Arial
 					sidePadding: 20, // Default is 20 (as a percentage)
 					minFontSize: 20, // Default is 20 (in px), set to false and text will not wrap.
@@ -273,73 +273,111 @@ function mainSearch(gameName1) {
 	bbb(data)
 
 }
+function dbCheckInfo(res1) {
+
+
+}
 
 function aiCheckTroll(res1) {
 	//		console.log(res1)
 	let queue = ''
-	console.log("data전송완료/인공지능시작")
+	console.log("ai판독중...")
 	$.ajax({
 		contentType: 'application/json',
 		type: 'post',
 		url: '/ai/dataToAi',
 		data: JSON.stringify(res1),
 		success: function(res) {
-			//									console.log(res)
-			//
+			//			console.log(res)
+
 			if (res.queueId == 420) {
 
-				data = res
-				//									console.log(data)
 				$.ajax({
 					contentType: 'application/json',
 					type: 'post',
 					url: '/ai/trollcheck420',
-					data: JSON.stringify(data),
-					success: function(res1) {
+					//					async: false,
+					data: JSON.stringify(res),
+					success: function(infoData) {
 
-						console.log(res1)
-						for (const [key, value] of Object.entries(res1)) {
-
-							if (value == '비주류챔프' || value == '데이터부족' || value == '에러' || res1['key'] == '에러' || res1['tier'] == 'Tier') {
-
-								$('#' + key).html("평균");
-
-
-							} else if (res.win == 1) { // 게임 : 승리
-								if (value == '패') { //인공지능 지표 : 패
-
-
-									randomListWin = ['이판은 이겼지만 당신은 졌습니다.', '이런, 이런 빨리 다음게임으로 도망치세요', ' 상대가 너무 강력했군요! ', '팀에 기여량이 적습니다.',
-										'당신만 놀았군요', '놀지말고 딜하세요', '잠재적 범죄자']
-
-									commentLoseGame = randomListWin[Math.floor(Math.random() * randomListWin.length)]
-									str = '<div class = checkFlagStamp><div class="stampLose"><span tooltip="' + commentLoseGame + '">팀빨을...</span></div></div>'
+						//						console.log(infoData)
+						matchId = infoData['matchId']
+						participantId = infoData['participantId']
+						tier = infoData['tier']
+						key = infoData['key']
+						length = infoData['length']
+						accuracy = infoData['accuracy']
+						rankingS = infoData['rankingS']
+						if (tier == 'Tier' || key == 'error' || key == '에러' || length < 5 || accuracy < 0.7) {
+							//에러 or 정확도 낮는 데이터 제외
+							$('#' + matchId + participantId).html("평균");
 
 
-									$('#' + key).html(str);
-								} else {
-									$('#' + key).html("평균");
+						} else if (rankingS > 0) {
+							//							console.log("0")
+							userLevelKoList = ["평범", "고수", "초고수", "전설", "영웅", "신"]
+							userTier = infoData.tier
+							if (rankingS > 5) {
 
-								}
-							} else { // 게임 : 패배
-								if (value == '패') { //인공지능 지표 : 패
-									$('#' + key).html("평균");
-								} else { //인공지능 지표: 승
+								rankingS = 5
+							}
 
-									randomListWin = ['이 팀에 유일하게 빛나는 소환사 입니다.', '당신은 올라갈 자격이 있습니다.', '아쉽게 졌지만 당신은 이겼습니다.'
-										, '5 명예를 받을 자격이 충분합니다.', '이 실력이면 다음 티어는 금방!', '당신에게 부족한건 팀운뿐...']
-									commentLoseGame = randomListWin[Math.floor(Math.random() * randomListWin.length)]
-									str = '<div class = checkFlagStamp><div class="stampWin"><span tooltip="' + commentLoseGame + '">팀운이...</span></div></div>'
 
-									$('#' + key).html(str);
+							userLevel = userLevelKoList[rankingS]
 
-								}
+							//							console.log(userLevel)
+
+
+							str = `<div class = checkFlagStamp>
+											
+											<div class="stampGosu">
+												<center>
+												<span tooltip="${userTier} 구간 한정">
+													${userLevel}
+												</span>
+												</center>
+											</div>
+									
+								  </div>`
+
+							$('#' + matchId + participantId).html(str);
+//							if (rankingS >= 5) {
+//
+////								$('#' + matchId + participantId).css("color", "red")
+//							}
+
+						}
+						//ai판결시작
+						else if (res.win == 1) { // 게임 : 승리 
+							//							console.log("1")
+							if (key == '패') { //인공지능 지표 : 패
+
+								win = 'AI판결 : 팀빨로 승리해습니다.'
+
+								str = '<div class = checkFlagStamp><div class="stampLose"><span tooltip="' + win + '">팀빨...</span></div></div>'
+
+								$('#' + matchId + participantId).html(str);
+							} else {
+								$('#' + matchId + participantId).html("평균");
+
+							}
+						} else if (res.win == 0) { // 게임 : 패배
+							//							console.log("2")
+							if (key == '패') { //인공지능 지표 : 패
+								$('#' + matchId + participantId).html("평균");
+							} else if (key == '승' && accuracy > -1) { //인공지능 지표: 승
+
+								lose = 'AI판결 : 팀운이 좋지 않았습니다.'
+
+								str = '<div class = checkFlagStamp><div class="stampWin"><span tooltip="' + lose + '">팀운이...</span></div></div>'
+
+								$('#' + matchId + participantId).html(str);
+
+							} else {
+
+
 							}
 						}
-					}, error: function(error) {
-						console.log(data)
-						$('#' + data.matchId + data.participantId).html("평균");
-
 					}
 				})//ajax끝
 			} else if (res.queueId == 450) {
@@ -401,6 +439,8 @@ function aiCheckTroll(res1) {
 		}
 
 	})//ajax끝
+
+
 }
 
 
@@ -611,6 +651,7 @@ function gamebtn(goBtn, matchId) {
 			type: 'post',
 			url: '/summoner/v4/userList',
 			data: data,
+			async: false,
 			success: function(res) {
 
 				for (let i in res) {
@@ -634,9 +675,12 @@ function gamebtn(goBtn, matchId) {
 
 					}
 				}
+				//				console.log(mvpCheck)
+
 			}
 
 		})
+
 	}
 }
 

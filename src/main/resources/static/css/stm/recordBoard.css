@@ -333,7 +333,9 @@ ul li a:hover::after {
 }
 
 .box-left {
+		font-family: 'Jua', sans-serif;
 	/*	background: red;*/
+	
 	flex-basis: 100px;
 	padding: 10px;
 }
@@ -682,6 +684,7 @@ ul li a:hover::after {
 }
 
 .aidetail {
+	font-size : 20px;
 	font-family: 'Jua', sans-serif;
 	position: relative;
 	top: 10px;
@@ -1175,6 +1178,30 @@ ul li a:hover::after {
 	text-algin: justify;
 	/*   animation-duration: 0.5s; */
 	opacity: 0;
+	-webkit-animation-fill-mode: forwards;
+	animation-fill-mode: forwards;
+	z-index: auto;
+}
+
+.stampGosu {
+	/* position: absolute; */
+	height: 30px;
+	width: 70px;
+	left: 0px;
+	top: 0px;
+	border-radius: 10px;
+	position: relative;
+	background: linear-gradient(to right, #2bc0e4, #eaecc6);
+
+	-webkit-animation-name: pulse;
+	animation-name: pulse;
+	animation-delay: 0s;
+	-webkit-animation-delay: 0s;
+	-webkit-animation-duration: 0.5s;
+	text-algin: justify;
+
+	opacity: 0;
+	color : rgba(80, 38, 7, 1);
 	-webkit-animation-fill-mode: forwards;
 	animation-fill-mode: forwards;
 	z-index: auto;

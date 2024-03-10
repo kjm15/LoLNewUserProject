@@ -656,7 +656,7 @@ function showGameTamble(res) {
 
 
 function showGameTambleBody(matchId) {
-	console.log(matchId)
+	//	console.log(matchId)
 
 	let blueChampList = [] //matchId의 블루 리스트
 	let redChampList = []//matchId의 레드 리스트
@@ -681,7 +681,7 @@ function showGameTambleBody(matchId) {
 			}
 		}
 	}
-	console.log(blueChampList)
+	//	console.log(blueChampList)
 
 	makeBodyblue(blueChampList, matchId);
 	makeBodyred(redChampList, matchId);
@@ -690,7 +690,7 @@ function showGameTambleBody(matchId) {
 }
 //들어오는 값은 레드리스트
 function makeBodyred(blueChampList, matchId) {
-	console.log(blueChampList)
+	//	console.log(blueChampList)
 	teamId = '';
 	//	console.log(blueChampList)
 	if (blueChampList[0]['win'] == '1') {
@@ -744,6 +744,8 @@ function makeBodyred(blueChampList, matchId) {
 		riotIdTagline = blueChampList[i]['riotIdTagline']
 
 
+
+
 		let OnePersonitem = ''
 		for (let k = 0; k < 6; k++) {
 			if (blueChampList[i]['item' + k] != 0) {
@@ -758,7 +760,9 @@ function makeBodyred(blueChampList, matchId) {
 			riotIdGameName1 = riotIdGameName
 
 		}
-
+		if (championName == "FiddleSticks") {
+			championName = "Fiddlesticks"
+		}
 		//		console.log(championName)
 		ct2 += `<div class = 'ct2'>
 					<div class = 'teamId1'>
@@ -884,6 +888,10 @@ function makeBodyblue(blueChampList, matchId) {
 		riotIdGameName = blueChampList[i]['riotIdGameName']
 		riotIdTagline = blueChampList[i]['riotIdTagline']
 
+
+		if (championName == "FiddleSticks") {
+			championName = "Fiddlesticks"
+		}
 
 		let OnePersonitem = ''
 		for (let k = 0; k < 6; k++) {

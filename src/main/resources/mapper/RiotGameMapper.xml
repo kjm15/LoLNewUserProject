@@ -191,10 +191,13 @@
 		order by matchId desc
 		limit 0,#{matchCnt};
 	</select>
-	<insert id="saveAiData">
-		insert ignore into  airesultT
-		values(#{matchId},#{participantId},#{key},#{championName},#{tier},#{length},#{accuracy})	
-	</insert>
+	<select id="saveAiData">
+		replace into  airesultT
+		values(#{matchId},#{participantId},#{key},#{championName},#{champion_name_kr},#{tier},#{length},#{accuracy},#{rankingS});
+		
+		select * from airesultT where matchId = #{matchId} and participantId = #{participantId};
+			
+	</select>
 	
 		<select id="findAiData">
 		select *
