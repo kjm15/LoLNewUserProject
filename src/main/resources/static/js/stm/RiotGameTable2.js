@@ -441,23 +441,23 @@ function showGameTamble(res) {
 		if (Myres.win == 1) {
 			str = `<div class="container1" id = '${matchId}container1' style='background-image:linear-gradient(315deg, #D6E5FC 0%, #BED8FE 74%) '>`
 
-			str1 = `<div class='box-column' style='background-color:#75ABFD;width:10px;'></div>
+			str1 = `<div class='box-columna' ></div>
 
 				<div class="box-left" >
-								<div><span class="queuety_tm" style='font-weight:bold;'>${queue}</span></div>
-								<div><span class="stime-tm" style='font-size:13px'>${spentTime}</span></div>
-								<div><span class="winlose-tm" style='color:blue;'>${win_lose}</span></div>
-								<div><span class="igstime-tm" style='font-size:13px'>${ingamespentTime}</span></div>
+								<div class="queuety_tm">${queue}</div>
+								<div class="stime-tm">${spentTime}</div>
+								<div class="winlose-tmb">${win_lose}</div>
+								<div class="igstime-tm">${ingamespentTime}</div>
 								</div>`
 			boxright = `<div tooltip="click! more Detail!" class="box-right" style='background-color :#9ac2e2' id ="gamebtn${goBtn}" onclick ="gamebtn(${goBtn},'${matchId}')"><a href = 'javascript:;'><div class = "box-rightblue">∨</div></a></div>`
 		} else {
 			str = `<div class="container1" id ='${matchId}container1' style='background-image:linear-gradient(315deg, #FFD5F4 0%, #FFB3C8 74%)'>`
-			str1 = `<div class='box-column' style='background-color:#FF5E8A;width:10px;'></div>
+			str1 = `<div class='box-columnb'></div>
 											<div class="box-left" >
-											<div><span style='font-weight:bold;'>${queue}</span></div>
-											<div><span style='font-size:13px'>${spentTime}</span></div>
-											<div><span style='color:red;'>${win_lose}</span></div>
-											<div><span style='font-size:13px'>${ingamespentTime}</span></div>
+											<div class="queuety_tm">${queue}</div>
+											<div class="stime-tm">${spentTime}</div>
+											<div class="winlose-tmr">${win_lose}</div>
+											<div class="igstime-tm">${ingamespentTime}</div>
 											</div>`
 			boxright = `<div tooltip="click! more Detail!" class="box-right" style='background-color : rgba(255, 2, 73, 0.18)' id ="gamebtn${goBtn}" onclick ="gamebtn(${goBtn},'${matchId}')"><a href = 'javascript:;'><div class = "box-rightred">∨</div></a></div>`
 
