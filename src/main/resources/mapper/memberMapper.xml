@@ -152,6 +152,9 @@
 		userId = #{userId};
 	</update>
 
+	<select id="emailcheck">
+		select count(*) from memberT where userId = #{userId} and userEmail = #{userEmail};
+	</select>
 
 
 

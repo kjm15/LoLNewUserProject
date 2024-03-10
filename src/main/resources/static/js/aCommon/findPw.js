@@ -1,8 +1,37 @@
+$("#userEmail").on('keyup', function() {
+	let userId = $('#userId').val();
+	let userEmail = $('#userEmail').val();
+	data = {
+		'userId': userId,
+		'userEmail': userEmail,
+
+	}
+
+
+	$.ajax({
+		type: 'post',
+		url: '/member/findPw/emailCheck',
+		data: data,
+
+		success: function(res) {
+			if (res === 1) {
+				$("#sendBtn").attr("disabled", false);
+			} else {
+				$("#sendBtn").attr("disabled");
+			}
+
+		}
+	})
+
+})
+
+
+
 let check = 0;
 function confirmNumber() {
 	var number1 = $("#number").val();
 	var number2 = $("#Confirm").val();
-	
+
 	console.log(number1)
 	console.log(number2)
 	if (number1 == '' || number2 == '') {
@@ -11,12 +40,12 @@ function confirmNumber() {
 	}
 
 	if (check != 0) {
-		
+
 		return true;
 	}
 
 	if (number1 == number2) {
-		check ++;
+		check++;
 		alert("인증되었습니다.");
 
 
@@ -60,7 +89,7 @@ $("#userEmail").on("keyup", function() {
 			"font-weight": "bold",
 			"font-size": "10px"
 		})
-		$("#sendBtn").attr("disabled", false);
+		//		$("#sendBtn").attr("disabled", false);
 	}
 
 })

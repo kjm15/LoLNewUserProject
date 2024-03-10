@@ -19,12 +19,11 @@
 								</div>
 							</div>
 							<div class="pline2">
-								<div class="pline2-1" id = "changeIdArea">
-									${mlist.userName}
+								<div class="pline2-1" id="changeIdArea">${mlist.userName}
 								</div>
 								<div class="pline2-2">
-									<button type="button" class="changebutton" id = "changeName">수정</button>
-									<button type="button" class="changebutton2" id = "changeName2">수정완료</button>
+									<button type="button" class="changebutton" id="changeName">수정</button>
+									<button type="button" class="changebutton2" id="changeName2">수정완료</button>
 								</div>
 							</div>
 
@@ -59,10 +58,10 @@
 
 							<div class="pline6">
 								<!-- 								<a href="/member/MyChangePw">비밀번호 변경</a> -->
-								<button type="button" class="myPgCpw" id="myPgCpw" >비밀번호
+								<button type="button" class="myPgCpw" id="myPgCpw">비밀번호
 									변경</button>
-								<button type="button" class="myPgCpw" id="myPgCpw2" disabled>새 비밀번호로
-									변경</button>	
+								<button type="button" class="myPgCpw" id="myPgCpw2" disabled>새
+									비밀번호로 변경</button>
 							</div>
 						</div>
 
@@ -76,14 +75,14 @@
 
 					</div>
 					<div class="mbottom" id="mbottom">
-
-
 						<div class="agree-to-receive">
 							<div class="agree-to-receivetop" id="phoneText">휴대전화</div>
 							<div class="agree-to-receivebot">
 								<div class="agree-to-receivebotl">
 									<div class="phoneimg" id="current-pw">
-									<input type = "hidden" name = "userId" id = "userId" value = "${userId}"></div>
+										<input type="hidden" name="userId" id="userId"
+											value="${userId}">
+									</div>
 								</div>
 								<div class="agree-to-receivebotm"></div>
 								<div class="agree-to-receivebotr">
@@ -112,15 +111,35 @@
 							</div>
 
 						</div>
-
 					</div>
+
+					<div class="mbottom" id="mbottom2">
+						<div class="agree-to-receive2">
+							<div class="agree-to-receivetop">새 비밀번호</div>
+							<div class="agree-to-receivebot">
+								<div class="agree-to-receivebotl">
+									<input type="password" class="inputArea" id="newPw"
+										oninput="passwordCheck()"> <span class="pwConfirm"
+										id="pwConfirm" style="font-size: 14px;">비밀번호를 입력해주세요</span>
+								</div>
+							</div>
+						</div>
+						<div class="agree-to-receive3">
+							<div class="agree-to-receivetop">새 비밀번호 확인</div>
+							<div class="agree-to-receivebot">
+								<div class="agree-to-receivebotl">
+									<input type="password" class="inputArea" name="userPw"
+										id="newPwTest" oninput="passwordCheck()">
+
+								</div>
+							</div>
+						</div>
+					</div>
+
+
 				</div>
 			</div>
 			<div class="left"></div>
 		</div>
 	</div>
-
-
-
-
 </section>
