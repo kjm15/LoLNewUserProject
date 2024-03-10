@@ -69,5 +69,7 @@ public interface RiotGameDao {
 
 	List<String> infoDataAllCnt(Map<String, Object> iMap);
 
+	Map<String, Object> findAiData(Map<String, Object> aMap);
+
 	
 }

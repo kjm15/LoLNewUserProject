@@ -40,58 +40,80 @@ public class RestPythonBuilder {
 	@PostMapping("/trollcheck420")
 	public Map<String, Object> trollcheck420(@RequestBody Map<String, Object> aMap, Model model, HttpSession session)
 			throws Exception {
-		Map<String, Object> bMap = new HashMap<>();
-		String filePath = "";
-		String userId = (String) session.getAttribute("userId");
-		if (userId == null) {
-			filePath = "src/main/resources/static/py/aiModelSave/aiModelCheck.py";	
-		} else if(userId.equals("admin")){
-			filePath = "src/main/resources/static/py/admin/aiTrollCheck420.py";
-			
+
+		Map<String, Object> fList = matchListService.findAiData(aMap);
+
+		if (fList != null) {
+			String matchId = String.valueOf(fList.get("matchId"));
+			String participantId = String.valueOf(fList.get("participantId"));
+
+			fList.put(matchId + participantId, fList.get("key"));
+			return fList;
 		} else {
-			filePath = "src/main/resources/static/py/aiModelSave/aiModelCheck.py";
-		}
-		String matchId = (String) aMap.get("matchId");
-		String participantId = String.valueOf(aMap.get("participantId"));
-		String key = matchId + participantId;
-		String tier = (String) aMap.get("Tier");
-		String teamPosition = String.valueOf(aMap.get("teamPosition"));
-		String gameDuration = String.valueOf(aMap.get("gameDuration"));
-		String kda = String.valueOf(aMap.get("kda"));
-		String totalDamageDealtToChampions = String.valueOf(aMap.get("totalDamageDealtToChampions"));
-		String goldEarned = String.valueOf(aMap.get("goldEarned"));
-		String championName = String.valueOf(aMap.get("championName"));
-		String airesult = String.valueOf(aMap.get("airesult"));
-		String champion_name_kr = String.valueOf(aMap.get("champion_name_kr"));
-		String queueId = String.valueOf(aMap.get("queueId"));
 
-		ProcessBuilder pb = new ProcessBuilder().command("python", filePath, key, tier, teamPosition, gameDuration, kda,
-				totalDamageDealtToChampions, goldEarned, championName, queueId // ,
-		);
-		Process p = pb.start();
-		BufferedReader in = new BufferedReader(new InputStreamReader(p.getInputStream()));
-		StringBuilder buffer = new StringBuilder();
-		String line = null;
-		while ((line = in.readLine()) != null) {
-			buffer.append(line);
-		}
-		int exitCode = p.waitFor();
+			String filePath = "";
+			String userId = (String) session.getAttribute("userId");
+			if (userId == null) {
+				filePath = "src/main/resources/static/py/aiModelSave/aiModelCheck.py";
+			} else if (userId.equals("admin")) {
+				filePath = "src/main/resources/static/py/admin/aiTrollCheck420.py";
 
-		in.close();
-		Gson gson = new GsonBuilder().create();
+			} else {
+				filePath = "src/main/resources/static/py/aiModelSave/aiModelCheck.py";
+			}
+			String matchId = (String) aMap.get("matchId");
+			String participantId = String.valueOf(aMap.get("participantId"));
+			String key = matchId + participantId;
+			String tier = (String) aMap.get("Tier");
+			String teamPosition = String.valueOf(aMap.get("teamPosition"));
+			String gameDuration = String.valueOf(aMap.get("gameDuration"));
+			String kda = String.valueOf(aMap.get("kda"));
+			String totalDamageDealtToChampions = String.valueOf(aMap.get("totalDamageDealtToChampions"));
+			String goldEarned = String.valueOf(aMap.get("goldEarned"));
+			String championName = String.valueOf(aMap.get("championName"));
+			String airesult = String.valueOf(aMap.get("airesult"));
+			String champion_name_kr = String.valueOf(aMap.get("champion_name_kr"));
+			String queueId = String.valueOf(aMap.get("queueId"));
 
-		bMap = gson.fromJson(buffer.toString(), Map.class);
+			ProcessBuilder pb = new ProcessBuilder().command("python", filePath, key, tier, teamPosition, gameDuration,
+					kda, totalDamageDealtToChampions, goldEarned, championName, queueId, matchId // ,
+			);
+			Process p = pb.start();
+			BufferedReader in = new BufferedReader(new InputStreamReader(p.getInputStream()));
+			StringBuilder buffer = new StringBuilder();
+			String line = null;
+			while ((line = in.readLine()) != null) {
+				buffer.append(line);
+			}
+			int exitCode = p.waitFor();
+
+			in.close();
+			Gson gson = new GsonBuilder().create();
+			Map<String, Object> bMap = new HashMap<>();
+			bMap = gson.fromJson(buffer.toString(), Map.class);
 //		String bMap = gson.fromJson(buffer.toString(), String.class);
 
-		log.info("솔로랭크 결과값 : {}", bMap);
+			log.info("솔로랭크 결과값 : {}", bMap);
 
-		bMap.put("matchId", matchId);
-		bMap.put("participantId", participantId);
+			if (bMap == null) { // 언랭인경우 에러 방지
+				bMap = new HashMap<>();
 
-		matchListService.saveAiData(bMap);
-		bMap.put("champion_name_kr", champion_name_kr);
+				bMap.put(matchId + participantId, "에러");
+				bMap.put("key", "에러");
+				bMap.put("participantId", participantId);
+				bMap.put("championName", championName);
+				bMap.put("tier", tier);
+				bMap.put("length", 0);
+				bMap.put("accuracy", 0);
 
-		return bMap;
+			}
+			bMap.put("matchId", matchId);
+			bMap.put("participantId", participantId);
+			matchListService.saveAiData(bMap);
+			bMap.put("champion_name_kr", champion_name_kr);
+
+			return bMap;
+		}
 	}
 
 	// 칼바람

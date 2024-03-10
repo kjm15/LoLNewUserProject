@@ -5,6 +5,7 @@
 $(document).ready(function() {
 	console.log("New Client Join")
 	$('#loadMore').hide()
+
 	//url에 있는 파라미터 값으로 게임 아이디 태그 잡음
 	let pathname = window.location.pathname
 
@@ -52,8 +53,7 @@ $(document).ready(function() {
 	//
 	//		$('.imimim').html(aastr)
 	//
-	//	},1900);
-
+	//	}, 1400);
 
 
 	int = 4;
@@ -72,10 +72,6 @@ $(document).ready(function() {
 	}, 4000);
 
 })
-
-
-
-
 
 function logolodingImg() {
 
@@ -96,6 +92,7 @@ function logolodingImg() {
 	})
 
 }
+
 function showgraph(win, lose) {
 
 	winLoseList = [win, lose]
@@ -278,7 +275,7 @@ function mainSearch(gameName1) {
 }
 
 function aiCheckTroll(res1) {
-	//	console.log(res1)
+	//		console.log(res1)
 	let queue = ''
 	console.log("data전송완료/인공지능시작")
 	$.ajax({
@@ -302,7 +299,13 @@ function aiCheckTroll(res1) {
 
 						console.log(res1)
 						for (const [key, value] of Object.entries(res1)) {
-							if (res.win == 1) { // 게임 : 승리
+
+							if (value == '비주류챔프' || value == '데이터부족' || value == '에러' || res1['key'] == '에러' || res1['tier'] == 'Tier') {
+
+								$('#' + key).html("평균");
+
+
+							} else if (res.win == 1) { // 게임 : 승리
 								if (value == '패') { //인공지능 지표 : 패
 
 
@@ -310,33 +313,23 @@ function aiCheckTroll(res1) {
 										'당신만 놀았군요', '놀지말고 딜하세요', '잠재적 범죄자']
 
 									commentLoseGame = randomListWin[Math.floor(Math.random() * randomListWin.length)]
-									str = '<div class = checkFlagStamp><div class="stampLose"><span tooltip="' + commentLoseGame + '">부족!</span></div></div>'
+									str = '<div class = checkFlagStamp><div class="stampLose"><span tooltip="' + commentLoseGame + '">팀빨을...</span></div></div>'
 
 
 									$('#' + key).html(str);
-								} else if (value == '데이터부족') { //인공지능 지표: 승
-									$('#' + key).html("평균");
-								} else { //인공지능 지표: 승
+								} else {
 									$('#' + key).html("평균");
 
 								}
-							} else if (res1['key'] == '에러') {
-
-								$('#' + key).html("평균");
-
-
 							} else { // 게임 : 패배
 								if (value == '패') { //인공지능 지표 : 패
 									$('#' + key).html("평균");
-								} else if (value == '데이터부족') { //인공지능 지표: 승
-									$('#' + key).html("평균");
 								} else { //인공지능 지표: 승
-
 
 									randomListWin = ['이 팀에 유일하게 빛나는 소환사 입니다.', '당신은 올라갈 자격이 있습니다.', '아쉽게 졌지만 당신은 이겼습니다.'
 										, '5 명예를 받을 자격이 충분합니다.', '이 실력이면 다음 티어는 금방!', '당신에게 부족한건 팀운뿐...']
 									commentLoseGame = randomListWin[Math.floor(Math.random() * randomListWin.length)]
-									str = '<div class = checkFlagStamp><div class="stampWin"><span tooltip="' + commentLoseGame + '">최고!</span></div></div>'
+									str = '<div class = checkFlagStamp><div class="stampWin"><span tooltip="' + commentLoseGame + '">팀운이...</span></div></div>'
 
 									$('#' + key).html(str);
 
@@ -400,7 +393,7 @@ function aiCheckTroll(res1) {
 					queue = "자유랭크"
 				}
 				key = res.matchId + res.participantId
-				str = "<span tooltip = '개발중입니다.'><font size=2><a href = '#'> |" + queue + "|<br></a></font></span>";
+				str = "<span tooltip = '칼바람과 솔로랭크는 확인 가능합니다.'><font size=2><a href = '#'> |" + "개발중" + "|<br></a></font></span>";
 				$('#' + key).html(str);
 
 			}
@@ -587,15 +580,8 @@ function summonerV4(res) {
 
 
 newmatchId = ''
-function gamebtn(goBtn, matchId) {
-	//	if (matchId == newmatchId) {
-	//		$('.controller').empty();
-	//		newmatchId = ''
-	//		return false;
-	//	}
 
-	//	var controller = document.getElementsByClassName("controller");
-	//	controller.style.display = ((controller.style.display != 'none') ? 'none' : 'block');
+function gamebtn(goBtn, matchId) {
 
 
 	newmatchId = matchId
@@ -616,45 +602,42 @@ function gamebtn(goBtn, matchId) {
 		$('#controller' + matchId).append(container2)
 		$('#controller' + matchId).append(container4)
 
-	}
+		showGameTambleBody(matchId) // 바디부분 만들기
 
-	//	console.log(a)
 
-	showGameTambleBody(matchId) // 바디부분 만들기
+		data = { 'matchId': matchId }
 
-	//	  완료 되면 다시 켜기
-	data = { 'matchId': matchId }
+		$.ajax({
+			type: 'post',
+			url: '/summoner/v4/userList',
+			data: data,
+			success: function(res) {
 
-	$.ajax({
-		type: 'post',
-		url: '/summoner/v4/userList',
-		data: data,
-		success: function(res) {
+				for (let i in res) {
 
-			for (let i in res) {
+					if (res[i].queueId == 420) { //솔랭인경우
+						$.ajax({
+							contentType: 'application/json',
+							type: 'post',
+							url: '/summoner/v4/Rank',
+							data: JSON.stringify(res[i]),
+							success: function(res1) {
+								aiCheckTroll(res1)
+							}
+						})
+					} else if (res[i].queueId == 450) {
 
-				if (res[i].queueId == 420) { //솔랭인경우
-					$.ajax({
-						contentType: 'application/json',
-						type: 'post',
-						url: '/summoner/v4/Rank',
-						data: JSON.stringify(res[i]),
-						success: function(res1) {
-							aiCheckTroll(res1)
-						}
-					})
-				} else if (res[i].queueId == 450) {
+						aiCheckTroll(res[i])
 
-					aiCheckTroll(res[i])
+					} else {
+						aiCheckTroll(res[i])
 
-				} else {
-					aiCheckTroll(res[i])
-
+					}
 				}
-
 			}
-		}
-	})
+
+		})
+	}
 }
 
 function goTier(gameName, tagLine) {
@@ -878,7 +861,7 @@ function updateSave(res) { //업데이트 저장문구
 $(window).scroll(
 	function() {
 
-//		console.log($(window).scrollTop())
+		//		console.log($(window).scrollTop())
 		if ($(window).scrollTop() > 524) {
 			$('.contentsCheckM').addClass('fix');
 

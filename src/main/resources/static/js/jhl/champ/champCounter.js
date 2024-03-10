@@ -19,7 +19,10 @@
 //	}
 //}
 // 모달 열기 함수
-function openModal(championName) {
+
+//카카오페이지 모달이랑 이름이 똑같아서 변경필요해서 일단 이름 뒤에 1
+//붙여서 바까놓을께 -장기훈
+function openModal1(championName) {
 	var modalContainer = $('#myModal');
 	Counterchamplist(championName);
 
@@ -31,7 +34,7 @@ function openModal(championName) {
 }
 
 // 모달 닫기 함수
-function closeModal() {
+function closeModal1() {
 	$('#myModal').css('display', 'none');
 }
 

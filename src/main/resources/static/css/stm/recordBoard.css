@@ -33,6 +33,7 @@ html, body {
 }
 
 #puuid {
+/* 	text-shadow: -1px 0 #000, 0 1px #000, 1px 0 #000, 0 -1px #000; */
 	position: relative;
 	display: flex;
 	width: 100%;
@@ -40,6 +41,7 @@ html, body {
 	align-items: center;
 	justify-content: center;
 	margin-bottom: 10px;
+	
 }
 
 .containerXl {
@@ -349,6 +351,7 @@ ul li a:hover::after {
 	/*	background: rgba(255, 2, 73, 0.18);*/
 	flex-basis: 70px;
 	text-align: center;
+	height : 100%;
 }
 
 .box-rightblue {
@@ -748,7 +751,7 @@ ul li a:hover::after {
 
 /*한판당 4%*/
 .stmHright {
-	position: absolute;
+	position: relative;
 	top: 10%;
 	left: -5%;
 	z-index: 2;
@@ -772,6 +775,9 @@ ul li a:hover::after {
 }
 
 .stmBlankTM {
+	left : 7%;
+	color : white;
+	  -webkit-text-stroke: 0.2px #000000;
 	top: 40%;
 	text-align: center;
 	position: absolute;
@@ -781,7 +787,8 @@ ul li a:hover::after {
 }
 
 .stmBlankB {
-	width: 100%;
+	position:relative;
+	width: 80%;
 	height: 80%;
 }
 
@@ -817,6 +824,7 @@ ul li a:hover::after {
 }
 
 .stmBlankGTM {
+	border : 1px solid white;
 	border-top-left-radius: 50px;
 	border-top-right-radius: 50px;
 	background-color: rgba(60, 192, 255, 0.7);;
@@ -825,6 +833,7 @@ ul li a:hover::after {
 }
 
 .stmBlankGTM1 {
+	border : 1px solid white;
 	border-top-left-radius: 50px;
 	border-top-right-radius: 50px;
 	position: absolute;
@@ -835,6 +844,7 @@ ul li a:hover::after {
 }
 
 .stmBlankGTM2 {
+	border : 1px solid white;
 	border-top-left-radius: 50px;
 	border-top-right-radius: 50px;
 	position: absolute;
@@ -845,6 +855,7 @@ ul li a:hover::after {
 }
 
 .stmBlankGTM3 {
+	border : 1px solid white;
 	border-top-left-radius: 50px;
 	border-top-right-radius: 50px;
 	position: absolute;
@@ -855,6 +866,7 @@ ul li a:hover::after {
 }
 
 .stmBlankGTM4 {
+	border : 1px solid white;
 	border-top-left-radius: 50px;
 	border-top-right-radius: 50px;
 	position: absolute;
@@ -865,6 +877,7 @@ ul li a:hover::after {
 }
 
 .stmBlankGTM5 {
+	border : 1px solid white;
 	border-top-left-radius: 50px;
 	border-top-right-radius: 50px;
 	position: absolute;
@@ -882,15 +895,19 @@ ul li a:hover::after {
 .stmBlankM {
 	/* 	background-color: white; */
 	/* 	좌우이동 */
+	position : absolute;
 	height: 100%;
 	display: flex;
+	left : 20%;
+	top : 0%;
+	width: 100%;
 }
 
 .cpicon {
 	text-align: center;
 	width: 100%;
 	height: 100%;
-	position: relative;
+	position: absolute;
 	margin: 0 auto;
 }
 
@@ -898,8 +915,8 @@ ul li a:hover::after {
 	position: absolute;
 	width: 100%;
 	height: 80%;
-	left: 40%;
-	top: 5px;
+	left: -57%;
+	top: 0px;
 	/*    position: relative; */
 	/* 	float: right; */
 	/*    border : 1px solid black; */
@@ -909,8 +926,8 @@ ul li a:hover::after {
 
 .uidLevelBox {
 	height: 30px;
-	width: 100px;
-	left: 85px;
+	width: 50px;
+	left: -110px;
 	transform: translateX(17px);
 	align-items: center;
 	justify-content: center;
@@ -918,18 +935,19 @@ ul li a:hover::after {
 	background-color: rgb(157, 196, 253);
 	border-radius: 3px;
 	color: white;
-	top: -20px;
+	top: -15px;
 	border-radius: 20px;
 }
 
 .uid {
 	position: absolute;
-	top: 75%;
-	left: 0%;
+	top: 220px;
+	left: -117%;
 	width: 300px;
 	height: 30%;
 	font-size: 30px;
 	color: white;
+	  -webkit-text-stroke: 1px black;
 	/* 	text-align: center; */
 	/* 	float: right; */
 	/*    border : 1px solid black; */
@@ -964,11 +982,9 @@ ul li a:hover::after {
 	position: absolute;
 	width: 100%;
 	height: 50px;
-	top: 50%;
-	/* 	text-align: center; */
-	/* 	float: right; */
-	/*    border : 1px solid black; */
-	/* 	margin-right: 5%; */
+	top: -5%;
+	left:-120%;
+
 }
 
 .ulevel {
@@ -976,7 +992,7 @@ ul li a:hover::after {
 	height: 100%;
 	text-align: center;
 	border-radius: 20px;
-	border: 1px solid black;
+/* 	border: 1px solid black; */
 	margin-right: 5%;
 	position: absolute;
 	/* 		top : 20%; */
@@ -985,7 +1001,7 @@ ul li a:hover::after {
 .u-chart {
 	position: absolute;
 	top: 40%;
-	left: -20%;
+	left: -10%;
 	/* 	width: 150px; */
 	/* 	height: 150px; */
 	/* 	position: relative; */
@@ -1016,25 +1032,30 @@ ul li a:hover::after {
 }
 
 .stmHCenterT {
+	color : white;
+	  -webkit-text-stroke: 0.2px #000000;
 	font-size: 20px;
 	position: absolute;
 	/* 	background-color : skyblue; */
-	top: 7%;
-	left: 14%;
-	width: 120%;
+	top: 25%;
+	left: 0%;
+	width: 140%;
 	height: 50%;
+
 	/* 	float: right; */
 }
 
 .stmHCenterB {
+	color : white;
+	  -webkit-text-stroke: 0.2px #000000;
 	position: absolute;
-	left: 20%;
-	top: 20%;
+	left: -19%;
+	top: 40%;
 	/* 	background-color : skyblue; */
 	width: 500px;
 	height: 100%;
 	/* 	float: right; */
-	font-size: 20px;
+	font-size: 5px;
 }
 
 .champeAndKda {
@@ -1045,6 +1066,7 @@ ul li a:hover::after {
 .champeAndKdaKor {
 	line-height: 50px;
 	font-size: 20px;
+	  -webkit-text-stroke: 0.1px white;
 }
 
 .stmHCenterM {
@@ -1128,60 +1150,26 @@ ul li a:hover::after {
 	animation-fill-mode: forwards;
 	z-index: auto;
 }
+@-webkit-keyframes pulse {
+	0% {
+		opacity: 0;
+	}
 
-@
--webkit-keyframes pulse { 0% {
-	opacity: 0;
+	10% {
+		opacity: .50;
+		transform-origin: 50% 50%;
+		transform: rotate(-2deg) scale(5);
+		transition: all .3s cubic-bezier(0.6, 0.04, 0.98, 0.335);
+	}
+
+	100% {
+		opacity: 1;
+		transform: rotate(-15deg) scale(1);
+	}
 }
 
-10
-%
-{
-opacity
-:
-.50;
-transform-origin
-:
-50%
-50%;
-transform
-:
-rotate(
--2deg
-)
-scale(
-5
-);
-transition
-:
-all
-.3s
-cubic-bezier(
-0.6
-,
-0.04
-,
-0.98
-,
-0.335
-);
-}
-100
-%
-{
-opacity
-:
-1;
-transform
-:
-rotate(
--15deg
-)
-scale(
-1
-);
-}
-}
+
+
 .stampLose {
 	/* position: absolute; */
 	text-align: center;
@@ -1307,19 +1295,22 @@ scale(
 	transform: translate(-50%, -.5em);
 }
 
+
 /* KEYFRAMES */
-@
-keyframes tooltips-vert {to { opacity:.9;
-	transform: translate(-50%, 0);
+@keyframes tooltips-vert {
+	to {
+		opacity: .9;
+		transform: translate(-50%, 0);
+	}
 }
 
-}
-@
-keyframes tooltips-horz {to { opacity:.9;
-	transform: translate(0, -50%);
+@keyframes tooltips-horz {
+	to {
+		opacity: .9;
+		transform: translate(0, -50%);
+	}
 }
 
-}
 
 /* FX All The Things */
 [tooltip]:not([flow]):hover::before, [tooltip]:not([flow]):hover::after,
