@@ -151,12 +151,13 @@ function allItemTT(a){
 	    var imgleft = imgOffset.left;
 	    
 	    var tooltip = $('.jb-text-tm');
+	    
 	    tooltip.css({
 			'z-index' : "20",
 	        'position': 'absolute',
-	        'top': imgTop - tooltip.outerHeight() - 4, // 툴팁의 높이만큼 위로 이동하여 이미지 위에 배치
+	        'top': imgTop - tooltip.outerHeight() - 591, // 툴팁의 높이만큼 위로 이동하여 이미지 위에 배치
 	        'left': imgleft - 110,
-	    });	    	
+	    });
 		
 		}
 	})

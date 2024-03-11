@@ -66,7 +66,7 @@
 				</ul>
 			</div>
 			<div id = "selectTier_modal" style = "display: none;">
-				<div class='dropdown'>
+				<div class='dropdown22'>
 					<button id='TierDropDownModal' class='btn btn-secondary dropdown-toggle modalTier' type='button' data-bs-toggle='dropdown' aria-expanded='false'>티어 선택</button>
 						<ul class='dropdown-menu'>
 							<li>
