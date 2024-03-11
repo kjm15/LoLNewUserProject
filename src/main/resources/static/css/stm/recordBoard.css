@@ -1386,7 +1386,6 @@ ul li a:hover::after {
 	background-color: #444444;
 	border-radius: 5px;
 	color: #ffffff;
-	position: absolute;
 	display: none;
 	width: 250px;
 	text-align: left;
