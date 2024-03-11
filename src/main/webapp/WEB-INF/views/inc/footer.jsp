@@ -9,6 +9,7 @@
 <%@include file="../kjm/sendInq.jsp"%>
 <%@include file="../kjm/eventMessage.jsp"%>
 <%@include file="../kjm/inqdetail.jsp"%>
+<%@include file="../kjm/eventDetail.jsp"%>
 <!-- 김진문 -->
 <!-- 장기훈 -->
 
