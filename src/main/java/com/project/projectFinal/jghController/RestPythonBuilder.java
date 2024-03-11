@@ -40,7 +40,7 @@ public class RestPythonBuilder {
 	@PostMapping("/trollcheck420")
 	public HashMap<String, Object> trollcheck420(@RequestBody Map<String, Object> aMap, Model model,
 			HttpSession session) throws Exception {
-
+		
 		HashMap<String, Object> fList = matchListService.findAiData(aMap);
 		if (fList != null) {
 
@@ -66,12 +66,12 @@ public class RestPythonBuilder {
 		if (userId == null) {
 			filePath = "src/main/resources/static/py/aiModelSave/aiModelCheck.py";
 		} else if (userId.equals("admin")) {
-			filePath = "src/main/resources/static/py/admin/aiTrollCheck420.py";
+			filePath = "src/main/resources/static/py/aiModelSave/aiModelCheckAdimin.py";
 
 		} else {
 			filePath = "src/main/resources/static/py/aiModelSave/aiModelCheck.py";
 		}
-
+		
 		ProcessBuilder pb = new ProcessBuilder().command("python", filePath, matchId, tier, teamPosition, gameDuration,
 				kda, totalDamageDealtToChampions, goldEarned, championName, queueId, participantId, champion_name_kr// ,
 		);

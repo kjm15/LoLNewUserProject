@@ -95,10 +95,10 @@ try:
     plt.scatter(win_Mean_totalDamageDealtToChampions, win_Mean_goldEarned) 
     plt.scatter(lose_Mean_totalDamageDealtToChampions, lose_Mean_goldEarned)
     # plt.xlim((0, 2000))
-    # plt.title(championName)
-    # plt.xlabel('DAMAGE') 
-    # plt.ylabel('GOLD') 
-    # plt.show()
+    plt.title(championName)
+    plt.xlabel('DAMAGE') 
+    plt.ylabel('GOLD') 
+    plt.show()
 
 
     tier_target=[1]*len(win_Mean_goldEarned)+[0]*len(lose_Mean_goldEarned)
@@ -120,12 +120,12 @@ try:
     # new = ([totalDamageDealtToChampions, goldEarned] - mean) / std
     new = (tier_my - mean) / std
     #그래프
-    # plt.scatter(train_scaled[:, 0], train_scaled[:, 1])
-    # plt.scatter(new[0], new[1], marker='^')
-    # plt.title(championName)
-    # plt.xlabel('length')
-    # plt.ylabel('weight')
-    # plt.show()
+    plt.scatter(train_scaled[:, 0], train_scaled[:, 1])
+    plt.scatter(new[0], new[1], marker='^')
+    plt.title(championName)
+    plt.xlabel('length')
+    plt.ylabel('weight')
+    plt.show()
 
     kn.fit(train_scaled, tier_target)
     a1 = kn.score(train_scaled, tier_target) # 1.0
