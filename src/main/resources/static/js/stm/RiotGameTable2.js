@@ -334,7 +334,7 @@ let nowStatus = 'ALL'
 
 let tier = ''
 function showGameTamble(res) {
-	//	console.log(res)
+		console.log(res)
 
 
 	$('.graph1').empty()

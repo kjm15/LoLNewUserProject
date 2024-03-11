@@ -9,7 +9,6 @@ $(document).ready(function() {
 	//url에 있는 파라미터 값으로 게임 아이디 태그 잡음
 	let pathname = window.location.pathname
 
-
 	dName = decodeURI(pathname)
 	//	console.log(dName);
 
@@ -493,78 +492,77 @@ function bbb(data) {
 		data: data,
 		success: function(res) {
 
-			//			console.log(res)
+			console.log(res)
 
 			if (res.length != 0) {
 				MList = [];
 				for (let i = 0; i < res.length; i++) {
 					Gamedata = {}; // 한게임당 데이터
 					ingamedata = [];
-
-
 					for (let j = 0; j < res[i]["info"]['participants'].length; j++) {
-						mm = {}
+						if (res[i]["info"]['endOfGameResult'] != "Abort_Unexpected") {
+							mm = {}
 
-						mm.riotIdGameName = res[i]["info"]['participants'][j]['riotIdGameName']//닉네임
-						mm.riotIdTagline = res[i]["info"]['participants'][j]['riotIdTagline'] // 태그
-						mm.summonerName = res[i]["info"]['participants'][j]['summonerName']
-						mm.summonerLevel = res[i]["info"]['participants'][j]['summonerLevel']
-						mm.profileIcon = res[i]["info"]['participants'][j]['profileIcon']
-						mm.championName = res[i]["info"]['participants'][j]['championName']//챔피언 아이디
-						mm.participantId = res[i]["info"]['participants'][j]['participantId'] // 플레이어 고유 인덱스
-						mm.summoner1Id = res[i]["info"]['participants'][j]['summoner1Id']//스펠 D
-						mm.summoner2Id = res[i]["info"]['participants'][j]['summoner2Id']//스펠 F 화면에 출력 가능할 떄 할 것
-						mm.goldEarned = res[i]["info"]['participants'][j]['goldEarned']
-						//						mm.puuid =res[i]["info"]['participants'][j]['puuid']
-						mm.totalTimeCCDealt = res[i]["info"]['participants'][j]['totalTimeCCDealt']
-						mm.totalTimeSpentDead = res[i]["info"]['participants'][j]['totalTimeSpentDead']
-						mm.onMyWayPings = res[i]["info"]['participants'][j]['onMyWayPings']
-						mm.enemyVisionPings = res[i]["info"]['participants'][j]['enemyVisionPings']
-						mm.physicalDamageDealtToChampions = res[i]["info"]['participants'][j]['physicalDamageDealtToChampions']
-						mm.magicDamageDealtToChampions = res[i]["info"]['participants'][j]['magicDamageDealtToChampions']
-						mm.teamId = res[i]["info"]['participants'][j]['teamId']
-						mm.win = res[i]["info"]['participants'][j]['win']
-						mm.matchId = res[i]['metadata']['matchId'] // 매치 아이디
-						mm.queueId = res[i]["info"]['queueId'] // 게임 모드
-						mm.firstBloodKill = res[i]["info"]['participants'][j]['firstBloodKill']
-						mm.kills = res[i]["info"]['participants'][j]['kills']
-						mm.deaths = res[i]["info"]['participants'][j]['deaths']
-						mm.assists = res[i]["info"]['participants'][j]['assists']
-						if (res[i]["info"]['participants'][j]['deaths'] == 0) {
-							mm.kda = (res[i]["info"]['participants'][j]['kills'] + res[i]["info"]['participants'][j]['assists'])
+							mm.riotIdGameName = res[i]["info"]['participants'][j]['riotIdGameName']//닉네임
+							mm.riotIdTagline = res[i]["info"]['participants'][j]['riotIdTagline'] // 태그
+							mm.summonerName = res[i]["info"]['participants'][j]['summonerName']
+							mm.summonerLevel = res[i]["info"]['participants'][j]['summonerLevel']
+							mm.profileIcon = res[i]["info"]['participants'][j]['profileIcon']
+							mm.championName = res[i]["info"]['participants'][j]['championName']//챔피언 아이디
+							mm.participantId = res[i]["info"]['participants'][j]['participantId'] // 플레이어 고유 인덱스
+							mm.summoner1Id = res[i]["info"]['participants'][j]['summoner1Id']//스펠 D
+							mm.summoner2Id = res[i]["info"]['participants'][j]['summoner2Id']//스펠 F 화면에 출력 가능할 떄 할 것
+							mm.goldEarned = res[i]["info"]['participants'][j]['goldEarned']
+							//						mm.puuid =res[i]["info"]['participants'][j]['puuid']
+							mm.totalTimeCCDealt = res[i]["info"]['participants'][j]['totalTimeCCDealt']
+							mm.totalTimeSpentDead = res[i]["info"]['participants'][j]['totalTimeSpentDead']
+							mm.onMyWayPings = res[i]["info"]['participants'][j]['onMyWayPings']
+							mm.enemyVisionPings = res[i]["info"]['participants'][j]['enemyVisionPings']
+							mm.physicalDamageDealtToChampions = res[i]["info"]['participants'][j]['physicalDamageDealtToChampions']
+							mm.magicDamageDealtToChampions = res[i]["info"]['participants'][j]['magicDamageDealtToChampions']
+							mm.teamId = res[i]["info"]['participants'][j]['teamId']
+							mm.win = res[i]["info"]['participants'][j]['win']
+							mm.matchId = res[i]['metadata']['matchId'] // 매치 아이디
+							mm.queueId = res[i]["info"]['queueId'] // 게임 모드
+							mm.firstBloodKill = res[i]["info"]['participants'][j]['firstBloodKill']
+							mm.kills = res[i]["info"]['participants'][j]['kills']
+							mm.deaths = res[i]["info"]['participants'][j]['deaths']
+							mm.assists = res[i]["info"]['participants'][j]['assists']
+							if (res[i]["info"]['participants'][j]['deaths'] == 0) {
+								mm.kda = (res[i]["info"]['participants'][j]['kills'] + res[i]["info"]['participants'][j]['assists'])
 
-						} else {
-							mm.kda = (((res[i]["info"]['participants'][j]['kills'] + res[i]["info"]['participants'][j]['assists'])) / res[i]["info"]['participants'][j]['deaths']).toFixed(2)
-						}
-
-						mm.teamPosition = res[i]["info"]['participants'][j]['teamPosition']
-						mm.totalDamageDealtToChampions = res[i]["info"]['participants'][j]['totalDamageDealtToChampions']
-						mm.totalDamageTaken = res[i]["info"]['participants'][j]['totalDamageTaken']
-						mm.totalMinionsKilled = res[i]["info"]['participants'][j]['totalMinionsKilled'] // 미니언 킬
-						mm.totalAllyJungleMinionsKilled = res[i]["info"]['participants'][j]['totalAllyJungleMinionsKilled'] // 토탈 정글몹 킬
-						mm.totalEnemyJungleMinionsKilled = res[i]["info"]['participants'][j]['totalEnemyJungleMinionsKilled'] //상대 정글몹 킬
-						mm.wardsKilled = res[i]["info"]['participants'][j]['wardsKilled'] // 와드 킬
-						mm.wardsPlaced = res[i]["info"]['participants'][j]['wardsPlaced'] // 시야점수
-						mm.gameStartTimestamp = res[i]["info"]['gameStartTimestamp']
-						mm.gameEndTimestamp = res[i]["info"]['gameEndTimestamp']
-						mm.gameDuration = (res[i]["info"]['gameDuration'] / 60).toFixed(0)
-						mm.item0 = res[i]["info"]['participants'][j]['item0']
-						mm.item1 = res[i]["info"]['participants'][j]['item1']
-						mm.item2 = res[i]["info"]['participants'][j]['item2']
-						mm.item3 = res[i]["info"]['participants'][j]['item3']
-						mm.item4 = res[i]["info"]['participants'][j]['item4']
-						mm.item5 = res[i]["info"]['participants'][j]['item5']
-						for (k in res[i]['info']['teams']) {
-							if (res[i]["info"]['teams'][k]['teamId'] == res[i]["info"]['participants'][j]['teamId']) {
-								mm.totalTeamkills = res[i]["info"]['teams'][k]['objectives']['champion']['kills']
-								mm.dragon = res[i]["info"]['teams'][k]['objectives']['dragon']['kills']
+							} else {
+								mm.kda = (((res[i]["info"]['participants'][j]['kills'] + res[i]["info"]['participants'][j]['assists'])) / res[i]["info"]['participants'][j]['deaths']).toFixed(2)
 							}
 
+							mm.teamPosition = res[i]["info"]['participants'][j]['teamPosition']
+							mm.totalDamageDealtToChampions = res[i]["info"]['participants'][j]['totalDamageDealtToChampions']
+							mm.totalDamageTaken = res[i]["info"]['participants'][j]['totalDamageTaken']
+							mm.totalMinionsKilled = res[i]["info"]['participants'][j]['totalMinionsKilled'] // 미니언 킬
+							mm.totalAllyJungleMinionsKilled = res[i]["info"]['participants'][j]['totalAllyJungleMinionsKilled'] // 토탈 정글몹 킬
+							mm.totalEnemyJungleMinionsKilled = res[i]["info"]['participants'][j]['totalEnemyJungleMinionsKilled'] //상대 정글몹 킬
+							mm.wardsKilled = res[i]["info"]['participants'][j]['wardsKilled'] // 와드 킬
+							mm.wardsPlaced = res[i]["info"]['participants'][j]['wardsPlaced'] // 시야점수
+							mm.gameStartTimestamp = res[i]["info"]['gameStartTimestamp']
+							mm.gameEndTimestamp = res[i]["info"]['gameEndTimestamp']
+							mm.gameDuration = (res[i]["info"]['gameDuration'] / 60).toFixed(0)
+							mm.item0 = res[i]["info"]['participants'][j]['item0']
+							mm.item1 = res[i]["info"]['participants'][j]['item1']
+							mm.item2 = res[i]["info"]['participants'][j]['item2']
+							mm.item3 = res[i]["info"]['participants'][j]['item3']
+							mm.item4 = res[i]["info"]['participants'][j]['item4']
+							mm.item5 = res[i]["info"]['participants'][j]['item5']
+							for (k in res[i]['info']['teams']) {
+								if (res[i]["info"]['teams'][k]['teamId'] == res[i]["info"]['participants'][j]['teamId']) {
+									mm.totalTeamkills = res[i]["info"]['teams'][k]['objectives']['champion']['kills']
+									mm.dragon = res[i]["info"]['teams'][k]['objectives']['dragon']['kills']
+								}
+
+							}
+							ingamedata.push(mm)
+
+							Gamedata.info = ingamedata
 						}
-						ingamedata.push(mm)
-
-						Gamedata.info = ingamedata
-
 					}
 					ingameteam = [];
 
