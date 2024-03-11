@@ -347,24 +347,26 @@ function choiceCore(c) {
 window.addEventListener("click", (e) => {
 
 
-//	console.log(e.srcElement.name)
-//	if ('tierClose' == e.srcElement.name) {
-////		console.log("성공")
-		$('.closeDownDrop').css("display", "none")
-//	}
+	$('.closeDownDrop').css("display", "none")
+
 })
 //마우스 가져다 대면  점점 보이게
+downDropPoint = 0
 window.addEventListener("mouseover", (e) => {
 
 
-//	console.log(e.target.className)
+
 	if (e.target.className == 'dropDown-btn') {
-//		console.log("성공")
+
 		$('.closeDownDrop').css("display", "block")
 
 
 	}
+	else if (e.target.className != '') {
 
+
+		$('.closeDownDrop').css("display", "none")
+	}
 
 })
 
