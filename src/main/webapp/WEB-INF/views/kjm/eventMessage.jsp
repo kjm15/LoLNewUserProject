@@ -12,18 +12,23 @@
 		<div class="modal2-window">
 			<div class="modal-close-area">X</div>
 
-
 			<div class="inqnav">
-				<input type="button" class="inq-nav-item" id="inqMain2" value="문의내역">
-				<input type="button" class="inq-nav-item" id="eventMessage2" value="안내사항">
-				<input type="button" class="inq-nav-item" id="sendinq2" value="문의하기">
+				<div class="modal-back-img">
+					<div class="BackColor">
+						<div class="inq-nav-itemleft"></div>
+						<input type="button" class="inq-nav-item" id="inqMain2"
+							value="문의내역"> <input type="button" class="inq-nav-item"
+							id="eventMessage2" value="안내사항"> <input type="button"
+							class="inq-nav-item" id="sendinq2" value="문의하기">
+					</div>
+				</div>
 			</div>
 
 			<div class="modal-content">
 				<table class="table table-green table-hover" id="modal_wrap">
 					<thead>
 						<tr class="eventMessage">
-<!-- 							<th class="recv_userId" style="display: none;"></th> -->
+							<!-- 							<th class="recv_userId" style="display: none;"></th> -->
 							<th class="send_userId">보낸사람</th>
 							<th class="n_title">제목</th>
 							<th class="n_date">날짜</th>

@@ -15,6 +15,12 @@ $('#memberlogin').on("click", function() {
 
 })
 
+$('#memberfindId').on("click", function() {
+
+	location.href = "/member/findIdT"
+
+})
+
 $('#memberfindPw').on("click", function() {
 
 	location.href = "/member/findPw"
