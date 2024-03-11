@@ -79,6 +79,8 @@ public class WebSocketChattService {
 
 			String userId = map.get("userId");
 
+			
+
 			users.forEach((key, value) -> {
 
 				if (value.equals(mDto.getUserId())) {
@@ -114,7 +116,7 @@ public class WebSocketChattService {
 						key.getBasicRemote().sendText(msg2);
 
 					} catch (IOException e) {
-						
+
 						e.printStackTrace();
 					}
 				} else {
@@ -125,7 +127,7 @@ public class WebSocketChattService {
 					try {
 						key.getBasicRemote().sendText(msg2);
 					} catch (IOException e) {
-						
+
 						e.printStackTrace();
 					}
 

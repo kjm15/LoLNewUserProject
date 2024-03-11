@@ -169,6 +169,10 @@
 	overflow: scroll;
 	border: 1px solid #aaa;
 	background: lightblue;
+
+	border-top-left-radius: 25px;
+	border-top-right-radius: 25px;
+	
 }
 
 /* 채팅글자바탕색 */
@@ -240,6 +244,7 @@
 	border: none;
 	padding: 10px;
 	top : 150px;
+	resize: none;
 }
 /* 스크롤바 */
 .box {
