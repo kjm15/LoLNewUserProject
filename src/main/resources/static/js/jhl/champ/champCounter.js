@@ -22,29 +22,29 @@
 
 //카카오페이지 모달이랑 이름이 똑같아서 변경필요해서 일단 이름 뒤에 1
 //붙여서 바까놓을께 -장기훈
-function openModal1(championName) {
-	var modalContainer = $('#myModal');
-	Counterchamplist(championName);
-
-	// 이미지 및 챔피언 이름을 모달 내부에 추가
-	//		modalContent.empty().append($('<div>').append();
-
-	// 모달 열기
-	modalContainer.css('display', 'flex');
-}
-
-// 모달 닫기 함수
-function closeModal1() {
-	$('#myModal').css('display', 'none');
-}
-
-// 모달 외부를 클릭하면 모달이 닫히도록 함
-$(document).on('click', function(event) {
-	var modal = $('#myModal');
-	if (event.target == modal[0]) {
-		closeModal();
-	}
-});
+//function openModal1(championName) {
+//	var modalContainer = $('#myModal');
+//	Counterchamplist(championName);
+//
+//	// 이미지 및 챔피언 이름을 모달 내부에 추가
+//	//		modalContent.empty().append($('<div>').append();
+//
+//	// 모달 열기
+//	modalContainer.css('display', 'flex');
+//}
+//
+//// 모달 닫기 함수
+//function closeModal1() {
+//	$('#myModal').css('display', 'none');
+//}
+//
+//// 모달 외부를 클릭하면 모달이 닫히도록 함
+//$(document).on('click', function(event) {
+//	var modal = $('#myModal');
+//	if (event.target == modal[0]) {
+//		closeModal();
+//	}
+//});
 
 
 

@@ -7,12 +7,12 @@ champImgItem.addEventListener('click', (e) => {
 
 	console.log(e.target.id)
 	champChartGraph(e.target.id)
-	//	chartContainer.scrollIntoView({ behavior: 'smooth' });
+	//		chartContainer.scrollIntoView({ top: 0, behavior: 'smooth' });
+//	window.scrollTo({
+//		top: 0,
+//		behavior: 'smooth',
+//	})
 
-	window.scrollTo({
-		top: 0,
-		behavior: 'smooth',
-	});
 	//차트만들기 시작
 
 })
@@ -20,24 +20,28 @@ champImgItem.addEventListener('click', (e) => {
 horizontalBarlist = []
 function champChartGraph(championName) {
 	if (championName === '') {
-	
+		alert('챔피언 이미지를 눌러주세요.');
 		return false;
+	} else {
+		window.scrollTo({
+			top: 0,
+			behavior: 'smooth',
+		})
 	}
-
 	data = { 'championName': championName };
 	$.ajax({
 		type: 'post',
 		url: '/forGraphInfo',
 		data: data,
 		success: function(res) {
-			
-//			let championDiv = document.querySelector('.championGraphContainer');
-//			championDiv.style.backgroundImage = `url(img/jhl/summoner.png)`;
-//			championDiv.style.backgroundSize ='cover'
-////			championDiv.style.opacity = 0.8;
-//			championDiv.style.backgroundColor = 'rgba(255, 255, 255, 1)'
 
-//			console.log(championDiv);
+			//			let championDiv = document.querySelector('.championGraphContainer');
+			//			championDiv.style.backgroundImage = `url(img/jhl/summoner.png)`;
+			//			championDiv.style.backgroundSize ='cover'
+			//			championDiv.style.opacity = 0.8;
+			//			championDiv.style.backgroundColor = 'rgba(255, 255, 255, 1)'
+
+			//			console.log(championDiv);
 
 			let btn = "<select id='ChampGraphPosition' name='ChampGraphPosition'>";
 			res.forEach((item, index) => {
