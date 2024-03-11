@@ -87,6 +87,7 @@ const closeBtn = modal1.querySelector(".modal-close-area")
 const closeBtn2 = modal2.querySelector(".modal-close-area")
 const closeBtn3 = modal3.querySelector(".modal-close-area")
 const closeBtn4 = modal4.querySelector(".modal-close-area")
+const closeBtn5 = modal5.querySelector(".modal-close-area")
 closeBtn.addEventListener("click", e => {
 	modal1.style.display = "none"
 })
@@ -100,6 +101,9 @@ closeBtn3.addEventListener("click", e => {
 })
 closeBtn4.addEventListener("click", e => {
 	modal4.style.display = "none"
+})
+closeBtn5.addEventListener("click", e => {
+	modal5.style.display = "none"
 })
 
 //내 문의내역
@@ -132,6 +136,36 @@ function inqMaininfo() {
 		}
 	})
 }
+//문의내역 자세히 보기
+//const modal4 = document.getElementById("modal4")
+const modal1_wrap = document.getElementById("modal1_wrap")
+modal1_wrap.addEventListener("click", e => {
+	//클릭 여러번 해도 한번만 나옴. 계속 덮어쓰기 되기 때문
+	modal4.style.display = "flex"
+//	modal1.style.display = "none"
+//	modal2.style.display = "none"
+//	modal3.style.display = "none"
+	//테이블의 tr행이 몇번째 행인지 알게 해주는 구문
+	const rowIndex = e.target.closest("tr").rowIndex;
+	var table = document.getElementById("modal1_wrap")
+	var tr = table.getElementsByTagName("tr");
+	let n_title = tr[rowIndex].getElementsByTagName("td")[1].textContent
+	let n_date = tr[rowIndex].getElementsByTagName("td")[2].textContent
+	let status = tr[rowIndex].getElementsByTagName("td")[3].textContent
+	let n_message = tr[rowIndex].getElementsByTagName("td")[5].textContent
+	let inqAnswer = tr[rowIndex].getElementsByTagName("td")[6].textContent
+
+//	console.log(n_title)
+
+	document.querySelector("#title").innerText = n_title
+	document.querySelector("#message").innerText = n_message
+	document.querySelector("#datetime").innerText = n_date
+	document.querySelector("#sta").innerText = status
+	document.querySelector("#answer").innerText = inqAnswer
+	
+	
+
+})
 
 //관리자 메시지
 function eventMessageinfo() {
@@ -161,32 +195,32 @@ function eventMessageinfo() {
 	})
 }
 
-//문의내역 자세히 보기
+
+
+//관리자 메시지 자세히 보기
 //const modal4 = document.getElementById("modal4")
-const modal1_wrap = document.getElementById("modal1_wrap")
-modal1_wrap.addEventListener("click", e => {
+const modal2_wrap = document.getElementById("modal2_wrap")
+modal2_wrap.addEventListener("click", e => {
 	//클릭 여러번 해도 한번만 나옴. 계속 덮어쓰기 되기 때문
-	modal4.style.display = "flex"
+	modal5.style.display = "flex"
 //	modal1.style.display = "none"
 //	modal2.style.display = "none"
 //	modal3.style.display = "none"
 	//테이블의 tr행이 몇번째 행인지 알게 해주는 구문
 	const rowIndex = e.target.closest("tr").rowIndex;
-	var table = document.getElementById("modal1_wrap")
+	var table = document.getElementById("modal2_wrap")
 	var tr = table.getElementsByTagName("tr");
-	let n_title = tr[rowIndex].getElementsByTagName("td")[1].textContent
-	let n_date = tr[rowIndex].getElementsByTagName("td")[2].textContent
-	let status = tr[rowIndex].getElementsByTagName("td")[3].textContent
-	let n_message = tr[rowIndex].getElementsByTagName("td")[5].textContent
-	let inqAnswer = tr[rowIndex].getElementsByTagName("td")[6].textContent
+	let n_title = tr[rowIndex].getElementsByTagName("td")[2].textContent
+	let n_date = tr[rowIndex].getElementsByTagName("td")[3].textContent
+	let n_message = tr[rowIndex].getElementsByTagName("td")[4].textContent
+
 
 //	console.log(n_title)
 
-	document.querySelector("#title").innerText = n_title
-	document.querySelector("#message").innerText = n_message
-	document.querySelector("#datetime").innerText = n_date
-	document.querySelector("#sta").innerText = status
-	document.querySelector("#answer").innerText = inqAnswer
+	document.querySelector("#Etitle").innerText = n_title
+	document.querySelector("#Edatetime").innerText = n_date
+	document.querySelector("#Emessage").innerText = n_message
+
 	
 	
 

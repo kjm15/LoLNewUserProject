@@ -25,20 +25,22 @@
 			</div>
 
 			<div class="modal-content">
-				<table class="table table-green table-hover" id="modal_wrap">
+				<table class="table table-green table-hover" id="modal2_wrap">
 					<thead>
 						<tr class="eventMessage">
 							<!-- 							<th class="recv_userId" style="display: none;"></th> -->
 							<th class="send_userId">보낸사람</th>
 							<th class="n_title">제목</th>
 							<th class="n_date">날짜</th>
+							<th style ="display:none" class="n_message"></th>
 						</tr>
 					</thead>
 					<tbody id="event_body">
 
 					</tbody>
 				</table>
-				<input type="hidden" id="userId" value="${userId }">
+				<input type="hidden" name = "userId" id="userId" value="${userId }">
+		
 			</div>
 		</div>
 	</div>
