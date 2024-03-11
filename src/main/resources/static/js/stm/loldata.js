@@ -970,7 +970,7 @@ function clickOnLoadMore(int) {
 	//	2. 그 시간 안에 사용자가 더 클릭하지 못하게 setInterval함수로 막아둔다.
 	//	3. 받은 값을 중복제거 시켜 view에 뿌려준다.
 
-	matchCnt++;
+	
 	int = 6;
 	let timerId = setInterval(() => {
 
@@ -1052,6 +1052,7 @@ function clickOnLoadMore(int) {
 	//	console.log(testList)
 	showGameTamble(testList)
 	window.scrollTo(0, 99999);
+	matchCnt++;
 }
 
 
