@@ -33,20 +33,21 @@ $(document).ready(function() {
 		aastr = "<img width=300 height=300 src='/img/tier/" + tier + ".png'	 alt='티어''>"
 
 		$('.imimim').html(aastr)
+	
 
-	}, 2000);
+	}, 1600);
 	setTimeout(function() {
 		aastr = "<img width=300 height=300 src='/img/effect/ef1.gif' alt='티어이펙트''>"
 
 		$('.imimim').html(aastr)
 
-	}, 1800);
+	}, 1400);
 	setTimeout(function() {
 		aastr = "<img width=300 height=300 src='/img/effect/ef2.gif' alt='티어이펙트''>"
 
 		$('.imimim').html(aastr)
 
-	}, 1600);
+	}, 1200);
 	//		setTimeout(function() {
 	//			aastr = "<img width=300 height=300 src='/img/effect/starEffect.gif' alt='티어이펙트''>"
 	//	
@@ -71,6 +72,9 @@ $(document).ready(function() {
 	}, 4000);
 
 })
+
+
+
 
 function logolodingImg() {
 
@@ -381,14 +385,14 @@ function aiCheckTroll(res1) {
 					}
 				})//ajax끝
 			} else if (res.queueId == 450) {
-//				console.log(res)
+				//				console.log(res)
 				$.ajax({
 					contentType: 'application/json',
 					type: 'post',
 					url: '/ai/trollcheck450',
 					data: JSON.stringify(res),
 					success: function(infoData) {
-//						console.log(infoData)
+						//						console.log(infoData)
 						matchId = infoData['matchId']
 						participantId = infoData['participantId']
 						tier = infoData['tier']
@@ -429,7 +433,7 @@ function aiCheckTroll(res1) {
 								  </div>`
 
 							$('#' + matchId + participantId).html(str);
-		
+
 						} else if (res.win == 1) { // 게임 : 승리
 
 							if (value == '패') { //인공지능 지표 : 패
@@ -790,7 +794,7 @@ function findPartOfQueuId() {
 		data: { 'riotIdGameName': gameName },
 		success: function(res) {
 			checkPartQueueId = res
-						console.log(res)
+			console.log(res)
 
 			for (let i in checkPartQueueId) {
 				queueId_kor = checkPartQueueId[i]['queueId_kor']
@@ -809,6 +813,13 @@ function findPartOfQueuId() {
 
 ////////////////////롤 업데이트 시작//////////////////
 function update(gameName, tagLine) {
+	if (tier != '') {
+//			console.log("티어값 존재")
+		aastr = "<img width=300 height=300 src='/img/tier/" + tier + ".png'	 alt='티어''>"
+
+		$('.imimim').html(aastr)
+
+	}
 	//	console.log("업데이트 시작...")
 	data = { 'gameName': gameName, 'tagLine': tagLine }
 	//	console.log(data)
@@ -834,6 +845,8 @@ function update(gameName, tagLine) {
 
 function updateSave(res) { //업데이트 저장문구
 	//	console.log(data)
+	//5초 기다리게 할지말지 고민
+	
 	console.log("New Data input..")
 	if (res.length != 0) {
 		MList = [];
@@ -970,7 +983,7 @@ function clickOnLoadMore(int) {
 	//	2. 그 시간 안에 사용자가 더 클릭하지 못하게 setInterval함수로 막아둔다.
 	//	3. 받은 값을 중복제거 시켜 view에 뿌려준다.
 
-	
+
 	int = 6;
 	let timerId = setInterval(() => {
 
