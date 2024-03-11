@@ -164,7 +164,7 @@ public class RestPythonBuilder {
 		ObjectMapper objectMapper = new ObjectMapper();
 		aiReultMap = objectMapper.readValue(buffer.toString(), Map.class);
 
-		log.info("칼바람 결과값 : {}", aiReultMap);
+//		log.info("칼바람 결과값 : {}", aiReultMap);
 		return matchListService.saveAiData(aiReultMap);
 
 	}

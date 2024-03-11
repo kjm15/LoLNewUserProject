@@ -382,14 +382,14 @@ function aiCheckTroll(res1) {
 					}
 				})//ajax끝
 			} else if (res.queueId == 450) {
-				console.log(res)
+//				console.log(res)
 				$.ajax({
 					contentType: 'application/json',
 					type: 'post',
 					url: '/ai/trollcheck450',
 					data: JSON.stringify(res),
 					success: function(infoData) {
-						console.log(infoData)
+//						console.log(infoData)
 						matchId = infoData['matchId']
 						participantId = infoData['participantId']
 						tier = infoData['tier']
@@ -792,7 +792,7 @@ function findPartOfQueuId() {
 		data: { 'riotIdGameName': gameName },
 		success: function(res) {
 			checkPartQueueId = res
-			//			console.log(res)
+						console.log(res)
 
 			for (let i in checkPartQueueId) {
 				queueId_kor = checkPartQueueId[i]['queueId_kor']
