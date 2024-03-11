@@ -41,10 +41,10 @@ $('#inqMain2').on("click", function() {
 
 })
 $('#inqMain3').on("click", function() {
-	inqMaininfo()
 	modal2.style.display = "none"
 	modal3.style.display = "none"
 	modal1.style.display = "flex"
+	inqMaininfo()
 
 })
 $('#eventMessage').on("click", function() {
@@ -191,24 +191,63 @@ modal1_wrap.addEventListener("click", e => {
 	
 
 })
-//function inqMaininfo() {
-//        $.ajax({
-//            type: 'post',
-//            url: '/inqMainInfo', // 서버에서 데이터를 처리하는 엔드포인트 URL
-//            success: function(res) {
-//                console.log(res);
-//                let str = '';
-//                for (let i in res) {
-//                    str += `<tr class="inqlist">
-//                        <td class="n_num">${res[i].n_num}</td>
-//                        <td class="n_title">${res[i].n_title}</td>
-//                        <td class="n_date">${res[i].n_date}</td>
-//                    </tr>`;
-//                }
-//                $('#inqbody').html(str); // 데이터를 테이블에 삽입
-//            },
-//            error: function(xhr, status, error) {
-//                console.error(error);
-//            }
-//        });
-//    }
+//문의하기
+$('#mailsend').on("click", function() {
+	
+	//채팅방의 send()메소드와 이름이 같아서 에러발생
+	// send1로 변경 추후에 원하는 메소드 이름으로 변경 요망
+	//장기훈씀
+	sendMessage()
+})
+
+function sendMessage() {
+	let recv_userId = $('#recv_userId').val()
+	let send_userId = $('#send_userId').val()
+	let n_title = $('#n_title').val()
+	let n_message = $('#n_message').val()
+	let status = $('#status').val()
+	
+	 // 입력 필드가 비어 있는지 검사
+	    if (!n_title || !n_message ) {
+        alert("전송 실패");
+        return;
+    }
+
+	data = {
+		'recv_userId': recv_userId,
+		'send_userId': send_userId,
+		'n_title': n_title,
+		'n_message': n_message,
+		'status': status
+	}
+
+	$.ajax({
+
+		type: 'post',
+		url: '/mailsend',
+		data: data,
+		success: function(res) {
+			console.log(res)
+
+			if (res == 1) {
+				alert("접수완료")
+				modal2.style.display = "none"
+				modal3.style.display = "none"
+				modal1.style.display = "flex"
+				inqMaininfo()
+				
+				
+			} else {
+				alert("전송 실패")
+			}
+
+		}
+	})
+
+
+}
+//
+
+$(document).ready(function() {
+	document.querySelector("#status").innerText = '처리전'
+})

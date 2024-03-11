@@ -60,6 +60,7 @@ function aaa(userId) {
 
 			if (res == 1) {
 				console.log(userId + "님께 메시지를 성공적으로 보냈습니다.")
+				location.href = "/admin/inq"
 			} else {
 				alert("전송 실패")
 			}

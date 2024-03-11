@@ -9,12 +9,11 @@
 	align-items: center;
 	justify-content: center;
 	background: none;
-	box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.37);
+	box-shadow: none;
 	backdrop-filter: none;
 	border-radius: 10px;
 	border: 1px solid rgba(255, 255, 255, 0.18);
 }
-
 
 .modal1-overlay {
 	width: 100%;
@@ -27,7 +26,7 @@
 	align-items: center;
 	justify-content: center;
 	background: none;
-	box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.37);
+	box-shadow: none;
 	backdrop-filter: none;
 	border-radius: 10px;
 	border: 1px solid rgba(255, 255, 255, 0.18);
@@ -44,7 +43,7 @@
 	align-items: center;
 	justify-content: center;
 	background: none;
-	box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.37);
+	box-shadow: none;
 	backdrop-filter: none;
 	border-radius: 10px;
 	border: 1px solid rgba(255, 255, 255, 0.18);
@@ -61,7 +60,7 @@
 	align-items: center;
 	justify-content: center;
 	background: none;
-	box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.37);
+	box-shadow: none;
 	backdrop-filter: none;
 	border-radius: 10px;
 	border: 1px solid rgba(255, 255, 255, 0.18);
@@ -78,78 +77,70 @@
 	align-items: center;
 	justify-content: center;
 	background: none;
-	box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.37);
-	backdrop-filter: none;
+	box-shadow: none; backdrop-filter : none;
 	border-radius: 10px;
 	border: 1px solid rgba(255, 255, 255, 0.18);
+	backdrop-filter: none;
 }
+
 .modal0-window {
-	background : white;
+	background: white;
 	box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.22);
 	backdrop-filter: none;
 	border-radius: 10px;
-	border: 1px solid rgba(255, 255, 255, 0.18);
 	width: 700px;
 	height: 400px;
 	position: relative;
-	padding : 10px;
 	z-index: 100;
 }
+
 .modal1-window {
-	
 	font-family: 'Jua', sans-serif;
-	background : white;
+	background: white;
 	box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.22);
 	backdrop-filter: none;
 	border-radius: 10px;
-	border: 1px solid rgba(255, 255, 255, 0.18);
 	width: 1000px;
 	height: 800px;
 	position: relative;
-	padding : 10px;
 	z-index: 100;
 }
+
 .modal2-window {
 	font-family: 'Jua', sans-serif;
-	background : white;
+	background: white;
 	box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.22);
 	backdrop-filter: none;
 	border-radius: 10px;
-	border: 1px solid rgba(255, 255, 255, 0.18);
 	width: 1000px;
 	height: 800px;
 	position: relative;
-	padding : 10px;
 	z-index: 100;
 }
+
 .modal3-window {
 	font-family: 'Jua', sans-serif;
-	background : #e3f2fd;
+	background: #e3f2fd;
 	box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.22);
 	backdrop-filter: none;
 	border-radius: 10px;
-	border: 1px solid rgba(255, 255, 255, 0.18);
 	width: 800px;
 	height: 500px;
 	position: relative;
-	padding : 10px;
 	z-index: 100;
 }
 
 .modal4-window {
 	font-family: 'Jua', sans-serif;
-	background : #e3f2fd;
+	background: #e3f2fd;
 	box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.22);
 	backdrop-filter: none;
 	border-radius: 10px;
-	border: 1px solid rgba(255, 255, 255, 0.18);
 	width: 800px;
 	height: 500px;
 	position: relative;
-	padding : 10px;
 	z-index: 100;
 }
-
 
 .modal-title {
 	padding-left: 10px;
@@ -161,14 +152,14 @@
 /* #modal1 .title h2 { */
 /* 	display: inline; */
 /* } */
-
 .modal-close-area {
 	display: inline;
 	float: right;
 	padding-right: 10px;
 	cursor: pointer;
-	text-shadow: 1px 1px 2px gray;
-	color: white;
+	font-size: 20px;
+	color: black;
+	margin-top: 5px;
 }
 
 .modal0-content {
@@ -177,75 +168,98 @@
 	text-shadow: 1px 1px 2px black;
 	color: black;
 }
+
 .modal3-content {
 	margin-top: 20px;
 	padding: 0px 10px;
 	text-shadow: 1px 1px 2px gray;
 	color: white;
-/* 	width: 500px; */
-	border : none;
+	/* 	width: 500px; */
+	border: none;
 }
+
 .modal4-content {
 	margin-top: 20px;
 	padding: 0px 10px;
 	color: black;
-	border : none;
+	border: none;
+}
+.table table-green table-hover{
+	background-color: whitesmoke;
+}
+.thead {
+	width: 60px;
+	height: 20px;
 }
 
-.thead{
-	width : 60px;
-	height : 20px;
-}
-.thead-title{
+.thead-title {
 	position: relative;
-	top : 10px;
+	top: 10px;
 }
-.thead-message{
+
+.thead-message {
 	position: relative;
-	height : 150px;
-	top : 15px;
+	height: 150px;
+	top: 15px;
 }
-.thead-answer{
+
+.thead-answer {
 	position: relative;
-	height : 150px;
-	top : 20px;
+	height: 150px;
+	top: 20px;
 }
-.title{
+
+.title {
 	position: relative;
-	top : 10px;
+	top: 10px;
 }
-.message{
+
+.message {
 	position: relative;
-	top : 15px;
+	top: 15px;
 }
-.answer{
+
+.answer {
 	position: relative;
-	top : 20px;
+	top: 20px;
 }
-.titleArea{
-	font-size : 25px;
+
+.titleArea {
+	font-size: 25px;
 	position: relative;
 }
-.messageArea{
+
+.messageArea {
 	position: relative;
 }
-.inqTitle{
-	width : 680px;
-	height : 40px;
-	font-size : 20px;
+
+.inqTitle {
+	width: 680px;
+	height: 40px;
+	font-size: 20px;
 	border: 1px solid #e5e5e5;
 }
-.inqMessage{
+
+.inqMessage {
 	border: 1px solid #e5e5e5;
 }
-.AnserTitle{
-	font-size : 25px;
+
+.AnserTitle {
+	font-size: 25px;
 	color: black;
 }
-.inqAnswer{
-	border : 1px solid #e5e5e5;
+
+.inqAnswer {
+	border: 1px solid #e5e5e5;
 }
-.inqAnswerBtn{
-	background : none;
-	border : 1px solid #e5e5e5;
+
+.inqAnswerBtn {
+	background: none;
+	border: 1px solid #e5e5e5;
+}
+
+.inq-nav-itemleft {
+	width: 350px;
+	height: 100%;
+	float: left;
 }
