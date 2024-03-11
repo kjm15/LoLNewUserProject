@@ -620,8 +620,8 @@ function showGameTamble(res) {
 			url: '/ai/timelineAni',
 			data: data1,
 			success: function(res) {
-				//				console.log(res.matchId + "saved")
 
+				//				console.log(res)
 				html = `<div  tooltip="리플레이는 회원만 가능합니다." ><a href="javascript:aiTimelineAni(\'${res.matchId}\');"><img width=80 height=40 src="/img/replay3.png" alt="리플레이시작버튼"> </a></div>`
 				$('#' + res.matchId).html(html)
 			}
@@ -997,8 +997,13 @@ function aiTimelineAni(matchId) {
 		success: function(res) {
 
 			timeline_list.push(res)
-			console.log(timeline_list)
+			//			console.log(timeline_list)
 			open()
+			liveReplay()
+			$('#replayStart').css("visibility", "hidden");
+
+
+			$('.center-box2').empty()
 		}
 	})
 
@@ -1062,7 +1067,7 @@ function queuecheck(res) {
 
 }
 function queuecheckInt(queue) {
-	console.log(queue)
+	//	console.log(queue)
 	if (queue == "ALL") {
 		queueId = 0
 	} else if (queue == "솔로랭크") {
@@ -1075,6 +1080,10 @@ function queuecheckInt(queue) {
 		queueId = 440
 	} else if (queue == "우르프") {
 		queueId = 1900
+	} else if (queue == "아레나") {
+		queueId = 1700
+	}else if (queue == "격전") {
+		queueId = 700
 	}
 	return queueId
 
@@ -1093,7 +1102,12 @@ function queueChange(queueId) {
 		queue = "우르프"
 	} else if (queueId == 0) {
 		queue = "ALL"
+	} else if (queueId == 1700) {
+		queue = "아레나"
+	}else if (queueId == 700) {
+		queue = "격전"
 	}
+
 	return queue
 }
 

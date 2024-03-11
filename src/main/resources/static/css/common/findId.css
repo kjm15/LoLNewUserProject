@@ -1,3 +1,9 @@
+body{
+	
+	margin: -8px;
+	
+}
+
 .navbars {
 	font-family: 'Jua', sans-serif;
 	display: flex;

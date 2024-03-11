@@ -27,7 +27,7 @@ function liveGoldCheck(i) {
 	let minPerGold1 = minPerGold.replace(/\"/gi, "")
 	var champ12345678910Gold = minPerGold1.split(':');
 	let champ12345Gold = champ12345678910Gold[0] // 아이디
-//	console.log(champ12345Gold)
+	//	console.log(champ12345Gold)
 	//	if (i = 1) {
 	//
 	//		value1 = champ12345Gold - 50
@@ -38,7 +38,7 @@ function liveGoldCheck(i) {
 
 	$('.goldProgress').width(champ12345Gold + '%')
 
-	$('#nowGold').html(minPerGold1) 
+	$('#nowGold').html(minPerGold1)
 	//	const barAnimation = setInterval(() => {
 
 	//		$('.goldProgress').width(champ12345Gold + '%')
@@ -129,7 +129,12 @@ function skip() {
 			border2 = ' style="border:2px solid; border-color:green; border-radius: 50%;" '
 
 		}
-
+		if (championName1 == "FiddleSticks") {
+			championName1 = "Fiddlesticks"
+		}
+		if (championName2 == "FiddleSticks") {
+			championName2 = "Fiddlesticks"
+		}
 
 
 		img1 = "<img " + border1 + " width = 30 height = 30 onerror=this.src='/img/object/" + championName1 + ".png' src = 'https://ddragon.leagueoflegends.com/cdn/14.3.1/img/champion/" + championName1 + ".png' >"
@@ -275,6 +280,12 @@ function inputTimeToImg(nowTime, champName) {
 
 				border2 = ' style="border:2px solid; border-color:green; border-radius: 50%;	" '
 
+			}
+			if (championName1 == "FiddleSticks") {
+				championName1 = "Fiddlesticks"
+			}
+			if (championName2 == "FiddleSticks") {
+				championName2 = "Fiddlesticks"
 			}
 
 			img1 = "<img  " + border1 + " width = 30 height = 30 onerror=this.src='/img/object/" + championName1 + ".png' src = 'https://ddragon.leagueoflegends.com/cdn/14.3.1/img/champion/" + championName1 + ".png' >"
@@ -525,6 +536,12 @@ progressBar.addEventListener('click', (e) => {
 		border2 = ' style="border:2px solid; border-color:green; border-radius: 50%;" '
 
 	}
+	if (championName1 == "FiddleSticks") {
+		championName1 = "Fiddlesticks"
+	}
+	if (championName2 == "FiddleSticks") {
+		championName2 = "Fiddlesticks"
+	}
 
 	img1 = "<img " + border1 + " width = 30 height = 30 onerror=this.src='/img/object/" + championName1 + ".png' src = 'https://ddragon.leagueoflegends.com/cdn/14.3.1/img/champion/" + championName1 + ".png' >"
 	img2 = "<img " + border2 + "width = 30 height = 30 onerror=this.src='/img/object/" + championName2 + ".png' src = 'https://ddragon.leagueoflegends.com/cdn/14.3.1/img/champion/" + championName2 + ".png' >"
@@ -615,6 +632,12 @@ function imgClick(team, champName) {
 			}
 
 			//			console.log("클릭중")
+			if (championName1 == "FiddleSticks") {
+				championName1 = "Fiddlesticks"
+			}
+			if (championName2 == "FiddleSticks") {
+				championName2 = "Fiddlesticks"
+			}
 
 			img1 = "<img " + border1 + " width = 30 height = 30 onerror=this.src='/img/object/" + championName1 + ".png' src = 'https://ddragon.leagueoflegends.com/cdn/14.3.1/img/champion/" + championName1 + ".png' >"
 			img2 = "<img " + border2 + "width = 30 height = 30 onerror=this.src='/img/object/" + championName2 + ".png' src = 'https://ddragon.leagueoflegends.com/cdn/14.3.1/img/champion/" + championName2 + ".png' >"
@@ -773,6 +796,12 @@ function showInfoTimeLine(i) {
 
 		border2 = ' style="border:2px solid; border-color:green; border-radius: 50%;" '
 
+	}
+	if (championName1 == "FiddleSticks") {
+		championName1 = "Fiddlesticks"
+	}
+	if (championName2 == "FiddleSticks") {
+		championName2 = "Fiddlesticks"
 	}
 
 	img1 = "<img " + border1 + " width = 30 height = 30 onerror=this.src='/img/object/" + championName1 + ".png' src = 'https://ddragon.leagueoflegends.com/cdn/14.3.1/img/champion/" + championName1 + ".png' >"

@@ -341,15 +341,16 @@ function aiCheckTroll(res1) {
 								  </div>`
 
 							$('#' + matchId + participantId).html(str);
-//							if (rankingS >= 5) {
-//
-////								$('#' + matchId + participantId).css("color", "red")
-//							}
+							//							if (rankingS >= 5) {
+							//
+							////								$('#' + matchId + participantId).css("color", "red")
+							//							}
 
 						}
 						//ai판결시작
 						else if (res.win == 1) { // 게임 : 승리 
 							//							console.log("1")
+
 							if (key == '패') { //인공지능 지표 : 패
 
 								win = 'AI판결 : 팀빨로 승리해습니다.'
@@ -381,44 +382,80 @@ function aiCheckTroll(res1) {
 					}
 				})//ajax끝
 			} else if (res.queueId == 450) {
-				data = res
-
+//				console.log(res)
 				$.ajax({
 					contentType: 'application/json',
 					type: 'post',
 					url: '/ai/trollcheck450',
-					data: JSON.stringify(data),
-					success: function(res1) {
-						console.log(res1)
-						for (const [key, value] of Object.entries(res1)) {
-							if (res.win == 1) { // 게임 : 승리
-
-								if (value == '패') { //인공지능 지표 : 패
-
-									str = '<div class = checkFlagStamp><div class="stampLose"><span tooltip="' + res1.champion_name_kr + ' 평균 이하의 트롤러">부족!</span></div></div>'
-									$('#' + key).html(str);
-
-								} else { //인공지능 지표: 승
-
-									$('#' + key).html('평균');
-								}
-							} else { // 게임 : 패배
-								if (value == '패') { //인공지능 지표 : 패
-
-									str = '평균'
-									$('#' + key).html('평균');
-
-								} else { //인공지능 지표: 승
-									str = '<div class = checkFlagStamp><div class="stampWin"><span tooltip=" ' + res1.champion_name_kr + ' 평균 이상의 실력자">평균이상</span></div>	</div>'
-									$('#' + key).html(str);
-								}
+					data: JSON.stringify(res),
+					success: function(infoData) {
+//						console.log(infoData)
+						matchId = infoData['matchId']
+						participantId = infoData['participantId']
+						tier = infoData['tier']
+						key = infoData['key']
+						length = infoData['length']
+						accuracy = infoData['accuracy']
+						rankingS = infoData['rankingS']
+						if (tier == 'Tier' || key == 'error' || key == '에러' || length < 5 || accuracy < 0.7) {
+							//에러 or 정확도 낮는 데이터 제외
+							$('#' + matchId + participantId).html("평균");
 
 
+						} else if (rankingS > -1) {
+							//							console.log("0")
+							userLevelKoList = ["중간계", "고수", "초고수", "전설", "영웅", "신"]
+							userTier = infoData.tier
+							if (rankingS > 5) {
+
+								rankingS = 5
 							}
+
+
+							userLevel = userLevelKoList[rankingS]
+
+							//							console.log(userLevel)
+
+
+							str = `<div class = checkFlagStamp>
+											
+											<div class="stampGosu">
+												<center>
+												<span tooltip="${userTier} 구간 한정">
+													${userLevel}
+												</span>
+												</center>
+											</div>
+									
+								  </div>`
+
+							$('#' + matchId + participantId).html(str);
+		
+						} else if (res.win == 1) { // 게임 : 승리
+
+							if (value == '패') { //인공지능 지표 : 패
+
+								str = '<div class = checkFlagStamp><div class="stampLose"><span tooltip="' + tier + '구간의 칼바람 트롤러">실력이...!</span></div></div>'
+								$('#' + matchId + participantId).html(str);
+
+							} else { //인공지능 지표: 승
+
+								$('#' + matchId + participantId).html('평균');
+							}
+						} else { // 게임 : 패배
+							if (value == '패') { //인공지능 지표 : 패
+
+								str = '평균'
+								$('#' + matchId + participantId).html('평균');
+
+							} else { //인공지능 지표: 승
+								str = '<div class = checkFlagStamp><div class="stampWin"><span tooltip=" ' + tier + ' 구간의 칼바람 실력자">실력이?? </span></div>	</div>'
+								$('#' + matchId + participantId).html(str);
+							}
+
+
 						}
-					}, error: function(error) {
-						$('#' + key).html("평균");
-						console.log(error)
+
 					}
 				})//ajax끝
 
@@ -755,7 +792,7 @@ function findPartOfQueuId() {
 		data: { 'riotIdGameName': gameName },
 		success: function(res) {
 			checkPartQueueId = res
-			//			console.log(res)
+						console.log(res)
 
 			for (let i in checkPartQueueId) {
 				queueId_kor = checkPartQueueId[i]['queueId_kor']

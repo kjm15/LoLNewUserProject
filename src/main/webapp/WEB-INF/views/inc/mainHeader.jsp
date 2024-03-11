@@ -146,12 +146,7 @@
 				<div class="navMenu">
 					<a href="/kdg" class="nM-select">아이템 분석</a>
 				</div>
-				<div class="navMenu">
-					<a href="/member/findIdT" class="nM-select">아이디 찾기</a>
-				</div>
-				<div class="navMenu">
-					<a href="/member/findPw" class="nM-select">비밀번호 찾기</a>
-				</div>
+		
 
 				<div class="darkmod_checkbox">
 					<div class="toggle_box">
