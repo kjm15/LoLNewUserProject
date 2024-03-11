@@ -18,22 +18,26 @@
 </head>
 
 <body>
-	<div class="navbars">
-		<div class="navbarMain">
-			<a href="/member/findIdT">아이디찾기</a>
-		</div>
-		<div class="navMenuDuo">
-			<a href="/member/findPw">비밀번호찾기</a>
+
+
+		<div class="navbars">
+			<div class="navbarMain">
+				<a href="/member/findIdT">아이디찾기</a>
+			</div>
+			<div class="navMenuDuo">
+				<a href="/member/findPw">비밀번호찾기</a>
+			</div>
+
+			<div class="search-contents1"></div>
 		</div>
 
-		<div class="search-contents1"></div>
-	</div>
 	<div class="container">
 		<div class="container2">
 			<div class="div_email">
 				<label for="r_pn2" class="label_rd">본인확인 이메일로 인증</label>
 				<div class="box_inn_sub">
-					<p class="dsc">본인확인 이메일 주소와 입력한 이메일 주소가 같아야, 인증번호를 받을 수 있습니다.</p><br>
+					<p class="dsc">본인확인 이메일 주소와 입력한 이메일 주소가 같아야, 인증번호를 받을 수 있습니다.</p>
+					<br>
 
 					<!-- 							<label for="emailNm" class="label_txt">이름</label> <input -->
 					<!-- 								type="text" id="emailNm" class="emailNm" name="emailNm" -->
@@ -45,7 +49,8 @@
 							id="userEmail" placeholder="">
 						<button type="button" id="sendBtn" name="sendBtn"
 							onclick="sendNumber()" disabled="disabled">인증번호 받기</button>
-						<br> <label class = "chkArea" for="email" id="mailTxt">이메일을 입력해주세요</label>
+						<br> <label class="chkArea" for="email" id="mailTxt">이메일을
+							입력해주세요</label>
 						<!-- id = mail 바꾸지 말것 -->
 
 
@@ -64,12 +69,12 @@
 			</div>
 		</div>
 	</div>
-
-	<div class="navbars2">
-		<div class="navbarMain">
-			<a href="/">DataBoom</a>
+	
+		<div class="navbars2">
+			<div class="navbarMain">
+				<a href="/">DataBoom</a>
+			</div>
 		</div>
-	</div>
 	
 	<%@include file="findIdresult.jsp"%>
 

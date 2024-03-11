@@ -620,8 +620,8 @@ function showGameTamble(res) {
 			url: '/ai/timelineAni',
 			data: data1,
 			success: function(res) {
-				//				console.log(res.matchId + "saved")
 
+				//				console.log(res)
 				html = `<div  tooltip="리플레이는 회원만 가능합니다." ><a href="javascript:aiTimelineAni(\'${res.matchId}\');"><img width=80 height=40 src="/img/replay3.png" alt="리플레이시작버튼"> </a></div>`
 				$('#' + res.matchId).html(html)
 			}
@@ -999,6 +999,11 @@ function aiTimelineAni(matchId) {
 			timeline_list.push(res)
 			console.log(timeline_list)
 			open()
+			liveReplay()
+			$('#replayStart').css("visibility", "hidden");
+
+
+			$('.center-box2').empty()
 		}
 	})
 

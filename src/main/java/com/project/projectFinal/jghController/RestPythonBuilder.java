@@ -72,8 +72,8 @@ public class RestPythonBuilder {
 			filePath = "src/main/resources/static/py/aiModelSave/aiModelCheck.py";
 		}
 
-		ProcessBuilder pb = new ProcessBuilder().command("python", filePath, matchId, tier, teamPosition,
-				gameDuration, kda, totalDamageDealtToChampions, goldEarned, championName, queueId , participantId,champion_name_kr// ,
+		ProcessBuilder pb = new ProcessBuilder().command("python", filePath, matchId, tier, teamPosition, gameDuration,
+				kda, totalDamageDealtToChampions, goldEarned, championName, queueId, participantId, champion_name_kr// ,
 		);
 		Process p = pb.start();
 		BufferedReader in = new BufferedReader(new InputStreamReader(p.getInputStream()));
@@ -106,7 +106,6 @@ public class RestPythonBuilder {
 			return matchListService.saveAiData(bMap);
 		}
 
-
 //		log.info("==={}", bMap);
 //			return null;
 		return matchListService.saveAiData(bMap);
@@ -117,7 +116,12 @@ public class RestPythonBuilder {
 	public Map<String, Object> trollcheck450(@RequestBody Map<String, Object> aMap, Model model,
 			HttpSession httpSession) throws Exception {
 		Map<String, Object> aiReultMap = new HashMap<>();
-//		log.info("===myMap : {}", aMap);
+		HashMap<String, Object> fList = matchListService.findAiData(aMap);
+		if (fList != null) {
+
+			return fList;
+		}
+		log.info("===myMap : {}", aMap);
 		String userId = (String) httpSession.getAttribute("userId");
 		String filePath = "";
 		if (userId == null) {
@@ -129,7 +133,7 @@ public class RestPythonBuilder {
 
 		} else {
 			log.info("일반 인공지능 접속");
-			filePath = "src/main/resources/static/py/jgh/aiTrollCheck420.py";
+			filePath = "src/main/resources/static/py/jgh/aiTrollCheck450.py";
 
 		}
 
@@ -143,46 +147,37 @@ public class RestPythonBuilder {
 		String championName = String.valueOf(aMap.get("championName"));
 		String champion_name_kr = String.valueOf(aMap.get("champion_name_kr"));
 		String airesult = String.valueOf(aMap.get("airesult"));
+		String tier = (String) aMap.get("Tier");
 
-		if (airesult.equals("null")) { // ai결과가 없으면
-			ProcessBuilder pb = new ProcessBuilder().command("python", filePath, key, gameDuration, kda,
-					totalDamageDealtToChampions, goldEarned, championName);
-			Process p = pb.start();
-			BufferedReader in = new BufferedReader(new InputStreamReader(p.getInputStream()));
-			StringBuilder buffer = new StringBuilder();
-			String line = null;
-			while ((line = in.readLine()) != null) {
-				buffer.append(line);
-			}
-			int exitCode = p.waitFor();
-
-			in.close();
-			ObjectMapper objectMapper = new ObjectMapper();
-			aiReultMap = objectMapper.readValue(buffer.toString(), Map.class);
-
-			aiReultMap.put("matchId", matchId);
-			aiReultMap.put("participantId", participantId);
-//		log.info("칼바람 결과값 : {}", aiReultMap);
-			matchListService.saveAiData(aiReultMap);
-
-		} else {
-
-			aiReultMap.put(key, matchListService.forOneData(aMap).get("airesult"));
+		ProcessBuilder pb = new ProcessBuilder().command("python", filePath, champion_name_kr, gameDuration, kda,
+				totalDamageDealtToChampions, goldEarned, championName, matchId, participantId, tier);
+		Process p = pb.start();
+		BufferedReader in = new BufferedReader(new InputStreamReader(p.getInputStream()));
+		StringBuilder buffer = new StringBuilder();
+		String line = null;
+		while ((line = in.readLine()) != null) {
+			buffer.append(line);
 		}
-		aiReultMap.put("champion_name_kr", champion_name_kr);
+		int exitCode = p.waitFor();
 
-		return aiReultMap;
+		in.close();
+		ObjectMapper objectMapper = new ObjectMapper();
+		aiReultMap = objectMapper.readValue(buffer.toString(), Map.class);
+
+		log.info("칼바람 결과값 : {}", aiReultMap);
+		return matchListService.saveAiData(aiReultMap);
+
 	}
 
 	// 타임라인애니메이팅 insert
 	@PostMapping("/timelineAni")
 	public Map<String, Object> trollcheck450(String matchId, Model model) throws Exception {
 
-		Map<String, Object> aiReultMap = new HashMap<>();
+		Map<String, Object> aiTimeLineMap = new HashMap<>();
 		List<Map<String, Object>> timelineInfo = timelineInfo(matchId);
 		if (timelineInfo.size() != 0) {
-			aiReultMap.put("matchId", matchId);
-			return aiReultMap;
+			aiTimeLineMap.put("matchId", matchId);
+			return aiTimeLineMap;
 
 		}
 
@@ -200,13 +195,13 @@ public class RestPythonBuilder {
 
 		in.close();
 		ObjectMapper objectMapper = new ObjectMapper();
-		aiReultMap = objectMapper.readValue(buffer.toString(), Map.class);
+		aiTimeLineMap = objectMapper.readValue(buffer.toString(), Map.class);
 
-		aiReultMap.put("matchId", matchId);
-		log.info("칼바람 결과값 : {}", aiReultMap);
-		matchListService.saveAiData(aiReultMap);
+		aiTimeLineMap.put("matchId", matchId);
+		log.info("칼바람 결과값 : {}", aiTimeLineMap);
+//		matchListService.saveAiData(aiReultMap);
 
-		return aiReultMap;
+		return aiTimeLineMap;
 
 	}
 

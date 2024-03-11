@@ -21,13 +21,13 @@ $('#liveBroadCastSkip').on('click', function() {
 })
 //실시간 골드량 분석기
 percent = 0
-function liveGoldCheck(i) {
+function liveGoldCheck(i) {	
 	let value1 = 0
 	let minPerGold = timeline_list[0][i - 1]['minPerGold']
 	let minPerGold1 = minPerGold.replace(/\"/gi, "")
 	var champ12345678910Gold = minPerGold1.split(':');
 	let champ12345Gold = champ12345678910Gold[0] // 아이디
-//	console.log(champ12345Gold)
+	//	console.log(champ12345Gold)
 	//	if (i = 1) {
 	//
 	//		value1 = champ12345Gold - 50
@@ -38,7 +38,7 @@ function liveGoldCheck(i) {
 
 	$('.goldProgress').width(champ12345Gold + '%')
 
-	$('#nowGold').html(minPerGold1) 
+	$('#nowGold').html(minPerGold1)
 	//	const barAnimation = setInterval(() => {
 
 	//		$('.goldProgress').width(champ12345Gold + '%')
