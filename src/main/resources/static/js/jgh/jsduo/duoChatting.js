@@ -7,18 +7,22 @@ $('#duoParty').on("click", function() {
 	let userId = $('#userId').val() //로그인한사람
 	let hostId = $('#hostId').val() //작성자
 	let temp1 = {}
+	
+	
+	
+	
 	temp1.work = "createQuestion"
 	temp1.rCnt = rCnt
 	temp1.userId = userId
 	if (userId == '') {
-
-		$('#flagcollapse').html("<font color='red'>회원전용입니다. 로그인 부탁드립니다.</font>")
+		alert("회원전용입니다.")
+		$('#flagcollapse').html("<font color='red'> 로그인 부탁드립니다.</font>")
 		return false
 	} else if (hostId == '비회원') {
 		$('#flagcollapse').html("<font color='red'>비회원이 올린 게시물은 쪽지로만 대화가 가능합니다.</font>")
 		return false
 	} else if (hostId == userId) {
-
+		alert("본인 게시글 입니다.")
 		$('#flagcollapse').html("<font color='red'>본인 게시글 입니다.</font>")
 		return false
 
