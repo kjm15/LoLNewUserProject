@@ -176,14 +176,14 @@
 	<select id="infoDataCnt">
 		select matchId
 		from RiotGameInfoT
-		where riotIdGameName = #{gameName} and queueId = #{queueId}
+		where riotIdGameName = #{gameName} and queueId = #{queueId} and riotIdTagline = #{tagLine}
 		order by matchId desc
 		limit 0,#{matchCnt};
 	</select>
 		<select id="infoDataAllCnt">
 		select matchId
 		from RiotGameInfoT
-		where riotIdGameName = #{gameName}
+		where riotIdGameName = #{gameName} and riotIdTagline = #{tagLine}
 		order by matchId desc
 		limit 0,#{matchCnt};
 	</select>

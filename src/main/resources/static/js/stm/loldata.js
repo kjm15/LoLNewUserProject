@@ -29,11 +29,15 @@ $(document).ready(function() {
 	logolodingImg()
 	mainStart()
 
+	//					`<img width=300 height=300 src='/img/tier/.png>`
+
+
+
 	setTimeout(function() {
 		aastr = "<img width=300 height=300 src='/img/tier/" + tier + ".png'	 alt='티어''>"
 
 		$('.imimim').html(aastr)
-	
+
 
 	}, 1600);
 	setTimeout(function() {
@@ -749,6 +753,8 @@ function goTier(gameName, tagLine) {
 function reload(gameName, tagLine, q) { //무조건 처음에 뜨는 메소드 :전체,솔랭,등
 
 
+
+
 	$('#loadMore').hide()
 	nowStatus = queueChange(q)
 	queueId = q
@@ -814,7 +820,7 @@ function findPartOfQueuId() {
 ////////////////////롤 업데이트 시작//////////////////
 function update(gameName, tagLine) {
 	if (tier != '') {
-//			console.log("티어값 존재")
+		//			console.log("티어값 존재")
 		aastr = "<img width=300 height=300 src='/img/tier/" + tier + ".png'	 alt='티어''>"
 
 		$('.imimim').html(aastr)
@@ -846,7 +852,7 @@ function update(gameName, tagLine) {
 function updateSave(res) { //업데이트 저장문구
 	//	console.log(data)
 	//5초 기다리게 할지말지 고민
-	
+
 	console.log("New Data input..")
 	if (res.length != 0) {
 		MList = [];
@@ -973,6 +979,11 @@ $(window).scroll(
 function clickOnLoadMore(int) {
 	document.getElementById('loadMore').value = "5초 뒤에 가능합니다."
 	document.getElementById('loadMore').disabled = false;
+	console.log(tier)
+
+
+	aastr = "<img width=300 height=300 src='/img/tier/" + tier + ".png'	 alt='티어''>"
+
 	update(gameName, tagLine)
 	//	if (allofList.length < 10) {
 	//
@@ -1066,6 +1077,7 @@ function clickOnLoadMore(int) {
 	showGameTamble(testList)
 	window.scrollTo(0, 99999);
 	matchCnt++;
+	$('.imimim').html(aastr)
 }
 
 

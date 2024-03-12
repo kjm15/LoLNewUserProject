@@ -460,21 +460,15 @@ progressBar.addEventListener('click', (e) => {
 		}
 
 	}
-	if (a != '') {
-		$('#' + id).css("background-color", "")
-		clearInterval(playBackGroundColor);
-		//		console.log("시작할때 색제거")
-	}
+
 	//오른쪽 포커스
 
 	progressPercent = (e.offsetX / 500) //500은 그림 픽셀
-	//	console.log(e.offsetX)
 	len = timeline_list[0].length
 	document.querySelector(".progress-bar").style.width = progressPercent * 100 + "%";
 	i = parseInt(len * progressPercent)
 	liveGoldCheck(i)
 	id = 'showImg' + i
-	//	console.log(id)
 	document.getElementById(id).scrollIntoView();
 
 	$('#' + id).css("background-color", "rgba(100, 170, 253, 1)")
@@ -484,18 +478,13 @@ progressBar.addEventListener('click', (e) => {
 		if (a > 0) {
 			a -= 0.05;
 			$('#' + id).css("background-color", "rgba(100, 170, 253, " + a + ")")
-
-			if (a <= 0) {
-				checkPlayBackGroundColor = 1
-				$('#' + id).css("background-color", "")
-			}
 		}
-		if (checkPlayBackGroundColor == 1) {
-			a = 0
+		else {	//색변경 완료
+			
+			$('#' + id).css("background-color", "")
 			checkPlayBackGroundColor = 0
-			//			console.log("색변경 완료")
 			clearInterval(playBackGroundColor);
-
+			console.log(a)
 		}
 	}, 50);
 

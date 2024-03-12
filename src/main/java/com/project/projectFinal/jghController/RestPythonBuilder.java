@@ -129,7 +129,7 @@ public class RestPythonBuilder {
 			filePath = "src/main/resources/static/py/jgh/aiTrollCheck450.py";
 		} else if (userId.equals("admin")) {
 			log.info("admin 인공지능 접속");
-			filePath = "src/main/resources/static/py/admin/aiTrollCheck450.py";
+			filePath = "src/main/resources/static/py/jgh/aiTrollCheck450.py";
 
 		} else {
 			log.info("일반 인공지능 접속");
