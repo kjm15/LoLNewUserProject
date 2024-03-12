@@ -9,7 +9,7 @@ $(document).ready(function() {
 
 })
 
-function choice(a) {
+function choice(a) {	
 
 	if (a == 'TierDropDown') {
 

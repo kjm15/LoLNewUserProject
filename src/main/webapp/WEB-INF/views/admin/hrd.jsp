@@ -8,21 +8,22 @@
 <meta charset="UTF-8">
 <title>인사담당자 페이지</title>
 <!-- css들어갈자리  -->
-
+<link href="/css/admin/hrdCss.css" rel="stylesheet">
 </head>
 <body>
 
 	<%@include file="../inc/header.jsp"%>
-	<a href="/admin/mng"> 메인으로 가기</a> [[인사담당관 출입가능.]]
+	<center>
+		<h1>[[인사담당관 출입가능.]]</h1>
+	</center>
 	<div class="memberC">
 
-		<div class="memberCR">
-			권한시작
-		</div>
-		<div class="memberCl">
+		<div class="memberCR"></div>
+		<div class="memberCC">
 			<div id="memberTable"></div>
 		</div>
-
+		<div class = "memberCL">
+		</div>
 	</div>
 
 
