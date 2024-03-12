@@ -15,7 +15,7 @@
 			<div class="modal3-content">
 				<input type="hidden" name="send_userId" id="send_userId" value ="${userId }">
 				<input type="hidden" name="recv_userId" id="recv_userId" value ="admin">
-				<input type="hidden" name="status" id="status" value ="문의중">
+				<input type="hidden" name="status" id="status" value ="1">
 				<div class = "titleArea">
 				Title<br><input type="text" class ="inqTitle" name="n_title" id="n_title"><br>
 				</div>
