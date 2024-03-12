@@ -60,6 +60,8 @@ public interface MemberDao {
 
 	int emailcheck(MemberDto memberDto);
 
+	ArrayList<HashMap<String, Object>> paymentTable();
+
 	
 
 

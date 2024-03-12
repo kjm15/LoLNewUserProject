@@ -114,3 +114,8 @@ $(document).on('click', '.rankLine>div', function() {
 
 
 });
+function alert1(){
+	
+	alert("개발중입니다.")
+}
+

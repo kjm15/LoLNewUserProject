@@ -36,6 +36,9 @@
 
 <!-- <script src="/static/js/bootstrap.bundle.js"></script> -->
 <link rel="stylesheet" href="../css/kdg/kdg.css" />
+
+
+
 </head>
 <body>
 	<!-- header jsp -->

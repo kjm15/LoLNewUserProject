@@ -199,4 +199,11 @@ public class MemberService implements UserDetailsService {
 			log.info("==========={}",result);
 			return result;
 		}
+
+		public ArrayList<HashMap<String, Object>> paymentTable() {
+		
+			
+			
+			return memberDao.paymentTable();
+		}
 }
