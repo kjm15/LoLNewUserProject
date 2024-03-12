@@ -76,7 +76,20 @@
 						<a href="/member/mypage">${userId}님</a>
 					</div>
 					<div class="navChoice" id="modal_test">
-						<a href="/admin/inq">총관리자</a>
+						<a href="/admin/main">총관리자</a>
+					</div>
+					<div class="navChoice">
+						<a href="/member/logout">로그아웃</a>
+					</div>
+				</div>
+			</c:when>
+			<c:when test="${userId == 'jhl'}">
+				<div class="navbarLogin">
+					<div class="navChoice">
+						<a href="/member/mypage">${userId}님</a>
+					</div>
+					<div class="navChoice" id="modal_test">
+						<a href="/jhl/admin">매니저</a>
 					</div>
 					<div class="navChoice">
 						<a href="/member/logout">로그아웃</a>
@@ -146,7 +159,7 @@
 				<div class="navMenu">
 					<a href="/kdg" class="nM-select">아이템 분석</a>
 				</div>
-		
+
 
 				<div class="darkmod_checkbox">
 					<div class="toggle_box">

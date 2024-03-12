@@ -34,8 +34,8 @@ function choiceTier1(itemNum) {
 
 	}
 
-	console.log(tierCheck)
-	console.log(itemNum)
+//	console.log(tierCheck)
+//	console.log(itemNum)
 	$('#selectTier').html(tierCheck)
 
 

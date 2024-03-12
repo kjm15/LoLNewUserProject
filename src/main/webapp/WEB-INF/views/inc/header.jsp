@@ -50,7 +50,7 @@
 		<div class="navMenuDuo">
 			<a href="/jgh">영혼의Duo</a>
 		</div>
-	<c:if test="${searchbox == null}">
+		<c:if test="${searchbox == null}">
 			<div class="search-contents1">
 				<div class="search-itmes1">
 					<div class="sc-dataBoom">
@@ -90,7 +90,20 @@
 						<a href="/member/mypage">${userId}님</a>
 					</div>
 					<div class="navChoice" id="modal_test">
-						<a href="/admin/inq">총관리자</a>
+						<a href="/admin/main">총관리자</a>
+					</div>
+					<div class="navChoice">
+						<a href="/member/logout">로그아웃</a>
+					</div>
+				</div>
+			</c:when>
+			<c:when test="${userId == 'jhl'}">
+				<div class="navbarLogin">
+					<div class="navChoice">
+						<a href="/member/mypage">${userId}님</a>
+					</div>
+					<div class="navChoice" id="modal_test">
+						<a href="/jhl/admin">매니저</a>
 					</div>
 					<div class="navChoice">
 						<a href="/member/logout">로그아웃</a>
@@ -117,8 +130,8 @@
 			</c:otherwise>
 		</c:choose>
 
-	
-		
+
+
 	</div>
 
 	<div class="headerItmes">

@@ -8,17 +8,29 @@
 <meta charset="UTF-8">
 <title>결제담당자 페이지</title>
 <!-- css들어갈자리  -->
+<style>
 
+  table {
+    width:500px;
+    border: 1px solid #444444;
+    border-collapse: collapse;
+  }
+  tbody {
+    border: 1px solid #444444;
+  }
+
+</style>
 </head>
 <body>
 
-<%@include file="../inc/header.jsp"%>
-<a href = "/admin/mng"> 메인으로 가기</a>
-[[결제담당자 출입가능.]]
+	<%@include file="../inc/header.jsp"%>
 
+	[[결제담당자 및 관리자 출입가능.]] 결제 담당 총 리스트
+	<div id = "paymentTable">
 
+	</div>
 
-<!-- <script defer src="/js/admin/info.js"></script> -->
+	<script defer src="/js/admin/payment.js"></script>
 
 
 

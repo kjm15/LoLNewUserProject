@@ -4,10 +4,10 @@
 <!DOCTYPE html>
 <html>
 <head>
-<script defer src="js/jhl/champ/champRank.js"></script>
-<script defer src="js/jhl/champ/champUpdate.js"></script>
-<script defer src="js/jhl/champ/champCounter.js"></script>
-<script defer src="js/jhl/champ/champChart.js"></script>
+<script defer src="/js/jhl/champ/champRank.js"></script>
+<script defer src="/js/jhl/champ/champUpdate.js"></script>
+<script defer src="/js/jhl/champ/champCounter.js"></script>
+<script defer src="/js/jhl/champ/champChart.js"></script>
 </head>
 <body>
 	<!-- 	<h3>카운터 챔피언 제대로 구하려면 100만개 데이터 필요...</h3> -->
@@ -48,6 +48,11 @@
 
 				<!-- 				<div class="rankbanner">배너?</div> -->
 
+				<div class="rankUpdateBtn">
+					<input type="button" id="jhlRankUpdateBtn" onclick="champUpdate()"
+						value="챔피언업데이트버튼" />
+				</div>
+
 
 				<div class="widthTest"></div>
 				<!-- 				장기훈 -->
@@ -61,11 +66,12 @@
 									<li class="sampletest"><a href="/jhl" class='Summoner-sc'>소환사의협곡</a></li>
 									<!-- 									<li class="sampletest"><a href="javascript:reload(},0)">전체</a></li> -->
 									<!-- 									<li class="sampletest"><a href="javascript:reload(},0)">전체</a></li> -->
-
-									<li class="sampletest"><a href="javascript:alert1()" class='Summoner-sc'>칼바람 나락</a></li>
-
 								</ul>
-
+									
+									<li class="sampletest"><a href="#" class='Summoner-sc'>칼바람 나락</a></li>
+									<!-- 									<li class="sampletest"><a href="javascript:reload(},0)">전체</a></li> -->
+									<!-- 									<li class="sampletest"><a href="javascript:reload(},0)">전체</a></li> -->
+								</ul>
 							</div>
 
 							<div class="contentsDetailR"></div>

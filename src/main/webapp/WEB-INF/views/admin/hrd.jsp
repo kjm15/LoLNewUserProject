@@ -12,15 +12,23 @@
 </head>
 <body>
 
-<%@include file="../inc/header.jsp"%>
-<a href = "/admin/mng"> 메인으로 가기</a>
-[[인사담당관 출입가능.]]
+	<%@include file="../inc/header.jsp"%>
+	<a href="/admin/mng"> 메인으로 가기</a> [[인사담당관 출입가능.]]
+	<div class="memberC">
 
-<div id = "memberTable"></div>
+		<div class="memberCR">
+			권한시작
+		</div>
+		<div class="memberCl">
+			<div id="memberTable"></div>
+		</div>
+
+	</div>
 
 
 
-<script defer src="/js/admin/hrd.js"></script>
+
+	<script defer src="/js/admin/hrd.js"></script>
 
 
 

@@ -369,26 +369,26 @@
 	font-size: 16px;
 }
 
-
-.moveContainerL{
-	margin-left : 200px;
+.moveContainerL {
+	margin-left: 200px;
 	width: 20%;
 }
-.moveContainerR{
-	
+
+.moveContainerR {
 	width: 20%;
 }
-.moveContainer{
 
-		position : relative;
-margin-left : 200px;
+.moveContainer {
+	position: relative;
+	margin-left: 200px;
 	display: flex;
 	width: 100%;
-	height : 100%;
+	height: 100%;
 	align-items: center;
 	justify-content: center;
 	margin-bottom: 10px;
 }
+
 .comm_contents {
 	font-family: 'Jua', sans-serif;
 	display: flex;
@@ -396,10 +396,10 @@ margin-left : 200px;
 	justify-content: center;
 }
 
-.comm_graph_content{
+.comm_graph_content {
 	font-family: 'Jua', sans-serif;
 	display: flex;
-	flex-direction:column;
+	flex-direction: column;
 	justify-content: center;
 	height: 400px;
 }
@@ -521,15 +521,15 @@ margin-left : 200px;
 }
 
 .dropdown22 {
-	top :500px;
+	top: 500px;
 	width: 310px;
 }
 
 .sideBannerL {
 	position: absolute;
 	margin-left: 1.5%;
-    width: 18.3%;
-    height: 70%;
+	width: 18.3%;
+	height: 70%;
 	top: 529px;
 	color: #ffffff;
 	border: 1px solid black;
@@ -539,20 +539,19 @@ margin-left : 200px;
 .sideBannerR {
 	position: absolute;
 	margin-left: 80.5%;
-    width: 18.3%;
-    height: 70%;
+	width: 18.3%;
+	height: 70%;
 	top: 529px;
 	color: #ffffff;
 	border: 1px solid black;
 	background-color: white;
 }
 
-.fix{
-	
-	position:fixed;_position:absolute;
-	top:15%;
-	z-index:100
-
+.fix {
+	position: fixed;
+	_position: absolute;
+	top: 15%;
+	z-index: 100
 }
 
 .txt-label {
@@ -561,8 +560,8 @@ margin-left : 200px;
 }
 
 .bannerImg {
-    width: 100%;
-    height: 94%;
+	width: 100%;
+	height: 94%;
 }
 
 .itemBuild-direction {
@@ -667,10 +666,9 @@ margin-left : 200px;
 /* 	width: 70px; */
 /* 	color: black; */
 /* } */
-
 .comm_champ_line {
 	margin-left: 20%;
-/* 	width: 1098px; */
+	/* 	width: 1098px; */
 	height: 30px;
 }
 
@@ -680,7 +678,7 @@ margin-left : 200px;
 }
 
 .comm_graph_box {
-/* 	margin-left: 20%; */
+	/* 	margin-left: 20%; */
 	width: 1098px;
 	height: 300px;
 }
@@ -819,7 +817,7 @@ margin-left : 200px;
 .comm_graph_title {
 	width: 1098px;
 	height: 50px;
-/* 	margin-left: 20%; */
+	/* 	margin-left: 20%; */
 }
 
 .comm_title {
@@ -929,104 +927,103 @@ margin-left : 200px;
 	height: 49px;
 }
 
-
 /*  장기훈 추가 css */
 @font-face {
-  font-family: 'Recipekorea';
-  src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_2001@1.1/Recipekorea.woff') format('woff');
-  font-weight: normal;
-  font-style: normal;
+	font-family: 'Recipekorea';
+	src:
+		url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_2001@1.1/Recipekorea.woff')
+		format('woff');
+	font-weight: normal;
+	font-style: normal;
 }
+
 a, a:link {
- 
-  text-decoration: none;
-  font-family: 'Jua', sans-serif;
+	text-decoration: none;
+	font-family: 'Jua', sans-serif;
 }
-.menu2 {
-  list-style: none;
-  display: flex;
-  justify-content: center;
-  position: relative;
-  font-size: 15px;
 
+.menu2 {
+	list-style: none;
+	display: flex;
+	justify-content: center;
+	position: relative;
+	font-size: 15px;
 }
+
 .sampletest a {
-/*   display: block; */
-  padding: 20px 20px;
-  position: relative;
-  font-size: 15px;
-  top: 10px;
+	/*   display: block; */
+	padding: 20px 20px;
+	position: relative;
+	font-size: 15px;
+	top: 10px;
 }
-.menu2 .sampletest a::after {
-  content: '';
-  display: block;
-  position: absolute;
-  bottom: 0;
-  z-index: -1;
-}
-.menu2 .sampletest a::after {
- z-index : 5;
-	top : 75%;
-  width: 0%;
-  height: 5px;
-  background: #ffff80;
-  left: 10%;	
-}
-.menu2 .sampletest a:hover::after {
-  width: 100%;
-  left: 0;
-  transition: all .1s;
-}
-.menu2 .sampletest a:hover{
-  color: rgba(73, 174, 255, 1);
-}
-.menu2 {
 
-	align-items : left;
-	height : 100%;
+.menu2 .sampletest a::after {
+	content: '';
+	display: block;
+	position: absolute;
+	bottom: 0;
+	z-index: -1;
+}
+
+.menu2 .sampletest a::after {
+	z-index: 5;
+	top: 75%;
+	width: 0%;
+	height: 5px;
+	background: #ffff80;
+	left: 10%;
+}
+
+.menu2 .sampletest a:hover::after {
+	width: 100%;
+	left: 0;
+	transition: all .1s;
+}
+
+.menu2 .sampletest a:hover {
+	color: rgba(73, 174, 255, 1);
+}
+
+.menu2 {
+	align-items: left;
+	height: 100%;
 	position: absolute;
 	width: 100%;
-	
-	
 }
-.GoPart {	
-	color : white;
-	width:100%;
+
+.GoPart {
+	color: white;
+	width: 100%;
 	position: relative;
 }
 
-
 .contentsCheckM {
-	border-radius : 30px;
-position : relative;
-	
+	border-radius: 30px;
+	position: relative;
 	background-size: 100% 100%;
 	display: flex;
 	width: 1100px;
-	
 	height: 50px;
 	z-index: 1;
-	/* 	height: 200px; */}
+	/* 	height: 200px; */
+}
+
 .contentsCheckS {
-	position : relative;
-	display : flex;
-	border-radius : 20px;
-	background-color : rgba(6, 2, 115, 1);
+	position: relative;
+	display: flex;
+	border-radius: 20px;
+	background-color: rgba(6, 2, 115, 1);
 	border: 2px solid rgb(157, 196, 253);
 	width: 100%;
-	
 }
 
-.contetnsCheckT{	
-		
-	
-	height : 50px;
+.contetnsCheckT {
+	height: 50px;
 	/* 	height: 200px; */
-	
 }
 
-
-.contetnsCheckA{
+.contetnsCheckA {
 	z-index: 4;
 	display: flex;
 	width: 100%;
@@ -1035,59 +1032,54 @@ position : relative;
 	position: sticky;
 	top: 0px;
 	margin-bottom: 10px;
-	
 }
-.contetnsCheckB{
-	width : 100%;
-	height : 50px;
 
+.contetnsCheckB {
+	width: 100%;
+	height: 50px;
 
 	/* 	height: 200px; */
-	
 }
 
-.sampletest{
-	position : relative;
-		width :10%;
-	color : white;	
-}
-.sampletestTier{
-width :10%;
-	color : white;	
+.sampletest {
+	position: relative;
+	width: 10%;
+	color: white;
 }
 
-.sampletest1{
-	width :60%;
-	height : 50px;
-	
-
-	/* 	height: 200px; */
-	
+.sampletestTier {
+	width: 10%;
+	color: white;
 }
 
-.sampletest2{
-	line-height : 45px;
-	width :15%;
-	height : 50px;
-	
+.sampletest1 {
+	width: 60%;
+	height: 50px;
 
 	/* 	height: 200px; */
-	
 }
+
+.sampletest2 {
+	line-height: 45px;
+	width: 15%;
+	height: 50px;
+
+	/* 	height: 200px; */
+}
+
 .dropDown {
-
-    display: inline-block;
- 
-    width: 140px;
+	display: inline-block;
+	width: 140px;
 }
+
 .dropDown:hover .subMenu {
-	opacity : 0;
-	animation: 0.3s linear  fadeIn;
-	animation-fill-mode : forwards;
-/* 	-webkit-transition: 0.3s ease; */
-/*   -webkit-transform: translate(0, -420px); */
-/*           transform: translate(0, -420px); */
-/*     display: none; */
+	opacity: 0;
+	animation: 0.3s linear fadeIn;
+	animation-fill-mode: forwards;
+	/* 	-webkit-transition: 0.3s ease; */
+	/*   -webkit-transform: translate(0, -420px); */
+	/*           transform: translate(0, -420px); */
+	/*     display: none; */
 }
 /*
 .dropDown:hover {} 까지만 하면
@@ -1095,48 +1087,43 @@ width :10%;
 .dropDown:hover 뒤에 무엇이든 이어지면 명령을 수행하는 역할이 된다.
 즉, 자식요소를 어떻게 할지 변경하는 정의하는 의미라고 생각하면 된다.
 */
-
 .dropDown-btn {
-		
-    /*부모의 길이를 상속 받음, 유동적 길이 변경 가능*/
-    width: inherit;
-    padding: 10px;
-    font-size: 18px;
-	background-color : transparent;
-    border: none; 
-    outline: none; /*버튼 클릭 시 음영효과 제거*/
-    cursor: pointer;
-    color: #ffffff;
+	/*부모의 길이를 상속 받음, 유동적 길이 변경 가능*/
+	width: inherit;
+	padding: 10px;
+	font-size: 18px;
+	background-color: transparent;
+	border: none;
+	outline: none; /*버튼 클릭 시 음영효과 제거*/
+	cursor: pointer;
+	color: #ffffff;
 }
 
 .subMenu {
-	
-	opacity : 0;
-	height : 365px;
-	text-align : center;
+	opacity: 0;
+	height: 365px;
+	text-align: center;
 	background-color: rgba(0, 41, 120, 1);
-/*     display: none;  */
-    width: 152px;
-    border: 1px solid #eee;
-    box-shadow: 0 0 10px rgba(0,0,0,0.17);
+	/*     display: none;  */
+	width: 152px;
+	border: 1px solid #eee;
+	box-shadow: 0 0 10px rgba(0, 0, 0, 0.17);
 }
 
 .subMenu a {
 	height: 50px;
-	
-	width : 150px;
-    display: block; /*a 태그는 가로배치 이므로 세로배치로 변경*/
-    padding: 7px;
-/*     text-align: center; */
+	width: 150px;
+	display: block; /*a 태그는 가로배치 이므로 세로배치로 변경*/
+	padding: 7px;
+	/*     text-align: center; */
 }
 
 .subMenu a:hover {
-
-/* 	top : 20%; */
-
-	width : 150px;
+	/* 	top : 20%; */
+	width: 150px;
 	background-color: skyblue;
 }
+
 
 @keyframes fadeIn {
   0% {
@@ -1159,19 +1146,28 @@ width :10%;
   }
 }
 
-
 .contentsRank {
 	display: flex;
 	background-color: white;
-/* 	margin-top: 100px; */
+	/* 	margin-top: 100px; */
 	width: 100%;
 	height: 1980px;
 	justify-content: center;
 }
-.rankContainer{
+
+.rankContainer {
 	min-width: 1300px;
 }
+
 .contentsItemsChamp {
 	font-family: 'Jua', sans-serif;
 	padding: 30px;
+}
+
+.whiteHat {
+	
+	position: absolute;
+	margin-top: -55px;
+	margin-left : 120px;
+	
 }

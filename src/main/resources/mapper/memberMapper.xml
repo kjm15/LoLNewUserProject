@@ -159,6 +159,10 @@
 
 
 
+	<select id="paymentTable">
+		select * from paymentT order by pcnt desc;
+	</select>
+
 
 
 </mapper>

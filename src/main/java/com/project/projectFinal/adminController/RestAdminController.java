@@ -27,5 +27,11 @@ public class RestAdminController {
 
 		return memberService.memberTable();
 	}
+	@PostMapping("/paymentTable")
+	public ArrayList<HashMap<String, Object>> paymentTable() {
+		
+
+		return memberService.paymentTable();
+	}
 
 }
