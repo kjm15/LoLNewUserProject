@@ -168,6 +168,13 @@
 	<update id="changeAuthority">
 		update memberT
 		set role = #{role}
-		where userId = #{userId};
+		where userId =
+		#{userId};
 	</update>
+
+	<select id="adminCheck">
+		select userId, role
+		from memberT
+		where userId = #{userId};
+	</select>
 </mapper>

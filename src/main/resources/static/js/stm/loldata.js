@@ -34,24 +34,26 @@ $(document).ready(function() {
 
 
 	setTimeout(function() {
-		aastr = "<img width=300 height=300 src='/img/tier/" + tier + ".png'	 alt='티어''>"
+		
+		aastr = `<img width=300 height=300 src='/img/tier/${tier}.png'	 alt='티어' onerror='this.src="/img/tier/gold.png"' />`
+
 
 		$('.imimim').html(aastr)
+		
 
-
-	}, 1600);
+	}, 2000);
 	setTimeout(function() {
 		aastr = "<img width=300 height=300 src='/img/effect/ef1.gif' alt='티어이펙트''>"
 
 		$('.imimim').html(aastr)
 
-	}, 1400);
+	}, 1800);
 	setTimeout(function() {
 		aastr = "<img width=300 height=300 src='/img/effect/ef2.gif' alt='티어이펙트''>"
 
 		$('.imimim').html(aastr)
 
-	}, 1200);
+	}, 1500);
 	//		setTimeout(function() {
 	//			aastr = "<img width=300 height=300 src='/img/effect/starEffect.gif' alt='티어이펙트''>"
 	//	
@@ -500,7 +502,7 @@ function bbb(data) {
 		data: data,
 		success: function(res) {
 
-			console.log(res)
+//			console.log(res)
 
 			if (res.length != 0) {
 				MList = [];
@@ -800,7 +802,7 @@ function findPartOfQueuId() {
 		data: { 'riotIdGameName': gameName },
 		success: function(res) {
 			checkPartQueueId = res
-			console.log(res)
+//			console.log(res)
 
 			for (let i in checkPartQueueId) {
 				queueId_kor = checkPartQueueId[i]['queueId_kor']

@@ -41,7 +41,7 @@ public class PythonBuilder {
 			buffer.append(line);
 		}
 		int exitCode = p.waitFor();
-		System.out.println("Value is: " + buffer.toString());
+//		System.out.println("Value is: " + buffer.toString());
 //        System.out.println("Process exit value:"+exitCode);        
 		in.close();
 		ObjectMapper mapper = new ObjectMapper();
@@ -65,7 +65,7 @@ public class PythonBuilder {
 			buffer.append(line);
 		}
 		int exitCode = p.waitFor();
-		System.out.println("Value is: " + buffer.toString());
+//		System.out.println("Value is: " + buffer.toString());
 //        System.out.println("Process exit value:"+exitCode);        
 		in.close();
 		if (buffer.toString().length() != 0) {

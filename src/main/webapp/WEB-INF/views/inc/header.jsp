@@ -69,79 +69,11 @@
 				</div>
 			</div>
 		</c:if>
-		<c:choose>
-			<c:when test="${userId == 'pay'}">
-				<div class="navbarLogin">
-					<div class="navChoice">
-						<a href="/member/mypage">${userId}님</a>
-					</div>
-					<div class="navChoice" id="modal_test">
-						<a href="javascript:openModal()">메니저</a>
-					</div>
-					<div class="navChoice">
-						<a href="/member/logout">로그아웃</a>
-					</div>
-				</div>
-			</c:when>
 
-			<c:when test="${userId == 'admin'}">
-				<div class="navbarLogin">
-					<div class="navChoice">
-						<a href="/member/mypage">${userId}님</a>
-					</div>
-					<div class="navChoice" id="modal_test">
-						<a href="/admin/main">총관리자</a>
-					</div>
-					<div class="navChoice">
-						<a href="/member/logout">로그아웃</a>
-					</div>
-				</div>
-			</c:when>
-			<c:when test="${userId == 'jhl'}">
-				<div class="navbarLogin">
-					<div class="navChoice">
-						<a href="/member/mypage">${userId}님</a>
-					</div>
-					<div class="navChoice" id="modal_test">
-						<a href="/jhl/admin">매니저</a>
-					</div>
-					<div class="navChoice">
-						<a href="/member/logout">로그아웃</a>
-					</div>
-				</div>
-			</c:when>
-			<c:when test="${userId == 'qwer'}">
-				<div class="navbarLogin">
-					<div class="navChoice">
-						<a href="/member/mypage">${userId}님</a>
-					</div>
-					<div class="navChoice" id="modal_test">
-						<a href="/admin/inq">매니저</a>
-					</div>
-					<div class="navChoice">
-						<a href="/member/logout">로그아웃</a>
-					</div>
-				</div>
-			</c:when>
-			<c:when test="${userId != null}">
-				<div class="navbarLogin">
-					<div class="navChoice">
-						<a href="/member/mypage">${userId}님</a>
-					</div>
-					<div class="navChoice" id="modal_test">
-						<a href="javascript:openModal()">결제하기</a>
-					</div>
-					<div class="navChoice">
-						<a href="/member/logout">로그아웃</a>
-					</div>
-				</div>
-			</c:when>
-			<c:otherwise>
-				<div class="navbarLogin">
-					<a href="/member/login">로그인</a>
-				</div>
-			</c:otherwise>
-		</c:choose>
+
+		<div class="navbarLogin" id = "navbarLogin"></div>
+
+
 
 
 

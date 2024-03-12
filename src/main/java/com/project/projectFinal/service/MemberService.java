@@ -212,4 +212,9 @@ public class MemberService implements UserDetailsService {
 		return  a;
 	}
 
+	public Map<String, Object> adminCheck(String userId) {
+		// TODO Auto-generated method stub
+		return memberDao.adminCheck(userId);
+	}
+
 }

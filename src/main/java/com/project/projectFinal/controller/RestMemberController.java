@@ -1,9 +1,8 @@
 package com.project.projectFinal.controller;
 
-import java.util.List;
+import java.util.Map;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -46,6 +45,7 @@ public class RestMemberController {
 		return memberService.rouletteInfo(memberDto);
 
 	}
+
 	@PostMapping("/minusRoulette")
 	public MemberDto minusRoulette(MemberDto memberDto, HttpSession httpSession) {
 //		log.info("aaa");
@@ -54,7 +54,7 @@ public class RestMemberController {
 		return memberService.minusRoulette(memberDto);
 
 	}
-	
+
 	@PostMapping("/findId")
 	public MemberDto findId(@RequestParam String userEmail, MemberDto memberDto, Model model) {
 //		log.info("=====컨트롤러상={}", memberDto);
@@ -62,26 +62,33 @@ public class RestMemberController {
 		MemberDto mid = memberService.findId(memberDto);
 		model.addAttribute("mid", mid);
 		log.info("=====컨트롤러={}", mid);
-		
+
 		return memberService.findId(mid);
 	}
-	
+
 	@PostMapping("/changePw")
 	public int changePw(MemberDto memberDto) {
 //		log.info("==========={}",memberDto);	
 		return memberService.changePw(memberDto);
-		
+
 	}
+
 	@PostMapping("/changeInfo")
 	public int changeInfo(MemberDto memberDto) {
 //		log.info("==========={}",memberDto);	
 		return memberService.changeInfo(memberDto);
-		
+
 	}
+
 	@PostMapping("/findPw/emailCheck")
 	public int emailCheck(MemberDto memberDto) {
 		return memberService.emailCheck(memberDto);
 	}
-	
+
+	@PostMapping("/adminCheck")
+	public Map<String, Object> adminCheck(String userId) {
+//		log.info(userId);
+		return memberService.adminCheck(userId);
+	}
 
 }
