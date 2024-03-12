@@ -446,6 +446,9 @@ let id = ''
 let a = ''
 const progressBar = document.querySelector('.progress-container');
 progressBar.addEventListener('click', (e) => {
+
+
+
 	$('#replayStart').css("visibility", "visible");
 	$('#one').show()
 	$('#two').show()
@@ -473,18 +476,17 @@ progressBar.addEventListener('click', (e) => {
 
 	$('#' + id).css("background-color", "rgba(100, 170, 253, 1)")
 	a = 1
-	let checkPlayBackGroundColor = 0
-	playBackGroundColor = setInterval(function() {
+
+	let playBackGroundColor = setInterval(function() {
 		if (a > 0) {
 			a -= 0.05;
 			$('#' + id).css("background-color", "rgba(100, 170, 253, " + a + ")")
 		}
 		else {	//색변경 완료
-			
-			$('#' + id).css("background-color", "")
-			checkPlayBackGroundColor = 0
 			clearInterval(playBackGroundColor);
+			$('#' + id).css("background-color", "")
 			console.log(a)
+			//			a = 0
 		}
 	}, 50);
 
