@@ -33,7 +33,7 @@ $('#answer').on("click", function() {
 	modal0.style.display = "flex";	
 	modal.style.display = "none"
 	document.querySelector('#n_date').value= new Date().toISOString().slice(0, 10);
-	document.querySelector("#status").value= "답변완료"
+	document.querySelector("#status").value= "2"
 	console.log("쳌")
 })
 //
