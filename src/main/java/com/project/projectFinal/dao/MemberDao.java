@@ -3,6 +3,7 @@ package com.project.projectFinal.dao;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 import org.apache.ibatis.annotations.Mapper;
 
@@ -52,7 +53,7 @@ public interface MemberDao {
 
 	ArrayList<MemberDto> memberload(MemberDto memberDto);
 
-//	String InfoChange(MemberDto memberDto);
+	String InfoChange(MemberDto memberDto);
 
 	int changeInfo(MemberDto memberDto);
 
@@ -61,6 +62,8 @@ public interface MemberDao {
 	int emailcheck(MemberDto memberDto);
 
 	ArrayList<HashMap<String, Object>> paymentTable();
+
+	int changeAuthority(Map<String, Object> aMap);
 
 	
 

@@ -7,11 +7,12 @@
 <head>
 <meta charset="UTF-8">
 <title>인사담당자 페이지</title>
+
 <!-- css들어갈자리  -->
 <link href="/css/admin/hrdCss.css" rel="stylesheet">
 </head>
 <body>
-
+	<input type = "hidden" value = "" id = "roleCheck" />
 	<%@include file="../inc/header.jsp"%>
 	<center>
 		<h1>[[인사담당관 출입가능.]]</h1>
