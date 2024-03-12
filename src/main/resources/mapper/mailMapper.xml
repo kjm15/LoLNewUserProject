@@ -16,7 +16,7 @@
 	</select>
 	
 	<select id="adminInq">
-		select * from NoteTableT where recv_userId = #{userId} and status = 1 order by n_num
+		select * from NoteTableT where recv_userId = "admin" and status = 1 order by n_num
 		DESC
 		limit 20;
 	</select>
