@@ -96,6 +96,19 @@
 					</div>
 				</div>
 			</c:when>
+			<c:when test="${userId == 'qwer'}">
+				<div class="navbarLogin">
+					<div class="navChoice">
+						<a href="/member/mypage">${userId}님</a>
+					</div>
+					<div class="navChoice" id="modal_test">
+						<a href="/admin/inq">매니저</a>
+					</div>
+					<div class="navChoice">
+						<a href="/member/logout">로그아웃</a>
+					</div>
+				</div>
+			</c:when>
 			<c:when test="${userId != null}">
 				<div class="navbarLogin">
 					<div class="navChoice">
