@@ -1,4 +1,3 @@
-
 userId_list = []
 
 //전체메시지 보내기
@@ -93,7 +92,7 @@ function inqAnswer() {
 		'n_date': n_date,
 		'n_title': n_title,
 		'inqAnswer': inqAnswer,
-		
+
 	}
 	console.log("test");
 
@@ -119,4 +118,5 @@ function inqAnswer() {
 
 
 }
+
 

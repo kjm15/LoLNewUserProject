@@ -22,15 +22,17 @@
 						<td id="Enum"></td>
 					</tr>
 					<tr>
-						<th class="thead-title">제목</th>
-						<td class="title" id="Etitle"></td>
-						<th class="thead">등록일</th>
-						<td class="datetime" id="Edatetime"></td>
+						<th class="thead-title"><div class = "EtitleArea" style = "text-align : center;">제목</div></th>
+						<td class="title"><div class = "EtitleArea" id="Etitle"></div></td>
+					</tr>
+					<tr class="trTime">
+						<th class="thead"><div class = "SendTimeArea">보낸시간</div></th>
+						<td class="datetime"><div class = "SendTimeArea2" id="Edatetime"></div></td>
 					</tr>
 
 					<tr>
-						<th class="thead-message">내용</th>
-						<td class="message" id="Emessage"></td>
+						<th class="thead-message"><div class = "messageline" style = "text-align : center;">내용</div></th>
+						<td class="message" id="Emessage"><div class = "messageline" id="Emessage"></div></td>
 					</tr>
 				</table>
 			</div>

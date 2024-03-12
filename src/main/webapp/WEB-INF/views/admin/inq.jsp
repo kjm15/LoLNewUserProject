@@ -7,7 +7,6 @@
 <meta charset="UTF-8">
 <link rel="stylesheet"
 	href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
-
 <script
 	src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.8/dist/umd/popper.min.js"
 	integrity="sha384-I7E8VVD/ismYTF4hNIPjVp/Zjvgyol6VFvRkX/vR+Vc4jQkC+hVqc2pM8ODewa9r"
@@ -38,7 +37,6 @@
 			<th>보낸사람</th>
 			<th>제목</th>
 			<th>날짜</th>
-			<th>상태</th>
 		</thead>
 		<tbody>
 
@@ -49,7 +47,7 @@
 					<td>${item.send_userId}</td>
 					<td>${item.n_title}</td>
 					<td>${item.n_date}</td>
-					<td>${item.status}</td>
+					<td style="display: none;">${item.status}</td>
 					<td style="display: none;">${item.n_message}</td>
 					<td style="display: none;">${item.recv_userId}</td>
 				</tr>
