@@ -29,7 +29,8 @@
 - 인사담당 >><div><button><a href = "/admin/hrd">인사담당 매니저 페이지</a></button></div>
 
  </br>
-
+- 서비스담당 >>  <div><button><a href = "/admin/inq">고객센터 매니저 페이지</a></button></div>
+ </br>
 - 결제 담당 >> <div><button><a href = "/admin/pay">결제 매니저 페이지</a></button></div>
 </br>
 - 아이템 페이지 담당 >>
