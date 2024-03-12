@@ -6,7 +6,8 @@
 		values
 		(#{matchId},#{championName},
 		(select champion_name_kr from
-		champListT where champion_name =
+		champListT
+		where champion_name =
 		#{championName}),
 		#{riotIdGameName},
 		#{riotIdTagline},#{summonerName},#{summonerLevel},#{profileIcon},#{participantId},#{queueId},#{teamId},
@@ -85,7 +86,7 @@
 		and riotIdTagline = #{riotIdTagline};
 	</select>
 
-	
+
 
 	<select id="forOneData">
 		select * from
@@ -148,15 +149,17 @@
 	<select id="nowMatchListCnt">
 		select matchId
 		from RiotGameInfoT
-		where riotIdGameName = #{gameName}
+		where riotIdGameName
+		= #{gameName}
 		group by matchId
 		order by matchId desc;
 	</select>
 	<select id="matchIdList">
 		select *
 		from RiotGameInfoT
-		where riotIdGameName = #{gameName}
-		group by matchId 
+		where riotIdGameName =
+		#{gameName}
+		group by matchId
 		order by matchId desc
 		limit #{matchCnt}, 3;
 	</select>
@@ -166,38 +169,46 @@
 		where matchId = #{matchId}
 		order by participantId ;
 	</select>
-		<select id="infoDataAll">
+	<select id="infoDataAll">
 		select matchId
 		from RiotGameInfoT
-		where riotIdGameName = #{gameName}
+		where riotIdGameName
+		= #{gameName}
 		order by matchId desc
 		limit 0, 10;
 	</select>
 	<select id="infoDataCnt">
 		select matchId
 		from RiotGameInfoT
-		where riotIdGameName = #{gameName} and queueId = #{queueId} and riotIdTagline = #{tagLine}
+		where riotIdGameName
+		= #{gameName} and queueId = #{queueId} and riotIdTagline = #{tagLine}
 		order by matchId desc
 		limit 0,#{matchCnt};
 	</select>
-		<select id="infoDataAllCnt">
+	<select id="infoDataAllCnt">
 		select matchId
 		from RiotGameInfoT
-		where riotIdGameName = #{gameName} and riotIdTagline = #{tagLine}
+		where riotIdGameName
+		= #{gameName} and riotIdTagline = #{tagLine}
 		order by matchId desc
 		limit 0,#{matchCnt};
 	</select>
 	<select id="saveAiData">
-		replace into  airesultT
+		replace into airesultT
 		values(#{matchId},#{participantId},#{key},#{championName},#{champion_name_kr},#{tier},#{length},#{accuracy},#{rankingS});
-		
-		select * from airesultT where matchId = #{matchId} and participantId = #{participantId};
-			
+
+		select * from airesultT where matchId = #{matchId} and participantId =
+		#{participantId};
+
 	</select>
-	
+
 	<select id="findAiData">
 		select *
 		from airesultT
-		where matchId = #{matchId} and participantId = #{participantId} ;
+		where matchId = #{matchId} and
+		participantId = #{participantId} ;
 	</select>
+
+
+
 </mapper>	

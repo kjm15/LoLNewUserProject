@@ -153,7 +153,8 @@
 	</update>
 
 	<select id="emailcheck">
-		select count(*) from memberT where userId = #{userId} and userEmail = #{userEmail};
+		select count(*) from memberT where userId = #{userId}
+		and userEmail = #{userEmail};
 	</select>
 
 
@@ -164,5 +165,9 @@
 	</select>
 
 
-
+	<update id="changeAuthority">
+		update memberT
+		set role = #{role}
+		where userId = #{userId};
+	</update>
 </mapper>

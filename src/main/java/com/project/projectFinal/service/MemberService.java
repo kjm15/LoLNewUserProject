@@ -3,7 +3,7 @@ package com.project.projectFinal.service;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.HashMap;
-import java.util.List;
+import java.util.Map;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
@@ -183,7 +183,7 @@ public class MemberService implements UserDetailsService {
 		return result;
 	}
 
-		public int changePw2(MemberDto memberDto) {
+	public int changePw2(MemberDto memberDto) {
 		MemberDto mDto = new MemberDto();
 		mDto.setUserId(memberDto.getUserId());
 		mDto.setUserPw(passwordEncoder.encode(memberDto.getUserPw()));
@@ -194,16 +194,22 @@ public class MemberService implements UserDetailsService {
 
 	}
 
-		public int emailCheck(MemberDto memberDto) {
-			int result = memberDao.emailcheck(memberDto);
-			log.info("==========={}",result);
-			return result;
-		}
+	public int emailCheck(MemberDto memberDto) {
+		int result = memberDao.emailcheck(memberDto);
+		log.info("==========={}", result);
+		return result;
+	}
 
-		public ArrayList<HashMap<String, Object>> paymentTable() {
+	public ArrayList<HashMap<String, Object>> paymentTable() {
+
+		return memberDao.paymentTable();
+	}
+
+	public int changeAuthority(Map<String, Object> aMap) {
 		
-			
-			
-			return memberDao.paymentTable();
-		}
+		int a = memberDao.changeAuthority(aMap);
+		log.info("==a {}",a);
+		return  a;
+	}
+
 }
