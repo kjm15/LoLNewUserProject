@@ -90,7 +90,7 @@
 						<a href="/member/mypage">${userId}님</a>
 					</div>
 					<div class="navChoice" id="modal_test">
-						<a href="javascript:openModal()">총관리자</a>
+						<a href="/admin/inq">총관리자</a>
 					</div>
 					<div class="navChoice">
 						<a href="/member/logout">로그아웃</a>

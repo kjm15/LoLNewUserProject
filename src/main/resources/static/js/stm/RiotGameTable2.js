@@ -402,7 +402,7 @@ function showGameTamble(res) {
 		graphlose += lose
 		graphCnt += IMGarr[i][1]
 	}
-	str = `	최근 솔로랭크${graphCnt}게임)`
+	str = `	최근 솔로랭크(${graphCnt}게임)`
 	$(".stmHCenterT").append(str)
 
 	for (let i in resMyList) {

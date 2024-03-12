@@ -24,17 +24,7 @@ import lombok.extern.slf4j.Slf4j;
 public class NoteController {
 	@Autowired
 	NoteService noteService;
-	//쪽지함
-//	@GetMapping("/Note")
-//	public String Noteinfo(Model model, HttpSession session, MemberDto memberDto) {
-//		String userId = (String) session.getAttribute("userId");
-//
-//		memberDto.setUserId(userId);
-//		ArrayList<NoteDto> maillist= noteService.NoteInfo(memberDto);
-//		
-//		model.addAttribute("maillist", maillist);
-//		return "kjm/Note";	
-//	}
+
 	@PreAuthorize("hasAnyAuthority('ADMIN','INQ-MNG')")
 	@GetMapping("/admin/inq")
 	public String NoteAdmin(HttpSession session, Model model ,MemberDto memberDto) {
@@ -42,7 +32,7 @@ public class NoteController {
 		memberDto.setUserId(userId);
 		ArrayList<NoteDto> inqlist= noteService.adminInq(memberDto);
 		model.addAttribute("inqlist", inqlist);
-//		log.info("========문의 컨트롤러{}",inqlist);
+
 		return "admin/inq";
 	}
 	@PreAuthorize("hasAnyAuthority('ADMIN','INQ-MNG')")
@@ -68,12 +58,5 @@ public class NoteController {
 		
 	}
 	
-	@PreAuthorize("hasAnyAuthority('ADMIN','INQ-MNG')")
-	@GetMapping("/admin/inqDetailView")
-	public String inqDetailView(NoteDto noteDto, Model model) {
-		NoteDto dInq = noteService.inqDetailView(noteDto);
-		model.addAttribute("dInq",dInq);
-		return "admin/inqDetailView";
-	}
-	
+
 }
