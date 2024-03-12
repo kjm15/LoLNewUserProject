@@ -19,7 +19,7 @@
 <div><span>팀 이름 </span>DataBoom</div>
 <div><span>조장</span>장기훈</div>
 <div><span>조원 </span>김동근, 김진문</div>
-<div><span>조원 </span>송태민, 정혜린, 김윤태</div>
+<div><span>조원 </span>송태민, 정혜린</div>
 
 <div><span>help us </span>김기찬</div>
 <div><span>일보아카데미</span>차지헌</div>

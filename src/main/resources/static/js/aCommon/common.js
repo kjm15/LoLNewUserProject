@@ -62,14 +62,7 @@ function GotoSearch() {
 
 }
 
-$(document).ready(function() {
 
-	
-
-
-
-
-})
 
 
 

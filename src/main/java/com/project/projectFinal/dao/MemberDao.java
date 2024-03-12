@@ -65,6 +65,8 @@ public interface MemberDao {
 
 	int changeAuthority(Map<String, Object> aMap);
 
+	Map<String, Object> adminCheck(String userId);
+
 	
 
 
