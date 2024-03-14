@@ -2,7 +2,7 @@
 
 if (ws == null || ws == '') {
 	var ws;
-	ws = new WebSocket("ws://" + location.host + "/jgh");
+	ws = new WebSocket("wss://" + location.host + "/jgh");
 
 }
 
