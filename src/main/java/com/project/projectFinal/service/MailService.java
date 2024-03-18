@@ -33,7 +33,7 @@ public class MailService {
             body += "<h1>" + number + "</h1>";
             
            
-            body += "<h3>" + "타인에게 알려주지마세요." + "</h3>";
+            body += "<h3>" + "타인에게 발설금지." + "</h3>";
             message.setText(body,"UTF-8", "html");
         } catch (MessagingException e) {
             e.printStackTrace();
